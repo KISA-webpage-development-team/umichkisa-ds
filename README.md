@@ -1,0 +1,1 @@
+todo: add script to install all skills.
