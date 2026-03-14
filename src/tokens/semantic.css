@@ -1,0 +1,58 @@
+/*
+ * Tier 2 — Semantic tokens
+ * Named by purpose, not value. Components reference ONLY these.
+ */
+
+@theme {
+  /* Color — Brand */
+  --color-brand-primary:     var(--primitive-michigan-blue);
+  --color-brand-accent:      var(--primitive-michigan-maize);
+  --color-brand-primary-mid: var(--primitive-michigan-blue-mid);
+
+  /* Color — Surface */
+  --color-surface:        var(--primitive-white);
+  --color-surface-muted:  var(--primitive-gray-50);
+  --color-surface-subtle: var(--primitive-gray-100);
+
+  /* Color — Border */
+  --color-border:        var(--primitive-gray-200);
+  --color-border-strong: var(--primitive-gray-300);
+
+  /* Color — Text */
+  --color-text-primary:  var(--primitive-gray-900);
+  --color-text-muted:    var(--primitive-gray-500);
+  --color-text-disabled: var(--primitive-gray-400);
+
+  /* Color — Feedback */
+  --color-error:   var(--primitive-red-500);
+  --color-success: var(--primitive-green-500);
+
+  /* Typography */
+  --font-size-xs:   0.75rem;
+  --font-size-sm:   0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg:   1.125rem;
+  --font-size-xl:   1.25rem;
+  --font-size-2xl:  1.5rem;
+  --font-size-4xl:  2.25rem;
+
+  /* Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+
+  /* Icon sizes */
+  --icon-xs: 0.875rem;
+  --icon-sm: 1rem;
+  --icon-md: 1.25rem;
+  --icon-lg: 1.5rem;
+  --icon-xl: 1.875rem;
+
+  /* Spacing — extends Tailwind's default scale with semantic names */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+}
