@@ -28,48 +28,71 @@ export function Sidebar({ open, onClose }: SidebarProps) {
 
   return (
     <>
-      {/* Backdrop — mobile only, appears behind the open sidebar */}
+      {/* Backdrop: mobile-only, shown when open */}
       <div
-        className="docs-backdrop"
-        data-visible={String(open)}
+        className={`fixed inset-0 bg-black/35 z-[var(--docs-z-backdrop)] ${open ? 'block lg:hidden' : 'hidden'}`}
         onClick={onClose}
         aria-hidden="true"
       />
 
+      {/*
+       * Sidebar:
+       *   Desktop (lg+): always visible — lg:translate-x-0 overrides the mobile default
+       *   Mobile: slides in from left when open, hidden behind viewport otherwise
+       */}
       <nav
         id="docs-sidebar"
-        className="docs-sidebar"
-        data-open={String(open)}
+        className={`fixed top-[var(--docs-header-h)] left-0 bottom-0 w-[var(--docs-sidebar-w)] bg-surface border-r border-border overflow-y-auto z-[var(--docs-z-sidebar)] py-6 pb-8 flex flex-col transition-transform duration-[250ms] ease-in-out lg:translate-x-0 ${
+          open
+            ? 'translate-x-0 shadow-[4px_0_24px_rgba(0,0,0,0.08)]'
+            : '-translate-x-full lg:shadow-none'
+        }`}
         aria-label="Documentation navigation"
       >
-        <div className="docs-nav-section">
-          <span className="docs-nav-section-label">Foundation</span>
-          {FOUNDATION_ITEMS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="docs-nav-item"
-              data-active={String(pathname === item.href)}
-              onClick={onClose}
-            >
-              {item.label}
-            </Link>
-          ))}
+        <div className="px-4">
+          <span className="block font-sejong-light text-[10px] uppercase tracking-[0.1em] text-text-muted pb-2">
+            Foundation
+          </span>
+          {FOUNDATION_ITEMS.map((item) => {
+            const isActive = pathname === item.href
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`flex items-center min-h-11 lg:min-h-9 py-3 lg:py-[7px] px-2 rounded-md text-sm transition-[background,color] duration-[120ms] border-l-2 -ml-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-[-2px] ${
+                  isActive
+                    ? 'border-brand-primary text-brand-primary font-sejong-bold pl-1.5'
+                    : 'border-transparent text-text-primary font-sejong-light hover:bg-surface-muted'
+                }`}
+                onClick={onClose}
+              >
+                {item.label}
+              </Link>
+            )
+          })}
         </div>
 
-        <div className="docs-nav-section">
-          <span className="docs-nav-section-label">Components</span>
-          {COMPONENT_ITEMS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="docs-nav-item"
-              data-active={String(pathname === item.href)}
-              onClick={onClose}
-            >
-              {item.label}
-            </Link>
-          ))}
+        <div className="px-4 mt-7">
+          <span className="block font-sejong-light text-[10px] uppercase tracking-[0.1em] text-text-muted pb-2">
+            Components
+          </span>
+          {COMPONENT_ITEMS.map((item) => {
+            const isActive = pathname === item.href
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`flex items-center min-h-11 lg:min-h-9 py-3 lg:py-[7px] px-2 rounded-md text-sm transition-[background,color] duration-[120ms] border-l-2 -ml-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-[-2px] ${
+                  isActive
+                    ? 'border-brand-primary text-brand-primary font-sejong-bold pl-1.5'
+                    : 'border-transparent text-text-primary font-sejong-light hover:bg-surface-muted'
+                }`}
+                onClick={onClose}
+              >
+                {item.label}
+              </Link>
+            )
+          })}
         </div>
       </nav>
     </>
