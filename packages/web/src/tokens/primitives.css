@@ -19,7 +19,9 @@
   --primitive-gray-300: oklch(87% 0.006 264);
   --primitive-gray-400: oklch(73% 0.01 264);
   --primitive-gray-500: oklch(60% 0.012 264);
+  --primitive-gray-600: oklch(50% 0.013 264);
   --primitive-gray-700: oklch(40% 0.014 264);
+  --primitive-gray-800: oklch(28% 0.015 264);
   --primitive-gray-900: oklch(17% 0.016 264);
 
   /* Semantic base */

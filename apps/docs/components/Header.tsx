@@ -1,6 +1,6 @@
 'use client'
 
-import { DS_VERSION } from '@umichkisa-ds/web'
+import { DS_VERSION, LinkButton } from '@umichkisa-ds/web'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -22,10 +22,13 @@ export function Header({ onMenuClick, showSidebar }: HeaderProps) {
       className="fixed top-0 left-0 right-0 h-20
        bg-surface border-b border-border
        flex items-center justify-between
-       pl-4 pr-5 z-50"
+       px-8 z-50
+       "
+
+       
       role="banner"
     >
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-10">
         {/* Hamburger: mobile only, only when sidebar is active */}
         {showSidebar && (
         <button
@@ -56,7 +59,8 @@ export function Header({ onMenuClick, showSidebar }: HeaderProps) {
         <Link
           href="/"
           className="flex items-center gap-2
-          font-sejong-bold text-xl text-brand-primary
+          font-sejong-bold text-lg 
+          text-brand-primary
           tracking-tight"
         >
           <Image
@@ -71,15 +75,16 @@ export function Header({ onMenuClick, showSidebar }: HeaderProps) {
         </Link>
 
         {/* Section nav — desktop only */}
-        <nav className="hidden lg:flex items-center gap-1" aria-label="Sections">
+        <nav className="hidden lg:flex items-center gap-2" aria-label="Sections">
           {SECTIONS.map((s) => (
             <Link
               key={s.href}
               href={s.href}
-              className={`px-3 py-1.5 text-sm transition-colors duration-150 ${
+              className={`px-3 py-1.5 
+                text-md transition-colors duration-150 font-sejong-bold ${
                 pathname.startsWith(s.prefix)
-                  ? 'font-sejong-bold text-text-primary'
-                  : 'font-sejong-light text-text-muted hover:text-text-primary'
+                  ? 'text-text-primary'
+                  : 'text-text-muted hover:text-text-primary'
               }`}
             >
               {s.label}
@@ -98,7 +103,7 @@ export function Header({ onMenuClick, showSidebar }: HeaderProps) {
           href="https://github.com/umichkisa/umichkisa-ds"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center min-w-9 min-h-9 rounded-md text-text-muted transition-colors duration-150 hover:text-brand-primary hover:bg-surface-subtle focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-offset-2"
+          className="flex items-center justify-center min-w-10 min-h-10 rounded-md text-text-muted transition-colors duration-150 hover:text-brand-primary hover:bg-surface-subtle focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-offset-2"
           aria-label="View source on GitHub"
         >
           <svg

@@ -31,6 +31,7 @@
  */
 @theme inline {
   --color-brand-primary:  var(--color-brand-primary);
+  --color-brand-primary-mid: var(--color-brand-primary-mid);
   --color-surface:        var(--color-surface);
   --color-surface-muted:  var(--color-surface-muted);
   --color-surface-subtle: var(--color-surface-subtle);

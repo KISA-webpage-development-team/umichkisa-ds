@@ -55,8 +55,8 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         }`}
         aria-label="Documentation navigation"
       >
-        <div className="px-4">
-          <span className="block font-sejong-bold text-sm text-text-primary mb-3">
+        <div className="px-8">
+          <span className="block font-sejong-bold text-md text-text-primary mb-3">
             {section.label}
           </span>
           {section.items.map((item) => {
@@ -65,10 +65,12 @@ export function Sidebar({ open, onClose }: SidebarProps) {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`block py-2 px-2 text-sm transition-colors duration-[120ms] focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-offset-[-2px] ${
+                className={`block py-3 px-3 text-sm transition-colors 
+                  font-sejong-bold rounded-md
+                  duration-[120ms] focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-offset-[-2px] ${
                   isActive
-                    ? 'font-sejong-bold text-text-primary'
-                    : 'font-sejong-light text-text-muted hover:text-text-primary'
+                    ? 'text-text-primary'
+                    : 'text-text-muted hover:bg-surface-subtle'
                 }`}
                 onClick={onClose}
               >

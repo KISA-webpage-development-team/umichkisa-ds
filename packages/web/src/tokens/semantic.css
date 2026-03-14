@@ -5,9 +5,17 @@
 
 :root {
   /* Color — Brand */
-  --color-brand-primary:     var(--primitive-michigan-blue);
-  --color-brand-accent:      var(--primitive-michigan-maize);
-  --color-brand-primary-mid: var(--primitive-michigan-blue-mid);
+  --color-brand-primary:        var(--primitive-michigan-blue);
+  --color-brand-primary-mid:    var(--primitive-michigan-blue-mid);
+  --color-brand-accent:         var(--primitive-michigan-maize);
+  --color-brand-accent-subtle:  var(--primitive-michigan-maize-light);
+
+  /* Color — Interactive states */
+  --color-brand-primary-hover:   oklch(25% 0.075 243);
+  --color-brand-primary-pressed: oklch(15% 0.05 243);
+  --color-brand-accent-hover:    oklch(76% 0.185 91);
+  --color-brand-accent-pressed:  oklch(70% 0.185 91);
+  --color-focus-ring:            var(--primitive-michigan-maize);
 
   /* Color — Surface */
   --color-surface:        var(--primitive-white);
@@ -22,10 +30,21 @@
   --color-text-primary:  var(--primitive-gray-900);
   --color-text-muted:    var(--primitive-gray-500);
   --color-text-disabled: var(--primitive-gray-400);
+  --color-text-on-brand: var(--primitive-michigan-maize);
+  --color-text-link:     var(--primitive-michigan-blue-mid);
 
   /* Color — Feedback */
-  --color-error:   var(--primitive-red-500);
-  --color-success: var(--primitive-green-500);
+  --color-error:          var(--primitive-red-500);
+  --color-error-subtle:   oklch(97% 0.02 27);
+  --color-success:        var(--primitive-green-500);
+  --color-success-subtle: oklch(97% 0.02 145);
+  --color-warning:        oklch(72% 0.15 60);
+  --color-warning-subtle: oklch(97% 0.02 60);
+  --color-info:           var(--primitive-michigan-blue-mid);
+  --color-info-subtle:    var(--primitive-michigan-blue-light);
+
+  /* Color — Overlay */
+  --color-overlay: oklch(0% 0 0 / 40%);
 
   /* Typography */
   --font-size-xs:   0.75rem;

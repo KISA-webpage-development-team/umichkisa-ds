@@ -1,8 +1,9 @@
+import ColorGuide from '@/content/foundation/colors.mdx'
+
 export default function ColorsPage() {
   return (
-    <div>
-      <h1>Colors</h1>
-      {/* TODO: Token swatches — primitives + semantic */}
-    </div>
-  );
+    <article className="mx-auto max-w-3xl px-6 min-w-0 overflow-hidden">
+      <ColorGuide />
+    </article>
+  )
 }
