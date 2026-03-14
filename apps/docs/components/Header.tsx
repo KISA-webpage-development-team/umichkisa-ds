@@ -9,10 +9,14 @@ interface HeaderProps {
 
 export function Header({ onMenuClick }: HeaderProps) {
   return (
-    <header className="docs-header" role="banner">
-      <div className="docs-header-left">
+    <header
+      className="fixed top-0 left-0 right-0 h-[var(--docs-header-h)] bg-surface border-b border-border flex items-center justify-between px-5 pl-4 z-[var(--docs-z-header)]"
+      role="banner"
+    >
+      <div className="flex items-center gap-2.5">
+        {/* Hamburger: hidden on desktop (lg+), flex on mobile */}
         <button
-          className="docs-hamburger"
+          className="flex lg:hidden items-center justify-center min-w-11 min-h-11 bg-transparent border-none cursor-pointer rounded-md text-text-muted p-0 hover:bg-surface-subtle focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-offset-2"
           onClick={onMenuClick}
           aria-label="Open navigation menu"
           aria-controls="docs-sidebar"
@@ -35,21 +39,29 @@ export function Header({ onMenuClick }: HeaderProps) {
           </svg>
         </button>
 
-        <Link href="/" className="docs-header-logo">
-          <div className="docs-logo-circle" aria-hidden="true">
+        <Link
+          href="/"
+          className="flex items-center gap-2 font-sejong-bold text-[15px] text-brand-primary tracking-[-0.01em]"
+        >
+          <div
+            className="w-7 h-7 bg-brand-primary rounded-full flex items-center justify-center text-white font-sejong-bold text-[13px] shrink-0"
+            aria-hidden="true"
+          >
             K
           </div>
-          KISA DS
+          KISA Design System
         </Link>
       </div>
 
-      <div className="docs-header-right">
-        <span className="docs-version-badge">{DS_VERSION}</span>
+      <div className="flex items-center gap-3">
+        <span className="bg-michigan-maize text-michigan-blue font-sejong-bold text-[11px] tracking-[0.02em] px-[9px] py-[3px] rounded-full whitespace-nowrap">
+          {DS_VERSION}
+        </span>
         <a
           href="https://github.com/umichkisa/umichkisa-ds"
           target="_blank"
           rel="noopener noreferrer"
-          className="docs-github-link"
+          className="flex items-center justify-center min-w-9 min-h-9 rounded-md text-text-muted transition-colors duration-150 hover:text-brand-primary hover:bg-surface-subtle focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-offset-2"
           aria-label="View source on GitHub"
         >
           <svg
