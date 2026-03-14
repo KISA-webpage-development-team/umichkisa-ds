@@ -2,7 +2,7 @@
 
 **Date**: 2026-03-14
 **Author**: Jioh In
-**Status**: Approved
+**Status**: Approved (UX reviewed 2026-03-14)
 **References**: [LINE LDSM](https://designsystem.line.me/LDSM/foundation/), [umichkisa.com](https://umichkisa.com)
 
 ---
@@ -69,13 +69,32 @@ Load both via `next/font/local` in `apps/docs/app/layout.tsx`. Expose as CSS var
 └──────────────────┴──────────────────────────────────┘
 ```
 
+### Z-Index Scale
+
+Defined globally to prevent stacking context conflicts:
+
+| Layer | Value | Element |
+|---|---|---|
+| `z-10` | 10 | Sticky table headers, floating labels |
+| `z-20` | 20 | Sidebar backdrop overlay |
+| `z-30` | 30 | Sidebar drawer (mobile) |
+| `z-40` | 40 | (reserved) |
+| `z-50` | 50 | Fixed top header |
+
 ### Top Header (60px)
 
 - `background: white`, `border-bottom: 1px solid var(--color-border)`
 - **Left**: hamburger button (mobile only, hidden ≥1024px) + logo placeholder area
-- **Right**: version badge pill + GitHub icon link
+  - Hamburger must be **min 44×44px** touch target (`min-h-[44px] min-w-[44px]`)
+  - Use a Lucide `Menu` SVG icon, not text or emoji
+- **Right**: version badge pill + GitHub icon link (Lucide `Github` icon, 20px)
 - Version badge: `background: var(--primitive-michigan-maize)`, `color: var(--primitive-michigan-blue)`, `font: SejongHospital Bold 11px`, `border-radius: 999px`, `padding: 2px 8px`
 - `position: fixed; top: 0; left: 0; right: 0; z-index: 50`
+- **Skip link**: first focusable element in `<body>` — visually hidden until focused:
+  ```html
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  ```
+  Styled: `position: absolute; left: -9999px` → on `:focus`: `left: 16px; top: 16px; z-index: 100`
 
 ### Sidebar (240px)
 
@@ -84,10 +103,12 @@ Load both via `next/font/local` in `apps/docs/app/layout.tsx`. Expose as CSS var
 - **Top area** (40px): logo placeholder — a circle with `K` in Michigan Blue, plus "KISA DS" text in SejongHospital Bold 14px
 - **Nav sections**: two groups — `Foundation` and `Components`
   - Section label: `11px uppercase letter-spacing: 0.08em color: var(--color-text-muted) font: SejongHospital Light`, 24px top padding
-  - Nav items: `14px SejongHospital Light`, `color: var(--color-text-primary)`, `padding: 6px 16px 6px 16px`
+  - Nav items: `14px SejongHospital Light`, `color: var(--color-text-primary)`, `padding: 6px 16px`
+  - **Touch target**: `min-height: 44px` on mobile (≤1024px) — increase to `padding: 12px 16px`
   - Hover: `background: var(--color-surface-muted)`
   - **Active**: `border-left: 2px solid var(--color-brand-primary)`, `padding-left: 14px`, `font: SejongHospital Bold`, `color: var(--color-brand-primary)`
-- **Mobile**: hidden by default (`transform: translateX(-100%)`). Triggered by hamburger → slides in as overlay (`z-index: 40`), backdrop overlay behind it
+  - **Focus**: `outline: 2px solid var(--color-brand-primary); outline-offset: -2px` on all nav links
+- **Mobile**: hidden by default (`transform: translateX(-100%)`). Triggered by hamburger → slides in as overlay (`z-index: 30`), semi-transparent backdrop at `z-index: 20` behind it
 
 ### Foundation Nav Items
 
@@ -142,6 +163,17 @@ root page differently from interior docs pages.
 - Subtitle: `Arial 18px`, `color: var(--color-text-muted)`, max-w 480px, mt 12px
 - Version badge: inline-flex pill, maize bg, Michigan Blue text, below subtitle, mt 16px
 - Subtle entrance animation: headline and badge stagger in with `opacity: 0 → 1` + `translateY(8px → 0)` over 400ms
+- **Respect `prefers-reduced-motion`**: wrap all animation in `@media (prefers-reduced-motion: no-preference)` — no animation by default, only enable for users who haven't opted out
+
+### Semantic HTML on Landing
+
+```
+<h1>  KISA Design System          ← one per page
+<p>   subtitle
+<h2>  Foundation                  ← CTA card titles
+<h2>  Components
+<p>   feature strip titles         ← NOT headings, use <p> + bold
+```
 
 ### CTA Cards
 
@@ -164,16 +196,23 @@ Two cards side-by-side (stack on mobile):
 - Description: `Arial 14px`, `color: var(--color-text-muted)`, `mt: 8px`
 - "Explore →" link: `SejongHospital Bold 14px`, `color: var(--color-brand-primary)`, bottom of card
 - Hover: `transform: translateY(-2px)`, `box-shadow: 0 4px 12px rgba(0,0,0,0.08)`, 200ms ease
+- **Focus**: `outline: 2px solid var(--color-brand-primary); outline-offset: 2px`
+- `cursor: pointer` on the card element
+- Card hover transform only fires for `prefers-reduced-motion: no-preference`
 
 ### Feature Strip
 
 Three equal columns separated by a top border (`var(--color-border)`), padding 32px top:
 
-| Column | Icon | Title | Body |
+Icons must be SVG (Lucide), never emoji:
+
+| Column | Lucide Icon | Title | Body |
 |---|---|---|---|
-| 1 | 🎨 | Design Tokens | Three-tier OKLCH token system — primitives, semantic, component |
-| 2 | ♿ | Accessible | WCAG 2.1 AA contrast, keyboard nav, Radix primitives |
-| 3 | 🧩 | Composable | CVA variants, tree-shakeable ESM, typed props |
+| 1 | `Palette` (20px) | Design Tokens | Three-tier OKLCH token system — primitives, semantic, component |
+| 2 | `ShieldCheck` (20px) | Accessible | WCAG 2.1 AA contrast, keyboard nav, Radix primitives |
+| 3 | `Puzzle` (20px) | Composable | CVA variants, tree-shakeable ESM, typed props |
+
+Icon color: `var(--color-brand-primary)` (Michigan Blue)
 
 - Title: `SejongHospital Bold 14px`
 - Body: `Arial 13px`, `color: var(--color-text-muted)`, `mt: 4px`
@@ -241,6 +280,7 @@ Light theme only for this session. No dark mode tokens or `prefers-color-scheme`
 
 ## Success Criteria
 
+### Functional
 - [ ] Font files copied, fonts load with zero FOUT (next/font handles this)
 - [ ] Header renders fixed at 60px, full width
 - [ ] Sidebar renders fixed at 240px, below header, with correct nav groups
@@ -250,3 +290,15 @@ Light theme only for this session. No dark mode tokens or `prefers-color-scheme`
 - [ ] CTA cards link correctly to `/foundation/colors` and `/components/`
 - [ ] Interior foundation/component pages have sidebar-offset layout applied
 - [ ] `pnpm build` passes with no TypeScript errors
+
+### Accessibility (from UX review)
+- [ ] Skip link present and functional for keyboard users
+- [ ] All interactive elements have visible focus rings (Michigan Blue outline)
+- [ ] Hamburger button is min 44×44px
+- [ ] Mobile sidebar nav items are min 44px tall
+- [ ] Feature strip uses Lucide SVG icons (no emojis)
+- [ ] Landing page has exactly one `<h1>`, CTA titles are `<h2>`
+- [ ] Hero animation is wrapped in `prefers-reduced-motion: no-preference`
+- [ ] CTA card hover transform also gated on `prefers-reduced-motion`
+- [ ] All icon-only buttons have `aria-label`
+- [ ] No arbitrary z-index values — use defined scale (10/20/30/50)
