@@ -190,6 +190,8 @@ elevation — the higher you stack an element, the more tinted its background.
 | `--color-surface-subtle` | `--primitive-gray-100` | Cards and panels. One step above the page. |
 | `--color-surface-muted` | `--primitive-gray-50` | Items inside cards. Sits lighter inside a darker card. |
 
+> **Note on naming:** `--color-surface-muted` maps to `gray-50`, which is *lighter* than `--color-surface-subtle` (`gray-100`). The name "muted" refers to reduced visual weight — not a darker value. A lighter background inside a darker card reads as elevated, not subdued. Do not invert this assumption.
+
 <ColorSwatchGrid>
   <ColorSwatch token="--color-surface"        label="Surface" />
   <ColorSwatch token="--color-surface-subtle" label="Surface Subtle" />
@@ -441,8 +443,9 @@ WCAG AA is the industry standard accessibility level. It requires:
 - **3:1** minimum for UI components such as button borders and input outlines
 
 The table below shows the contrast ratios for the token pairs you will use most
-often. Pairs marked ✅ pass WCAG AA for normal text. Pairs marked ⚠️ pass only
-for large text. Pairs marked ❌ intentionally fail — they are designed that way.
+often. Pairs labeled **AA** pass WCAG AA for normal text. Pairs labeled
+**Large only** pass only for large text (18px+ or 14px bold). Pairs labeled
+**By design** intentionally fail — they are designed that way.
 
 <ContrastTable rows={[
   { foreground: "--color-text-primary",  background: "--color-surface",        ratio: "16.0:1", passes: "aa" },
@@ -450,10 +453,26 @@ for large text. Pairs marked ❌ intentionally fail — they are designed that w
   { foreground: "--color-text-disabled", background: "--color-surface",        ratio: "2.8:1",  passes: "intentional-fail" },
   { foreground: "--color-text-link",     background: "--color-surface",        ratio: "5.9:1",  passes: "aa" },
   { foreground: "--color-text-on-brand", background: "--color-brand-primary",  ratio: "8.2:1",  passes: "aa" },
+  { foreground: "--color-text-on-brand", background: "--color-brand-primary-hover",   ratio: "7.2:1",  passes: "aa" },
+  { foreground: "--color-text-on-brand", background: "--color-brand-primary-pressed", ratio: "10.3:1", passes: "aa" },
   { foreground: "--color-text-primary",  background: "--color-surface-subtle", ratio: "14.5:1", passes: "aa" },
   { foreground: "--color-text-muted",    background: "--color-surface-subtle", ratio: "4.2:1",  passes: "large-only" },
   { foreground: "--color-brand-accent",  background: "--color-brand-primary",  ratio: "8.2:1",  passes: "aa" },
+  { foreground: "--color-text-primary",  background: "--color-brand-accent",   ratio: "9.8:1",  passes: "aa" },
+  { foreground: "--color-error",         background: "--color-surface",        ratio: "3.9:1",  passes: "large-only" },
+  { foreground: "--color-success",       background: "--color-surface",        ratio: "2.2:1",  passes: "intentional-fail" },
+  { foreground: "--color-warning",       background: "--color-surface",        ratio: "3.0:1",  passes: "large-only" },
+  { foreground: "--color-info",          background: "--color-surface",        ratio: "5.9:1",  passes: "aa" },
 ]} />
+
+<div className="mt-4 rounded-lg px-4 py-3 text-sm" style={{ background: "var(--color-surface-subtle)", border: "1px solid var(--color-border)" }}>
+  <p className="font-semibold mb-1" style={{ color: "var(--color-text-primary)" }}>Legend</p>
+  <ul className="space-y-1" style={{ color: "var(--color-text-muted)" }}>
+    <li><strong style={{ color: "oklch(35% 0.12 145)" }}>AA</strong> — Passes WCAG AA for all text sizes (4.5:1+).</li>
+    <li><strong style={{ color: "oklch(48% 0.14 55)" }}>Large only</strong> — Passes WCAG AA for large text only (18px+ or 14px bold, 3:1+). Do not use at small sizes.</li>
+    <li><strong style={{ color: "var(--color-text-muted)" }}>By design</strong> — Intentionally below contrast thresholds. See notes below for rationale.</li>
+  </ul>
+</div>
 
 **On `--color-text-disabled`:** The 2.8:1 ratio is intentional. Disabled
 elements are not meant to be read — they communicate "this action is not
@@ -469,6 +488,18 @@ WCAG AA at every text size and weight. Whenever text sits on a brand-primary
 background, this is the combination to reach for. It is also the combination
 that defines KISA's visual identity.
 
+**On `--color-text-on-brand` over hover and pressed states:** Maize remains
+valid on `--color-brand-primary-hover` (7.2:1) and `--color-brand-primary-pressed`
+(10.3:1). Both clear WCAG AA. There is no need for a different text token on
+interactive states.
+
+**On feedback colors over `--color-surface`:** `--color-error` (3.9:1) and
+`--color-warning` (3.0:1) pass for large text only — do not use them as small
+body text. `--color-success` (2.2:1) and `--color-warning` fall below the
+non-text contrast threshold of 3:1 on white backgrounds, so use them paired
+with `--color-text-primary` labels for any readable content. `--color-info`
+(5.9:1) passes for all text sizes.
+
 ---
 
 ## Do's and Don'ts
@@ -478,11 +509,11 @@ that defines KISA's visual identity.
 <DoDont>
   <Do>
     <p>Use <code>--color-text-link</code> for hyperlinks. It is a readable blue that signals clickability.</p>
-    <code>color: var(--color-text-link)</code>
+    <pre><code>color: var(--color-text-link)</code></pre>
   </Do>
   <Dont>
     <p>Use <code>--color-brand-accent</code> for links. Maize on a white background is nearly unreadable and does not communicate interactivity.</p>
-    <code>color: var(--color-brand-accent)</code>
+    <pre><code>color: var(--color-brand-accent)</code></pre>
   </Dont>
 </DoDont>
 
@@ -491,11 +522,11 @@ that defines KISA's visual identity.
 <DoDont>
   <Do>
     <p>Use <code>--color-text-on-brand</code> when the background is <code>--color-brand-primary</code>. Maize on navy gives 8.2:1 contrast and is the KISA identity pair.</p>
-    <code>color: var(--color-text-on-brand)</code>
+    <pre><code>color: var(--color-text-on-brand)</code></pre>
   </Do>
   <Dont>
     <p>Use white text on a navy background. White is not a KISA brand color and breaks the visual identity of the system.</p>
-    <code>color: white</code>
+    <pre><code>color: white</code></pre>
   </Dont>
 </DoDont>
 
@@ -504,11 +535,11 @@ that defines KISA's visual identity.
 <DoDont>
   <Do>
     <p>Use surface tokens for card and section backgrounds. They are designed for layering and maintain the depth model.</p>
-    <code>background: var(--color-surface-subtle)</code>
+    <pre><code>background: var(--color-surface-subtle)</code></pre>
   </Do>
   <Dont>
     <p>Use brand colors as mid-page backgrounds. A navy card mid-page does not feel branded — it feels heavy and breaks reading flow.</p>
-    <code>background: var(--color-brand-primary)</code>
+    <pre><code>background: var(--color-brand-primary)</code></pre>
   </Dont>
 </DoDont>
 
@@ -517,10 +548,10 @@ that defines KISA's visual identity.
 <DoDont>
   <Do>
     <p>Reference semantic tokens in all component CSS and inline styles. One token change updates the entire system.</p>
-    <code>background-color: var(--color-brand-primary)</code>
+    <pre><code>background-color: var(--color-brand-primary)</code></pre>
   </Do>
   <Dont>
     <p>Hardcode hex values in components. A hardcoded value cannot be updated globally and drifts out of sync with the design system over time.</p>
-    <code>background-color: #00274c</code>
+    <pre><code>background-color: #00274c</code></pre>
   </Dont>
 </DoDont>
