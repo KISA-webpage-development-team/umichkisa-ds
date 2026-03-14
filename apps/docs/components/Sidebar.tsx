@@ -101,11 +101,15 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                           <Link
                             key={child.href}
                             href={child.href}
-                            className={`block py-2 px-3 text-sm transition-colors rounded-md
-                              duration-[120ms] focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-offset-[-2px] ${
+                            className={`block py-2 px-3 
+                              text-sm transition-colors rounded-md
+                              
+                              duration-[120ms] focus-visible:outline
+                              focus-visible:outline-2 focus-visible:outline-brand-primary 
+                              focus-visible:outline-offset-[-2px] ${
                               isChildActive
-                                ? 'text-text-primary font-sejong-bold'
-                                : 'text-text-muted hover:bg-surface-subtle'
+                                ? 'font-sejong-bold'
+                                : 'font-sejong-light text-text-muted hover:bg-surface-subtle'
                             }`}
                             onClick={onClose}
                           >
