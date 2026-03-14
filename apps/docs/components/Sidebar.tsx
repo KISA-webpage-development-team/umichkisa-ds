@@ -59,7 +59,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center min-h-11 lg:min-h-9 py-3 lg:py-[7px] px-2 rounded-md text-sm transition-[background,color] duration-[120ms] border-l-2 -ml-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-[-2px] ${
+                className={`flex items-center min-h-11 lg:min-h-9 py-3 lg:py-[7px] px-2 rounded-md text-sm transition-[background,color] duration-[120ms] border-l-2 -ml-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-offset-[-2px] ${
                   isActive
                     ? 'border-brand-primary text-brand-primary font-sejong-bold pl-1.5'
                     : 'border-transparent text-text-primary font-sejong-light hover:bg-surface-muted'
@@ -82,7 +82,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center min-h-11 lg:min-h-9 py-3 lg:py-[7px] px-2 rounded-md text-sm transition-[background,color] duration-[120ms] border-l-2 -ml-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-[-2px] ${
+                className={`flex items-center min-h-11 lg:min-h-9 py-3 lg:py-[7px] px-2 rounded-md text-sm transition-[background,color] duration-[120ms] border-l-2 -ml-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-offset-[-2px] ${
                   isActive
                     ? 'border-brand-primary text-brand-primary font-sejong-bold pl-1.5'
                     : 'border-transparent text-text-primary font-sejong-light hover:bg-surface-muted'
