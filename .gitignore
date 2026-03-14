@@ -6,3 +6,6 @@ node_modules/
 # agent settings
 .claude/settings.local.json
 .agents
+
+apps/docs/.next/
+apps/docs/out/
