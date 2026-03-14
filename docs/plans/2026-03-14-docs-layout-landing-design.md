@@ -9,10 +9,12 @@
 
 ## Goal
 
-Build the visual shell and landing page for `designsystem.umichkisa.com`. Two deliverables:
+Build the visual shell for `designsystem.umichkisa.com`. One deliverable:
 
 1. **Layout shell** — fixed top header + fixed left sidebar + scrollable content area
-2. **Landing page** — branded hero with CTAs to Foundation and Components
+
+The landing page (`app/page.tsx`) is **out of scope** — it will remain a placeholder
+(`<main>` with "Coming soon" or the existing DS_VERSION stub) until a future session.
 
 ---
 
@@ -20,12 +22,8 @@ Build the visual shell and landing page for `designsystem.umichkisa.com`. Two de
 
 **Tone**: Refined institutional — clean, professional, unmistakably KISA.
 
-The Michigan Blue + Maize palette owns the page without shouting. `SejongHospital Bold`
-at hero scale is the single memorable differentiator: it ties the design system to the
-KISA brand identity and signals that this is a living part of the product, not a
-generic docs template.
-
-Light theme throughout. Interior pages are pure utility; the landing page has personality.
+Light theme throughout. The shell (header + sidebar) carries the brand identity via
+Michigan Blue and Maize. Landing page content is deferred.
 
 ---
 
@@ -134,88 +132,10 @@ Components
 
 ## Landing Page
 
-The landing page is **outside** the sidebar layout. It uses the full content width (no
-sidebar offset) while still under the fixed header. This matches how LINE LDSM treats its
-root page differently from interior docs pages.
+**Deferred — out of scope for this session.**
 
-### Structure
-
-```
-[Hero Section — white, top-padding: 120px, centered max-w: 640px]
-  Logo placeholder (48px circle, Michigan Blue)
-  Headline: "KISA Design System"  (SejongHospital Bold, 72px, --color-brand-primary)
-  Subline: "Component and token library for umichkisa.com"  (Arial 18px, --color-text-muted)
-  Version badge pill (maize bg)
-
-[CTA Cards — 2-column grid, max-w: 640px, mt: 56px]
-  Card: Foundation →
-  Card: Components →
-
-[Feature Strip — 3-column, max-w: 640px, mt: 48px, border-top]
-  Tokens  |  Accessible  |  Composable
-```
-
-### Hero
-
-- White background, vertically centered, generous top padding (120px on desktop, 80px mobile)
-- Logo: 48px circle with Michigan Blue fill + white `K` letter (SVG placeholder, swap when real logo exists)
-- Headline: `SejongHospital Bold` at 72px (desktop) / 48px (mobile), `color: var(--color-brand-primary)` (#00274c)
-- Subtitle: `Arial 18px`, `color: var(--color-text-muted)`, max-w 480px, mt 12px
-- Version badge: inline-flex pill, maize bg, Michigan Blue text, below subtitle, mt 16px
-- Subtle entrance animation: headline and badge stagger in with `opacity: 0 → 1` + `translateY(8px → 0)` over 400ms
-- **Respect `prefers-reduced-motion`**: wrap all animation in `@media (prefers-reduced-motion: no-preference)` — no animation by default, only enable for users who haven't opted out
-
-### Semantic HTML on Landing
-
-```
-<h1>  KISA Design System          ← one per page
-<p>   subtitle
-<h2>  Foundation                  ← CTA card titles
-<h2>  Components
-<p>   feature strip titles         ← NOT headings, use <p> + bold
-```
-
-### CTA Cards
-
-Two cards side-by-side (stack on mobile):
-
-```
-┌────────────────────────────┐  ┌────────────────────────────┐
-│▌ Foundation                │  │▌ Components                │
-│                            │  │                            │
-│  Colors · Typography ·     │  │  Buttons · Forms ·         │
-│  Iconography · Layout      │  │  Feedback · Layout         │
-│                            │  │                            │
-│  Explore →                 │  │  Explore →                 │
-└────────────────────────────┘  └────────────────────────────┘
-```
-
-- `background: white`, `border: 1px solid var(--color-border)`, `border-radius: var(--radius-lg)`
-- **4px Michigan Blue top bar**: `border-top: 4px solid var(--color-brand-primary)`
-- Title: `SejongHospital Bold 18px`, `color: var(--color-text-primary)`
-- Description: `Arial 14px`, `color: var(--color-text-muted)`, `mt: 8px`
-- "Explore →" link: `SejongHospital Bold 14px`, `color: var(--color-brand-primary)`, bottom of card
-- Hover: `transform: translateY(-2px)`, `box-shadow: 0 4px 12px rgba(0,0,0,0.08)`, 200ms ease
-- **Focus**: `outline: 2px solid var(--color-brand-primary); outline-offset: 2px`
-- `cursor: pointer` on the card element
-- Card hover transform only fires for `prefers-reduced-motion: no-preference`
-
-### Feature Strip
-
-Three equal columns separated by a top border (`var(--color-border)`), padding 32px top:
-
-Icons must be SVG (Lucide), never emoji:
-
-| Column | Lucide Icon | Title | Body |
-|---|---|---|---|
-| 1 | `Palette` (20px) | Design Tokens | Three-tier OKLCH token system — primitives, semantic, component |
-| 2 | `ShieldCheck` (20px) | Accessible | WCAG 2.1 AA contrast, keyboard nav, Radix primitives |
-| 3 | `Puzzle` (20px) | Composable | CVA variants, tree-shakeable ESM, typed props |
-
-Icon color: `var(--color-brand-primary)` (Michigan Blue)
-
-- Title: `SejongHospital Bold 14px`
-- Body: `Arial 13px`, `color: var(--color-text-muted)`, `mt: 4px`
+`app/page.tsx` keeps its current DS_VERSION stub. No hero, no CTA cards, no feature
+strip. Content will be designed in a future session.
 
 ---
 
@@ -227,15 +147,15 @@ Icon color: `var(--color-brand-primary)` (Michigan Blue)
 | `apps/docs/public/fonts/Sejonghospital-Light.ttf` | Copy from KISA-website | |
 | `apps/docs/app/globals.css` | Create | Font-face declarations, CSS layout vars |
 | `apps/docs/app/layout.tsx` | Modify | Add font loading, `<Header>` + `<Sidebar>` shell |
-| `apps/docs/app/page.tsx` | Modify | Full landing page implementation |
+| `apps/docs/app/page.tsx` | No change | Keep existing DS_VERSION placeholder |
 | `apps/docs/components/Header.tsx` | Create | Fixed top header component |
 | `apps/docs/components/Sidebar.tsx` | Create | Fixed sidebar with nav + mobile state |
 | `apps/docs/components/DocsLayout.tsx` | Create | Wrapper for interior pages (adds sidebar offset) |
 
 > **Note**: `app/layout.tsx` renders the shell unconditionally (header always visible).
 > `DocsLayout.tsx` is applied via `app/foundation/layout.tsx` and `app/components/layout.tsx`
-> to add the sidebar left-offset to interior pages only. The landing page (`app/page.tsx`)
-> does **not** use `DocsLayout` — it renders full-width under the header.
+> to add the sidebar left-offset to interior pages. The landing page (`app/page.tsx`)
+> is full-width under the header — no sidebar offset.
 
 ---
 
@@ -286,9 +206,8 @@ Light theme only for this session. No dark mode tokens or `prefers-color-scheme`
 - [ ] Sidebar renders fixed at 240px, below header, with correct nav groups
 - [ ] Active route highlighted in sidebar (Michigan Blue left border)
 - [ ] Mobile hamburger toggles sidebar drawer correctly
-- [ ] Landing page hero renders with SejongHospital Bold headline
-- [ ] CTA cards link correctly to `/foundation/colors` and `/components/`
 - [ ] Interior foundation/component pages have sidebar-offset layout applied
+- [ ] `app/page.tsx` unchanged (DS_VERSION placeholder still renders)
 - [ ] `pnpm build` passes with no TypeScript errors
 
 ### Accessibility (from UX review)
