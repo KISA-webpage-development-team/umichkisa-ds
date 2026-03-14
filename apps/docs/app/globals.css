@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+/* ── Content Sources ───────────────────────────────────────────── */
+/*
+ * Explicit @source directives are required in this pnpm monorepo
+ * because Tailwind v4's auto-detection resolves to the workspace root
+ * rather than this package, causing zero utilities to be generated.
+ */
+@source "../app/**/*.{tsx,ts,mdx,md}";
+@source "../components/**/*.{tsx,ts}";
+@source "../content/**/*.{md,mdx}";
+
 /* ── DS Token → Tailwind Utility Mapping ───────────────────────── */
 /*
  * @theme inline: registers utilities WITHOUT emitting new CSS vars.
