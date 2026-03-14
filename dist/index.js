@@ -308,7 +308,7 @@ function LoadingSpinner({
         /* @__PURE__ */ jsx10(
           "div",
           {
-            className: "w-10 h-10 rounded-full border-4 border-[var(--color-border)] border-t-[var(--color-brand-primary)] animate-[ds-spin_0.8s_linear_infinite]",
+            className: "ds-spinner",
             role: "status",
             "aria-label": label
           }
