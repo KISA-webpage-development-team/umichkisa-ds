@@ -6,3 +6,4 @@ export * from "./components/form";
 export * from "./components/layout";
 export * from "./components/feedback";
 export * from "./components/icon";
+export * from "./components/overlay";
