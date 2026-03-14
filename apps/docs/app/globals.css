@@ -1,229 +1,66 @@
+@import "tailwindcss";
+
+/* ── DS Token → Tailwind Utility Mapping ───────────────────────── */
+/*
+ * @theme inline: registers utilities WITHOUT emitting new CSS vars.
+ * The variables below are already defined by @umichkisa-ds/web/dist/styles.css
+ * (imported in layout.tsx before this file).
+ *
+ * Generated utilities:
+ *   --color-brand-primary  → bg-brand-primary, text-brand-primary, border-brand-primary
+ *   --color-surface        → bg-surface, text-surface
+ *   --color-surface-muted  → bg-surface-muted
+ *   --color-surface-subtle → bg-surface-subtle
+ *   --color-border         → border-border
+ *   --color-text-primary   → text-text-primary
+ *   --color-text-muted     → text-text-muted
+ *   --color-michigan-maize → bg-michigan-maize
+ *   --color-michigan-blue  → text-michigan-blue
+ *   --font-sejong-bold     → font-sejong-bold
+ *   --font-sejong-light    → font-sejong-light
+ */
+@theme inline {
+  --color-brand-primary:  var(--color-brand-primary);
+  --color-surface:        var(--color-surface);
+  --color-surface-muted:  var(--color-surface-muted);
+  --color-surface-subtle: var(--color-surface-subtle);
+  --color-border:         var(--color-border);
+  --color-text-primary:   var(--color-text-primary);
+  --color-text-muted:     var(--color-text-muted);
+  --color-michigan-maize: var(--primitive-michigan-maize);
+  --color-michigan-blue:  var(--primitive-michigan-blue);
+  --font-sejong-bold:     var(--font-sejong-bold);
+  --font-sejong-light:    var(--font-sejong-light);
+}
+
 /* ── Layout Variables ──────────────────────────────────────────── */
+/*
+ * Not in @theme because they are used in calc() inside arbitrary
+ * Tailwind values, e.g. min-h-[calc(100vh-var(--docs-header-h))].
+ */
 :root {
   --docs-header-h:  60px;
   --docs-sidebar-w: 240px;
 
   /* z-index scale — never use values outside this set */
-  --docs-z-sticky:    10;
-  --docs-z-backdrop:  20;
-  --docs-z-sidebar:   30;
+  --docs-z-sticky:   10;
+  --docs-z-backdrop: 20;
+  --docs-z-sidebar:  30;
   /* 40: reserved */
-  --docs-z-header:    50;
-  --docs-z-skip:     100;
+  --docs-z-header:   50;
+  --docs-z-skip:    100;
 }
 
 /* ── Base ──────────────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; }
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--color-surface);
-  color: var(--color-text-primary);
-  -webkit-font-smoothing: antialiased;
-}
-
-a { text-decoration: none; color: inherit; }
-
-/* ── Skip Link ─────────────────────────────────────────────────── */
-.docs-skip-link {
-  position: absolute;
-  left: -9999px;
-  top: 16px;
-  background: var(--color-brand-primary);
-  color: #fff;
-  padding: 8px 16px;
-  border-radius: var(--radius-md);
-  font-size: 14px;
-  font-weight: 700;
-  z-index: var(--docs-z-skip);
-}
-.docs-skip-link:focus { left: 16px; }
-
-/* ── Header ────────────────────────────────────────────────────── */
-.docs-header {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: var(--docs-header-h);
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px 0 16px;
-  z-index: var(--docs-z-header);
-}
-
-.docs-header-left  { display: flex; align-items: center; gap: 10px; }
-.docs-header-right { display: flex; align-items: center; gap: 12px; }
-
-/* Hamburger — desktop hidden, mobile flex */
-.docs-hamburger {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  border-radius: var(--radius-md);
-  color: var(--color-text-muted);
-  padding: 0;
-}
-.docs-hamburger:hover         { background: var(--color-surface-subtle); }
-.docs-hamburger:focus-visible {
-  outline: 2px solid var(--color-brand-primary);
-  outline-offset: 2px;
-}
-
-/* Header logo */
-.docs-header-logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-sejong-bold), Arial, sans-serif;
-  font-size: 15px;
-  color: var(--color-brand-primary);
-  letter-spacing: -0.01em;
-}
-
-.docs-logo-circle {
-  width: 28px;
-  height: 28px;
-  background: var(--color-brand-primary);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-family: var(--font-sejong-bold), Arial, sans-serif;
-  font-size: 13px;
-  flex-shrink: 0;
-}
-
-/* Version badge */
-.docs-version-badge {
-  background: var(--primitive-michigan-maize);
-  color: var(--primitive-michigan-blue);
-  font-family: var(--font-sejong-bold), Arial, sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.02em;
-  padding: 3px 9px;
-  border-radius: 999px;
-  white-space: nowrap;
-}
-
-/* GitHub icon link */
-.docs-github-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 36px;
-  min-height: 36px;
-  border-radius: var(--radius-md);
-  color: var(--color-text-muted);
-  transition: color 0.15s, background 0.15s;
-}
-.docs-github-link:hover {
-  color: var(--color-brand-primary);
-  background: var(--color-surface-subtle);
-}
-.docs-github-link:focus-visible {
-  outline: 2px solid var(--color-brand-primary);
-  outline-offset: 2px;
-}
-
-/* ── Sidebar Backdrop ──────────────────────────────────────────── */
-.docs-backdrop {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.35);
-  z-index: var(--docs-z-backdrop);
-}
-.docs-backdrop[data-visible='true'] { display: block; }
-
-/* ── Sidebar ───────────────────────────────────────────────────── */
-.docs-sidebar {
-  position: fixed;
-  top: var(--docs-header-h);
-  left: 0;
-  bottom: 0;
-  width: var(--docs-sidebar-w);
-  background: var(--color-surface);
-  border-right: 1px solid var(--color-border);
-  overflow-y: auto;
-  z-index: var(--docs-z-sidebar);
-  padding: 24px 0 32px;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Nav sections */
-.docs-nav-section { padding: 0 16px; }
-.docs-nav-section + .docs-nav-section { margin-top: 28px; }
-
-.docs-nav-section-label {
-  display: block;
-  font-family: var(--font-sejong-light), Arial, sans-serif;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-text-muted);
-  padding-bottom: 8px;
-}
-
-.docs-nav-item {
-  display: flex;
-  align-items: center;
-  min-height: 36px;
-  padding: 7px 8px;
-  border-radius: var(--radius-md);
-  font-family: var(--font-sejong-light), Arial, sans-serif;
-  font-size: 14px;
-  color: var(--color-text-primary);
-  transition: background 0.12s, color 0.12s;
-  border-left: 2px solid transparent;
-  margin-left: -2px;
-}
-.docs-nav-item:hover { background: var(--color-surface-muted); }
-.docs-nav-item:focus-visible {
-  outline: 2px solid var(--color-brand-primary);
-  outline-offset: -2px;
-}
-.docs-nav-item[data-active='true'] {
-  border-left-color: var(--color-brand-primary);
-  color: var(--color-brand-primary);
-  font-family: var(--font-sejong-bold), Arial, sans-serif;
-  padding-left: 6px;
-}
-
-/* ── Page Shell ────────────────────────────────────────────────── */
-.docs-page-shell { padding-top: var(--docs-header-h); }
-
-/* ── DocsLayout: interior page sidebar offset ──────────────────── */
-.docs-content {
-  margin-left: var(--docs-sidebar-w);
-  padding: 48px;
-  min-height: calc(100vh - var(--docs-header-h));
-}
-.docs-content-inner { max-width: 768px; }
-
-/* ── Mobile (< 1024px) ─────────────────────────────────────────── */
-@media (max-width: 1023px) {
-  .docs-hamburger { display: flex; }
-
-  .docs-sidebar {
-    transform: translateX(-100%);
-    transition: transform 0.25s ease;
-    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.08);
+  body {
+    margin: 0;
+    background: var(--color-surface);
+    color: var(--color-text-primary);
+    -webkit-font-smoothing: antialiased;
   }
-  .docs-sidebar[data-open='true'] { transform: translateX(0); }
 
-  /* min 44px touch targets on mobile nav items */
-  .docs-nav-item                    { min-height: 44px; padding: 12px 8px; }
-  .docs-nav-item[data-active='true'] { padding-left: 6px; }
-
-  .docs-content { margin-left: 0; padding: 24px; }
+  a { text-decoration: none; color: inherit; }
 }
