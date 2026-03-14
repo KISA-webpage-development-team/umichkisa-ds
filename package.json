@@ -18,8 +18,10 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
+    "build": "npm run build:js && npm run build:css",
+    "build:js": "tsup",
+    "build:css": "npx @tailwindcss/cli -i src/styles/index.css -o dist/styles.css --minify",
+    "dev": "concurrently \"tsup --watch\" \"npx @tailwindcss/cli -i src/styles/index.css -o dist/styles.css --watch\"",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit"
@@ -38,12 +40,14 @@
     "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "4.2.1",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^14.5.2",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "9.2.1",
     "jsdom": "^25.0.1",
     "tailwindcss": "^4.0.0",
     "tsup": "^8.3.5",
