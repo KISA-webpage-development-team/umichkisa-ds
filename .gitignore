@@ -9,3 +9,5 @@ node_modules/
 
 apps/docs/.next/
 apps/docs/out/
+apps/docs/tsconfig.tsbuildinfo
+*.tsbuildinfo
