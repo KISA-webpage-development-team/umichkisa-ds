@@ -1,12 +1,9 @@
+import { DocsLayout } from '@/components/DocsLayout'
+
 export default function FoundationLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
-  return (
-    <div>
-      {/* TODO: Add foundation section nav */}
-      {children}
-    </div>
-  );
+  return <DocsLayout>{children}</DocsLayout>
 }
