@@ -1,4 +1,4 @@
-@layer components {
+@layer ds-components {
   .ds-icon-xs { font-size: var(--icon-xs); }
   .ds-icon-sm { font-size: var(--icon-sm); }
   .ds-icon-md { font-size: var(--icon-md); }
