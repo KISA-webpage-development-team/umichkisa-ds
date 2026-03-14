@@ -1,0 +1,29 @@
+/*
+ * Tier 1 — Primitive tokens
+ * Raw values only. Never reference these directly in components.
+ * Always go through semantic tokens (semantic.css).
+ */
+
+@theme {
+  /* Michigan Brand */
+  --primitive-michigan-blue:       oklch(19% 0.061 243);   /* #00274c */
+  --primitive-michigan-blue-mid:   oklch(32% 0.09 243);    /* #00568a */
+  --primitive-michigan-blue-light: oklch(94% 0.018 243);   /* #e8f0f7 */
+  --primitive-michigan-maize:      oklch(83% 0.185 91);    /* #ffcb05 */
+  --primitive-michigan-maize-light:oklch(93% 0.1 91);      /* #ffe98a */
+
+  /* Gray scale */
+  --primitive-gray-50:  oklch(98% 0.002 264);
+  --primitive-gray-100: oklch(96% 0.003 264);
+  --primitive-gray-200: oklch(92% 0.004 264);
+  --primitive-gray-300: oklch(87% 0.006 264);
+  --primitive-gray-400: oklch(73% 0.01 264);
+  --primitive-gray-500: oklch(60% 0.012 264);
+  --primitive-gray-700: oklch(40% 0.014 264);
+  --primitive-gray-900: oklch(17% 0.016 264);
+
+  /* Semantic base */
+  --primitive-white: oklch(100% 0 0);
+  --primitive-red-500: oklch(58% 0.22 27);
+  --primitive-green-500: oklch(64% 0.17 145);
+}
