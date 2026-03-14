@@ -1,20 +1,33 @@
 'use client'
 
 import { DS_VERSION } from '@umichkisa-ds/web'
+import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+
+const SECTIONS = [
+  { label: 'Foundation', href: '/foundation', prefix: '/foundation' },
+  { label: 'Components', href: '/components', prefix: '/components' },
+]
 
 interface HeaderProps {
   onMenuClick: () => void
+  showSidebar: boolean
 }
 
-export function Header({ onMenuClick }: HeaderProps) {
+export function Header({ onMenuClick, showSidebar }: HeaderProps) {
+  const pathname = usePathname()
   return (
     <header
-      className="fixed top-0 left-0 right-0 h-[var(--docs-header-h)] bg-surface border-b border-border flex items-center justify-between px-5 pl-4 z-[var(--docs-z-header)]"
+      className="fixed top-0 left-0 right-0 h-20
+       bg-surface border-b border-border
+       flex items-center justify-between
+       pl-4 pr-5 z-50"
       role="banner"
     >
-      <div className="flex items-center gap-2.5">
-        {/* Hamburger: hidden on desktop (lg+), flex on mobile */}
+      <div className="flex items-center gap-5">
+        {/* Hamburger: mobile only, only when sidebar is active */}
+        {showSidebar && (
         <button
           className="flex lg:hidden items-center justify-center min-w-11 min-h-11 bg-transparent border-none cursor-pointer rounded-md text-text-muted p-0 hover:bg-surface-subtle focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-offset-2"
           onClick={onMenuClick}
@@ -38,23 +51,47 @@ export function Header({ onMenuClick }: HeaderProps) {
             <line x1="4" y1="18" x2="20" y2="18" />
           </svg>
         </button>
+        )}
 
         <Link
           href="/"
-          className="flex items-center gap-2 font-sejong-bold text-[15px] text-brand-primary tracking-[-0.01em]"
+          className="flex items-center gap-2
+          font-sejong-bold text-xl text-brand-primary
+          tracking-tight"
         >
-          <div
-            className="w-7 h-7 bg-brand-primary rounded-full flex items-center justify-center text-white font-sejong-bold text-[13px] shrink-0"
-            aria-hidden="true"
-          >
-            K
-          </div>
+          <Image
+            src="/kisa_logo.png"
+            alt="KISA logo"
+            width={28}
+            height={28}
+            className="rounded-full shrink-0"
+            priority
+          />
           KISA Design System
         </Link>
+
+        {/* Section nav — desktop only */}
+        <nav className="hidden lg:flex items-center gap-1" aria-label="Sections">
+          {SECTIONS.map((s) => (
+            <Link
+              key={s.href}
+              href={s.href}
+              className={`px-3 py-1.5 text-sm transition-colors duration-150 ${
+                pathname.startsWith(s.prefix)
+                  ? 'font-sejong-bold text-text-primary'
+                  : 'font-sejong-light text-text-muted hover:text-text-primary'
+              }`}
+            >
+              {s.label}
+            </Link>
+          ))}
+        </nav>
       </div>
 
       <div className="flex items-center gap-3">
-        <span className="bg-michigan-maize text-michigan-blue font-sejong-bold text-[11px] tracking-[0.02em] px-[9px] py-[3px] rounded-full whitespace-nowrap">
+        <span className="bg-michigan-maize text-michigan-blue font-sejong-bold
+          text-xs tracking-wide px-2.5 py-1
+          rounded-full whitespace-nowrap">
           {DS_VERSION}
         </span>
         <a

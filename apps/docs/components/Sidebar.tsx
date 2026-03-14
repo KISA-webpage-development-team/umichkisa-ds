@@ -23,8 +23,14 @@ const COMPONENT_ITEMS = [
   { label: 'Feedback', href: '/components/feedback' },
 ]
 
+const SECTIONS = {
+  foundation: { label: 'Foundation', items: FOUNDATION_ITEMS },
+  components:  { label: 'Components', items: COMPONENT_ITEMS },
+}
+
 export function Sidebar({ open, onClose }: SidebarProps) {
   const pathname = usePathname()
+  const section = pathname.startsWith('/components') ? SECTIONS.components : SECTIONS.foundation
 
   return (
     <>
@@ -50,42 +56,19 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         aria-label="Documentation navigation"
       >
         <div className="px-4">
-          <span className="block font-sejong-light text-[10px] uppercase tracking-[0.1em] text-text-muted pb-2">
-            Foundation
+          <span className="block font-sejong-bold text-sm text-text-primary mb-3">
+            {section.label}
           </span>
-          {FOUNDATION_ITEMS.map((item) => {
+          {section.items.map((item) => {
             const isActive = pathname === item.href
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center min-h-11 lg:min-h-9 py-3 lg:py-[7px] px-2 rounded-md text-sm transition-[background,color] duration-[120ms] border-l-2 -ml-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-offset-[-2px] ${
+                className={`block py-2 px-2 text-sm transition-colors duration-[120ms] focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-offset-[-2px] ${
                   isActive
-                    ? 'border-brand-primary text-brand-primary font-sejong-bold pl-1.5'
-                    : 'border-transparent text-text-primary font-sejong-light hover:bg-surface-muted'
-                }`}
-                onClick={onClose}
-              >
-                {item.label}
-              </Link>
-            )
-          })}
-        </div>
-
-        <div className="px-4 mt-7">
-          <span className="block font-sejong-light text-[10px] uppercase tracking-[0.1em] text-text-muted pb-2">
-            Components
-          </span>
-          {COMPONENT_ITEMS.map((item) => {
-            const isActive = pathname === item.href
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`flex items-center min-h-11 lg:min-h-9 py-3 lg:py-[7px] px-2 rounded-md text-sm transition-[background,color] duration-[120ms] border-l-2 -ml-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-offset-[-2px] ${
-                  isActive
-                    ? 'border-brand-primary text-brand-primary font-sejong-bold pl-1.5'
-                    : 'border-transparent text-text-primary font-sejong-light hover:bg-surface-muted'
+                    ? 'font-sejong-bold text-text-primary'
+                    : 'font-sejong-light text-text-muted hover:text-text-primary'
                 }`}
                 onClick={onClose}
               >

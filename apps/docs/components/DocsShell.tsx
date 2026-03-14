@@ -1,11 +1,14 @@
 'use client'
 
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { Header } from '@/components/Header'
 import { Sidebar } from '@/components/Sidebar'
 
 export function DocsShell({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const pathname = usePathname()
+  const showSidebar = pathname.startsWith('/foundation') || pathname.startsWith('/components')
 
   return (
     <>
@@ -16,11 +19,10 @@ export function DocsShell({ children }: { children: React.ReactNode }) {
       >
         Skip to main content
       </a>
-      <Header onMenuClick={() => setSidebarOpen(true)} />
-      <Sidebar
-        open={sidebarOpen}
-        onClose={() => setSidebarOpen(false)}
-      />
+      <Header showSidebar={showSidebar} onMenuClick={() => setSidebarOpen(true)} />
+      {showSidebar && (
+        <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      )}
       <div className="pt-[var(--docs-header-h)]" id="main-content">
         {children}
       </div>
