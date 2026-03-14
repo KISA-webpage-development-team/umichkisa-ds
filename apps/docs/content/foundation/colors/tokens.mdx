@@ -1,0 +1,148 @@
+# Semantic Token Reference
+
+Semantic tokens are what you use in components. Each token is named by its
+purpose. Find them in `packages/web/src/tokens/semantic.css`.
+
+### Brand
+
+The Michigan brand colors. These define the visual identity of KISA across
+every surface.
+
+| Token | Maps to | Role |
+|---|---|---|
+| `--color-brand-primary` | `--primitive-michigan-blue` | Anchor color. Navbars, hero sections, primary button backgrounds. |
+| `--color-brand-primary-mid` | `--primitive-michigan-blue-mid` | Softer blue. Link text, secondary UI highlights. Use cases will grow over time. |
+| `--color-brand-accent` | `--primitive-michigan-maize` | Action color. CTAs, focus rings, text on brand backgrounds. |
+| `--color-brand-accent-subtle` | `--primitive-michigan-maize-light` | Light maize tint. Callout backgrounds, highlighted regions. |
+
+<ColorSwatchGrid>
+  <ColorSwatch token="--color-brand-primary"       hex="#00274c" label="Brand Primary" />
+  <ColorSwatch token="--color-brand-primary-mid"   hex="#00568a" label="Brand Primary Mid" />
+  <ColorSwatch token="--color-brand-accent"        hex="#ffcb05" label="Brand Accent" />
+  <ColorSwatch token="--color-brand-accent-subtle" hex="#ffe98a" label="Brand Accent Subtle" />
+</ColorSwatchGrid>
+
+**On brand-primary vs brand-accent:** `--color-brand-primary` is the anchor —
+it carries weight and authority. It does not draw the eye by itself.
+`--color-brand-accent` is the signal — it is what users notice first. When you
+need to say "look here," reach for accent. When you need to say "this is KISA,"
+reach for primary.
+
+**On brand-primary-mid:** This is a softer, more readable blue designed for
+contexts where full navy would be too heavy. Its primary use today is link text.
+Additional use cases will be documented here as they are established.
+
+### Surface
+
+Background colors that define the depth layers of the UI. Think of them as
+elevation — the higher you stack an element, the more tinted its background.
+
+| Token | Maps to | Role |
+|---|---|---|
+| `--color-surface` | `--primitive-white` | Page background. The base layer everything sits on. |
+| `--color-surface-subtle` | `--primitive-gray-100` | Cards and panels. One step above the page. |
+| `--color-surface-muted` | `--primitive-gray-50` | Items inside cards. Sits lighter inside a darker card. |
+
+> **Note on naming:** `--color-surface-muted` maps to `gray-50`, which is *lighter* than `--color-surface-subtle` (`gray-100`). The name "muted" refers to reduced visual weight — not a darker value. A lighter background inside a darker card reads as elevated, not subdued. Do not invert this assumption.
+
+<ColorSwatchGrid>
+  <ColorSwatch token="--color-surface"        label="Surface" />
+  <ColorSwatch token="--color-surface-subtle" label="Surface Subtle" />
+  <ColorSwatch token="--color-surface-muted"  label="Surface Muted" />
+</ColorSwatchGrid>
+
+### Border
+
+| Token | Maps to | Role |
+|---|---|---|
+| `--color-border` | `--primitive-gray-200` | Default dividers, input field outlines. |
+| `--color-border-strong` | `--primitive-gray-300` | Emphasized borders, active input states. |
+
+<ColorSwatchGrid>
+  <ColorSwatch token="--color-border"        label="Border" />
+  <ColorSwatch token="--color-border-strong" label="Border Strong" />
+</ColorSwatchGrid>
+
+### Text
+
+Text tokens cover every role in the typographic hierarchy, plus two special
+cases for colored surfaces.
+
+| Token | Maps to | Role |
+|---|---|---|
+| `--color-text-primary` | `--primitive-gray-900` | Body text, headings. Default for all readable content. |
+| `--color-text-muted` | `--primitive-gray-500` | Captions, secondary labels, timestamps. |
+| `--color-text-disabled` | `--primitive-gray-400` | Disabled state text. Intentionally low contrast — do not use for readable content. |
+| `--color-text-on-brand` | `--primitive-michigan-maize` | Text sitting on `--color-brand-primary` backgrounds (navbars, hero sections, primary buttons). |
+| `--color-text-link` | `--color-brand-primary-mid` | Hyperlinks and inline clickable text. |
+
+<ColorSwatchGrid>
+  <ColorSwatch token="--color-text-primary"  label="Text Primary" />
+  <ColorSwatch token="--color-text-muted"    label="Text Muted" />
+  <ColorSwatch token="--color-text-disabled" label="Text Disabled" />
+  <ColorSwatch token="--color-text-on-brand" label="Text On Brand" />
+  <ColorSwatch token="--color-text-link"     label="Text Link" />
+</ColorSwatchGrid>
+
+### Feedback
+
+Feedback colors communicate system states. Each state has two tokens: a solid
+color for icons, borders, and text labels, and a subtle tint for background
+surfaces like alert boxes.
+
+| Token | Role |
+|---|---|
+| `--color-error` | Error state. Form validation failures, destructive action warnings. |
+| `--color-error-subtle` | Background for error alert boxes. |
+| `--color-success` | Success state. Confirmations, completed actions. |
+| `--color-success-subtle` | Background for success alert boxes. |
+| `--color-warning` | Warning state. Non-blocking issues that need attention. |
+| `--color-warning-subtle` | Background for warning alert boxes. |
+| `--color-info` | Informational state. Neutral tips, contextual help. |
+| `--color-info-subtle` | Background for info alert boxes. |
+
+<ColorSwatchGrid>
+  <ColorSwatch token="--color-error"          label="Error" />
+  <ColorSwatch token="--color-error-subtle"   label="Error Subtle" />
+  <ColorSwatch token="--color-success"        label="Success" />
+  <ColorSwatch token="--color-success-subtle" label="Success Subtle" />
+  <ColorSwatch token="--color-warning"        label="Warning" />
+  <ColorSwatch token="--color-warning-subtle" label="Warning Subtle" />
+  <ColorSwatch token="--color-info"           label="Info" />
+  <ColorSwatch token="--color-info-subtle"    label="Info Subtle" />
+</ColorSwatchGrid>
+
+### Interactive
+
+Tokens for the hover and pressed states of both brand colors, plus the focus
+ring shown when navigating with a keyboard.
+
+For `--color-brand-primary` (dark navy), hover goes lighter. For
+`--color-brand-accent` (maize), hover goes darker — because maize is already
+very bright, darkening it is the only way to show a visible state change.
+
+| Token | Value | Role |
+|---|---|---|
+| `--color-brand-primary-hover` | `oklch(25% 0.075 243)` | Hover state on brand-primary elements. Slightly lighter than base. |
+| `--color-brand-primary-pressed` | `oklch(15% 0.05 243)` | Pressed state on brand-primary elements. Slightly darker than base. |
+| `--color-brand-accent-hover` | `oklch(76% 0.185 91)` | Hover state on brand-accent elements. Darker maize. |
+| `--color-brand-accent-pressed` | `oklch(70% 0.185 91)` | Pressed state on brand-accent elements. Even darker maize. |
+| `--color-focus-ring` | `--primitive-michigan-maize` | Keyboard focus indicator. High contrast, always visible against dark backgrounds. |
+
+<ColorSwatchGrid>
+  <ColorSwatch token="--color-brand-primary-hover"   label="Brand Primary Hover" />
+  <ColorSwatch token="--color-brand-primary-pressed" label="Brand Primary Pressed" />
+  <ColorSwatch token="--color-brand-accent-hover"    label="Brand Accent Hover" />
+  <ColorSwatch token="--color-brand-accent-pressed"  label="Brand Accent Pressed" />
+  <ColorSwatch token="--color-focus-ring"            label="Focus Ring" />
+</ColorSwatchGrid>
+
+### Overlay
+
+| Token | Value | Role |
+|---|---|---|
+| `--color-overlay` | `oklch(0% 0 0 / 40%)` | Scrim behind modals and drawers. Dims the page without fully obscuring it. |
+
+<ColorSwatchGrid>
+  <ColorSwatch token="--color-overlay" label="Overlay" />
+</ColorSwatchGrid>
