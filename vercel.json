@@ -1,6 +1,4 @@
 {
   "buildCommand": "turbo build --filter=@umichkisa-ds/docs",
-  "outputDirectory": "apps/docs/out",
-  "installCommand": "pnpm install",
-  "framework": null
+  "installCommand": "pnpm install"
 }
