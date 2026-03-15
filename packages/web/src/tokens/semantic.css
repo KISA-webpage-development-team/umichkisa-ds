@@ -46,15 +46,6 @@
   /* Color — Overlay */
   --color-overlay: oklch(0% 0 0 / 40%);
 
-  /* Typography */
-  --font-size-xs:   0.75rem;
-  --font-size-sm:   0.875rem;
-  --font-size-base: 1rem;
-  --font-size-lg:   1.125rem;
-  --font-size-xl:   1.25rem;
-  --font-size-2xl:  1.5rem;
-  --font-size-4xl:  2.25rem;
-
   /* Radius */
   --radius-sm: 0.25rem;
   --radius-md: 0.375rem;

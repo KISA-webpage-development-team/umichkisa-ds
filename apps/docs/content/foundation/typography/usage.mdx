@@ -1,0 +1,57 @@
+# Usage
+
+Rules and patterns for applying the type system consistently across the product.
+
+---
+
+## Always use semantic classes
+
+Reach for `type-*` utilities instead of composing raw Tailwind classes. The semantic classes are the contract — if the scale changes, only the definition updates, not every component that uses it.
+
+Use `type-body` instead of `text-base font-normal leading-relaxed font-pretendard`. Use `type-label` instead of `text-sm font-medium leading-normal font-pretendard`. The class name communicates intent. The raw combination does not.
+
+## Keep emphasis inline, not structural
+
+For emphasis within body text, use `<strong>`. Applying a weight utility to the entire container changes the role of the text — it is no longer body copy, it is something the system has no name for. If a block of text needs more visual weight, reach for a higher type class instead.
+
+## Always set color explicitly
+
+`type-*` classes handle family, size, weight, and line height only — not color. Every text element needs a color token paired explicitly: `text-text-primary` for readable content, `text-text-muted` for supporting information. Unset color falls back to the browser default, which is outside the design system.
+
+---
+
+## Do's and Don'ts
+
+### Font boundary
+
+SejongHospital is for Display and H1 only. Do not use it below H1 — hand off to Pretendard for every heading level after the first.
+
+<DoDont>
+  <Do>
+    <div className="space-y-3 py-2">
+      <p className="text-4xl font-sejong-bold leading-tight text-text-primary">Annual Gala Night</p>
+      <p className="text-2xl font-pretendard font-semibold leading-snug text-text-primary">Event Schedule</p>
+    </div>
+  </Do>
+  <Dont>
+    <div className="space-y-3 py-2">
+      <p className="text-4xl font-sejong-bold leading-tight text-text-primary">Annual Gala Night</p>
+      <p className="text-2xl font-sejong-bold leading-snug text-text-primary">Event Schedule</p>
+    </div>
+  </Dont>
+</DoDont>
+
+### Line length
+
+Keep body text within `max-w-prose` (~65 characters). Lines that stretch the full container width force the eye to travel too far, making long passages harder to follow.
+
+<DoDont>
+  <Do>
+    <article className="max-w-prose">
+      <p className="text-base font-pretendard font-normal leading-relaxed text-text-primary">KISA brings together Korean international students across all schools and programs at the University of Michigan.</p>
+    </article>
+  </Do>
+  <Dont>
+    <p className="text-base font-pretendard font-normal leading-relaxed text-text-primary w-full">KISA brings together Korean international students across all schools and programs at the University of Michigan, fostering community through events, mentorship, and shared experience.</p>
+  </Dont>
+</DoDont>

@@ -42,6 +42,8 @@
   --color-michigan-blue:  var(--primitive-michigan-blue);
   --font-sejong-bold:     var(--font-sejong-bold);
   --font-sejong-light:    var(--font-sejong-light);
+  --font-pretendard:      var(--font-pretendard);
+  --font-geist-mono:      var(--font-geist-mono);
 }
 
 /* ── Layout Variables ──────────────────────────────────────────── */
@@ -50,6 +52,8 @@
  * Tailwind values, e.g. min-h-[calc(100vh-var(--docs-header-h))].
  */
 :root {
+  --font-pretendard: 'Pretendard Variable', system-ui, sans-serif;
+
   --docs-header-h:  80px;
   --docs-sidebar-w: 240px;
 
@@ -70,6 +74,7 @@
     margin: 0;
     background: var(--color-surface);
     color: var(--color-text-primary);
+    font-family: var(--font-pretendard), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
 

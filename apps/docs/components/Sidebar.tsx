@@ -26,7 +26,16 @@ const FOUNDATION_ITEMS: NavItem[] = [
       { label: 'Accessibility', href: '/foundation/colors/accessibility' },
     ],
   },
-  { label: 'Typography',    href: '/foundation/typography' },
+  {
+    label: 'Typography',
+    href: '/foundation/typography/overview',
+    children: [
+      { label: 'Overview',   href: '/foundation/typography/overview' },
+      { label: 'Fonts',      href: '/foundation/typography/fonts' },
+      { label: 'Type Scale', href: '/foundation/typography/scale' },
+      { label: 'Usage',      href: '/foundation/typography/usage' },
+    ],
+  },
   { label: 'Iconography',   href: '/foundation/iconography' },
   { label: 'Layout Tokens', href: '/foundation/layout-tokens' },
 ]
@@ -77,7 +86,8 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           </span>
           {section.items.map((item) => {
             if (item.children) {
-              const isParentActive = pathname.startsWith('/foundation/colors')
+              const parentBase = item.href.substring(0, item.href.lastIndexOf('/'))
+              const isParentActive = pathname.startsWith(parentBase)
               return (
                 <div key={item.href}>
                   <Link

@@ -1,0 +1,65 @@
+# The Two Fonts
+
+The KISA type system is built on two product fonts — SejongHospital for brand presence, Pretendard for everything else — plus Geist Mono for code in this documentation site.
+
+---
+
+## SejongHospital — Brand & Display
+
+SejongHospital is KISA's brand font. It appears only at the top of the type hierarchy — Display and H1 — where identity matters more than information density. Below H1, it hands off to Pretendard.
+
+It ships with two weights only:
+
+| Weight | Class | Use |
+|---|---|---|
+| Light 300 | `font-sejong-light` | Decorative display, large pull quotes |
+| Bold 700 | `font-sejong-bold` | Default for all Display and H1 |
+
+In practice, always reach for Bold. Light exists for special cases but should not be the default heading weight.
+
+<div className="my-8 rounded-xl border border-border overflow-hidden">
+  <div className="bg-[#00274c] px-8 py-10">
+    <p className="text-5xl font-sejong-bold text-[#ffcb05]">University of Michigan</p>
+    <p className="mt-3 text-2xl font-sejong-light text-[#e8f0f7] opacity-70">Korean International Students Association</p>
+  </div>
+  <div className="bg-surface-subtle px-8 py-4 flex gap-8">
+    <span className="text-xs text-text-muted font-mono">Bold 700 — font-sejong-bold</span>
+    <span className="text-xs text-text-muted font-mono">Light 300 — font-sejong-light</span>
+  </div>
+</div>
+
+---
+
+## Pretendard — Body, UI & Everything Else
+
+Pretendard was built for Korean design systems. It supports Korean and Latin with equal fidelity and ships with nine weights (100–900), giving the flexibility SejongHospital cannot. Everything from H2 down uses Pretendard.
+
+The three weights used in the type scale:
+
+| Weight | Tailwind class | Use |
+|---|---|---|
+| Regular 400 | `font-normal` | Body text, captions |
+| Medium 500 | `font-medium` | Labels, navigation items |
+| Semibold 600 | `font-semibold` | H2, H3, emphasized text |
+
+<div className="my-8 rounded-xl border border-border overflow-hidden">
+  <div className="bg-surface px-8 py-8 space-y-4">
+    <p className="text-3xl font-pretendard font-semibold text-text-primary">Section Heading — Semibold 600</p>
+    <p className="text-base font-pretendard font-normal text-text-primary leading-relaxed">Body text — Regular 400. The quick brown fox jumps over the lazy dog. Pretendard reads cleanly at every size from caption to heading.</p>
+    <p className="text-sm font-pretendard font-medium text-text-muted">Label or navigation item — Medium 500</p>
+    <p className="text-xs font-pretendard font-normal text-text-muted">Caption text — Regular 400</p>
+  </div>
+  <div className="bg-surface-subtle px-8 py-4">
+    <span className="text-xs text-text-muted font-mono">font-pretendard — weights 400 · 500 · 600</span>
+  </div>
+</div>
+
+---
+
+## Geist Mono — Code & Documentation
+
+Geist Mono is the third font in the system, but it sits outside the Rule of Two. It appears exclusively in this documentation site for code blocks and inline code. The client application does not use it.
+
+| Weight | Tailwind class | Use |
+|---|---|---|
+| Regular 400 | `font-normal` | All code contexts |
