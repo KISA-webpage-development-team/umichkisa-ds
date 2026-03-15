@@ -43,6 +43,7 @@ const FOUNDATION_ITEMS: NavItem[] = [
       { label: 'Overview',     href: '/foundation/layout/overview' },
       { label: 'Breakpoints',  href: '/foundation/layout/breakpoints' },
       { label: 'Spacing',      href: '/foundation/layout/spacing' },
+      { label: 'Usage',        href: '/foundation/layout/usage' },
     ],
   },
   { label: 'Iconography',   href: '/foundation/iconography' },
