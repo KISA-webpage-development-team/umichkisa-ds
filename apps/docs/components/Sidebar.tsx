@@ -37,7 +37,7 @@ const FOUNDATION_ITEMS: NavItem[] = [
     ],
   },
   { label: 'Iconography',   href: '/foundation/iconography' },
-  { label: 'Layout Tokens', href: '/foundation/layout-tokens' },
+  { label: 'Layout', href: '/foundation/layout' },
 ]
 
 // Component items are placeholders — will expand as MDX content is added

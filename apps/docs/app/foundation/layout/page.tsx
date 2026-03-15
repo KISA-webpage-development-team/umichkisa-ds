@@ -1,4 +1,4 @@
-export default function LayoutTokensPage() {
+export default function LayoutPage() {
   return (
     <div>
       <h1>Layout</h1>
