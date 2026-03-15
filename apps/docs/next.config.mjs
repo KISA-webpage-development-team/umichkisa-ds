@@ -4,7 +4,7 @@ import remarkGfm from "remark-gfm";
 
 /** @type {import('rehype-pretty-code').Options} */
 const prettyCodeOptions = {
-  theme: "github-dark",
+  theme: "github-light",
 };
 
 const withMDX = createMDX({

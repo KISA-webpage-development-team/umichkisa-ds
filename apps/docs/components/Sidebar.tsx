@@ -36,8 +36,16 @@ const FOUNDATION_ITEMS: NavItem[] = [
       { label: 'Usage',      href: '/foundation/typography/usage' },
     ],
   },
+  {
+    label: 'Layout',
+    href: '/foundation/layout/overview',
+    children: [
+      { label: 'Overview',     href: '/foundation/layout/overview' },
+      { label: 'Breakpoints',  href: '/foundation/layout/breakpoints' },
+      { label: 'Spacing',      href: '/foundation/layout/spacing' },
+    ],
+  },
   { label: 'Iconography',   href: '/foundation/iconography' },
-  { label: 'Layout', href: '/foundation/layout' },
 ]
 
 // Component items are placeholders — will expand as MDX content is added

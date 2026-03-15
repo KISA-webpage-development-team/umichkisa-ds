@@ -1,0 +1,100 @@
+# Spacing
+
+All spacing values must come from Tailwind's built-in scale.
+Arbitrary values like `px-[24px]` or `mt-[13px]` are not allowed.
+
+The Tailwind spacing scale is built on a 4px base unit. Every step
+is a multiple of 4 — predictable, consistent, and visually harmonious
+with the rest of the system.
+
+> **Rule:** If a spacing value is not in Tailwind's scale, it does not belong in the codebase.
+
+## Default Inset
+
+The default inset is the standard horizontal breathing room at each
+breakpoint. It applies anywhere consistent padding is needed — the
+page shell, cards, panels, sections.
+
+<div className="my-8 flex flex-col gap-3">
+  {[
+    { label: "Mobile", px: "px-4", value: "16px", width: "w-2" },
+    { label: "Tablet", px: "px-10", value: "40px", width: "w-5" },
+    { label: "Desktop", px: "px-16", value: "64px", width: "w-8" },
+  ].map(({ label, px, value, width }) => (
+    <div key={label}>
+      <p className="mb-1 text-xs font-mono text-gray-400">{label} — <span className="text-gray-700">{px}</span> ({value})</p>
+      <div className="flex h-10 w-full items-stretch overflow-hidden rounded-lg border border-gray-200">
+        <div className={`${width} shrink-0 bg-[#ffcb05]/40`} />
+        <div className="flex flex-1 items-center justify-center bg-gray-50 text-xs text-gray-400">content</div>
+        <div className={`${width} shrink-0 bg-[#ffcb05]/40`} />
+      </div>
+    </div>
+  ))}
+</div>
+
+```html
+<div class="px-4 md:px-10 lg:px-16" />
+```
+
+When in doubt about how much horizontal space to give an element,
+the default inset is the answer.
+
+---
+
+## Max-width
+
+Content is constrained to a maximum width of `max-w-screen-2xl` (1536px).
+This prevents lines from stretching uncomfortably wide on large monitors
+and keeps the layout anchored to the center of the viewport.
+
+<div className="my-8">
+  <div className="relative h-16 w-full overflow-hidden rounded-lg border border-gray-200 bg-gray-50">
+    <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-center">
+      <div className="h-full w-full max-w-[80%] bg-[#ffcb05]/20 flex items-center justify-center text-xs text-gray-500 font-mono">
+        max-w-screen-2xl
+      </div>
+    </div>
+    <div className="absolute inset-y-0 left-0 w-[10%] bg-gray-100 border-r border-dashed border-gray-300" />
+    <div className="absolute inset-y-0 right-0 w-[10%] bg-gray-100 border-l border-dashed border-gray-300" />
+  </div>
+  <p className="mt-2 text-center text-xs text-gray-400">viewport → constrained content area → viewport</p>
+</div>
+
+```html
+<div class="mx-auto w-full max-w-screen-2xl px-4 md:px-10 lg:px-16" />
+```
+
+The full page shell combines max-width, centering, and the default inset
+into one element. Everything inside it is within the layout system.
+
+---
+
+## Column Gutter
+
+The gutter between columns is always `gap-2` (8px), consistent across
+all breakpoints. As the viewport grows, column count increases and
+column widths scale — but the gutter never changes.
+
+<div className="my-8 flex flex-col gap-4">
+  {[
+    { label: "Mobile", cols: 1 },
+    { label: "Tablet", cols: 2 },
+    { label: "Desktop", cols: 3 },
+  ].map(({ label, cols }) => (
+    <div key={label}>
+      <p className="mb-1 text-xs font-mono text-gray-400">{label}</p>
+      <div className="grid gap-2" style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}>
+        {Array.from({ length: cols }).map((_, i) => (
+          <div key={i} className="h-10 rounded-md bg-gray-100 border border-gray-200" />
+        ))}
+      </div>
+    </div>
+  ))}
+</div>
+
+```html
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2" />
+```
+
+The gutter is a structural constant, not a design variable.
+Do not adjust it per component or breakpoint.

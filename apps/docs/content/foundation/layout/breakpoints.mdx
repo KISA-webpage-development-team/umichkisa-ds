@@ -1,0 +1,33 @@
+# Breakpoints
+
+KISA is a web-first product. The primary experience is designed for
+desktop browsers — that is where most users are, and where the design
+is optimized.
+
+That said, the layout system is implemented using Tailwind's
+mobile-first CSS pattern. Default styles (no prefix) target narrow
+viewports, and breakpoints layer additional styles on top as the
+screen grows. This is a coding convention, not a design priority —
+it keeps responsive behavior predictable and prevents accidental
+overflow on smaller screens.
+
+The layout system operates on three tiers.
+
+| Name | Prefix | Viewport |
+|------|--------|----------|
+| Mobile | *(default)* | < 768px |
+| Tablet | `md:` | ≥ 768px |
+| Desktop | `lg:` | ≥ 1024px |
+
+The desktop tier is where layout decisions are made first. `md:` and
+`lg:` are then used to ensure the layout holds at smaller sizes —
+not the other way around.
+
+```html
+<div class="px-4 md:px-10 lg:px-16" />
+```
+
+Tailwind provides additional breakpoints — `sm:`, `xl:`, `2xl:`.
+Avoid them unless there is a specific, justified reason.
+Introducing extra breakpoints fragments the system and makes
+responsive behavior harder to reason about.
