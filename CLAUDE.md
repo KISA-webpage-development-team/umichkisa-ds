@@ -1,5 +1,11 @@
 # umichkisa-ds — KISA Design System
 
+## IMPORTANT — Read First
+
+**At the start of every session, you MUST read `docs/PLAN.md` before doing anything else.**
+It contains the current task list and component roadmap. Most work in this repo follows that plan.
+Also read `docs/NOTES.md` for a codebase map to avoid redundant exploration.
+
 Monorepo: `packages/web` (component library) + `apps/docs` (documentation site).
 
 ## Reference
