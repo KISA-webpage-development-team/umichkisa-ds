@@ -1,0 +1,102 @@
+# Accessibility
+
+## The Problem Icons Create
+
+Icons are visually obvious to sighted users but completely ambiguous to screen
+readers — unless the code explicitly describes them. A trash can icon conveys
+"delete" to anyone looking at the screen. To a screen reader, it is just an
+SVG element with no label. The user hears nothing, or worse, the raw SVG title
+if one happens to exist.
+
+The KISA icon system makes the right behavior the default. When you omit the
+`label` prop, the icon is hidden from assistive technology. When you provide
+it, the icon becomes a labeled image. Neither option requires you to write
+accessibility attributes by hand — the `<Icon>` component handles them.
+
+---
+
+## Decorative Icons
+
+When the `label` prop is omitted, `<Icon>` sets `aria-hidden="true"` on the
+SVG. The icon is invisible to screen readers. Any accessible announcement comes
+from the surrounding context — the button's `aria-label`, the visible text
+label, or the heading it sits next to.
+
+Use decorative icons whenever visible text already describes the action or
+content:
+
+```tsx
+// The button label "Save changes" is the announcement.
+// The icon adds visual reinforcement — screen readers ignore it.
+<button>
+  <Icon name="save" />
+  Save changes
+</button>
+```
+
+---
+
+## Semantic Icons
+
+When `label` is provided, `<Icon>` sets `role="img"` and `aria-label` on the
+SVG. The icon becomes a labeled image that screen readers will announce.
+
+Use semantic icons when the icon is the only indicator of meaning — no visible
+text label nearby explains what it represents:
+
+```tsx
+// A status dot with no label — the icon must announce its own meaning.
+<Icon name="check-circle" label="Verified" />
+```
+
+Do not use `label` when the icon is inside a button that already has
+`aria-label`. That creates duplicate announcements — the screen reader reads
+both the button label and the icon label.
+
+---
+
+## Decision Rule
+
+Three scenarios cover the vast majority of icon usage:
+
+| Scenario | Correct approach |
+|---|---|
+| Icon next to a visible text label | Decorative — omit `label` prop |
+| Icon alone inside a `button` or `a` | Decorative — `aria-label` goes on the **button**, not the icon |
+| Icon as a standalone meaning indicator (no button, no nearby text) | Semantic — provide `label` prop |
+
+When in doubt, ask: *is there text nearby that already describes this?* If yes,
+decorative. If no, semantic.
+
+---
+
+## Touch Targets
+
+The `<Icon>` component renders an SVG at the specified size — 12px to 32px
+depending on the `size` prop. None of these are large enough to serve as a
+touch target.
+
+Interactive wrappers around icons must be at least 44×44px. This is the minimum
+touch target size for mobile use per WCAG 2.5.5. Apply padding to the button
+to reach this size:
+
+```tsx
+<button
+  aria-label="Close"
+  className="p-3"  {/* 12px padding + icon creates adequate touch area */}
+>
+  <Icon name="x" />
+</button>
+```
+
+Never reduce button padding to make an icon-only button smaller than 44×44px.
+
+---
+
+## Quick Reference
+
+| Scenario | Markup |
+|---|---|
+| Icon + visible text label in a button | `<button><Icon name="save" />Save</button>` — no label prop, no aria-label on button |
+| Icon-only button | `<button aria-label="Close"><Icon name="x" /></button>` — no label prop on icon |
+| Standalone status icon | `<Icon name="check-circle" label="Verified" />` — label prop on icon |

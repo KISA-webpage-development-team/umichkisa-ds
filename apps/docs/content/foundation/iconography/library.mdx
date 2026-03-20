@@ -1,0 +1,81 @@
+# Icon Library
+
+## Why Lucide
+
+Lucide is the single icon library for the KISA design system. It is not a
+default we fell into — it is a deliberate choice that every component depends on.
+
+- **Single stroke weight.** Every icon is drawn with a 2px stroke on a 24×24
+  viewBox. There is no mixing of filled icons with outlined icons, no thick
+  icons next to thin ones. Visual consistency is guaranteed at the source.
+- **1500+ icons.** Lucide covers virtually every UI need: navigation, actions,
+  status, communication, media, files, and more. If it is a common UI pattern,
+  Lucide has an icon for it.
+- **MIT license.** No attribution required, no licensing concerns for any KISA
+  product.
+- **Tree-shakeable.** Only the icons you import are included in the bundle. The
+  full 1500-icon library costs nothing if you only use ten icons.
+- **shadcn-native.** The shadcn/ui component library is built on Lucide. If
+  KISA ever integrates shadcn components, there is no library conflict.
+
+---
+
+## Browsing Icons
+
+The full Lucide catalogue is at [lucide.dev](https://lucide.dev). Search by
+keyword to find what you need. The search understands intent — searching
+"close" returns `x`, `x-circle`, and related icons.
+
+When evaluating options, prefer the simplest icon that communicates the
+meaning. If two icons could both work, choose the one users are more likely to
+recognize from common applications.
+
+---
+
+## Naming Convention
+
+Lucide uses kebab-case names: `arrow-right`, `chevron-down`, `alert-triangle`.
+The `<Icon>` component takes the same name as a string:
+
+```tsx
+<Icon name="arrow-right" />
+<Icon name="chevron-down" />
+<Icon name="alert-triangle" />
+```
+
+The name in the `<Icon>` component is always the exact kebab-case name shown on
+`lucide.dev`. Do not translate it to camelCase or PascalCase — the component
+resolves the string at runtime.
+
+---
+
+## What We Don't Use
+
+**`react-icons`** — the previous approach in the KISA client imported icons from
+`react-icons/md`, `react-icons/fa`, `react-icons/ai`, and `react-icons/lu`.
+Each sub-library has its own visual style, stroke weight, and design language.
+Mixing them is what produced the inconsistency this system replaces. Never
+import from `react-icons`.
+
+**Emoji as icons** — emoji rendering varies across operating systems, browsers,
+and screen readers. They are not design elements.
+
+**PNG or JPG icons** — raster icons cannot scale cleanly and cannot inherit
+color from CSS. All icons in the system are SVG.
+
+---
+
+## Custom Icons
+
+If Lucide does not have the icon you need, use an inline SVG directly in the
+component — not a new icon library.
+
+Custom SVGs must match Lucide's visual language exactly:
+- `viewBox="0 0 24 24"`
+- `stroke-width="2"`
+- `stroke="currentColor"`, `fill="none"`
+- `stroke-linecap="round"`, `stroke-linejoin="round"`
+
+If the shape you need is not achievable in this format — for example, a complex
+logo mark — it is probably not an icon. Use an `<img>` or an inline SVG
+component instead, and do not put it through the `<Icon>` system.

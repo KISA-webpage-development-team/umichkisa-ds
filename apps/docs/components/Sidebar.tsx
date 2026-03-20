@@ -46,7 +46,17 @@ const FOUNDATION_ITEMS: NavItem[] = [
       { label: 'Usage',        href: '/foundation/layout/usage' },
     ],
   },
-  { label: 'Iconography',   href: '/foundation/iconography' },
+  {
+    label: 'Iconography',
+    href: '/foundation/iconography/overview',
+    children: [
+      { label: 'Overview',      href: '/foundation/iconography/overview' },
+      { label: 'Library',       href: '/foundation/iconography/library' },
+      { label: 'Sizes',         href: '/foundation/iconography/sizes' },
+      { label: 'Usage',         href: '/foundation/iconography/usage' },
+      { label: 'Accessibility', href: '/foundation/iconography/accessibility' },
+    ],
+  },
 ]
 
 // Component items are placeholders — will expand as MDX content is added
