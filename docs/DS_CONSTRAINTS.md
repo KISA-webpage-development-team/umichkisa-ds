@@ -66,7 +66,49 @@ Prefer: `--color-surface-subtle` as hover background and `--color-border-strong`
 
 ## Typography
 
-_To be populated during the Typography section of Step -1._
+### Fonts
+
+Must: Use `font-sejong-bold` for all `type-display` and `type-h1` — SejongHospital Bold is the only permitted weight for these roles. [source:foundation/typography/fonts]
+Never: Use SejongHospital below H1 — hand off to Pretendard at H2 and every level below. [source:foundation/typography/fonts]
+Never: Use `font-sejong-light` as a default heading weight — it is permitted only in marketing/landing page contexts for large decorative display text at `text-4xl` or larger, paired alongside a Bold display line. Never in app UI. [source:foundation/typography/fonts]
+Never: Use Geist Mono (`font-mono`) in client application components — it is a documentation-site-only font. [source:foundation/typography/fonts]
+Must: Both product fonts (SejongHospital and Pretendard) must use `font-display: swap` in their `@font-face` declarations. [source:foundation/typography/fonts]
+Must: Preload SejongHospital — it appears in Display and H1 (above-the-fold on most pages) and must be fetched before the browser discovers it in CSS. [source:foundation/typography/fonts]
+
+### Scale
+
+Must: Use `type-*` semantic utility classes for all typography — never compose raw Tailwind utilities (`text-base font-normal leading-relaxed`) in component code. [source:foundation/typography/usage]
+Must: Apply `tracking-tight` to `type-display` and `type-h1`; use `tracking-normal` for all other type roles. [source:foundation/typography/scale]
+Must: Use `type-display` for hero sections and landing pages; use `type-h1` for page titles within the app. [source:foundation/typography/scale]
+Never: Apply both `type-display` and `type-h1` styling on the same page. [source:foundation/typography/scale]
+Prefer: Applying `type-h2` styling to a semantic `<h1>` element when `type-display` is already used on the page — visual hierarchy takes precedence over the class name. [source:foundation/typography/scale]
+Must: Rely on `type-*` class definitions for responsive behavior — do not add breakpoint overrides for typography in components. [source:foundation/typography/scale]
+Avoid: `sm:`, `xl:`, or `2xl:` breakpoint prefixes for typography overrides — the layout system uses three tiers only (default, `md:`, `lg:`). [source:foundation/typography/scale]
+
+### Usage
+
+Must: Always pair an explicit color token with every `type-*` class — `type-*` classes do not set color. [source:foundation/typography/usage]
+Must: Use `text-text-primary` for readable content; `text-text-muted` for supporting or secondary text. [source:foundation/typography/usage]
+Never: Apply weight utilities (`font-semibold`, `font-bold`) to entire text containers for emphasis — use `<strong>` for inline emphasis within body text; use a higher `type-*` class for block-level weight changes. [source:foundation/typography/usage]
+Must: Keep body text within `max-w-prose` (~65 characters) in article and long-form reading contexts. [source:foundation/typography/usage]
+
+### State Typography
+
+Must: Disabled text uses the same `type-*` class as its active state — only color changes to `text-text-disabled`. Never reduce weight or size to communicate disabled state. [source:foundation/typography/usage]
+Must: Use `type-caption` + `text-error` for error messages below form fields. [source:foundation/typography/usage]
+Must: Use `type-caption` + `text-text-muted` for helper text (instructions, character counts, format hints). [source:foundation/typography/usage]
+
+### Links
+
+Must: Use `text-text-link` for all link color — never `text-text-primary`. [source:foundation/typography/usage]
+Must: Underline links by default (`underline`). Hover state: `text-brand-primary`. No separate visited style. [source:foundation/typography/usage]
+Never: Apply a separate `type-*` class to links — links inherit the type class of their container. [source:foundation/typography/usage]
+
+### Truncation
+
+Never: Truncate `type-body` in article or long-form content reading contexts. [source:foundation/typography/usage]
+Must: Use `truncate` for single-line UI element truncation (nav items, table cells, tags, badges). [source:foundation/typography/usage]
+Prefer: `line-clamp-2` for card titles; `line-clamp-3` for card descriptions when multi-line truncation is needed. [source:foundation/typography/usage]
 
 ---
 
@@ -94,6 +136,13 @@ Avoid: `--color-text-muted` at small text sizes on `--color-surface-subtle` — 
 Avoid: `--color-text-muted` at small text sizes on `--color-surface-muted` — 3.8:1 passes large text only. Use `--color-text-primary` inside card detail rows if content is small. [source:foundation/colors/accessibility]
 Never: Use `--color-success` (2.2:1) as standalone text or icon color — fails both text and non-text contrast thresholds. [source:foundation/colors/accessibility]
 Must: Pair `--color-warning` (3.0:1) and `--color-success` with `--color-text-primary` labels whenever they convey readable information. [source:foundation/colors/accessibility]
+
+### Typography — Readability & State Communication
+
+Must: Never communicate disabled state through reduced font size or weight — color (`text-text-disabled`) is the only permitted signal. Reducing size or weight harms readability for low-vision users. [source:foundation/typography/usage]
+Must: Error and helper text must use `type-caption` (0.75rem / 12px) as the minimum — never use custom smaller sizes below this floor. [source:foundation/typography/usage]
+Must: Links must be distinguishable from surrounding static text by both color (`text-text-link`) and decoration (`underline`) — color alone is not sufficient. [source:foundation/typography/usage]
+Must: Keep body text within `max-w-prose` (~65 characters) — lines that stretch full container width impair readability for users with cognitive or visual processing differences. [source:foundation/typography/usage]
 
 ### Focus
 
