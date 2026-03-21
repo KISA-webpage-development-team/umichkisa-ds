@@ -154,7 +154,16 @@ A section is done when all of the following are true:
 
 ## Open Questions
 
-_Populated during execution._
+### OQ-1 — Color token naming: double-prefix collision (Step 0)
+
+Semantic text tokens are named `--color-text-*` (e.g. `--color-text-muted`, `--color-text-disabled`). When used as Tailwind utility classes, the `text-` utility prefix doubles up with the `text-` semantic namespace, producing awkward class names like `text-text-muted` and `text-text-disabled`.
+
+This naming issue cascades across the entire color token system. Possible resolutions:
+- Follow shadcn/ui convention: `--color-muted-foreground` → `text-muted-foreground`
+- Drop the namespace prefix: `--color-muted` → `text-muted`
+- Use a non-colliding namespace: `--color-content-muted` → `text-content-muted`
+
+**Resolution:** Defer to Step 0 (Token & Styles Audit). Must be decided holistically across all semantic tokens.
 
 ---
 
