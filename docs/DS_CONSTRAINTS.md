@@ -114,7 +114,33 @@ Prefer: `line-clamp-2` for card titles; `line-clamp-3` for card descriptions whe
 
 ## Layout
 
-_To be populated during the Layout section of Step -1._
+### Breakpoints
+
+Must: Use only the three layout tiers — default (mobile), `md:` (≥ 768px), `lg:` (≥ 1024px) — for all responsive behavior. [source:foundation/layout/breakpoints]
+Never: Use `sm:`, `xl:`, or `2xl:` breakpoints. If a layout cannot be solved with three tiers, the problem is in the component or design, not the breakpoint system. [source:foundation/layout/breakpoints]
+Must: Design decisions are made for the desktop tier first. `md:` and `lg:` ensure the layout holds at smaller sizes — not the other way around. [source:foundation/layout/breakpoints]
+
+### Spacing
+
+Must: All spacing values must come from Tailwind's built-in scale (4px base unit). Never use arbitrary values (`px-[24px]`, `mt-[13px]`). [source:foundation/layout/spacing]
+Must: Apply the default inset for horizontal breathing room: `px-4` (mobile), `px-10` (tablet), `px-16` (desktop). [source:foundation/layout/spacing]
+Must: Constrain all page content to `max-w-screen-2xl` (1536px), centered with `mx-auto`. [source:foundation/layout/spacing]
+Must: Column gutter is always `gap-2` (8px) — never adjust it per component or breakpoint. [source:foundation/layout/spacing]
+Never: Adjust the column gutter per component or viewport. It is a structural constant. [source:foundation/layout/spacing]
+
+### Vertical Spacing
+
+Must: Use the three-tier vertical spacing system — Element (`gap-2` / 8px), Component (`gap-4` / 16px), Section (`gap-8` / 32px). [source:foundation/layout/spacing]
+Never: Scale vertical spacing values with breakpoints. Layout responsiveness is column reflow, not gap scaling. [source:foundation/layout/spacing]
+Must: Element tier (`gap-2`) for label → input, icon → text, caption below field, heading → subtitle. [source:foundation/layout/spacing]
+Must: Component tier (`gap-4`) for stacked form fields, list items, stacked cards, navigation items. [source:foundation/layout/spacing]
+Must: Section tier (`gap-8`) for gaps between major page sections. Section tier is double the component tier — it provides a clear visual break without exceeding the mobile inset. [source:foundation/layout/spacing]
+
+### Page Shell
+
+Must: The page shell must combine all four concerns together: `mx-auto w-full max-w-screen-2xl px-4 md:px-10 lg:px-16`. Never apply only part of this pattern. [source:foundation/layout/spacing]
+Must: For full-bleed elements (navbar, hero, footer), apply background to a full-width outer wrapper and nest the page shell inside for content alignment. [source:foundation/layout/spacing]
+Never: Apply a full-bleed background directly to the page shell element — this clips the background at 1536px. [source:foundation/layout/spacing]
 
 ---
 
@@ -143,6 +169,12 @@ Must: Never communicate disabled state through reduced font size or weight — c
 Must: Error and helper text must use `type-caption` (0.75rem / 12px) as the minimum — never use custom smaller sizes below this floor. [source:foundation/typography/usage]
 Must: Links must be distinguishable from surrounding static text by both color (`text-text-link`) and decoration (`underline`) — color alone is not sufficient. [source:foundation/typography/usage]
 Must: Keep body text within `max-w-prose` (~65 characters) — lines that stretch full container width impair readability for users with cognitive or visual processing differences. [source:foundation/typography/usage]
+
+### Layout — Landmark Regions & Skip Navigation
+
+Must: Use semantic landmark elements in the page shell: `<header>` (site header), `<nav>` (navigation, with `aria-label` if multiple), `<main>` (primary content), `<footer>` (site footer). [source:foundation/layout/overview]
+Must: Every page must include a skip link — a visually hidden anchor targeting `<main id="main-content">` that becomes visible on focus-visible. [source:foundation/layout/overview]
+Never: Omit `id="main-content"` on the `<main>` element when a skip link is present. [source:foundation/layout/overview]
 
 ### Focus
 
