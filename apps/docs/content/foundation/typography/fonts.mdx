@@ -17,6 +17,16 @@ It ships with two weights only:
 
 In practice, always reach for Bold. Light exists for special cases but should not be the default heading weight.
 
+### Fallback stack
+
+If SejongHospital fails to load, the browser falls back to:
+
+```
+'SejongHospital', system-ui, -apple-system, sans-serif
+```
+
+There is no equivalent decorative fallback — the heading degrades gracefully to a system sans-serif. This is acceptable because SejongHospital appears only at the top of the hierarchy where brand presence matters, and the layout is designed to hold at any weight.
+
 <div className="my-8 rounded-xl border border-border overflow-hidden">
   <div className="bg-[#00274c] px-8 py-10">
     <p className="text-5xl font-sejong-bold text-[#ffcb05]">University of Michigan</p>
@@ -41,6 +51,16 @@ The three weights used in the type scale:
 | Regular 400 | `font-normal` | Body text, captions |
 | Medium 500 | `font-medium` | Labels, navigation items |
 | Semibold 600 | `font-semibold` | H2, H3, emphasized text |
+
+### Fallback stack
+
+If Pretendard fails to load, the browser falls back to:
+
+```
+'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, -apple-system, sans-serif
+```
+
+The Korean-capable fallbacks (`Apple SD Gothic Neo`, `Noto Sans KR`) ensure Korean text remains readable on systems where Pretendard is unavailable.
 
 <div className="my-8 rounded-xl border border-border overflow-hidden">
   <div className="bg-surface px-8 py-8 space-y-4">
