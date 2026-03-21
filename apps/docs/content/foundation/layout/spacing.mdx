@@ -104,3 +104,24 @@ The element tier matches the column gutter — the smallest structural unit is c
 The component tier matches the mobile horizontal inset — component stacks breathe at the same scale as the tightest layout edge.
 
 > **Rule:** Do not scale vertical spacing with breakpoints. If a layout feels too dense at a smaller viewport, the fix is fewer columns — not larger gaps.
+
+---
+
+## Page Shell
+
+The full page shell combines max-width, centering, and the default inset into one element. This is the wrapping element that all page content lives inside.
+
+```html
+<div class="mx-auto w-full max-w-screen-2xl px-4 md:px-10 lg:px-16">
+  <!-- page content -->
+</div>
+```
+
+- `mx-auto` — centers the content area within the viewport
+- `w-full` — ensures the element fills the viewport before hitting max-width
+- `max-w-screen-2xl` — caps width at 1536px
+- `px-4 md:px-10 lg:px-16` — applies the default inset per tier
+
+Everything inside this element is within the layout system. The `Container` component will encode this pattern once built — until then, use this class string directly.
+
+> **Rule:** Never apply only part of the page shell. All four concerns (centering, full-width, max-width, inset) must be present together.
