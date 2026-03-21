@@ -24,6 +24,10 @@ The desktop tier is where layout decisions are made first. `md:` and
 not the other way around.
 
 Tailwind provides additional breakpoints — `sm:`, `xl:`, `2xl:`.
-Avoid them unless there is a specific, justified reason.
-Introducing extra breakpoints fragments the system and makes
-responsive behavior harder to reason about.
+Never use them. The three-tier system covers all layout needs for
+this product. Introducing extra breakpoints fragments the system,
+makes responsive behavior harder to reason about, and creates
+inconsistencies that are difficult to audit.
+
+If a layout cannot be solved with the three tiers, the problem is
+in the component or design — not in the breakpoint system.
