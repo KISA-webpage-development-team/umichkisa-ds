@@ -15,7 +15,7 @@ Extract a complete, AI-consumable set of design constraints into `docs/DS_CONSTR
 docs review → docs fixed → DS_CONSTRAINTS.md populated → (later) implementation fix
 ```
 
-**Skill:** Invoke `ui-design-system` at session start before Phase 1.
+**Skill:** Invoke `ui-design-system` and `grill-me` at session start before Phase 1.
 
 ---
 
