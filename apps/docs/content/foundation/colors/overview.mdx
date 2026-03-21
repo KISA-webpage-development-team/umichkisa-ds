@@ -94,3 +94,11 @@ The component layer is where semantic tokens get applied to actual UI elements.
 The component does not know what color `--color-brand-primary` is. It only knows
 the purpose. The actual value flows in from the semantic layer, which in turn
 pulls it from primitives. This separation is what makes the system maintainable.
+
+---
+
+## Dark Mode
+
+This design system does not support dark mode. There is no dark-mode token layer,
+no `.dark` class, and no media query variant. Components should not implement
+dark mode behavior. If this changes in a future version, it will be documented here.
