@@ -15,6 +15,8 @@ Extract a complete, AI-consumable set of design constraints into `docs/DS_CONSTR
 docs review → docs fixed → DS_CONSTRAINTS.md populated → (later) implementation fix
 ```
 
+**Skill:** Invoke `ui-design-system` at session start before Phase 1.
+
 ---
 
 ## Scope
@@ -157,8 +159,8 @@ _Populated during execution._
 ---
 
 ## Last Session [2026-03-21]
-Task: Step -1 — DS Documentation Review (spec writing)
-Done: Spec fully written via /grill-me interview. All decisions resolved (audience, scope, process, format, DS_CONSTRAINTS structure).
-Last file: docs/specs/ds-documentation-review.md
-Next action: Start Phase 1 — read all Colors MDX pages and evaluate against DS best practices.
+Task: Step -1 — DS Documentation Review — Colors section (all 3 phases)
+Done: Reviewed all 5 Colors MDX pages via /grill-me (9 gaps found). Applied 9 MDX fixes (overview, primitives, tokens, accessibility). Extracted Colors + Accessibility/Colors constraints into DS_CONSTRAINTS.md. Build and typecheck pass.
+Last file: docs/DS_CONSTRAINTS.md
+Next action: Start Typography section — Phase 1: read all Typography MDX pages under apps/docs/content/foundation/typography/ and evaluate against DS best practices.
 Blockers: none
