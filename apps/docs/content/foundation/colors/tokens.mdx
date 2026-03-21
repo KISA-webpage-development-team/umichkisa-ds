@@ -32,6 +32,20 @@ reach for primary.
 contexts where full navy would be too heavy. Its primary use today is link text.
 Additional use cases will be documented here as they are established.
 
+---
+
+### Understanding `-subtle` and `-muted`
+
+Two suffixes appear across multiple token groups — `-subtle` and `-muted`. They do not mean the same thing and are not interchangeable.
+
+**`-subtle`** means one step softer in visual weight. It creates a tinted region without drawing attention. Used for card and panel backgrounds (`--color-surface-subtle`), alert box fills (`--color-error-subtle`), and similar containers.
+
+**`-muted`** means reduced visual prominence — not necessarily darker. `--color-surface-muted` is *lighter* than `--color-surface-subtle` because it is designed to sit *inside* a subtle surface and appear elevated. `--color-text-muted` is lower contrast than `--color-text-primary` because it carries supporting, not primary, information.
+
+The key rule: a `-muted` value always serves a deprioritized role. A `-subtle` value always serves a container or background role.
+
+---
+
 ### Surface
 
 Background colors that define the depth layers of the UI. Think of them as
@@ -90,16 +104,16 @@ Feedback colors communicate system states. Each state has two tokens: a solid
 color for icons, borders, and text labels, and a subtle tint for background
 surfaces like alert boxes.
 
-| Token | Role |
-|---|---|
-| `--color-error` | Error state. Form validation failures, destructive action warnings. |
-| `--color-error-subtle` | Background for error alert boxes. |
-| `--color-success` | Success state. Confirmations, completed actions. |
-| `--color-success-subtle` | Background for success alert boxes. |
-| `--color-warning` | Warning state. Non-blocking issues that need attention. |
-| `--color-warning-subtle` | Background for warning alert boxes. |
-| `--color-info` | Informational state. Neutral tips, contextual help. |
-| `--color-info-subtle` | Background for info alert boxes. |
+| Token | Maps to | Role |
+|---|---|---|
+| `--color-error` | `--primitive-red-500` | Error state. Form validation failures, destructive action warnings. |
+| `--color-error-subtle` | `oklch(97% 0.02 27)` | Background for error alert boxes. |
+| `--color-success` | `--primitive-green-500` | Success state. Confirmations, completed actions. |
+| `--color-success-subtle` | `oklch(97% 0.02 145)` | Background for success alert boxes. |
+| `--color-warning` | `oklch(72% 0.15 60)` | Warning state. Non-blocking issues that need attention. |
+| `--color-warning-subtle` | `oklch(97% 0.02 60)` | Background for warning alert boxes. |
+| `--color-info` | `--primitive-michigan-blue-mid` | Informational state. Neutral tips, contextual help. |
+| `--color-info-subtle` | `--primitive-michigan-blue-light` | Background for info alert boxes. |
 
 <ColorSwatchGrid>
   <ColorSwatch token="--color-error"          label="Error" />
@@ -111,6 +125,8 @@ surfaces like alert boxes.
   <ColorSwatch token="--color-info"           label="Info" />
   <ColorSwatch token="--color-info-subtle"    label="Info Subtle" />
 </ColorSwatchGrid>
+
+> **On `--color-info` and `--color-text-link`:** Both resolve to `--primitive-michigan-blue-mid` — the same rendered color. This is intentional: blue reads as both informational and interactive in this system. Do not use them interchangeably. Use the token that matches the semantic role: `--color-info` for state indicators and alert borders, `--color-text-link` for clickable inline text.
 
 ### Interactive
 
@@ -127,7 +143,7 @@ very bright, darkening it is the only way to show a visible state change.
 | `--color-brand-primary-pressed` | `oklch(15% 0.05 243)` | Pressed state on brand-primary elements. Slightly darker than base. |
 | `--color-brand-accent-hover` | `oklch(76% 0.185 91)` | Hover state on brand-accent elements. Darker maize. |
 | `--color-brand-accent-pressed` | `oklch(70% 0.185 91)` | Pressed state on brand-accent elements. Even darker maize. |
-| `--color-focus-ring` | `--primitive-michigan-maize` | Keyboard focus indicator. High contrast, always visible against dark backgrounds. |
+| `--color-focus-ring` | `--primitive-michigan-maize` | Keyboard focus indicator. Use as a dual-ring: maize outer ring + 2px dark offset ring (`--color-brand-primary`). The maize ring provides contrast on dark surfaces; the offset ring provides contrast on white/light surfaces. |
 
 <ColorSwatchGrid>
   <ColorSwatch token="--color-brand-primary-hover"   label="Brand Primary Hover" />
@@ -136,6 +152,21 @@ very bright, darkening it is the only way to show a visible state change.
   <ColorSwatch token="--color-brand-accent-pressed"  label="Brand Accent Pressed" />
   <ColorSwatch token="--color-focus-ring"            label="Focus Ring" />
 </ColorSwatchGrid>
+
+**Focus ring implementation pattern:**
+
+```css
+/* Applied to every interactive element */
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--color-brand-primary);
+}
+```
+
+The `outline` (maize) provides contrast against dark backgrounds. The `box-shadow` (navy) provides contrast against white/light backgrounds. Both must be present. Do not apply one without the other.
+
+> **Interim — Neutral interactive states:** Interactive tokens currently cover brand-primary and brand-accent elements only. For neutral/gray elements (secondary buttons, ghost buttons, form inputs), use `--color-surface-subtle` as hover background and `--color-border-strong` as hover border as an interim convention. This guidance will be superseded when Step 0 (Token & Styles Audit) defines dedicated neutral interactive tokens.
 
 ### Overlay
 
