@@ -85,3 +85,17 @@ Color and decoration rules:
 - Visited: no separate visited style — leave at default link color
 
 Never use `text-text-primary` for links. The `text-text-link` token exists specifically to distinguish interactive text from static text.
+
+---
+
+## Truncation
+
+Truncation is for UI elements — not for long-form content. Never truncate `type-body` in article or content reading contexts.
+
+Two patterns:
+
+**Single-line truncation** — use `truncate` (applies `overflow: hidden`, `text-overflow: ellipsis`, `white-space: nowrap`). For: nav items, table cells, tags, badges, any UI element where one line is a hard constraint.
+
+**Multi-line truncation** — use `line-clamp-2` or `line-clamp-3`. For: card titles and descriptions where 2–3 lines are acceptable before cutting. Prefer `line-clamp-2` for titles, `line-clamp-3` for descriptions.
+
+When in doubt, prefer `truncate`. Multi-line clamping can produce unexpected results with certain line heights — always verify visually.
