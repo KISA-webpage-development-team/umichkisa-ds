@@ -83,3 +83,15 @@ Geist Mono is the third font in the system, but it sits outside the Rule of Two.
 | Weight | Tailwind class | Use |
 |---|---|---|
 | Regular 400 | `font-normal` | All code contexts |
+
+---
+
+## Font Loading
+
+Both product fonts must use `font-display: swap`. This ensures text remains visible during font load — the browser renders with the fallback stack immediately, then swaps to the product font once it arrives. Without it, text is invisible until the font loads (FOIT), which harms perceived performance.
+
+SejongHospital must be preloaded. It appears in Display and H1 — above-the-fold content on most pages — so it should be fetched at the highest priority before the browser discovers it in CSS.
+
+Pretendard does not require explicit preloading. It is used throughout the page, and the browser will prioritize it naturally once the stylesheet is parsed.
+
+These are implementation requirements, not component-level concerns. They are configured once at the font loading layer and apply globally.
