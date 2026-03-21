@@ -52,7 +52,7 @@ Each role in the hierarchy is defined as a single semantic utility class. Rather
 
 > **Note:** The Tailwind column shows the equivalent Tailwind v4 font-size token for developer reference. The actual values are hardcoded in the `type-*` class definitions — these are not Tailwind utilities. Tracking is not yet implemented in CSS and is flagged for Step 0 (Token & Styles Audit).
 
-> **Display vs H1:** Both use SejongHospital Bold. The distinction is context, not style — Display is for hero sections and landing pages, H1 is for page titles within the app. Never use both on the same page.
+> **Display vs H1:** Both use SejongHospital Bold. The distinction is context, not style — Display is for hero sections and landing pages, H1 is for page titles within the app. Never apply both `type-display` and `type-h1` styling on the same page. If a page has a Display hero and requires a semantic `<h1>` element for accessibility, apply `type-h2` styling to the `<h1>` — the visual hierarchy takes precedence over the class name.
 
 > **Body SM vs Label:** Same size, different weight. Body SM (`font-normal`) is for reading. Label (`font-medium`) is for interacting. The extra weight signals that something is actionable.
 
