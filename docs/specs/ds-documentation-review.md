@@ -168,8 +168,8 @@ This naming issue cascades across the entire color token system. Possible resolu
 ---
 
 ## Last Session [2026-03-21]
-Task: Step -1 — DS Documentation Review — Typography section (all 3 phases)
-Done: Reviewed 4 Typography MDX pages via /grill-me (11 gaps found). Applied 10 MDX fixes across fonts.mdx, scale.mdx, usage.mdx (fallback stacks, font loading, SejongHospital Light rules, scale table token chain + tracking column, responsive behavior section, Display vs H1 reframe, state typography, link rules, truncation rules). Extracted Typography + Accessibility/Typography constraints into DS_CONSTRAINTS.md. Logged OQ-1 (token naming collision) in Open Questions. Build and typecheck pass.
+Task: Step -1 — DS Documentation Review — Layout section (all 3 phases)
+Done: Reviewed 4 Layout MDX pages via /grill-me (8 gaps found, 8 decisions made). Applied 6 MDX fixes across breakpoints.mdx, overview.mdx, spacing.mdx: hardened sm:/xl:/2xl: rule to Never, added section nav block and a11y section (landmarks + skip link with focus-visible + bg-surface token) to overview.mdx, added 3-tier vertical spacing system + page shell pattern + full-bleed pattern to spacing.mdx. Extracted Layout + Accessibility/Layout constraints into DS_CONSTRAINTS.md. Build and typecheck pass.
 Last file: docs/DS_CONSTRAINTS.md
-Next action: Start Layout section — Phase 1: read all Layout MDX pages under apps/docs/content/foundation/layout/ and evaluate against DS best practices.
+Next action: Start Iconography section — Phase 1: read all Iconography MDX pages under apps/docs/content/foundation/iconography/ and evaluate against DS best practices.
 Blockers: none
