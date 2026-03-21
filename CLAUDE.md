@@ -25,6 +25,8 @@ Before marking any task done in `docs/TODO.md`:
 2. Update `docs/CODEBASE.md` status tables to reflect completed work
 3. Check off the item in `docs/TODO.md`
 
+**Parallel worktree sessions (component phase only):** Steps 2 and 3 happen on `main` after the worktree is merged — not during the session. Each session is user-assigned ("work on Button") — do not auto-pick. See `docs/specs/component.md` for worktree setup.
+
 ### Context ≥ 70%
 Present the breakpoint options above. Do not append session state automatically.
 
