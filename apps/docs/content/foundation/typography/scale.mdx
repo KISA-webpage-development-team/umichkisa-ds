@@ -55,3 +55,22 @@ Each role in the hierarchy is defined as a single semantic utility class. Rather
 > **Display vs H1:** Both use SejongHospital Bold. The distinction is context, not style — Display is for hero sections and landing pages, H1 is for page titles within the app. Never use both on the same page.
 
 > **Body SM vs Label:** Same size, different weight. Body SM (`font-normal`) is for reading. Label (`font-medium`) is for interacting. The extra weight signals that something is actionable.
+
+---
+
+## Responsive Behavior
+
+`type-body`, `type-body-sm`, `type-label`, and `type-caption` are fixed — they are already readable at all viewport sizes.
+
+Display-level and heading classes scale across the three layout tiers defined in the layout system (`default` → `md:` → `lg:`):
+
+| Class | Mobile (default) | Tablet `md:` | Desktop `lg:` |
+|---|---|---|---|
+| `type-display` | 2rem / 32px | 2.5rem / 40px | 3rem / 48px |
+| `type-h1` | 1.75rem / 28px | 2rem / 32px | 2.25rem / 36px |
+| `type-h2` | 1.25rem / 20px | 1.375rem / 22px | 1.5rem / 24px |
+| `type-h3` | 1.125rem / 18px | 1.25rem / 20px | 1.25rem / 20px |
+
+Responsive scaling is baked into the `type-*` class definitions. Components do not need to apply breakpoint overrides — reaching for `type-display` on any viewport automatically applies the correct size.
+
+> Avoid `sm:`, `xl:`, or `2xl:` for typography overrides. The layout system operates on three tiers only. See [Breakpoints](/foundation/layout/breakpoints) for the full breakpoint policy.
