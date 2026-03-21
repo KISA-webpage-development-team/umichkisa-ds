@@ -82,15 +82,6 @@ Typography utility classes (`.type-display`, `.type-h1`…`.type-caption`) alrea
 
 ---
 
-## Follow-Up Task Files
-
-Pending implementation notes (in `apps/docs/content/`):
-- `_layout-implementation.md` — Container + Grid component specs
-- `_typography-implementation.md` — font loading + type-* CSS spec
-- `_color-guide-followup.md` — missing semantic token additions
-
----
-
 ## Reference: Client App
 
 The consuming app lives at `../KISA-website/client/src/components/ui/`.
