@@ -71,3 +71,17 @@ Use `type-caption` + `text-error`. Error messages appear below form fields and a
 ### Helper text
 
 Use `type-caption` + `text-text-muted`. Helper text provides context before or after interaction — instructions, character counts, format hints. Same size as error messages; the color difference (`text-text-muted` vs `text-error`) distinguishes the two states.
+
+---
+
+## Links
+
+Links inherit the `type-*` class of their container — a link inside a `type-body` paragraph uses body sizing and weight. Do not apply a separate type class to links.
+
+Color and decoration rules:
+- Color: always `text-text-link`
+- Decoration: underline by default (`underline`)
+- Hover: `text-brand-primary` (Michigan Blue)
+- Visited: no separate visited style — leave at default link color
+
+Never use `text-text-primary` for links. The `text-text-link` token exists specifically to distinguish interactive text from static text.
