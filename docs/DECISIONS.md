@@ -15,11 +15,6 @@
 **Why:** DS iconography docs define Lucide as the standard. Custom SVGs create maintenance burden.
 **Alternatives rejected:** react-icons — larger bundle, less consistent with DS spec.
 
-## Radix UI for overlays only
-**Decision:** Radix UI is used only for Dialog, Popover, Dropdown, and Tooltip. All other components are built without Radix.
-**Why:** Radix adds bundle weight. Only overlays require the accessibility complexity Radix solves.
-**Alternatives rejected:** Radix for all interactive components — unnecessary dependency surface.
-
 ## Spec-first session pattern
 **Decision:** When a task has no spec, the entire session is dedicated to writing the spec. Task execution happens in a separate fresh-context session.
 **Why:** Mixing spec design and execution in one context leads to drift, wasted tokens re-reading decisions, and poor handoff state.
