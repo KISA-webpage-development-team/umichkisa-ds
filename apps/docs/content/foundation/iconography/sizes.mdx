@@ -62,3 +62,19 @@ were dropped in at a different scale.
 The icon should be slightly smaller than the text's cap height, not matched to
 it. An icon at the exact same pixel height as the text usually reads as
 slightly too large. Trust the scale — it is calibrated for this.
+
+---
+
+## Never Apply Breakpoints to Icon Size
+
+Icon size is determined by context — the component the icon lives in — not by the viewport width. Never use breakpoint prefixes on the `size` prop or on any class that affects icon dimensions.
+
+If a component changes size across breakpoints (a button that is compact on mobile and default on desktop), the icon size change is handled inside that component's variant logic. The `<Icon>` itself receives a fixed `size` prop.
+
+```tsx
+// ✅ correct — fixed size, component handles responsiveness
+<Icon name="search" size="md" />
+
+// ❌ wrong — breakpoint prefix on icon size
+<Icon name="search" size="sm" className="md:w-5 md:h-5" />
+```

@@ -23,6 +23,7 @@ system. Never import a Lucide icon directly into a component.
 | `name` | `string` | required | Lucide icon name in kebab-case |
 | `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Size from the 5-step scale |
 | `label` | `string` | — | Accessible label; omit for decorative icons |
+| `className` | `string` | — | Layout utilities only (`block`, `flex-shrink-0`). Never use for color or sizing — those are controlled by parent color and the `size` prop. |
 
 ---
 
@@ -97,12 +98,12 @@ of its container using semantic tokens.
 
 ```tsx
 // Muted info icon
-<span className="text-[--color-text-muted]">
+<span className="text-text-muted">
   <Icon name="info" />
 </span>
 
 // Error state
-<span className="text-[--color-error]">
+<span className="text-error">
   <Icon name="alert-triangle" />
 </span>
 ```
@@ -110,6 +111,36 @@ of its container using semantic tokens.
 Never pass a color prop to `<Icon>`. Never set `color` or `fill` inline on the
 icon. If you find yourself wanting to pass a color directly, the color you want
 already exists as a semantic token — reach for that instead.
+
+---
+
+## Disabled Icons
+
+Disabled icons use `text-text-disabled` — the same token as disabled text. Never reduce size or weight to communicate disabled state. Only color changes.
+
+```tsx
+<span className="text-text-disabled">
+  <Icon name="lock" />
+</span>
+```
+
+---
+
+## Responsive Sizing
+
+Never apply breakpoint prefixes directly to icon size. Icon size is determined by component context — the component the icon lives in — not by the viewport width.
+
+If a component changes size across breakpoints, the icon size change is encapsulated inside that component's variant logic. The `<Icon>` itself receives a fixed `size` prop.
+
+```tsx
+// ✅ correct — component variant controls icon size internally
+<Button size="sm"> {/* Button uses sm icon internally on mobile */}
+  <Icon name="plus" size="sm" />
+</Button>
+
+// ❌ wrong — breakpoint prefix on the icon directly
+<Icon name="plus" size="sm" className="md:w-5 md:h-5" />
+```
 
 ---
 
@@ -148,7 +179,7 @@ already exists as a semantic token — reach for that instead.
 <DoDont>
   <Do>
     <p>Control icon color through the parent's text color using semantic tokens. The icon inherits <code>currentColor</code>.</p>
-    <pre><code>{`<span className="text-[--color-error]">
+    <pre><code>{`<span className="text-error">
   <Icon name="alert-triangle" />
 </span>`}</code></pre>
   </Do>

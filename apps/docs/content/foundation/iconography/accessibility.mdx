@@ -72,24 +72,48 @@ decorative. If no, semantic.
 
 ## Touch Targets
 
-The `<Icon>` component renders an SVG at the specified size — 12px to 32px
-depending on the `size` prop. None of these are large enough to serve as a
-touch target.
+The `<Icon>` component renders an SVG at the specified size — 12px to 32px depending on the `size` prop. None of these are large enough to serve as a touch target.
 
-Interactive wrappers around icons must be at least 44×44px. This is the minimum
-touch target size for mobile use per WCAG 2.5.5. Apply padding to the button
-to reach this size:
+Interactive wrappers around icons must be at least 44×44px. This is the minimum touch target size for mobile use per WCAG 2.5.5. Use `min-w-[44px] min-h-[44px]` with `flex items-center justify-center` on the button so the icon is centered inside regardless of its visual size:
 
 ```tsx
 <button
   aria-label="Close"
-  className="p-3"  {/* 12px padding + icon creates adequate touch area */}
+  className="flex items-center justify-center min-w-[44px] min-h-[44px]"
 >
   <Icon name="x" />
 </button>
 ```
 
-Never reduce button padding to make an icon-only button smaller than 44×44px.
+This approach works for any icon size — the wrapper always meets 44×44px. Never rely on padding calculated from the icon's pixel size, as changing the `size` prop would break the math.
+
+Never reduce the button dimensions below 44×44px to make an icon-only button feel smaller.
+
+---
+
+## Icon Color and Contrast
+
+Icons are non-text UI components and must meet the 3:1 contrast ratio threshold (WCAG 1.4.11).
+
+Two semantic color tokens fail this threshold and must never be used as the sole color of an icon:
+
+- `--color-success` — 2.2:1 on white. Fails both text and non-text contrast thresholds.
+- `--color-warning` — 3.0:1 on white. Exactly at the floor, not a comfortable pass.
+
+When using these tokens in a feedback context, always pair the icon with a visible text label using `text-text-primary`. The label carries the accessible meaning; the icon adds visual reinforcement.
+
+```tsx
+// ✅ correct — icon + text label; icon contrast alone does not matter
+<span className="flex items-center gap-2">
+  <span className="text-success"><Icon name="check-circle" /></span>
+  <span className="text-text-primary">Profile saved</span>
+</span>
+
+// ❌ wrong — standalone icon with --color-success, fails 3:1
+<span className="text-success"><Icon name="check-circle" label="Success" /></span>
+```
+
+`--color-error` (3.9:1) passes non-text contrast and may be used as a standalone icon color for error state indicators, though pairing with a label is still preferred.
 
 ---
 

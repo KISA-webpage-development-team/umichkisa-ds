@@ -146,7 +146,56 @@ Never: Apply a full-bleed background directly to the page shell element — this
 
 ## Iconography
 
-_To be populated during the Iconography section of Step -1._
+### Library
+
+Must: Use Lucide as the sole icon library. Never import from `react-icons`, use emoji as icons, or use PNG/JPG icons. [source:foundation/iconography/library]
+Never: Import a Lucide icon directly into a component — always use the `<Icon>` wrapper component. [source:foundation/iconography/overview]
+Prefer: Exhausting the Lucide search (including synonyms) before adding a custom SVG. Custom SVGs are exceptions, not alternatives. [source:foundation/iconography/library]
+
+### Custom Icons
+
+Must: Custom SVGs that replace missing Lucide icons must match Lucide's visual language exactly: `viewBox="0 0 24 24"`, `stroke-width="2"`, `stroke="currentColor"`, `fill="none"`, `stroke-linecap="round"`, `stroke-linejoin="round"`. [source:foundation/iconography/library]
+Never: Use a second icon library when a Lucide icon is unavailable — use an inline SVG with Lucide-matching attributes. [source:foundation/iconography/library]
+Never: Put complex logo marks or illustrations through the `<Icon>` system — use `<img>` or an inline SVG component instead. [source:foundation/iconography/library]
+
+### Naming
+
+Must: Pass Lucide icon names to `<Icon>` in exact kebab-case as shown on lucide.dev — never translate to camelCase or PascalCase. [source:foundation/iconography/library]
+
+### The `<Icon>` Component — Props
+
+Must: Use the `size` prop from the 5-step scale (`xs`/`sm`/`md`/`lg`/`xl`) — never override icon dimensions with font-size utilities or arbitrary CSS. [source:foundation/iconography/sizes]
+Must: `className` prop is for layout utilities only (`block`, `flex-shrink-0`). Never pass color or sizing classes via `className`. [source:foundation/iconography/usage]
+Must: Omit `label` prop for decorative icons (icon is hidden with `aria-hidden="true"`). Provide `label` prop only when the icon is the sole indicator of meaning with no surrounding text or button label. [source:foundation/iconography/accessibility]
+Never: Provide `label` prop on `<Icon>` when the wrapper button already has `aria-label` — this creates duplicate screen reader announcements. [source:foundation/iconography/accessibility]
+
+### Sizing
+
+Must: Use `md` (20px) as the default icon size for buttons, nav items, and general UI. [source:foundation/iconography/sizes]
+Must: Match icon size to text context — `sm` (16px) with caption/label text, `md` (20px) with body text, `md`/`lg` with subheadings, `lg` (24px) with headings. [source:foundation/iconography/sizes]
+Never: Apply breakpoint prefixes (`md:`, `lg:`) directly to icon size. Icon size is determined by component context. If a component changes size across breakpoints, the icon size change is encapsulated inside that component's variant logic. [source:foundation/iconography/sizes]
+Never: Set icon size via `text-*` font-size utilities — SVG size is controlled by `width`/`height` attributes via the `size` prop. [source:foundation/iconography/sizes]
+
+### Color
+
+Must: Control icon color through the parent element's text color using semantic tokens — icons inherit `currentColor`. [source:foundation/iconography/usage]
+Must: Use `text-text-disabled` for disabled icons — same token as disabled text. Never reduce size or weight to communicate disabled state. [source:foundation/iconography/usage]
+Never: Pass color or fill values directly to `<Icon>` — use semantic token classes on the parent wrapper. [source:foundation/iconography/usage]
+
+### Interactivity
+
+Never: Attach event handlers (e.g. `onClick`) directly to `<Icon>` — SVGs have no button role and are not keyboard-reachable by default. [source:foundation/iconography/usage]
+Must: Wrap interactive icons in a `<button>` or `<a>`. The wrapper provides interaction semantics, keyboard target, and accessible label. [source:foundation/iconography/usage]
+
+### Icon + Text Layout
+
+Must: Use `flex items-center gap-2` as the default layout for icon + text pairings. [source:foundation/iconography/usage]
+Prefer: `gap-1` (4px) for compact contexts (tags, badges); `gap-3` (12px) for larger display contexts. [source:foundation/iconography/usage]
+
+### Icon-Only Interactive Elements
+
+Must: Provide `aria-label` on the button/link wrapper for icon-only interactive elements. [source:foundation/iconography/usage]
+Prefer: Wrapping icon-only buttons in a `<Tooltip>` for sighted users. The tooltip content must match the `aria-label` exactly. [source:foundation/iconography/usage]
 
 ---
 
@@ -181,6 +230,15 @@ Never: Omit `id="main-content"` on the `<main>` element when a skip link is pres
 Must: Every interactive element must have a visible focus indicator when navigated by keyboard. [source:foundation/colors/usage]
 Must: Use the dual-ring focus implementation — maize `outline` (visible on dark backgrounds, 8.2:1 on navy) + navy `box-shadow` offset (visible on light backgrounds). [source:foundation/colors/tokens]
 Never: Use `outline: none` or `outline: 0` without an equivalent custom focus indicator. [source:foundation/colors/usage]
+
+### Iconography — Touch Targets & Contrast
+
+Must: Interactive wrappers around icons must be at least 44×44px. Use `min-w-[44px] min-h-[44px] flex items-center justify-center` on the button — this works for any icon size. [source:foundation/iconography/accessibility]
+Never: Rely on padding calculated from icon pixel size for touch target — changing the `size` prop would break the math. [source:foundation/iconography/accessibility]
+Never: Use `--color-success` (2.2:1) as a standalone icon color — fails non-text contrast (3:1 required). [source:foundation/iconography/accessibility]
+Never: Use `--color-warning` (3.0:1) as a standalone icon color — at the exact floor, not a safe pass. [source:foundation/iconography/accessibility]
+Must: When using `--color-success` or `--color-warning` for feedback icons, always pair with a `text-text-primary` text label. The label carries the accessible meaning. [source:foundation/iconography/accessibility]
+Must: Decorative icons (`aria-hidden="true"`) have no contrast requirement. Only semantic icons (with `label` prop) are subject to the 3:1 non-text contrast threshold. [source:foundation/iconography/accessibility]
 
 ---
 
