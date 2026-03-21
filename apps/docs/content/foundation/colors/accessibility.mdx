@@ -24,6 +24,7 @@ often. Pairs labeled **AA** pass WCAG AA for normal text. Pairs labeled
   { foreground: "--color-text-on-brand", background: "--color-brand-primary-pressed", ratio: "10.3:1", passes: "aa" },
   { foreground: "--color-text-primary",  background: "--color-surface-subtle", ratio: "14.5:1", passes: "aa" },
   { foreground: "--color-text-muted",    background: "--color-surface-subtle", ratio: "4.2:1",  passes: "large-only" },
+  { foreground: "--color-text-muted", background: "--color-surface-muted", ratio: "3.8:1", passes: "large-only" },
   { foreground: "--color-brand-accent",  background: "--color-brand-primary",  ratio: "8.2:1",  passes: "aa" },
   { foreground: "--color-text-primary",  background: "--color-brand-accent",   ratio: "9.8:1",  passes: "aa" },
   { foreground: "--color-error",         background: "--color-surface",        ratio: "3.9:1",  passes: "large-only" },
@@ -49,6 +50,11 @@ available." If a user needs to read it, it should not be disabled.
 passes at 4.2:1 for large text only. Avoid using muted text at small sizes
 inside cards — use `--color-text-primary` instead if the content matters.
 
+**On `--color-text-muted` over `--color-surface-muted`:** This combination (3.8:1)
+passes for large text only. Surface-muted is used inside cards for detail rows —
+avoid muted text at small sizes in these regions. Use `--color-text-primary`
+instead if the content needs to be readable.
+
 **On `--color-text-on-brand` over `--color-brand-primary`:** This is the
 strongest verified pair in the system at 8.2:1 — maize on navy. It clears
 WCAG AA at every text size and weight. Whenever text sits on a brand-primary
@@ -60,9 +66,11 @@ valid on `--color-brand-primary-hover` (7.2:1) and `--color-brand-primary-presse
 (10.3:1). Both clear WCAG AA. There is no need for a different text token on
 interactive states.
 
-**On feedback colors over `--color-surface`:** `--color-error` (3.9:1) and
-`--color-warning` (3.0:1) pass for large text only — do not use them as small
-body text. `--color-success` (2.2:1) and `--color-warning` fall below the
-non-text contrast threshold of 3:1 on white backgrounds, so use them paired
-with `--color-text-primary` labels for any readable content. `--color-info`
-(5.9:1) passes for all text sizes.
+**On feedback colors over `--color-surface`:** `--color-error` (3.9:1) passes
+for large text only — do not use it as small body text. `--color-warning`
+(3.0:1) meets the non-text contrast threshold exactly — treat it as a floor,
+not a comfortable pass, and always pair it with a `--color-text-primary` label
+for any readable content. `--color-success` (2.2:1) fails both text and
+non-text contrast thresholds — never use it as standalone text or icon color;
+always pair it with a `--color-text-primary` label. `--color-info` (5.9:1)
+passes for all text sizes.
