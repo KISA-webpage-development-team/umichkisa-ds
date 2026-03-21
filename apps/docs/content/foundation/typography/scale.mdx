@@ -39,16 +39,18 @@ Each role in the hierarchy is defined as a single semantic utility class. Rather
   </div>
 </div>
 
-| Class | Font | Size | Weight | Line height |
-|---|---|---|---|---|
-| `type-display` | `font-sejong-bold` | `text-5xl` | — | `leading-tight` |
-| `type-h1` | `font-sejong-bold` | `text-4xl` | — | `leading-tight` |
-| `type-h2` | `font-pretendard` | `text-2xl` | `font-semibold` | `leading-snug` |
-| `type-h3` | `font-pretendard` | `text-xl` | `font-semibold` | `leading-snug` |
-| `type-body` | `font-pretendard` | `text-base` | `font-normal` | `leading-relaxed` |
-| `type-body-sm` | `font-pretendard` | `text-sm` | `font-normal` | `leading-normal` |
-| `type-label` | `font-pretendard` | `text-sm` | `font-medium` | `leading-normal` |
-| `type-caption` | `font-pretendard` | `text-xs` | `font-normal` | `leading-normal` |
+| Class | Font | Tailwind | Size | Weight | Line height | Tracking |
+|---|---|---|---|---|---|---|
+| `type-display` | `font-sejong-bold` | `text-5xl` | 3rem / 48px | — | 1.25 | `tracking-tight` |
+| `type-h1` | `font-sejong-bold` | `text-4xl` | 2.25rem / 36px | — | 1.25 | `tracking-tight` |
+| `type-h2` | `font-pretendard` | `text-2xl` | 1.5rem / 24px | `font-semibold` | 1.375 | `tracking-normal` |
+| `type-h3` | `font-pretendard` | `text-xl` | 1.25rem / 20px | `font-semibold` | 1.375 | `tracking-normal` |
+| `type-body` | `font-pretendard` | `text-base` | 1rem / 16px | `font-normal` | 1.625 | `tracking-normal` |
+| `type-body-sm` | `font-pretendard` | `text-sm` | 0.875rem / 14px | `font-normal` | 1.5 | `tracking-normal` |
+| `type-label` | `font-pretendard` | `text-sm` | 0.875rem / 14px | `font-medium` | 1.5 | `tracking-normal` |
+| `type-caption` | `font-pretendard` | `text-xs` | 0.75rem / 12px | `font-normal` | 1.5 | `tracking-normal` |
+
+> **Note:** The Tailwind column shows the equivalent Tailwind v4 font-size token for developer reference. The actual values are hardcoded in the `type-*` class definitions — these are not Tailwind utilities. Tracking is not yet implemented in CSS and is flagged for Step 0 (Token & Styles Audit).
 
 > **Display vs H1:** Both use SejongHospital Bold. The distinction is context, not style — Display is for hero sections and landing pages, H1 is for page titles within the app. Never use both on the same page.
 
