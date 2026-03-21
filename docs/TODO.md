@@ -1,7 +1,7 @@
 # TODO
 
 ## Bootstrapping
-- [ ] Step -1 — DS Documentation Review
+- [x] Step -1 — DS Documentation Review
 - [ ] Step 0 — Token & Styles Audit
 - [ ] Step 1 — Icon Implementation
 - [ ] Step 2 — Icon Docs Page
