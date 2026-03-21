@@ -125,3 +125,22 @@ The full page shell combines max-width, centering, and the default inset into on
 Everything inside this element is within the layout system. The `Container` component will encode this pattern once built — until then, use this class string directly.
 
 > **Rule:** Never apply only part of the page shell. All four concerns (centering, full-width, max-width, inset) must be present together.
+
+---
+
+## Full-Bleed Elements
+
+Some elements — navbars, hero banners, full-width section dividers — must span the full viewport width without being clipped by max-width. Use a full-width outer wrapper with the page shell pattern nested inside for content alignment:
+
+```html
+<div class="w-full bg-brand-primary">
+  <!-- full-bleed background -->
+  <div class="mx-auto w-full max-w-screen-2xl px-4 md:px-10 lg:px-16">
+    <!-- constrained content — aligns with the rest of the page -->
+  </div>
+</div>
+```
+
+The outer element carries the background color or image and spans the full viewport. The inner element applies max-width and inset so that content aligns with the rest of the page layout.
+
+> **Rule:** Never apply a full-bleed background directly to the page shell element — this clips the background at 1536px. Always use a separate outer wrapper.
