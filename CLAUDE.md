@@ -26,7 +26,14 @@ Before marking any task done in `docs/TODO.md`:
 3. Check off the item in `docs/TODO.md`
 
 ### Context ≥ 70%
-Append session state to the current spec file under `## Last Session`:
+Present the breakpoint options above. Do not append session state automatically.
+
+### Appending Session State
+Only append session state to the current spec file under `## Last Session` when:
+- A breakpoint is reached AND the user chooses option (b) clear context, OR
+- The user explicitly requests it
+
+Format:
 ```
 ## Last Session [date]
 Task: [step or component name]
@@ -35,7 +42,6 @@ Last file: [path]
 Next action: [exact next step]
 Blockers: [none / description]
 ```
-Then present the breakpoint options above.
 
 ---
 
