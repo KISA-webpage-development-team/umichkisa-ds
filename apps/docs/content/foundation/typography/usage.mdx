@@ -55,3 +55,19 @@ Keep body text within `max-w-prose` (~65 characters). Lines that stretch the ful
     <p className="text-base font-pretendard font-normal leading-relaxed text-text-primary w-full">KISA brings together Korean international students across all schools and programs at the University of Michigan, fostering community through events, mentorship, and shared experience.</p>
   </Dont>
 </DoDont>
+
+---
+
+## State typography
+
+### Disabled text
+
+Disabled text uses the same `type-*` class as its active state. Only the color changes — use `text-text-disabled` (gray-400). Do not reduce weight or size. The type role stays the same; the color signals that the element is inactive.
+
+### Error messages
+
+Use `type-caption` + `text-error`. Error messages appear below form fields and are supporting information — they do not need body weight. Keep them concise: one sentence, no period needed for short phrases.
+
+### Helper text
+
+Use `type-caption` + `text-text-muted`. Helper text provides context before or after interaction — instructions, character counts, format hints. Same size as error messages; the color difference (`text-text-muted` vs `text-error`) distinguishes the two states.
