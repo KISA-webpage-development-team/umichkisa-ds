@@ -25,7 +25,7 @@ once. You apply them.
 
 The page shell must use semantic landmark elements so that screen reader users can navigate by region:
 
-- `<header>` — site header and primary navigation
+- `<header>` — site header (banner region: logo, site name, global utilities)
 - `<nav>` — navigation landmarks (add `aria-label` if more than one `<nav>` exists on the page)
 - `<main>` — the primary page content
 - `<footer>` — site footer
@@ -35,7 +35,7 @@ Every page must include a **skip link** — a visually hidden anchor that become
 ```html
 <a
   href="#main-content"
-  class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-text-primary focus:rounded focus:shadow-lg"
+  class="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-4 focus-visible:left-4 focus-visible:z-50 focus-visible:px-4 focus-visible:py-2 focus-visible:bg-surface focus-visible:text-text-primary focus-visible:rounded focus-visible:shadow-lg"
 >
   Skip to main content
 </a>
