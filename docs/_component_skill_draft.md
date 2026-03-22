@@ -1,130 +1,49 @@
-# Component Skill Draft — Workflow Notes
+# Component Skill Draft
 
-Captured from the Step 1 (Icon Implementation) session on 2026-03-22.
-This documents how Jioh works with Claude, to inform the design of the Step 4 Component Skill.
-
----
-
-## Session Workflow (observed)
-
-### Phase 1: Startup
-
-1. Claude reads `docs/TODO.md` — finds the first unchecked task
-2. If the task has a spec, read it. If no spec exists, the session is dedicated to writing the spec.
-3. For component work, also read `docs/DS_CONSTRAINTS.md`
-
-### Phase 2: Grill / Design Decisions (`/grill-me` skill)
-
-Before any spec or code is written, Jioh invokes `/grill-me` to resolve all design decisions upfront.
-
-How it works:
-- Claude walks down each branch of the decision tree, one question at a time
-- Each question includes a recommended answer with reasoning
-- Where possible, Claude explores the codebase first to answer questions itself (e.g., auditing the client repo for real icon usage)
-- Jioh picks an option or pushes back
-- Decisions are final — recorded in the spec, not re-litigated later
-- Session produces a **decision summary table** at the end
-
-Key principle: **no ambiguity survives into the spec.** Every design question is resolved before writing begins.
-
-### Phase 3: Spec Writing
-
-Once all decisions are resolved, Claude writes the spec to `docs/specs/<feature>.md`.
-
-Spec structure:
-- Goal
-- Scope (in/out)
-- Decisions table (from grill phase)
-- Component API (props, behavior, examples)
-- File structure
-- Implementation steps (phased)
-- Registry/reference tables
-- Session end checklist
-
-The spec is the contract. The implementation plan references it; the spec reviewer validates against it.
-
-### Phase 4: Implementation Plan (`/writing-plans` skill)
-
-Claude writes a detailed implementation plan to `docs/plans/YYYY-MM-DD-<feature>.md`.
-
-Plan structure:
-- Header (goal, architecture, tech stack)
-- Pre-flight (files to read, commands to know)
-- Bite-sized tasks (each ~2-5 minutes)
-- Each task has: files to touch, exact code, exact commands, expected output, commit message
-- TDD: write failing test → implement → verify pass → commit
-
-### Phase 5: Execution (subagent-driven development)
-
-Jioh chooses execution approach. This session used **subagent-driven** (same session):
-
-1. Create task tracking (TaskCreate for all tasks)
-2. For each task:
-   - Dispatch fresh implementation subagent with full task text + context (subagent does NOT read the plan file)
-   - Subagent implements, runs tests, commits, self-reviews
-   - Dispatch spec compliance reviewer (validates against spec)
-   - Dispatch code quality reviewer (checks correctness, style, types)
-   - If issues found → implementer fixes → re-review
-   - Mark task complete
-3. For trivial tasks (dep swaps, build verification, docs updates): controller can execute directly
-4. For tasks needing user input: pause and ask
-
-### Phase 6: Session End
-
-1. `pnpm build` and `pnpm typecheck` must pass
-2. Update `docs/CODEBASE.md` status tables
-3. Check off item in `docs/TODO.md`
-4. Final commit
-5. Present breakpoint options to user
+The Component Skill (Step 4) automates the per-component workflow by combining Steps 1, 2, and 3 into a repeatable process. Each component goes through all three steps in sequence.
 
 ---
 
-## Skills Used (in order)
+## Step 1 — Component Implementation
 
-| Skill | When | Purpose |
-|-------|------|---------|
-| `/grill-me` | Before spec | Resolve all design decisions via structured interview |
-| `/writing-plans` | After spec | Create bite-sized TDD implementation plan |
-| `subagent-driven-development` | Execution | Dispatch fresh subagent per task + two-stage review |
-| `superpowers:code-reviewer` | After each task | Spec compliance + code quality review |
+Observed during Icon Implementation session (2026-03-22).
 
----
+### Workflow
 
-## Patterns to Encode in Component Skill
+1. `/grill-me` — resolve all design decisions before writing anything
+   - Audit client repo for real usage patterns first
+   - Walk each decision branch one at a time, Claude recommends, user picks
+   - Produces a decision summary table
+2. Write spec to `docs/specs/<component>.md`
+   - Goal, scope, decisions table, component API, file structure, implementation steps, session end checklist
+3. `/writing-plans` — create bite-sized TDD implementation plan at `docs/plans/YYYY-MM-DD-<component>.md`
+4. Execute with subagent-driven development
+   - Fresh subagent per task, controller provides full context
+   - Two-stage review after implementation tasks: spec compliance → code quality
+   - Skip reviews for trivial tasks (dep swaps, build verification, docs)
+5. Session end: `pnpm build` + `pnpm typecheck` must pass, update `CODEBASE.md` + `TODO.md`
 
-### Decision-first, code-second
-Every component session should start with a grill phase. No code until all decisions are resolved.
+### Skills used
 
-### Codebase audit before design
-Before asking the user about API design, audit the client repo for real usage patterns. This grounds decisions in reality, not hypotheticals.
-
-### Spec is the contract
-The spec reviewer validates against the spec, not against the plan or the code. The spec is the single source of truth for what the component should be.
-
-### Subagent isolation
-Each task gets a fresh subagent. The controller provides full context — the subagent never reads the plan file. This prevents context pollution and keeps each task focused.
-
-### Two-stage review
-1. **Spec compliance** — does the code match the spec? Nothing missing, nothing extra.
-2. **Code quality** — is the code correct, well-typed, consistent with codebase style?
-
-Spec compliance comes first. No point reviewing code quality if it doesn't match the spec.
-
-### Skip reviews for trivial tasks
-Dependency swaps, build verification, and docs updates don't need full two-stage review. The controller can verify these directly.
-
-### Brand icon pattern (for future custom SVGs)
-- Raw SVG source files go in `packages/web/src/components/icon/svg/`
-- React component wrappers go in `packages/web/src/components/icon/custom/`
-- Components adapt SVGs: `viewBox` preserved, `fill="currentColor"`, `width={size}` / `height={size}`
-- Registered in `registry.ts` alongside Lucide entries
+`/grill-me` → `/writing-plans` → `subagent-driven-development` → `superpowers:code-reviewer`
 
 ---
 
-## User Preferences (observed)
+## Step 2 — Component Docs Page
 
-- Prefers short, direct option labels — picks fast, doesn't need lengthy deliberation
-- Trusts Claude's recommendations — overrides only when Claude is wrong (e.g., Lucide brand icons being deprecated)
-- Wants clean breaks over migration shims
-- Scope discipline: DS package only, client migration is out of scope
-- Convention over enforcement: trusts documentation + TypeScript over runtime checks
+_TODO: capture workflow after completing a Step 2 session._
+
+---
+
+## Step 3 — Iframe Preview Infrastructure
+
+_TODO: capture workflow after completing a Step 3 session._
+
+---
+
+## Composition (Step 4)
+
+Once all three step workflows are documented, the Component Skill combines them:
+- Per component: Step 1 (implement) → Step 2 (docs page) → Step 3 (live preview)
+- Each step may span one or more sessions depending on context limits
+- The skill should encode the grill questions, spec template, plan template, and review gates
