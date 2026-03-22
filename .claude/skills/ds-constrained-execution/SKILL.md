@@ -7,8 +7,6 @@ description: Use when executing a phased implementation plan for the KISA design
 
 ## Overview
 
-This skill is the KISA DS replacement for `superpowers:executing-plans`. When a plan says `REQUIRED SUB-SKILL: Use superpowers:executing-plans`, ignore it — use this skill instead.
-
 Drives task-by-task execution with automatic DS constraint review after the file creation step of every task that touches `.tsx` files. Catches token violations, typography rule breaks, and accessibility errors before they compound.
 
 ## Detecting `.tsx` tasks
