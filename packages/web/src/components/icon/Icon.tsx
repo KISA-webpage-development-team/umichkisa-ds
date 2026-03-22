@@ -1,20 +1,35 @@
-import { cn } from "@/utils/cn";
+import React from "react";
+import type { LucideProps } from "lucide-react";
+import { registry } from "./registry";
+import type { IconProps, IconSize } from "./types";
 
-export type IconSize = "xs" | "sm" | "md" | "lg" | "xl";
-
-const sizeClass: Record<IconSize, string> = {
-  xs: "ds-icon-xs",
-  sm: "ds-icon-sm",
-  md: "ds-icon-md",
-  lg: "ds-icon-lg",
-  xl: "ds-icon-xl",
+const sizeMap: Record<IconSize, number> = {
+  xs: 12,
+  sm: 16,
+  md: 20,
+  lg: 24,
+  xl: 32,
 };
 
-export type IconBaseProps = {
-  size?: IconSize;
-  className?: string;
-};
+export function Icon({ name, size = "md", label, className }: IconProps) {
+  const LucideComponent = registry[name] as React.ComponentType<LucideProps>;
+  const px = sizeMap[size];
 
-export function iconClass(size: IconSize = "md", className?: string): string {
-  return cn(sizeClass[size], className);
+  if (label) {
+    return (
+      <LucideComponent
+        size={px}
+        className={className}
+        aria-label={label}
+      />
+    );
+  }
+
+  return (
+    <LucideComponent
+      size={px}
+      className={className}
+      aria-hidden="true"
+    />
+  );
 }

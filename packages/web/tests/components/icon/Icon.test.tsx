@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { render } from "@testing-library/react";
+import { render, cleanup } from "@testing-library/react";
 import { Icon } from "@/components/icon/Icon";
 import type { IconSize } from "@/components/icon/types";
 
@@ -29,7 +29,7 @@ describe("Icon", () => {
       const svg = container.querySelector("svg");
       expect(svg).toHaveAttribute("width", String(px));
       expect(svg).toHaveAttribute("height", String(px));
-      container.innerHTML = "";
+      cleanup();
     }
   });
 
