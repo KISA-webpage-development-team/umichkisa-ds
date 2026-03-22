@@ -186,3 +186,72 @@ opacity, do not hide it with `outline: none`.
     <pre><code>background-color: #00274c</code></pre>
   </Dont>
 </DoDont>
+
+---
+
+## Token → Utility Reference
+
+Every `--color-*` token registered in `@theme inline` generates three Tailwind utilities automatically: `bg-*`, `text-*`, and `border-*`. The table below lists the most natural utility or utilities for each token, grouped by semantic role.
+
+### Brand
+
+| CSS Variable | Tailwind Utility | Role |
+|---|---|---|
+| `--color-brand-primary` | `bg-brand-primary` / `text-brand-primary` / `border-brand-primary` | Michigan navy — primary brand surface and emphasis |
+| `--color-brand-primary-mid` | `text-brand-primary-mid` / `border-brand-primary-mid` | Mid-weight navy — hyperlinks, secondary highlights |
+| `--color-brand-accent` | `bg-brand-accent` / `text-brand-accent` | Michigan maize — attention signal, focus, CTAs |
+| `--color-brand-accent-subtle` | `bg-brand-accent-subtle` | Light maize tint — subtle accent backgrounds |
+
+### Interactive States
+
+| CSS Variable | Tailwind Utility | Role |
+|---|---|---|
+| `--color-brand-primary-hover` | `bg-brand-primary-hover` | Navy hover state background |
+| `--color-brand-primary-pressed` | `bg-brand-primary-pressed` | Navy pressed/active state background |
+| `--color-brand-accent-hover` | `bg-brand-accent-hover` | Maize hover state background |
+| `--color-brand-accent-pressed` | `bg-brand-accent-pressed` | Maize pressed/active state background |
+| `--color-focus-ring` | `outline-focus-ring` / `ring-focus-ring` | Maize focus ring — keyboard navigation indicator |
+
+### Surface
+
+| CSS Variable | Tailwind Utility | Role |
+|---|---|---|
+| `--color-surface` | `bg-surface` | Page background (white) |
+| `--color-surface-subtle` | `bg-surface-subtle` | Cards, panels — first depth level (gray-100) |
+| `--color-surface-muted` | `bg-surface-muted` | Items inside cards — second depth level (gray-50) |
+
+### Border
+
+| CSS Variable | Tailwind Utility | Role |
+|---|---|---|
+| `--color-border` | `border-border` | Default border — dividers, input outlines (gray-200) |
+| `--color-border-strong` | `border-border-strong` | Stronger border — hover states, emphasis (gray-300) |
+
+### Text
+
+| CSS Variable | Tailwind Utility | Role |
+|---|---|---|
+| `--color-foreground` | `text-foreground` | Primary text — all readable content (gray-900) |
+| `--color-muted-foreground` | `text-muted-foreground` | Secondary text — captions, metadata, helper text (gray-500) |
+| `--color-disabled-foreground` | `text-disabled-foreground` | Disabled state text and icons (gray-400) |
+| `--color-brand-foreground` | `text-brand-foreground` | Text on brand-primary backgrounds — maize on navy |
+| `--color-link` | `text-link` | Hyperlink text color — signals clickability |
+
+### Feedback
+
+| CSS Variable | Tailwind Utility | Role |
+|---|---|---|
+| `--color-error` | `text-error` / `border-error` | Error state — icons, borders, text labels |
+| `--color-error-subtle` | `bg-error-subtle` | Error state — alert and callout box background |
+| `--color-success` | `text-success` / `border-success` | Success state — icons and borders (pair with `text-foreground` label) |
+| `--color-success-subtle` | `bg-success-subtle` | Success state — alert and callout box background |
+| `--color-warning` | `text-warning` / `border-warning` | Warning state — icons and borders (pair with `text-foreground` label) |
+| `--color-warning-subtle` | `bg-warning-subtle` | Warning state — alert and callout box background |
+| `--color-info` | `text-info` / `border-info` | Info state — neutral notices, documentation callouts |
+| `--color-info-subtle` | `bg-info-subtle` | Info state — alert and callout box background |
+
+### Overlay
+
+| CSS Variable | Tailwind Utility | Role |
+|---|---|---|
+| `--color-overlay` | `bg-overlay` | Modal/dialog scrim — semi-transparent black (40% opacity) |

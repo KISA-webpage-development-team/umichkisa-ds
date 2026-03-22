@@ -88,19 +88,19 @@ Avoid: `sm:`, `xl:`, or `2xl:` breakpoint prefixes for typography overrides — 
 ### Usage
 
 Must: Always pair an explicit color token with every `type-*` class — `type-*` classes do not set color. [source:foundation/typography/usage]
-Must: Use `text-text-primary` for readable content; `text-text-muted` for supporting or secondary text. [source:foundation/typography/usage]
+Must: Use `text-foreground` for readable content; `text-muted-foreground` for supporting or secondary text. [source:foundation/typography/usage]
 Never: Apply weight utilities (`font-semibold`, `font-bold`) to entire text containers for emphasis — use `<strong>` for inline emphasis within body text; use a higher `type-*` class for block-level weight changes. [source:foundation/typography/usage]
 Must: Keep body text within `max-w-prose` (~65 characters) in article and long-form reading contexts. [source:foundation/typography/usage]
 
 ### State Typography
 
-Must: Disabled text uses the same `type-*` class as its active state — only color changes to `text-text-disabled`. Never reduce weight or size to communicate disabled state. [source:foundation/typography/usage]
+Must: Disabled text uses the same `type-*` class as its active state — only color changes to `text-disabled-foreground`. Never reduce weight or size to communicate disabled state. [source:foundation/typography/usage]
 Must: Use `type-caption` + `text-error` for error messages below form fields. [source:foundation/typography/usage]
-Must: Use `type-caption` + `text-text-muted` for helper text (instructions, character counts, format hints). [source:foundation/typography/usage]
+Must: Use `type-caption` + `text-muted-foreground` for helper text (instructions, character counts, format hints). [source:foundation/typography/usage]
 
 ### Links
 
-Must: Use `text-text-link` for all link color — never `text-text-primary`. [source:foundation/typography/usage]
+Must: Use `text-link` for all link color — never `text-foreground`. [source:foundation/typography/usage]
 Must: Underline links by default (`underline`). Hover state: `text-brand-primary`. No separate visited style. [source:foundation/typography/usage]
 Never: Apply a separate `type-*` class to links — links inherit the type class of their container. [source:foundation/typography/usage]
 
@@ -179,7 +179,7 @@ Never: Set icon size via `text-*` font-size utilities — SVG size is controlled
 ### Color
 
 Must: Control icon color through the parent element's text color using semantic tokens — icons inherit `currentColor`. [source:foundation/iconography/usage]
-Must: Use `text-text-disabled` for disabled icons — same token as disabled text. Never reduce size or weight to communicate disabled state. [source:foundation/iconography/usage]
+Must: Use `text-disabled-foreground` for disabled icons — same token as disabled text. Never reduce size or weight to communicate disabled state. [source:foundation/iconography/usage]
 Never: Pass color or fill values directly to `<Icon>` — use semantic token classes on the parent wrapper. [source:foundation/iconography/usage]
 
 ### Interactivity
@@ -214,9 +214,9 @@ Must: Pair `--color-warning` (3.0:1) and `--color-success` with `--color-text-pr
 
 ### Typography — Readability & State Communication
 
-Must: Never communicate disabled state through reduced font size or weight — color (`text-text-disabled`) is the only permitted signal. Reducing size or weight harms readability for low-vision users. [source:foundation/typography/usage]
+Must: Never communicate disabled state through reduced font size or weight — color (`text-disabled-foreground`) is the only permitted signal. Reducing size or weight harms readability for low-vision users. [source:foundation/typography/usage]
 Must: Error and helper text must use `type-caption` (0.75rem / 12px) as the minimum — never use custom smaller sizes below this floor. [source:foundation/typography/usage]
-Must: Links must be distinguishable from surrounding static text by both color (`text-text-link`) and decoration (`underline`) — color alone is not sufficient. [source:foundation/typography/usage]
+Must: Links must be distinguishable from surrounding static text by both color (`text-link`) and decoration (`underline`) — color alone is not sufficient. [source:foundation/typography/usage]
 Must: Keep body text within `max-w-prose` (~65 characters) — lines that stretch full container width impair readability for users with cognitive or visual processing differences. [source:foundation/typography/usage]
 
 ### Layout — Landmark Regions & Skip Navigation
@@ -237,7 +237,7 @@ Must: Interactive wrappers around icons must be at least 44×44px. Use `min-w-[4
 Never: Rely on padding calculated from icon pixel size for touch target — changing the `size` prop would break the math. [source:foundation/iconography/accessibility]
 Never: Use `--color-success` (2.2:1) as a standalone icon color — fails non-text contrast (3:1 required). [source:foundation/iconography/accessibility]
 Never: Use `--color-warning` (3.0:1) as a standalone icon color — at the exact floor, not a safe pass. [source:foundation/iconography/accessibility]
-Must: When using `--color-success` or `--color-warning` for feedback icons, always pair with a `text-text-primary` text label. The label carries the accessible meaning. [source:foundation/iconography/accessibility]
+Must: When using `--color-success` or `--color-warning` for feedback icons, always pair with a `text-foreground` text label. The label carries the accessible meaning. [source:foundation/iconography/accessibility]
 Must: Decorative icons (`aria-hidden="true"`) have no contrast requirement. Only semantic icons (with `label` prop) are subject to the 3:1 non-text contrast threshold. [source:foundation/iconography/accessibility]
 
 ---

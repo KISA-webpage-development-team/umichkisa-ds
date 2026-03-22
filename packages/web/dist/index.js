@@ -16,8 +16,8 @@ var buttonVariants = cva(
     variants: {
       variant: {
         primary: "bg-[var(--color-brand-primary)] border border-[var(--color-brand-primary)] text-[var(--color-brand-accent)] hover:border-[var(--color-brand-accent)]",
-        secondary: "bg-slate-100 border border-slate-100 text-[var(--color-text-primary)] hover:bg-slate-200",
-        tertiary: "border-none text-[var(--color-text-primary)] hover:underline"
+        secondary: "bg-slate-100 border border-slate-100 text-[var(--color-foreground)] hover:bg-slate-200",
+        tertiary: "border-none text-[var(--color-foreground)] hover:underline"
       }
     },
     defaultVariants: {
@@ -55,8 +55,8 @@ var linkButtonVariants = cva2(
     variants: {
       variant: {
         primary: "bg-[var(--color-brand-primary)] border border-[var(--color-brand-primary)] text-[var(--color-brand-accent)] hover:border-[var(--color-brand-accent)]",
-        secondary: "bg-slate-100 border border-slate-100 text-[var(--color-text-primary)] hover:bg-slate-200",
-        tertiary: "border-none text-[var(--color-text-primary)] hover:underline"
+        secondary: "bg-slate-100 border border-slate-100 text-[var(--color-foreground)] hover:bg-slate-200",
+        tertiary: "border-none text-[var(--color-foreground)] hover:underline"
       }
     },
     defaultVariants: {
@@ -87,8 +87,8 @@ var iconButtonVariants = cva3(
     variants: {
       variant: {
         primary: "bg-[var(--color-brand-primary)] border border-[var(--color-brand-primary)] text-[var(--color-brand-accent)] hover:border-[var(--color-brand-accent)]",
-        secondary: "bg-slate-100 border border-slate-100 text-[var(--color-text-primary)] hover:bg-slate-200",
-        tertiary: "border-none text-[var(--color-text-primary)] hover:underline"
+        secondary: "bg-slate-100 border border-slate-100 text-[var(--color-foreground)] hover:bg-slate-200",
+        tertiary: "border-none text-[var(--color-foreground)] hover:underline"
       }
     },
     defaultVariants: {
@@ -151,7 +151,7 @@ var Input = memo(function Input2({
       disabled,
       "aria-invalid": invalid,
       className: cn(
-        "w-full px-3 py-2 border border-[var(--color-border-strong)] rounded-md text-sm md:text-base text-[var(--color-text-primary)] bg-[var(--color-surface)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-primary)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors",
+        "w-full px-3 py-2 border border-[var(--color-border-strong)] rounded-md text-sm md:text-base text-[var(--color-foreground)] bg-[var(--color-surface)] placeholder:text-[var(--color-muted-foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-primary)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors",
         invalid && "border-[var(--color-error)] focus:ring-[var(--color-error)]",
         className
       )
@@ -167,7 +167,7 @@ function Label({ htmlFor, required = false, className, children }) {
     {
       htmlFor,
       className: cn(
-        "text-sm font-medium text-[var(--color-text-primary)]",
+        "text-sm font-medium text-[var(--color-foreground)]",
         className
       ),
       children: [
@@ -277,8 +277,8 @@ function ToggleBar({ activeView, onViewChange, items, className }) {
       "aria-selected": activeView === item.view,
       onClick: () => onViewChange(item.view),
       className: cn(
-        "px-3 py-2 flex items-center gap-1 cursor-pointer border-b-2 border-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors",
-        activeView === item.view && "border-b-2 border-[var(--color-brand-primary)] text-[var(--color-text-primary)] font-semibold"
+        "px-3 py-2 flex items-center gap-1 cursor-pointer border-b-2 border-transparent text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] transition-colors",
+        activeView === item.view && "border-b-2 border-[var(--color-brand-primary)] text-[var(--color-foreground)] font-semibold"
       ),
       children: [
         item.icon,
@@ -313,7 +313,7 @@ function LoadingSpinner({
             "aria-label": label
           }
         ),
-        /* @__PURE__ */ jsx10("p", { className: "text-sm font-medium text-[var(--color-text-muted)]", children: label })
+        /* @__PURE__ */ jsx10("p", { className: "text-sm font-medium text-[var(--color-muted-foreground)]", children: label })
       ]
     }
   );
@@ -323,8 +323,8 @@ function LoadingSpinner({
 import { jsx as jsx11, jsxs as jsxs6 } from "react/jsx-runtime";
 function NotFound() {
   return /* @__PURE__ */ jsx11("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ jsxs6("div", { className: "max-w-lg w-full text-center", children: [
-    /* @__PURE__ */ jsx11("h1", { className: "text-4xl font-bold text-[var(--color-text-primary)] mb-4", children: "404" }),
-    /* @__PURE__ */ jsx11("p", { className: "text-lg md:text-2xl font-semibold text-[var(--color-text-muted)] mb-6", children: "\uC874\uC7AC\uD558\uC9C0 \uC54A\uB294 \uD398\uC774\uC9C0\uC785\uB2C8\uB2E4" }),
+    /* @__PURE__ */ jsx11("h1", { className: "text-4xl font-bold text-[var(--color-foreground)] mb-4", children: "404" }),
+    /* @__PURE__ */ jsx11("p", { className: "text-lg md:text-2xl font-semibold text-[var(--color-muted-foreground)] mb-6", children: "\uC874\uC7AC\uD558\uC9C0 \uC54A\uB294 \uD398\uC774\uC9C0\uC785\uB2C8\uB2E4" }),
     /* @__PURE__ */ jsx11("div", { className: "flex justify-center w-[60%] mx-auto", children: /* @__PURE__ */ jsx11(LinkButton, { href: "/", variant: "primary", children: "\uD648\uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00\uAE30" }) })
   ] }) });
 }
@@ -333,7 +333,7 @@ function NotFound() {
 import { jsx as jsx12, jsxs as jsxs7 } from "react/jsx-runtime";
 function NotLogin() {
   return /* @__PURE__ */ jsx12("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ jsxs7("div", { className: "max-w-lg w-full text-center", children: [
-    /* @__PURE__ */ jsx12("h1", { className: "text-2xl font-bold text-[var(--color-text-primary)] mb-4", children: "\uB85C\uADF8\uC778\uC774 \uD544\uC694\uD569\uB2C8\uB2E4" }),
+    /* @__PURE__ */ jsx12("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uB85C\uADF8\uC778\uC774 \uD544\uC694\uD569\uB2C8\uB2E4" }),
     /* @__PURE__ */ jsx12("div", { className: "flex justify-center", children: /* @__PURE__ */ jsx12(LinkButton, { href: "/signin", variant: "primary", children: "\uB85C\uADF8\uC778\uD558\uAE30" }) })
   ] }) });
 }
@@ -342,7 +342,7 @@ function NotLogin() {
 import { jsx as jsx13, jsxs as jsxs8 } from "react/jsx-runtime";
 function NotAuthorized() {
   return /* @__PURE__ */ jsx13("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ jsxs8("div", { className: "max-w-lg w-full text-center", children: [
-    /* @__PURE__ */ jsx13("h1", { className: "text-2xl font-bold text-[var(--color-text-primary)] mb-4", children: "\uC811\uADFC \uAD8C\uD55C\uC774 \uC5C6\uC2B5\uB2C8\uB2E4" }),
+    /* @__PURE__ */ jsx13("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uC811\uADFC \uAD8C\uD55C\uC774 \uC5C6\uC2B5\uB2C8\uB2E4" }),
     /* @__PURE__ */ jsx13("div", { className: "flex justify-center", children: /* @__PURE__ */ jsx13(LinkButton, { href: "/", variant: "primary", children: "\uD648\uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00\uAE30" }) })
   ] }) });
 }
@@ -351,8 +351,8 @@ function NotAuthorized() {
 import { jsx as jsx14, jsxs as jsxs9 } from "react/jsx-runtime";
 function UnexpectedError({ onRetry }) {
   return /* @__PURE__ */ jsx14("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ jsxs9("div", { className: "max-w-lg w-full text-center", children: [
-    /* @__PURE__ */ jsx14("h1", { className: "text-2xl font-bold text-[var(--color-text-primary)] mb-4", children: "\uC624\uB958\uAC00 \uBC1C\uC0DD\uD588\uC2B5\uB2C8\uB2E4" }),
-    /* @__PURE__ */ jsx14("p", { className: "text-[var(--color-text-muted)] mb-6", children: "\uC7A0\uC2DC \uD6C4 \uB2E4\uC2DC \uC2DC\uB3C4\uD574\uC8FC\uC138\uC694." }),
+    /* @__PURE__ */ jsx14("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uC624\uB958\uAC00 \uBC1C\uC0DD\uD588\uC2B5\uB2C8\uB2E4" }),
+    /* @__PURE__ */ jsx14("p", { className: "text-[var(--color-muted-foreground)] mb-6", children: "\uC7A0\uC2DC \uD6C4 \uB2E4\uC2DC \uC2DC\uB3C4\uD574\uC8FC\uC138\uC694." }),
     onRetry && /* @__PURE__ */ jsx14(Button, { onClick: onRetry, variant: "primary", children: "\uB2E4\uC2DC \uC2DC\uB3C4" })
   ] }) });
 }
@@ -559,7 +559,7 @@ function DialogTitle({ children, className }) {
   return /* @__PURE__ */ jsx34(
     RadixDialog.Title,
     {
-      className: cn("text-lg font-semibold text-[var(--color-text-primary)] mb-4", className),
+      className: cn("text-lg font-semibold text-[var(--color-foreground)] mb-4", className),
       children
     }
   );
@@ -592,7 +592,7 @@ function DropdownItem({ children, onSelect, className }) {
       onSelect,
       className: cn(
         "relative flex cursor-pointer select-none items-center rounded-sm px-3 py-2",
-        "text-sm text-[var(--color-text-primary)]",
+        "text-sm text-[var(--color-foreground)]",
         "hover:bg-[var(--color-surface-muted)] focus:outline-none",
         className
       ),
