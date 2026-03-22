@@ -92,8 +92,28 @@ The client currently uses: custom CSS components + shadcn primitives (accordion,
 
 ---
 
+## Docs App Infrastructure
+
+### `apps/docs/app/globals.css`
+Imports the DS theme via `@import "@umichkisa-ds/web/theme.css"`. No manual `@theme` block — all design tokens come from the library's token layer.
+
+### `apps/docs/app/layout.tsx`
+No `dist/styles.css` import. Font injection handled separately (unchanged). Token layer supplied via `globals.css`.
+
+---
+
 ## Docs UI Components (not part of the library)
 
 Already built for the docs site itself:
 `ColorSwatch`, `ColorSwatchGrid`, `ContrastTable`, `DoDont`, `Callout`, `Sidebar`, `Header`
 Located in `apps/docs/components/`.
+
+### Token Alignment Audit (Step 0.5)
+| Component | Status | Notes |
+|---|---|---|
+| `DocsShell` | ✅ Clean | No raw color violations |
+| `Header` | ✅ Clean | No raw color violations |
+| `Sidebar` | ✅ Clean | No raw color violations |
+| `Callout` | ⚠ DS gap | Uses Tailwind color utilities not yet mapped to DS semantic tokens |
+| `DoDont` | ⚠ DS gap | Uses Tailwind color utilities not yet mapped to DS semantic tokens |
+| `ContrastTable` | ⚠ DS gap | Uses Tailwind color utilities not yet mapped to DS semantic tokens |
