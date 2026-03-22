@@ -1,57 +1,23 @@
 @import "tailwindcss";
+@import "@umichkisa-ds/web/theme.css";
 
-/* ── Content Sources ───────────────────────────────────────────── */
+/* ── Content Sources ──────────────────────────────────────────────── */
 /*
- * Explicit @source directives are required in this pnpm monorepo
- * because Tailwind v4's auto-detection resolves to the workspace root
- * rather than this package, causing zero utilities to be generated.
+ * Explicit @source directives are required in this pnpm monorepo because
+ * Tailwind v4's auto-detection resolves to the workspace root rather than
+ * this package, causing zero utilities to be generated.
  */
 @source "../app/**/*.{tsx,ts,mdx,md}";
 @source "../components/**/*.{tsx,ts}";
 @source "../content/**/*.{md,mdx}";
 
-/* ── DS Token → Tailwind Utility Mapping ───────────────────────── */
+/* ── Docs-App Layout Variables ───────────────────────────────────── */
 /*
- * @theme inline: registers utilities WITHOUT emitting new CSS vars.
- * The variables below are already defined by @umichkisa-ds/web/dist/styles.css
- * (imported in layout.tsx before this file).
- *
- * Generated utilities:
- *   --color-brand-primary     → bg-brand-primary, text-brand-primary, border-brand-primary
- *   --color-brand-primary-mid → bg-brand-primary-mid, text-brand-primary-mid
- *   --color-surface           → bg-surface, text-surface
- *   --color-surface-muted     → bg-surface-muted
- *   --color-surface-subtle    → bg-surface-subtle
- *   --color-border            → border-border
- *   --color-foreground        → text-foreground
- *   --color-muted-foreground  → text-muted-foreground
- *   --color-michigan-maize    → bg-michigan-maize
- *   --color-michigan-blue     → text-michigan-blue
- *
- * Note: font utilities (font-sejong-bold, font-sejong-light) are registered
- * in packages/web/src/styles/index.css, not here.
- */
-@theme inline {
-  --color-brand-primary:  var(--color-brand-primary);
-  --color-brand-primary-mid: var(--color-brand-primary-mid);
-  --color-surface:        var(--color-surface);
-  --color-surface-muted:  var(--color-surface-muted);
-  --color-surface-subtle: var(--color-surface-subtle);
-  --color-border:         var(--color-border);
-  --color-foreground:     var(--color-foreground);
-  --color-muted-foreground: var(--color-muted-foreground);
-  --color-michigan-maize: var(--primitive-michigan-maize);
-  --color-michigan-blue:  var(--primitive-michigan-blue);
-}
-
-/* ── Layout Variables ──────────────────────────────────────────── */
-/*
- * Not in @theme because they are used in calc() inside arbitrary
- * Tailwind values, e.g. min-h-[calc(100vh-var(--docs-header-h))].
+ * These are docs-specific layout constants, not DS tokens.
+ * Used in calc() inside arbitrary Tailwind values, e.g.
+ * min-h-[calc(100vh-var(--docs-header-h))].
  */
 :root {
-  --font-pretendard: 'Pretendard Variable', system-ui, sans-serif;
-
   --docs-header-h:  80px;
   --docs-sidebar-w: 240px;
 
@@ -64,7 +30,7 @@
   --docs-z-skip:    100;
 }
 
-/* ── Base ──────────────────────────────────────────────────────── */
+/* ── Base ──────────────────────────────────────────────────────────── */
 @layer base {
   *, *::before, *::after { box-sizing: border-box; }
 

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import { Geist_Mono } from 'next/font/google'
-import '@umichkisa-ds/web/dist/styles.css'
 import './globals.css'
 import { DocsShell } from '@/components/DocsShell'
 
