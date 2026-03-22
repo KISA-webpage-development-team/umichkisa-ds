@@ -36,8 +36,8 @@
   --color-surface-muted:  var(--color-surface-muted);
   --color-surface-subtle: var(--color-surface-subtle);
   --color-border:         var(--color-border);
-  --color-text-primary:   var(--color-text-primary);
-  --color-text-muted:     var(--color-text-muted);
+  --color-text-primary:   var(--color-foreground);
+  --color-text-muted:     var(--color-muted-foreground);
   --color-michigan-maize: var(--primitive-michigan-maize);
   --color-michigan-blue:  var(--primitive-michigan-blue);
   --font-sejong-bold:     var(--font-sejong-bold);
@@ -73,7 +73,7 @@
   body {
     margin: 0;
     background: var(--color-surface);
-    color: var(--color-text-primary);
+    color: var(--color-foreground);
     font-family: var(--font-pretendard), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
   }

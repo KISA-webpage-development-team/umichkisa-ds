@@ -4,7 +4,7 @@ export function NotLogin() {
   return (
     <div className="h-full flex items-center justify-center px-4">
       <div className="max-w-lg w-full text-center">
-        <h1 className="text-2xl font-bold text-[var(--color-text-primary)] mb-4">
+        <h1 className="text-2xl font-bold text-[var(--color-foreground)] mb-4">
           로그인이 필요합니다
         </h1>
         <div className="flex justify-center">

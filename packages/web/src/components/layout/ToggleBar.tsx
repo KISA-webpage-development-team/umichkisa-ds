@@ -23,9 +23,9 @@ export function ToggleBar({ activeView, onViewChange, items, className }: Toggle
           aria-selected={activeView === item.view}
           onClick={() => onViewChange(item.view)}
           className={cn(
-            "px-3 py-2 flex items-center gap-1 cursor-pointer border-b-2 border-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors",
+            "px-3 py-2 flex items-center gap-1 cursor-pointer border-b-2 border-transparent text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] transition-colors",
             activeView === item.view &&
-              "border-b-2 border-[var(--color-brand-primary)] text-[var(--color-text-primary)] font-semibold"
+              "border-b-2 border-[var(--color-brand-primary)] text-[var(--color-foreground)] font-semibold"
           )}
         >
           {item.icon}

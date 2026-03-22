@@ -24,7 +24,7 @@ export function LoadingSpinner({
         role="status"
         aria-label={label}
       />
-      <p className="text-sm font-medium text-[var(--color-text-muted)]">{label}</p>
+      <p className="text-sm font-medium text-[var(--color-muted-foreground)]">{label}</p>
     </div>
   );
 }

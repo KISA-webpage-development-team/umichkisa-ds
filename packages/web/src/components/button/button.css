@@ -19,14 +19,14 @@
   .btn-secondary {
     @apply btn-base
       bg-slate-100 border border-slate-100
-      text-[var(--color-text-primary)]
+      text-[var(--color-foreground)]
       hover:bg-slate-200;
   }
 
   .btn-tertiary {
     @apply btn-base
       border-none
-      text-[var(--color-text-primary)]
+      text-[var(--color-foreground)]
       hover:underline;
   }
 }

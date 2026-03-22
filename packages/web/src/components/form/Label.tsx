@@ -12,7 +12,7 @@ export function Label({ htmlFor, required = false, className, children }: LabelP
     <label
       htmlFor={htmlFor}
       className={cn(
-        "text-sm font-medium text-[var(--color-text-primary)]",
+        "text-sm font-medium text-[var(--color-foreground)]",
         className
       )}
     >

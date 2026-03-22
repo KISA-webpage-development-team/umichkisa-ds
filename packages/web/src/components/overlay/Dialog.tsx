@@ -37,7 +37,7 @@ export type DialogTitleProps = {
 export function DialogTitle({ children, className }: DialogTitleProps) {
   return (
     <RadixDialog.Title
-      className={cn("text-lg font-semibold text-[var(--color-text-primary)] mb-4", className)}
+      className={cn("text-lg font-semibold text-[var(--color-foreground)] mb-4", className)}
     >
       {children}
     </RadixDialog.Title>

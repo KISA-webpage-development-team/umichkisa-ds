@@ -9,9 +9,9 @@ const iconButtonVariants = cva(
         primary:
           "bg-[var(--color-brand-primary)] border border-[var(--color-brand-primary)] text-[var(--color-brand-accent)] hover:border-[var(--color-brand-accent)]",
         secondary:
-          "bg-slate-100 border border-slate-100 text-[var(--color-text-primary)] hover:bg-slate-200",
+          "bg-slate-100 border border-slate-100 text-[var(--color-foreground)] hover:bg-slate-200",
         tertiary:
-          "border-none text-[var(--color-text-primary)] hover:underline",
+          "border-none text-[var(--color-foreground)] hover:underline",
       },
     },
     defaultVariants: {

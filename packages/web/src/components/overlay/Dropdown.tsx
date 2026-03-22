@@ -39,7 +39,7 @@ export function DropdownItem({ children, onSelect, className }: DropdownItemProp
       onSelect={onSelect}
       className={cn(
         "relative flex cursor-pointer select-none items-center rounded-sm px-3 py-2",
-        "text-sm text-[var(--color-text-primary)]",
+        "text-sm text-[var(--color-foreground)]",
         "hover:bg-[var(--color-surface-muted)] focus:outline-none",
         className
       )}

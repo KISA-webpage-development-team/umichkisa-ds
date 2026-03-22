@@ -47,7 +47,7 @@ function PassBadge({ passes }: { passes: PassResult }) {
       className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide"
       style={{
         backgroundColor: "var(--color-surface-subtle)",
-        color: "var(--color-text-muted)",
+        color: "var(--color-muted-foreground)",
         border: "1px solid var(--color-border)",
       }}
     >
@@ -94,7 +94,7 @@ export function ContrastTable({ rows }: ContrastTableProps) {
                 className="px-4 py-3 text-left"
                 style={{
                   borderBottom: "1px solid var(--color-border)",
-                  color: "var(--color-text-muted)",
+                  color: "var(--color-muted-foreground)",
                   fontSize: "11px",
                   fontWeight: 600,
                   letterSpacing: "0.07em",
@@ -127,7 +127,7 @@ export function ContrastTable({ rows }: ContrastTableProps) {
                   <ColorDot token={row.foreground} />
                   <code
                     className="text-xs"
-                    style={{ color: "var(--color-text-primary)" }}
+                    style={{ color: "var(--color-foreground)" }}
                   >
                     {row.foreground}
                   </code>
@@ -140,7 +140,7 @@ export function ContrastTable({ rows }: ContrastTableProps) {
                   <ColorDot token={row.background} />
                   <code
                     className="text-xs"
-                    style={{ color: "var(--color-text-primary)" }}
+                    style={{ color: "var(--color-foreground)" }}
                   >
                     {row.background}
                   </code>
@@ -151,7 +151,7 @@ export function ContrastTable({ rows }: ContrastTableProps) {
               <td className="px-4 py-3">
                 <span
                   className="font-mono text-sm font-bold tabular-nums"
-                  style={{ color: "var(--color-text-primary)" }}
+                  style={{ color: "var(--color-foreground)" }}
                 >
                   {row.ratio}
                 </span>

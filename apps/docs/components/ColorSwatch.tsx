@@ -49,7 +49,7 @@ export function ColorSwatch({ token, value, hex, label }: ColorSwatchProps) {
       >
         <p
           className="break-all font-mono text-[11px] font-semibold leading-snug"
-          style={{ color: "var(--color-text-primary)" }}
+          style={{ color: "var(--color-foreground)" }}
         >
           {token}
         </p>
@@ -57,7 +57,7 @@ export function ColorSwatch({ token, value, hex, label }: ColorSwatchProps) {
         {value && (
           <p
             className="font-mono text-[10px] leading-snug"
-            style={{ color: "var(--color-text-muted)" }}
+            style={{ color: "var(--color-muted-foreground)" }}
           >
             {value}
           </p>
@@ -66,7 +66,7 @@ export function ColorSwatch({ token, value, hex, label }: ColorSwatchProps) {
         {hex && (
           <p
             className="font-mono text-[10px] uppercase leading-snug"
-            style={{ color: "var(--color-text-muted)" }}
+            style={{ color: "var(--color-muted-foreground)" }}
           >
             {hex}
           </p>
@@ -74,7 +74,7 @@ export function ColorSwatch({ token, value, hex, label }: ColorSwatchProps) {
 
         <p
           className="pt-0.5 text-[11px] font-medium"
-          style={{ color: "var(--color-text-muted)" }}
+          style={{ color: "var(--color-muted-foreground)" }}
         >
           {label}
         </p>

@@ -10,7 +10,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // Headings
     h1: ({ children }) => (
       <h1
-        style={{ color: "var(--color-text-primary)" }}
+        style={{ color: "var(--color-foreground)" }}
         className="text-3xl font-bold mt-8 mb-4"
       >
         {children}
@@ -18,7 +18,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     h2: ({ children }) => (
       <h2
-        style={{ color: "var(--color-text-primary)" }}
+        style={{ color: "var(--color-foreground)" }}
         className="text-2xl font-semibold mt-10 mb-4"
       >
         {children}
@@ -26,7 +26,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     h3: ({ children }) => (
       <h3
-        style={{ color: "var(--color-text-primary)" }}
+        style={{ color: "var(--color-foreground)" }}
         className="text-base font-semibold mt-6 mb-2"
       >
         {children}
@@ -36,7 +36,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // Paragraph
     p: ({ children }) => (
       <p
-        style={{ color: "var(--color-text-primary)" }}
+        style={{ color: "var(--color-foreground)" }}
         className="mb-4 leading-7"
       >
         {children}
@@ -53,7 +53,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         className="border-l-[3px] pl-4 py-2 my-4 rounded-r"
       >
         <span
-          style={{ color: "var(--color-text-muted)" }}
+          style={{ color: "var(--color-muted-foreground)" }}
           className="italic block"
         >
           {children}
@@ -70,7 +70,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     li: ({ children }) => (
       <li
-        style={{ color: "var(--color-text-primary)" }}
+        style={{ color: "var(--color-foreground)" }}
         className="leading-7"
       >
         {children}
@@ -88,7 +88,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // Inline elements
     strong: ({ children }) => (
       <strong
-        style={{ color: "var(--color-text-primary)" }}
+        style={{ color: "var(--color-foreground)" }}
         className="font-semibold"
       >
         {children}
@@ -97,7 +97,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     a: ({ children, href, ...props }) => (
       <a
         href={href}
-        style={{ color: "var(--color-text-link)" }}
+        style={{ color: "var(--color-link)" }}
         className="underline-offset-2 hover:underline"
         {...props}
       >
@@ -115,7 +115,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         <code
           style={{
             backgroundColor: "var(--color-surface-subtle)",
-            color: "var(--color-text-primary)",
+            color: "var(--color-foreground)",
           }}
           className="rounded px-1.5 py-0.5 text-[0.875em] font-mono"
           {...props}
@@ -158,7 +158,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     th: ({ children }) => (
       <th
         style={{
-          color: "var(--color-text-muted)",
+          color: "var(--color-muted-foreground)",
           borderBottomColor: "var(--color-border)",
         }}
         className="px-4 py-3 text-left font-semibold text-xs uppercase tracking-wide border-b"
@@ -168,7 +168,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     td: ({ children }) => (
       <td
-        style={{ color: "var(--color-text-primary)" }}
+        style={{ color: "var(--color-foreground)" }}
         className="px-4 py-3"
       >
         {children}
