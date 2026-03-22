@@ -94,7 +94,7 @@ export function Header({ onMenuClick, showSidebar }: HeaderProps) {
       </div>
 
       <div className="flex items-center gap-3">
-        <span className="bg-michigan-maize text-michigan-blue font-sejong-bold
+        <span className="bg-brand-accent text-brand-primary font-sejong-bold
           text-xs tracking-wide px-2.5 py-1
           rounded-full whitespace-nowrap">
           {DS_VERSION}

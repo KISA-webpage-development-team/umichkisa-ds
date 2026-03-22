@@ -80,7 +80,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
     <>
       {/* Backdrop: mobile-only, shown when open */}
       <div
-        className={`fixed inset-0 bg-black/35 z-[var(--docs-z-backdrop)] ${open ? 'block lg:hidden' : 'hidden'}`}
+        className={`fixed inset-0 bg-overlay z-[var(--docs-z-backdrop)] ${open ? 'block lg:hidden' : 'hidden'}`}
         onClick={onClose}
         aria-hidden="true"
       />
