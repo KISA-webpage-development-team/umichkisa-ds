@@ -23,7 +23,7 @@ Never: Use `-subtle` and `-muted` interchangeably — they serve different purpo
 
 ### Brand Colors
 
-Must: Use `--color-text-on-brand` (maize) for all text placed on `--color-brand-primary` backgrounds. [source:foundation/colors/usage]
+Must: Use `--color-brand-foreground` (maize) for all text placed on `--color-brand-primary` backgrounds. [source:foundation/colors/usage]
 Never: Use white text on `--color-brand-primary` backgrounds — white is not a KISA brand color and breaks visual identity. [source:foundation/colors/usage]
 Never: Use `--color-brand-accent` (maize) as link text color — low contrast on white and does not signal interactivity. [source:foundation/colors/usage]
 Avoid: Using brand colors as mid-page card or content backgrounds — disrupts reading flow and feels heavy. [source:foundation/colors/usage]
@@ -37,22 +37,22 @@ Never: Invent background colors outside the three surface tokens. [source:founda
 
 ### Text
 
-Must: Use `--color-text-link` (not `--color-brand-accent`) for all hyperlinks and inline clickable text. [source:foundation/colors/usage]
-Never: Use `--color-text-disabled` for content that needs to be read — intentionally below contrast thresholds. [source:foundation/colors/usage]
-Never: Use `--color-text-link` for decorative or non-interactive text. [source:foundation/colors/usage]
-Never: Use `--color-text-on-brand` outside of `--color-brand-primary` backgrounds. [source:foundation/colors/tokens]
+Must: Use `--color-link` (not `--color-brand-accent`) for all hyperlinks and inline clickable text. [source:foundation/colors/usage]
+Never: Use `--color-disabled-foreground` for content that needs to be read — intentionally below contrast thresholds. [source:foundation/colors/usage]
+Never: Use `--color-link` for decorative or non-interactive text. [source:foundation/colors/usage]
+Never: Use `--color-brand-foreground` outside of `--color-brand-primary` backgrounds. [source:foundation/colors/tokens]
 
 ### Info vs Link
 
-Never: Use `--color-info` and `--color-text-link` interchangeably — they resolve to the same value (`--primitive-michigan-blue-mid`) but serve distinct semantic roles. [source:foundation/colors/tokens]
-Must: Use `--color-info` for state indicators and alert borders; use `--color-text-link` for clickable inline text only. [source:foundation/colors/tokens]
+Never: Use `--color-info` and `--color-link` interchangeably — they resolve to the same value (`--primitive-michigan-blue-mid`) but serve distinct semantic roles. [source:foundation/colors/tokens]
+Must: Use `--color-info` for state indicators and alert borders; use `--color-link` for clickable inline text only. [source:foundation/colors/tokens]
 
 ### Feedback States
 
 Must: Use the solid and subtle token pair together for feedback states — solid token (`--color-error`, etc.) for icons, borders, and text labels; subtle token (`--color-error-subtle`, etc.) for the background container. [source:foundation/colors/usage]
 Never: Use `--color-success` as standalone text or icon color — fails both text (4.5:1) and non-text (3:1) contrast thresholds at 2.2:1. [source:foundation/colors/accessibility]
-Must: Pair `--color-success` with a `--color-text-primary` label for any readable content. [source:foundation/colors/accessibility]
-Must: Pair `--color-warning` with a `--color-text-primary` label — 3.0:1 is the exact threshold floor, not a comfortable pass. [source:foundation/colors/accessibility]
+Must: Pair `--color-success` with a `--color-foreground` label for any readable content. [source:foundation/colors/accessibility]
+Must: Pair `--color-warning` with a `--color-foreground` label — 3.0:1 is the exact threshold floor, not a comfortable pass. [source:foundation/colors/accessibility]
 Avoid: Using `--color-error` for small body text — passes large text only (3.9:1). [source:foundation/colors/accessibility]
 
 ### Interactive States
@@ -207,10 +207,10 @@ _Cross-cutting a11y rules consolidated from all foundation sections._
 
 Must: Maintain minimum 4.5:1 contrast ratio for normal body text (WCAG AA). [source:foundation/colors/accessibility]
 Must: Maintain minimum 3:1 contrast ratio for large text (18px+ or 14px bold) and non-text UI components (borders, icons). [source:foundation/colors/accessibility]
-Avoid: `--color-text-muted` at small text sizes on `--color-surface-subtle` — 4.2:1 passes large text only. Use `--color-text-primary` if the content needs to be readable at small sizes. [source:foundation/colors/accessibility]
-Avoid: `--color-text-muted` at small text sizes on `--color-surface-muted` — 3.8:1 passes large text only. Use `--color-text-primary` inside card detail rows if content is small. [source:foundation/colors/accessibility]
+Avoid: `--color-muted-foreground` at small text sizes on `--color-surface-subtle` — 4.2:1 passes large text only. Use `--color-foreground` if the content needs to be readable at small sizes. [source:foundation/colors/accessibility]
+Avoid: `--color-muted-foreground` at small text sizes on `--color-surface-muted` — 3.8:1 passes large text only. Use `--color-foreground` inside card detail rows if content is small. [source:foundation/colors/accessibility]
 Never: Use `--color-success` (2.2:1) as standalone text or icon color — fails both text and non-text contrast thresholds. [source:foundation/colors/accessibility]
-Must: Pair `--color-warning` (3.0:1) and `--color-success` with `--color-text-primary` labels whenever they convey readable information. [source:foundation/colors/accessibility]
+Must: Pair `--color-warning` (3.0:1) and `--color-success` with `--color-foreground` labels whenever they convey readable information. [source:foundation/colors/accessibility]
 
 ### Typography — Readability & State Communication
 

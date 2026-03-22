@@ -56,24 +56,24 @@ colors outside of these three tokens.
 
 Use the text tokens to communicate information priority.
 
-**`--color-text-primary`** — everything users need to read. Headings, body
+**`--color-foreground`** — everything users need to read. Headings, body
 paragraphs, button labels, form values. If it carries meaning, it gets primary.
 
-**`--color-text-muted`** — supporting information. Timestamps, captions, helper
+**`--color-muted-foreground`** — supporting information. Timestamps, captions, helper
 text below form fields, secondary metadata on cards. It is readable but visually
 recedes behind primary text.
 
-**`--color-text-disabled`** — text on disabled UI elements only. It is
+**`--color-disabled-foreground`** — text on disabled UI elements only. It is
 intentionally below WCAG contrast requirements because disabled elements are
 meant to signal "this is not available right now." Never use this token for
 content you actually want someone to read.
 
-**`--color-text-on-brand`** — the only text token to use when the background is
+**`--color-brand-foreground`** — the only text token to use when the background is
 `--color-brand-primary`. On a dark navy surface, gray-900 text is nearly
 invisible. Maize text is what belongs there. Do not use white — it is not a KISA
 brand color and it disrupts the visual identity.
 
-**`--color-text-link`** — hyperlinks only. It is a distinct blue that signals
+**`--color-link`** — hyperlinks only. It is a distinct blue that signals
 clickability. Do not use it for decorative text. Do not use `--color-brand-accent`
 (maize) for links — yellow text on a white background is nearly unreadable and
 gives no visual signal that the text is interactive.
@@ -139,7 +139,7 @@ opacity, do not hide it with `outline: none`.
 
 <DoDont>
   <Do>
-    <p>Use <code>--color-text-link</code> for hyperlinks. It is a readable blue that signals clickability.</p>
+    <p>Use <code>--color-link</code> for hyperlinks. It is a readable blue that signals clickability.</p>
     <pre><code>color: var(--color-link)</code></pre>
   </Do>
   <Dont>
@@ -152,7 +152,7 @@ opacity, do not hide it with `outline: none`.
 
 <DoDont>
   <Do>
-    <p>Use <code>--color-text-on-brand</code> when the background is <code>--color-brand-primary</code>. Maize on navy gives 8.2:1 contrast and is the KISA identity pair.</p>
+    <p>Use <code>--color-brand-foreground</code> when the background is <code>--color-brand-primary</code>. Maize on navy gives 8.2:1 contrast and is the KISA identity pair.</p>
     <pre><code>color: var(--color-brand-foreground)</code></pre>
   </Do>
   <Dont>
