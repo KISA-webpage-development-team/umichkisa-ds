@@ -152,6 +152,26 @@ export default function IconPage() {
         </button>
       </ComponentPreview>
 
+      {/* ── Available Icons ──────────────────────────────────── */}
+      <h2 className="type-h2 mt-12 mb-4 text-foreground">Available Icons</h2>
+      <p className="type-body-sm mb-6 text-muted-foreground max-w-prose">
+        25 icons in the current registry (23 Lucide + 2 custom brand icons).
+      </p>
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(96px,1fr))] gap-4 my-6">
+        {([
+          'arrow-left','arrow-right','chevron-right','chevron-down',
+          'circle-minus','circle-plus','clock-9','external-link',
+          'eye','graduation-cap','list','lock','mail','message-square',
+          'minus','pencil','plus','reply','shopping-cart','thumbs-up',
+          'ticket','trash-2','x','github','linkedin',
+        ] as const).map((name) => (
+          <div key={name} className="flex flex-col items-center gap-2 p-3 rounded-lg bg-surface-subtle border border-border">
+            <Icon name={name} size="md" />
+            <span className="type-caption font-mono text-muted-foreground text-center break-all">{name}</span>
+          </div>
+        ))}
+      </div>
+
       {/* ── API Reference ────────────────────────────────────── */}
       <h2 className="type-h2 mt-12 mb-4 text-foreground">API Reference</h2>
       <p className="type-body mb-6 text-foreground max-w-prose">
