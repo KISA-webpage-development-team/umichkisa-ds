@@ -1,7 +1,0 @@
-@layer ds-components {
-  .ds-icon-xs { font-size: var(--icon-xs); }
-  .ds-icon-sm { font-size: var(--icon-sm); }
-  .ds-icon-md { font-size: var(--icon-md); }
-  .ds-icon-lg { font-size: var(--icon-lg); }
-  .ds-icon-xl { font-size: var(--icon-xl); }
-}

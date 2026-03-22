@@ -22,7 +22,6 @@
 
 @import "../tokens/primitives.css";
 @import "../tokens/semantic.css";
-@import "../components/icon/icon.css";
 
 @theme inline {
   /* Brand colors */
