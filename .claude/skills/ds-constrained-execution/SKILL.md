@@ -7,7 +7,7 @@ description: Use when executing a phased implementation plan for the KISA design
 
 ## Overview
 
-Drives task-by-task execution with automatic DS constraint review after the file creation step of every task that touches `.tsx` files. Catches token violations, typography rule breaks, and accessibility errors before they compound.
+Drives task-by-task execution by dispatching an implementer subagent per task, then running DS constraint review on any `.tsx` output before proceeding. Keeps the main session context lean — the main session only orchestrates, reviews, typechecks, and commits.
 
 ## Detecting `.tsx` tasks
 
@@ -23,15 +23,15 @@ Example:
 ## Intra-task step order
 
 Every plan task follows this structure: file creation → typecheck → commit.
-The DS review fits **between file creation and typecheck**:
+The implementer + DS review fit **between file creation and typecheck**:
 
 ```
-Step 1: Create the file(s)
+Dispatch implementer subagent (Step 1: create files)
         ↓
         [DS review — only if .tsx was created/modified]
-        ↓ (revise if needed, 2 rounds max)
-Step 2: Run typecheck  ← only after DS review passes
-Step 3: Commit
+        ↓ (re-dispatch implementer with violations if needed, 2 rounds max)
+Run typecheck  ← only after DS review passes
+Commit
 ```
 
 Never run typecheck or commit before DS review has passed for that task.
@@ -41,32 +41,44 @@ Never run typecheck or commit before DS review has passed for that task.
 ```dot
 digraph execution {
   "Start next task" [shape=box];
-  "Execute Step 1 (create files)" [shape=box];
+  "Dispatch implementer subagent" [shape=box];
+  "Implementer: BLOCKED/NEEDS_CONTEXT?" [shape=diamond];
+  "HARD STOP (escalate)" [shape=box];
   "Any .tsx in Files: section?" [shape=diamond];
   "Run ds-review agent" [shape=box];
   "Violations found?" [shape=diamond];
-  "Revise (round N)" [shape=box];
+  "Re-dispatch implementer with violations" [shape=box];
   "Round 2 exhausted?" [shape=diamond];
-  "HARD STOP" [shape=box];
+  "HARD STOP (DS violations)" [shape=box];
   "Run typecheck + commit" [shape=box];
   "All tasks done?" [shape=diamond];
   "vercel-react-best-practices" [shape=box];
 
-  "Start next task" -> "Execute Step 1 (create files)";
-  "Execute Step 1 (create files)" -> "Any .tsx in Files: section?";
+  "Start next task" -> "Dispatch implementer subagent";
+  "Dispatch implementer subagent" -> "Implementer: BLOCKED/NEEDS_CONTEXT?";
+  "Implementer: BLOCKED/NEEDS_CONTEXT?" -> "HARD STOP (escalate)" [label="yes"];
+  "Implementer: BLOCKED/NEEDS_CONTEXT?" -> "Any .tsx in Files: section?" [label="no (DONE)"];
   "Any .tsx in Files: section?" -> "Run ds-review agent" [label="yes"];
   "Any .tsx in Files: section?" -> "Run typecheck + commit" [label="no"];
   "Run ds-review agent" -> "Violations found?";
   "Violations found?" -> "Run typecheck + commit" [label="no (PASS)"];
-  "Violations found?" -> "Revise (round N)" [label="yes"];
-  "Revise (round N)" -> "Round 2 exhausted?";
-  "Round 2 exhausted?" -> "HARD STOP" [label="still failing"];
+  "Violations found?" -> "Re-dispatch implementer with violations" [label="yes"];
+  "Re-dispatch implementer with violations" -> "Round 2 exhausted?";
+  "Round 2 exhausted?" -> "HARD STOP (DS violations)" [label="still failing"];
   "Round 2 exhausted?" -> "Run ds-review agent" [label="no, re-check"];
   "Run typecheck + commit" -> "All tasks done?";
   "All tasks done?" -> "vercel-react-best-practices" [label="yes"];
   "All tasks done?" -> "Start next task" [label="no"];
 }
 ```
+
+## Implementer Subagent
+
+Use the template in `implementer-template.md` (same directory as this skill) to build the agent prompt. Key rules:
+- Paste the **full task text** from the plan inline — do not make it read the plan file
+- The implementer does **Step 1 only** (file creation) — never typecheck or commit
+- For revisions: include the full ds-review violation report in the prompt under "If This Is a Revision"
+- If implementer returns BLOCKED or NEEDS_CONTEXT → hard stop, surface to user
 
 ## DS Review Subagent
 
