@@ -1,5 +1,13 @@
 # umichkisa-ds — KISA Design System
 
+## CRITICAL RULE
+
+**NEVER execute a plan or spec unless the user explicitly says to.**
+
+Reading a spec is allowed. Reporting what the next task is is allowed. But writing code, editing files, running commands, or invoking execution skills (e.g., `superpowers:executing-plans`, `superpowers:subagent-driven-development`) requires an explicit "go ahead" or "execute" instruction from the user. "Pick up the next task" or "what's the next task?" is NOT permission to execute — it is a question to answer.
+
+---
+
 ## Session Protocol
 
 ### Startup
