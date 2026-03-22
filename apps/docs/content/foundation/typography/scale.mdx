@@ -50,7 +50,7 @@ Each role in the hierarchy is defined as a single semantic utility class. Rather
 | `type-label` | `font-pretendard` | `text-sm` | 0.875rem / 14px | `font-medium` | 1.5 | `tracking-normal` |
 | `type-caption` | `font-pretendard` | `text-xs` | 0.75rem / 12px | `font-normal` | 1.5 | `tracking-normal` |
 
-> **Note:** The Tailwind column shows the equivalent Tailwind v4 font-size token for developer reference. The actual values are hardcoded in the `type-*` class definitions — these are not Tailwind utilities. Tracking is not yet implemented in CSS and is flagged for Step 0 (Token & Styles Audit).
+> **Note:** The Tailwind column shows the equivalent Tailwind v4 font-size token for developer reference. The actual values are implemented as responsive `@media` overrides inside the `type-*` class definitions — these are not Tailwind utilities.
 
 > **Display vs H1:** Both use SejongHospital Bold. The distinction is context, not style — Display is for hero sections and landing pages, H1 is for page titles within the app. Never apply both `type-display` and `type-h1` styling on the same page. If a page has a Display hero and requires a semantic `<h1>` element for accessibility, apply `type-h2` styling to the `<h1>` — the visual hierarchy takes precedence over the class name.
 
