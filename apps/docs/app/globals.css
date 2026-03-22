@@ -22,8 +22,8 @@
  *   --color-surface-muted  → bg-surface-muted
  *   --color-surface-subtle → bg-surface-subtle
  *   --color-border         → border-border
- *   --color-text-primary   → text-text-primary
- *   --color-text-muted     → text-text-muted
+ *   --color-foreground     → text-foreground
+ *   --color-muted-foreground → text-muted-foreground
  *   --color-michigan-maize → bg-michigan-maize
  *   --color-michigan-blue  → text-michigan-blue
  *   --font-sejong-bold     → font-sejong-bold
@@ -36,8 +36,8 @@
   --color-surface-muted:  var(--color-surface-muted);
   --color-surface-subtle: var(--color-surface-subtle);
   --color-border:         var(--color-border);
-  --color-text-primary:   var(--color-foreground);
-  --color-text-muted:     var(--color-muted-foreground);
+  --color-foreground:     var(--color-foreground);
+  --color-muted-foreground: var(--color-muted-foreground);
   --color-michigan-maize: var(--primitive-michigan-maize);
   --color-michigan-blue:  var(--primitive-michigan-blue);
   --font-sejong-bold:     var(--font-sejong-bold);

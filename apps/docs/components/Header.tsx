@@ -32,7 +32,7 @@ export function Header({ onMenuClick, showSidebar }: HeaderProps) {
         {/* Hamburger: mobile only, only when sidebar is active */}
         {showSidebar && (
         <button
-          className="flex lg:hidden items-center justify-center min-w-11 min-h-11 bg-transparent border-none cursor-pointer rounded-md text-text-muted p-0 hover:bg-surface-subtle focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-offset-2"
+          className="flex lg:hidden items-center justify-center min-w-11 min-h-11 bg-transparent border-none cursor-pointer rounded-md text-muted-foreground p-0 hover:bg-surface-subtle focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-offset-2"
           onClick={onMenuClick}
           aria-label="Open navigation menu"
           aria-controls="docs-sidebar"
@@ -83,8 +83,8 @@ export function Header({ onMenuClick, showSidebar }: HeaderProps) {
               className={`px-3 py-1.5 
                 text-md transition-colors duration-150 font-sejong-bold ${
                 pathname.startsWith(s.prefix)
-                  ? 'text-text-primary'
-                  : 'text-text-muted hover:text-text-primary'
+                  ? 'text-foreground'
+                  : 'text-muted-foreground hover:text-foreground'
               }`}
             >
               {s.label}
@@ -103,7 +103,7 @@ export function Header({ onMenuClick, showSidebar }: HeaderProps) {
           href="https://github.com/umichkisa/umichkisa-ds"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center min-w-10 min-h-10 rounded-md text-text-muted transition-colors duration-150 hover:text-brand-primary hover:bg-surface-subtle focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-offset-2"
+          className="flex items-center justify-center min-w-10 min-h-10 rounded-md text-muted-foreground transition-colors duration-150 hover:text-brand-primary hover:bg-surface-subtle focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-offset-2"
           aria-label="View source on GitHub"
         >
           <svg

@@ -100,7 +100,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         aria-label="Documentation navigation"
       >
         <div className="px-8">
-          <span className="block font-sejong-bold text-md text-text-primary mb-3">
+          <span className="block font-sejong-bold text-md text-foreground mb-3">
             {section.label}
           </span>
           {section.items.map((item) => {
@@ -115,8 +115,8 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                       font-sejong-bold rounded-md
                       duration-[120ms] focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-offset-[-2px] ${
                       isParentActive
-                        ? 'text-text-primary'
-                        : 'text-text-muted hover:bg-surface-subtle'
+                        ? 'text-foreground'
+                        : 'text-muted-foreground hover:bg-surface-subtle'
                     }`}
                     onClick={onClose}
                   >
@@ -138,7 +138,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                               focus-visible:outline-offset-[-2px] ${
                               isChildActive
                                 ? 'font-sejong-bold'
-                                : 'font-sejong-light text-text-muted hover:bg-surface-subtle'
+                                : 'font-sejong-light text-muted-foreground hover:bg-surface-subtle'
                             }`}
                             onClick={onClose}
                           >
@@ -161,8 +161,8 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                   font-sejong-bold rounded-md
                   duration-[120ms] focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-offset-[-2px] ${
                   isActive
-                    ? 'text-text-primary'
-                    : 'text-text-muted hover:bg-surface-subtle'
+                    ? 'text-foreground'
+                    : 'text-muted-foreground hover:bg-surface-subtle'
                 }`}
                 onClick={onClose}
               >

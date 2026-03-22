@@ -16,7 +16,7 @@ For emphasis within body text, use `<strong>`. Applying a weight utility to the 
 
 ## Always set color explicitly
 
-`type-*` classes handle family, size, weight, and line height only — not color. Every text element needs a color token paired explicitly: `text-text-primary` for readable content, `text-text-muted` for supporting information. Unset color falls back to the browser default, which is outside the design system.
+`type-*` classes handle family, size, weight, and line height only — not color. Every text element needs a color token paired explicitly: `text-foreground` for readable content, `text-muted-foreground` for supporting information. Unset color falls back to the browser default, which is outside the design system.
 
 ---
 
@@ -29,14 +29,14 @@ SejongHospital is for Display and H1 only. Do not use it below H1 — hand off t
 <DoDont>
   <Do>
     <div className="space-y-3 py-2">
-      <p className="text-4xl font-sejong-bold leading-tight text-text-primary">Annual Gala Night</p>
-      <p className="text-2xl font-pretendard font-semibold leading-snug text-text-primary">Event Schedule</p>
+      <p className="text-4xl font-sejong-bold leading-tight text-foreground">Annual Gala Night</p>
+      <p className="text-2xl font-pretendard font-semibold leading-snug text-foreground">Event Schedule</p>
     </div>
   </Do>
   <Dont>
     <div className="space-y-3 py-2">
-      <p className="text-4xl font-sejong-bold leading-tight text-text-primary">Annual Gala Night</p>
-      <p className="text-2xl font-sejong-bold leading-snug text-text-primary">Event Schedule</p>
+      <p className="text-4xl font-sejong-bold leading-tight text-foreground">Annual Gala Night</p>
+      <p className="text-2xl font-sejong-bold leading-snug text-foreground">Event Schedule</p>
     </div>
   </Dont>
 </DoDont>
@@ -48,11 +48,11 @@ Keep body text within `max-w-prose` (~65 characters). Lines that stretch the ful
 <DoDont>
   <Do>
     <article className="max-w-prose">
-      <p className="text-base font-pretendard font-normal leading-relaxed text-text-primary">KISA brings together Korean international students across all schools and programs at the University of Michigan.</p>
+      <p className="text-base font-pretendard font-normal leading-relaxed text-foreground">KISA brings together Korean international students across all schools and programs at the University of Michigan.</p>
     </article>
   </Do>
   <Dont>
-    <p className="text-base font-pretendard font-normal leading-relaxed text-text-primary w-full">KISA brings together Korean international students across all schools and programs at the University of Michigan, fostering community through events, mentorship, and shared experience.</p>
+    <p className="text-base font-pretendard font-normal leading-relaxed text-foreground w-full">KISA brings together Korean international students across all schools and programs at the University of Michigan, fostering community through events, mentorship, and shared experience.</p>
   </Dont>
 </DoDont>
 
@@ -62,7 +62,7 @@ Keep body text within `max-w-prose` (~65 characters). Lines that stretch the ful
 
 ### Disabled text
 
-Disabled text uses the same `type-*` class as its active state. Only the color changes — use `text-text-disabled` (gray-400). Do not reduce weight or size. The type role stays the same; the color signals that the element is inactive.
+Disabled text uses the same `type-*` class as its active state. Only the color changes — use `text-disabled-foreground` (gray-400). Do not reduce weight or size. The type role stays the same; the color signals that the element is inactive.
 
 ### Error messages
 
@@ -70,7 +70,7 @@ Use `type-caption` + `text-error`. Error messages appear below form fields and a
 
 ### Helper text
 
-Use `type-caption` + `text-text-muted`. Helper text provides context before or after interaction — instructions, character counts, format hints. Same size as error messages; the color difference (`text-text-muted` vs `text-error`) distinguishes the two states.
+Use `type-caption` + `text-muted-foreground`. Helper text provides context before or after interaction — instructions, character counts, format hints. Same size as error messages; the color difference (`text-muted-foreground` vs `text-error`) distinguishes the two states.
 
 ---
 
@@ -79,12 +79,12 @@ Use `type-caption` + `text-text-muted`. Helper text provides context before or a
 Links inherit the `type-*` class of their container — a link inside a `type-body` paragraph uses body sizing and weight. Do not apply a separate type class to links.
 
 Color and decoration rules:
-- Color: always `text-text-link`
+- Color: always `text-link`
 - Decoration: underline by default (`underline`)
 - Hover: `text-brand-primary` (Michigan Blue)
 - Visited: no separate visited style — leave at default link color
 
-Never use `text-text-primary` for links. The `text-text-link` token exists specifically to distinguish interactive text from static text.
+Never use `text-foreground` for links. The `text-link` token exists specifically to distinguish interactive text from static text.
 
 ---
 

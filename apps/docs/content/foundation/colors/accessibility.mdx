@@ -15,18 +15,18 @@ often. Pairs labeled **AA** pass WCAG AA for normal text. Pairs labeled
 **By design** intentionally fail — they are designed that way.
 
 <ContrastTable rows={[
-  { foreground: "--color-text-primary",  background: "--color-surface",        ratio: "16.0:1", passes: "aa" },
-  { foreground: "--color-text-muted",    background: "--color-surface",        ratio: "4.6:1",  passes: "aa" },
-  { foreground: "--color-text-disabled", background: "--color-surface",        ratio: "2.8:1",  passes: "intentional-fail" },
-  { foreground: "--color-text-link",     background: "--color-surface",        ratio: "5.9:1",  passes: "aa" },
-  { foreground: "--color-text-on-brand", background: "--color-brand-primary",  ratio: "8.2:1",  passes: "aa" },
-  { foreground: "--color-text-on-brand", background: "--color-brand-primary-hover",   ratio: "7.2:1",  passes: "aa" },
-  { foreground: "--color-text-on-brand", background: "--color-brand-primary-pressed", ratio: "10.3:1", passes: "aa" },
-  { foreground: "--color-text-primary",  background: "--color-surface-subtle", ratio: "14.5:1", passes: "aa" },
-  { foreground: "--color-text-muted",    background: "--color-surface-subtle", ratio: "4.2:1",  passes: "large-only" },
-  { foreground: "--color-text-muted", background: "--color-surface-muted", ratio: "3.8:1", passes: "large-only" },
-  { foreground: "--color-brand-accent",  background: "--color-brand-primary",  ratio: "8.2:1",  passes: "aa" },
-  { foreground: "--color-text-primary",  background: "--color-brand-accent",   ratio: "9.8:1",  passes: "aa" },
+  { foreground: "--color-foreground",          background: "--color-surface",        ratio: "16.0:1", passes: "aa" },
+  { foreground: "--color-muted-foreground",    background: "--color-surface",        ratio: "4.6:1",  passes: "aa" },
+  { foreground: "--color-disabled-foreground", background: "--color-surface",        ratio: "2.8:1",  passes: "intentional-fail" },
+  { foreground: "--color-link",                background: "--color-surface",        ratio: "5.9:1",  passes: "aa" },
+  { foreground: "--color-brand-foreground",    background: "--color-brand-primary",  ratio: "8.2:1",  passes: "aa" },
+  { foreground: "--color-brand-foreground",    background: "--color-brand-primary-hover",   ratio: "7.2:1",  passes: "aa" },
+  { foreground: "--color-brand-foreground",    background: "--color-brand-primary-pressed", ratio: "10.3:1", passes: "aa" },
+  { foreground: "--color-foreground",          background: "--color-surface-subtle", ratio: "14.5:1", passes: "aa" },
+  { foreground: "--color-muted-foreground",    background: "--color-surface-subtle", ratio: "4.2:1",  passes: "large-only" },
+  { foreground: "--color-muted-foreground",    background: "--color-surface-muted",  ratio: "3.8:1",  passes: "large-only" },
+  { foreground: "--color-brand-accent",        background: "--color-brand-primary",  ratio: "8.2:1",  passes: "aa" },
+  { foreground: "--color-foreground",          background: "--color-brand-accent",   ratio: "9.8:1",  passes: "aa" },
   { foreground: "--color-error",         background: "--color-surface",        ratio: "3.9:1",  passes: "large-only" },
   { foreground: "--color-success",       background: "--color-surface",        ratio: "2.2:1",  passes: "intentional-fail" },
   { foreground: "--color-warning",       background: "--color-surface",        ratio: "3.0:1",  passes: "large-only" },
@@ -42,26 +42,26 @@ often. Pairs labeled **AA** pass WCAG AA for normal text. Pairs labeled
   </ul>
 </div>
 
-**On `--color-text-disabled`:** The 2.8:1 ratio is intentional. Disabled
+**On `--color-disabled-foreground`:** The 2.8:1 ratio is intentional. Disabled
 elements are not meant to be read — they communicate "this action is not
 available." If a user needs to read it, it should not be disabled.
 
-**On `--color-text-muted` over `--color-surface-subtle`:** This combination
+**On `--color-muted-foreground` over `--color-surface-subtle`:** This combination
 passes at 4.2:1 for large text only. Avoid using muted text at small sizes
-inside cards — use `--color-text-primary` instead if the content matters.
+inside cards — use `--color-foreground` instead if the content matters.
 
-**On `--color-text-muted` over `--color-surface-muted`:** This combination (3.8:1)
+**On `--color-muted-foreground` over `--color-surface-muted`:** This combination (3.8:1)
 passes for large text only. Surface-muted is used inside cards for detail rows —
-avoid muted text at small sizes in these regions. Use `--color-text-primary`
+avoid muted text at small sizes in these regions. Use `--color-foreground`
 instead if the content needs to be readable.
 
-**On `--color-text-on-brand` over `--color-brand-primary`:** This is the
+**On `--color-brand-foreground` over `--color-brand-primary`:** This is the
 strongest verified pair in the system at 8.2:1 — maize on navy. It clears
 WCAG AA at every text size and weight. Whenever text sits on a brand-primary
 background, this is the combination to reach for. It is also the combination
 that defines KISA's visual identity.
 
-**On `--color-text-on-brand` over hover and pressed states:** Maize remains
+**On `--color-brand-foreground` over hover and pressed states:** Maize remains
 valid on `--color-brand-primary-hover` (7.2:1) and `--color-brand-primary-pressed`
 (10.3:1). Both clear WCAG AA. There is no need for a different text token on
 interactive states.
@@ -69,8 +69,8 @@ interactive states.
 **On feedback colors over `--color-surface`:** `--color-error` (3.9:1) passes
 for large text only — do not use it as small body text. `--color-warning`
 (3.0:1) meets the non-text contrast threshold exactly — treat it as a floor,
-not a comfortable pass, and always pair it with a `--color-text-primary` label
+not a comfortable pass, and always pair it with a `--color-foreground` label
 for any readable content. `--color-success` (2.2:1) fails both text and
 non-text contrast thresholds — never use it as standalone text or icon color;
-always pair it with a `--color-text-primary` label. `--color-info` (5.9:1)
+always pair it with a `--color-foreground` label. `--color-info` (5.9:1)
 passes for all text sizes.

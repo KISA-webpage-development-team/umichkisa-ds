@@ -26,7 +26,7 @@ umichkisa-ds/
 
 Three-tier model:
 1. **Primitives** → `packages/web/src/tokens/primitives.css` — raw OKLCH values
-2. **Semantic** → `packages/web/src/tokens/semantic.css` — named roles (e.g. `--color-text-primary`)
+2. **Semantic** → `packages/web/src/tokens/semantic.css` — named roles (e.g. `--color-foreground`)
 3. **Component** → inline in component files via CVA
 
 Typography utility classes (`.type-display`, `.type-h1`…`.type-caption`) already defined in `packages/web/src/styles/index.css`.

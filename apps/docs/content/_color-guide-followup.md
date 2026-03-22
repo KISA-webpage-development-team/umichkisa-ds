@@ -147,8 +147,8 @@ All values are from `packages/web/src/tokens/primitives.css` and `semantic.css`.
 | --color-brand-accent-hover    | oklch(76% 0.185 91)             | Hover state on maize |
 | --color-brand-accent-pressed  | oklch(70% 0.185 91)             | Pressed state on maize |
 | --color-focus-ring            | var(--primitive-michigan-maize) | Same as accent |
-| --color-text-on-brand | var(--primitive-michigan-maize) | Text on blue bg |
-| --color-text-link | var(--color-brand-primary-mid) | Link text |
+| --color-brand-foreground | var(--primitive-michigan-maize) | Text on blue bg |
+| --color-link | var(--color-brand-primary-mid) | Link text |
 | --color-overlay | oklch(0% 0 0 / 40%) | Modal scrim |
 
 Note: the new semantic tokens above must also be added to

@@ -98,7 +98,7 @@ of its container using semantic tokens.
 
 ```tsx
 // Muted info icon
-<span className="text-text-muted">
+<span className="text-muted-foreground">
   <Icon name="info" />
 </span>
 
@@ -116,10 +116,10 @@ already exists as a semantic token — reach for that instead.
 
 ## Disabled Icons
 
-Disabled icons use `text-text-disabled` — the same token as disabled text. Never reduce size or weight to communicate disabled state. Only color changes.
+Disabled icons use `text-disabled-foreground` — the same token as disabled text. Never reduce size or weight to communicate disabled state. Only color changes.
 
 ```tsx
-<span className="text-text-disabled">
+<span className="text-disabled-foreground">
   <Icon name="lock" />
 </span>
 ```

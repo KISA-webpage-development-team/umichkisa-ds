@@ -40,7 +40,7 @@ Two suffixes appear across multiple token groups — `-subtle` and `-muted`. The
 
 **`-subtle`** means one step softer in visual weight. It creates a tinted region without drawing attention. Used for card and panel backgrounds (`--color-surface-subtle`), alert box fills (`--color-error-subtle`), and similar containers.
 
-**`-muted`** means reduced visual prominence — not necessarily darker. `--color-surface-muted` is *lighter* than `--color-surface-subtle` because it is designed to sit *inside* a subtle surface and appear elevated. `--color-text-muted` is lower contrast than `--color-text-primary` because it carries supporting, not primary, information.
+**`-muted`** means reduced visual prominence — not necessarily darker. `--color-surface-muted` is *lighter* than `--color-surface-subtle` because it is designed to sit *inside* a subtle surface and appear elevated. `--color-muted-foreground` is lower contrast than `--color-foreground` because it carries supporting, not primary, information.
 
 The key rule: a `-muted` value always serves a deprioritized role. A `-subtle` value always serves a container or background role.
 
@@ -84,18 +84,18 @@ cases for colored surfaces.
 
 | Token | Maps to | Role |
 |---|---|---|
-| `--color-text-primary` | `--primitive-gray-900` | Body text, headings. Default for all readable content. |
-| `--color-text-muted` | `--primitive-gray-500` | Captions, secondary labels, timestamps. |
-| `--color-text-disabled` | `--primitive-gray-400` | Disabled state text. Intentionally low contrast — do not use for readable content. |
-| `--color-text-on-brand` | `--primitive-michigan-maize` | Text sitting on `--color-brand-primary` backgrounds (navbars, hero sections, primary buttons). |
-| `--color-text-link` | `--color-brand-primary-mid` | Hyperlinks and inline clickable text. |
+| `--color-foreground` | `--primitive-gray-900` | Body text, headings. Default for all readable content. |
+| `--color-muted-foreground` | `--primitive-gray-500` | Captions, secondary labels, timestamps. |
+| `--color-disabled-foreground` | `--primitive-gray-400` | Disabled state text. Intentionally low contrast — do not use for readable content. |
+| `--color-brand-foreground` | `--primitive-michigan-maize` | Text sitting on `--color-brand-primary` backgrounds (navbars, hero sections, primary buttons). |
+| `--color-link` | `--color-brand-primary-mid` | Hyperlinks and inline clickable text. |
 
 <ColorSwatchGrid>
-  <ColorSwatch token="--color-text-primary"  label="Text Primary" />
-  <ColorSwatch token="--color-text-muted"    label="Text Muted" />
-  <ColorSwatch token="--color-text-disabled" label="Text Disabled" />
-  <ColorSwatch token="--color-text-on-brand" label="Text On Brand" />
-  <ColorSwatch token="--color-text-link"     label="Text Link" />
+  <ColorSwatch token="--color-foreground"          label="Foreground" />
+  <ColorSwatch token="--color-muted-foreground"    label="Muted Foreground" />
+  <ColorSwatch token="--color-disabled-foreground" label="Disabled Foreground" />
+  <ColorSwatch token="--color-brand-foreground"    label="Brand Foreground" />
+  <ColorSwatch token="--color-link"                label="Link" />
 </ColorSwatchGrid>
 
 ### Feedback
@@ -126,7 +126,7 @@ surfaces like alert boxes.
   <ColorSwatch token="--color-info-subtle"    label="Info Subtle" />
 </ColorSwatchGrid>
 
-> **On `--color-info` and `--color-text-link`:** Both resolve to `--primitive-michigan-blue-mid` — the same rendered color. This is intentional: blue reads as both informational and interactive in this system. Do not use them interchangeably. Use the token that matches the semantic role: `--color-info` for state indicators and alert borders, `--color-text-link` for clickable inline text.
+> **On `--color-info` and `--color-link`:** Both resolve to `--primitive-michigan-blue-mid` — the same rendered color. This is intentional: blue reads as both informational and interactive in this system. Do not use them interchangeably. Use the token that matches the semantic role: `--color-info` for state indicators and alert borders, `--color-link` for clickable inline text.
 
 ### Interactive
 
