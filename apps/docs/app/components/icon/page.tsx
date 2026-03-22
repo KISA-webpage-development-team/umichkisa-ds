@@ -58,7 +58,7 @@ export default function IconPage() {
 
       {/* Default */}
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Default</h3>
-      <p className="type-body-sm mb-3 text-muted-foreground max-w-prose">
+      <p className="type-body mb-3 text-foreground max-w-prose">
         No props beyond{' '}
         <code className="rounded px-1.5 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           name
@@ -75,7 +75,7 @@ export default function IconPage() {
 
       {/* Sizes */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">Sizes</h3>
-      <p className="type-body-sm mb-3 text-muted-foreground max-w-prose">
+      <p className="type-body mb-3 text-foreground max-w-prose">
         Five size tokens map to fixed pixel values on a 4px grid. Use{' '}
         <code className="rounded px-1.5 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           md
@@ -86,7 +86,7 @@ export default function IconPage() {
 
       {/* Color */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">Color</h3>
-      <p className="type-body-sm mb-3 text-muted-foreground max-w-prose">
+      <p className="type-body mb-3 text-foreground max-w-prose">
         Icons inherit{' '}
         <code className="rounded px-1.5 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           currentColor
@@ -112,7 +112,7 @@ export default function IconPage() {
 
       {/* With a label */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">With a label</h3>
-      <p className="type-body-sm mb-3 text-muted-foreground max-w-prose">
+      <p className="type-body mb-3 text-foreground max-w-prose">
         Provide{' '}
         <code className="rounded px-1.5 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           label
@@ -129,7 +129,7 @@ export default function IconPage() {
 
       {/* Inside a button */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">Inside a button</h3>
-      <p className="type-body-sm mb-3 text-muted-foreground max-w-prose">
+      <p className="type-body mb-3 text-foreground max-w-prose">
         <code className="rounded px-1.5 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           &lt;Icon&gt;
         </code>{' '}
@@ -154,7 +154,7 @@ export default function IconPage() {
 
       {/* ── API Reference ────────────────────────────────────── */}
       <h2 className="type-h2 mt-12 mb-4 text-foreground">API Reference</h2>
-      <p className="type-body-sm mb-6 text-muted-foreground max-w-prose">
+      <p className="type-body mb-6 text-foreground max-w-prose">
         All props except{' '}
         <code className="rounded px-1.5 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           name
@@ -182,20 +182,20 @@ export default function IconPage() {
           <tbody>
             <tr className="border-b border-border">
               <td className="px-4 py-3 type-caption font-mono text-foreground">name</td>
-              <td className="px-4 py-3 type-caption font-mono text-muted-foreground">IconName</td>
-              <td className="px-4 py-3 type-caption text-muted-foreground">—</td>
+              <td className="px-4 py-3 type-caption font-mono text-foreground">IconName</td>
+              <td className="px-4 py-3 type-caption text-foreground">—</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Required. Lucide icon name in kebab-case. Must be a key in the DS registry.</td>
             </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 type-caption font-mono text-foreground">size</td>
-              <td className="px-4 py-3 type-caption font-mono text-muted-foreground">&#39;xs&#39; | &#39;sm&#39; | &#39;md&#39; | &#39;lg&#39; | &#39;xl&#39;</td>
-              <td className="px-4 py-3 type-caption font-mono text-muted-foreground">&#39;md&#39;</td>
+              <td className="px-4 py-3 type-caption font-mono text-foreground">&#39;xs&#39; | &#39;sm&#39; | &#39;md&#39; | &#39;lg&#39; | &#39;xl&#39;</td>
+              <td className="px-4 py-3 type-caption font-mono text-foreground">&#39;md&#39;</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Maps to a fixed pixel size (12 / 16 / 20 / 24 / 32).</td>
             </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 type-caption font-mono text-foreground">label</td>
-              <td className="px-4 py-3 type-caption font-mono text-muted-foreground">string</td>
-              <td className="px-4 py-3 type-caption text-muted-foreground">—</td>
+              <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
+              <td className="px-4 py-3 type-caption text-foreground">—</td>
               <td className="px-4 py-3 type-body-sm text-foreground">
                 When provided: sets{' '}
                 <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>{' '}
@@ -205,8 +205,8 @@ export default function IconPage() {
             </tr>
             <tr>
               <td className="px-4 py-3 type-caption font-mono text-foreground">className</td>
-              <td className="px-4 py-3 type-caption font-mono text-muted-foreground">string</td>
-              <td className="px-4 py-3 type-caption text-muted-foreground">—</td>
+              <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
+              <td className="px-4 py-3 type-caption text-foreground">—</td>
               <td className="px-4 py-3 type-body-sm text-foreground">
                 Layout utilities only (
                 <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">block</code>
