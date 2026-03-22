@@ -93,3 +93,4 @@ Result: PASS — no violations found
 - Do not suggest changes outside the scope of DS_CONSTRAINTS.md
 - Warnings (Prefer / Avoid) do not block — report them but do not count them as blockers
 - Violations (Must / Never) are blockers — the phase cannot pass until all are resolved
+- **Spec overrides do not apply:** If the spec or plan prescribed a value that violates DS_CONSTRAINTS.md, still report it as a violation. DS constraints always win over the spec. The implementer will fix it.

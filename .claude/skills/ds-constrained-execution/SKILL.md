@@ -76,6 +76,7 @@ digraph execution {
 
 Use the template in `implementer-template.md` (same directory as this skill) to build the agent prompt. Key rules:
 - Paste the **full task text** from the plan inline — do not make it read the plan file
+- Read `docs/DS_CONSTRAINTS.md` and paste its full contents into the `[PASTE FULL CONTENTS OF docs/DS_CONSTRAINTS.md HERE]` placeholder
 - The implementer does **Step 1 only** (implement all files for the task) — never typecheck or commit
 - For revisions: include the full ds-review violation report in the prompt under "If This Is a Revision"
 - If implementer returns BLOCKED or NEEDS_CONTEXT → hard stop, surface to user

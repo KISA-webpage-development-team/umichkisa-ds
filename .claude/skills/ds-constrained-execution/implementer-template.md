@@ -27,16 +27,11 @@ Agent tool (general-purpose):
 
     Work from: /Users/jiohin/Desktop/KISA/DevTeam/dev/umichkisa-ds
 
-    ## DS Constraints Awareness
+    ## DS Constraints
 
-    This codebase uses a strict design token system. As you write code:
-    - Use semantic token classes (`bg-surface`, `text-foreground`, `border-border`, etc.) — never raw Tailwind color utilities (`bg-gray-100`, `text-blue-500`)
-    - Never use arbitrary spacing values (`px-[24px]`) — use Tailwind scale only
-    - Never import Lucide icons directly — always use `<Icon>` from `@umichkisa-ds/web`
-    - Layout breakpoints: `md:` and `lg:` only — never `sm:`, `xl:`, `2xl:`
+    Follow every rule below as you write code. A constraint review agent will verify your output — aim for zero violations on the first pass.
 
-    A DS constraint review agent will check your output after you report back.
-    Its job is to catch any violations. Your job is to implement faithfully.
+    [PASTE FULL CONTENTS OF docs/DS_CONSTRAINTS.md HERE]
 
     ## If This Is a Revision
 
@@ -59,13 +54,14 @@ Agent tool (general-purpose):
 
     ## Self-Review Before Reporting
 
-    Before reporting back, review with fresh eyes:
-    - Did I implement everything in Step 1 exactly as specified?
-    - Did I use DS token classes (not raw Tailwind colors)?
-    - Did I follow the existing patterns in the codebase?
-    - Did I avoid adding anything not in the plan (YAGNI)?
+    Walk through each category against your output before reporting. Fix any issues found.
 
-    Fix any issues found before reporting.
+    - **Spec compliance**: Implemented everything in Step 1 exactly? Nothing added beyond the plan?
+    - **Colors**: All backgrounds/borders/text use semantic tokens? No raw hex, no `bg-gray-*`, no `text-blue-*`?
+    - **Typography**: Every text element uses a `type-*` class? Every `type-*` class paired with a color token? No raw `text-sm`, `font-bold`, `leading-7`?
+    - **Layout**: No `sm:`, `xl:`, `2xl:` breakpoints? No arbitrary spacing values like `px-[24px]`?
+    - **Iconography**: No direct Lucide imports? `<Icon>` used for all icons? No color/size via `className`?
+    - **Accessibility**: Every interactive element has a dual-ring focus pattern? Icon-only buttons have `aria-label`?
 
     ## Report Format
 
