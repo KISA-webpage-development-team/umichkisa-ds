@@ -72,6 +72,7 @@ Must: Use `font-sejong-bold` for all `type-display` and `type-h1` — SejongHosp
 Never: Use SejongHospital below H1 — hand off to Pretendard at H2 and every level below. [source:foundation/typography/fonts]
 Never: Use `font-sejong-light` as a default heading weight — it is permitted only in marketing/landing page contexts for large decorative display text at `text-4xl` or larger, paired alongside a Bold display line. Never in app UI. [source:foundation/typography/fonts]
 Never: Use Geist Mono (`font-mono`) in client application components — it is a documentation-site-only font. [source:foundation/typography/fonts]
+Exception: `font-mono` may be composed alongside a `type-*` class in docs-site components (`apps/docs/`) when no monospace `type-*` variant exists in the DS yet (e.g. `type-caption font-mono` for code blocks). This exception does not apply to `packages/web/` components.
 Must: Both product fonts (SejongHospital and Pretendard) must use `font-display: swap` in their `@font-face` declarations. [source:foundation/typography/fonts]
 Must: Preload SejongHospital — it appears in Display and H1 (above-the-fold on most pages) and must be fetched before the browser discovers it in CSS. [source:foundation/typography/fonts]
 
