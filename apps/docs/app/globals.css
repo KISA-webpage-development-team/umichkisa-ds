@@ -40,10 +40,6 @@
   --color-muted-foreground: var(--color-muted-foreground);
   --color-michigan-maize: var(--primitive-michigan-maize);
   --color-michigan-blue:  var(--primitive-michigan-blue);
-  --font-sejong-bold:     var(--font-sejong-bold);
-  --font-sejong-light:    var(--font-sejong-light);
-  --font-pretendard:      var(--font-pretendard);
-  --font-geist-mono:      var(--font-geist-mono);
 }
 
 /* ── Layout Variables ──────────────────────────────────────────── */

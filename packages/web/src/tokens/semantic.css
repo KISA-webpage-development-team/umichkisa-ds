@@ -53,4 +53,10 @@
   --icon-lg: 1.5rem;
   --icon-xl: 2rem;
 
+  /* Typography — Font families */
+  --font-sejong-bold:  'SejongHospital', system-ui, -apple-system, sans-serif;
+  --font-sejong-light: 'SejongHospital', system-ui, -apple-system, sans-serif;
+  --font-pretendard:   'Pretendard Variable', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, -apple-system, sans-serif;
+  --font-geist-mono:   'Geist Mono', ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, monospace;
+
 }

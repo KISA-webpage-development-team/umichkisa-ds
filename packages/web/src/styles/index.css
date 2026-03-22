@@ -44,6 +44,12 @@
 
   /* Overlay */
   --color-overlay: var(--color-overlay);
+
+  /* Font families */
+  --font-sejong-bold:  var(--font-sejong-bold);
+  --font-sejong-light: var(--font-sejong-light);
+  --font-pretendard:   var(--font-pretendard);
+  --font-geist-mono:   var(--font-geist-mono);
 }
 
 @keyframes ds-spin {
