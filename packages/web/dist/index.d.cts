@@ -3,6 +3,7 @@ import * as react_jsx_runtime from 'react/jsx-runtime';
 import * as class_variance_authority_types from 'class-variance-authority/types';
 import { VariantProps } from 'class-variance-authority';
 import * as react from 'react';
+import * as lucide_react from 'lucide-react';
 import * as RadixDialog from '@radix-ui/react-dialog';
 import * as RadixDropdown from '@radix-ui/react-dropdown-menu';
 import * as RadixPopover from '@radix-ui/react-popover';
@@ -125,67 +126,60 @@ type UnexpectedErrorProps = {
 };
 declare function UnexpectedError({ onRetry }: UnexpectedErrorProps): react_jsx_runtime.JSX.Element;
 
-type IconSize = "xs" | "sm" | "md" | "lg" | "xl";
-type IconBaseProps = {
-    size?: IconSize;
+interface CustomIconProps$1 {
+    size?: number;
     className?: string;
+    "aria-hidden"?: boolean | "true" | "false";
+    "aria-label"?: string;
+}
+declare function GithubIcon({ size, className, ...props }: CustomIconProps$1): react_jsx_runtime.JSX.Element;
+
+interface CustomIconProps {
+    size?: number;
+    className?: string;
+    "aria-hidden"?: boolean | "true" | "false";
+    "aria-label"?: string;
+}
+declare function LinkedinIcon({ size, className, ...props }: CustomIconProps): react_jsx_runtime.JSX.Element;
+
+declare const registry: {
+    readonly "arrow-left": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "arrow-right": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "chevron-right": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "chevron-down": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "circle-minus": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "circle-plus": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "clock-9": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "external-link": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly eye: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "graduation-cap": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly list: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly lock: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly mail: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "message-square": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly minus: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly pencil: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly plus: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly reply: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "shopping-cart": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "thumbs-up": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly ticket: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "trash-2": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly x: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly github: typeof GithubIcon;
+    readonly linkedin: typeof LinkedinIcon;
 };
-declare function iconClass(size?: IconSize, className?: string): string;
+type IconName = keyof typeof registry;
 
-declare function BackIcon({ size, className }: IconBaseProps): react_jsx_runtime.JSX.Element;
+type IconSize = "xs" | "sm" | "md" | "lg" | "xl";
+interface IconProps {
+    name: IconName;
+    size?: IconSize;
+    label?: string;
+    className?: string;
+}
 
-declare function ClockIcon({ size, className }: IconBaseProps): react_jsx_runtime.JSX.Element;
-
-type CommentIconProps = IconBaseProps & {
-    color?: "black" | "gray";
-};
-declare function CommentIcon({ size, color, className }: CommentIconProps): react_jsx_runtime.JSX.Element;
-
-declare function CrossIcon({ size, className }: IconBaseProps): react_jsx_runtime.JSX.Element;
-
-declare function EmailIcon({ size, className }: IconBaseProps): react_jsx_runtime.JSX.Element;
-
-declare function GitIcon({ size, className }: IconBaseProps): react_jsx_runtime.JSX.Element;
-
-declare function GradIcon({ size, className }: IconBaseProps): react_jsx_runtime.JSX.Element;
-
-type LikeIconProps = IconBaseProps & {
-    fill?: boolean;
-    isGray?: boolean;
-    color?: "blue" | "maize";
-};
-declare function LikeIcon({ size, fill, isGray, color, className, }: LikeIconProps): react_jsx_runtime.JSX.Element;
-
-declare function LinkedInIcon({ size, className }: IconBaseProps): react_jsx_runtime.JSX.Element;
-
-declare function ListIcon({ size, className }: IconBaseProps): react_jsx_runtime.JSX.Element;
-
-declare function MinusIcon({ size, className }: IconBaseProps): react_jsx_runtime.JSX.Element;
-
-type PencilIconProps = IconBaseProps & {
-    color?: "white" | "gray";
-};
-declare function PencilIcon({ size, color, className }: PencilIconProps): react_jsx_runtime.JSX.Element;
-
-declare function PlusIcon({ size, className }: IconBaseProps): react_jsx_runtime.JSX.Element;
-
-type ReplyIconProps = IconBaseProps & {
-    flip?: boolean;
-};
-declare function ReplyIcon({ size, flip, className }: ReplyIconProps): react_jsx_runtime.JSX.Element;
-
-declare function RightArrowIcon({ size, className }: IconBaseProps): react_jsx_runtime.JSX.Element;
-
-declare function SecretIcon({ size, className }: IconBaseProps): react_jsx_runtime.JSX.Element;
-
-declare function TicketIcon({ size, className }: IconBaseProps): react_jsx_runtime.JSX.Element;
-
-type TrashcanIconProps = IconBaseProps & {
-    color?: "white" | "gray";
-};
-declare function TrashcanIcon({ size, color, className }: TrashcanIconProps): react_jsx_runtime.JSX.Element;
-
-declare function ViewIcon({ size, className }: IconBaseProps): react_jsx_runtime.JSX.Element;
+declare function Icon({ name, size, label, className }: IconProps): react_jsx_runtime.JSX.Element;
 
 declare const Dialog: react.FC<RadixDialog.DialogProps>;
 declare const DialogTrigger: react.ForwardRefExoticComponent<RadixDialog.DialogTriggerProps & react.RefAttributes<HTMLButtonElement>>;
@@ -225,4 +219,4 @@ declare function PopoverContent({ children, className }: PopoverContentProps): r
 
 declare const DS_VERSION = "0.1.0";
 
-export { BackIcon, Button, type ButtonProps, type ButtonVariant, ClockIcon, CommentIcon, type CommentIconProps, CrossIcon, DS_VERSION, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogTitle, type DialogTitleProps, DialogTrigger, Dropdown, DropdownContent, type DropdownContentProps, DropdownItem, type DropdownItemProps, DropdownTrigger, EmailIcon, FormItem, type FormItemProps, GitIcon, GradIcon, HorizontalDivider, type HorizontalDividerColor, type HorizontalDividerProps, type IconBaseProps, IconButton, type IconButtonProps, type IconSize, Input, type InputProps, Label, type LabelProps, LikeIcon, type LikeIconProps, LinkButton, type LinkButtonProps, LinkedInIcon, ListIcon, LoadingSpinner, type LoadingSpinnerProps, MinusIcon, NotAuthorized, NotFound, NotLogin, PencilIcon, type PencilIconProps, PlusIcon, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, ReplyIcon, type ReplyIconProps, RightArrowIcon, SecretIcon, TicketIcon, ToggleBar, type ToggleBarItem, type ToggleBarProps, TrashcanIcon, type TrashcanIconProps, UnexpectedError, type UnexpectedErrorProps, VerticalDivider, type VerticalDividerProps, ViewIcon, cn, iconClass };
+export { Button, type ButtonProps, type ButtonVariant, DS_VERSION, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogTitle, type DialogTitleProps, DialogTrigger, Dropdown, DropdownContent, type DropdownContentProps, DropdownItem, type DropdownItemProps, DropdownTrigger, FormItem, type FormItemProps, HorizontalDivider, type HorizontalDividerColor, type HorizontalDividerProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, ToggleBar, type ToggleBarItem, type ToggleBarProps, UnexpectedError, type UnexpectedErrorProps, VerticalDivider, type VerticalDividerProps, cn };

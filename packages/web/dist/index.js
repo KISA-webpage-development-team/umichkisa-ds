@@ -357,190 +357,148 @@ function UnexpectedError({ onRetry }) {
   ] }) });
 }
 
-// src/components/icon/Icon.tsx
-var sizeClass = {
-  xs: "ds-icon-xs",
-  sm: "ds-icon-sm",
-  md: "ds-icon-md",
-  lg: "ds-icon-lg",
-  xl: "ds-icon-xl"
-};
-function iconClass(size = "md", className) {
-  return cn(sizeClass[size], className);
-}
+// src/components/icon/registry.ts
+import {
+  ArrowLeft,
+  ArrowRight,
+  ChevronRight,
+  ChevronDown,
+  CircleMinus,
+  CirclePlus,
+  Clock9,
+  ExternalLink,
+  Eye,
+  GraduationCap,
+  List,
+  Lock,
+  Mail,
+  MessageSquare,
+  Minus,
+  Pencil,
+  Plus,
+  Reply,
+  ShoppingCart,
+  ThumbsUp,
+  Ticket,
+  Trash2,
+  X
+} from "lucide-react";
 
-// src/components/icon/BackIcon.tsx
-import { MdArrowBackIosNew } from "react-icons/md";
+// src/components/icon/custom/GithubIcon.tsx
 import { jsx as jsx15 } from "react/jsx-runtime";
-function BackIcon({ size = "md", className }) {
-  return /* @__PURE__ */ jsx15(MdArrowBackIosNew, { className: iconClass(size, className) });
-}
-
-// src/components/icon/ClockIcon.tsx
-import { LuClock9 } from "react-icons/lu";
-import { jsx as jsx16 } from "react/jsx-runtime";
-function ClockIcon({ size = "sm", className }) {
-  return /* @__PURE__ */ jsx16(LuClock9, { className: iconClass(size, className ?? "text-gray-600") });
-}
-
-// src/components/icon/CommentIcon.tsx
-import { FaRegComments } from "react-icons/fa";
-import { jsx as jsx17 } from "react/jsx-runtime";
-function CommentIcon({ size = "md", color = "black", className }) {
-  return /* @__PURE__ */ jsx17(
-    FaRegComments,
-    {
-      className: iconClass(size, cn(color === "gray" ? "text-gray-400" : "text-black", className))
-    }
-  );
-}
-
-// src/components/icon/CrossIcon.tsx
-import { RxCross2 } from "react-icons/rx";
-import { jsx as jsx18 } from "react/jsx-runtime";
-function CrossIcon({ size = "md", className }) {
-  return /* @__PURE__ */ jsx18(RxCross2, { className: iconClass(size, className) });
-}
-
-// src/components/icon/EmailIcon.tsx
-import { AiOutlineMail } from "react-icons/ai";
-import { jsx as jsx19 } from "react/jsx-runtime";
-function EmailIcon({ size = "md", className }) {
-  return /* @__PURE__ */ jsx19(AiOutlineMail, { className: iconClass(size, className) });
-}
-
-// src/components/icon/GitIcon.tsx
-import { FaGithub } from "react-icons/fa";
-import { jsx as jsx20 } from "react/jsx-runtime";
-function GitIcon({ size = "md", className }) {
-  return /* @__PURE__ */ jsx20(FaGithub, { className: iconClass(size, className) });
-}
-
-// src/components/icon/GradIcon.tsx
-import { FaGraduationCap } from "react-icons/fa";
-import { jsx as jsx21 } from "react/jsx-runtime";
-function GradIcon({ size = "md", className }) {
-  return /* @__PURE__ */ jsx21(FaGraduationCap, { className: iconClass(size, className) });
-}
-
-// src/components/icon/LikeIcon.tsx
-import { AiOutlineLike, AiFillLike } from "react-icons/ai";
-import { jsx as jsx22 } from "react/jsx-runtime";
-function LikeIcon({
-  size = "md",
-  fill = false,
-  isGray = false,
-  color = "blue",
-  className
+function GithubIcon({
+  size = 24,
+  className,
+  ...props
 }) {
-  const colorClass = isGray ? "" : color === "blue" ? "text-[var(--color-brand-primary)]" : "text-[var(--color-brand-accent)]";
-  const cls = iconClass(size, cn(colorClass, className));
-  return fill ? /* @__PURE__ */ jsx22(AiFillLike, { className: cls }) : /* @__PURE__ */ jsx22(AiOutlineLike, { className: cls });
-}
-
-// src/components/icon/LinkedInIcon.tsx
-import { FaLinkedin } from "react-icons/fa";
-import { jsx as jsx23 } from "react/jsx-runtime";
-function LinkedInIcon({ size = "md", className }) {
-  return /* @__PURE__ */ jsx23(FaLinkedin, { className: iconClass(size, className), color: "#0a66c2" });
-}
-
-// src/components/icon/ListIcon.tsx
-import { IoListOutline } from "react-icons/io5";
-import { jsx as jsx24 } from "react/jsx-runtime";
-function ListIcon({ size = "md", className }) {
-  return /* @__PURE__ */ jsx24(IoListOutline, { className: iconClass(size, className) });
-}
-
-// src/components/icon/MinusIcon.tsx
-import { FaMinus } from "react-icons/fa";
-import { jsx as jsx25 } from "react/jsx-runtime";
-function MinusIcon({ size = "md", className }) {
-  return /* @__PURE__ */ jsx25(FaMinus, { className: iconClass(size, className) });
-}
-
-// src/components/icon/PencilIcon.tsx
-import { BiPencil } from "react-icons/bi";
-import { jsx as jsx26 } from "react/jsx-runtime";
-function PencilIcon({ size = "md", color = "white", className }) {
-  return /* @__PURE__ */ jsx26(
-    BiPencil,
+  return /* @__PURE__ */ jsx15(
+    "svg",
     {
-      className: iconClass(size, cn(
-        color === "gray" ? "text-gray-400" : "text-[var(--color-brand-accent)]",
-        className
-      ))
+      xmlns: "http://www.w3.org/2000/svg",
+      width: size,
+      height: size,
+      viewBox: "0 0 20 20",
+      fill: "currentColor",
+      className,
+      ...props,
+      children: /* @__PURE__ */ jsx15("path", { d: "M10,0 C15.523,0 20,4.59 20,10.253 C20,14.782 17.138,18.624 13.167,19.981 C12.66,20.082 12.48,19.762 12.48,19.489 C12.48,19.151 12.492,18.047 12.492,16.675 C12.492,15.719 12.172,15.095 11.813,14.777 C14.04,14.523 16.38,13.656 16.38,9.718 C16.38,8.598 15.992,7.684 15.35,6.966 C15.454,6.707 15.797,5.664 15.252,4.252 C15.252,4.252 14.414,3.977 12.505,5.303 C11.706,5.076 10.85,4.962 10,4.958 C9.15,4.962 8.295,5.076 7.497,5.303 C5.586,3.977 4.746,4.252 4.746,4.252 C4.203,5.664 4.546,6.707 4.649,6.966 C4.01,7.684 3.619,8.598 3.619,9.718 C3.619,13.646 5.954,14.526 8.175,14.785 C7.889,15.041 7.63,15.493 7.54,16.156 C6.97,16.418 5.522,16.871 4.63,15.304 C4.63,15.304 4.101,14.319 3.097,14.247 C3.097,14.247 2.122,14.234 3.029,14.87 C3.029,14.87 3.684,15.185 4.139,16.37 C4.139,16.37 4.726,18.2 7.508,17.58 C7.513,18.437 7.522,19.245 7.522,19.489 C7.522,19.76 7.338,20.077 6.839,19.982 C2.865,18.627 0,14.783 0,10.253 C0,4.59 4.478,0 10,0" })
     }
   );
 }
 
-// src/components/icon/PlusIcon.tsx
-import { FaPlus } from "react-icons/fa";
-import { jsx as jsx27 } from "react/jsx-runtime";
-function PlusIcon({ size = "md", className }) {
-  return /* @__PURE__ */ jsx27(FaPlus, { className: iconClass(size, className) });
-}
-
-// src/components/icon/ReplyIcon.tsx
-import { ImReply } from "react-icons/im";
-import { jsx as jsx28 } from "react/jsx-runtime";
-function ReplyIcon({ size = "md", flip = false, className }) {
-  return /* @__PURE__ */ jsx28(ImReply, { className: iconClass(size, cn(flip && "scale-x-[-1]", className)) });
-}
-
-// src/components/icon/RightArrowIcon.tsx
-import { FaChevronRight } from "react-icons/fa";
-import { jsx as jsx29 } from "react/jsx-runtime";
-function RightArrowIcon({ size = "md", className }) {
-  return /* @__PURE__ */ jsx29(FaChevronRight, { className: iconClass(size, className) });
-}
-
-// src/components/icon/SecretIcon.tsx
-import { CiLock } from "react-icons/ci";
-import { jsx as jsx30 } from "react/jsx-runtime";
-function SecretIcon({ size = "sm", className }) {
-  return /* @__PURE__ */ jsx30(CiLock, { className: iconClass(size, className) });
-}
-
-// src/components/icon/TicketIcon.tsx
-import { IoTicketSharp } from "react-icons/io5";
-import { jsx as jsx31 } from "react/jsx-runtime";
-function TicketIcon({ size = "md", className }) {
-  return /* @__PURE__ */ jsx31(IoTicketSharp, { className: iconClass(size, className) });
-}
-
-// src/components/icon/TrashcanIcon.tsx
-import { MdDelete } from "react-icons/md";
-import { jsx as jsx32 } from "react/jsx-runtime";
-function TrashcanIcon({ size = "md", color = "white", className }) {
-  return /* @__PURE__ */ jsx32(
-    MdDelete,
+// src/components/icon/custom/LinkedinIcon.tsx
+import { jsx as jsx16 } from "react/jsx-runtime";
+function LinkedinIcon({
+  size = 24,
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsx16(
+    "svg",
     {
-      className: iconClass(size, cn(
-        color === "gray" ? "text-gray-400" : "text-[var(--color-brand-accent)]",
-        className
-      ))
+      xmlns: "http://www.w3.org/2000/svg",
+      width: size,
+      height: size,
+      viewBox: "0 0 382 382",
+      fill: "currentColor",
+      className,
+      ...props,
+      children: /* @__PURE__ */ jsx16("path", { d: "M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889C366.529,382,382,366.529,382,347.444V34.555C382,15.471,366.529,0,347.445,0z M118.207,329.844c0,5.554-4.502,10.056-10.056,10.056H65.345c-5.554,0-10.056-4.502-10.056-10.056V150.403c0-5.554,4.502-10.056,10.056-10.056h42.806c5.554,0,10.056,4.502,10.056,10.056V329.844z M86.748,123.432c-22.459,0-40.666-18.207-40.666-40.666S64.289,42.1,86.748,42.1s40.666,18.207,40.666,40.666S109.208,123.432,86.748,123.432z M341.91,330.654c0,5.106-4.14,9.246-9.246,9.246H286.73c-5.106,0-9.246-4.14-9.246-9.246v-84.168c0-12.556,3.683-55.021-32.813-55.021c-28.309,0-34.051,29.066-35.204,42.11v97.079c0,5.106-4.139,9.246-9.246,9.246h-44.426c-5.106,0-9.246-4.14-9.246-9.246V149.593c0-5.106,4.14-9.246,9.246-9.246h44.426c5.106,0,9.246,4.14,9.246,9.246v15.655c10.497-15.753,26.097-27.912,59.312-27.912c73.552,0,73.131,68.716,73.131,106.472L341.91,330.654L341.91,330.654z" })
     }
   );
 }
 
-// src/components/icon/ViewIcon.tsx
-import { FiEye } from "react-icons/fi";
-import { jsx as jsx33 } from "react/jsx-runtime";
-function ViewIcon({ size = "md", className }) {
-  return /* @__PURE__ */ jsx33(FiEye, { className: iconClass(size, className) });
+// src/components/icon/registry.ts
+var registry = {
+  "arrow-left": ArrowLeft,
+  "arrow-right": ArrowRight,
+  "chevron-right": ChevronRight,
+  "chevron-down": ChevronDown,
+  "circle-minus": CircleMinus,
+  "circle-plus": CirclePlus,
+  "clock-9": Clock9,
+  "external-link": ExternalLink,
+  "eye": Eye,
+  "graduation-cap": GraduationCap,
+  "list": List,
+  "lock": Lock,
+  "mail": Mail,
+  "message-square": MessageSquare,
+  "minus": Minus,
+  "pencil": Pencil,
+  "plus": Plus,
+  "reply": Reply,
+  "shopping-cart": ShoppingCart,
+  "thumbs-up": ThumbsUp,
+  "ticket": Ticket,
+  "trash-2": Trash2,
+  "x": X,
+  "github": GithubIcon,
+  "linkedin": LinkedinIcon
+};
+
+// src/components/icon/Icon.tsx
+import { jsx as jsx17 } from "react/jsx-runtime";
+var sizeMap = {
+  xs: 12,
+  sm: 16,
+  md: 20,
+  lg: 24,
+  xl: 32
+};
+function Icon({ name, size = "md", label, className }) {
+  const LucideComponent = registry[name];
+  const px = sizeMap[size];
+  if (label) {
+    return /* @__PURE__ */ jsx17(
+      LucideComponent,
+      {
+        size: px,
+        className,
+        "aria-label": label
+      }
+    );
+  }
+  return /* @__PURE__ */ jsx17(
+    LucideComponent,
+    {
+      size: px,
+      className,
+      "aria-hidden": "true"
+    }
+  );
 }
 
 // src/components/overlay/Dialog.tsx
 import * as RadixDialog from "@radix-ui/react-dialog";
-import { jsx as jsx34, jsxs as jsxs10 } from "react/jsx-runtime";
+import { jsx as jsx18, jsxs as jsxs10 } from "react/jsx-runtime";
 var Dialog = RadixDialog.Root;
 var DialogTrigger = RadixDialog.Trigger;
 var DialogClose = RadixDialog.Close;
 function DialogContent({ children, className }) {
   return /* @__PURE__ */ jsxs10(RadixDialog.Portal, { children: [
-    /* @__PURE__ */ jsx34(RadixDialog.Overlay, { className: "fixed inset-0 z-50 bg-black/50" }),
-    /* @__PURE__ */ jsx34(
+    /* @__PURE__ */ jsx18(RadixDialog.Overlay, { className: "fixed inset-0 z-50 bg-black/50" }),
+    /* @__PURE__ */ jsx18(
       RadixDialog.Content,
       {
         className: cn(
@@ -556,7 +514,7 @@ function DialogContent({ children, className }) {
   ] });
 }
 function DialogTitle({ children, className }) {
-  return /* @__PURE__ */ jsx34(
+  return /* @__PURE__ */ jsx18(
     RadixDialog.Title,
     {
       className: cn("text-lg font-semibold text-[var(--color-foreground)] mb-4", className),
@@ -567,11 +525,11 @@ function DialogTitle({ children, className }) {
 
 // src/components/overlay/Dropdown.tsx
 import * as RadixDropdown from "@radix-ui/react-dropdown-menu";
-import { jsx as jsx35 } from "react/jsx-runtime";
+import { jsx as jsx19 } from "react/jsx-runtime";
 var Dropdown = RadixDropdown.Root;
 var DropdownTrigger = RadixDropdown.Trigger;
 function DropdownContent({ children, className }) {
-  return /* @__PURE__ */ jsx35(RadixDropdown.Portal, { children: /* @__PURE__ */ jsx35(
+  return /* @__PURE__ */ jsx19(RadixDropdown.Portal, { children: /* @__PURE__ */ jsx19(
     RadixDropdown.Content,
     {
       className: cn(
@@ -586,7 +544,7 @@ function DropdownContent({ children, className }) {
   ) });
 }
 function DropdownItem({ children, onSelect, className }) {
-  return /* @__PURE__ */ jsx35(
+  return /* @__PURE__ */ jsx19(
     RadixDropdown.Item,
     {
       onSelect,
@@ -603,11 +561,11 @@ function DropdownItem({ children, onSelect, className }) {
 
 // src/components/overlay/Popover.tsx
 import * as RadixPopover from "@radix-ui/react-popover";
-import { jsx as jsx36 } from "react/jsx-runtime";
+import { jsx as jsx20 } from "react/jsx-runtime";
 var Popover = RadixPopover.Root;
 var PopoverTrigger = RadixPopover.Trigger;
 function PopoverContent({ children, className }) {
-  return /* @__PURE__ */ jsx36(RadixPopover.Portal, { children: /* @__PURE__ */ jsx36(
+  return /* @__PURE__ */ jsx20(RadixPopover.Portal, { children: /* @__PURE__ */ jsx20(
     RadixPopover.Content,
     {
       className: cn(
@@ -625,11 +583,7 @@ function PopoverContent({ children, className }) {
 // src/index.ts
 var DS_VERSION = "0.1.0";
 export {
-  BackIcon,
   Button,
-  ClockIcon,
-  CommentIcon,
-  CrossIcon,
   DS_VERSION,
   Dialog,
   DialogClose,
@@ -640,38 +594,23 @@ export {
   DropdownContent,
   DropdownItem,
   DropdownTrigger,
-  EmailIcon,
   FormItem,
-  GitIcon,
-  GradIcon,
   HorizontalDivider,
+  Icon,
   IconButton,
   Input,
   Label,
-  LikeIcon,
   LinkButton,
-  LinkedInIcon,
-  ListIcon,
   LoadingSpinner,
-  MinusIcon,
   NotAuthorized,
   NotFound,
   NotLogin,
-  PencilIcon,
-  PlusIcon,
   Popover,
   PopoverContent,
   PopoverTrigger,
-  ReplyIcon,
-  RightArrowIcon,
-  SecretIcon,
-  TicketIcon,
   ToggleBar,
-  TrashcanIcon,
   UnexpectedError,
   VerticalDivider,
-  ViewIcon,
-  cn,
-  iconClass
+  cn
 };
 //# sourceMappingURL=index.js.map

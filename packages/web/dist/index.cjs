@@ -31,11 +31,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.ts
 var src_exports = {};
 __export(src_exports, {
-  BackIcon: () => BackIcon,
   Button: () => Button,
-  ClockIcon: () => ClockIcon,
-  CommentIcon: () => CommentIcon,
-  CrossIcon: () => CrossIcon,
   DS_VERSION: () => DS_VERSION,
   Dialog: () => Dialog,
   DialogClose: () => DialogClose,
@@ -46,39 +42,24 @@ __export(src_exports, {
   DropdownContent: () => DropdownContent,
   DropdownItem: () => DropdownItem,
   DropdownTrigger: () => DropdownTrigger,
-  EmailIcon: () => EmailIcon,
   FormItem: () => FormItem,
-  GitIcon: () => GitIcon,
-  GradIcon: () => GradIcon,
   HorizontalDivider: () => HorizontalDivider,
+  Icon: () => Icon,
   IconButton: () => IconButton,
   Input: () => Input,
   Label: () => Label,
-  LikeIcon: () => LikeIcon,
   LinkButton: () => LinkButton,
-  LinkedInIcon: () => LinkedInIcon,
-  ListIcon: () => ListIcon,
   LoadingSpinner: () => LoadingSpinner,
-  MinusIcon: () => MinusIcon,
   NotAuthorized: () => NotAuthorized,
   NotFound: () => NotFound,
   NotLogin: () => NotLogin,
-  PencilIcon: () => PencilIcon,
-  PlusIcon: () => PlusIcon,
   Popover: () => Popover,
   PopoverContent: () => PopoverContent,
   PopoverTrigger: () => PopoverTrigger,
-  ReplyIcon: () => ReplyIcon,
-  RightArrowIcon: () => RightArrowIcon,
-  SecretIcon: () => SecretIcon,
-  TicketIcon: () => TicketIcon,
   ToggleBar: () => ToggleBar,
-  TrashcanIcon: () => TrashcanIcon,
   UnexpectedError: () => UnexpectedError,
   VerticalDivider: () => VerticalDivider,
-  ViewIcon: () => ViewIcon,
-  cn: () => cn,
-  iconClass: () => iconClass
+  cn: () => cn
 });
 module.exports = __toCommonJS(src_exports);
 
@@ -439,190 +420,124 @@ function UnexpectedError({ onRetry }) {
   ] }) });
 }
 
-// src/components/icon/Icon.tsx
-var sizeClass = {
-  xs: "ds-icon-xs",
-  sm: "ds-icon-sm",
-  md: "ds-icon-md",
-  lg: "ds-icon-lg",
-  xl: "ds-icon-xl"
-};
-function iconClass(size = "md", className) {
-  return cn(sizeClass[size], className);
-}
+// src/components/icon/registry.ts
+var import_lucide_react = require("lucide-react");
 
-// src/components/icon/BackIcon.tsx
-var import_md = require("react-icons/md");
+// src/components/icon/custom/GithubIcon.tsx
 var import_jsx_runtime15 = require("react/jsx-runtime");
-function BackIcon({ size = "md", className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_md.MdArrowBackIosNew, { className: iconClass(size, className) });
-}
-
-// src/components/icon/ClockIcon.tsx
-var import_lu = require("react-icons/lu");
-var import_jsx_runtime16 = require("react/jsx-runtime");
-function ClockIcon({ size = "sm", className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_lu.LuClock9, { className: iconClass(size, className ?? "text-gray-600") });
-}
-
-// src/components/icon/CommentIcon.tsx
-var import_fa = require("react-icons/fa");
-var import_jsx_runtime17 = require("react/jsx-runtime");
-function CommentIcon({ size = "md", color = "black", className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
-    import_fa.FaRegComments,
-    {
-      className: iconClass(size, cn(color === "gray" ? "text-gray-400" : "text-black", className))
-    }
-  );
-}
-
-// src/components/icon/CrossIcon.tsx
-var import_rx = require("react-icons/rx");
-var import_jsx_runtime18 = require("react/jsx-runtime");
-function CrossIcon({ size = "md", className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_rx.RxCross2, { className: iconClass(size, className) });
-}
-
-// src/components/icon/EmailIcon.tsx
-var import_ai = require("react-icons/ai");
-var import_jsx_runtime19 = require("react/jsx-runtime");
-function EmailIcon({ size = "md", className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(import_ai.AiOutlineMail, { className: iconClass(size, className) });
-}
-
-// src/components/icon/GitIcon.tsx
-var import_fa2 = require("react-icons/fa");
-var import_jsx_runtime20 = require("react/jsx-runtime");
-function GitIcon({ size = "md", className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_fa2.FaGithub, { className: iconClass(size, className) });
-}
-
-// src/components/icon/GradIcon.tsx
-var import_fa3 = require("react-icons/fa");
-var import_jsx_runtime21 = require("react/jsx-runtime");
-function GradIcon({ size = "md", className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_fa3.FaGraduationCap, { className: iconClass(size, className) });
-}
-
-// src/components/icon/LikeIcon.tsx
-var import_ai2 = require("react-icons/ai");
-var import_jsx_runtime22 = require("react/jsx-runtime");
-function LikeIcon({
-  size = "md",
-  fill = false,
-  isGray = false,
-  color = "blue",
-  className
+function GithubIcon({
+  size = 24,
+  className,
+  ...props
 }) {
-  const colorClass = isGray ? "" : color === "blue" ? "text-[var(--color-brand-primary)]" : "text-[var(--color-brand-accent)]";
-  const cls = iconClass(size, cn(colorClass, className));
-  return fill ? /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_ai2.AiFillLike, { className: cls }) : /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_ai2.AiOutlineLike, { className: cls });
-}
-
-// src/components/icon/LinkedInIcon.tsx
-var import_fa4 = require("react-icons/fa");
-var import_jsx_runtime23 = require("react/jsx-runtime");
-function LinkedInIcon({ size = "md", className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_fa4.FaLinkedin, { className: iconClass(size, className), color: "#0a66c2" });
-}
-
-// src/components/icon/ListIcon.tsx
-var import_io5 = require("react-icons/io5");
-var import_jsx_runtime24 = require("react/jsx-runtime");
-function ListIcon({ size = "md", className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_io5.IoListOutline, { className: iconClass(size, className) });
-}
-
-// src/components/icon/MinusIcon.tsx
-var import_fa5 = require("react-icons/fa");
-var import_jsx_runtime25 = require("react/jsx-runtime");
-function MinusIcon({ size = "md", className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_fa5.FaMinus, { className: iconClass(size, className) });
-}
-
-// src/components/icon/PencilIcon.tsx
-var import_bi = require("react-icons/bi");
-var import_jsx_runtime26 = require("react/jsx-runtime");
-function PencilIcon({ size = "md", color = "white", className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
-    import_bi.BiPencil,
+  return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+    "svg",
     {
-      className: iconClass(size, cn(
-        color === "gray" ? "text-gray-400" : "text-[var(--color-brand-accent)]",
-        className
-      ))
+      xmlns: "http://www.w3.org/2000/svg",
+      width: size,
+      height: size,
+      viewBox: "0 0 20 20",
+      fill: "currentColor",
+      className,
+      ...props,
+      children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("path", { d: "M10,0 C15.523,0 20,4.59 20,10.253 C20,14.782 17.138,18.624 13.167,19.981 C12.66,20.082 12.48,19.762 12.48,19.489 C12.48,19.151 12.492,18.047 12.492,16.675 C12.492,15.719 12.172,15.095 11.813,14.777 C14.04,14.523 16.38,13.656 16.38,9.718 C16.38,8.598 15.992,7.684 15.35,6.966 C15.454,6.707 15.797,5.664 15.252,4.252 C15.252,4.252 14.414,3.977 12.505,5.303 C11.706,5.076 10.85,4.962 10,4.958 C9.15,4.962 8.295,5.076 7.497,5.303 C5.586,3.977 4.746,4.252 4.746,4.252 C4.203,5.664 4.546,6.707 4.649,6.966 C4.01,7.684 3.619,8.598 3.619,9.718 C3.619,13.646 5.954,14.526 8.175,14.785 C7.889,15.041 7.63,15.493 7.54,16.156 C6.97,16.418 5.522,16.871 4.63,15.304 C4.63,15.304 4.101,14.319 3.097,14.247 C3.097,14.247 2.122,14.234 3.029,14.87 C3.029,14.87 3.684,15.185 4.139,16.37 C4.139,16.37 4.726,18.2 7.508,17.58 C7.513,18.437 7.522,19.245 7.522,19.489 C7.522,19.76 7.338,20.077 6.839,19.982 C2.865,18.627 0,14.783 0,10.253 C0,4.59 4.478,0 10,0" })
     }
   );
 }
 
-// src/components/icon/PlusIcon.tsx
-var import_fa6 = require("react-icons/fa");
-var import_jsx_runtime27 = require("react/jsx-runtime");
-function PlusIcon({ size = "md", className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_fa6.FaPlus, { className: iconClass(size, className) });
-}
-
-// src/components/icon/ReplyIcon.tsx
-var import_im = require("react-icons/im");
-var import_jsx_runtime28 = require("react/jsx-runtime");
-function ReplyIcon({ size = "md", flip = false, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_im.ImReply, { className: iconClass(size, cn(flip && "scale-x-[-1]", className)) });
-}
-
-// src/components/icon/RightArrowIcon.tsx
-var import_fa7 = require("react-icons/fa");
-var import_jsx_runtime29 = require("react/jsx-runtime");
-function RightArrowIcon({ size = "md", className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_fa7.FaChevronRight, { className: iconClass(size, className) });
-}
-
-// src/components/icon/SecretIcon.tsx
-var import_ci = require("react-icons/ci");
-var import_jsx_runtime30 = require("react/jsx-runtime");
-function SecretIcon({ size = "sm", className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_ci.CiLock, { className: iconClass(size, className) });
-}
-
-// src/components/icon/TicketIcon.tsx
-var import_io52 = require("react-icons/io5");
-var import_jsx_runtime31 = require("react/jsx-runtime");
-function TicketIcon({ size = "md", className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_io52.IoTicketSharp, { className: iconClass(size, className) });
-}
-
-// src/components/icon/TrashcanIcon.tsx
-var import_md2 = require("react-icons/md");
-var import_jsx_runtime32 = require("react/jsx-runtime");
-function TrashcanIcon({ size = "md", color = "white", className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
-    import_md2.MdDelete,
+// src/components/icon/custom/LinkedinIcon.tsx
+var import_jsx_runtime16 = require("react/jsx-runtime");
+function LinkedinIcon({
+  size = 24,
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+    "svg",
     {
-      className: iconClass(size, cn(
-        color === "gray" ? "text-gray-400" : "text-[var(--color-brand-accent)]",
-        className
-      ))
+      xmlns: "http://www.w3.org/2000/svg",
+      width: size,
+      height: size,
+      viewBox: "0 0 382 382",
+      fill: "currentColor",
+      className,
+      ...props,
+      children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("path", { d: "M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889C366.529,382,382,366.529,382,347.444V34.555C382,15.471,366.529,0,347.445,0z M118.207,329.844c0,5.554-4.502,10.056-10.056,10.056H65.345c-5.554,0-10.056-4.502-10.056-10.056V150.403c0-5.554,4.502-10.056,10.056-10.056h42.806c5.554,0,10.056,4.502,10.056,10.056V329.844z M86.748,123.432c-22.459,0-40.666-18.207-40.666-40.666S64.289,42.1,86.748,42.1s40.666,18.207,40.666,40.666S109.208,123.432,86.748,123.432z M341.91,330.654c0,5.106-4.14,9.246-9.246,9.246H286.73c-5.106,0-9.246-4.14-9.246-9.246v-84.168c0-12.556,3.683-55.021-32.813-55.021c-28.309,0-34.051,29.066-35.204,42.11v97.079c0,5.106-4.139,9.246-9.246,9.246h-44.426c-5.106,0-9.246-4.14-9.246-9.246V149.593c0-5.106,4.14-9.246,9.246-9.246h44.426c5.106,0,9.246,4.14,9.246,9.246v15.655c10.497-15.753,26.097-27.912,59.312-27.912c73.552,0,73.131,68.716,73.131,106.472L341.91,330.654L341.91,330.654z" })
     }
   );
 }
 
-// src/components/icon/ViewIcon.tsx
-var import_fi = require("react-icons/fi");
-var import_jsx_runtime33 = require("react/jsx-runtime");
-function ViewIcon({ size = "md", className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_fi.FiEye, { className: iconClass(size, className) });
+// src/components/icon/registry.ts
+var registry = {
+  "arrow-left": import_lucide_react.ArrowLeft,
+  "arrow-right": import_lucide_react.ArrowRight,
+  "chevron-right": import_lucide_react.ChevronRight,
+  "chevron-down": import_lucide_react.ChevronDown,
+  "circle-minus": import_lucide_react.CircleMinus,
+  "circle-plus": import_lucide_react.CirclePlus,
+  "clock-9": import_lucide_react.Clock9,
+  "external-link": import_lucide_react.ExternalLink,
+  "eye": import_lucide_react.Eye,
+  "graduation-cap": import_lucide_react.GraduationCap,
+  "list": import_lucide_react.List,
+  "lock": import_lucide_react.Lock,
+  "mail": import_lucide_react.Mail,
+  "message-square": import_lucide_react.MessageSquare,
+  "minus": import_lucide_react.Minus,
+  "pencil": import_lucide_react.Pencil,
+  "plus": import_lucide_react.Plus,
+  "reply": import_lucide_react.Reply,
+  "shopping-cart": import_lucide_react.ShoppingCart,
+  "thumbs-up": import_lucide_react.ThumbsUp,
+  "ticket": import_lucide_react.Ticket,
+  "trash-2": import_lucide_react.Trash2,
+  "x": import_lucide_react.X,
+  "github": GithubIcon,
+  "linkedin": LinkedinIcon
+};
+
+// src/components/icon/Icon.tsx
+var import_jsx_runtime17 = require("react/jsx-runtime");
+var sizeMap = {
+  xs: 12,
+  sm: 16,
+  md: 20,
+  lg: 24,
+  xl: 32
+};
+function Icon({ name, size = "md", label, className }) {
+  const LucideComponent = registry[name];
+  const px = sizeMap[size];
+  if (label) {
+    return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+      LucideComponent,
+      {
+        size: px,
+        className,
+        "aria-label": label
+      }
+    );
+  }
+  return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+    LucideComponent,
+    {
+      size: px,
+      className,
+      "aria-hidden": "true"
+    }
+  );
 }
 
 // src/components/overlay/Dialog.tsx
 var RadixDialog = __toESM(require("@radix-ui/react-dialog"), 1);
-var import_jsx_runtime34 = require("react/jsx-runtime");
+var import_jsx_runtime18 = require("react/jsx-runtime");
 var Dialog = RadixDialog.Root;
 var DialogTrigger = RadixDialog.Trigger;
 var DialogClose = RadixDialog.Close;
 function DialogContent({ children, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)(RadixDialog.Portal, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(RadixDialog.Overlay, { className: "fixed inset-0 z-50 bg-black/50" }),
-    /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(RadixDialog.Portal, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(RadixDialog.Overlay, { className: "fixed inset-0 z-50 bg-black/50" }),
+    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
       RadixDialog.Content,
       {
         className: cn(
@@ -638,7 +553,7 @@ function DialogContent({ children, className }) {
   ] });
 }
 function DialogTitle({ children, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
     RadixDialog.Title,
     {
       className: cn("text-lg font-semibold text-[var(--color-foreground)] mb-4", className),
@@ -649,11 +564,11 @@ function DialogTitle({ children, className }) {
 
 // src/components/overlay/Dropdown.tsx
 var RadixDropdown = __toESM(require("@radix-ui/react-dropdown-menu"), 1);
-var import_jsx_runtime35 = require("react/jsx-runtime");
+var import_jsx_runtime19 = require("react/jsx-runtime");
 var Dropdown = RadixDropdown.Root;
 var DropdownTrigger = RadixDropdown.Trigger;
 function DropdownContent({ children, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(RadixDropdown.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(RadixDropdown.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
     RadixDropdown.Content,
     {
       className: cn(
@@ -668,7 +583,7 @@ function DropdownContent({ children, className }) {
   ) });
 }
 function DropdownItem({ children, onSelect, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
     RadixDropdown.Item,
     {
       onSelect,
@@ -685,11 +600,11 @@ function DropdownItem({ children, onSelect, className }) {
 
 // src/components/overlay/Popover.tsx
 var RadixPopover = __toESM(require("@radix-ui/react-popover"), 1);
-var import_jsx_runtime36 = require("react/jsx-runtime");
+var import_jsx_runtime20 = require("react/jsx-runtime");
 var Popover = RadixPopover.Root;
 var PopoverTrigger = RadixPopover.Trigger;
 function PopoverContent({ children, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(RadixPopover.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(RadixPopover.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
     RadixPopover.Content,
     {
       className: cn(
@@ -708,11 +623,7 @@ function PopoverContent({ children, className }) {
 var DS_VERSION = "0.1.0";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  BackIcon,
   Button,
-  ClockIcon,
-  CommentIcon,
-  CrossIcon,
   DS_VERSION,
   Dialog,
   DialogClose,
@@ -723,38 +634,23 @@ var DS_VERSION = "0.1.0";
   DropdownContent,
   DropdownItem,
   DropdownTrigger,
-  EmailIcon,
   FormItem,
-  GitIcon,
-  GradIcon,
   HorizontalDivider,
+  Icon,
   IconButton,
   Input,
   Label,
-  LikeIcon,
   LinkButton,
-  LinkedInIcon,
-  ListIcon,
   LoadingSpinner,
-  MinusIcon,
   NotAuthorized,
   NotFound,
   NotLogin,
-  PencilIcon,
-  PlusIcon,
   Popover,
   PopoverContent,
   PopoverTrigger,
-  ReplyIcon,
-  RightArrowIcon,
-  SecretIcon,
-  TicketIcon,
   ToggleBar,
-  TrashcanIcon,
   UnexpectedError,
   VerticalDivider,
-  ViewIcon,
-  cn,
-  iconClass
+  cn
 });
 //# sourceMappingURL=index.cjs.map
