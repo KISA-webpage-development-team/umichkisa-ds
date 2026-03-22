@@ -11,6 +11,13 @@ type ContrastTableProps = {
   rows: ContrastRow[]
 }
 
+/*
+ * DS GAP: AA and "large only" badges need success/warning mid-shades.
+ * DS defines --color-success-subtle + --color-success, and --color-warning-subtle + --color-warning.
+ * The border and text colors here require darker variants not yet in the DS.
+ * Migrate when DS adds --color-success-foreground and --color-warning-foreground.
+ * Tracked: docs/specs/docs-token-alignment.md § G5
+ */
 function PassBadge({ passes }: { passes: PassResult }) {
   if (passes === "aa") {
     return (

@@ -6,6 +6,12 @@ export function DoDont({ children }: { children: ReactNode }) {
   )
 }
 
+/*
+ * DS GAP: Do/Dont use 3 shades of success/error (subtle bg, border, dark label).
+ * DS defines --color-success-subtle and --color-success only.
+ * Migrate when DS adds --color-success-foreground and --color-error-foreground.
+ * Tracked: docs/specs/docs-token-alignment.md § G5
+ */
 export function Do({
   children,
   label = "Do",
@@ -33,7 +39,7 @@ export function Do({
         </span>
         {label}
       </p>
-      <div className="space-y-1.5 text-sm" style={{ color: "oklch(25% 0.01 264)" }}>
+      <div className="space-y-1.5 text-sm" style={{ color: "var(--color-foreground)" }}>
         {children}
       </div>
     </div>
@@ -66,7 +72,7 @@ export function Dont({
         </span>
         {label}
       </p>
-      <div className="space-y-1.5 text-sm" style={{ color: "oklch(25% 0.01 264)" }}>
+      <div className="space-y-1.5 text-sm" style={{ color: "var(--color-foreground)" }}>
         {children}
       </div>
     </div>

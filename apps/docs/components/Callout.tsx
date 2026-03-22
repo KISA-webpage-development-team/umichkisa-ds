@@ -7,6 +7,13 @@ type CalloutProps = {
   children: ReactNode
 }
 
+/*
+ * DS GAP: Callout uses 4 shades per feedback type (bg, border, accent, labelColor).
+ * The DS currently defines only --color-*-subtle (bg) and --color-* (main/accent).
+ * Mid-shade border and dark label colors have no DS token yet.
+ * When the DS adds --color-*-border and --color-*-foreground tokens, migrate here.
+ * Tracked: docs/specs/docs-token-alignment.md § G5
+ */
 const configs: Record<
   CalloutType,
   {
@@ -62,7 +69,7 @@ export function Callout({ type = "info", children }: CalloutProps) {
         style={{ color: c.labelColor }}
       >
         <span
-          className="flex h-4 w-4 items-center justify-center rounded-full text-[9px] font-bold text-white"
+          className="flex h-4 w-4 items-center justify-center rounded-full text-[9px] font-bold text-white" // DS GAP: no on-accent foreground token
           style={{ backgroundColor: c.accent }}
           aria-hidden="true"
         >
