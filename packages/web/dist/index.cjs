@@ -514,7 +514,8 @@ function Icon({ name, size = "md", label, className }) {
       {
         size: px,
         className,
-        "aria-label": label
+        "aria-label": label,
+        role: "img"
       }
     );
   }

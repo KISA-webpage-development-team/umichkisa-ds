@@ -83,3 +83,7 @@ Once both step workflows are documented, the Component Skill combines them:
 - Per component: Step 1 (implement) → Step 2+3 (docs page + preview)
 - Each step may span one or more sessions depending on context limits
 - The skill should encode the grill questions, spec template, plan template, and review gates
+
+
+ds-constrained-execution
+ui improvement with frontend-design?
