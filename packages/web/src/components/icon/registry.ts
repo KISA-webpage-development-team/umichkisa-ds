@@ -23,6 +23,8 @@ import {
   Trash2,
   X,
 } from "lucide-react";
+import { GithubIcon } from "./custom/GithubIcon";
+import { LinkedinIcon } from "./custom/LinkedinIcon";
 
 export const registry = {
   "arrow-left": ArrowLeft,
@@ -48,7 +50,8 @@ export const registry = {
   "ticket": Ticket,
   "trash-2": Trash2,
   "x": X,
-  // TODO: add "github" and "linkedin" once user provides SVG paths
+  "github": GithubIcon,
+  "linkedin": LinkedinIcon,
 } as const;
 
 export type IconName = keyof typeof registry;
