@@ -86,7 +86,7 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 | `Dialog` | overlay | ✅ | Uses `@radix-ui/react-dialog` |
 | `Dropdown` | overlay | ✅ | Uses `@radix-ui/react-dropdown-menu` |
 | `Popover` | overlay | ✅ | Uses `@radix-ui/react-popover` |
-| Icons (19 SVGs) | icon | ✅ | |
+| `Icon` | icon | ✅ | Single `<Icon name="..." />` component with static Lucide registry (25 icons: 23 Lucide + 2 custom SVG brand icons). Replaced 19 named `react-icons` components. |
 
 ### Not Yet Implemented (V1 target)
 - `Container`, `Grid` — specs in `content/_layout-implementation.md`
