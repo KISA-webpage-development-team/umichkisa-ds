@@ -2,6 +2,50 @@
 @import "../tokens/semantic.css";
 @import "../components/icon/icon.css";
 
+@theme inline {
+  /* Brand colors */
+  --color-brand-primary:       var(--color-brand-primary);
+  --color-brand-primary-mid:   var(--color-brand-primary-mid);
+  --color-brand-accent:        var(--color-brand-accent);
+  --color-brand-accent-subtle: var(--color-brand-accent-subtle);
+
+  /* Interactive states */
+  --color-brand-primary-hover:   var(--color-brand-primary-hover);
+  --color-brand-primary-pressed: var(--color-brand-primary-pressed);
+  --color-brand-accent-hover:    var(--color-brand-accent-hover);
+  --color-brand-accent-pressed:  var(--color-brand-accent-pressed);
+  --color-focus-ring:            var(--color-focus-ring);
+
+  /* Surface */
+  --color-surface:        var(--color-surface);
+  --color-surface-muted:  var(--color-surface-muted);
+  --color-surface-subtle: var(--color-surface-subtle);
+
+  /* Border */
+  --color-border:        var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+
+  /* Text */
+  --color-foreground:          var(--color-foreground);
+  --color-muted-foreground:    var(--color-muted-foreground);
+  --color-disabled-foreground: var(--color-disabled-foreground);
+  --color-brand-foreground:    var(--color-brand-foreground);
+  --color-link:                var(--color-link);
+
+  /* Feedback */
+  --color-error:          var(--color-error);
+  --color-error-subtle:   var(--color-error-subtle);
+  --color-success:        var(--color-success);
+  --color-success-subtle: var(--color-success-subtle);
+  --color-warning:        var(--color-warning);
+  --color-warning-subtle: var(--color-warning-subtle);
+  --color-info:           var(--color-info);
+  --color-info-subtle:    var(--color-info-subtle);
+
+  /* Overlay */
+  --color-overlay: var(--color-overlay);
+}
+
 @keyframes ds-spin {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
