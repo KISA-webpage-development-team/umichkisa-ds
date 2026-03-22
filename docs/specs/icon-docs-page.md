@@ -369,6 +369,8 @@ With:
 
 ## Implementation Steps
 
+> **For Claude:** Use the `ds-constrained-execution` skill to execute this plan. It replaces `superpowers:executing-plans` for all KISA DS work — after each task that creates or modifies `.tsx` files, a DS constraint review subagent checks the output against `docs/DS_CONSTRAINTS.md` before proceeding.
+
 ### Phase 1 — `_components_to_switch.md`
 Create `apps/docs/content/_components_to_switch.md` with the four entries above.
 
