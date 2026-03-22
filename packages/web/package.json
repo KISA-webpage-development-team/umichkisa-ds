@@ -13,11 +13,12 @@
       "require": "./dist/index.cjs"
     },
     "./dist/styles.css": "./dist/styles.css",
-    "./theme.css": "./src/styles/index.css"
+    "./theme.css": "./theme.css"
   },
   "files": [
     "dist",
-    "src"
+    "src",
+    "theme.css"
   ],
   "scripts": {
     "build": "npm run build:js && npm run build:css",

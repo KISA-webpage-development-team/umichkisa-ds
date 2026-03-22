@@ -1,0 +1,13 @@
+/**
+ * KISA Design System — Tailwind theme entry
+ *
+ * Import this file in your Tailwind-processed CSS to get:
+ *   - All DS semantic token CSS variables (:root { --color-foreground: ... })
+ *   - Tailwind utility generation for all DS tokens (text-foreground, bg-surface, etc.)
+ *   - DS component classes (.type-display, .ds-spinner, etc.)
+ *
+ * Usage:
+ *   @import "tailwindcss";
+ *   @import "@umichkisa-ds/web/theme.css";
+ */
+@import "./src/styles/index.css";
