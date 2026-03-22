@@ -14,7 +14,7 @@ export function DropdownContent({ children, className }: DropdownContentProps) {
     <RadixDropdown.Portal>
       <RadixDropdown.Content
         className={cn(
-          "z-50 min-w-[8rem] overflow-hidden rounded-[var(--radius-md)]",
+          "z-50 min-w-[8rem] overflow-hidden rounded-md",
           "border border-[var(--color-border)] bg-[var(--color-surface)] shadow-md",
           "p-1",
           className

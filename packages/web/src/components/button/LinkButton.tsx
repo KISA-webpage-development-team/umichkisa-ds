@@ -2,7 +2,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/utils/cn";
 
 const linkButtonVariants = cva(
-  "inline-flex items-center justify-center self-center gap-1 cursor-pointer rounded-[var(--radius-md)] text-sm md:text-base px-4 py-2 transition-colors",
+  "inline-flex items-center justify-center self-center gap-1 cursor-pointer rounded-md text-sm md:text-base px-4 py-2 transition-colors",
   {
     variants: {
       variant: {

@@ -17,7 +17,7 @@ export function DialogContent({ children, className }: DialogContentProps) {
       <RadixDialog.Content
         className={cn(
           "fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2",
-          "w-full max-w-lg rounded-[var(--radius-lg)]",
+          "w-full max-w-lg rounded-lg",
           "border border-[var(--color-border)] bg-[var(--color-surface)]",
           "p-6 shadow-lg focus:outline-none",
           className

@@ -14,7 +14,7 @@ export function PopoverContent({ children, className }: PopoverContentProps) {
     <RadixPopover.Portal>
       <RadixPopover.Content
         className={cn(
-          "z-50 rounded-[var(--radius-md)]",
+          "z-50 rounded-md",
           "border border-[var(--color-border)] bg-[var(--color-surface)] shadow-md",
           "p-4",
           className
