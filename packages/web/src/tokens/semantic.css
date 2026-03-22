@@ -27,11 +27,11 @@
   --color-border-strong: var(--primitive-gray-300);
 
   /* Color — Text */
-  --color-text-primary:  var(--primitive-gray-900);
-  --color-text-muted:    var(--primitive-gray-500);
-  --color-text-disabled: var(--primitive-gray-400);
-  --color-text-on-brand: var(--primitive-michigan-maize);
-  --color-text-link:     var(--primitive-michigan-blue-mid);
+  --color-foreground:          var(--primitive-gray-900);
+  --color-muted-foreground:    var(--primitive-gray-500);
+  --color-disabled-foreground: var(--primitive-gray-400);
+  --color-brand-foreground:    var(--primitive-michigan-maize);
+  --color-link:                var(--primitive-michigan-blue-mid);
 
   /* Color — Feedback */
   --color-error:          var(--primitive-red-500);

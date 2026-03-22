@@ -11,7 +11,7 @@ function cn(...inputs) {
 import { cva } from "class-variance-authority";
 import { jsx } from "react/jsx-runtime";
 var buttonVariants = cva(
-  "inline-flex items-center justify-center self-center gap-1 cursor-pointer rounded-[var(--radius-md)] text-sm md:text-base px-4 py-2 transition-colors disabled:cursor-not-allowed disabled:opacity-60",
+  "inline-flex items-center justify-center self-center gap-1 cursor-pointer rounded-md text-sm md:text-base px-4 py-2 transition-colors disabled:cursor-not-allowed disabled:opacity-60",
   {
     variants: {
       variant: {
@@ -50,7 +50,7 @@ function Button({
 import { cva as cva2 } from "class-variance-authority";
 import { jsx as jsx2 } from "react/jsx-runtime";
 var linkButtonVariants = cva2(
-  "inline-flex items-center justify-center self-center gap-1 cursor-pointer rounded-[var(--radius-md)] text-sm md:text-base px-4 py-2 transition-colors",
+  "inline-flex items-center justify-center self-center gap-1 cursor-pointer rounded-md text-sm md:text-base px-4 py-2 transition-colors",
   {
     variants: {
       variant: {
@@ -82,7 +82,7 @@ function LinkButton({
 import { cva as cva3 } from "class-variance-authority";
 import { jsx as jsx3, jsxs } from "react/jsx-runtime";
 var iconButtonVariants = cva3(
-  "inline-flex items-center justify-center self-center gap-1 cursor-pointer rounded-[var(--radius-md)] text-sm md:text-base px-4 py-2 transition-colors h-fit disabled:cursor-not-allowed disabled:opacity-60",
+  "inline-flex items-center justify-center self-center gap-1 cursor-pointer rounded-md text-sm md:text-base px-4 py-2 transition-colors h-fit disabled:cursor-not-allowed disabled:opacity-60",
   {
     variants: {
       variant: {
@@ -151,7 +151,7 @@ var Input = memo(function Input2({
       disabled,
       "aria-invalid": invalid,
       className: cn(
-        "w-full px-3 py-2 border border-[var(--color-border-strong)] rounded-[var(--radius-md)] text-sm md:text-base text-[var(--color-text-primary)] bg-[var(--color-surface)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-primary)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors",
+        "w-full px-3 py-2 border border-[var(--color-border-strong)] rounded-md text-sm md:text-base text-[var(--color-text-primary)] bg-[var(--color-surface)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-primary)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors",
         invalid && "border-[var(--color-error)] focus:ring-[var(--color-error)]",
         className
       )
@@ -545,7 +545,7 @@ function DialogContent({ children, className }) {
       {
         className: cn(
           "fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2",
-          "w-full max-w-lg rounded-[var(--radius-lg)]",
+          "w-full max-w-lg rounded-lg",
           "border border-[var(--color-border)] bg-[var(--color-surface)]",
           "p-6 shadow-lg focus:outline-none",
           className
@@ -575,7 +575,7 @@ function DropdownContent({ children, className }) {
     RadixDropdown.Content,
     {
       className: cn(
-        "z-50 min-w-[8rem] overflow-hidden rounded-[var(--radius-md)]",
+        "z-50 min-w-[8rem] overflow-hidden rounded-md",
         "border border-[var(--color-border)] bg-[var(--color-surface)] shadow-md",
         "p-1",
         className
@@ -611,7 +611,7 @@ function PopoverContent({ children, className }) {
     RadixPopover.Content,
     {
       className: cn(
-        "z-50 rounded-[var(--radius-md)]",
+        "z-50 rounded-md",
         "border border-[var(--color-border)] bg-[var(--color-surface)] shadow-md",
         "p-4",
         className
