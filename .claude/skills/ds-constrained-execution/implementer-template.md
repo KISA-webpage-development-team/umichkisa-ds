@@ -17,7 +17,7 @@ Agent tool (general-purpose):
 
     ## Your Job
 
-    Implement **Step 1 only** (file creation / modification). Do NOT run typecheck
+    Implement **Step 1 only** — create or modify the files as specified. Do NOT run typecheck
     or commit — those happen after DS constraint review in the parent session.
 
     1. Create or modify exactly the files listed in the task's Files: section

@@ -22,13 +22,13 @@ Example:
 
 ## Intra-task step order
 
-Every plan task follows this structure: file creation → typecheck → commit.
-The implementer + DS review fit **between file creation and typecheck**:
+Every plan task follows this structure: implementation (Step 1) → typecheck → commit.
+The implementer + DS review fit **between Step 1 and typecheck**:
 
 ```
-Dispatch implementer subagent (Step 1: create files)
+Dispatch implementer subagent (Step 1: implement all files for this task)
         ↓
-        [DS review — only if .tsx was created/modified]
+        [DS review — only if .tsx was touched]
         ↓ (re-dispatch implementer with violations if needed, 2 rounds max)
 Run typecheck  ← only after DS review passes
 Commit
@@ -76,7 +76,7 @@ digraph execution {
 
 Use the template in `implementer-template.md` (same directory as this skill) to build the agent prompt. Key rules:
 - Paste the **full task text** from the plan inline — do not make it read the plan file
-- The implementer does **Step 1 only** (file creation) — never typecheck or commit
+- The implementer does **Step 1 only** (implement all files for the task) — never typecheck or commit
 - For revisions: include the full ds-review violation report in the prompt under "If This Is a Revision"
 - If implementer returns BLOCKED or NEEDS_CONTEXT → hard stop, surface to user
 
