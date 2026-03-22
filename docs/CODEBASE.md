@@ -59,8 +59,11 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 | Iconography | overview, library, sizes, usage, accessibility | ✅ Complete |
 
 ### Components
-- Route exists at `/components/[slug]` (dynamic)
-- **No MDX content files yet** — `apps/docs/content/components/` is empty
+| Page | Route | Status |
+|---|---|---|
+| Icon | `/components/icon` | ✅ Complete |
+
+Note: `/components/[slug]` dynamic route also exists as a fallback for future MDX-based pages.
 
 ---
 
@@ -118,7 +121,7 @@ No `dist/styles.css` import. Font injection handled separately (unchanged). Toke
 ## Docs UI Components (not part of the library)
 
 Already built for the docs site itself:
-`ColorSwatch`, `ColorSwatchGrid`, `ContrastTable`, `DoDont`, `Callout`, `Sidebar`, `Header`
+`ColorSwatch`, `ColorSwatchGrid`, `ContrastTable`, `DoDont`, `Callout`, `Sidebar`, `Header`, `ComponentPreview`, `SizesExample`
 Located in `apps/docs/components/`.
 
 ### Token Alignment Audit (Step 0.5)
@@ -130,3 +133,5 @@ Located in `apps/docs/components/`.
 | `Callout` | ⚠ DS gap | Uses Tailwind color utilities not yet mapped to DS semantic tokens |
 | `DoDont` | ⚠ DS gap | Uses Tailwind color utilities not yet mapped to DS semantic tokens |
 | `ContrastTable` | ⚠ DS gap | Uses Tailwind color utilities not yet mapped to DS semantic tokens |
+| `ComponentPreview` | ✅ Clean | Uses Tailwind token utilities only |
+| `SizesExample`     | ✅ Clean | Uses Tailwind token utilities only |

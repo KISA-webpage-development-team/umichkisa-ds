@@ -5,7 +5,7 @@
 - [x] Step 0 — Token & Styles Audit
 - [x] Step 0.5 — Docs App Token Alignment (migrate globals.css + docs components to use DS token layer fully; fix font injection gap)
 - [x] Step 1 — Icon Implementation
-- [ ] Step 2+3 — Icon Docs Page + ComponentPreview Primitive
+- [x] Step 2+3 — Icon Docs Page + ComponentPreview Primitive
 - [ ] Step 4 — Component Skill
 
 ## Components (spec: docs/specs/component.md)
