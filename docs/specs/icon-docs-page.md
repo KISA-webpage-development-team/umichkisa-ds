@@ -415,6 +415,15 @@ Both must pass before the step is considered done.
 
 ---
 
+## Last Session [2026-03-22]
+Task: Step 2+3 — Icon Docs Page + ComponentPreview Primitive
+Done: Wrote `ds-constrained-execution` skill + `ds-review` subagent; updated this spec and plan to reference the skill. Implementation plan is at `docs/plans/2026-03-22-icon-docs-page.md`.
+Last file: `.claude/skills/ds-constrained-execution/SKILL.md`, `.claude/agents/ds-review.md`
+Next action: Invoke `ds-constrained-execution` skill and execute the implementation plan task-by-task starting from Task 1.
+Blockers: none
+
+---
+
 ## Session End Checklist
 
 1. `pnpm build` passes
