@@ -1,3 +1,25 @@
+/* ── Sejong Hospital font faces ──────────────────────────────────── */
+/*
+ * Two distinct font-family names, each treated as font-weight:400.
+ * This lets --font-sejong-bold / --font-sejong-light work via
+ * font-family alone — no font-weight override needed at the call site.
+ */
+@font-face {
+  font-family: 'SejongHospital Bold';
+  src: url('../fonts/Sejonghospital-Bold.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SejongHospital Light';
+  src: url('../fonts/Sejonghospital-Light.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @import "../tokens/primitives.css";
 @import "../tokens/semantic.css";
 @import "../components/icon/icon.css";

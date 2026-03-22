@@ -11,8 +11,9 @@ umichkisa-ds/
 ├── packages/web/          # Component library (published)
 │   └── src/
 │       ├── components/    # All components
+│       ├── fonts/         # SejongHospital-Bold.ttf, SejongHospital-Light.ttf
 │       ├── tokens/        # primitives.css, semantic.css
-│       ├── styles/        # index.css (entry, type-* utilities)
+│       ├── styles/        # index.css (entry, @font-face, type-* utilities)
 │       └── index.ts       # Public exports
 └── apps/docs/             # Documentation site (Next.js 15, App Router)
     ├── app/               # Routes
@@ -32,6 +33,18 @@ Three-tier model:
 Typography utility classes (`.type-display`, `.type-h1`…`.type-caption`) already defined in `packages/web/src/styles/index.css`.
 
 All semantic color tokens are exposed as Tailwind utilities via `@theme inline` in `styles/index.css`. Use `bg-brand-primary`, `text-foreground`, `text-muted-foreground`, etc. — no raw `var()` needed in component code.
+
+### Font Loading Architecture
+
+SejongHospital font files (`Sejonghospital-Bold.ttf`, `Sejonghospital-Light.ttf`) live in `packages/web/src/fonts/`. Two distinct `@font-face` families are registered in `src/styles/index.css`:
+- `'SejongHospital Bold'` → Bold file, `font-weight: 400` (treated as normal under its own name)
+- `'SejongHospital Light'` → Light file, `font-weight: 400`
+
+This means `--font-sejong-bold` / `--font-sejong-light` tokens work via `font-family` alone — no `font-weight` override needed at call sites.
+
+`build:css` copies fonts to `dist/fonts/` and rewrites the URL in `dist/styles.css` from `url('../fonts/...)` to `url('./fonts/...)` for the pre-built CSS path.
+
+The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to load these same fonts, which overrides the DS `:root` token via class specificity on `<html>`. This is intentional — next/font handles preloading in the docs app. External consumers (no next/font/local) rely on the DS `@font-face` directly.
 
 ---
 
