@@ -17,17 +17,19 @@
  * (imported in layout.tsx before this file).
  *
  * Generated utilities:
- *   --color-brand-primary  → bg-brand-primary, text-brand-primary, border-brand-primary
- *   --color-surface        → bg-surface, text-surface
- *   --color-surface-muted  → bg-surface-muted
- *   --color-surface-subtle → bg-surface-subtle
- *   --color-border         → border-border
- *   --color-foreground     → text-foreground
- *   --color-muted-foreground → text-muted-foreground
- *   --color-michigan-maize → bg-michigan-maize
- *   --color-michigan-blue  → text-michigan-blue
- *   --font-sejong-bold     → font-sejong-bold
- *   --font-sejong-light    → font-sejong-light
+ *   --color-brand-primary     → bg-brand-primary, text-brand-primary, border-brand-primary
+ *   --color-brand-primary-mid → bg-brand-primary-mid, text-brand-primary-mid
+ *   --color-surface           → bg-surface, text-surface
+ *   --color-surface-muted     → bg-surface-muted
+ *   --color-surface-subtle    → bg-surface-subtle
+ *   --color-border            → border-border
+ *   --color-foreground        → text-foreground
+ *   --color-muted-foreground  → text-muted-foreground
+ *   --color-michigan-maize    → bg-michigan-maize
+ *   --color-michigan-blue     → text-michigan-blue
+ *
+ * Note: font utilities (font-sejong-bold, font-sejong-light) are registered
+ * in packages/web/src/styles/index.css, not here.
  */
 @theme inline {
   --color-brand-primary:  var(--color-brand-primary);
