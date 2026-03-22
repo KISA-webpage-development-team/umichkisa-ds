@@ -21,6 +21,7 @@ export function Icon({ name, size = "md", label, className }: IconProps) {
         size={px}
         className={className}
         aria-label={label}
+        role="img"
       />
     );
   }

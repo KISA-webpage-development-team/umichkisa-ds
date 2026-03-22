@@ -38,10 +38,11 @@ describe("Icon", () => {
     expect(container.querySelector("svg")).toHaveAttribute("aria-hidden", "true");
   });
 
-  it("sets aria-label and omits aria-hidden when label is provided", () => {
+  it("sets aria-label, role=img, and omits aria-hidden when label is provided", () => {
     const { container } = render(<Icon name="plus" label="Add item" />);
     const svg = container.querySelector("svg");
     expect(svg).toHaveAttribute("aria-label", "Add item");
+    expect(svg).toHaveAttribute("role", "img");
     expect(svg).not.toHaveAttribute("aria-hidden");
   });
 
