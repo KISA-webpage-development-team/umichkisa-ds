@@ -15,6 +15,9 @@ const requiredCode = `import { Label } from '@umichkisa-ds/web'
 </Label>`
 
 const withInputCode = `import { Label, Input } from '@umichkisa-ds/web'
+import { useState } from 'react'
+
+const [value, setValue] = useState('')
 
 <Label htmlFor="username" required>
   Username
@@ -125,7 +128,7 @@ export default function LabelPage() {
             <tr className="border-b border-border">
               <td className="px-4 py-3 type-caption font-mono text-foreground">htmlFor</td>
               <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">—</td>
+              <td className="px-4 py-3 type-caption font-mono text-foreground">required</td>
               <td className="px-4 py-3 type-body-sm text-foreground">The id of the form control this label is associated with.</td>
             </tr>
             <tr className="border-b border-border">
@@ -143,7 +146,7 @@ export default function LabelPage() {
             <tr className="border-b border-border">
               <td className="px-4 py-3 type-caption font-mono text-foreground">children</td>
               <td className="px-4 py-3 type-caption font-mono text-foreground">ReactNode</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">—</td>
+              <td className="px-4 py-3 type-caption font-mono text-foreground">required</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Label text content.</td>
             </tr>
           </tbody>
