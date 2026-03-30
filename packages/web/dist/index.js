@@ -338,12 +338,12 @@ function Label({ htmlFor, required = false, className, children }) {
     {
       htmlFor,
       className: cn(
-        "text-sm font-medium text-[var(--color-foreground)]",
+        "type-label text-foreground",
         className
       ),
       children: [
         children,
-        required && /* @__PURE__ */ jsx9("span", { className: "ml-0.5 text-[var(--color-error)]", "aria-hidden": "true", children: "*" })
+        required && /* @__PURE__ */ jsx9("span", { className: "ml-0.5 text-error", "aria-hidden": "true", children: "*" })
       ]
     }
   );
