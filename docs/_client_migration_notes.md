@@ -21,6 +21,17 @@ Append-only log of API changes from existing implementations. Used when updating
 - Extends `React.AnchorHTMLAttributes<HTMLAnchorElement>` — all native anchor props (`target`, `rel`, etc.) now accepted
 - `LinkButtonProps` type changed — no longer manually defines `href`, `className`, `children`
 
+## IconButton
+
+- Now icon-only — `text` prop removed. For icon + text, use `<Button>` with `<Icon>` as a child.
+- `icon` prop changed from `React.ReactNode` to `IconName` (string). Pass Lucide name: `icon="pencil"`.
+- `forSubmit` prop removed — use `type="submit"` instead.
+- `onClick` type changed from `() => void` to native `React.MouseEventHandler<HTMLButtonElement>` (via Button's `ButtonHTMLAttributes`).
+- `aria-label` is now required (TypeScript enforced).
+- Default variant remains `secondary` (unchanged).
+- `size` prop added: `"sm" | "md" | "lg"` (default `"md"`) — produces square dimensions.
+- `disabled` handled via native `<button>` attribute passthrough (no separate prop needed).
+
 ## Divider
 
 - `HorizontalDivider` renamed to `Divider` (orientation defaults to `"horizontal"`)

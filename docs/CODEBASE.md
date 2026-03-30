@@ -66,6 +66,7 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 | Divider | `/components/divider` | ✅ Complete |
 | LinkButton | `/components/link-button` | ✅ Complete |
 | Badge | `/components/badge` | ✅ Complete |
+| IconButton | `/components/icon-button` | ✅ Complete |
 
 Note: `/components/[slug]` dynamic route also exists as a fallback for future MDX-based pages.
 
@@ -78,7 +79,7 @@ Note: `/components/[slug]` dynamic route also exists as a fallback for future MD
 |---|---|---|---|
 | `Badge` | badge | ✅ | 7 variants (default/brand/success/warning/error/info/outline) × 2 sizes, asChild via Radix Slot, DS-compliant tokens |
 | `Button` | button | ✅ | 4 variants (primary/secondary/tertiary/destructive) × 3 sizes, DS-compliant tokens, dual-ring focus |
-| `IconButton` | button | ✅ | |
+| `IconButton` | button | ✅ | Icon-only square `<Button>` wrapper. String `icon` prop (IconName), 3 sizes (32/40/48px), `::after` touch targets, required `aria-label`. |
 | `LinkButton` | button | ✅ | Reuses `buttonVariants` from Button. Extends `AnchorHTMLAttributes`. Disabled swaps to `<span>` with `role="link"`. |
 | `Input` | form | ✅ | |
 | `Label` | form | ✅ | |

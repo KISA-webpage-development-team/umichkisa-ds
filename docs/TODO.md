@@ -22,7 +22,7 @@ Use `new-component-workflow` skill for each component. Type: `audit` = existing 
 - [x] Divider (audit) — includes HorizontalDivider + VerticalDivider
 
 ### Batch 2 — Button family + Badge
-- [ ] IconButton (audit, depends: Button)
+- [x] IconButton (audit, depends: Button)
 - [x] LinkButton (audit, depends: Button)
 - [x] Badge (new)
 
