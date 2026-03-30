@@ -77,18 +77,6 @@ type FormItemProps = {
 };
 declare const FormItem: react.NamedExoticComponent<FormItemProps>;
 
-type HorizontalDividerColor = "light" | "gray";
-type HorizontalDividerProps = {
-    color?: HorizontalDividerColor;
-    className?: string;
-};
-declare function HorizontalDivider({ color, className }: HorizontalDividerProps): react_jsx_runtime.JSX.Element;
-
-type VerticalDividerProps = {
-    className?: string;
-};
-declare function VerticalDivider({ className }: VerticalDividerProps): react_jsx_runtime.JSX.Element;
-
 type ToggleBarItem = {
     view: string;
     text: string;
@@ -211,6 +199,12 @@ type PopoverContentProps = {
 };
 declare function PopoverContent({ children, className }: PopoverContentProps): react_jsx_runtime.JSX.Element;
 
+type DividerProps = {
+    orientation?: "horizontal" | "vertical";
+    className?: string;
+} & Omit<React.ComponentPropsWithoutRef<"hr">, "className">;
+declare function Divider({ orientation, className, ...props }: DividerProps): react_jsx_runtime.JSX.Element;
+
 declare const DS_VERSION = "0.1.0";
 
-export { Button, type ButtonProps, DS_VERSION, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogTitle, type DialogTitleProps, DialogTrigger, Dropdown, DropdownContent, type DropdownContentProps, DropdownItem, type DropdownItemProps, DropdownTrigger, FormItem, type FormItemProps, HorizontalDivider, type HorizontalDividerColor, type HorizontalDividerProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, ToggleBar, type ToggleBarItem, type ToggleBarProps, UnexpectedError, type UnexpectedErrorProps, VerticalDivider, type VerticalDividerProps, buttonVariants, cn };
+export { Button, type ButtonProps, DS_VERSION, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogTitle, type DialogTitleProps, DialogTrigger, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownItem, type DropdownItemProps, DropdownTrigger, FormItem, type FormItemProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, ToggleBar, type ToggleBarItem, type ToggleBarProps, UnexpectedError, type UnexpectedErrorProps, buttonVariants, cn };
