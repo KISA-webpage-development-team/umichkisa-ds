@@ -84,6 +84,12 @@ export default function ButtonPage() {
           <Button variant="destructive">Destructive</Button>
         </div>
       </ComponentPreview>
+      <ul className="type-body-sm text-muted-foreground max-w-prose mt-4 mb-2 flex flex-col gap-2">
+        <li><strong className="text-foreground">Primary</strong> — the main action on the page. Usually one per screen.</li>
+        <li><strong className="text-foreground">Secondary</strong> — supporting actions alongside a primary button.</li>
+        <li><strong className="text-foreground">Tertiary</strong> — low-emphasis actions like "Cancel" or inline text-level actions.</li>
+        <li><strong className="text-foreground">Destructive</strong> — actions that delete data or cannot be undone.</li>
+      </ul>
 
       {/* Sizes */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">Sizes</h3>
@@ -125,15 +131,11 @@ export default function ButtonPage() {
       {/* Disabled */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">Disabled</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        The disabled state reduces opacity, applies{' '}
+        Pass{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          pointer-events-none
-        </code>
-        , and uses the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          disabled-foreground
+          disabled
         </code>{' '}
-        color token.
+        to visually dim the button and block interaction. Works with all variants.
       </p>
       <ComponentPreview code={disabledCode}>
         <div className="flex items-center gap-4">
@@ -202,7 +204,7 @@ export default function ButtonPage() {
               <td className="px-4 py-3 type-caption font-mono text-foreground">className</td>
               <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
               <td className="px-4 py-3 type-caption text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Merged via cn(). Use for layout utilities only — never override variant styles.</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">Merged via cn() (class merge utility). Use for layout utilities only — never override variant styles.</td>
             </tr>
             <tr>
               <td className="px-4 py-3 type-caption font-mono text-foreground">children</td>
