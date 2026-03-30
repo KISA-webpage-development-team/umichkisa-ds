@@ -84,7 +84,7 @@ export default function ButtonPage() {
           <Button variant="destructive">Destructive</Button>
         </div>
       </ComponentPreview>
-      <ul className="type-body-sm text-muted-foreground max-w-prose mt-4 mb-2 flex flex-col gap-2">
+      <ul className="type-body-sm max-w-prose mt-4 mb-2 flex flex-col gap-2">
         <li><strong className="text-foreground">Primary</strong> — the main action on the page. Usually one per screen.</li>
         <li><strong className="text-foreground">Secondary</strong> — supporting actions alongside a primary button.</li>
         <li><strong className="text-foreground">Tertiary</strong> — low-emphasis actions like "Cancel" or inline text-level actions.</li>
