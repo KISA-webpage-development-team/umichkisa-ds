@@ -128,41 +128,44 @@ function Button({ variant, size, className, type = "button", ...props }) {
 }
 
 // src/components/button/LinkButton.tsx
-var import_class_variance_authority2 = require("class-variance-authority");
 var import_jsx_runtime2 = require("react/jsx-runtime");
-var linkButtonVariants = (0, import_class_variance_authority2.cva)(
-  "inline-flex items-center justify-center self-center gap-1 cursor-pointer rounded-md text-sm md:text-base px-4 py-2 transition-colors",
-  {
-    variants: {
-      variant: {
-        primary: "bg-[var(--color-brand-primary)] border border-[var(--color-brand-primary)] text-[var(--color-brand-accent)] hover:border-[var(--color-brand-accent)]",
-        secondary: "bg-slate-100 border border-slate-100 text-[var(--color-foreground)] hover:bg-slate-200",
-        tertiary: "border-none text-[var(--color-foreground)] hover:underline"
-      }
-    },
-    defaultVariants: {
-      variant: "primary"
-    }
-  }
-);
 function LinkButton({
-  href,
   variant,
+  size,
   disabled = false,
   className,
-  children
+  children,
+  ...props
 }) {
-  const cls = cn(linkButtonVariants({ variant }), className);
   if (disabled) {
-    return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: cls, "aria-disabled": "true", children });
+    return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+      "span",
+      {
+        className: cn(
+          buttonVariants({ variant, size }),
+          "pointer-events-none text-disabled-foreground opacity-60",
+          className
+        ),
+        role: "link",
+        "aria-disabled": "true",
+        children
+      }
+    );
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("a", { href, className: cls, children });
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+    "a",
+    {
+      className: cn(buttonVariants({ variant, size }), className),
+      ...props,
+      children
+    }
+  );
 }
 
 // src/components/button/IconButton.tsx
-var import_class_variance_authority3 = require("class-variance-authority");
+var import_class_variance_authority2 = require("class-variance-authority");
 var import_jsx_runtime3 = require("react/jsx-runtime");
-var iconButtonVariants = (0, import_class_variance_authority3.cva)(
+var iconButtonVariants = (0, import_class_variance_authority2.cva)(
   "inline-flex items-center justify-center self-center gap-1 cursor-pointer rounded-md text-sm md:text-base px-4 py-2 transition-colors h-fit disabled:cursor-not-allowed disabled:opacity-60",
   {
     variants: {

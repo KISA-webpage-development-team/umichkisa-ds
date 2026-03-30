@@ -65,41 +65,44 @@ function Button({ variant, size, className, type = "button", ...props }) {
 }
 
 // src/components/button/LinkButton.tsx
-import { cva as cva2 } from "class-variance-authority";
 import { jsx as jsx2 } from "react/jsx-runtime";
-var linkButtonVariants = cva2(
-  "inline-flex items-center justify-center self-center gap-1 cursor-pointer rounded-md text-sm md:text-base px-4 py-2 transition-colors",
-  {
-    variants: {
-      variant: {
-        primary: "bg-[var(--color-brand-primary)] border border-[var(--color-brand-primary)] text-[var(--color-brand-accent)] hover:border-[var(--color-brand-accent)]",
-        secondary: "bg-slate-100 border border-slate-100 text-[var(--color-foreground)] hover:bg-slate-200",
-        tertiary: "border-none text-[var(--color-foreground)] hover:underline"
-      }
-    },
-    defaultVariants: {
-      variant: "primary"
-    }
-  }
-);
 function LinkButton({
-  href,
   variant,
+  size,
   disabled = false,
   className,
-  children
+  children,
+  ...props
 }) {
-  const cls = cn(linkButtonVariants({ variant }), className);
   if (disabled) {
-    return /* @__PURE__ */ jsx2("span", { className: cls, "aria-disabled": "true", children });
+    return /* @__PURE__ */ jsx2(
+      "span",
+      {
+        className: cn(
+          buttonVariants({ variant, size }),
+          "pointer-events-none text-disabled-foreground opacity-60",
+          className
+        ),
+        role: "link",
+        "aria-disabled": "true",
+        children
+      }
+    );
   }
-  return /* @__PURE__ */ jsx2("a", { href, className: cls, children });
+  return /* @__PURE__ */ jsx2(
+    "a",
+    {
+      className: cn(buttonVariants({ variant, size }), className),
+      ...props,
+      children
+    }
+  );
 }
 
 // src/components/button/IconButton.tsx
-import { cva as cva3 } from "class-variance-authority";
+import { cva as cva2 } from "class-variance-authority";
 import { jsx as jsx3, jsxs } from "react/jsx-runtime";
-var iconButtonVariants = cva3(
+var iconButtonVariants = cva2(
   "inline-flex items-center justify-center self-center gap-1 cursor-pointer rounded-md text-sm md:text-base px-4 py-2 transition-colors h-fit disabled:cursor-not-allowed disabled:opacity-60",
   {
     variants: {

@@ -17,16 +17,11 @@ declare const buttonVariants: (props?: ({
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & VariantProps<typeof buttonVariants>;
 declare function Button({ variant, size, className, type, ...props }: ButtonProps): react_jsx_runtime.JSX.Element;
 
-declare const linkButtonVariants: (props?: ({
-    variant?: "primary" | "secondary" | "tertiary" | null | undefined;
-} & class_variance_authority_types.ClassProp) | undefined) => string;
-type LinkButtonProps = VariantProps<typeof linkButtonVariants> & {
-    href: string;
+type LinkButtonProps = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & VariantProps<typeof buttonVariants> & {
+    href?: string;
     disabled?: boolean;
-    className?: string;
-    children: React.ReactNode;
 };
-declare function LinkButton({ href, variant, disabled, className, children, }: LinkButtonProps): react_jsx_runtime.JSX.Element;
+declare function LinkButton({ variant, size, disabled, className, children, ...props }: LinkButtonProps): react_jsx_runtime.JSX.Element;
 
 declare const iconButtonVariants: (props?: ({
     variant?: "primary" | "secondary" | "tertiary" | null | undefined;
