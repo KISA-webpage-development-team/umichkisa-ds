@@ -93,19 +93,10 @@ type IconButtonProps = {
 } & Omit<ButtonProps, "children" | "size">;
 declare function IconButton({ icon, size, variant, className, ...rest }: IconButtonProps): react_jsx_runtime.JSX.Element;
 
-type InputProps = {
-    type: string;
-    value: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
-    placeholder?: string;
+type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
     invalid?: boolean;
-    required?: boolean;
-    disabled?: boolean;
-    id?: string;
-    className?: string;
 };
-declare const Input: react.NamedExoticComponent<InputProps>;
+declare function Input({ invalid, className, type, ...props }: InputProps): react_jsx_runtime.JSX.Element;
 
 type LabelProps = {
     htmlFor: string;

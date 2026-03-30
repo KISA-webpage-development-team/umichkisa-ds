@@ -352,40 +352,24 @@ function IconButton({
 }
 
 // src/components/form/Input.tsx
-var import_react = require("react");
 var import_jsx_runtime8 = require("react/jsx-runtime");
-var Input = (0, import_react.memo)(function Input2({
-  type,
-  value,
-  onChange,
-  onBlur,
-  placeholder,
-  invalid = false,
-  required = false,
-  disabled = false,
-  id,
-  className
-}) {
+function Input({ invalid = false, className, type = "text", ...props }) {
   return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
     "input",
     {
-      id,
       type,
-      value,
-      onChange,
-      onBlur,
-      placeholder,
-      required,
-      disabled,
       "aria-invalid": invalid,
       className: cn(
-        "w-full px-3 py-2 border border-[var(--color-border-strong)] rounded-md text-sm md:text-base text-[var(--color-foreground)] bg-[var(--color-surface)] placeholder:text-[var(--color-muted-foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-primary)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors",
-        invalid && "border-[var(--color-error)] focus:ring-[var(--color-error)]",
+        "w-full rounded-md border border-border-strong bg-surface px-3 py-2 type-body-sm text-foreground placeholder:text-muted-foreground transition-colors",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]",
+        "disabled:pointer-events-none disabled:text-disabled-foreground disabled:bg-surface-subtle",
+        invalid && "border-error focus-visible:outline-error focus-visible:shadow-[0_0_0_4px_var(--color-error)]",
         className
-      )
+      ),
+      ...props
     }
   );
-});
+}
 
 // src/components/form/Label.tsx
 var import_jsx_runtime9 = require("react/jsx-runtime");
@@ -407,9 +391,9 @@ function Label({ htmlFor, required = false, className, children }) {
 }
 
 // src/components/form/FormItem.tsx
-var import_react2 = require("react");
+var import_react = require("react");
 var import_jsx_runtime10 = require("react/jsx-runtime");
-var FormItem = (0, import_react2.memo)(function FormItem2({
+var FormItem = (0, import_react.memo)(function FormItem2({
   htmlFor,
   labelText,
   type,
@@ -419,9 +403,9 @@ var FormItem = (0, import_react2.memo)(function FormItem2({
   validationRules = [],
   required = false
 }) {
-  const [error, setError] = (0, import_react2.useState)(null);
-  const [requiredError, setRequiredError] = (0, import_react2.useState)(false);
-  const validate = (0, import_react2.useCallback)(
+  const [error, setError] = (0, import_react.useState)(null);
+  const [requiredError, setRequiredError] = (0, import_react.useState)(false);
+  const validate = (0, import_react.useCallback)(
     (val = value) => {
       if (required && !val.trim()) {
         setRequiredError(true);
