@@ -31,7 +31,7 @@ Use `new-component-workflow` skill for each component. Type: `audit` = existing 
 - [x] Input (audit)
 
 ### Batch 4 — Form controls
-- [ ] Textarea (new)
+- [x] Textarea (new)
 - [ ] Checkbox (new)
 - [ ] Select (new)
 
