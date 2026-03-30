@@ -35,6 +35,9 @@
 
   /* Color — Feedback */
   --color-error:          var(--primitive-red-500);
+  --color-error-hover:    oklch(45% 0.2 27);
+  --color-error-pressed:  oklch(40% 0.2 27);
+  --color-error-foreground: var(--primitive-white);
   --color-error-subtle:   oklch(97% 0.02 27);
   --color-success:        var(--primitive-green-500);
   --color-success-subtle: oklch(97% 0.02 145);

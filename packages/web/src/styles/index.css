@@ -54,8 +54,11 @@
   --color-link:                var(--color-link);
 
   /* Feedback */
-  --color-error:          var(--color-error);
-  --color-error-subtle:   var(--color-error-subtle);
+  --color-error:            var(--color-error);
+  --color-error-hover:      var(--color-error-hover);
+  --color-error-pressed:    var(--color-error-pressed);
+  --color-error-foreground: var(--color-error-foreground);
+  --color-error-subtle:     var(--color-error-subtle);
   --color-success:        var(--color-success);
   --color-success-subtle: var(--color-success-subtle);
   --color-warning:        var(--color-warning);
