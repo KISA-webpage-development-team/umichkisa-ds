@@ -67,6 +67,7 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 | LinkButton | `/components/link-button` | ✅ Complete |
 | Badge | `/components/badge` | ✅ Complete |
 | IconButton | `/components/icon-button` | ✅ Complete |
+| Input | `/components/input` | ✅ Complete |
 
 Note: `/components/[slug]` dynamic route also exists as a fallback for future MDX-based pages.
 
@@ -81,7 +82,7 @@ Note: `/components/[slug]` dynamic route also exists as a fallback for future MD
 | `Button` | button | ✅ | 4 variants (primary/secondary/tertiary/destructive) × 3 sizes, DS-compliant tokens, dual-ring focus |
 | `IconButton` | button | ✅ | Icon-only square `<Button>` wrapper. String `icon` prop (IconName), 3 sizes (32/40/48px), `::after` touch targets, required `aria-label`. |
 | `LinkButton` | button | ✅ | Reuses `buttonVariants` from Button. Extends `AnchorHTMLAttributes`. Disabled swaps to `<span>` with `role="link"`. |
-| `Input` | form | ✅ | |
+| `Input` | form | ✅ | Extends `InputHTMLAttributes`, `invalid` prop for error border + `aria-invalid`, `cn()` only (no CVA), dual-ring focus, DS-compliant tokens |
 | `Label` | form | ✅ | |
 | `FormItem` | form | ✅ | |
 | `Divider` | divider | ✅ | Unified from HorizontalDivider + VerticalDivider. Semantic `<hr>`, `orientation` prop, `--color-border` token. |

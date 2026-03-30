@@ -28,7 +28,7 @@ Use `new-component-workflow` skill for each component. Type: `audit` = existing 
 
 ### Batch 3 — Form foundations
 - [ ] Label (audit)
-- [ ] Input (audit)
+- [x] Input (audit)
 
 ### Batch 4 — Form controls
 - [ ] Textarea (new)

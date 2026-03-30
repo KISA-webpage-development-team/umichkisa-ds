@@ -37,3 +37,10 @@ Append-only log of API changes from existing implementations. Used when updating
 - `HorizontalDivider` renamed to `Divider` (orientation defaults to `"horizontal"`)
 - `VerticalDivider` renamed to `Divider orientation="vertical"`
 - `color` prop removed — uses `--color-border` token exclusively
+
+## Input
+
+- `type` is now optional (defaults to `"text"`)
+- `value` and `onChange` are now optional — uncontrolled usage supported
+- `onBlur`, `placeholder`, `required`, `disabled`, `id` are now inherited via `...props` (no API change, just internal simplification)
+- Extends `React.InputHTMLAttributes` — all native input attributes now accepted
