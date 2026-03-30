@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { Checkbox } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 
@@ -32,6 +33,19 @@ const withLabelCode = `import { Checkbox } from '@umichkisa-ds/web'
   <span className="type-body text-foreground">Accept terms</span>
 </label>`
 
+const controlledCode = `const [agreed, setAgreed] = useState(false)
+
+<label className="flex items-center gap-2">
+  <Checkbox
+    checked={agreed}
+    onChange={(e) => setAgreed(e.target.checked)}
+  />
+  <span className="type-body text-foreground">
+    I agree to the terms
+  </span>
+</label>
+<p>{agreed ? 'Accepted' : 'Not accepted'}</p>`
+
 const withErrorCode = `import { Checkbox } from '@umichkisa-ds/web'
 
 <div className="flex flex-col gap-2">
@@ -43,17 +57,19 @@ const withErrorCode = `import { Checkbox } from '@umichkisa-ds/web'
 </div>`
 
 export default function CheckboxPage() {
+  const [agreed, setAgreed] = useState(false)
+
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 min-w-0 overflow-hidden">
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Checkbox</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
-        Standalone checkbox primitive for boolean selections. Designed to compose with{' '}
+        Standalone checkbox for boolean selections. Wrap in a native{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          Label
+          label
         </code>{' '}
-        and{' '}
+        for click-to-toggle behavior, or compose with{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           FormItem
         </code>.
@@ -138,6 +154,25 @@ export default function CheckboxPage() {
             <span className="type-body text-foreground">Accept terms</span>
           </label>
           <p className="type-caption text-error">You must accept the terms.</p>
+        </div>
+      </ComponentPreview>
+
+      {/* Controlled */}
+      <h3 className="type-h3 mt-8 mb-2 text-foreground">Controlled</h3>
+      <p className="type-body mb-2 text-foreground max-w-prose">
+        Checkbox supports both controlled and uncontrolled usage.
+        Below is a controlled example with live state feedback.
+      </p>
+      <ComponentPreview code={controlledCode}>
+        <div className="flex flex-col gap-2">
+          <label className="flex items-center gap-2">
+            <Checkbox
+              checked={agreed}
+              onChange={(e) => setAgreed(e.target.checked)}
+            />
+            <span className="type-body text-foreground">I agree to the terms</span>
+          </label>
+          <p className="type-caption text-muted-foreground">{agreed ? 'Accepted' : 'Not accepted'}</p>
         </div>
       </ComponentPreview>
 
