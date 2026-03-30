@@ -10,6 +10,7 @@
 @source "../app/**/*.{tsx,ts,mdx,md}";
 @source "../components/**/*.{tsx,ts}";
 @source "../content/**/*.{md,mdx}";
+@source "../../../packages/web/src/**/*.{tsx,ts}";
 
 /* ── Docs-App Layout Variables ───────────────────────────────────── */
 /*
