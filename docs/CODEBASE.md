@@ -70,6 +70,7 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 | Label | `/components/label` | ✅ Complete |
 | Input | `/components/input` | ✅ Complete |
 | Textarea | `/components/textarea` | ✅ Complete |
+| Select | `/components/select` | ✅ Complete |
 
 Note: `/components/[slug]` dynamic route also exists as a fallback for future MDX-based pages.
 
@@ -86,6 +87,7 @@ Note: `/components/[slug]` dynamic route also exists as a fallback for future MD
 | `LinkButton` | button | ✅ | Reuses `buttonVariants` from Button. Extends `AnchorHTMLAttributes`. Disabled swaps to `<span>` with `role="link"`. |
 | `Input` | form | ✅ | Extends `InputHTMLAttributes`, `invalid` prop for error border + `aria-invalid`, `cn()` only (no CVA), dual-ring focus, DS-compliant tokens |
 | `Textarea` | form | ✅ | Extends `TextareaHTMLAttributes`, `invalid` prop, `rows=3` default, `resize-y`, `cn()` only, mirrors Input styling |
+| `Select` | form | ✅ | Native `<select>` wrapper with Icon chevron, `invalid` prop, `cn()` only, mirrors Input styling. Wrapper div with `has-[:disabled]` for icon color. |
 | `Label` | form | ✅ | `type-label` + `text-foreground`, optional `required` asterisk with `text-error`. `cn()` only, no CVA. |
 | `FormItem` | form | ✅ | |
 | `Divider` | divider | ✅ | Unified from HorizontalDivider + VerticalDivider. Semantic `<hr>`, `orientation` prop, `--color-border` token. |
