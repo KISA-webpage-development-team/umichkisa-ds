@@ -6,9 +6,9 @@
 **Alternatives rejected:** Direct migration — would import client-side inconsistencies into the design system.
 
 ## Definition of done per component
-**Decision:** A component is done when: implemented → MDX docs page written → live iframe preview rendering.
-**Why:** Shipping code without docs or preview is incomplete — consumers can't use it confidently.
-**Alternatives rejected:** Code-only DoD — leaves docs perpetually deferred.
+**Decision:** A component is done when: implemented → TSX docs page written → live ComponentPreview rendering → Junhee review passed.
+**Why:** Shipping code without docs or preview is incomplete — consumers can't use it confidently. TSX pages (not MDX) because component docs need interactive previews, prop tables, and ComponentPreview wrappers — all easier in TSX.
+**Alternatives rejected:** Code-only DoD — leaves docs perpetually deferred. MDX — too much ceremony for interactive component pages.
 
 ## Lucide as single icon source
 **Decision:** All icons use Lucide via a single `Icon` wrapper component. The 19 hand-crafted SVGs are replaced.
