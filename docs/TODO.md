@@ -27,7 +27,7 @@ Use `new-component-workflow` skill for each component. Type: `audit` = existing 
 - [x] Badge (new)
 
 ### Batch 3 — Form foundations
-- [ ] Label (audit)
+- [x] Label (audit)
 - [x] Input (audit)
 
 ### Batch 4 — Form controls

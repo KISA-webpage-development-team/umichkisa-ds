@@ -44,3 +44,8 @@ Append-only log of API changes from existing implementations. Used when updating
 - `value` and `onChange` are now optional — uncontrolled usage supported
 - `onBlur`, `placeholder`, `required`, `disabled`, `id` are now inherited via `...props` (no API change, just internal simplification)
 - Extends `React.InputHTMLAttributes` — all native input attributes now accepted
+
+## Label
+
+- No prop changes — API is identical (`htmlFor`, `required`, `className`, `children`)
+- Import change only: `import { Label } from '@umichkisa-ds/web'` (replaces `CustomLabel`)
