@@ -130,6 +130,11 @@ export default function BadgePage() {
           asChild
         </code>{' '}
         to render the badge as a different element, such as an anchor.
+        When enabled, Badge does not render its own{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          &lt;span&gt;
+        </code>
+        — it passes all styling and props to the single child element you provide.
       </p>
       <ComponentPreview code={asChildCode}>
         <Badge asChild>
@@ -187,7 +192,7 @@ export default function BadgePage() {
               <td className="px-4 py-3 type-caption font-mono text-foreground">className</td>
               <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
               <td className="px-4 py-3 type-caption font-mono text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Additional CSS classes.</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">Merged via cn() (class merge utility). Use for layout utilities only — never override variant styles.</td>
             </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 type-caption font-mono text-foreground">children</td>
