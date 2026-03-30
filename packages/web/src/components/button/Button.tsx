@@ -5,31 +5,31 @@ const buttonVariants = cva(
   [
     "inline-flex items-center justify-center gap-2 rounded-md cursor-pointer",
     "transition-colors",
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-focus-ring)] focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]",
-    "disabled:pointer-events-none disabled:text-[var(--color-disabled-foreground)] disabled:opacity-60",
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]",
+    "disabled:pointer-events-none disabled:text-disabled-foreground disabled:opacity-60",
   ],
   {
     variants: {
       variant: {
         primary: [
-          "bg-[var(--color-brand-primary)] text-[var(--color-brand-foreground)] border border-[var(--color-brand-primary)]",
-          "hover:bg-[var(--color-brand-primary-hover)] hover:border-[var(--color-brand-primary-hover)]",
-          "active:bg-[var(--color-brand-primary-pressed)] active:border-[var(--color-brand-primary-pressed)]",
+          "bg-brand-primary text-brand-foreground border border-brand-primary",
+          "hover:bg-brand-primary-hover hover:border-brand-primary-hover",
+          "active:bg-brand-primary-pressed active:border-brand-primary-pressed",
         ],
         secondary: [
-          "bg-[var(--color-surface-subtle)] text-[var(--color-foreground)] border border-[var(--color-border)]",
-          "hover:bg-[var(--color-surface-muted)] hover:border-[var(--color-border-strong)]",
-          "active:bg-[var(--color-border)] active:border-[var(--color-border-strong)]",
+          "bg-surface-subtle text-foreground border border-border",
+          "hover:bg-surface-muted hover:border-border-strong",
+          "active:bg-border active:border-border-strong",
         ],
         tertiary: [
-          "bg-transparent text-[var(--color-foreground)] border border-transparent",
-          "hover:bg-[var(--color-surface-subtle)]",
-          "active:bg-[var(--color-surface-muted)]",
+          "bg-transparent text-foreground border border-transparent",
+          "hover:bg-surface-subtle",
+          "active:bg-surface-muted",
         ],
         destructive: [
-          "bg-[var(--color-error)] text-[var(--color-error-foreground)] border border-[var(--color-error)]",
-          "hover:bg-[var(--color-error-hover)] hover:border-[var(--color-error-hover)]",
-          "active:bg-[var(--color-error-pressed)] active:border-[var(--color-error-pressed)]",
+          "bg-error text-error-foreground border border-error",
+          "hover:bg-error-hover hover:border-error-hover",
+          "active:bg-error-pressed active:border-error-pressed",
         ],
       },
       size: {
