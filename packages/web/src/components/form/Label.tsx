@@ -12,13 +12,13 @@ export function Label({ htmlFor, required = false, className, children }: LabelP
     <label
       htmlFor={htmlFor}
       className={cn(
-        "text-sm font-medium text-[var(--color-foreground)]",
+        "type-label text-foreground",
         className
       )}
     >
       {children}
       {required && (
-        <span className="ml-0.5 text-[var(--color-error)]" aria-hidden="true">
+        <span className="ml-0.5 text-error" aria-hidden="true">
           *
         </span>
       )}
