@@ -33,6 +33,24 @@ const typesCode = `import { Input } from '@umichkisa-ds/web'
 <Input type="password" placeholder="Password" />
 <Input type="number" placeholder="Number" />`
 
+const withErrorCode = `import { Input, Label } from '@umichkisa-ds/web'
+
+<div className="flex flex-col gap-2">
+  <Label htmlFor="email">Email</Label>
+  <Input id="email" type="email" invalid placeholder="you@example.com" />
+  <p className="type-caption text-error">Please enter a valid email.</p>
+</div>`
+
+const controlledCode = `const [value, setValue] = useState('')
+
+<Input
+  value={value}
+  onChange={(e) => setValue(e.target.value)}
+  placeholder="Type something..."
+  maxLength={50}
+/>
+<p>{value.length}/50</p>`
+
 export default function InputPage() {
   const [value, setValue] = useState('')
 
@@ -77,7 +95,7 @@ export default function InputPage() {
       {/* States */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">States</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Default, disabled, and invalid states. Focus the input to see the dual-ring focus indicator.
+        Default, disabled, and invalid states. Focus the input to see the focus styling.
       </p>
       <ComponentPreview code={statesCode}>
         <div className="flex flex-col gap-4 w-full max-w-sm">
@@ -119,7 +137,7 @@ export default function InputPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           gap-2
         </code>{' '}
-        (element tier spacing) between label and input.
+        between label and input.
       </p>
       <ComponentPreview code={withLabelCode}>
         <div className="w-full max-w-sm">
@@ -130,13 +148,36 @@ export default function InputPage() {
         </div>
       </ComponentPreview>
 
+      {/* With error message */}
+      <h3 className="type-h3 mt-8 mb-2 text-foreground">With error message</h3>
+      <p className="type-body mb-2 text-foreground max-w-prose">
+        Pair{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          invalid
+        </code>{' '}
+        with an error message below the input. Use{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          type-caption text-error
+        </code>{' '}
+        for the message.
+      </p>
+      <ComponentPreview code={withErrorCode}>
+        <div className="w-full max-w-sm">
+          <div className="flex flex-col gap-2">
+            <Label htmlFor="error-demo">Email</Label>
+            <Input id="error-demo" type="email" invalid placeholder="you@example.com" />
+            <p className="type-caption text-error">Please enter a valid email.</p>
+          </div>
+        </div>
+      </ComponentPreview>
+
       {/* Controlled */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">Controlled</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Input supports both controlled and uncontrolled usage.
         Below is a controlled example with live character count.
       </p>
-      <ComponentPreview code={`const [value, setValue] = useState('')\n\n<Input\n  value={value}\n  onChange={(e) => setValue(e.target.value)}\n  placeholder="Type something..."\n  maxLength={50}\n/>\n<p>{value.length}/50</p>`}>
+      <ComponentPreview code={controlledCode}>
         <div className="w-full max-w-sm flex flex-col gap-2">
           <Input
             value={value}
