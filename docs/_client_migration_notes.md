@@ -12,3 +12,9 @@ Append-only log of API changes from existing implementations. Used when updating
 - `variant="destructive"` added (new)
 - `size` prop added: `"sm" | "md" | "lg"` (default `"md"`)
 - Extends `React.ButtonHTMLAttributes<HTMLButtonElement>` — all native button props now accepted
+
+## Divider
+
+- `HorizontalDivider` renamed to `Divider` (orientation defaults to `"horizontal"`)
+- `VerticalDivider` renamed to `Divider orientation="vertical"`
+- `color` prop removed — uses `--color-border` token exclusively

@@ -19,7 +19,7 @@ Use `new-component-workflow` skill for each component. Type: `audit` = existing 
 
 ### Batch 1 — Foundations
 - [x] Button (audit)
-- [ ] Divider (audit) — includes HorizontalDivider + VerticalDivider
+- [x] Divider (audit) — includes HorizontalDivider + VerticalDivider
 
 ### Batch 2 — Button family + Badge
 - [ ] IconButton (audit, depends: Button)

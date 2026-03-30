@@ -63,6 +63,7 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 |---|---|---|
 | Icon | `/components/icon` | ✅ Complete |
 | Button | `/components/button` | ✅ Complete |
+| Divider | `/components/divider` | ✅ Complete |
 
 Note: `/components/[slug]` dynamic route also exists as a fallback for future MDX-based pages.
 
@@ -79,8 +80,7 @@ Note: `/components/[slug]` dynamic route also exists as a fallback for future MD
 | `Input` | form | ✅ | |
 | `Label` | form | ✅ | |
 | `FormItem` | form | ✅ | |
-| `HorizontalDivider` | layout | ⚠ Partial | Hardcodes `border-gray-200/60` — should use `--color-border` |
-| `VerticalDivider` | layout | ✅ | |
+| `Divider` | divider | ✅ | Unified from HorizontalDivider + VerticalDivider. Semantic `<hr>`, `orientation` prop, `--color-border` token. |
 | `ToggleBar` | layout | ✅ | |
 | `LoadingSpinner` | feedback | ✅ | |
 | `NotFound` | feedback | ✅ | |
