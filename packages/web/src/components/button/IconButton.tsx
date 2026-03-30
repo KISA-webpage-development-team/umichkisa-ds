@@ -1,58 +1,53 @@
-import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/utils/cn";
+import { Button } from "./Button";
+import { Icon } from "../icon/Icon";
+import type { IconName } from "../icon/types";
+import type { ButtonProps } from "./Button";
 
-const iconButtonVariants = cva(
-  "inline-flex items-center justify-center self-center gap-1 cursor-pointer rounded-md text-sm md:text-base px-4 py-2 transition-colors h-fit disabled:cursor-not-allowed disabled:opacity-60",
-  {
-    variants: {
-      variant: {
-        primary:
-          "bg-[var(--color-brand-primary)] border border-[var(--color-brand-primary)] text-[var(--color-brand-accent)] hover:border-[var(--color-brand-accent)]",
-        secondary:
-          "bg-slate-100 border border-slate-100 text-[var(--color-foreground)] hover:bg-slate-200",
-        tertiary:
-          "border-none text-[var(--color-foreground)] hover:underline",
-      },
-    },
-    defaultVariants: {
-      variant: "secondary",
-    },
-  }
-);
+type IconButtonSize = "sm" | "md" | "lg";
 
-export type IconButtonProps = VariantProps<typeof iconButtonVariants> & {
-  icon: React.ReactNode;
-  text?: string;
-  disabled?: boolean;
-  forSubmit?: boolean;
-  className?: string;
-  onClick?: () => void;
-  "aria-label"?: string;
+const iconSizeMap: Record<IconButtonSize, "sm" | "md" | "lg"> = {
+  sm: "sm",
+  md: "md",
+  lg: "lg",
 };
 
-export function IconButton({
+const sizeStyles: Record<IconButtonSize, string> = {
+  sm: "p-2",
+  md: "p-2.5",
+  lg: "p-3",
+};
+
+const touchTarget = [
+  "relative",
+  "after:content-[''] after:absolute after:top-1/2 after:left-1/2",
+  "after:-translate-x-1/2 after:-translate-y-1/2",
+  "after:min-w-[44px] after:min-h-[44px] after:w-full after:h-full",
+].join(" ");
+
+type IconButtonProps = {
+  icon: IconName;
+  size?: IconButtonSize;
+  "aria-label": string;
+} & Omit<ButtonProps, "children" | "size">;
+
+function IconButton({
   icon,
-  text,
-  variant,
-  disabled = false,
-  forSubmit = false,
+  size = "md",
+  variant = "secondary",
   className,
-  onClick,
-  "aria-label": ariaLabel,
+  ...rest
 }: IconButtonProps) {
   return (
-    <button
-      type={forSubmit ? "submit" : "button"}
-      disabled={disabled}
-      aria-disabled={disabled}
-      aria-label={ariaLabel}
-      onClick={onClick}
-      className={cn(iconButtonVariants({ variant }), className)}
+    <Button
+      variant={variant}
+      className={cn(sizeStyles[size], touchTarget, className)}
+      {...rest}
     >
-      {icon}
-      {text && (
-        <span className="hidden sm:inline text-sm md:text-base">{text}</span>
-      )}
-    </button>
+      <Icon name={icon} size={iconSizeMap[size]} />
+    </Button>
   );
 }
+
+export { IconButton };
+export type { IconButtonProps };

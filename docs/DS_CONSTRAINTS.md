@@ -237,6 +237,8 @@ Never: Use `outline: none` or `outline: 0` without an equivalent custom focus in
 
 Must: Interactive wrappers around icons must be at least 44×44px. Use `min-w-[44px] min-h-[44px] flex items-center justify-center` on the button — this works for any icon size. [source:foundation/iconography/accessibility]
 Never: Rely on padding calculated from icon pixel size for touch target — changing the `size` prop would break the math. [source:foundation/iconography/accessibility]
+Prefer: The `::after` pseudo-element technique for compact interactive elements (e.g., icon-only buttons) where the visual size is intentionally smaller than 44×44px. The `::after` is positioned absolutely, centered, with `min-w-[44px] min-h-[44px]` — extending the touch target without inflating the visible box. [source:foundation/iconography/accessibility]
+Must: When using the `::after` technique, set `position: relative` on the interactive element so the pseudo-element is anchored correctly. [source:foundation/iconography/accessibility]
 Never: Use `--color-success` (2.2:1) as a standalone icon color — fails non-text contrast (3:1 required). [source:foundation/iconography/accessibility]
 Never: Use `--color-warning` (3.0:1) as a standalone icon color — at the exact floor, not a safe pass. [source:foundation/iconography/accessibility]
 Must: When using `--color-success` or `--color-warning` for feedback icons, always pair with a `text-foreground` text label. The label carries the accessible meaning. [source:foundation/iconography/accessibility]
