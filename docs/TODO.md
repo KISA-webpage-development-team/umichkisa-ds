@@ -26,10 +26,9 @@ Use `new-component-workflow` skill for each component. Type: `audit` = existing 
 - [x] LinkButton (audit, depends: Button)
 - [x] Badge (new)
 
-### Batch 3 — Form foundations + ImageButton
+### Batch 3 — Form foundations
 - [ ] Label (audit)
 - [ ] Input (audit)
-- [ ] ImageButton (new, depends: Button)
 
 ### Batch 4 — Form controls
 - [ ] Textarea (new)
