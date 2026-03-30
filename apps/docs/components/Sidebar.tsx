@@ -71,6 +71,7 @@ const COMPONENT_ITEMS: NavItem[] = [
   { label: 'IconButton', href: '/components/icon-button' },
   { label: 'Label',      href: '/components/label' },
   { label: 'LinkButton', href: '/components/link-button' },
+  { label: 'Textarea',   href: '/components/textarea' },
 ]
 
 const SECTIONS = {

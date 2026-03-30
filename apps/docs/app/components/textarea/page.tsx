@@ -1,0 +1,214 @@
+'use client'
+
+import { useState } from 'react'
+import { Textarea, Label } from '@umichkisa-ds/web'
+import { ComponentPreview } from '@/components/ComponentPreview'
+
+const defaultCode = `import { Textarea } from '@umichkisa-ds/web'
+
+<Textarea placeholder="Enter your message..." />`
+
+const statesCode = `import { Textarea } from '@umichkisa-ds/web'
+
+{/* Default */}
+<Textarea placeholder="Default" />
+
+{/* Disabled */}
+<Textarea placeholder="Disabled" disabled />
+
+{/* Invalid */}
+<Textarea placeholder="Invalid" invalid />`
+
+const withLabelCode = `import { Textarea, Label } from '@umichkisa-ds/web'
+
+<div className="flex flex-col gap-2">
+  <Label htmlFor="message">Message</Label>
+  <Textarea id="message" placeholder="Write your message..." />
+</div>`
+
+const withErrorCode = `import { Textarea, Label } from '@umichkisa-ds/web'
+
+<div className="flex flex-col gap-2">
+  <Label htmlFor="message">Message</Label>
+  <Textarea id="message" invalid placeholder="Write your message..." />
+  <p className="type-caption text-error">Message is required.</p>
+</div>`
+
+const controlledCode = `const [value, setValue] = useState('')
+
+<Textarea
+  value={value}
+  onChange={(e) => setValue(e.target.value)}
+  placeholder="Type something..."
+  maxLength={200}
+/>
+<p>{value.length}/200</p>`
+
+export default function TextareaPage() {
+  const [value, setValue] = useState('')
+
+  return (
+    <article className="mx-auto max-w-3xl px-6 py-12 min-w-0 overflow-hidden">
+
+      {/* ── Header ──────────────────────────────────────────── */}
+      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Textarea</h1>
+      <p className="type-body mb-8 text-foreground max-w-prose">
+        Multi-line text field for user input. Extends the native{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          &lt;textarea&gt;
+        </code>{' '}
+        element, with an additional{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          invalid
+        </code>{' '}
+        prop for error styling. Resizes vertically by default. Designed to compose with{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          Label
+        </code>{' '}
+        and{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          FormItem
+        </code>.
+      </p>
+
+      {/* ── Examples ────────────────────────────────────────── */}
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+
+      {/* Default */}
+      <h3 className="type-h3 mt-6 mb-2 text-foreground">Default</h3>
+      <p className="type-body mb-2 text-foreground max-w-prose">
+        The simplest usage. Renders a full-width multi-line text area.
+      </p>
+      <ComponentPreview code={defaultCode}>
+        <div className="w-full max-w-sm">
+          <Textarea placeholder="Enter your message..." />
+        </div>
+      </ComponentPreview>
+
+      {/* States */}
+      <h3 className="type-h3 mt-8 mb-2 text-foreground">States</h3>
+      <p className="type-body mb-2 text-foreground max-w-prose">
+        Default, disabled, and invalid states. Focus the textarea to see the focus styling.
+      </p>
+      <ComponentPreview code={statesCode}>
+        <div className="flex flex-col gap-4 w-full max-w-sm">
+          <Textarea placeholder="Default" />
+          <Textarea placeholder="Disabled" disabled />
+          <Textarea placeholder="Invalid" invalid />
+        </div>
+      </ComponentPreview>
+
+      {/* With Label */}
+      <h3 className="type-h3 mt-8 mb-2 text-foreground">With Label</h3>
+      <p className="type-body mb-2 text-foreground max-w-prose">
+        Compose with{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          Label
+        </code>{' '}
+        for accessible form fields. Use{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          gap-2
+        </code>{' '}
+        between label and textarea.
+      </p>
+      <ComponentPreview code={withLabelCode}>
+        <div className="w-full max-w-sm">
+          <div className="flex flex-col gap-2">
+            <Label htmlFor="message-demo">Message</Label>
+            <Textarea id="message-demo" placeholder="Write your message..." />
+          </div>
+        </div>
+      </ComponentPreview>
+
+      {/* With error message */}
+      <h3 className="type-h3 mt-8 mb-2 text-foreground">With error message</h3>
+      <p className="type-body mb-2 text-foreground max-w-prose">
+        Pair{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          invalid
+        </code>{' '}
+        with an error message below the textarea. Use{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          type-caption text-error
+        </code>{' '}
+        for the message.
+      </p>
+      <ComponentPreview code={withErrorCode}>
+        <div className="w-full max-w-sm">
+          <div className="flex flex-col gap-2">
+            <Label htmlFor="error-demo">Message</Label>
+            <Textarea id="error-demo" invalid placeholder="Write your message..." />
+            <p className="type-caption text-error">Message is required.</p>
+          </div>
+        </div>
+      </ComponentPreview>
+
+      {/* Controlled */}
+      <h3 className="type-h3 mt-8 mb-2 text-foreground">Controlled</h3>
+      <p className="type-body mb-2 text-foreground max-w-prose">
+        Textarea supports both controlled and uncontrolled usage.
+        Below is a controlled example with live character count.
+      </p>
+      <ComponentPreview code={controlledCode}>
+        <div className="w-full max-w-sm flex flex-col gap-2">
+          <Textarea
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            placeholder="Type something..."
+            maxLength={200}
+          />
+          <p className="type-caption text-muted-foreground">{value.length}/200</p>
+        </div>
+      </ComponentPreview>
+
+      {/* ── API Reference ────────────────────────────────────── */}
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
+        Extends all native{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          &lt;textarea&gt;
+        </code>{' '}
+        attributes. Only custom props are listed below.
+      </p>
+      <div className="my-6 overflow-x-auto">
+        <table className="w-full border-collapse border border-border">
+          <thead className="bg-surface-subtle">
+            <tr>
+              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Prop</th>
+              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Type</th>
+              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Default</th>
+              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-b border-border">
+              <td className="px-4 py-3 type-caption font-mono text-foreground">invalid</td>
+              <td className="px-4 py-3 type-caption font-mono text-foreground">boolean</td>
+              <td className="px-4 py-3 type-caption font-mono text-foreground">false</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">Applies error border and sets aria-invalid.</td>
+            </tr>
+            <tr className="border-b border-border">
+              <td className="px-4 py-3 type-caption font-mono text-foreground">rows</td>
+              <td className="px-4 py-3 type-caption font-mono text-foreground">number</td>
+              <td className="px-4 py-3 type-caption font-mono text-foreground">3</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">Number of visible text lines. Maps to native rows attribute.</td>
+            </tr>
+            <tr className="border-b border-border">
+              <td className="px-4 py-3 type-caption font-mono text-foreground">className</td>
+              <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
+              <td className="px-4 py-3 type-caption font-mono text-foreground">—</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">Merged via cn(). Use for layout utilities only.</td>
+            </tr>
+            <tr className="border-b border-border">
+              <td className="px-4 py-3 type-caption font-mono text-foreground">...props</td>
+              <td className="px-4 py-3 type-caption font-mono text-foreground">TextareaHTMLAttributes</td>
+              <td className="px-4 py-3 type-caption font-mono text-foreground">—</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">All native textarea attributes (value, onChange, placeholder, disabled, name, etc.).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </article>
+  )
+}
