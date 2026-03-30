@@ -10,6 +10,15 @@ import * as RadixPopover from '@radix-ui/react-popover';
 
 declare function cn(...inputs: ClassValue[]): string;
 
+declare const badgeVariants: (props?: ({
+    variant?: "default" | "brand" | "success" | "warning" | "error" | "info" | "outline" | null | undefined;
+    size?: "sm" | "md" | null | undefined;
+} & class_variance_authority_types.ClassProp) | undefined) => string;
+type BadgeProps = React.ComponentPropsWithoutRef<"span"> & VariantProps<typeof badgeVariants> & {
+    asChild?: boolean;
+};
+declare function Badge({ variant, size, className, asChild, ...props }: BadgeProps): react_jsx_runtime.JSX.Element;
+
 declare const buttonVariants: (props?: ({
     variant?: "primary" | "secondary" | "tertiary" | "destructive" | null | undefined;
     size?: "sm" | "md" | "lg" | null | undefined;
@@ -202,4 +211,4 @@ declare function Divider({ orientation, className, ...props }: DividerProps): re
 
 declare const DS_VERSION = "0.1.0";
 
-export { Button, type ButtonProps, DS_VERSION, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogTitle, type DialogTitleProps, DialogTrigger, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownItem, type DropdownItemProps, DropdownTrigger, FormItem, type FormItemProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, ToggleBar, type ToggleBarItem, type ToggleBarProps, UnexpectedError, type UnexpectedErrorProps, buttonVariants, cn };
+export { Badge, type BadgeProps, Button, type ButtonProps, DS_VERSION, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogTitle, type DialogTitleProps, DialogTrigger, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownItem, type DropdownItemProps, DropdownTrigger, FormItem, type FormItemProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, ToggleBar, type ToggleBarItem, type ToggleBarProps, UnexpectedError, type UnexpectedErrorProps, badgeVariants, buttonVariants, cn };

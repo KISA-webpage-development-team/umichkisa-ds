@@ -31,6 +31,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.ts
 var src_exports = {};
 __export(src_exports, {
+  Badge: () => Badge,
   Button: () => Button,
   DS_VERSION: () => DS_VERSION,
   Dialog: () => Dialog,
@@ -58,6 +59,7 @@ __export(src_exports, {
   PopoverTrigger: () => PopoverTrigger,
   ToggleBar: () => ToggleBar,
   UnexpectedError: () => UnexpectedError,
+  badgeVariants: () => badgeVariants,
   buttonVariants: () => buttonVariants,
   cn: () => cn
 });
@@ -70,10 +72,52 @@ function cn(...inputs) {
   return (0, import_tailwind_merge.twMerge)((0, import_clsx.clsx)(inputs));
 }
 
-// src/components/button/Button.tsx
+// src/components/badge/Badge.tsx
 var import_class_variance_authority = require("class-variance-authority");
+var import_react_slot = require("@radix-ui/react-slot");
 var import_jsx_runtime = require("react/jsx-runtime");
-var buttonVariants = (0, import_class_variance_authority.cva)(
+var badgeVariants = (0, import_class_variance_authority.cva)(
+  [
+    "inline-flex items-center justify-center gap-1 rounded-md border w-fit whitespace-nowrap shrink-0 truncate",
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]"
+  ],
+  {
+    variants: {
+      variant: {
+        default: "bg-surface-subtle text-foreground border-border",
+        brand: "bg-brand-primary text-brand-foreground border-brand-primary",
+        success: "bg-success-subtle text-foreground border-success",
+        warning: "bg-warning-subtle text-foreground border-warning",
+        error: "bg-error-subtle text-foreground border-error",
+        info: "bg-info-subtle text-foreground border-info",
+        outline: "bg-transparent text-foreground border-border"
+      },
+      size: {
+        sm: "type-caption px-1.5 py-0.5",
+        md: "type-body-sm px-2 py-0.5"
+      }
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "md"
+    }
+  }
+);
+function Badge({
+  variant,
+  size,
+  className,
+  asChild = false,
+  ...props
+}) {
+  const Comp = asChild ? import_react_slot.Slot : "span";
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Comp, { className: cn(badgeVariants({ variant, size }), className), ...props });
+}
+
+// src/components/button/Button.tsx
+var import_class_variance_authority2 = require("class-variance-authority");
+var import_jsx_runtime2 = require("react/jsx-runtime");
+var buttonVariants = (0, import_class_variance_authority2.cva)(
   [
     "inline-flex items-center justify-center gap-2 rounded-md cursor-pointer",
     "transition-colors",
@@ -117,7 +161,7 @@ var buttonVariants = (0, import_class_variance_authority.cva)(
   }
 );
 function Button({ variant, size, className, type = "button", ...props }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
     "button",
     {
       type,
@@ -128,7 +172,7 @@ function Button({ variant, size, className, type = "button", ...props }) {
 }
 
 // src/components/button/LinkButton.tsx
-var import_jsx_runtime2 = require("react/jsx-runtime");
+var import_jsx_runtime3 = require("react/jsx-runtime");
 function LinkButton({
   variant,
   size,
@@ -138,7 +182,7 @@ function LinkButton({
   ...props
 }) {
   if (disabled) {
-    return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
       "span",
       {
         className: cn(
@@ -152,7 +196,7 @@ function LinkButton({
       }
     );
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
     "a",
     {
       className: cn(buttonVariants({ variant, size }), className),
@@ -163,9 +207,9 @@ function LinkButton({
 }
 
 // src/components/button/IconButton.tsx
-var import_class_variance_authority2 = require("class-variance-authority");
-var import_jsx_runtime3 = require("react/jsx-runtime");
-var iconButtonVariants = (0, import_class_variance_authority2.cva)(
+var import_class_variance_authority3 = require("class-variance-authority");
+var import_jsx_runtime4 = require("react/jsx-runtime");
+var iconButtonVariants = (0, import_class_variance_authority3.cva)(
   "inline-flex items-center justify-center self-center gap-1 cursor-pointer rounded-md text-sm md:text-base px-4 py-2 transition-colors h-fit disabled:cursor-not-allowed disabled:opacity-60",
   {
     variants: {
@@ -190,7 +234,7 @@ function IconButton({
   onClick,
   "aria-label": ariaLabel
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
     "button",
     {
       type: forSubmit ? "submit" : "button",
@@ -201,7 +245,7 @@ function IconButton({
       className: cn(iconButtonVariants({ variant }), className),
       children: [
         icon,
-        text && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "hidden sm:inline text-sm md:text-base", children: text })
+        text && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "hidden sm:inline text-sm md:text-base", children: text })
       ]
     }
   );
@@ -209,7 +253,7 @@ function IconButton({
 
 // src/components/form/Input.tsx
 var import_react = require("react");
-var import_jsx_runtime4 = require("react/jsx-runtime");
+var import_jsx_runtime5 = require("react/jsx-runtime");
 var Input = (0, import_react.memo)(function Input2({
   type,
   value,
@@ -222,7 +266,7 @@ var Input = (0, import_react.memo)(function Input2({
   id,
   className
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
     "input",
     {
       id,
@@ -244,9 +288,9 @@ var Input = (0, import_react.memo)(function Input2({
 });
 
 // src/components/form/Label.tsx
-var import_jsx_runtime5 = require("react/jsx-runtime");
+var import_jsx_runtime6 = require("react/jsx-runtime");
 function Label({ htmlFor, required = false, className, children }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
     "label",
     {
       htmlFor,
@@ -256,7 +300,7 @@ function Label({ htmlFor, required = false, className, children }) {
       ),
       children: [
         children,
-        required && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "ml-0.5 text-[var(--color-error)]", "aria-hidden": "true", children: "*" })
+        required && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "ml-0.5 text-[var(--color-error)]", "aria-hidden": "true", children: "*" })
       ]
     }
   );
@@ -264,7 +308,7 @@ function Label({ htmlFor, required = false, className, children }) {
 
 // src/components/form/FormItem.tsx
 var import_react2 = require("react");
-var import_jsx_runtime6 = require("react/jsx-runtime");
+var import_jsx_runtime7 = require("react/jsx-runtime");
 var FormItem = (0, import_react2.memo)(function FormItem2({
   htmlFor,
   labelText,
@@ -303,9 +347,9 @@ var FormItem = (0, import_react2.memo)(function FormItem2({
     validate(e.target.value);
   };
   const isInvalid = requiredError || error !== null;
-  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "relative flex flex-col gap-1 items-start", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Label, { htmlFor, required, children: labelText }),
-    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "relative flex flex-col gap-1 items-start", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Label, { htmlFor, required, children: labelText }),
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
       Input,
       {
         id: htmlFor,
@@ -318,14 +362,14 @@ var FormItem = (0, import_react2.memo)(function FormItem2({
         invalid: isInvalid
       }
     ),
-    isInvalid && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "absolute top-full mt-1 text-xs font-bold text-[var(--color-error)]", children: error ?? "" })
+    isInvalid && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "absolute top-full mt-1 text-xs font-bold text-[var(--color-error)]", children: error ?? "" })
   ] });
 });
 
 // src/components/layout/ToggleBar.tsx
-var import_jsx_runtime7 = require("react/jsx-runtime");
+var import_jsx_runtime8 = require("react/jsx-runtime");
 function ToggleBar({ activeView, onViewChange, items, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: cn("flex text-sm md:text-base mt-1", className), children: items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: cn("flex text-sm md:text-base mt-1", className), children: items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(
     "div",
     {
       role: "tab",
@@ -337,7 +381,7 @@ function ToggleBar({ activeView, onViewChange, items, className }) {
       ),
       children: [
         item.icon,
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: item.text })
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { children: item.text })
       ]
     },
     item.view
@@ -345,13 +389,13 @@ function ToggleBar({ activeView, onViewChange, items, className }) {
 }
 
 // src/components/feedback/LoadingSpinner.tsx
-var import_jsx_runtime8 = require("react/jsx-runtime");
+var import_jsx_runtime9 = require("react/jsx-runtime");
 function LoadingSpinner({
   fullScreen = true,
   label = "\uB85C\uB529\uC911\uC785\uB2C8\uB2E4",
   className
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(
     "div",
     {
       className: cn(
@@ -360,7 +404,7 @@ function LoadingSpinner({
         className
       ),
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
           "div",
           {
             className: "ds-spinner",
@@ -368,47 +412,47 @@ function LoadingSpinner({
             "aria-label": label
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-sm font-medium text-[var(--color-muted-foreground)]", children: label })
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "text-sm font-medium text-[var(--color-muted-foreground)]", children: label })
       ]
     }
   );
 }
 
 // src/components/feedback/NotFound.tsx
-var import_jsx_runtime9 = require("react/jsx-runtime");
+var import_jsx_runtime10 = require("react/jsx-runtime");
 function NotFound() {
-  return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("h1", { className: "text-4xl font-bold text-[var(--color-foreground)] mb-4", children: "404" }),
-    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "text-lg md:text-2xl font-semibold text-[var(--color-muted-foreground)] mb-6", children: "\uC874\uC7AC\uD558\uC9C0 \uC54A\uB294 \uD398\uC774\uC9C0\uC785\uB2C8\uB2E4" }),
-    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "flex justify-center w-[60%] mx-auto", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(LinkButton, { href: "/", variant: "primary", children: "\uD648\uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00\uAE30" }) })
+  return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h1", { className: "text-4xl font-bold text-[var(--color-foreground)] mb-4", children: "404" }),
+    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { className: "text-lg md:text-2xl font-semibold text-[var(--color-muted-foreground)] mb-6", children: "\uC874\uC7AC\uD558\uC9C0 \uC54A\uB294 \uD398\uC774\uC9C0\uC785\uB2C8\uB2E4" }),
+    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "flex justify-center w-[60%] mx-auto", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(LinkButton, { href: "/", variant: "primary", children: "\uD648\uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00\uAE30" }) })
   ] }) });
 }
 
 // src/components/feedback/NotLogin.tsx
-var import_jsx_runtime10 = require("react/jsx-runtime");
+var import_jsx_runtime11 = require("react/jsx-runtime");
 function NotLogin() {
-  return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uB85C\uADF8\uC778\uC774 \uD544\uC694\uD569\uB2C8\uB2E4" }),
-    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "flex justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(LinkButton, { href: "/signin", variant: "primary", children: "\uB85C\uADF8\uC778\uD558\uAE30" }) })
+  return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uB85C\uADF8\uC778\uC774 \uD544\uC694\uD569\uB2C8\uB2E4" }),
+    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "flex justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(LinkButton, { href: "/signin", variant: "primary", children: "\uB85C\uADF8\uC778\uD558\uAE30" }) })
   ] }) });
 }
 
 // src/components/feedback/NotAuthorized.tsx
-var import_jsx_runtime11 = require("react/jsx-runtime");
+var import_jsx_runtime12 = require("react/jsx-runtime");
 function NotAuthorized() {
-  return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uC811\uADFC \uAD8C\uD55C\uC774 \uC5C6\uC2B5\uB2C8\uB2E4" }),
-    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "flex justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(LinkButton, { href: "/", variant: "primary", children: "\uD648\uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00\uAE30" }) })
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uC811\uADFC \uAD8C\uD55C\uC774 \uC5C6\uC2B5\uB2C8\uB2E4" }),
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "flex justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(LinkButton, { href: "/", variant: "primary", children: "\uD648\uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00\uAE30" }) })
   ] }) });
 }
 
 // src/components/feedback/UnexpectedError.tsx
-var import_jsx_runtime12 = require("react/jsx-runtime");
+var import_jsx_runtime13 = require("react/jsx-runtime");
 function UnexpectedError({ onRetry }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uC624\uB958\uAC00 \uBC1C\uC0DD\uD588\uC2B5\uB2C8\uB2E4" }),
-    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "text-[var(--color-muted-foreground)] mb-6", children: "\uC7A0\uC2DC \uD6C4 \uB2E4\uC2DC \uC2DC\uB3C4\uD574\uC8FC\uC138\uC694." }),
-    onRetry && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Button, { onClick: onRetry, variant: "primary", children: "\uB2E4\uC2DC \uC2DC\uB3C4" })
+  return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uC624\uB958\uAC00 \uBC1C\uC0DD\uD588\uC2B5\uB2C8\uB2E4" }),
+    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "text-[var(--color-muted-foreground)] mb-6", children: "\uC7A0\uC2DC \uD6C4 \uB2E4\uC2DC \uC2DC\uB3C4\uD574\uC8FC\uC138\uC694." }),
+    onRetry && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Button, { onClick: onRetry, variant: "primary", children: "\uB2E4\uC2DC \uC2DC\uB3C4" })
   ] }) });
 }
 
@@ -416,30 +460,8 @@ function UnexpectedError({ onRetry }) {
 var import_lucide_react = require("lucide-react");
 
 // src/components/icon/custom/GithubIcon.tsx
-var import_jsx_runtime13 = require("react/jsx-runtime");
-function GithubIcon({
-  size = 24,
-  className,
-  ...props
-}) {
-  return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-    "svg",
-    {
-      xmlns: "http://www.w3.org/2000/svg",
-      width: size,
-      height: size,
-      viewBox: "0 0 20 20",
-      fill: "currentColor",
-      className,
-      ...props,
-      children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("path", { d: "M10,0 C15.523,0 20,4.59 20,10.253 C20,14.782 17.138,18.624 13.167,19.981 C12.66,20.082 12.48,19.762 12.48,19.489 C12.48,19.151 12.492,18.047 12.492,16.675 C12.492,15.719 12.172,15.095 11.813,14.777 C14.04,14.523 16.38,13.656 16.38,9.718 C16.38,8.598 15.992,7.684 15.35,6.966 C15.454,6.707 15.797,5.664 15.252,4.252 C15.252,4.252 14.414,3.977 12.505,5.303 C11.706,5.076 10.85,4.962 10,4.958 C9.15,4.962 8.295,5.076 7.497,5.303 C5.586,3.977 4.746,4.252 4.746,4.252 C4.203,5.664 4.546,6.707 4.649,6.966 C4.01,7.684 3.619,8.598 3.619,9.718 C3.619,13.646 5.954,14.526 8.175,14.785 C7.889,15.041 7.63,15.493 7.54,16.156 C6.97,16.418 5.522,16.871 4.63,15.304 C4.63,15.304 4.101,14.319 3.097,14.247 C3.097,14.247 2.122,14.234 3.029,14.87 C3.029,14.87 3.684,15.185 4.139,16.37 C4.139,16.37 4.726,18.2 7.508,17.58 C7.513,18.437 7.522,19.245 7.522,19.489 C7.522,19.76 7.338,20.077 6.839,19.982 C2.865,18.627 0,14.783 0,10.253 C0,4.59 4.478,0 10,0" })
-    }
-  );
-}
-
-// src/components/icon/custom/LinkedinIcon.tsx
 var import_jsx_runtime14 = require("react/jsx-runtime");
-function LinkedinIcon({
+function GithubIcon({
   size = 24,
   className,
   ...props
@@ -450,11 +472,33 @@ function LinkedinIcon({
       xmlns: "http://www.w3.org/2000/svg",
       width: size,
       height: size,
+      viewBox: "0 0 20 20",
+      fill: "currentColor",
+      className,
+      ...props,
+      children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("path", { d: "M10,0 C15.523,0 20,4.59 20,10.253 C20,14.782 17.138,18.624 13.167,19.981 C12.66,20.082 12.48,19.762 12.48,19.489 C12.48,19.151 12.492,18.047 12.492,16.675 C12.492,15.719 12.172,15.095 11.813,14.777 C14.04,14.523 16.38,13.656 16.38,9.718 C16.38,8.598 15.992,7.684 15.35,6.966 C15.454,6.707 15.797,5.664 15.252,4.252 C15.252,4.252 14.414,3.977 12.505,5.303 C11.706,5.076 10.85,4.962 10,4.958 C9.15,4.962 8.295,5.076 7.497,5.303 C5.586,3.977 4.746,4.252 4.746,4.252 C4.203,5.664 4.546,6.707 4.649,6.966 C4.01,7.684 3.619,8.598 3.619,9.718 C3.619,13.646 5.954,14.526 8.175,14.785 C7.889,15.041 7.63,15.493 7.54,16.156 C6.97,16.418 5.522,16.871 4.63,15.304 C4.63,15.304 4.101,14.319 3.097,14.247 C3.097,14.247 2.122,14.234 3.029,14.87 C3.029,14.87 3.684,15.185 4.139,16.37 C4.139,16.37 4.726,18.2 7.508,17.58 C7.513,18.437 7.522,19.245 7.522,19.489 C7.522,19.76 7.338,20.077 6.839,19.982 C2.865,18.627 0,14.783 0,10.253 C0,4.59 4.478,0 10,0" })
+    }
+  );
+}
+
+// src/components/icon/custom/LinkedinIcon.tsx
+var import_jsx_runtime15 = require("react/jsx-runtime");
+function LinkedinIcon({
+  size = 24,
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+    "svg",
+    {
+      xmlns: "http://www.w3.org/2000/svg",
+      width: size,
+      height: size,
       viewBox: "0 0 382 382",
       fill: "currentColor",
       className,
       ...props,
-      children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("path", { d: "M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889C366.529,382,382,366.529,382,347.444V34.555C382,15.471,366.529,0,347.445,0z M118.207,329.844c0,5.554-4.502,10.056-10.056,10.056H65.345c-5.554,0-10.056-4.502-10.056-10.056V150.403c0-5.554,4.502-10.056,10.056-10.056h42.806c5.554,0,10.056,4.502,10.056,10.056V329.844z M86.748,123.432c-22.459,0-40.666-18.207-40.666-40.666S64.289,42.1,86.748,42.1s40.666,18.207,40.666,40.666S109.208,123.432,86.748,123.432z M341.91,330.654c0,5.106-4.14,9.246-9.246,9.246H286.73c-5.106,0-9.246-4.14-9.246-9.246v-84.168c0-12.556,3.683-55.021-32.813-55.021c-28.309,0-34.051,29.066-35.204,42.11v97.079c0,5.106-4.139,9.246-9.246,9.246h-44.426c-5.106,0-9.246-4.14-9.246-9.246V149.593c0-5.106,4.14-9.246,9.246-9.246h44.426c5.106,0,9.246,4.14,9.246,9.246v15.655c10.497-15.753,26.097-27.912,59.312-27.912c73.552,0,73.131,68.716,73.131,106.472L341.91,330.654L341.91,330.654z" })
+      children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("path", { d: "M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889C366.529,382,382,366.529,382,347.444V34.555C382,15.471,366.529,0,347.445,0z M118.207,329.844c0,5.554-4.502,10.056-10.056,10.056H65.345c-5.554,0-10.056-4.502-10.056-10.056V150.403c0-5.554,4.502-10.056,10.056-10.056h42.806c5.554,0,10.056,4.502,10.056,10.056V329.844z M86.748,123.432c-22.459,0-40.666-18.207-40.666-40.666S64.289,42.1,86.748,42.1s40.666,18.207,40.666,40.666S109.208,123.432,86.748,123.432z M341.91,330.654c0,5.106-4.14,9.246-9.246,9.246H286.73c-5.106,0-9.246-4.14-9.246-9.246v-84.168c0-12.556,3.683-55.021-32.813-55.021c-28.309,0-34.051,29.066-35.204,42.11v97.079c0,5.106-4.139,9.246-9.246,9.246h-44.426c-5.106,0-9.246-4.14-9.246-9.246V149.593c0-5.106,4.14-9.246,9.246-9.246h44.426c5.106,0,9.246,4.14,9.246,9.246v15.655c10.497-15.753,26.097-27.912,59.312-27.912c73.552,0,73.131,68.716,73.131,106.472L341.91,330.654L341.91,330.654z" })
     }
   );
 }
@@ -489,7 +533,7 @@ var registry = {
 };
 
 // src/components/icon/Icon.tsx
-var import_jsx_runtime15 = require("react/jsx-runtime");
+var import_jsx_runtime16 = require("react/jsx-runtime");
 var sizeMap = {
   xs: 12,
   sm: 16,
@@ -501,7 +545,7 @@ function Icon({ name, size = "md", label, className }) {
   const LucideComponent = registry[name];
   const px = sizeMap[size];
   if (label) {
-    return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
       LucideComponent,
       {
         size: px,
@@ -511,7 +555,7 @@ function Icon({ name, size = "md", label, className }) {
       }
     );
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
     LucideComponent,
     {
       size: px,
@@ -523,14 +567,14 @@ function Icon({ name, size = "md", label, className }) {
 
 // src/components/overlay/Dialog.tsx
 var RadixDialog = __toESM(require("@radix-ui/react-dialog"), 1);
-var import_jsx_runtime16 = require("react/jsx-runtime");
+var import_jsx_runtime17 = require("react/jsx-runtime");
 var Dialog = RadixDialog.Root;
 var DialogTrigger = RadixDialog.Trigger;
 var DialogClose = RadixDialog.Close;
 function DialogContent({ children, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(RadixDialog.Portal, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(RadixDialog.Overlay, { className: "fixed inset-0 z-50 bg-black/50" }),
-    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(RadixDialog.Portal, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(RadixDialog.Overlay, { className: "fixed inset-0 z-50 bg-black/50" }),
+    /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
       RadixDialog.Content,
       {
         className: cn(
@@ -546,7 +590,7 @@ function DialogContent({ children, className }) {
   ] });
 }
 function DialogTitle({ children, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
     RadixDialog.Title,
     {
       className: cn("text-lg font-semibold text-[var(--color-foreground)] mb-4", className),
@@ -557,11 +601,11 @@ function DialogTitle({ children, className }) {
 
 // src/components/overlay/Dropdown.tsx
 var RadixDropdown = __toESM(require("@radix-ui/react-dropdown-menu"), 1);
-var import_jsx_runtime17 = require("react/jsx-runtime");
+var import_jsx_runtime18 = require("react/jsx-runtime");
 var Dropdown = RadixDropdown.Root;
 var DropdownTrigger = RadixDropdown.Trigger;
 function DropdownContent({ children, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(RadixDropdown.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(RadixDropdown.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
     RadixDropdown.Content,
     {
       className: cn(
@@ -576,7 +620,7 @@ function DropdownContent({ children, className }) {
   ) });
 }
 function DropdownItem({ children, onSelect, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
     RadixDropdown.Item,
     {
       onSelect,
@@ -593,11 +637,11 @@ function DropdownItem({ children, onSelect, className }) {
 
 // src/components/overlay/Popover.tsx
 var RadixPopover = __toESM(require("@radix-ui/react-popover"), 1);
-var import_jsx_runtime18 = require("react/jsx-runtime");
+var import_jsx_runtime19 = require("react/jsx-runtime");
 var Popover = RadixPopover.Root;
 var PopoverTrigger = RadixPopover.Trigger;
 function PopoverContent({ children, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(RadixPopover.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(RadixPopover.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
     RadixPopover.Content,
     {
       className: cn(
@@ -613,13 +657,13 @@ function PopoverContent({ children, className }) {
 }
 
 // src/components/divider/Divider.tsx
-var import_jsx_runtime19 = require("react/jsx-runtime");
+var import_jsx_runtime20 = require("react/jsx-runtime");
 function Divider({
   orientation = "horizontal",
   className,
   ...props
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
     "hr",
     {
       role: "separator",
@@ -638,6 +682,7 @@ function Divider({
 var DS_VERSION = "0.1.0";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
+  Badge,
   Button,
   DS_VERSION,
   Dialog,
@@ -665,6 +710,7 @@ var DS_VERSION = "0.1.0";
   PopoverTrigger,
   ToggleBar,
   UnexpectedError,
+  badgeVariants,
   buttonVariants,
   cn
 });
