@@ -65,6 +65,7 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 | Button | `/components/button` | ✅ Complete |
 | Divider | `/components/divider` | ✅ Complete |
 | LinkButton | `/components/link-button` | ✅ Complete |
+| Badge | `/components/badge` | ✅ Complete |
 
 Note: `/components/[slug]` dynamic route also exists as a fallback for future MDX-based pages.
 
@@ -75,6 +76,7 @@ Note: `/components/[slug]` dynamic route also exists as a fallback for future MD
 ### Implemented but review required
 | Component | Category | Token-Connected? | Notes |
 |---|---|---|---|
+| `Badge` | badge | ✅ | 7 variants (default/brand/success/warning/error/info/outline) × 2 sizes, asChild via Radix Slot, DS-compliant tokens |
 | `Button` | button | ✅ | 4 variants (primary/secondary/tertiary/destructive) × 3 sizes, DS-compliant tokens, dual-ring focus |
 | `IconButton` | button | ✅ | |
 | `LinkButton` | button | ✅ | Reuses `buttonVariants` from Button. Extends `AnchorHTMLAttributes`. Disabled swaps to `<span>` with `role="link"`. |
@@ -95,7 +97,7 @@ Note: `/components/[slug]` dynamic route also exists as a fallback for future MD
 
 ### Not Yet Implemented (V1 target)
 - `Container`, `Grid` — specs in `content/_layout-implementation.md`
-- `Badge`, `Card`, `ImageButton`, `ErrorBoundary`
+- `Card`, `ImageButton`, `ErrorBoundary`
 - `OnlyMobileView`, `UnderConstruction`
 - `Accordion`
 - `DatePicker`, `Calendar` (deferred to v1.1)
