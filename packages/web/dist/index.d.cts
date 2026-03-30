@@ -32,19 +32,66 @@ type LinkButtonProps = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "href
 };
 declare function LinkButton({ variant, size, disabled, className, children, ...props }: LinkButtonProps): react_jsx_runtime.JSX.Element;
 
-declare const iconButtonVariants: (props?: ({
-    variant?: "primary" | "secondary" | "tertiary" | null | undefined;
-} & class_variance_authority_types.ClassProp) | undefined) => string;
-type IconButtonProps = VariantProps<typeof iconButtonVariants> & {
-    icon: React.ReactNode;
-    text?: string;
-    disabled?: boolean;
-    forSubmit?: boolean;
+interface CustomIconProps$1 {
+    size?: number;
     className?: string;
-    onClick?: () => void;
+    "aria-hidden"?: boolean | "true" | "false";
     "aria-label"?: string;
+}
+declare function GithubIcon({ size, className, ...props }: CustomIconProps$1): react_jsx_runtime.JSX.Element;
+
+interface CustomIconProps {
+    size?: number;
+    className?: string;
+    "aria-hidden"?: boolean | "true" | "false";
+    "aria-label"?: string;
+}
+declare function LinkedinIcon({ size, className, ...props }: CustomIconProps): react_jsx_runtime.JSX.Element;
+
+declare const registry: {
+    readonly "arrow-left": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "arrow-right": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "chevron-right": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "chevron-down": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "circle-minus": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "circle-plus": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "clock-9": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "external-link": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly eye: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "graduation-cap": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly list: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly lock: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly mail: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "message-square": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly minus: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly pencil: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly plus: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly reply: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "shopping-cart": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "thumbs-up": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly ticket: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "trash-2": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly x: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly github: typeof GithubIcon;
+    readonly linkedin: typeof LinkedinIcon;
 };
-declare function IconButton({ icon, text, variant, disabled, forSubmit, className, onClick, "aria-label": ariaLabel, }: IconButtonProps): react_jsx_runtime.JSX.Element;
+type IconName = keyof typeof registry;
+
+type IconSize = "xs" | "sm" | "md" | "lg" | "xl";
+interface IconProps {
+    name: IconName;
+    size?: IconSize;
+    label?: string;
+    className?: string;
+}
+
+type IconButtonSize = "sm" | "md" | "lg";
+type IconButtonProps = {
+    icon: IconName;
+    size?: IconButtonSize;
+    "aria-label": string;
+} & Omit<ButtonProps, "children" | "size">;
+declare function IconButton({ icon, size, variant, className, ...rest }: IconButtonProps): react_jsx_runtime.JSX.Element;
 
 type InputProps = {
     type: string;
@@ -111,59 +158,6 @@ type UnexpectedErrorProps = {
     onRetry?: () => void;
 };
 declare function UnexpectedError({ onRetry }: UnexpectedErrorProps): react_jsx_runtime.JSX.Element;
-
-interface CustomIconProps$1 {
-    size?: number;
-    className?: string;
-    "aria-hidden"?: boolean | "true" | "false";
-    "aria-label"?: string;
-}
-declare function GithubIcon({ size, className, ...props }: CustomIconProps$1): react_jsx_runtime.JSX.Element;
-
-interface CustomIconProps {
-    size?: number;
-    className?: string;
-    "aria-hidden"?: boolean | "true" | "false";
-    "aria-label"?: string;
-}
-declare function LinkedinIcon({ size, className, ...props }: CustomIconProps): react_jsx_runtime.JSX.Element;
-
-declare const registry: {
-    readonly "arrow-left": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly "arrow-right": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly "chevron-right": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly "chevron-down": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly "circle-minus": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly "circle-plus": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly "clock-9": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly "external-link": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly eye: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly "graduation-cap": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly list: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly lock: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly mail: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly "message-square": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly minus: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly pencil: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly plus: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly reply: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly "shopping-cart": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly "thumbs-up": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly ticket: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly "trash-2": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly x: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
-    readonly github: typeof GithubIcon;
-    readonly linkedin: typeof LinkedinIcon;
-};
-type IconName = keyof typeof registry;
-
-type IconSize = "xs" | "sm" | "md" | "lg" | "xl";
-interface IconProps {
-    name: IconName;
-    size?: IconSize;
-    label?: string;
-    className?: string;
-}
 
 declare function Icon({ name, size, label, className }: IconProps): react_jsx_runtime.JSX.Element;
 
