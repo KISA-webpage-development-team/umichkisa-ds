@@ -156,8 +156,9 @@ Prefer: Exhausting the Lucide search (including synonyms) before adding a custom
 ### Custom Icons
 
 Must: Custom SVGs that replace missing Lucide icons must match Lucide's visual language exactly: `viewBox="0 0 24 24"`, `stroke-width="2"`, `stroke="currentColor"`, `fill="none"`, `stroke-linecap="round"`, `stroke-linejoin="round"`. [source:foundation/iconography/library]
+Exception: Brand icons (e.g., GitHub, LinkedIn) are registered in the `<Icon>` system as fill-based SVGs with their original viewBox. They do not need to match Lucide's stroke style. This keeps brand icon usage consistent with all other icons via `<Icon name="github" />`. [source:implementation/icon]
 Never: Use a second icon library when a Lucide icon is unavailable — use an inline SVG with Lucide-matching attributes. [source:foundation/iconography/library]
-Never: Put complex logo marks or illustrations through the `<Icon>` system — use `<img>` or an inline SVG component instead. [source:foundation/iconography/library]
+Never: Put complex illustrations through the `<Icon>` system — use `<img>` or an inline SVG component instead. Simple brand logos are permitted. [source:foundation/iconography/library]
 
 ### Naming
 

@@ -17,12 +17,12 @@ export function SizesExample() {
 
   return (
     <div>
-      <div className="flex gap-2 mb-3">
+      <div className="flex gap-2 mb-2">
         {SIZES.map((s) => (
           <button
             key={s}
             onClick={() => setSize(s)}
-            className={`px-3 py-1.5 rounded-md type-caption font-mono transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-focus-ring)] focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)] ${
+            className={`px-2 py-1 rounded-md type-caption font-mono transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-focus-ring)] focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)] ${
               size === s
                 ? 'bg-brand-primary text-brand-foreground'
                 : 'bg-surface-subtle text-muted-foreground hover:text-foreground'
