@@ -37,7 +37,7 @@ function LinkButton({
 
   return (
     <a
-      className={cn(buttonVariants({ variant, size }), className)}
+      className={cn(buttonVariants({ variant, size }), "hover:underline", className)}
       {...props}
     >
       {children}

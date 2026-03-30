@@ -199,7 +199,7 @@ function LinkButton({
   return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
     "a",
     {
-      className: cn(buttonVariants({ variant, size }), className),
+      className: cn(buttonVariants({ variant, size }), "hover:underline", className),
       ...props,
       children
     }
