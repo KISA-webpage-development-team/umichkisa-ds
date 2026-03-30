@@ -9,7 +9,7 @@
 - [x] Step 4 — Component Skill
 
 ## Components (spec: docs/specs/component.md)
-- [ ] Icon
+- [x] Icon
 - [ ] Button
 - [ ] IconButton
 - [ ] LinkButton
