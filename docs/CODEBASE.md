@@ -88,7 +88,7 @@ Note: `/components/[slug]` dynamic route also exists as a fallback for future MD
 | `LinkButton` | button | ✅ | Reuses `buttonVariants` from Button. Extends `AnchorHTMLAttributes`. Disabled swaps to `<span>` with `role="link"`. |
 | `Input` | form | ✅ | Extends `InputHTMLAttributes`, `invalid` prop for error border + `aria-invalid`, `cn()` only (no CVA), dual-ring focus, DS-compliant tokens |
 | `Textarea` | form | ✅ | Extends `TextareaHTMLAttributes`, `invalid` prop, `rows=3` default, `resize-y`, `cn()` only, mirrors Input styling |
-| `Select` | form | ✅ | Native `<select>` wrapper with Icon chevron, `invalid` prop, `cn()` only, mirrors Input styling. Wrapper div with `has-[:disabled]` for icon color. |
+| `Select` | form | ✅ | Radix compound component (Select, SelectTrigger, SelectContent, SelectItem, SelectGroup, SelectSeparator). Fully styleable dropdown overlay. `cn()` only, trigger mirrors Input styling. |
 | `Checkbox` | form | ✅ | Native hidden input + styled span indicator via peer selectors, `invalid` prop, `cn()` only, mirrors Input styling. `text-surface` checkmark on `bg-foreground`. |
 | `Label` | form | ✅ | `type-label` + `text-foreground`, optional `required` asterisk with `text-error`. `cn()` only, no CVA. |
 | `FormItem` | form | ✅ | |
