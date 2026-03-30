@@ -11,17 +11,11 @@ import * as RadixPopover from '@radix-ui/react-popover';
 declare function cn(...inputs: ClassValue[]): string;
 
 declare const buttonVariants: (props?: ({
-    variant?: "primary" | "secondary" | "tertiary" | null | undefined;
+    variant?: "primary" | "secondary" | "tertiary" | "destructive" | null | undefined;
+    size?: "sm" | "md" | "lg" | null | undefined;
 } & class_variance_authority_types.ClassProp) | undefined) => string;
-type ButtonVariant = "primary" | "secondary" | "tertiary";
-type ButtonProps = VariantProps<typeof buttonVariants> & {
-    disabled?: boolean;
-    forSubmit?: boolean;
-    className?: string;
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-    children: React.ReactNode;
-};
-declare function Button({ variant, disabled, forSubmit, className, onClick, children, }: ButtonProps): react_jsx_runtime.JSX.Element;
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & VariantProps<typeof buttonVariants>;
+declare function Button({ variant, size, className, type, ...props }: ButtonProps): react_jsx_runtime.JSX.Element;
 
 declare const linkButtonVariants: (props?: ({
     variant?: "primary" | "secondary" | "tertiary" | null | undefined;
@@ -219,4 +213,4 @@ declare function PopoverContent({ children, className }: PopoverContentProps): r
 
 declare const DS_VERSION = "0.1.0";
 
-export { Button, type ButtonProps, type ButtonVariant, DS_VERSION, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogTitle, type DialogTitleProps, DialogTrigger, Dropdown, DropdownContent, type DropdownContentProps, DropdownItem, type DropdownItemProps, DropdownTrigger, FormItem, type FormItemProps, HorizontalDivider, type HorizontalDividerColor, type HorizontalDividerProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, ToggleBar, type ToggleBarItem, type ToggleBarProps, UnexpectedError, type UnexpectedErrorProps, VerticalDivider, type VerticalDividerProps, cn };
+export { Button, type ButtonProps, DS_VERSION, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogTitle, type DialogTitleProps, DialogTrigger, Dropdown, DropdownContent, type DropdownContentProps, DropdownItem, type DropdownItemProps, DropdownTrigger, FormItem, type FormItemProps, HorizontalDivider, type HorizontalDividerColor, type HorizontalDividerProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, ToggleBar, type ToggleBarItem, type ToggleBarProps, UnexpectedError, type UnexpectedErrorProps, VerticalDivider, type VerticalDividerProps, buttonVariants, cn };
