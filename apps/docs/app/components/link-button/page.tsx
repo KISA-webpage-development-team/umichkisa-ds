@@ -37,10 +37,10 @@ const externalLinkCode = `import { LinkButton } from '@umichkisa-ds/web'
 
 const disabledCode = `import { LinkButton } from '@umichkisa-ds/web'
 
-<LinkButton variant="primary" disabled>Primary</LinkButton>
-<LinkButton variant="secondary" disabled>Secondary</LinkButton>
-<LinkButton variant="tertiary" disabled>Tertiary</LinkButton>
-<LinkButton variant="destructive" disabled>Destructive</LinkButton>`
+<LinkButton variant="primary" href="#" disabled>Primary</LinkButton>
+<LinkButton variant="secondary" href="#" disabled>Secondary</LinkButton>
+<LinkButton variant="tertiary" href="#" disabled>Tertiary</LinkButton>
+<LinkButton variant="destructive" href="#" disabled>Destructive</LinkButton>`
 
 export default function LinkButtonPage() {
   return (
@@ -98,7 +98,7 @@ export default function LinkButtonPage() {
       {/* Variants */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">Variants</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Four semantic variants for different levels of emphasis and intent.
+        Four variants for different levels of emphasis and intent.
       </p>
       <ComponentPreview code={variantsCode}>
         <div className="flex items-center gap-4">
@@ -231,7 +231,7 @@ export default function LinkButtonPage() {
               <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size</code></td>
               <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&quot;sm&quot; | &quot;md&quot; | &quot;lg&quot;</code></td>
               <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&quot;md&quot;</code></td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground">Controls height and padding.</td>
+              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground">Controls padding and font size. All values sit on the 4px spacing grid.</td>
             </tr>
             <tr>
               <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">href</code></td>
@@ -261,7 +261,7 @@ export default function LinkButtonPage() {
               <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">className</code></td>
               <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></td>
               <td className="px-4 py-3 border-b border-border type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground">Additional CSS classes to merge.</td>
+              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground">Merged via cn() (class merge utility). Use for layout utilities only — never override variant styles.</td>
             </tr>
             <tr>
               <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">children</code></td>
