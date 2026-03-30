@@ -119,7 +119,7 @@ export default function DividerPage() {
               <td className="px-4 py-3 type-caption font-mono text-foreground">className</td>
               <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
               <td className="px-4 py-3 type-caption text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Additional CSS classes merged via the utility function.</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">Additional CSS classes to apply to the divider.</td>
             </tr>
           </tbody>
         </table>
