@@ -59,6 +59,11 @@ __export(src_exports, {
   PopoverContent: () => PopoverContent,
   PopoverTrigger: () => PopoverTrigger,
   Select: () => Select,
+  SelectContent: () => SelectContent,
+  SelectGroup: () => SelectGroup,
+  SelectItem: () => SelectItem,
+  SelectSeparator: () => SelectSeparator,
+  SelectTrigger: () => SelectTrigger,
   Textarea: () => Textarea,
   ToggleBar: () => ToggleBar,
   UnexpectedError: () => UnexpectedError,
@@ -260,6 +265,7 @@ function LinkedinIcon({
 var registry = {
   "arrow-left": import_lucide_react.ArrowLeft,
   "arrow-right": import_lucide_react.ArrowRight,
+  "check": import_lucide_react.Check,
   "chevron-right": import_lucide_react.ChevronRight,
   "chevron-down": import_lucide_react.ChevronDown,
   "circle-minus": import_lucide_react.CircleMinus,
@@ -502,33 +508,84 @@ function Checkbox({ invalid = false, className, ...props }) {
 }
 
 // src/components/form/Select.tsx
+var RadixSelect = __toESM(require("@radix-ui/react-select"), 1);
 var import_jsx_runtime12 = require("react/jsx-runtime");
-function Select({ invalid = false, className, children, ...props }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "relative w-full text-foreground has-[:disabled]:text-disabled-foreground", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
-      "select",
-      {
-        "aria-invalid": invalid,
-        className: cn(
-          "w-full appearance-none rounded-md border border-border-strong bg-surface px-3 py-2 pr-8 type-body-sm text-foreground transition-colors",
-          "focus-visible:outline-none focus-visible:border-brand-primary",
-          "disabled:pointer-events-none disabled:text-disabled-foreground disabled:bg-surface-subtle",
-          invalid && "border-error focus-visible:border-error",
-          className
-        ),
-        ...props,
-        children
-      }
-    ),
-    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
-      Icon,
-      {
-        name: "chevron-down",
-        size: "sm",
-        className: "pointer-events-none absolute right-2 top-1/2 -translate-y-1/2"
-      }
-    )
+function Select(props) {
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(RadixSelect.Root, { ...props });
+}
+function SelectTrigger({ placeholder, invalid = false, className }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(
+    RadixSelect.Trigger,
+    {
+      "aria-invalid": invalid,
+      className: cn(
+        "flex w-full items-center justify-between rounded-md border border-border-strong bg-surface px-3 py-2 type-body-sm text-foreground transition-colors",
+        "placeholder:text-muted-foreground",
+        "focus-visible:outline-none focus-visible:border-brand-primary",
+        "disabled:pointer-events-none disabled:text-disabled-foreground disabled:bg-surface-subtle",
+        invalid && "border-error focus-visible:border-error",
+        className
+      ),
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(RadixSelect.Value, { placeholder }),
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(RadixSelect.Icon, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Icon, { name: "chevron-down", size: "sm", className: "flex-shrink-0" }) })
+      ]
+    }
+  );
+}
+function SelectContent({ children, className, position = "popper" }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(RadixSelect.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+    RadixSelect.Content,
+    {
+      position,
+      className: cn(
+        "z-50 min-w-32 overflow-hidden rounded-md border border-border bg-surface shadow-md",
+        "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+        "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
+        position === "popper" && "max-h-[var(--radix-select-content-available-height)]",
+        className
+      ),
+      sideOffset: 4,
+      children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+        RadixSelect.Viewport,
+        {
+          className: cn(
+            "p-1",
+            position === "popper" && "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]"
+          ),
+          children
+        }
+      )
+    }
+  ) });
+}
+function SelectItem({ value, children, disabled, className }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(
+    RadixSelect.Item,
+    {
+      value,
+      disabled,
+      className: cn(
+        "relative flex w-full cursor-pointer select-none items-center rounded-sm py-2 pl-7 pr-3 type-body-sm text-foreground",
+        "hover:bg-surface-subtle focus:bg-surface-subtle focus:outline-none",
+        "data-[disabled]:pointer-events-none data-[disabled]:text-disabled-foreground",
+        className
+      ),
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "absolute left-2 flex items-center", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(RadixSelect.ItemIndicator, { children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Icon, { name: "check", size: "sm" }) }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(RadixSelect.ItemText, { children })
+      ]
+    }
+  );
+}
+function SelectGroup({ label, children }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(RadixSelect.Group, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(RadixSelect.Label, { className: "px-3 py-2 type-caption text-muted-foreground", children: label }),
+    children
   ] });
+}
+function SelectSeparator() {
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(RadixSelect.Separator, { className: "mx-1 my-1 h-px bg-border" });
 }
 
 // src/components/form/Textarea.tsx
@@ -786,6 +843,11 @@ var DS_VERSION = "0.1.0";
   PopoverContent,
   PopoverTrigger,
   Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectSeparator,
+  SelectTrigger,
   Textarea,
   ToggleBar,
   UnexpectedError,

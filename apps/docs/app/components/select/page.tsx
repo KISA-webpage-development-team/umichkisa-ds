@@ -46,7 +46,7 @@ const withLabelCode = `import { Select, SelectTrigger, SelectContent, SelectItem
 import { Label } from '@umichkisa-ds/web'
 
 <div className="flex flex-col gap-2">
-  <Label>Fruit</Label>
+  <Label htmlFor="fruit">Fruit</Label>
   <Select>
     <SelectTrigger placeholder="Select a fruit..." />
     <SelectContent>
@@ -60,7 +60,7 @@ const invalidCode = `import { Select, SelectTrigger, SelectContent, SelectItem }
 import { Label } from '@umichkisa-ds/web'
 
 <div className="flex flex-col gap-2">
-  <Label>Fruit</Label>
+  <Label htmlFor="fruit">Fruit</Label>
   <Select>
     <SelectTrigger placeholder="Select a fruit..." invalid />
     <SelectContent>
@@ -195,7 +195,7 @@ export default function SelectPage() {
       <ComponentPreview code={withLabelCode}>
         <div className="w-full max-w-sm">
           <div className="flex flex-col gap-2">
-            <Label>Fruit</Label>
+            <Label htmlFor="fruit-label-demo">Fruit</Label>
             <Select>
               <SelectTrigger placeholder="Select a fruit..." />
               <SelectContent>
@@ -223,7 +223,7 @@ export default function SelectPage() {
       <ComponentPreview code={invalidCode}>
         <div className="w-full max-w-sm">
           <div className="flex flex-col gap-2">
-            <Label>Fruit</Label>
+            <Label htmlFor="fruit-invalid-demo">Fruit</Label>
             <Select>
               <SelectTrigger placeholder="Select a fruit..." invalid />
               <SelectContent>

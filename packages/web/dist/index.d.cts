@@ -4,6 +4,7 @@ import * as class_variance_authority_types from 'class-variance-authority/types'
 import { VariantProps } from 'class-variance-authority';
 import * as react from 'react';
 import * as lucide_react from 'lucide-react';
+import * as RadixSelect from '@radix-ui/react-select';
 import * as RadixDialog from '@radix-ui/react-dialog';
 import * as RadixDropdown from '@radix-ui/react-dropdown-menu';
 import * as RadixPopover from '@radix-ui/react-popover';
@@ -51,6 +52,7 @@ declare function LinkedinIcon({ size, className, ...props }: CustomIconProps): r
 declare const registry: {
     readonly "arrow-left": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly "arrow-right": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly check: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly "chevron-right": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly "chevron-down": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly "circle-minus": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
@@ -124,10 +126,33 @@ type CheckboxProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> &
 };
 declare function Checkbox({ invalid, className, ...props }: CheckboxProps): react_jsx_runtime.JSX.Element;
 
-type SelectProps = React.SelectHTMLAttributes<HTMLSelectElement> & {
+type SelectProps = React.ComponentPropsWithoutRef<typeof RadixSelect.Root>;
+declare function Select(props: SelectProps): react_jsx_runtime.JSX.Element;
+type SelectTriggerProps = {
+    placeholder?: string;
     invalid?: boolean;
+    className?: string;
 };
-declare function Select({ invalid, className, children, ...props }: SelectProps): react_jsx_runtime.JSX.Element;
+declare function SelectTrigger({ placeholder, invalid, className }: SelectTriggerProps): react_jsx_runtime.JSX.Element;
+type SelectContentProps = {
+    children: React.ReactNode;
+    className?: string;
+    position?: "popper" | "item-aligned";
+};
+declare function SelectContent({ children, className, position }: SelectContentProps): react_jsx_runtime.JSX.Element;
+type SelectItemProps = {
+    value: string;
+    children: React.ReactNode;
+    disabled?: boolean;
+    className?: string;
+};
+declare function SelectItem({ value, children, disabled, className }: SelectItemProps): react_jsx_runtime.JSX.Element;
+type SelectGroupProps = {
+    label: string;
+    children: React.ReactNode;
+};
+declare function SelectGroup({ label, children }: SelectGroupProps): react_jsx_runtime.JSX.Element;
+declare function SelectSeparator(): react_jsx_runtime.JSX.Element;
 
 type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
     invalid?: boolean;
@@ -211,4 +236,4 @@ declare function Divider({ orientation, className, ...props }: DividerProps): re
 
 declare const DS_VERSION = "0.1.0";
 
-export { Badge, type BadgeProps, Button, type ButtonProps, Checkbox, type CheckboxProps, DS_VERSION, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogTitle, type DialogTitleProps, DialogTrigger, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownItem, type DropdownItemProps, DropdownTrigger, FormItem, type FormItemProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, Select, type SelectProps, Textarea, type TextareaProps, ToggleBar, type ToggleBarItem, type ToggleBarProps, UnexpectedError, type UnexpectedErrorProps, badgeVariants, buttonVariants, cn };
+export { Badge, type BadgeProps, Button, type ButtonProps, Checkbox, type CheckboxProps, DS_VERSION, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogTitle, type DialogTitleProps, DialogTrigger, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownItem, type DropdownItemProps, DropdownTrigger, FormItem, type FormItemProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Textarea, type TextareaProps, ToggleBar, type ToggleBarItem, type ToggleBarProps, UnexpectedError, type UnexpectedErrorProps, badgeVariants, buttonVariants, cn };

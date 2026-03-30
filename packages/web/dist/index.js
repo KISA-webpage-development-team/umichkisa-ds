@@ -145,6 +145,7 @@ function LinkButton({
 import {
   ArrowLeft,
   ArrowRight,
+  Check,
   ChevronRight,
   ChevronDown,
   CircleMinus,
@@ -216,6 +217,7 @@ function LinkedinIcon({
 var registry = {
   "arrow-left": ArrowLeft,
   "arrow-right": ArrowRight,
+  "check": Check,
   "chevron-right": ChevronRight,
   "chevron-down": ChevronDown,
   "circle-minus": CircleMinus,
@@ -458,33 +460,84 @@ function Checkbox({ invalid = false, className, ...props }) {
 }
 
 // src/components/form/Select.tsx
+import * as RadixSelect from "@radix-ui/react-select";
 import { jsx as jsx12, jsxs as jsxs4 } from "react/jsx-runtime";
-function Select({ invalid = false, className, children, ...props }) {
-  return /* @__PURE__ */ jsxs4("div", { className: "relative w-full text-foreground has-[:disabled]:text-disabled-foreground", children: [
-    /* @__PURE__ */ jsx12(
-      "select",
-      {
-        "aria-invalid": invalid,
-        className: cn(
-          "w-full appearance-none rounded-md border border-border-strong bg-surface px-3 py-2 pr-8 type-body-sm text-foreground transition-colors",
-          "focus-visible:outline-none focus-visible:border-brand-primary",
-          "disabled:pointer-events-none disabled:text-disabled-foreground disabled:bg-surface-subtle",
-          invalid && "border-error focus-visible:border-error",
-          className
-        ),
-        ...props,
-        children
-      }
-    ),
-    /* @__PURE__ */ jsx12(
-      Icon,
-      {
-        name: "chevron-down",
-        size: "sm",
-        className: "pointer-events-none absolute right-2 top-1/2 -translate-y-1/2"
-      }
-    )
+function Select(props) {
+  return /* @__PURE__ */ jsx12(RadixSelect.Root, { ...props });
+}
+function SelectTrigger({ placeholder, invalid = false, className }) {
+  return /* @__PURE__ */ jsxs4(
+    RadixSelect.Trigger,
+    {
+      "aria-invalid": invalid,
+      className: cn(
+        "flex w-full items-center justify-between rounded-md border border-border-strong bg-surface px-3 py-2 type-body-sm text-foreground transition-colors",
+        "placeholder:text-muted-foreground",
+        "focus-visible:outline-none focus-visible:border-brand-primary",
+        "disabled:pointer-events-none disabled:text-disabled-foreground disabled:bg-surface-subtle",
+        invalid && "border-error focus-visible:border-error",
+        className
+      ),
+      children: [
+        /* @__PURE__ */ jsx12(RadixSelect.Value, { placeholder }),
+        /* @__PURE__ */ jsx12(RadixSelect.Icon, { asChild: true, children: /* @__PURE__ */ jsx12(Icon, { name: "chevron-down", size: "sm", className: "flex-shrink-0" }) })
+      ]
+    }
+  );
+}
+function SelectContent({ children, className, position = "popper" }) {
+  return /* @__PURE__ */ jsx12(RadixSelect.Portal, { children: /* @__PURE__ */ jsx12(
+    RadixSelect.Content,
+    {
+      position,
+      className: cn(
+        "z-50 min-w-32 overflow-hidden rounded-md border border-border bg-surface shadow-md",
+        "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+        "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
+        position === "popper" && "max-h-[var(--radix-select-content-available-height)]",
+        className
+      ),
+      sideOffset: 4,
+      children: /* @__PURE__ */ jsx12(
+        RadixSelect.Viewport,
+        {
+          className: cn(
+            "p-1",
+            position === "popper" && "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]"
+          ),
+          children
+        }
+      )
+    }
+  ) });
+}
+function SelectItem({ value, children, disabled, className }) {
+  return /* @__PURE__ */ jsxs4(
+    RadixSelect.Item,
+    {
+      value,
+      disabled,
+      className: cn(
+        "relative flex w-full cursor-pointer select-none items-center rounded-sm py-2 pl-7 pr-3 type-body-sm text-foreground",
+        "hover:bg-surface-subtle focus:bg-surface-subtle focus:outline-none",
+        "data-[disabled]:pointer-events-none data-[disabled]:text-disabled-foreground",
+        className
+      ),
+      children: [
+        /* @__PURE__ */ jsx12("span", { className: "absolute left-2 flex items-center", children: /* @__PURE__ */ jsx12(RadixSelect.ItemIndicator, { children: /* @__PURE__ */ jsx12(Icon, { name: "check", size: "sm" }) }) }),
+        /* @__PURE__ */ jsx12(RadixSelect.ItemText, { children })
+      ]
+    }
+  );
+}
+function SelectGroup({ label, children }) {
+  return /* @__PURE__ */ jsxs4(RadixSelect.Group, { children: [
+    /* @__PURE__ */ jsx12(RadixSelect.Label, { className: "px-3 py-2 type-caption text-muted-foreground", children: label }),
+    children
   ] });
+}
+function SelectSeparator() {
+  return /* @__PURE__ */ jsx12(RadixSelect.Separator, { className: "mx-1 my-1 h-px bg-border" });
 }
 
 // src/components/form/Textarea.tsx
@@ -741,6 +794,11 @@ export {
   PopoverContent,
   PopoverTrigger,
   Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectSeparator,
+  SelectTrigger,
   Textarea,
   ToggleBar,
   UnexpectedError,
