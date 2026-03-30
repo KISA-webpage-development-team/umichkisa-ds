@@ -7,10 +7,10 @@ const defaultCode = `import { IconButton } from '@umichkisa-ds/web'
 
 const variantsCode = `import { IconButton } from '@umichkisa-ds/web'
 
-<IconButton icon="pencil" variant="primary" aria-label="Edit" />
+<IconButton icon="plus" variant="primary" aria-label="Add" />
 <IconButton icon="pencil" variant="secondary" aria-label="Edit" />
-<IconButton icon="pencil" variant="tertiary" aria-label="Edit" />
-<IconButton icon="pencil" variant="destructive" aria-label="Edit" />`
+<IconButton icon="x" variant="tertiary" aria-label="Close" />
+<IconButton icon="trash-2" variant="destructive" aria-label="Delete" />`
 
 const sizesCode = `import { IconButton } from '@umichkisa-ds/web'
 
@@ -20,10 +20,10 @@ const sizesCode = `import { IconButton } from '@umichkisa-ds/web'
 
 const disabledCode = `import { IconButton } from '@umichkisa-ds/web'
 
-<IconButton icon="pencil" variant="primary" disabled aria-label="Edit" />
+<IconButton icon="plus" variant="primary" disabled aria-label="Add" />
 <IconButton icon="pencil" variant="secondary" disabled aria-label="Edit" />
-<IconButton icon="pencil" variant="tertiary" disabled aria-label="Edit" />
-<IconButton icon="pencil" variant="destructive" disabled aria-label="Edit" />`
+<IconButton icon="x" variant="tertiary" disabled aria-label="Close" />
+<IconButton icon="trash-2" variant="destructive" disabled aria-label="Delete" />`
 
 export default function IconButtonPage() {
   return (
@@ -79,10 +79,10 @@ export default function IconButtonPage() {
       </p>
       <ComponentPreview code={variantsCode}>
         <div className="flex items-center gap-4">
-          <IconButton icon="pencil" variant="primary" aria-label="Edit" />
+          <IconButton icon="plus" variant="primary" aria-label="Add" />
           <IconButton icon="pencil" variant="secondary" aria-label="Edit" />
-          <IconButton icon="pencil" variant="tertiary" aria-label="Edit" />
-          <IconButton icon="pencil" variant="destructive" aria-label="Edit" />
+          <IconButton icon="x" variant="tertiary" aria-label="Close" />
+          <IconButton icon="trash-2" variant="destructive" aria-label="Delete" />
         </div>
       </ComponentPreview>
 
@@ -126,10 +126,10 @@ export default function IconButtonPage() {
       </p>
       <ComponentPreview code={disabledCode}>
         <div className="flex items-center gap-4">
-          <IconButton icon="pencil" variant="primary" disabled aria-label="Edit" />
+          <IconButton icon="plus" variant="primary" disabled aria-label="Add" />
           <IconButton icon="pencil" variant="secondary" disabled aria-label="Edit" />
-          <IconButton icon="pencil" variant="tertiary" disabled aria-label="Edit" />
-          <IconButton icon="pencil" variant="destructive" disabled aria-label="Edit" />
+          <IconButton icon="x" variant="tertiary" disabled aria-label="Close" />
+          <IconButton icon="trash-2" variant="destructive" disabled aria-label="Delete" />
         </div>
       </ComponentPreview>
 
@@ -168,7 +168,9 @@ export default function IconButtonPage() {
               <td className="px-4 py-3 type-caption font-mono text-foreground">icon</td>
               <td className="px-4 py-3 type-caption font-mono text-foreground">IconName</td>
               <td className="px-4 py-3 type-caption text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Lucide icon name in kebab-case. Required.</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">Lucide icon name in kebab-case. Required. See the{' '}
+                <a href="/components/icon" className="text-link underline hover:text-brand-primary">Icon</a>{' '}
+                page for available names.</td>
             </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 type-caption font-mono text-foreground">aria-label</td>
