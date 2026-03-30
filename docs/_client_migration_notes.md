@@ -13,6 +13,14 @@ Append-only log of API changes from existing implementations. Used when updating
 - `size` prop added: `"sm" | "md" | "lg"` (default `"md"`)
 - Extends `React.ButtonHTMLAttributes<HTMLButtonElement>` — all native button props now accepted
 
+## LinkButton
+
+- `variant="secondary"` restyled from `bg-slate-100` to semantic surface tokens
+- `variant="destructive"` added (new, inherited from `buttonVariants`)
+- `size` prop added: `"sm" | "md" | "lg"` (default `"md"`)
+- Extends `React.AnchorHTMLAttributes<HTMLAnchorElement>` — all native anchor props (`target`, `rel`, etc.) now accepted
+- `LinkButtonProps` type changed — no longer manually defines `href`, `className`, `children`
+
 ## Divider
 
 - `HorizontalDivider` renamed to `Divider` (orientation defaults to `"horizontal"`)
