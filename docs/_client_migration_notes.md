@@ -49,3 +49,14 @@ Append-only log of API changes from existing implementations. Used when updating
 
 - No prop changes — API is identical (`htmlFor`, `required`, `className`, `children`)
 - Import change only: `import { Label } from '@umichkisa-ds/web'` (replaces `CustomLabel`)
+
+## Select
+
+- **Breaking:** Replaced native `<select>` with Radix compound component
+- `<option value="x">Label</option>` → `<SelectItem value="x">Label</SelectItem>`
+- `<optgroup label="Group">` → `<SelectGroup label="Group">`
+- `onChange` → `onValueChange` (Radix convention)
+- `defaultValue` stays the same (on `<Select>` root)
+- `invalid` moved from `<Select>` to `<SelectTrigger>`
+- `disabled` stays on `<Select>` root
+- Must wrap items in `<SelectContent>` and use `<SelectTrigger>` for the trigger button
