@@ -61,6 +61,7 @@ const FOUNDATION_ITEMS: NavItem[] = [
 
 // Component items are placeholders — will expand as MDX content is added
 const COMPONENT_ITEMS: NavItem[] = [
+  { label: 'Badge',    href: '/components/badge' },
   { label: 'Button',   href: '/components/button' },
   { label: 'Divider',  href: '/components/divider' },
   { label: 'Feedback', href: '/components/feedback' },
