@@ -8,5 +8,7 @@ export { Checkbox } from "./Checkbox";
 export type { CheckboxProps } from "./Checkbox";
 export { Select, SelectTrigger, SelectContent, SelectItem, SelectGroup, SelectSeparator } from "./Select";
 export type { SelectProps, SelectTriggerProps, SelectContentProps, SelectItemProps, SelectGroupProps } from "./Select";
+export { Switch } from "./Switch";
+export type { SwitchProps } from "./Switch";
 export { Textarea } from "./Textarea";
 export type { TextareaProps } from "./Textarea";

@@ -73,6 +73,7 @@ const COMPONENT_ITEMS: NavItem[] = [
   { label: 'Label',      href: '/components/label' },
   { label: 'LinkButton', href: '/components/link-button' },
   { label: 'Select',    href: '/components/select' },
+  { label: 'Switch',    href: '/components/switch' },
   { label: 'Textarea',   href: '/components/textarea' },
 ]
 
