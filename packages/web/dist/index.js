@@ -386,13 +386,14 @@ function FormItem({
 
 // src/components/form/Checkbox.tsx
 import { jsx as jsx11, jsxs as jsxs3 } from "react/jsx-runtime";
-function Checkbox({ invalid = false, className, ...props }) {
-  return /* @__PURE__ */ jsxs3("span", { className: cn("relative inline-flex items-center justify-center size-5", className), children: [
+function Checkbox({ invalid = false, text, className, disabled, ...props }) {
+  const control = /* @__PURE__ */ jsxs3("span", { className: cn("relative inline-flex items-center justify-center size-5", !text && className), children: [
     /* @__PURE__ */ jsx11(
       "input",
       {
         type: "checkbox",
         "aria-invalid": invalid,
+        disabled,
         className: "peer absolute inset-0 opacity-0 cursor-pointer disabled:cursor-default",
         ...props
       }
@@ -402,7 +403,7 @@ function Checkbox({ invalid = false, className, ...props }) {
       {
         className: cn(
           "size-5 rounded-md border border-border-strong bg-surface transition-colors",
-          "peer-checked:bg-foreground peer-checked:border-foreground",
+          "peer-checked:bg-brand-primary peer-checked:border-brand-primary",
           "peer-focus-visible:outline-none peer-focus-visible:border-brand-primary",
           "peer-disabled:pointer-events-none peer-disabled:bg-surface-subtle peer-disabled:border-border",
           "peer-disabled:peer-checked:bg-disabled-foreground peer-disabled:peer-checked:border-disabled-foreground",
@@ -416,7 +417,7 @@ function Checkbox({ invalid = false, className, ...props }) {
         "aria-hidden": "true",
         viewBox: "0 0 14 14",
         fill: "none",
-        className: "absolute size-3.5 text-surface opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity",
+        className: "absolute size-3.5 text-brand-foreground opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity",
         children: /* @__PURE__ */ jsx11(
           "polyline",
           {
@@ -429,6 +430,14 @@ function Checkbox({ invalid = false, className, ...props }) {
         )
       }
     )
+  ] });
+  if (!text) return control;
+  return /* @__PURE__ */ jsxs3("label", { className: cn("flex items-center gap-2", className), children: [
+    control,
+    /* @__PURE__ */ jsx11("span", { className: cn(
+      "type-body-sm text-foreground",
+      disabled && "text-disabled-foreground"
+    ), children: text })
   ] });
 }
 
@@ -492,12 +501,12 @@ function SelectItem({ value, children, disabled, className }) {
       disabled,
       className: cn(
         "relative flex w-full cursor-pointer select-none items-center rounded-sm py-2 pl-7 pr-3 type-body-sm text-foreground",
-        "hover:bg-surface-subtle focus:bg-surface-subtle focus:outline-none",
+        "hover:bg-brand-accent-subtle focus:bg-brand-accent-subtle focus:outline-none",
         "data-[disabled]:pointer-events-none data-[disabled]:text-disabled-foreground",
         className
       ),
       children: [
-        /* @__PURE__ */ jsx12("span", { className: "absolute left-2 flex items-center", children: /* @__PURE__ */ jsx12(RadixSelect.ItemIndicator, { children: /* @__PURE__ */ jsx12(Icon, { name: "check", size: "sm" }) }) }),
+        /* @__PURE__ */ jsx12("span", { className: "absolute left-2 flex items-center text-brand-primary", children: /* @__PURE__ */ jsx12(RadixSelect.ItemIndicator, { children: /* @__PURE__ */ jsx12(Icon, { name: "check", size: "sm" }) }) }),
         /* @__PURE__ */ jsx12(RadixSelect.ItemText, { children })
       ]
     }
@@ -518,17 +527,19 @@ import { jsx as jsx13, jsxs as jsxs5 } from "react/jsx-runtime";
 function Switch({
   invalid = false,
   size = "default",
+  text,
   className,
+  disabled,
   ...props
 }) {
   const isSmall = size === "sm";
-  return /* @__PURE__ */ jsxs5(
+  const control = /* @__PURE__ */ jsxs5(
     "span",
     {
       className: cn(
         "relative inline-flex items-center",
         isSmall ? "h-4 w-7" : "h-6 w-10",
-        className
+        !text && className
       ),
       children: [
         /* @__PURE__ */ jsx13(
@@ -537,6 +548,7 @@ function Switch({
             type: "checkbox",
             role: "switch",
             "aria-invalid": invalid,
+            disabled,
             className: "peer absolute inset-0 opacity-0 cursor-pointer disabled:cursor-default",
             ...props
           }
@@ -547,7 +559,7 @@ function Switch({
             className: cn(
               "pointer-events-none absolute inset-0 rounded-full border transition-colors",
               "border-border-strong bg-surface-subtle",
-              "peer-checked:bg-foreground peer-checked:border-foreground",
+              "peer-checked:bg-brand-primary peer-checked:border-brand-primary",
               "peer-focus-visible:outline-none peer-focus-visible:border-brand-primary",
               "peer-disabled:pointer-events-none peer-disabled:bg-surface-subtle peer-disabled:border-border",
               "peer-disabled:peer-checked:bg-disabled-foreground peer-disabled:peer-checked:border-disabled-foreground",
@@ -560,7 +572,7 @@ function Switch({
           {
             className: cn(
               "pointer-events-none absolute rounded-full bg-foreground transition-all duration-200",
-              "peer-checked:bg-surface",
+              "peer-checked:bg-brand-foreground",
               "peer-disabled:bg-disabled-foreground",
               "peer-disabled:peer-checked:bg-surface",
               isSmall ? "left-0.5 size-2.5 peer-checked:left-[calc(100%-0.125rem-0.75rem)] peer-checked:size-3" : "left-1 size-4 peer-checked:left-[calc(100%-0.25rem-1.25rem)] peer-checked:size-5"
@@ -570,6 +582,15 @@ function Switch({
       ]
     }
   );
+  if (!text) return control;
+  return /* @__PURE__ */ jsxs5("label", { className: cn("flex items-center gap-2", className), children: [
+    control,
+    /* @__PURE__ */ jsx13("span", { className: cn(
+      isSmall ? "type-caption" : "type-body-sm",
+      "text-foreground",
+      disabled && "text-disabled-foreground"
+    ), children: text })
+  ] });
 }
 
 // src/components/form/Textarea.tsx
@@ -610,7 +631,7 @@ function RadioGroup({ invalid = false, orientation = "vertical", className, ...p
     }
   );
 }
-function RadioItem({ value, children, disabled, className }) {
+function RadioItem({ value, text, disabled, className }) {
   return /* @__PURE__ */ jsxs6("label", { className: cn("flex items-center gap-2", className), children: [
     /* @__PURE__ */ jsx15(
       RadixRadioGroup.Item,
@@ -619,16 +640,19 @@ function RadioItem({ value, children, disabled, className }) {
         disabled,
         className: cn(
           "relative flex items-center justify-center size-5 rounded-full border border-border-strong bg-surface transition-colors",
-          "data-[state=checked]:bg-foreground data-[state=checked]:border-foreground",
-          "focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]",
+          "data-[state=checked]:bg-brand-primary data-[state=checked]:border-brand-primary",
+          "focus-visible:outline-none focus-visible:border-brand-primary",
           "disabled:pointer-events-none disabled:bg-surface-subtle disabled:border-border",
           "disabled:data-[state=checked]:bg-disabled-foreground disabled:data-[state=checked]:border-disabled-foreground",
           "group-data-[invalid]:border-error group-data-[invalid]:focus-visible:border-error"
         ),
-        children: /* @__PURE__ */ jsx15(RadixRadioGroup.Indicator, { className: "flex items-center justify-center", children: /* @__PURE__ */ jsx15("span", { className: "size-2.5 rounded-full bg-surface" }) })
+        children: /* @__PURE__ */ jsx15(RadixRadioGroup.Indicator, { className: "flex items-center justify-center", children: /* @__PURE__ */ jsx15("span", { className: "size-2.5 rounded-full bg-brand-foreground" }) })
       }
     ),
-    /* @__PURE__ */ jsx15("span", { className: "type-body-sm text-foreground", children })
+    /* @__PURE__ */ jsx15("span", { className: cn(
+      "type-body-sm text-foreground",
+      disabled && "text-disabled-foreground"
+    ), children: text })
   ] });
 }
 

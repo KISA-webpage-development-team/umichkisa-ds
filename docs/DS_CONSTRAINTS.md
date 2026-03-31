@@ -62,6 +62,10 @@ Must: Implement the dual-ring focus pattern on **buttons and icon-only interacti
 Exception: **Form controls** (Input, Textarea, Select, Checkbox, Switch, Radio) use a simplified focus pattern: `outline: none` + `border-color: var(--color-brand-primary)`. The border color change is sufficient for elements that already have a visible border. [source:implementation/form-controls]
 Never: Remove the focus indicator entirely — every interactive element must have a visible focus state. Buttons use the dual-ring; form controls use the border-color change. [source:foundation/colors/usage]
 Prefer: `--color-surface-subtle` as hover background and `--color-border-strong` as hover border for neutral/gray interactive elements (interim until dedicated neutral interactive tokens are defined). [source:foundation/colors/tokens]
+Must: Use `--color-brand-primary` (navy) as the checked/selected background for toggle controls (Checkbox, Radio, Switch). [source:form-ui-review/2026-03-31]
+Must: Use `--color-brand-foreground` (maize) for indicators on checked toggle controls — checkmarks, radio dots. [source:form-ui-review/2026-03-31]
+Must: Use `--color-brand-accent-subtle` (light maize) as hover/focus background for interactive list items (Select items, Dropdown items, Popover menu items). [source:form-ui-review/2026-03-31]
+Must: Use `--color-brand-primary` for selected-item indicators (check icons) in interactive lists. [source:form-ui-review/2026-03-31]
 
 ---
 
@@ -252,3 +256,18 @@ Must: Decorative icons (`aria-hidden="true"`) have no contrast requirement. Only
 
 _Universal rules that apply to every component regardless of domain._
 _To be populated from `docs/DECISIONS.md` and cross-cutting rules during Step -1._
+
+---
+
+## Form Controls
+
+### Toggle Controls (Checkbox, Switch, Radio)
+
+Must: Toggle controls (Checkbox, Switch, RadioItem) use the `text` string prop for inline label text — never pass label content as children or via external markup. [source:form-ui-review/2026-03-31]
+Must: Toggle inline label text uses `type-body-sm text-foreground`. Exception: Switch `size="sm"` uses `type-caption`. [source:form-ui-review/2026-03-31]
+Must: Disabled toggle controls dim both the control and the inline text (`text-disabled-foreground`). [source:form-ui-review/2026-03-31]
+
+### FormItem Composition
+
+Must: FormItem is for vertical label-above-control layout only. Toggle controls compose with FormItem as children — FormItem provides the field heading, the toggle's `text` prop provides the inline description. [source:form-ui-review/2026-03-31]
+Must: Wire `aria-describedby` manually on the form control to associate FormItem's description/error text. IDs follow the pattern `{htmlFor}-description` and `{htmlFor}-error`. [source:form-ui-review/2026-03-31]

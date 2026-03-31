@@ -122,8 +122,9 @@ declare function FormItem({ htmlFor, label, required, error, description, classN
 
 type CheckboxProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> & {
     invalid?: boolean;
+    text?: string;
 };
-declare function Checkbox({ invalid, className, ...props }: CheckboxProps): react_jsx_runtime.JSX.Element;
+declare function Checkbox({ invalid, text, className, disabled, ...props }: CheckboxProps): react_jsx_runtime.JSX.Element;
 
 type SelectProps = React.ComponentPropsWithoutRef<typeof RadixSelect.Root>;
 declare function Select(props: SelectProps): react_jsx_runtime.JSX.Element;
@@ -156,8 +157,9 @@ declare function SelectSeparator(): react_jsx_runtime.JSX.Element;
 type SwitchProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, "type" | "role" | "size"> & {
     invalid?: boolean;
     size?: "default" | "sm";
+    text?: string;
 };
-declare function Switch({ invalid, size, className, ...props }: SwitchProps): react_jsx_runtime.JSX.Element;
+declare function Switch({ invalid, size, text, className, disabled, ...props }: SwitchProps): react_jsx_runtime.JSX.Element;
 
 type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
     invalid?: boolean;
@@ -171,11 +173,11 @@ type RadioGroupProps = React.ComponentPropsWithoutRef<typeof RadixRadioGroup.Roo
 declare function RadioGroup({ invalid, orientation, className, ...props }: RadioGroupProps): react_jsx_runtime.JSX.Element;
 type RadioItemProps = {
     value: string;
-    children: React.ReactNode;
+    text: string;
     disabled?: boolean;
     className?: string;
 };
-declare function RadioItem({ value, children, disabled, className }: RadioItemProps): react_jsx_runtime.JSX.Element;
+declare function RadioItem({ value, text, disabled, className }: RadioItemProps): react_jsx_runtime.JSX.Element;
 
 type ToggleBarItem = {
     view: string;

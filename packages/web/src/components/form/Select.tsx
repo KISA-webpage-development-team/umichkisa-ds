@@ -86,12 +86,12 @@ function SelectItem({ value, children, disabled, className }: SelectItemProps) {
       disabled={disabled}
       className={cn(
         "relative flex w-full cursor-pointer select-none items-center rounded-sm py-2 pl-7 pr-3 type-body-sm text-foreground",
-        "hover:bg-surface-subtle focus:bg-surface-subtle focus:outline-none",
+        "hover:bg-brand-accent-subtle focus:bg-brand-accent-subtle focus:outline-none",
         "data-[disabled]:pointer-events-none data-[disabled]:text-disabled-foreground",
         className
       )}
     >
-      <span className="absolute left-2 flex items-center">
+      <span className="absolute left-2 flex items-center text-brand-primary">
         <RadixSelect.ItemIndicator>
           <Icon name="check" size="sm" />
         </RadixSelect.ItemIndicator>

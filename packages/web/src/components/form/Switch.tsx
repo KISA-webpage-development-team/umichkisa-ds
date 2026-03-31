@@ -6,28 +6,32 @@ type SwitchProps = Omit<
 > & {
   invalid?: boolean;
   size?: "default" | "sm";
+  text?: string;
 };
 
 function Switch({
   invalid = false,
   size = "default",
+  text,
   className,
+  disabled,
   ...props
 }: SwitchProps) {
   const isSmall = size === "sm";
 
-  return (
+  const control = (
     <span
       className={cn(
         "relative inline-flex items-center",
         isSmall ? "h-4 w-7" : "h-6 w-10",
-        className
+        !text && className
       )}
     >
       <input
         type="checkbox"
         role="switch"
         aria-invalid={invalid}
+        disabled={disabled}
         className="peer absolute inset-0 opacity-0 cursor-pointer disabled:cursor-default"
         {...props}
       />
@@ -36,7 +40,7 @@ function Switch({
         className={cn(
           "pointer-events-none absolute inset-0 rounded-full border transition-colors",
           "border-border-strong bg-surface-subtle",
-          "peer-checked:bg-foreground peer-checked:border-foreground",
+          "peer-checked:bg-brand-primary peer-checked:border-brand-primary",
           "peer-focus-visible:outline-none peer-focus-visible:border-brand-primary",
           "peer-disabled:pointer-events-none peer-disabled:bg-surface-subtle peer-disabled:border-border",
           "peer-disabled:peer-checked:bg-disabled-foreground peer-disabled:peer-checked:border-disabled-foreground",
@@ -47,7 +51,7 @@ function Switch({
       <span
         className={cn(
           "pointer-events-none absolute rounded-full bg-foreground transition-all duration-200",
-          "peer-checked:bg-surface",
+          "peer-checked:bg-brand-foreground",
           "peer-disabled:bg-disabled-foreground",
           "peer-disabled:peer-checked:bg-surface",
           isSmall
@@ -56,6 +60,21 @@ function Switch({
         )}
       />
     </span>
+  );
+
+  if (!text) return control;
+
+  return (
+    <label className={cn("flex items-center gap-2", className)}>
+      {control}
+      <span className={cn(
+        isSmall ? "type-caption" : "type-body-sm",
+        "text-foreground",
+        disabled && "text-disabled-foreground"
+      )}>
+        {text}
+      </span>
+    </label>
   );
 }
 

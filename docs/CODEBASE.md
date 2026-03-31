@@ -74,6 +74,7 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 | Checkbox | `/components/checkbox` | ✅ Complete |
 | Radio | `/components/radio` | ✅ Complete |
 | Switch | `/components/switch` | ✅ Complete |
+| FormItem | `/components/form-item` | ✅ Complete |
 
 Note: `/components/[slug]` dynamic route also exists as a fallback for future MDX-based pages.
 
@@ -91,9 +92,9 @@ Note: `/components/[slug]` dynamic route also exists as a fallback for future MD
 | `Input` | form | ✅ | Extends `InputHTMLAttributes`, `invalid` prop for error border + `aria-invalid`, `cn()` only (no CVA), dual-ring focus, DS-compliant tokens |
 | `Textarea` | form | ✅ | Extends `TextareaHTMLAttributes`, `invalid` prop, `rows=3` default, `resize-y`, `cn()` only, mirrors Input styling |
 | `Select` | form | ✅ | Radix compound component (Select, SelectTrigger, SelectContent, SelectItem, SelectGroup, SelectSeparator). Fully styleable dropdown overlay. `cn()` only, trigger mirrors Input styling. |
-| `Checkbox` | form | ✅ | Native hidden input + styled span indicator via peer selectors, `invalid` prop, `cn()` only, mirrors Input styling. `text-surface` checkmark on `bg-foreground`. |
-| `RadioGroup` / `RadioItem` | form | ✅ | Radix compound component (`@radix-ui/react-radio-group`). Built-in label via children (Chakra pattern). `invalid` prop on group propagates via `data-invalid`. `cn()` only. |
-| `Switch` | form | ✅ | Native `<input type="checkbox" role="switch">` with peer-styled track + thumb. Two sizes (default/sm), `invalid` prop, `cn()` only. Thumb grows on check (16→20px default, 10→12px sm). |
+| `Checkbox` | form | ✅ | Native hidden input + styled span indicator via peer selectors, `invalid` prop, `text` string prop for inline label. Brand colors: `bg-brand-primary` checked + `text-brand-foreground` checkmark. |
+| `RadioGroup` / `RadioItem` | form | ✅ | Radix compound component (`@radix-ui/react-radio-group`). `text` string prop for inline label. `invalid` prop on group propagates via `data-invalid`. Brand colors: `bg-brand-primary` checked + `bg-brand-foreground` dot. Simplified border-color focus. |
+| `Switch` | form | ✅ | Native `<input type="checkbox" role="switch">` with peer-styled track + thumb. Two sizes (default/sm), `text` string prop (size-mapped: default→`type-body-sm`, sm→`type-caption`). Brand colors: `bg-brand-primary` track when checked. |
 | `Label` | form | ✅ | `type-label` + `text-foreground`, optional `required` asterisk with `text-error`. `cn()` only, no CVA. |
 | `FormItem` | form | ✅ | Presentation-only layout wrapper (label, children, description, error). Renders Label internally, accepts any form control as children. `cn()` only, no validation logic. |
 | `Divider` | divider | ✅ | Unified from HorizontalDivider + VerticalDivider. Semantic `<hr>`, `orientation` prop, `--color-border` token. |

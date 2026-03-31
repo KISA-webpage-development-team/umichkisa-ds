@@ -1,60 +1,51 @@
 'use client'
 
 import { useState } from 'react'
-import { Checkbox } from '@umichkisa-ds/web'
+import { Checkbox, FormItem } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 
 const defaultCode = `import { Checkbox } from '@umichkisa-ds/web'
 
-<Checkbox />`
+<Checkbox text="Accept terms" />`
 
 const checkedCode = `import { Checkbox } from '@umichkisa-ds/web'
 
-<Checkbox defaultChecked />`
+<Checkbox text="Accept terms" defaultChecked />`
 
 const statesCode = `import { Checkbox } from '@umichkisa-ds/web'
 
 {/* Default */}
-<Checkbox />
+<Checkbox text="Default" />
 
 {/* Disabled */}
-<Checkbox disabled />
+<Checkbox text="Disabled" disabled />
 
 {/* Disabled + Checked */}
-<Checkbox disabled defaultChecked />
+<Checkbox text="Disabled checked" disabled defaultChecked />
 
 {/* Invalid */}
-<Checkbox invalid />`
+<Checkbox text="Invalid" invalid />`
 
-const withLabelCode = `import { Checkbox } from '@umichkisa-ds/web'
+const withFormItemCode = `import { FormItem, Checkbox } from '@umichkisa-ds/web'
 
-<label className="flex items-center gap-2">
-  <Checkbox />
-  <span className="type-body text-foreground">Accept terms</span>
-</label>`
+<FormItem htmlFor="terms" label="Terms">
+  <Checkbox id="terms" text="I agree to the terms" />
+</FormItem>`
+
+const withErrorCode = `import { FormItem, Checkbox } from '@umichkisa-ds/web'
+
+<FormItem htmlFor="terms" label="Terms" error="You must accept the terms.">
+  <Checkbox id="terms" text="Accept terms" invalid />
+</FormItem>`
 
 const controlledCode = `const [agreed, setAgreed] = useState(false)
 
-<label className="flex items-center gap-2">
-  <Checkbox
-    checked={agreed}
-    onChange={(e) => setAgreed(e.target.checked)}
-  />
-  <span className="type-body text-foreground">
-    I agree to the terms
-  </span>
-</label>
+<Checkbox
+  text="I agree to the terms"
+  checked={agreed}
+  onChange={(e) => setAgreed(e.target.checked)}
+/>
 <p>{agreed ? 'Accepted' : 'Not accepted'}</p>`
-
-const withErrorCode = `import { Checkbox } from '@umichkisa-ds/web'
-
-<div className="flex flex-col gap-2">
-  <label className="flex items-center gap-2">
-    <Checkbox invalid />
-    <span className="type-body text-foreground">Accept terms</span>
-  </label>
-  <p className="type-caption text-error">You must accept the terms.</p>
-</div>`
 
 export default function CheckboxPage() {
   const [agreed, setAgreed] = useState(false)
@@ -65,14 +56,15 @@ export default function CheckboxPage() {
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Checkbox</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
-        Standalone checkbox for boolean selections. Wrap in a native{' '}
+        Standalone checkbox for boolean selections. Pass the{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          label
+          text
         </code>{' '}
-        for click-to-toggle behavior, or compose with{' '}
+        prop to render an inline label, or compose with{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           FormItem
-        </code>.
+        </code>{' '}
+        for structured form layouts.
       </p>
 
       {/* ── Examples ────────────────────────────────────────── */}
@@ -81,10 +73,10 @@ export default function CheckboxPage() {
       {/* Default */}
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Default</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        A single unchecked checkbox.
+        A single unchecked checkbox with inline label text.
       </p>
       <ComponentPreview code={defaultCode}>
-        <Checkbox />
+        <Checkbox text="Accept terms" />
       </ComponentPreview>
 
       {/* Checked */}
@@ -97,7 +89,7 @@ export default function CheckboxPage() {
         set.
       </p>
       <ComponentPreview code={checkedCode}>
-        <Checkbox defaultChecked />
+        <Checkbox text="Accept terms" defaultChecked />
       </ComponentPreview>
 
       {/* States */}
@@ -107,31 +99,26 @@ export default function CheckboxPage() {
       </p>
       <ComponentPreview code={statesCode}>
         <div className="flex items-center gap-4">
-          <Checkbox />
-          <Checkbox disabled />
-          <Checkbox disabled defaultChecked />
-          <Checkbox invalid />
+          <Checkbox text="Default" />
+          <Checkbox text="Disabled" disabled />
+          <Checkbox text="Disabled checked" disabled defaultChecked />
+          <Checkbox text="Invalid" invalid />
         </div>
       </ComponentPreview>
 
-      {/* With Label */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With Label</h3>
+      {/* With FormItem */}
+      <h3 className="type-h3 mt-8 mb-2 text-foreground">With FormItem</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Wrap in a native{' '}
+        Compose with{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          label
+          FormItem
         </code>{' '}
-        for click-to-toggle behavior. Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          gap-2
-        </code>{' '}
-        between checkbox and text.
+        for structured form layouts.
       </p>
-      <ComponentPreview code={withLabelCode}>
-        <label className="flex items-center gap-2">
-          <Checkbox />
-          <span className="type-body text-foreground">Accept terms</span>
-        </label>
+      <ComponentPreview code={withFormItemCode}>
+        <FormItem htmlFor="terms" label="Terms">
+          <Checkbox id="terms" text="I agree to the terms" />
+        </FormItem>
       </ComponentPreview>
 
       {/* With error message */}
@@ -141,20 +128,16 @@ export default function CheckboxPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           invalid
         </code>{' '}
-        with an error message below. Use{' '}
+        with a{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          type-caption text-error
+          FormItem
         </code>{' '}
-        for the message.
+        error message.
       </p>
       <ComponentPreview code={withErrorCode}>
-        <div className="flex flex-col gap-2">
-          <label className="flex items-center gap-2">
-            <Checkbox invalid />
-            <span className="type-body text-foreground">Accept terms</span>
-          </label>
-          <p className="type-caption text-error">You must accept the terms.</p>
-        </div>
+        <FormItem htmlFor="terms" label="Terms" error="You must accept the terms.">
+          <Checkbox id="terms" text="Accept terms" invalid />
+        </FormItem>
       </ComponentPreview>
 
       {/* Controlled */}
@@ -165,13 +148,11 @@ export default function CheckboxPage() {
       </p>
       <ComponentPreview code={controlledCode}>
         <div className="flex flex-col gap-2">
-          <label className="flex items-center gap-2">
-            <Checkbox
-              checked={agreed}
-              onChange={(e) => setAgreed(e.target.checked)}
-            />
-            <span className="type-body text-foreground">I agree to the terms</span>
-          </label>
+          <Checkbox
+            text="I agree to the terms"
+            checked={agreed}
+            onChange={(e) => setAgreed(e.target.checked)}
+          />
           <p className="type-caption text-muted-foreground">{agreed ? 'Accepted' : 'Not accepted'}</p>
         </div>
       </ComponentPreview>
@@ -200,6 +181,12 @@ export default function CheckboxPage() {
             </tr>
           </thead>
           <tbody>
+            <tr className="border-b border-border">
+              <td className="px-4 py-3 type-caption font-mono text-foreground">text</td>
+              <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
+              <td className="px-4 py-3 type-caption font-mono text-foreground">—</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">Inline label text rendered beside the checkbox.</td>
+            </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 type-caption font-mono text-foreground">invalid</td>
               <td className="px-4 py-3 type-caption font-mono text-foreground">boolean</td>

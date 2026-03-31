@@ -7,50 +7,50 @@ import { ComponentPreview } from '@/components/ComponentPreview'
 const basicCode = `import { RadioGroup, RadioItem } from '@umichkisa-ds/web'
 
 <RadioGroup>
-  <RadioItem value="apple">Apple</RadioItem>
-  <RadioItem value="banana">Banana</RadioItem>
-  <RadioItem value="cherry">Cherry</RadioItem>
+  <RadioItem value="apple" text="Apple" />
+  <RadioItem value="banana" text="Banana" />
+  <RadioItem value="cherry" text="Cherry" />
 </RadioGroup>`
 
 const horizontalCode = `import { RadioGroup, RadioItem } from '@umichkisa-ds/web'
 
 <RadioGroup orientation="horizontal">
-  <RadioItem value="small">Small</RadioItem>
-  <RadioItem value="medium">Medium</RadioItem>
-  <RadioItem value="large">Large</RadioItem>
+  <RadioItem value="small" text="Small" />
+  <RadioItem value="medium" text="Medium" />
+  <RadioItem value="large" text="Large" />
 </RadioGroup>`
 
 const defaultValueCode = `import { RadioGroup, RadioItem } from '@umichkisa-ds/web'
 
 <RadioGroup defaultValue="medium">
-  <RadioItem value="small">Small</RadioItem>
-  <RadioItem value="medium">Medium</RadioItem>
-  <RadioItem value="large">Large</RadioItem>
+  <RadioItem value="small" text="Small" />
+  <RadioItem value="medium" text="Medium" />
+  <RadioItem value="large" text="Large" />
 </RadioGroup>`
 
 const disabledGroupCode = `import { RadioGroup, RadioItem } from '@umichkisa-ds/web'
 
 <RadioGroup disabled defaultValue="banana">
-  <RadioItem value="apple">Apple</RadioItem>
-  <RadioItem value="banana">Banana</RadioItem>
-  <RadioItem value="cherry">Cherry</RadioItem>
+  <RadioItem value="apple" text="Apple" />
+  <RadioItem value="banana" text="Banana" />
+  <RadioItem value="cherry" text="Cherry" />
 </RadioGroup>`
 
 const disabledItemCode = `import { RadioGroup, RadioItem } from '@umichkisa-ds/web'
 
 <RadioGroup>
-  <RadioItem value="apple">Apple</RadioItem>
-  <RadioItem value="banana" disabled>Banana</RadioItem>
-  <RadioItem value="cherry">Cherry</RadioItem>
+  <RadioItem value="apple" text="Apple" />
+  <RadioItem value="banana" text="Banana" disabled />
+  <RadioItem value="cherry" text="Cherry" />
 </RadioGroup>`
 
 const invalidCode = `import { RadioGroup, RadioItem } from '@umichkisa-ds/web'
 
 <div className="flex flex-col gap-2">
   <RadioGroup invalid>
-    <RadioItem value="apple">Apple</RadioItem>
-    <RadioItem value="banana">Banana</RadioItem>
-    <RadioItem value="cherry">Cherry</RadioItem>
+    <RadioItem value="apple" text="Apple" />
+    <RadioItem value="banana" text="Banana" />
+    <RadioItem value="cherry" text="Cherry" />
   </RadioGroup>
   <p className="type-caption text-error">Please select a fruit.</p>
 </div>`
@@ -58,9 +58,9 @@ const invalidCode = `import { RadioGroup, RadioItem } from '@umichkisa-ds/web'
 const controlledCode = `const [fruit, setFruit] = useState('banana')
 
 <RadioGroup value={fruit} onValueChange={setFruit}>
-  <RadioItem value="apple">Apple</RadioItem>
-  <RadioItem value="banana">Banana</RadioItem>
-  <RadioItem value="cherry">Cherry</RadioItem>
+  <RadioItem value="apple" text="Apple" />
+  <RadioItem value="banana" text="Banana" />
+  <RadioItem value="cherry" text="Cherry" />
 </RadioGroup>
 <p>You picked: {fruit}</p>`
 
@@ -93,9 +93,9 @@ export default function RadioPage() {
       </p>
       <ComponentPreview code={basicCode}>
         <RadioGroup>
-          <RadioItem value="apple">Apple</RadioItem>
-          <RadioItem value="banana">Banana</RadioItem>
-          <RadioItem value="cherry">Cherry</RadioItem>
+          <RadioItem value="apple" text="Apple" />
+          <RadioItem value="banana" text="Banana" />
+          <RadioItem value="cherry" text="Cherry" />
         </RadioGroup>
       </ComponentPreview>
 
@@ -110,9 +110,9 @@ export default function RadioPage() {
       </p>
       <ComponentPreview code={horizontalCode}>
         <RadioGroup orientation="horizontal">
-          <RadioItem value="small">Small</RadioItem>
-          <RadioItem value="medium">Medium</RadioItem>
-          <RadioItem value="large">Large</RadioItem>
+          <RadioItem value="small" text="Small" />
+          <RadioItem value="medium" text="Medium" />
+          <RadioItem value="large" text="Large" />
         </RadioGroup>
       </ComponentPreview>
 
@@ -127,9 +127,9 @@ export default function RadioPage() {
       </p>
       <ComponentPreview code={defaultValueCode}>
         <RadioGroup defaultValue="medium">
-          <RadioItem value="small">Small</RadioItem>
-          <RadioItem value="medium">Medium</RadioItem>
-          <RadioItem value="large">Large</RadioItem>
+          <RadioItem value="small" text="Small" />
+          <RadioItem value="medium" text="Medium" />
+          <RadioItem value="large" text="Large" />
         </RadioGroup>
       </ComponentPreview>
 
@@ -144,9 +144,9 @@ export default function RadioPage() {
       </p>
       <ComponentPreview code={disabledGroupCode}>
         <RadioGroup disabled defaultValue="banana">
-          <RadioItem value="apple">Apple</RadioItem>
-          <RadioItem value="banana">Banana</RadioItem>
-          <RadioItem value="cherry">Cherry</RadioItem>
+          <RadioItem value="apple" text="Apple" />
+          <RadioItem value="banana" text="Banana" />
+          <RadioItem value="cherry" text="Cherry" />
         </RadioGroup>
       </ComponentPreview>
 
@@ -157,9 +157,9 @@ export default function RadioPage() {
       </p>
       <ComponentPreview code={disabledItemCode}>
         <RadioGroup>
-          <RadioItem value="apple">Apple</RadioItem>
-          <RadioItem value="banana" disabled>Banana</RadioItem>
-          <RadioItem value="cherry">Cherry</RadioItem>
+          <RadioItem value="apple" text="Apple" />
+          <RadioItem value="banana" text="Banana" disabled />
+          <RadioItem value="cherry" text="Cherry" />
         </RadioGroup>
       </ComponentPreview>
 
@@ -179,9 +179,9 @@ export default function RadioPage() {
       <ComponentPreview code={invalidCode}>
         <div className="flex flex-col gap-2">
           <RadioGroup invalid>
-            <RadioItem value="apple">Apple</RadioItem>
-            <RadioItem value="banana">Banana</RadioItem>
-            <RadioItem value="cherry">Cherry</RadioItem>
+            <RadioItem value="apple" text="Apple" />
+            <RadioItem value="banana" text="Banana" />
+            <RadioItem value="cherry" text="Cherry" />
           </RadioGroup>
           <p className="type-caption text-error">Please select a fruit.</p>
         </div>
@@ -203,9 +203,9 @@ export default function RadioPage() {
       <ComponentPreview code={controlledCode}>
         <div className="flex flex-col gap-2">
           <RadioGroup value={fruit} onValueChange={setFruit}>
-            <RadioItem value="apple">Apple</RadioItem>
-            <RadioItem value="banana">Banana</RadioItem>
-            <RadioItem value="cherry">Cherry</RadioItem>
+            <RadioItem value="apple" text="Apple" />
+            <RadioItem value="banana" text="Banana" />
+            <RadioItem value="cherry" text="Cherry" />
           </RadioGroup>
           <p className="type-caption text-muted-foreground">You picked: {fruit}</p>
         </div>
@@ -314,10 +314,10 @@ export default function RadioPage() {
               <td className="px-4 py-3 type-body-sm text-foreground">Unique value identifying this option.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">children</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">ReactNode</td>
+              <td className="px-4 py-3 type-caption font-mono text-foreground">text</td>
+              <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
               <td className="px-4 py-3 type-caption font-mono text-foreground">required</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Label content rendered next to the radio indicator.</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">Label text rendered beside the radio indicator.</td>
             </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 type-caption font-mono text-foreground">disabled</td>

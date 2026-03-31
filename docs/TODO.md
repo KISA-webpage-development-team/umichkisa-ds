@@ -41,7 +41,7 @@ Use `new-component-workflow` skill for each component. Type: `audit` = existing 
 - [x] FormItem (audit, depends: Label + Input)
 
 ### Batch 5.5 - Form UI Design Review
-- discuss about UI design on form category components & review on all form components implemented 
+- [x] Form UI design review — brand colors on toggles, `text` prop standardization, Select brand treatment, docs updates, DS_CONSTRAINTS updates
 
 ### Batch 6 — Layout + display
 - [ ] Container (new)
@@ -82,3 +82,8 @@ Use `new-component-workflow` skill for each component. Type: `audit` = existing 
 ### Batch 14 — Deferred (v1.1)
 - [ ] Calendar (new)
 - [ ] DatePicker (new, depends: Calendar)
+
+### Post-v1.0
+- [ ] Form DX — custom hooks (useFormField, etc.) + form building guideline doc
+- [ ] Toggle checked state variant — navy + white (alternative to navy + maize for small-scale indicators)
+- [ ] Label component — add `id` prop support for `aria-labelledby` patterns

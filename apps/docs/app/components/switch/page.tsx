@@ -1,68 +1,59 @@
 'use client'
 
 import { useState } from 'react'
-import { Switch } from '@umichkisa-ds/web'
+import { Switch, FormItem } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 
 const defaultCode = `import { Switch } from '@umichkisa-ds/web'
 
-<Switch />`
+<Switch text="Enable notifications" />`
 
 const checkedCode = `import { Switch } from '@umichkisa-ds/web'
 
-<Switch defaultChecked />`
+<Switch text="Enable notifications" defaultChecked />`
 
 const sizesCode = `import { Switch } from '@umichkisa-ds/web'
 
-{/* Default */}
-<Switch />
+{/* Default — label uses type-body-sm */}
+<Switch text="Default size" />
 
-{/* Small */}
-<Switch size="sm" />`
+{/* Small — label uses type-caption */}
+<Switch size="sm" text="Small size" />`
 
 const statesCode = `import { Switch } from '@umichkisa-ds/web'
 
 {/* Default */}
-<Switch />
+<Switch text="Default" />
 
 {/* Disabled */}
-<Switch disabled />
+<Switch text="Disabled" disabled />
 
 {/* Disabled + Checked */}
-<Switch disabled defaultChecked />
+<Switch text="Disabled checked" disabled defaultChecked />
 
 {/* Invalid */}
-<Switch invalid />`
+<Switch text="Invalid" invalid />`
 
-const withLabelCode = `import { Switch } from '@umichkisa-ds/web'
+const withFormItemCode = `import { Switch, FormItem } from '@umichkisa-ds/web'
 
-<label className="flex items-center gap-2">
-  <Switch />
-  <span className="type-body text-foreground">Enable notifications</span>
-</label>`
+<FormItem htmlFor="notif" label="Notifications">
+  <Switch id="notif" text="Send email updates" />
+</FormItem>`
+
+const withErrorCode = `import { Switch, FormItem } from '@umichkisa-ds/web'
+
+<FormItem htmlFor="terms" label="Terms" error="You must accept the terms.">
+  <Switch id="terms" text="Accept terms" invalid />
+</FormItem>`
 
 const controlledCode = `const [enabled, setEnabled] = useState(false)
 
-<label className="flex items-center gap-2">
-  <Switch
-    checked={enabled}
-    onChange={(e) => setEnabled(e.target.checked)}
-  />
-  <span className="type-body text-foreground">
-    Dark mode
-  </span>
-</label>
+<Switch
+  text="Dark mode"
+  checked={enabled}
+  onChange={(e) => setEnabled(e.target.checked)}
+/>
 <p>{enabled ? 'On' : 'Off'}</p>`
-
-const withErrorCode = `import { Switch } from '@umichkisa-ds/web'
-
-<div className="flex flex-col gap-2">
-  <label className="flex items-center gap-2">
-    <Switch invalid />
-    <span className="type-body text-foreground">Accept terms</span>
-  </label>
-  <p className="type-caption text-error">You must accept the terms.</p>
-</div>`
 
 export default function SwitchPage() {
   const [enabled, setEnabled] = useState(false)
@@ -74,19 +65,23 @@ export default function SwitchPage() {
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Switch</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         A toggle for settings that take effect immediately — e.g., &ldquo;Enable
-        notifications&rdquo; or &ldquo;Dark mode&rdquo;. For selections submitted
-        with a form, use{' '}
+        notifications&rdquo; or &ldquo;Dark mode&rdquo;. Pass the{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          text
+        </code>{' '}
+        prop for an inline label that automatically wraps in a native{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          label
+        </code>
+        . For selections submitted with a form, use{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           Checkbox
         </code>{' '}
-        instead. Wrap in a native{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          label
-        </code>{' '}
-        for click-to-toggle behavior, or compose with{' '}
+        instead. Compose with{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           FormItem
-        </code>.
+        </code>{' '}
+        for labeled form fields.
       </p>
       <p className="type-body-sm mb-8 text-muted-foreground max-w-prose">
         Renders a native{' '}
@@ -102,10 +97,10 @@ export default function SwitchPage() {
       {/* Default */}
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Default</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        A single switch in the off state.
+        A switch with inline label text in the off state.
       </p>
       <ComponentPreview code={defaultCode}>
-        <Switch />
+        <Switch text="Enable notifications" />
       </ComponentPreview>
 
       {/* Checked */}
@@ -118,22 +113,26 @@ export default function SwitchPage() {
         set.
       </p>
       <ComponentPreview code={checkedCode}>
-        <Switch defaultChecked />
+        <Switch text="Enable notifications" defaultChecked />
       </ComponentPreview>
 
       {/* Sizes */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">Sizes</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Default and small sizes. Use{' '}
+        Default and small sizes. The{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           sm
         </code>{' '}
-        for dense UI like table rows or settings panels.
+        size uses smaller label text (
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          type-caption
+        </code>
+        ) for dense UI like table rows or settings panels.
       </p>
       <ComponentPreview code={sizesCode}>
-        <div className="flex items-center gap-4">
-          <Switch />
-          <Switch size="sm" />
+        <div className="flex flex-col gap-4">
+          <Switch text="Default size" />
+          <Switch size="sm" text="Small size" />
         </div>
       </ComponentPreview>
 
@@ -143,32 +142,31 @@ export default function SwitchPage() {
         Default, disabled off, disabled on, and invalid states.
       </p>
       <ComponentPreview code={statesCode}>
-        <div className="flex items-center gap-4">
-          <Switch />
-          <Switch disabled />
-          <Switch disabled defaultChecked />
-          <Switch invalid />
+        <div className="flex flex-col gap-4">
+          <Switch text="Default" />
+          <Switch text="Disabled" disabled />
+          <Switch text="Disabled checked" disabled defaultChecked />
+          <Switch text="Invalid" invalid />
         </div>
       </ComponentPreview>
 
-      {/* With Label */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With Label</h3>
+      {/* With FormItem */}
+      <h3 className="type-h3 mt-8 mb-2 text-foreground">With FormItem</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Wrap in a native{' '}
+        Compose with{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          label
+          FormItem
         </code>{' '}
-        for click-to-toggle behavior. Use{' '}
+        for labeled form fields. The{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          gap-2
+          text
         </code>{' '}
-        between switch and text.
+        prop provides a secondary inline label next to the control.
       </p>
-      <ComponentPreview code={withLabelCode}>
-        <label className="flex items-center gap-2">
-          <Switch />
-          <span className="type-body text-foreground">Enable notifications</span>
-        </label>
+      <ComponentPreview code={withFormItemCode}>
+        <FormItem htmlFor="notif" label="Notifications">
+          <Switch id="notif" text="Send email updates" />
+        </FormItem>
       </ComponentPreview>
 
       {/* With error message */}
@@ -178,20 +176,16 @@ export default function SwitchPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           invalid
         </code>{' '}
-        with an error message below. Use{' '}
+        with a{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          type-caption text-error
+          FormItem
         </code>{' '}
-        for the message.
+        error message.
       </p>
       <ComponentPreview code={withErrorCode}>
-        <div className="flex flex-col gap-2">
-          <label className="flex items-center gap-2">
-            <Switch invalid />
-            <span className="type-body text-foreground">Accept terms</span>
-          </label>
-          <p className="type-caption text-error">You must accept the terms.</p>
-        </div>
+        <FormItem htmlFor="terms" label="Terms" error="You must accept the terms.">
+          <Switch id="terms" text="Accept terms" invalid />
+        </FormItem>
       </ComponentPreview>
 
       {/* Controlled */}
@@ -202,13 +196,11 @@ export default function SwitchPage() {
       </p>
       <ComponentPreview code={controlledCode}>
         <div className="flex flex-col gap-2">
-          <label className="flex items-center gap-2">
-            <Switch
-              checked={enabled}
-              onChange={(e) => setEnabled(e.target.checked)}
-            />
-            <span className="type-body text-foreground">Dark mode</span>
-          </label>
+          <Switch
+            text="Dark mode"
+            checked={enabled}
+            onChange={(e) => setEnabled(e.target.checked)}
+          />
           <p className="type-caption text-muted-foreground">{enabled ? 'On' : 'Off'}</p>
         </div>
       </ComponentPreview>
@@ -245,6 +237,12 @@ export default function SwitchPage() {
             </tr>
           </thead>
           <tbody>
+            <tr className="border-b border-border">
+              <td className="px-4 py-3 type-caption font-mono text-foreground">text</td>
+              <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
+              <td className="px-4 py-3 type-caption font-mono text-foreground">—</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">Inline label text. Uses type-body-sm for default size, type-caption for sm.</td>
+            </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 type-caption font-mono text-foreground">size</td>
               <td className="px-4 py-3 type-caption font-mono text-foreground">&quot;default&quot; | &quot;sm&quot;</td>

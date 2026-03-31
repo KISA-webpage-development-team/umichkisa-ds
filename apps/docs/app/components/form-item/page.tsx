@@ -9,6 +9,10 @@ import {
   SelectTrigger,
   SelectContent,
   SelectItem,
+  Checkbox,
+  Switch,
+  RadioGroup,
+  RadioItem,
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 
@@ -48,6 +52,34 @@ const withTextareaCode = `import { FormItem, Textarea } from '@umichkisa-ds/web'
 
 <FormItem htmlFor="bio" label="Bio" description="Tell us about yourself.">
   <Textarea id="bio" placeholder="Write something..." />
+</FormItem>`
+
+const withCheckboxCode = `import { FormItem, Checkbox } from '@umichkisa-ds/web'
+
+<FormItem htmlFor="terms" label="Terms" required>
+  <Checkbox id="terms" text="I agree to the terms and conditions" />
+</FormItem>`
+
+const withSwitchCode = `import { FormItem, Switch } from '@umichkisa-ds/web'
+
+<FormItem htmlFor="notifications" label="Notifications">
+  <Switch id="notifications" text="Send email updates" />
+</FormItem>`
+
+const withRadioCode = `import { FormItem, RadioGroup, RadioItem } from '@umichkisa-ds/web'
+
+<FormItem htmlFor="contact" label="Preferred contact">
+  <RadioGroup>
+    <RadioItem value="email" text="Email" />
+    <RadioItem value="phone" text="Phone" />
+    <RadioItem value="mail" text="Mail" />
+  </RadioGroup>
+</FormItem>`
+
+const a11yCode = `import { FormItem, Input } from '@umichkisa-ds/web'
+
+<FormItem htmlFor="email" label="Email" description="We'll never share your email.">
+  <Input id="email" aria-describedby="email-description" placeholder="you@example.com" />
 </FormItem>`
 
 const withSelectCode = `import { FormItem, Select, SelectTrigger, SelectContent, SelectItem } from '@umichkisa-ds/web'
@@ -217,6 +249,106 @@ export default function FormItemPage() {
                 <SelectItem value="viewer">Viewer</SelectItem>
               </SelectContent>
             </Select>
+          </FormItem>
+        </div>
+      </ComponentPreview>
+
+      {/* With Checkbox */}
+      <h3 className="type-h3 mt-8 mb-2 text-foreground">With Checkbox</h3>
+      <p className="type-body mb-2 text-foreground max-w-prose">
+        FormItem composes with toggle controls too. Here it wraps a{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          Checkbox
+        </code>{' '}
+        that uses the{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          text
+        </code>{' '}
+        prop for its inline label.
+      </p>
+      <ComponentPreview code={withCheckboxCode}>
+        <div className="w-full max-w-sm">
+          <FormItem htmlFor="cb-terms" label="Terms" required>
+            <Checkbox id="cb-terms" text="I agree to the terms and conditions" />
+          </FormItem>
+        </div>
+      </ComponentPreview>
+
+      {/* With Switch */}
+      <h3 className="type-h3 mt-8 mb-2 text-foreground">With Switch</h3>
+      <p className="type-body mb-2 text-foreground max-w-prose">
+        Works with{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          Switch
+        </code>{' '}
+        as well. The{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          text
+        </code>{' '}
+        prop renders the inline label next to the toggle.
+      </p>
+      <ComponentPreview code={withSwitchCode}>
+        <div className="w-full max-w-sm">
+          <FormItem htmlFor="sw-notifications" label="Notifications">
+            <Switch id="sw-notifications" text="Send email updates" />
+          </FormItem>
+        </div>
+      </ComponentPreview>
+
+      {/* With RadioGroup */}
+      <h3 className="type-h3 mt-8 mb-2 text-foreground">With RadioGroup</h3>
+      <p className="type-body mb-2 text-foreground max-w-prose">
+        For radio buttons, wrap a{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          RadioGroup
+        </code>{' '}
+        containing{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          RadioItem
+        </code>{' '}
+        children. Each item uses the{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          text
+        </code>{' '}
+        prop for its label.
+      </p>
+      <ComponentPreview code={withRadioCode}>
+        <div className="w-full max-w-sm">
+          <FormItem htmlFor="rg-contact" label="Preferred contact">
+            <RadioGroup>
+              <RadioItem value="email" text="Email" />
+              <RadioItem value="phone" text="Phone" />
+              <RadioItem value="mail" text="Mail" />
+            </RadioGroup>
+          </FormItem>
+        </div>
+      </ComponentPreview>
+
+      {/* ── Accessibility ────────────────────────────────────── */}
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Accessibility</h2>
+      <p className="type-body mb-2 text-foreground max-w-prose">
+        FormItem renders description and error text with predictable IDs:{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          {'{htmlFor}-description'}
+        </code>{' '}
+        and{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          {'{htmlFor}-error'}
+        </code>
+        . Wire{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          aria-describedby
+        </code>{' '}
+        on the form control to associate the helper text for screen readers.
+      </p>
+      <ComponentPreview code={a11yCode}>
+        <div className="w-full max-w-sm">
+          <FormItem
+            htmlFor="a11y-email"
+            label="Email"
+            description="We'll never share your email."
+          >
+            <Input id="a11y-email" aria-describedby="a11y-email-description" placeholder="you@example.com" />
           </FormItem>
         </div>
       </ComponentPreview>

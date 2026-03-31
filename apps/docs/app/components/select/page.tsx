@@ -46,9 +46,9 @@ const withLabelCode = `import { Select, SelectTrigger, SelectContent, SelectItem
 import { Label } from '@umichkisa-ds/web'
 
 <div className="flex flex-col gap-2">
-  <Label htmlFor="fruit">Fruit</Label>
+  <Label htmlFor="fruit" id="fruit-label">Fruit</Label>
   <Select>
-    <SelectTrigger placeholder="Select a fruit..." />
+    <SelectTrigger placeholder="Select a fruit..." aria-labelledby="fruit-label" />
     <SelectContent>
       <SelectItem value="apple">Apple</SelectItem>
       <SelectItem value="banana">Banana</SelectItem>
@@ -186,18 +186,20 @@ export default function SelectPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           Label
         </code>{' '}
-        for form fields. Radix Select does not use native{' '}
+        for form fields. Since Radix Select doesn&apos;t use a native select element, add{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          htmlFor
+          aria-labelledby
         </code>{' '}
-        — the label is visual only here.
+        on the trigger to associate the label for screen readers.
       </p>
       <ComponentPreview code={withLabelCode}>
         <div className="w-full max-w-sm">
           <div className="flex flex-col gap-2">
-            <Label htmlFor="fruit-label-demo">Fruit</Label>
+            <span id="fruit-label-demo">
+              <Label htmlFor="fruit-label-demo">Fruit</Label>
+            </span>
             <Select>
-              <SelectTrigger placeholder="Select a fruit..." />
+              <SelectTrigger placeholder="Select a fruit..." aria-labelledby="fruit-label-demo" />
               <SelectContent>
                 <SelectItem value="apple">Apple</SelectItem>
                 <SelectItem value="banana">Banana</SelectItem>
