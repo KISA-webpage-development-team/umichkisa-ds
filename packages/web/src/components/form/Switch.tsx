@@ -34,7 +34,7 @@ function Switch({
       {/* Track */}
       <span
         className={cn(
-          "absolute inset-0 rounded-full border transition-colors",
+          "pointer-events-none absolute inset-0 rounded-full border transition-colors",
           "border-border-strong bg-surface-subtle",
           "peer-checked:bg-foreground peer-checked:border-foreground",
           "peer-focus-visible:outline-none peer-focus-visible:border-brand-primary",
