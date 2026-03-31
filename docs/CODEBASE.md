@@ -95,7 +95,7 @@ Note: `/components/[slug]` dynamic route also exists as a fallback for future MD
 | `RadioGroup` / `RadioItem` | form | ✅ | Radix compound component (`@radix-ui/react-radio-group`). Built-in label via children (Chakra pattern). `invalid` prop on group propagates via `data-invalid`. `cn()` only. |
 | `Switch` | form | ✅ | Native `<input type="checkbox" role="switch">` with peer-styled track + thumb. Two sizes (default/sm), `invalid` prop, `cn()` only. Thumb grows on check (16→20px default, 10→12px sm). |
 | `Label` | form | ✅ | `type-label` + `text-foreground`, optional `required` asterisk with `text-error`. `cn()` only, no CVA. |
-| `FormItem` | form | ✅ | |
+| `FormItem` | form | ✅ | Presentation-only layout wrapper (label, children, description, error). Renders Label internally, accepts any form control as children. `cn()` only, no validation logic. |
 | `Divider` | divider | ✅ | Unified from HorizontalDivider + VerticalDivider. Semantic `<hr>`, `orientation` prop, `--color-border` token. |
 | `ToggleBar` | layout | ✅ | |
 | `LoadingSpinner` | feedback | ✅ | |

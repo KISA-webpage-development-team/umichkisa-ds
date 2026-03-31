@@ -60,3 +60,13 @@ Append-only log of API changes from existing implementations. Used when updating
 - `invalid` moved from `<Select>` to `<SelectTrigger>`
 - `disabled` stays on `<Select>` root
 - Must wrap items in `<SelectContent>` and use `<SelectTrigger>` for the trigger button
+
+## FormItem
+
+- **Breaking:** Complete API redesign — no longer renders its own Input
+- Old props removed: `type`, `value`, `onChange`, `placeholder`, `validationRules`, `labelText`
+- New API: `label` (string), `children` (form control slot), `error`, `description`, `required`, `className`
+- `labelText` renamed to `label`
+- `htmlFor` unchanged
+- Validation logic removed — consumer passes `error` string from external validation
+- Now composes with any form control (Input, Textarea, Select, etc.) via `children`

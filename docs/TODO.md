@@ -38,7 +38,7 @@ Use `new-component-workflow` skill for each component. Type: `audit` = existing 
 ### Batch 5 — Form controls cont'd
 - [x] Radio (new)
 - [x] Switch (new)
-- [ ] FormItem (audit, depends: Label + Input)
+- [x] FormItem (audit, depends: Label + Input)
 
 ### Batch 5.5 - Form UI Design Review
 - discuss about UI design on form category components & review on all form components implemented 
