@@ -1,82 +1,47 @@
-import { memo, useState, useCallback } from "react";
-import { Input } from "./Input";
+import { cn } from "@/utils/cn";
 import { Label } from "./Label";
-
-type ValidationRule = (value: string) => string | null;
 
 export type FormItemProps = {
   htmlFor: string;
-  labelText: string;
-  type: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder?: string;
-  validationRules?: ValidationRule[];
+  label: string;
   required?: boolean;
+  error?: string;
+  description?: string;
+  className?: string;
+  children: React.ReactNode;
 };
 
-export const FormItem = memo(function FormItem({
+export function FormItem({
   htmlFor,
-  labelText,
-  type,
-  value,
-  onChange,
-  placeholder,
-  validationRules = [],
+  label,
   required = false,
+  error,
+  description,
+  className,
+  children,
 }: FormItemProps) {
-  const [error, setError] = useState<string | null>(null);
-  const [requiredError, setRequiredError] = useState<boolean>(false);
-
-  const validate = useCallback(
-    (val: string = value) => {
-      if (required && !val.trim()) {
-        setRequiredError(true);
-        setError(null);
-        return false;
-      }
-      setRequiredError(false);
-      for (const rule of validationRules) {
-        const result = rule(val);
-        if (result) {
-          setError(result);
-          return false;
-        }
-      }
-      setError(null);
-      return true;
-    },
-    [required, validationRules, value]
-  );
-
-  const handleBlur = () => validate();
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(e);
-    validate(e.target.value);
-  };
-
-  const isInvalid = requiredError || error !== null;
-
   return (
-    <div className="relative flex flex-col gap-1 items-start">
+    <div className={cn("flex flex-col gap-2", className)}>
       <Label htmlFor={htmlFor} required={required}>
-        {labelText}
+        {label}
       </Label>
-      <Input
-        id={htmlFor}
-        type={type}
-        value={value}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        placeholder={placeholder}
-        required={required}
-        invalid={isInvalid}
-      />
-      {isInvalid && (
-        <span className="absolute top-full mt-1 text-xs font-bold text-[var(--color-error)]">
-          {error ?? ""}
-        </span>
+      {children}
+      {description && !error && (
+        <p
+          id={`${htmlFor}-description`}
+          className="type-caption text-muted-foreground"
+        >
+          {description}
+        </p>
+      )}
+      {error && (
+        <p
+          id={`${htmlFor}-error`}
+          className="type-caption text-error"
+        >
+          {error}
+        </p>
       )}
     </div>
   );
-});
+}
