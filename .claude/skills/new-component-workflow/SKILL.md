@@ -31,8 +31,7 @@ Invoke `superpowers:using-git-worktrees`.
 - Branch name: `component/<name>` (e.g., `component/button`)
 - Confirm worktree is created and you're working in it
 
-> **Checkpoint:** Worktree `component/<name>` created on branch `component/<name>`. Mode: [new | audit + fix].
-> Ready to proceed to Step 1: Grill-me. Go ahead?
+**No checkpoint here — proceed directly to Step 1.**
 
 ## Step 1: Grill-me
 
