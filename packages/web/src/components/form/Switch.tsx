@@ -51,7 +51,7 @@ function Switch({
           "peer-disabled:bg-disabled-foreground",
           "peer-disabled:peer-checked:bg-surface",
           isSmall
-            ? "left-0.5 size-2.5 peer-checked:left-[calc(100%-0.125rem-0.625rem)] peer-checked:size-3"
+            ? "left-0.5 size-2.5 peer-checked:left-[calc(100%-0.125rem-0.75rem)] peer-checked:size-3"
             : "left-1 size-4 peer-checked:left-[calc(100%-0.25rem-1.25rem)] peer-checked:size-5"
         )}
       />
