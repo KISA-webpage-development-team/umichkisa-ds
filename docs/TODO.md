@@ -36,7 +36,7 @@ Use `new-component-workflow` skill for each component. Type: `audit` = existing 
 - [x] Select (new)
 
 ### Batch 5 — Form controls cont'd
-- [ ] Radio (new)
+- [x] Radio (new)
 - [x] Switch (new)
 - [ ] FormItem (audit, depends: Label + Input)
 
