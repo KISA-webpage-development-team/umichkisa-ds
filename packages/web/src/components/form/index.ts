@@ -10,3 +10,5 @@ export { Select, SelectTrigger, SelectContent, SelectItem, SelectGroup, SelectSe
 export type { SelectProps, SelectTriggerProps, SelectContentProps, SelectItemProps, SelectGroupProps } from "./Select";
 export { Textarea } from "./Textarea";
 export type { TextareaProps } from "./Textarea";
+export { RadioGroup, RadioItem } from "./Radio";
+export type { RadioGroupProps, RadioItemProps } from "./Radio";
