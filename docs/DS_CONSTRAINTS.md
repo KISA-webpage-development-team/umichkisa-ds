@@ -58,8 +58,9 @@ Avoid: Using `--color-error` for small body text — passes large text only (3.9
 ### Interactive States
 
 Must: Cycle through default → hover → pressed → focus states for every interactive element using brand colors. [source:foundation/colors/usage]
-Must: Implement the dual-ring focus pattern on every interactive element: `outline: 2px solid var(--color-focus-ring)` (maize, contrast on dark) + `box-shadow: 0 0 0 4px var(--color-brand-primary)` (navy, contrast on light). Both rings must be present. [source:foundation/colors/tokens]
-Never: Remove the focus ring, reduce its opacity, or suppress it with `outline: none`. [source:foundation/colors/usage]
+Must: Implement the dual-ring focus pattern on **buttons and icon-only interactive elements**: `outline: 2px solid var(--color-focus-ring)` (maize, contrast on dark) + `box-shadow: 0 0 0 4px var(--color-brand-primary)` (navy, contrast on light). Both rings must be present. [source:foundation/colors/tokens]
+Exception: **Form controls** (Input, Textarea, Select, Checkbox, Switch, Radio) use a simplified focus pattern: `outline: none` + `border-color: var(--color-brand-primary)`. The border color change is sufficient for elements that already have a visible border. [source:implementation/form-controls]
+Never: Remove the focus indicator entirely — every interactive element must have a visible focus state. Buttons use the dual-ring; form controls use the border-color change. [source:foundation/colors/usage]
 Prefer: `--color-surface-subtle` as hover background and `--color-border-strong` as hover border for neutral/gray interactive elements (interim until dedicated neutral interactive tokens are defined). [source:foundation/colors/tokens]
 
 ---
@@ -230,8 +231,9 @@ Never: Omit `id="main-content"` on the `<main>` element when a skip link is pres
 ### Focus
 
 Must: Every interactive element must have a visible focus indicator when navigated by keyboard. [source:foundation/colors/usage]
-Must: Use the dual-ring focus implementation — maize `outline` (visible on dark backgrounds, 8.2:1 on navy) + navy `box-shadow` offset (visible on light backgrounds). [source:foundation/colors/tokens]
-Never: Use `outline: none` or `outline: 0` without an equivalent custom focus indicator. [source:foundation/colors/usage]
+Must: Use the dual-ring focus implementation for **buttons and icon-only interactive elements** — maize `outline` (visible on dark backgrounds, 8.2:1 on navy) + navy `box-shadow` offset (visible on light backgrounds). [source:foundation/colors/tokens]
+Must: Use the simplified border-color focus pattern for **form controls** (Input, Textarea, Select, Checkbox, Switch, Radio) — `outline: none` + `border-color: var(--color-brand-primary)`. [source:implementation/form-controls]
+Never: Remove the focus indicator entirely — `outline: none` is only permitted on form controls that use `border-color` as their focus signal. [source:foundation/colors/usage]
 
 ### Iconography — Touch Targets & Contrast
 
