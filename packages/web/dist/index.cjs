@@ -403,64 +403,37 @@ function Label({ htmlFor, required = false, className, children }) {
 }
 
 // src/components/form/FormItem.tsx
-var import_react = require("react");
 var import_jsx_runtime10 = require("react/jsx-runtime");
-var FormItem = (0, import_react.memo)(function FormItem2({
+function FormItem({
   htmlFor,
-  labelText,
-  type,
-  value,
-  onChange,
-  placeholder,
-  validationRules = [],
-  required = false
+  label,
+  required = false,
+  error,
+  description,
+  className,
+  children
 }) {
-  const [error, setError] = (0, import_react.useState)(null);
-  const [requiredError, setRequiredError] = (0, import_react.useState)(false);
-  const validate = (0, import_react.useCallback)(
-    (val = value) => {
-      if (required && !val.trim()) {
-        setRequiredError(true);
-        setError(null);
-        return false;
-      }
-      setRequiredError(false);
-      for (const rule of validationRules) {
-        const result = rule(val);
-        if (result) {
-          setError(result);
-          return false;
-        }
-      }
-      setError(null);
-      return true;
-    },
-    [required, validationRules, value]
-  );
-  const handleBlur = () => validate();
-  const handleChange = (e) => {
-    onChange(e);
-    validate(e.target.value);
-  };
-  const isInvalid = requiredError || error !== null;
-  return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "relative flex flex-col gap-1 items-start", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(Label, { htmlFor, required, children: labelText }),
-    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
-      Input,
+  return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: cn("flex flex-col gap-2", className), children: [
+    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(Label, { htmlFor, required, children: label }),
+    children,
+    description && !error && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+      "p",
       {
-        id: htmlFor,
-        type,
-        value,
-        onChange: handleChange,
-        onBlur: handleBlur,
-        placeholder,
-        required,
-        invalid: isInvalid
+        id: `${htmlFor}-description`,
+        className: "type-caption text-muted-foreground",
+        children: description
       }
     ),
-    isInvalid && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "absolute top-full mt-1 text-xs font-bold text-[var(--color-error)]", children: error ?? "" })
+    error && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+      "p",
+      {
+        id: `${htmlFor}-error`,
+        className: "type-caption text-error",
+        children: error
+      }
+    )
   ] });
-});
+}
 
 // src/components/form/Checkbox.tsx
 var import_jsx_runtime11 = require("react/jsx-runtime");

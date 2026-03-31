@@ -109,18 +109,16 @@ type LabelProps = {
 };
 declare function Label({ htmlFor, required, className, children }: LabelProps): react_jsx_runtime.JSX.Element;
 
-type ValidationRule = (value: string) => string | null;
 type FormItemProps = {
     htmlFor: string;
-    labelText: string;
-    type: string;
-    value: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    placeholder?: string;
-    validationRules?: ValidationRule[];
+    label: string;
     required?: boolean;
+    error?: string;
+    description?: string;
+    className?: string;
+    children: React.ReactNode;
 };
-declare const FormItem: react.NamedExoticComponent<FormItemProps>;
+declare function FormItem({ htmlFor, label, required, error, description, className, children, }: FormItemProps): react_jsx_runtime.JSX.Element;
 
 type CheckboxProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> & {
     invalid?: boolean;
