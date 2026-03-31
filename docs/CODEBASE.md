@@ -72,6 +72,7 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 | Textarea | `/components/textarea` | ✅ Complete |
 | Select | `/components/select` | ✅ Complete |
 | Checkbox | `/components/checkbox` | ✅ Complete |
+| Switch | `/components/switch` | ✅ Complete |
 
 Note: `/components/[slug]` dynamic route also exists as a fallback for future MDX-based pages.
 
@@ -90,6 +91,7 @@ Note: `/components/[slug]` dynamic route also exists as a fallback for future MD
 | `Textarea` | form | ✅ | Extends `TextareaHTMLAttributes`, `invalid` prop, `rows=3` default, `resize-y`, `cn()` only, mirrors Input styling |
 | `Select` | form | ✅ | Radix compound component (Select, SelectTrigger, SelectContent, SelectItem, SelectGroup, SelectSeparator). Fully styleable dropdown overlay. `cn()` only, trigger mirrors Input styling. |
 | `Checkbox` | form | ✅ | Native hidden input + styled span indicator via peer selectors, `invalid` prop, `cn()` only, mirrors Input styling. `text-surface` checkmark on `bg-foreground`. |
+| `Switch` | form | ✅ | Native `<input type="checkbox" role="switch">` with peer-styled track + thumb. Two sizes (default/sm), `invalid` prop, `cn()` only. Thumb grows on check (16→20px default, 10→12px sm). |
 | `Label` | form | ✅ | `type-label` + `text-foreground`, optional `required` asterisk with `text-error`. `cn()` only, no CVA. |
 | `FormItem` | form | ✅ | |
 | `Divider` | divider | ✅ | Unified from HorizontalDivider + VerticalDivider. Semantic `<hr>`, `orientation` prop, `--color-border` token. |
