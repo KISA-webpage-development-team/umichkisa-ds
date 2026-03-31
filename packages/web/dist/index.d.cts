@@ -5,6 +5,7 @@ import { VariantProps } from 'class-variance-authority';
 import * as react from 'react';
 import * as lucide_react from 'lucide-react';
 import * as RadixSelect from '@radix-ui/react-select';
+import * as RadixRadioGroup from '@radix-ui/react-radio-group';
 import * as RadixDialog from '@radix-ui/react-dialog';
 import * as RadixDropdown from '@radix-ui/react-dropdown-menu';
 import * as RadixPopover from '@radix-ui/react-popover';
@@ -165,6 +166,19 @@ type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
 };
 declare function Textarea({ invalid, className, rows, ...props }: TextareaProps): react_jsx_runtime.JSX.Element;
 
+type RadioGroupProps = React.ComponentPropsWithoutRef<typeof RadixRadioGroup.Root> & {
+    invalid?: boolean;
+    className?: string;
+};
+declare function RadioGroup({ invalid, orientation, className, ...props }: RadioGroupProps): react_jsx_runtime.JSX.Element;
+type RadioItemProps = {
+    value: string;
+    children: React.ReactNode;
+    disabled?: boolean;
+    className?: string;
+};
+declare function RadioItem({ value, children, disabled, className }: RadioItemProps): react_jsx_runtime.JSX.Element;
+
 type ToggleBarItem = {
     view: string;
     text: string;
@@ -242,4 +256,4 @@ declare function Divider({ orientation, className, ...props }: DividerProps): re
 
 declare const DS_VERSION = "0.1.0";
 
-export { Badge, type BadgeProps, Button, type ButtonProps, Checkbox, type CheckboxProps, DS_VERSION, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogTitle, type DialogTitleProps, DialogTrigger, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownItem, type DropdownItemProps, DropdownTrigger, FormItem, type FormItemProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Switch, type SwitchProps, Textarea, type TextareaProps, ToggleBar, type ToggleBarItem, type ToggleBarProps, UnexpectedError, type UnexpectedErrorProps, badgeVariants, buttonVariants, cn };
+export { Badge, type BadgeProps, Button, type ButtonProps, Checkbox, type CheckboxProps, DS_VERSION, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogTitle, type DialogTitleProps, DialogTrigger, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownItem, type DropdownItemProps, DropdownTrigger, FormItem, type FormItemProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, RadioGroup, type RadioGroupProps, RadioItem, type RadioItemProps, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Switch, type SwitchProps, Textarea, type TextareaProps, ToggleBar, type ToggleBarItem, type ToggleBarProps, UnexpectedError, type UnexpectedErrorProps, badgeVariants, buttonVariants, cn };
