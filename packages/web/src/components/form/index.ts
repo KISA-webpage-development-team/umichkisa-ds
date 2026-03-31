@@ -12,3 +12,5 @@ export { Switch } from "./Switch";
 export type { SwitchProps } from "./Switch";
 export { Textarea } from "./Textarea";
 export type { TextareaProps } from "./Textarea";
+export { RadioGroup, RadioItem } from "./Radio";
+export type { RadioGroupProps, RadioItemProps } from "./Radio";
