@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { RadioGroup, RadioItem } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 
@@ -54,22 +55,32 @@ const invalidCode = `import { RadioGroup, RadioItem } from '@umichkisa-ds/web'
   <p className="type-caption text-error">Please select a fruit.</p>
 </div>`
 
+const controlledCode = `const [fruit, setFruit] = useState('banana')
+
+<RadioGroup value={fruit} onValueChange={setFruit}>
+  <RadioItem value="apple">Apple</RadioItem>
+  <RadioItem value="banana">Banana</RadioItem>
+  <RadioItem value="cherry">Cherry</RadioItem>
+</RadioGroup>
+<p>You picked: {fruit}</p>`
+
 export default function RadioPage() {
+  const [fruit, setFruit] = useState('banana')
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 min-w-0 overflow-hidden">
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Radio</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
-        Compound{' '}
+        Use{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           RadioGroup
         </code>{' '}
-        +{' '}
+        and{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           RadioItem
         </code>{' '}
-        for single-selection from a set of options.
+        together to let users pick one option from a set.
       </p>
 
       {/* ── Examples ────────────────────────────────────────── */}
@@ -112,7 +123,7 @@ export default function RadioPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           defaultValue
         </code>{' '}
-        for uncontrolled pre-selection.
+        to set the initial value without managing state.
       </p>
       <ComponentPreview code={defaultValueCode}>
         <RadioGroup defaultValue="medium">
@@ -176,17 +187,37 @@ export default function RadioPage() {
         </div>
       </ComponentPreview>
 
+      {/* Controlled */}
+      <h3 className="type-h3 mt-8 mb-2 text-foreground">Controlled</h3>
+      <p className="type-body mb-2 text-foreground max-w-prose">
+        Use{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          value
+        </code>{' '}
+        and{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          onValueChange
+        </code>{' '}
+        for controlled state.
+      </p>
+      <ComponentPreview code={controlledCode}>
+        <div className="flex flex-col gap-2">
+          <RadioGroup value={fruit} onValueChange={setFruit}>
+            <RadioItem value="apple">Apple</RadioItem>
+            <RadioItem value="banana">Banana</RadioItem>
+            <RadioItem value="cherry">Cherry</RadioItem>
+          </RadioGroup>
+          <p className="type-caption text-muted-foreground">You picked: {fruit}</p>
+        </div>
+      </ComponentPreview>
+
       {/* ── API Reference ────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
 
       {/* RadioGroup table */}
       <h3 className="type-h3 mt-6 mb-2 text-foreground">RadioGroup</h3>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        Wraps Radix{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          RadioGroup.Root
-        </code>
-        . Extends all its props; only custom additions are listed below.
+        The group container. Built on Radix RadioGroup — all props below are supported.
       </p>
       <div className="my-6 overflow-x-auto">
         <table className="w-full border-collapse border border-border">
@@ -245,13 +276,13 @@ export default function RadioPage() {
               <td className="px-4 py-3 type-caption font-mono text-foreground">invalid</td>
               <td className="px-4 py-3 type-caption font-mono text-foreground">boolean</td>
               <td className="px-4 py-3 type-caption font-mono text-foreground">false</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Applies error border styling via data-invalid.</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">Applies error border styling to all items.</td>
             </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 type-caption font-mono text-foreground">className</td>
               <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
               <td className="px-4 py-3 type-caption font-mono text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Merged via cn(). Use for layout utilities only.</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">Additional CSS classes. Use for layout utilities only.</td>
             </tr>
           </tbody>
         </table>
@@ -298,7 +329,7 @@ export default function RadioPage() {
               <td className="px-4 py-3 type-caption font-mono text-foreground">className</td>
               <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
               <td className="px-4 py-3 type-caption font-mono text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Merged via cn(). Use for layout utilities only.</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">Additional CSS classes. Use for layout utilities only.</td>
             </tr>
           </tbody>
         </table>
