@@ -269,13 +269,13 @@ export default function FormsPage() {
 
       <div className="rounded-lg border border-border bg-surface p-8">
         <div className="mb-6">
-          <h3 className="type-h2 font-sejong-bold text-foreground">Event Registration</h3>
+          <h3 className="type-h2 text-foreground">Event Registration</h3>
           <p className="type-body-sm text-muted-foreground mt-1">
             Register for the upcoming KISA networking event. Fields marked with * are required.
           </p>
         </div>
 
-        <div className="flex flex-col gap-5 max-w-md">
+        <div className="flex flex-col gap-4 max-w-md">
           <FormItem htmlFor="demo-name" label="Full name" required>
             <Input id="demo-name" placeholder="e.g. Kim Minjun" />
           </FormItem>
