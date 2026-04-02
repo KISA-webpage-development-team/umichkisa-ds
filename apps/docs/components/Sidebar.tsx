@@ -124,7 +124,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
   // Determine which category contains the current route
   const activeCategory = isComponents
     ? COMPONENT_CATEGORIES.find((cat) =>
-        cat.items.some((item) => pathname === item.href)
+        cat.items.some((item) => pathname === item.href || pathname.startsWith(item.href + '/'))
       )?.label ?? null
     : null
 
