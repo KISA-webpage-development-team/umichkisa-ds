@@ -3,13 +3,13 @@ import { ComponentPreview } from '@/components/ComponentPreview'
 
 const defaultCode = `import { Avatar } from '@umichkisa-ds/web'
 
-<Avatar src="/img/demo-avatar.jpg" name="Jioh In" />`
+<Avatar src="/img/demo-avatar.png" name="Jioh In" />`
 
 const sizesCode = `import { Avatar } from '@umichkisa-ds/web'
 
-<Avatar src="/img/demo-avatar.jpg" name="Jioh In" size="sm" />
-<Avatar src="/img/demo-avatar.jpg" name="Jioh In" size="md" />
-<Avatar src="/img/demo-avatar.jpg" name="Jioh In" size="lg" />`
+<Avatar src="/img/demo-avatar.png" name="Jioh In" size="sm" />
+<Avatar src="/img/demo-avatar.png" name="Jioh In" size="md" />
+<Avatar src="/img/demo-avatar.png" name="Jioh In" size="lg" />`
 
 const initialsCode = `import { Avatar } from '@umichkisa-ds/web'
 
@@ -57,7 +57,7 @@ export default function AvatarPage() {
         for the standard image avatar.
       </p>
       <ComponentPreview code={defaultCode}>
-        <Avatar src="/img/demo-avatar.jpg" name="Jioh In" />
+        <Avatar src="/img/demo-avatar.png" name="Jioh In" />
       </ComponentPreview>
 
       {/* Sizes */}
@@ -79,9 +79,9 @@ export default function AvatarPage() {
       </p>
       <ComponentPreview code={sizesCode}>
         <div className="flex items-center gap-4">
-          <Avatar src="/img/demo-avatar.jpg" name="Jioh In" size="sm" />
-          <Avatar src="/img/demo-avatar.jpg" name="Jioh In" size="md" />
-          <Avatar src="/img/demo-avatar.jpg" name="Jioh In" size="lg" />
+          <Avatar src="/img/demo-avatar.png" name="Jioh In" size="sm" />
+          <Avatar src="/img/demo-avatar.png" name="Jioh In" size="md" />
+          <Avatar src="/img/demo-avatar.png" name="Jioh In" size="lg" />
         </div>
       </ComponentPreview>
 
