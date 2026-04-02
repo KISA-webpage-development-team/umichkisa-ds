@@ -15,6 +15,23 @@ Use `new-component-workflow` skill for each component. Type: `audit` = existing 
 
 **Session startup:** When a batch is the next task, ask the user which component from that batch they want to work on in THIS session. Do not assume — the user may be running multiple sessions in parallel.
 
+### Sidebar Categories (defined in apps/docs/components/Sidebar.tsx)
+
+| Order | Category     | Components (alphabetical within)                                                  |
+|-------|-------------|-----------------------------------------------------------------------------------|
+| 1     | Icon        | Icon                                                                              |
+| 2     | Buttons     | Button, IconButton, LinkButton                                                    |
+| 3     | Layout      | Container, Divider, Grid                                                          |
+| 4     | Forms       | Forms Overview (always first), Checkbox, FormItem, Input, Label, Radio, Select, Switch, Textarea |
+| 5     | Data Display | Accordion, Avatar, Badge, Card, Table                                             |
+| 6     | Navigation  | Pagination, Tabs                                                                  |
+| 7     | Overlays    | Dialog, Dropdown, Popover, Tooltip                                                |
+| 8     | Feedback    | Alert, LoadingSpinner, Skeleton, Toast                                            |
+| 9     | Utilities   | NotFound/NotAuthorized/NotLogin/UnexpectedError, OnlyMobileView, ToggleBar, UnderConstruction |
+| 10    | Date & Time | Calendar, DatePicker                                                              |
+
+Only show categories with ≥1 shipped component. When a batch ships a component that creates a new category, add the category to `COMPONENT_CATEGORIES` in Sidebar.tsx.
+
 - [x] Icon
 
 ### Batch 1 — Foundations
@@ -49,8 +66,8 @@ Use `new-component-workflow` skill for each component. Type: `audit` = existing 
 - [x] Avatar (new)
 
 ### Batch 6.5 — Form docs reorganization + demo page
-- [ ] Reorganize all form component docs pages in the design doc app
-- [ ] Add official form demo page to docs app (replace /test/form with a proper docs page)
+- [x] Reorganize all form component docs pages in the design doc app
+- [x] Add official form demo page to docs app (replace /test/form with a proper docs page)
 
 ### Batch 6.6 — Docs pages Container refactor
 - [ ] Replace `<article className="mx-auto max-w-3xl px-6 py-12 ...">` wrapper on all docs pages with `<Container>` component
