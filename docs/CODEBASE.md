@@ -75,6 +75,7 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 | Radio | `/components/radio` | ✅ Complete |
 | Switch | `/components/switch` | ✅ Complete |
 | FormItem | `/components/form-item` | ✅ Complete |
+| Avatar | `/components/avatar` | ✅ Complete |
 
 Note: `/components/[slug]` dynamic route also exists as a fallback for future MDX-based pages.
 
@@ -108,7 +109,8 @@ Note: `/components/[slug]` dynamic route also exists as a fallback for future MD
 | `Dialog` | overlay | ✅ | Uses `@radix-ui/react-dialog` |
 | `Dropdown` | overlay | ✅ | Uses `@radix-ui/react-dropdown-menu` |
 | `Popover` | overlay | ✅ | Uses `@radix-ui/react-popover` |
-| `Icon` | icon | ✅ | Single `<Icon name="..." />` component with static Lucide registry (25 icons: 23 Lucide + 2 custom SVG brand icons). Replaced 19 named `react-icons` components. |
+| `Avatar` | avatar | ✅ | Image with fallback chain: image → initials (from `name`) → icon (`user-round`). CVA `size` variant (sm 32px / md 40px / lg 56px). Brand background (`bg-brand-primary` + `text-brand-foreground`). |
+| `Icon` | icon | ✅ | Single `<Icon name="..." />` component with static Lucide registry (26 icons: 24 Lucide + 2 custom SVG brand icons). Replaced 19 named `react-icons` components. |
 
 ### Not Yet Implemented (V1 target)
 - `Container` — specs in `content/_layout-implementation.md`

@@ -46,7 +46,7 @@ Use `new-component-workflow` skill for each component. Type: `audit` = existing 
 ### Batch 6 — Layout + display
 - [ ] Container (new)
 - [x] Grid (new)
-- [ ] Avatar (new)
+- [x] Avatar (new)
 
 ### Batch 6.5 — Form docs reorganization + demo page
 - [ ] Reorganize all form component docs pages in the design doc app
