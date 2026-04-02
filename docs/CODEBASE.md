@@ -77,8 +77,14 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 | FormItem | `/components/form-item` | ✅ Complete |
 | Avatar | `/components/avatar` | ✅ Complete |
 | Container | `/components/container` | ✅ Complete |
+| Grid | `/components/grid` | ✅ Complete |
+| Forms Overview | `/components/forms` | ✅ Complete — compositional guide + realistic form demo |
 
 Note: `/components/[slug]` dynamic route also exists as a fallback for future MDX-based pages.
+
+### Sidebar Organization
+
+The sidebar uses collapsible categories that auto-expand based on the current route. Categories are defined in `apps/docs/components/Sidebar.tsx` as `COMPONENT_CATEGORIES`. Only categories with ≥1 shipped component are shown. See `docs/TODO.md` for the full category mapping.
 
 ---
 
