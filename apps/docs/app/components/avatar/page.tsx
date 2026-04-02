@@ -63,7 +63,19 @@ export default function AvatarPage() {
       {/* Sizes */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">Sizes</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Three sizes aligned to the spacing grid.
+        Three sizes available. Use{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          sm
+        </code>{' '}
+        for compact lists, {' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          md
+        </code>{' '}
+        (default) for cards and nav bars, and{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          lg
+        </code>{' '}
+        for profile pages.
       </p>
       <ComponentPreview code={sizesCode}>
         <div className="flex items-center gap-4">
@@ -80,7 +92,8 @@ export default function AvatarPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           src
         </code>{' '}
-        is provided, the avatar displays initials derived from{' '}
+        is provided, the avatar displays initials from the first and last
+        word of{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           name
         </code>
