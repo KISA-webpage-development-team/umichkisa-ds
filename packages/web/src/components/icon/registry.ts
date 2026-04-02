@@ -22,6 +22,7 @@ import {
   ThumbsUp,
   Ticket,
   Trash2,
+  UserRound,
   X,
 } from "lucide-react";
 import { GithubIcon } from "./custom/GithubIcon";
@@ -51,6 +52,7 @@ export const registry = {
   "thumbs-up": ThumbsUp,
   "ticket": Ticket,
   "trash-2": Trash2,
+  "user-round": UserRound,
   "x": X,
   "github": GithubIcon,
   "linkedin": LinkedinIcon,
