@@ -129,7 +129,7 @@ Must: Design decisions are made for the desktop tier first. `md:` and `lg:` ensu
 ### Spacing
 
 Must: All spacing values must come from Tailwind's built-in scale (4px base unit). Never use arbitrary values (`px-[24px]`, `mt-[13px]`). [source:foundation/layout/spacing]
-Must: Apply the default inset for horizontal breathing room: `px-4` (mobile), `px-10` (tablet), `px-16` (desktop). [source:foundation/layout/spacing]
+Must: Apply the default inset for horizontal breathing room: `px-4` (mobile), `px-6` (tablet), `px-8` (desktop). [source:foundation/layout/spacing]
 Must: Constrain all page content to `max-w-screen-2xl` (1536px), centered with `mx-auto`. [source:foundation/layout/spacing]
 Must: Default column gutter is `gap-2` (8px) for inline and form layouts — consistent across all breakpoints. [source:foundation/layout/spacing]
 Must: Grid component uses the three-tier gap system (`element` / `component` / `section`) for content grid layouts. Default is `component` (16px). [source:foundation/layout/spacing]
@@ -145,9 +145,11 @@ Must: Section tier (`gap-6`) for gaps between major page sections. Section tier 
 
 ### Page Shell
 
-Must: The page shell must combine all four concerns together: `mx-auto w-full max-w-screen-2xl px-4 md:px-10 lg:px-16`. Never apply only part of this pattern. [source:foundation/layout/spacing]
-Must: For full-bleed elements (navbar, hero, footer), apply background to a full-width outer wrapper and nest the page shell inside for content alignment. [source:foundation/layout/spacing]
-Never: Apply a full-bleed background directly to the page shell element — this clips the background at 1536px. [source:foundation/layout/spacing]
+Must: The page shell must combine all four concerns together: `mx-auto w-full max-w-screen-2xl px-4 md:px-6 lg:px-8`. Never apply only part of this pattern. [source:foundation/layout/spacing]
+Must: Use the `Container` component to apply the page shell pattern — never manually compose the utility classes. [source:component/container]
+Must: For full-bleed elements (navbar, hero, footer), apply background to a full-width outer wrapper and nest the `Container` inside for content alignment. [source:foundation/layout/spacing]
+Never: Apply a full-bleed background directly to the `Container` element — this clips the background at the max-width. [source:foundation/layout/spacing]
+Never: Nest `Container` components — each page region gets one Container at most. [source:component/container]
 
 ---
 

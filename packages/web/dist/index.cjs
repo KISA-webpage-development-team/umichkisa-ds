@@ -35,6 +35,7 @@ __export(src_exports, {
   Badge: () => Badge,
   Button: () => Button,
   Checkbox: () => Checkbox,
+  Container: () => Container,
   DS_VERSION: () => DS_VERSION,
   Dialog: () => Dialog,
   DialogClose: () => DialogClose,
@@ -793,8 +794,41 @@ function RadioItem({ value, text, disabled, className }) {
   ] });
 }
 
-// src/components/layout/Grid.tsx
+// src/components/layout/Container.tsx
+var import_class_variance_authority4 = require("class-variance-authority");
 var import_jsx_runtime17 = require("react/jsx-runtime");
+var containerVariants = (0, import_class_variance_authority4.cva)("mx-auto w-full px-4 md:px-6 lg:px-8", {
+  variants: {
+    size: {
+      default: "max-w-screen-2xl",
+      md: "max-w-screen-md",
+      sm: "max-w-screen-sm",
+      prose: "max-w-prose"
+    }
+  },
+  defaultVariants: {
+    size: "default"
+  }
+});
+function Container({
+  as: Component = "div",
+  size,
+  className,
+  children,
+  ...props
+}) {
+  return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+    Component,
+    {
+      className: cn(containerVariants({ size }), className),
+      ...props,
+      children
+    }
+  );
+}
+
+// src/components/layout/Grid.tsx
+var import_jsx_runtime18 = require("react/jsx-runtime");
 var baseColsMap = {
   1: "grid-cols-1",
   2: "grid-cols-2",
@@ -832,7 +866,7 @@ function Grid({
   ...props
 }) {
   const cols = typeof columns === "number" ? { base: columns } : columns;
-  return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
     "div",
     {
       className: cn(
@@ -850,9 +884,9 @@ function Grid({
 }
 
 // src/components/layout/ToggleBar.tsx
-var import_jsx_runtime18 = require("react/jsx-runtime");
+var import_jsx_runtime19 = require("react/jsx-runtime");
 function ToggleBar({ activeView, onViewChange, items, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: cn("flex text-sm md:text-base mt-1", className), children: items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: cn("flex text-sm md:text-base mt-1", className), children: items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
     "div",
     {
       role: "tab",
@@ -864,7 +898,7 @@ function ToggleBar({ activeView, onViewChange, items, className }) {
       ),
       children: [
         item.icon,
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: item.text })
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: item.text })
       ]
     },
     item.view
@@ -872,13 +906,13 @@ function ToggleBar({ activeView, onViewChange, items, className }) {
 }
 
 // src/components/feedback/LoadingSpinner.tsx
-var import_jsx_runtime19 = require("react/jsx-runtime");
+var import_jsx_runtime20 = require("react/jsx-runtime");
 function LoadingSpinner({
   fullScreen = true,
   label = "\uB85C\uB529\uC911\uC785\uB2C8\uB2E4",
   className
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
     "div",
     {
       className: cn(
@@ -887,7 +921,7 @@ function LoadingSpinner({
         className
       ),
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
           "div",
           {
             className: "ds-spinner",
@@ -895,60 +929,60 @@ function LoadingSpinner({
             "aria-label": label
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("p", { className: "text-sm font-medium text-[var(--color-muted-foreground)]", children: label })
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "text-sm font-medium text-[var(--color-muted-foreground)]", children: label })
       ]
     }
   );
 }
 
 // src/components/feedback/NotFound.tsx
-var import_jsx_runtime20 = require("react/jsx-runtime");
+var import_jsx_runtime21 = require("react/jsx-runtime");
 function NotFound() {
-  return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("h1", { className: "text-4xl font-bold text-[var(--color-foreground)] mb-4", children: "404" }),
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "text-lg md:text-2xl font-semibold text-[var(--color-muted-foreground)] mb-6", children: "\uC874\uC7AC\uD558\uC9C0 \uC54A\uB294 \uD398\uC774\uC9C0\uC785\uB2C8\uB2E4" }),
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "flex justify-center w-[60%] mx-auto", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(LinkButton, { href: "/", variant: "primary", children: "\uD648\uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00\uAE30" }) })
+  return /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("h1", { className: "text-4xl font-bold text-[var(--color-foreground)] mb-4", children: "404" }),
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("p", { className: "text-lg md:text-2xl font-semibold text-[var(--color-muted-foreground)] mb-6", children: "\uC874\uC7AC\uD558\uC9C0 \uC54A\uB294 \uD398\uC774\uC9C0\uC785\uB2C8\uB2E4" }),
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "flex justify-center w-[60%] mx-auto", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(LinkButton, { href: "/", variant: "primary", children: "\uD648\uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00\uAE30" }) })
   ] }) });
 }
 
 // src/components/feedback/NotLogin.tsx
-var import_jsx_runtime21 = require("react/jsx-runtime");
+var import_jsx_runtime22 = require("react/jsx-runtime");
 function NotLogin() {
-  return /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uB85C\uADF8\uC778\uC774 \uD544\uC694\uD569\uB2C8\uB2E4" }),
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "flex justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(LinkButton, { href: "/signin", variant: "primary", children: "\uB85C\uADF8\uC778\uD558\uAE30" }) })
+  return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uB85C\uADF8\uC778\uC774 \uD544\uC694\uD569\uB2C8\uB2E4" }),
+    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "flex justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(LinkButton, { href: "/signin", variant: "primary", children: "\uB85C\uADF8\uC778\uD558\uAE30" }) })
   ] }) });
 }
 
 // src/components/feedback/NotAuthorized.tsx
-var import_jsx_runtime22 = require("react/jsx-runtime");
+var import_jsx_runtime23 = require("react/jsx-runtime");
 function NotAuthorized() {
-  return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uC811\uADFC \uAD8C\uD55C\uC774 \uC5C6\uC2B5\uB2C8\uB2E4" }),
-    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "flex justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(LinkButton, { href: "/", variant: "primary", children: "\uD648\uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00\uAE30" }) })
+  return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uC811\uADFC \uAD8C\uD55C\uC774 \uC5C6\uC2B5\uB2C8\uB2E4" }),
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "flex justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(LinkButton, { href: "/", variant: "primary", children: "\uD648\uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00\uAE30" }) })
   ] }) });
 }
 
 // src/components/feedback/UnexpectedError.tsx
-var import_jsx_runtime23 = require("react/jsx-runtime");
+var import_jsx_runtime24 = require("react/jsx-runtime");
 function UnexpectedError({ onRetry }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uC624\uB958\uAC00 \uBC1C\uC0DD\uD588\uC2B5\uB2C8\uB2E4" }),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "text-[var(--color-muted-foreground)] mb-6", children: "\uC7A0\uC2DC \uD6C4 \uB2E4\uC2DC \uC2DC\uB3C4\uD574\uC8FC\uC138\uC694." }),
-    onRetry && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Button, { onClick: onRetry, variant: "primary", children: "\uB2E4\uC2DC \uC2DC\uB3C4" })
+  return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uC624\uB958\uAC00 \uBC1C\uC0DD\uD588\uC2B5\uB2C8\uB2E4" }),
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "text-[var(--color-muted-foreground)] mb-6", children: "\uC7A0\uC2DC \uD6C4 \uB2E4\uC2DC \uC2DC\uB3C4\uD574\uC8FC\uC138\uC694." }),
+    onRetry && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(Button, { onClick: onRetry, variant: "primary", children: "\uB2E4\uC2DC \uC2DC\uB3C4" })
   ] }) });
 }
 
 // src/components/overlay/Dialog.tsx
 var RadixDialog = __toESM(require("@radix-ui/react-dialog"), 1);
-var import_jsx_runtime24 = require("react/jsx-runtime");
+var import_jsx_runtime25 = require("react/jsx-runtime");
 var Dialog = RadixDialog.Root;
 var DialogTrigger = RadixDialog.Trigger;
 var DialogClose = RadixDialog.Close;
 function DialogContent({ children, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(RadixDialog.Portal, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(RadixDialog.Overlay, { className: "fixed inset-0 z-50 bg-black/50" }),
-    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(RadixDialog.Portal, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(RadixDialog.Overlay, { className: "fixed inset-0 z-50 bg-black/50" }),
+    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
       RadixDialog.Content,
       {
         className: cn(
@@ -964,7 +998,7 @@ function DialogContent({ children, className }) {
   ] });
 }
 function DialogTitle({ children, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
     RadixDialog.Title,
     {
       className: cn("text-lg font-semibold text-[var(--color-foreground)] mb-4", className),
@@ -975,11 +1009,11 @@ function DialogTitle({ children, className }) {
 
 // src/components/overlay/Dropdown.tsx
 var RadixDropdown = __toESM(require("@radix-ui/react-dropdown-menu"), 1);
-var import_jsx_runtime25 = require("react/jsx-runtime");
+var import_jsx_runtime26 = require("react/jsx-runtime");
 var Dropdown = RadixDropdown.Root;
 var DropdownTrigger = RadixDropdown.Trigger;
 function DropdownContent({ children, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(RadixDropdown.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(RadixDropdown.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
     RadixDropdown.Content,
     {
       className: cn(
@@ -994,7 +1028,7 @@ function DropdownContent({ children, className }) {
   ) });
 }
 function DropdownItem({ children, onSelect, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
     RadixDropdown.Item,
     {
       onSelect,
@@ -1011,11 +1045,11 @@ function DropdownItem({ children, onSelect, className }) {
 
 // src/components/overlay/Popover.tsx
 var RadixPopover = __toESM(require("@radix-ui/react-popover"), 1);
-var import_jsx_runtime26 = require("react/jsx-runtime");
+var import_jsx_runtime27 = require("react/jsx-runtime");
 var Popover = RadixPopover.Root;
 var PopoverTrigger = RadixPopover.Trigger;
 function PopoverContent({ children, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(RadixPopover.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(RadixPopover.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
     RadixPopover.Content,
     {
       className: cn(
@@ -1031,13 +1065,13 @@ function PopoverContent({ children, className }) {
 }
 
 // src/components/divider/Divider.tsx
-var import_jsx_runtime27 = require("react/jsx-runtime");
+var import_jsx_runtime28 = require("react/jsx-runtime");
 function Divider({
   orientation = "horizontal",
   className,
   ...props
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
     "hr",
     {
       role: "separator",
@@ -1060,6 +1094,7 @@ var DS_VERSION = "0.1.0";
   Badge,
   Button,
   Checkbox,
+  Container,
   DS_VERSION,
   Dialog,
   DialogClose,
