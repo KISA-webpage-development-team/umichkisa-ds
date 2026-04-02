@@ -76,6 +76,7 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 | Switch | `/components/switch` | ✅ Complete |
 | FormItem | `/components/form-item` | ✅ Complete |
 | Avatar | `/components/avatar` | ✅ Complete |
+| Container | `/components/container` | ✅ Complete |
 
 Note: `/components/[slug]` dynamic route also exists as a fallback for future MDX-based pages.
 
@@ -110,10 +111,10 @@ Note: `/components/[slug]` dynamic route also exists as a fallback for future MD
 | `Dropdown` | overlay | ✅ | Uses `@radix-ui/react-dropdown-menu` |
 | `Popover` | overlay | ✅ | Uses `@radix-ui/react-popover` |
 | `Avatar` | avatar | ✅ | Image with fallback chain: image → initials (from `name`) → icon (`user-round`). CVA `size` variant (sm 32px / md 40px / lg 56px). Brand background (`bg-brand-primary` + `text-brand-foreground`). |
+| `Container` | layout | ✅ | Page shell wrapper. CVA `size` variant (default 1536px / md 768px / sm 640px / prose ~65ch). Polymorphic `as` prop for semantic HTML elements. Responsive padding `px-4 md:px-6 lg:px-8`. |
 | `Icon` | icon | ✅ | Single `<Icon name="..." />` component with static Lucide registry (26 icons: 24 Lucide + 2 custom SVG brand icons). Replaced 19 named `react-icons` components. |
 
 ### Not Yet Implemented (V1 target)
-- `Container` — specs in `content/_layout-implementation.md`
 - `Card`, `ImageButton`, `ErrorBoundary`
 - `OnlyMobileView`, `UnderConstruction`
 - `Accordion`

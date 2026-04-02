@@ -44,7 +44,7 @@ Use `new-component-workflow` skill for each component. Type: `audit` = existing 
 - [x] Form UI design review — brand colors on toggles, `text` prop standardization, Select brand treatment, docs updates, DS_CONSTRAINTS updates
 
 ### Batch 6 — Layout + display
-- [ ] Container (new)
+- [x] Container (new)
 - [x] Grid (new)
 - [x] Avatar (new)
 
