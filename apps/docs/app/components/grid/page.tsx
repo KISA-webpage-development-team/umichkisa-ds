@@ -52,7 +52,7 @@ const realWorldCode = `import { Grid } from '@umichkisa-ds/web'
 
 function Placeholder({ label }: { label: string }) {
   return (
-    <div className="flex items-center justify-center rounded-lg border border-border bg-surface-subtle px-4 py-6 type-body-sm text-muted-foreground">
+    <div className="flex items-center justify-center rounded-lg border border-border bg-surface-subtle px-4 py-6 type-body-sm text-foreground">
       {label}
     </div>
   )
@@ -61,7 +61,7 @@ function Placeholder({ label }: { label: string }) {
 function Card({ title, description }: { title: string; description: string }) {
   return (
     <div className="rounded-lg border border-border bg-surface-subtle p-4 flex flex-col gap-2">
-      <h4 className="type-body text-foreground font-semibold">{title}</h4>
+      <h4 className="type-label text-foreground">{title}</h4>
       <p className="type-body-sm text-muted-foreground">{description}</p>
     </div>
   )
