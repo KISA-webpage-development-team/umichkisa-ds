@@ -12,6 +12,16 @@ import * as RadixPopover from '@radix-ui/react-popover';
 
 declare function cn(...inputs: ClassValue[]): string;
 
+declare const avatarVariants: (props?: ({
+    size?: "sm" | "md" | "lg" | null | undefined;
+} & class_variance_authority_types.ClassProp) | undefined) => string;
+type AvatarProps = VariantProps<typeof avatarVariants> & {
+    src?: string;
+    name?: string;
+    className?: string;
+};
+declare function Avatar({ src, name, size, className }: AvatarProps): react_jsx_runtime.JSX.Element;
+
 declare const badgeVariants: (props?: ({
     variant?: "default" | "brand" | "success" | "warning" | "error" | "info" | "outline" | null | undefined;
     size?: "sm" | "md" | null | undefined;
@@ -74,6 +84,7 @@ declare const registry: {
     readonly "thumbs-up": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly ticket: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly "trash-2": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "user-round": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly x: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly github: typeof GithubIcon;
     readonly linkedin: typeof LinkedinIcon;
@@ -179,6 +190,19 @@ type RadioItemProps = {
 };
 declare function RadioItem({ value, text, disabled, className }: RadioItemProps): react_jsx_runtime.JSX.Element;
 
+type GridColumns = number | {
+    base?: number;
+    md?: number;
+    lg?: number;
+};
+type GridProps = React.HTMLAttributes<HTMLDivElement> & {
+    /** Number of columns — a number or responsive object { base, md, lg }. Max 6. */
+    columns?: GridColumns;
+    /** Gap between items using DS spacing tiers. Default: "component" (16px). */
+    gap?: "element" | "component" | "section";
+};
+declare function Grid({ columns, gap, className, children, ...props }: GridProps): react_jsx_runtime.JSX.Element;
+
 type ToggleBarItem = {
     view: string;
     text: string;
@@ -256,4 +280,4 @@ declare function Divider({ orientation, className, ...props }: DividerProps): re
 
 declare const DS_VERSION = "0.1.0";
 
-export { Badge, type BadgeProps, Button, type ButtonProps, Checkbox, type CheckboxProps, DS_VERSION, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogTitle, type DialogTitleProps, DialogTrigger, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownItem, type DropdownItemProps, DropdownTrigger, FormItem, type FormItemProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, RadioGroup, type RadioGroupProps, RadioItem, type RadioItemProps, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Switch, type SwitchProps, Textarea, type TextareaProps, ToggleBar, type ToggleBarItem, type ToggleBarProps, UnexpectedError, type UnexpectedErrorProps, badgeVariants, buttonVariants, cn };
+export { Avatar, type AvatarProps, Badge, type BadgeProps, Button, type ButtonProps, Checkbox, type CheckboxProps, DS_VERSION, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogTitle, type DialogTitleProps, DialogTrigger, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownItem, type DropdownItemProps, DropdownTrigger, FormItem, type FormItemProps, Grid, type GridColumns, type GridProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, RadioGroup, type RadioGroupProps, RadioItem, type RadioItemProps, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Switch, type SwitchProps, Textarea, type TextareaProps, ToggleBar, type ToggleBarItem, type ToggleBarProps, UnexpectedError, type UnexpectedErrorProps, avatarVariants, badgeVariants, buttonVariants, cn };
