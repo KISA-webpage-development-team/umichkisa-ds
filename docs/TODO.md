@@ -52,6 +52,9 @@ Use `new-component-workflow` skill for each component. Type: `audit` = existing 
 - [ ] Reorganize all form component docs pages in the design doc app
 - [ ] Add official form demo page to docs app (replace /test/form with a proper docs page)
 
+### Batch 6.6 — Docs pages Container refactor
+- [ ] Replace `<article className="mx-auto max-w-3xl px-6 py-12 ...">` wrapper on all docs pages with `<Container>` component
+
 ### Batch 7 — Overlays
 - [ ] Tooltip (new)
 - [ ] Popover (audit)
