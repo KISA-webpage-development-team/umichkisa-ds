@@ -41,10 +41,25 @@ const gapSectionCode = `import { Grid } from '@umichkisa-ds/web'
   ...
 </Grid>`
 
-const realWorldCode = `import { Grid } from '@umichkisa-ds/web'
+const realWorldElementCode = `import { Grid } from '@umichkisa-ds/web'
 
-{/* Card grid with component gap (default) */}
-<Grid columns={{ base: 1, md: 2, lg: 3 }}>
+<Grid columns={{ base: 1, md: 2, lg: 3 }} gap="element">
+  <Card />
+  <Card />
+  <Card />
+</Grid>`
+
+const realWorldComponentCode = `import { Grid } from '@umichkisa-ds/web'
+
+<Grid columns={{ base: 1, md: 2, lg: 3 }} gap="component">
+  <Card />
+  <Card />
+  <Card />
+</Grid>`
+
+const realWorldSectionCode = `import { Grid } from '@umichkisa-ds/web'
+
+<Grid columns={{ base: 1, md: 2, lg: 3 }} gap="section">
   <Card />
   <Card />
   <Card />
@@ -82,6 +97,12 @@ export default function GridPage() {
         </code>{' '}
         attributes.
       </p>
+      <p className="type-body-sm mb-8 text-muted-foreground max-w-prose">
+        Use Grid when you have a list of same-type items that should reflow
+        across breakpoints (card grids, image galleries, feature lists). For
+        asymmetric layouts like sidebar + main content, use Tailwind grid
+        utilities directly.
+      </p>
 
       {/* ── Examples ────────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
@@ -118,7 +139,12 @@ export default function GridPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           lg
         </code>{' '}
-        breakpoint. Resize your browser to see the reflow.
+        breakpoint. If you omit{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          base
+        </code>
+        , the grid defaults to 1 column at the smallest size.
+        Resize your browser to see the reflow.
       </p>
       <ComponentPreview code={responsiveCode}>
         <Grid columns={{ base: 1, md: 2, lg: 3 }}>
@@ -135,8 +161,8 @@ export default function GridPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           gap
         </code>{' '}
-        prop maps to the DS three-tier spacing system. It controls both column
-        and row gaps uniformly.
+        prop controls both column and row gaps using three spacing tiers:
+        element (8px), component (16px), and section (24px).
       </p>
 
       {/* Element */}
@@ -190,7 +216,7 @@ export default function GridPage() {
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
         Dense card grid — useful for compact dashboards or thumbnail galleries.
       </p>
-      <ComponentPreview code={realWorldCode}>
+      <ComponentPreview code={realWorldElementCode}>
         <Grid columns={{ base: 1, md: 2, lg: 3 }} gap="element">
           <Card title="Analytics" description="View traffic and engagement metrics across all pages." />
           <Card title="Members" description="Manage team members, roles, and permissions." />
@@ -203,7 +229,7 @@ export default function GridPage() {
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
         Standard card grid — the default for most content layouts.
       </p>
-      <ComponentPreview code={realWorldCode}>
+      <ComponentPreview code={realWorldComponentCode}>
         <Grid columns={{ base: 1, md: 2, lg: 3 }} gap="component">
           <Card title="Analytics" description="View traffic and engagement metrics across all pages." />
           <Card title="Members" description="Manage team members, roles, and permissions." />
@@ -216,7 +242,7 @@ export default function GridPage() {
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
         Spacious card grid — for feature showcases and landing pages.
       </p>
-      <ComponentPreview code={realWorldCode}>
+      <ComponentPreview code={realWorldSectionCode}>
         <Grid columns={{ base: 1, md: 2, lg: 3 }} gap="section">
           <Card title="Analytics" description="View traffic and engagement metrics across all pages." />
           <Card title="Members" description="Manage team members, roles, and permissions." />
