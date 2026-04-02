@@ -623,7 +623,7 @@ function Switch({
           {
             className: cn(
               "pointer-events-none absolute rounded-full bg-foreground transition-all duration-200",
-              "peer-checked:bg-brand-foreground",
+              "peer-checked:bg-surface",
               "peer-disabled:bg-disabled-foreground",
               "peer-disabled:peer-checked:bg-surface",
               isSmall ? "left-0.5 size-2.5 peer-checked:left-[calc(100%-0.125rem-0.75rem)] peer-checked:size-3" : "left-1 size-4 peer-checked:left-[calc(100%-0.25rem-1.25rem)] peer-checked:size-5"
@@ -697,7 +697,7 @@ function RadioItem({ value, text, disabled, className }) {
           "disabled:data-[state=checked]:bg-disabled-foreground disabled:data-[state=checked]:border-disabled-foreground",
           "group-data-[invalid]:border-error group-data-[invalid]:focus-visible:border-error"
         ),
-        children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(RadixRadioGroup.Indicator, { className: "flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "size-2.5 rounded-full bg-brand-foreground" }) })
+        children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(RadixRadioGroup.Indicator, { className: "flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "size-2.5 rounded-full bg-surface" }) })
       }
     ),
     /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: cn(

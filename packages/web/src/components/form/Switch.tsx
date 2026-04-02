@@ -51,7 +51,7 @@ function Switch({
       <span
         className={cn(
           "pointer-events-none absolute rounded-full bg-foreground transition-all duration-200",
-          "peer-checked:bg-brand-foreground",
+          "peer-checked:bg-surface",
           "peer-disabled:bg-disabled-foreground",
           "peer-disabled:peer-checked:bg-surface",
           isSmall

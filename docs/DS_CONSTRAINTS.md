@@ -63,7 +63,7 @@ Exception: **Form controls** (Input, Textarea, Select, Checkbox, Switch, Radio) 
 Never: Remove the focus indicator entirely — every interactive element must have a visible focus state. Buttons use the dual-ring; form controls use the border-color change. [source:foundation/colors/usage]
 Prefer: `--color-surface-subtle` as hover background and `--color-border-strong` as hover border for neutral/gray interactive elements (interim until dedicated neutral interactive tokens are defined). [source:foundation/colors/tokens]
 Must: Use `--color-brand-primary` (navy) as the checked/selected background for toggle controls (Checkbox, Radio, Switch). [source:form-ui-review/2026-03-31]
-Must: Use `--color-brand-foreground` (maize) for indicators on checked toggle controls — checkmarks, radio dots. [source:form-ui-review/2026-03-31]
+Must: Use `--color-brand-foreground` (maize) for **stroke-based** indicators on checked toggle controls — checkmarks. Use `--color-surface` (white) for **fill-based** indicators — radio dots, switch thumbs. Stroke accents use maize; solid fills use white. [source:form-ui-review/2026-04-02]
 Must: Use `--color-brand-accent-subtle` (light maize) as hover/focus background for interactive list items (Select items, Dropdown items, Popover menu items). [source:form-ui-review/2026-03-31]
 Must: Use `--color-brand-primary` for selected-item indicators (check icons) in interactive lists. [source:form-ui-review/2026-03-31]
 

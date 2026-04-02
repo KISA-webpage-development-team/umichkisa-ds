@@ -131,6 +131,29 @@ color the element uses. It appears when a user navigates with a keyboard instead
 of a mouse. It must always be visible — do not remove it, do not reduce its
 opacity, do not hide it with `outline: none`.
 
+### Toggle Controls (Checked State)
+
+Toggle controls (Checkbox, Radio, Switch) use `--color-brand-primary` as the
+checked background — navy signals "selected" and carries the brand identity.
+
+Indicators follow the **stroke vs fill** rule:
+
+| Control | Indicator type | Token | Rationale |
+|---|---|---|---|
+| Checkbox checkmark | Stroke (thin lines) | `--color-brand-foreground` (maize) | Narrow strokes read as accent |
+| Radio dot | Fill (solid circle) | `--color-surface` (white) | Solid fills in maize are too heavy at small scale |
+| Switch thumb | Fill (solid circle) | `--color-surface` (white) | Same as Radio |
+
+Form controls use a simplified focus pattern: `border-color: var(--color-brand-primary)`
+instead of the dual-ring. The border color change is sufficient for elements that
+already have a visible border.
+
+### Interactive Lists
+
+Select items, Dropdown items, and Popover menu items use
+`--color-brand-accent-subtle` (light maize) as the hover/focus background, and
+`--color-brand-primary` (navy) for selected-item indicators (check icons).
+
 ---
 
 ## Do's and Don'ts
@@ -160,6 +183,8 @@ opacity, do not hide it with `outline: none`.
     <pre><code>color: white</code></pre>
   </Dont>
 </DoDont>
+
+> **Exception — Small-scale fill indicators:** Toggle controls (Radio dot, Switch thumb) use `--color-surface` (white) on `--color-brand-primary` instead of maize. At 10–20px, maize fills a solid shape too heavily — white provides clean contrast while navy carries the brand. Stroke-based indicators (Checkbox checkmark) still use `--color-brand-foreground` (maize) because strokes are narrow enough for the accent to read correctly.
 
 ### Background colors
 

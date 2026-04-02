@@ -46,7 +46,7 @@ function RadioItem({ value, text, disabled, className }: RadioItemProps) {
         )}
       >
         <RadixRadioGroup.Indicator className="flex items-center justify-center">
-          <span className="size-2.5 rounded-full bg-brand-foreground" />
+          <span className="size-2.5 rounded-full bg-surface" />
         </RadixRadioGroup.Indicator>
       </RadixRadioGroup.Item>
       <span className={cn(
