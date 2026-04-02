@@ -45,7 +45,7 @@ Use `new-component-workflow` skill for each component. Type: `audit` = existing 
 
 ### Batch 6 — Layout + display
 - [ ] Container (new)
-- [ ] Grid (new)
+- [x] Grid (new)
 - [ ] Avatar (new)
 
 ### Batch 6.5 — Form docs reorganization + demo page

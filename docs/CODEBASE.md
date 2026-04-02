@@ -98,6 +98,7 @@ Note: `/components/[slug]` dynamic route also exists as a fallback for future MD
 | `Label` | form | ✅ | `type-label` + `text-foreground`, optional `required` asterisk with `text-error`. `cn()` only, no CVA. |
 | `FormItem` | form | ✅ | Presentation-only layout wrapper (label, children, description, error). Renders Label internally, accepts any form control as children. `cn()` only, no validation logic. |
 | `Divider` | divider | ✅ | Unified from HorizontalDivider + VerticalDivider. Semantic `<hr>`, `orientation` prop, `--color-border` token. |
+| `Grid` | layout | ✅ | Responsive equal-width column grid. `columns` prop (number or `{ base, md, lg }` responsive object, max 6). `gap` prop using DS spacing tiers (element/component/section). `cn()` only, no CVA. |
 | `ToggleBar` | layout | ✅ | |
 | `LoadingSpinner` | feedback | ✅ | |
 | `NotFound` | feedback | ✅ | |
@@ -110,7 +111,7 @@ Note: `/components/[slug]` dynamic route also exists as a fallback for future MD
 | `Icon` | icon | ✅ | Single `<Icon name="..." />` component with static Lucide registry (25 icons: 23 Lucide + 2 custom SVG brand icons). Replaced 19 named `react-icons` components. |
 
 ### Not Yet Implemented (V1 target)
-- `Container`, `Grid` — specs in `content/_layout-implementation.md`
+- `Container` — specs in `content/_layout-implementation.md`
 - `Card`, `ImageButton`, `ErrorBoundary`
 - `OnlyMobileView`, `UnderConstruction`
 - `Accordion`
