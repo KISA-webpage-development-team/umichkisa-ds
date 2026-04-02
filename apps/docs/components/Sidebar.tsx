@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useState, useCallback, useEffect } from 'react'
 
 interface SidebarProps {
   open: boolean
@@ -12,6 +13,11 @@ interface NavItem {
   label: string
   href: string
   children?: { label: string; href: string }[]
+}
+
+interface CategoryGroup {
+  label: string
+  items: NavItem[]
 }
 
 const FOUNDATION_ITEMS: NavItem[] = [
@@ -59,36 +65,91 @@ const FOUNDATION_ITEMS: NavItem[] = [
   },
 ]
 
-// Component items are placeholders — will expand as MDX content is added
-const COMPONENT_ITEMS: NavItem[] = [
-  { label: 'Avatar',     href: '/components/avatar' },
-  { label: 'Badge',      href: '/components/badge' },
-  { label: 'Button',     href: '/components/button' },
-  { label: 'Checkbox',   href: '/components/checkbox' },
-  { label: 'Container', href: '/components/container' },
-  { label: 'Divider',    href: '/components/divider' },
-  { label: 'Feedback',   href: '/components/feedback' },
-  { label: 'FormItem',   href: '/components/form-item' },
-  { label: 'Grid',       href: '/components/grid' },
-  { label: 'Icon',       href: '/components/icon' },
-  { label: 'Input',      href: '/components/input' },
-  { label: 'IconButton', href: '/components/icon-button' },
-  { label: 'Label',      href: '/components/label' },
-  { label: 'LinkButton', href: '/components/link-button' },
-  { label: 'Radio',      href: '/components/radio' },
-  { label: 'Select',    href: '/components/select' },
-  { label: 'Switch',    href: '/components/switch' },
-  { label: 'Textarea',   href: '/components/textarea' },
+const COMPONENT_CATEGORIES: CategoryGroup[] = [
+  {
+    label: 'Icon',
+    items: [
+      { label: 'Icon', href: '/components/icon' },
+    ],
+  },
+  {
+    label: 'Buttons',
+    items: [
+      { label: 'Button',     href: '/components/button' },
+      { label: 'IconButton',  href: '/components/icon-button' },
+      { label: 'LinkButton',  href: '/components/link-button' },
+    ],
+  },
+  {
+    label: 'Layout',
+    items: [
+      { label: 'Container', href: '/components/container' },
+      { label: 'Divider',   href: '/components/divider' },
+      { label: 'Grid',      href: '/components/grid' },
+    ],
+  },
+  {
+    label: 'Forms',
+    items: [
+      { label: 'Forms Overview', href: '/components/forms' },
+      { label: 'Checkbox',       href: '/components/checkbox' },
+      { label: 'FormItem',       href: '/components/form-item' },
+      { label: 'Input',          href: '/components/input' },
+      { label: 'Label',          href: '/components/label' },
+      { label: 'Radio',          href: '/components/radio' },
+      { label: 'Select',         href: '/components/select' },
+      { label: 'Switch',         href: '/components/switch' },
+      { label: 'Textarea',       href: '/components/textarea' },
+    ],
+  },
+  {
+    label: 'Data Display',
+    items: [
+      { label: 'Avatar', href: '/components/avatar' },
+      { label: 'Badge',  href: '/components/badge' },
+    ],
+  },
 ]
 
 const SECTIONS = {
-  foundation: { label: 'Foundation', items: FOUNDATION_ITEMS },
-  components:  { label: 'Components', items: COMPONENT_ITEMS },
+  foundation: { label: 'Foundation', items: FOUNDATION_ITEMS, categories: null },
+  components: { label: 'Components', items: null, categories: COMPONENT_CATEGORIES },
 }
 
 export function Sidebar({ open, onClose }: SidebarProps) {
   const pathname = usePathname()
-  const section = pathname.startsWith('/components') ? SECTIONS.components : SECTIONS.foundation
+  const isComponents = pathname.startsWith('/components')
+  const section = isComponents ? SECTIONS.components : SECTIONS.foundation
+
+  // Determine which category contains the current route
+  const activeCategory = isComponents
+    ? COMPONENT_CATEGORIES.find((cat) =>
+        cat.items.some((item) => pathname === item.href)
+      )?.label ?? null
+    : null
+
+  // Track categories the user has manually toggled
+  const [manualToggles, setManualToggles] = useState<Record<string, boolean>>({})
+
+  // Reset manual toggles when route changes
+  useEffect(() => {
+    setManualToggles({})
+  }, [pathname])
+
+  const isCategoryOpen = useCallback(
+    (label: string) => {
+      if (label in manualToggles) return manualToggles[label]
+      return label === activeCategory
+    },
+    [manualToggles, activeCategory]
+  )
+
+  const toggleCategory = useCallback((label: string) => {
+    setManualToggles((prev) => ({
+      ...prev,
+      [label]: !(prev[label] ?? label === activeCategory),
+    }))
+  }, [activeCategory])
 
   return (
     <>
@@ -117,7 +178,9 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           <span className="block font-sejong-bold text-md text-foreground mb-3">
             {section.label}
           </span>
-          {section.items.map((item) => {
+
+          {/* Foundation section: render with existing nested children logic */}
+          {section.items?.map((item) => {
             if (item.children) {
               const parentBase = item.href.substring(0, item.href.lastIndexOf('/'))
               const isParentActive = pathname.startsWith(parentBase)
@@ -144,11 +207,11 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                           <Link
                             key={child.href}
                             href={child.href}
-                            className={`block py-2 px-3 
+                            className={`block py-2 px-3
                               text-sm transition-colors rounded-md
-                              
+
                               duration-[120ms] focus-visible:outline
-                              focus-visible:outline-2 focus-visible:outline-brand-primary 
+                              focus-visible:outline-2 focus-visible:outline-brand-primary
                               focus-visible:outline-offset-[-2px] ${
                               isChildActive
                                 ? 'font-sejong-bold'
@@ -182,6 +245,56 @@ export function Sidebar({ open, onClose }: SidebarProps) {
               >
                 {item.label}
               </Link>
+            )
+          })}
+
+          {/* Components section: render collapsible categories */}
+          {section.categories?.map((category) => {
+            const isOpen = isCategoryOpen(category.label)
+            return (
+              <div key={category.label} className="mb-1">
+                <button
+                  type="button"
+                  onClick={() => toggleCategory(category.label)}
+                  className="flex w-full items-center justify-between py-2 px-3 text-xs uppercase tracking-wider text-muted-foreground hover:text-foreground transition-colors duration-[120ms]"
+                  aria-expanded={isOpen}
+                >
+                  {category.label}
+                  <svg
+                    className={`h-3 w-3 transition-transform duration-[150ms] ${isOpen ? 'rotate-90' : ''}`}
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M4.5 2.5L8 6L4.5 9.5" />
+                  </svg>
+                </button>
+                {isOpen && (
+                  <div className="ml-1">
+                    {category.items.map((item) => {
+                      const isActive = pathname === item.href
+                      return (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className={`block py-2 px-3 text-sm transition-colors rounded-md
+                            duration-[120ms] focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-offset-[-2px] ${
+                            isActive
+                              ? 'font-sejong-bold text-foreground'
+                              : 'font-sejong-light text-muted-foreground hover:bg-surface-subtle'
+                          }`}
+                          onClick={onClose}
+                        >
+                          {item.label}
+                        </Link>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
             )
           })}
         </div>
