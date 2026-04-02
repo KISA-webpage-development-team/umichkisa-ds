@@ -65,6 +65,7 @@ const COMPONENT_ITEMS: NavItem[] = [
   { label: 'Badge',      href: '/components/badge' },
   { label: 'Button',     href: '/components/button' },
   { label: 'Checkbox',   href: '/components/checkbox' },
+  { label: 'Container', href: '/components/container' },
   { label: 'Divider',    href: '/components/divider' },
   { label: 'Feedback',   href: '/components/feedback' },
   { label: 'FormItem',   href: '/components/form-item' },
