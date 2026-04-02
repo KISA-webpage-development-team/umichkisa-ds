@@ -63,9 +63,10 @@ into one element. Everything inside it is within the layout system.
 
 ## Column Gutter
 
-The gutter between columns is always `gap-2` (8px), consistent across
-all breakpoints. As the viewport grows, column count increases and
-column widths scale — but the gutter never changes.
+The default gutter between columns is `gap-2` (8px), consistent across
+all breakpoints. For inline and form layouts, this gutter is a structural
+constant. The Grid component uses the DS three-tier gap system (element / component / section)
+to allow appropriate spacing for card grids and content block layouts.
 
 <div className="my-8 flex flex-col gap-4">
   {[
@@ -84,8 +85,8 @@ column widths scale — but the gutter never changes.
   ))}
 </div>
 
-The gutter is a structural constant, not a design variable.
-Do not adjust it per component or breakpoint.
+For inline layouts, the gutter is a structural constant.
+The Grid component's `gap` prop provides tier-based control for content grids.
 
 ---
 
@@ -97,7 +98,7 @@ Vertical spacing follows a fixed three-tier system. All tiers use Tailwind scale
 |------|----------|--------|-----------|
 | Element | `gap-2` | 8px | Label → input, icon → text, caption below a field, heading → subtitle |
 | Component | `gap-4` | 16px | Stacked form fields, list items, stacked cards, navigation items |
-| Section | `gap-8` | 32px | Between major page sections (e.g. filter bar + data table, page heading + form block) |
+| Section | `gap-6` | 24px | Between major page sections (e.g. filter bar + data table, page heading + form block) |
 
 The element tier matches the column gutter — the smallest structural unit is consistent across both horizontal and vertical arrangements.
 
