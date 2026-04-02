@@ -97,7 +97,15 @@ export default function AvatarPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           name
         </code>
-        .
+        . KISA stores both{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          nameKor
+        </code>{' '}
+        and{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          nameEng
+        </code>{' '}
+        in the database — pass whichever is appropriate for the context.
       </p>
       <ComponentPreview code={initialsCode}>
         <div className="flex items-center gap-4">
