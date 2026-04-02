@@ -48,6 +48,10 @@ Use `new-component-workflow` skill for each component. Type: `audit` = existing 
 - [ ] Grid (new)
 - [ ] Avatar (new)
 
+### Batch 6.5 — Form docs reorganization + demo page
+- [ ] Reorganize all form component docs pages in the design doc app
+- [ ] Add official form demo page to docs app (replace /test/form with a proper docs page)
+
 ### Batch 7 — Overlays
 - [ ] Tooltip (new)
 - [ ] Popover (audit)
