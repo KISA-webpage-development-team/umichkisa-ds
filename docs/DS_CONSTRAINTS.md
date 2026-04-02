@@ -131,16 +131,17 @@ Must: Design decisions are made for the desktop tier first. `md:` and `lg:` ensu
 Must: All spacing values must come from Tailwind's built-in scale (4px base unit). Never use arbitrary values (`px-[24px]`, `mt-[13px]`). [source:foundation/layout/spacing]
 Must: Apply the default inset for horizontal breathing room: `px-4` (mobile), `px-10` (tablet), `px-16` (desktop). [source:foundation/layout/spacing]
 Must: Constrain all page content to `max-w-screen-2xl` (1536px), centered with `mx-auto`. [source:foundation/layout/spacing]
-Must: Column gutter is always `gap-2` (8px) — never adjust it per component or breakpoint. [source:foundation/layout/spacing]
-Never: Adjust the column gutter per component or viewport. It is a structural constant. [source:foundation/layout/spacing]
+Must: Default column gutter is `gap-2` (8px) for inline and form layouts — consistent across all breakpoints. [source:foundation/layout/spacing]
+Must: Grid component uses the three-tier gap system (`element` / `component` / `section`) for content grid layouts. Default is `component` (16px). [source:foundation/layout/spacing]
+Never: Use arbitrary gap values outside the three-tier system. [source:foundation/layout/spacing]
 
 ### Vertical Spacing
 
-Must: Use the three-tier vertical spacing system — Element (`gap-2` / 8px), Component (`gap-4` / 16px), Section (`gap-8` / 32px). [source:foundation/layout/spacing]
+Must: Use the three-tier vertical spacing system — Element (`gap-2` / 8px), Component (`gap-4` / 16px), Section (`gap-6` / 24px). [source:foundation/layout/spacing]
 Never: Scale vertical spacing values with breakpoints. Layout responsiveness is column reflow, not gap scaling. [source:foundation/layout/spacing]
 Must: Element tier (`gap-2`) for label → input, icon → text, caption below field, heading → subtitle. [source:foundation/layout/spacing]
 Must: Component tier (`gap-4`) for stacked form fields, list items, stacked cards, navigation items. [source:foundation/layout/spacing]
-Must: Section tier (`gap-8`) for gaps between major page sections. Section tier is double the component tier — it provides a clear visual break without exceeding the mobile inset. [source:foundation/layout/spacing]
+Must: Section tier (`gap-6`) for gaps between major page sections. Section tier is 1.5× the component tier — it provides a clear visual break without exceeding the mobile inset. [source:foundation/layout/spacing]
 
 ### Page Shell
 
