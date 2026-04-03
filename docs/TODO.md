@@ -85,7 +85,7 @@ Only show categories with ≥1 shipped component. When a batch ships a component
 - [x] Tabs (new)
 
 ### Batch 9 — Feedback
-- [ ] Skeleton (new)
+- [x] Skeleton (new)
 - [ ] LoadingSpinner (audit)
 - [ ] Alert (new)
 
