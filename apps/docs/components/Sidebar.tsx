@@ -105,6 +105,13 @@ const COMPONENT_ITEMS: NavItem[] = [
       { label: 'Badge',  href: '/components/badge' },
     ],
   },
+  {
+    label: 'Overlays',
+    href: '/components/popover',
+    children: [
+      { label: 'Popover', href: '/components/popover' },
+    ],
+  },
 ]
 
 const SECTIONS = {
