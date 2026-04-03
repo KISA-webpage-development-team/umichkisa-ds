@@ -88,6 +88,14 @@ Styling rules:
 Continue `ds-constrained-execution` with **Phase 2** of the plan.
 
 - Create `apps/docs/app/components/<name>/page.tsx`
+- **STRICT RULE:** Before writing ANY docs page, read the most recently shipped component docs page (e.g., `apps/docs/app/components/dialog/page.tsx`) and match its layout pattern EXACTLY. This includes:
+  - Header structure: `h1` with `font-sejong-bold tracking-tight mt-8 mb-4`, description paragraphs with `type-body mb-4 text-foreground max-w-prose` and `type-body-sm mb-8 text-muted-foreground max-w-prose`
+  - Section hierarchy: `h2` "Examples" parent, then `h3` per example with `mt-8 mb-2` (first example uses `mt-6 mb-2`)
+  - Example descriptions: `type-body mb-2 text-foreground max-w-prose`
+  - ComponentPreview: placed directly after the `<p>`, no wrapper `<div>`
+  - API Reference: `h2` + intro paragraph, then `h3` per sub-component with `type-body mb-2` description, tables with `border border-border`, `bg-surface-subtle` header row, `<code>` badges for all prop/type/default cells, `type-caption` for header text, `type-body-sm` for description cells
+  - No `<header>` or `<section>` wrappers — use flat `h1`/`h2`/`h3` hierarchy
+  Do NOT invent a new layout pattern. Copy the structure from an existing page.
 - Minimum sections:
   1. **Header** — component name, description, canonical purpose
   2. **Examples** — wrapped in `ComponentPreview`, showing key use cases
