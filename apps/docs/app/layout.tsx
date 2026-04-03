@@ -1,7 +1,20 @@
 import type { Metadata } from 'next'
+import localFont from 'next/font/local'
 import { Geist_Mono } from 'next/font/google'
 import './globals.css'
 import { DocsShell } from '@/components/DocsShell'
+
+const sejongBold = localFont({
+  src: '../../../packages/web/src/fonts/Sejonghospital-Bold.ttf',
+  variable: '--font-sejong-bold',
+  display: 'swap',
+})
+
+const sejongLight = localFont({
+  src: '../../../packages/web/src/fonts/Sejonghospital-Light.ttf',
+  variable: '--font-sejong-light',
+  display: 'swap',
+})
 
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
@@ -20,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={geistMono.variable}>
+    <html lang="en" className={`${sejongBold.variable} ${sejongLight.variable} ${geistMono.variable}`}>
       <head>
         <link rel="preconnect" href="https://cdn.jsdelivr.net" />
         <link

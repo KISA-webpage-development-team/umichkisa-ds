@@ -7,9 +7,8 @@
  * Tailwind v4's auto-detection resolves to the workspace root rather than
  * this package, causing zero utilities to be generated.
  */
-@source "../app/**/*.{tsx,ts,mdx,md}";
+@source "../app/**/*.{tsx,ts}";
 @source "../components/**/*.{tsx,ts}";
-@source "../content/**/*.{md,mdx}";
 @source "../../../packages/web/src/**/*.{tsx,ts}";
 
 /* ── Docs-App Layout Variables ───────────────────────────────────── */
