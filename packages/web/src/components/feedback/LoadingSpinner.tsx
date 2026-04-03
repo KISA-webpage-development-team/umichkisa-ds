@@ -1,30 +1,43 @@
 import { cn } from "@/utils/cn";
 
 export type LoadingSpinnerProps = {
-  fullScreen?: boolean;
+  /** Spinner diameter. sm = 20px, md = 32px, lg = 48px. */
+  size?: "sm" | "md" | "lg";
+  /** Accessible label for screen readers. Always applied as aria-label. */
   label?: string;
+  /** Render the label visually below the spinner. */
+  showLabel?: boolean;
+  /** Applied to the outer wrapper div. */
   className?: string;
 };
 
+const sizeClasses = {
+  sm: "ds-spinner-sm",
+  md: "ds-spinner-md",
+  lg: "ds-spinner-lg",
+} as const;
+
 export function LoadingSpinner({
-  fullScreen = true,
-  label = "로딩중입니다",
+  size = "md",
+  label = "Loading",
+  showLabel = false,
   className,
 }: LoadingSpinnerProps) {
   return (
     <div
       className={cn(
-        "flex flex-col gap-3 justify-center items-center bg-[var(--color-surface)]",
-        fullScreen ? "fixed top-0 left-0 w-full h-full z-50" : "h-full w-full mt-8",
+        "inline-flex flex-col items-center justify-center gap-2",
         className
       )}
     >
       <div
-        className="ds-spinner"
+        className={cn("ds-spinner", sizeClasses[size])}
         role="status"
         aria-label={label}
       />
-      <p className="text-sm font-medium text-[var(--color-muted-foreground)]">{label}</p>
+      {showLabel && (
+        <p className="type-caption text-muted-foreground">{label}</p>
+      )}
     </div>
   );
 }
