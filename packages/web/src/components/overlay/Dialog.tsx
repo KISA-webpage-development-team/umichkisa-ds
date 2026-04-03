@@ -56,7 +56,7 @@ function DialogContent({
       <RadixDialog.Content
         className={cn(
           "fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2",
-          "w-full rounded-lg border border-border bg-surface p-6 shadow-lg",
+          "w-[calc(100%-2rem)] rounded-lg border border-border bg-surface p-6 shadow-lg",
           "data-[state=open]:animate-[dialog-content-in_150ms_ease-out]",
           "data-[state=closed]:animate-[dialog-content-out_100ms_ease-in]",
           "focus-visible:outline-none",
