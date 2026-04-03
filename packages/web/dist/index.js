@@ -955,38 +955,69 @@ function DialogTitle({ children, className }) {
 
 // src/components/overlay/Dropdown.tsx
 import * as RadixDropdown from "@radix-ui/react-dropdown-menu";
-import { jsx as jsx26 } from "react/jsx-runtime";
-var Dropdown = RadixDropdown.Root;
-var DropdownTrigger = RadixDropdown.Trigger;
-function DropdownContent({ children, className }) {
+import { jsx as jsx26, jsxs as jsxs14 } from "react/jsx-runtime";
+function Dropdown(props) {
+  return /* @__PURE__ */ jsx26(RadixDropdown.Root, { ...props });
+}
+function DropdownTrigger(props) {
+  return /* @__PURE__ */ jsx26(RadixDropdown.Trigger, { ...props });
+}
+function DropdownContent({
+  children,
+  side = "bottom",
+  align = "start",
+  sideOffset = 4,
+  className
+}) {
   return /* @__PURE__ */ jsx26(RadixDropdown.Portal, { children: /* @__PURE__ */ jsx26(
     RadixDropdown.Content,
     {
+      side,
+      align,
+      sideOffset,
       className: cn(
-        "z-50 min-w-[8rem] overflow-hidden rounded-md",
-        "border border-[var(--color-border)] bg-[var(--color-surface)] shadow-md",
+        "z-50 min-w-32 overflow-hidden rounded-md border border-border bg-surface shadow-md",
+        "max-h-[var(--radix-dropdown-menu-content-available-height)] overflow-y-auto",
+        "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+        "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
         "p-1",
         className
       ),
-      sideOffset: 4,
       children
     }
   ) });
 }
-function DropdownItem({ children, onSelect, className }) {
+function DropdownItem({
+  children,
+  onSelect,
+  variant = "default",
+  disabled,
+  className
+}) {
   return /* @__PURE__ */ jsx26(
     RadixDropdown.Item,
     {
       onSelect,
+      disabled,
       className: cn(
-        "relative flex cursor-pointer select-none items-center rounded-sm px-3 py-2",
-        "text-sm text-[var(--color-foreground)]",
-        "hover:bg-[var(--color-surface-muted)] focus:outline-none",
+        "relative flex cursor-pointer select-none items-center rounded-sm px-3 py-2 type-body-sm text-foreground",
+        "hover:bg-brand-accent-subtle focus:bg-brand-accent-subtle focus:outline-none",
+        "data-[disabled]:pointer-events-none data-[disabled]:text-disabled-foreground",
+        variant === "destructive" && "text-error",
         className
       ),
       children
     }
   );
+}
+function DropdownGroup({ label, children }) {
+  return /* @__PURE__ */ jsxs14(RadixDropdown.Group, { children: [
+    /* @__PURE__ */ jsx26(RadixDropdown.Label, { className: "px-3 py-2 type-caption text-muted-foreground", children: label }),
+    children
+  ] });
+}
+function DropdownSeparator() {
+  return /* @__PURE__ */ jsx26(RadixDropdown.Separator, { className: "mx-1 my-1 h-px bg-border" });
 }
 
 // src/components/overlay/Popover.tsx
@@ -1019,14 +1050,14 @@ function PopoverContent({
 
 // src/components/overlay/Tooltip.tsx
 import * as RadixTooltip from "@radix-ui/react-tooltip";
-import { jsx as jsx28, jsxs as jsxs14 } from "react/jsx-runtime";
+import { jsx as jsx28, jsxs as jsxs15 } from "react/jsx-runtime";
 function Tooltip({
   content,
   children,
   side = "top",
   delayDuration = 200
 }) {
-  return /* @__PURE__ */ jsx28(RadixTooltip.Provider, { delayDuration, children: /* @__PURE__ */ jsxs14(RadixTooltip.Root, { children: [
+  return /* @__PURE__ */ jsx28(RadixTooltip.Provider, { delayDuration, children: /* @__PURE__ */ jsxs15(RadixTooltip.Root, { children: [
     /* @__PURE__ */ jsx28(RadixTooltip.Trigger, { asChild: true, children }),
     /* @__PURE__ */ jsx28(RadixTooltip.Portal, { children: /* @__PURE__ */ jsx28(
       RadixTooltip.Content,
@@ -1079,7 +1110,9 @@ export {
   Divider,
   Dropdown,
   DropdownContent,
+  DropdownGroup,
   DropdownItem,
+  DropdownSeparator,
   DropdownTrigger,
   FormItem,
   Grid,

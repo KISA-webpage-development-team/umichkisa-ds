@@ -45,7 +45,9 @@ __export(src_exports, {
   Divider: () => Divider,
   Dropdown: () => Dropdown,
   DropdownContent: () => DropdownContent,
+  DropdownGroup: () => DropdownGroup,
   DropdownItem: () => DropdownItem,
+  DropdownSeparator: () => DropdownSeparator,
   DropdownTrigger: () => DropdownTrigger,
   FormItem: () => FormItem,
   Grid: () => Grid,
@@ -1011,37 +1013,68 @@ function DialogTitle({ children, className }) {
 // src/components/overlay/Dropdown.tsx
 var RadixDropdown = __toESM(require("@radix-ui/react-dropdown-menu"), 1);
 var import_jsx_runtime26 = require("react/jsx-runtime");
-var Dropdown = RadixDropdown.Root;
-var DropdownTrigger = RadixDropdown.Trigger;
-function DropdownContent({ children, className }) {
+function Dropdown(props) {
+  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(RadixDropdown.Root, { ...props });
+}
+function DropdownTrigger(props) {
+  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(RadixDropdown.Trigger, { ...props });
+}
+function DropdownContent({
+  children,
+  side = "bottom",
+  align = "start",
+  sideOffset = 4,
+  className
+}) {
   return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(RadixDropdown.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
     RadixDropdown.Content,
     {
+      side,
+      align,
+      sideOffset,
       className: cn(
-        "z-50 min-w-[8rem] overflow-hidden rounded-md",
-        "border border-[var(--color-border)] bg-[var(--color-surface)] shadow-md",
+        "z-50 min-w-32 overflow-hidden rounded-md border border-border bg-surface shadow-md",
+        "max-h-[var(--radix-dropdown-menu-content-available-height)] overflow-y-auto",
+        "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+        "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
         "p-1",
         className
       ),
-      sideOffset: 4,
       children
     }
   ) });
 }
-function DropdownItem({ children, onSelect, className }) {
+function DropdownItem({
+  children,
+  onSelect,
+  variant = "default",
+  disabled,
+  className
+}) {
   return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
     RadixDropdown.Item,
     {
       onSelect,
+      disabled,
       className: cn(
-        "relative flex cursor-pointer select-none items-center rounded-sm px-3 py-2",
-        "text-sm text-[var(--color-foreground)]",
-        "hover:bg-[var(--color-surface-muted)] focus:outline-none",
+        "relative flex cursor-pointer select-none items-center rounded-sm px-3 py-2 type-body-sm text-foreground",
+        "hover:bg-brand-accent-subtle focus:bg-brand-accent-subtle focus:outline-none",
+        "data-[disabled]:pointer-events-none data-[disabled]:text-disabled-foreground",
+        variant === "destructive" && "text-error",
         className
       ),
       children
     }
   );
+}
+function DropdownGroup({ label, children }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(RadixDropdown.Group, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(RadixDropdown.Label, { className: "px-3 py-2 type-caption text-muted-foreground", children: label }),
+    children
+  ] });
+}
+function DropdownSeparator() {
+  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(RadixDropdown.Separator, { className: "mx-1 my-1 h-px bg-border" });
 }
 
 // src/components/overlay/Popover.tsx
@@ -1135,7 +1168,9 @@ var DS_VERSION = "0.1.0";
   Divider,
   Dropdown,
   DropdownContent,
+  DropdownGroup,
   DropdownItem,
+  DropdownSeparator,
   DropdownTrigger,
   FormItem,
   Grid,

@@ -260,19 +260,32 @@ type DialogTitleProps = {
 };
 declare function DialogTitle({ children, className }: DialogTitleProps): react_jsx_runtime.JSX.Element;
 
-declare const Dropdown: react.FC<RadixDropdown.DropdownMenuProps>;
-declare const DropdownTrigger: react.ForwardRefExoticComponent<RadixDropdown.DropdownMenuTriggerProps & react.RefAttributes<HTMLButtonElement>>;
+type DropdownProps = React.ComponentPropsWithoutRef<typeof RadixDropdown.Root>;
+declare function Dropdown(props: DropdownProps): react_jsx_runtime.JSX.Element;
+type DropdownTriggerProps = React.ComponentPropsWithoutRef<typeof RadixDropdown.Trigger>;
+declare function DropdownTrigger(props: DropdownTriggerProps): react_jsx_runtime.JSX.Element;
 type DropdownContentProps = {
     children: React.ReactNode;
+    side?: "top" | "right" | "bottom" | "left";
+    align?: "start" | "center" | "end";
+    sideOffset?: number;
     className?: string;
 };
-declare function DropdownContent({ children, className }: DropdownContentProps): react_jsx_runtime.JSX.Element;
+declare function DropdownContent({ children, side, align, sideOffset, className, }: DropdownContentProps): react_jsx_runtime.JSX.Element;
 type DropdownItemProps = {
     children: React.ReactNode;
     onSelect?: () => void;
+    variant?: "default" | "destructive";
+    disabled?: boolean;
     className?: string;
 };
-declare function DropdownItem({ children, onSelect, className }: DropdownItemProps): react_jsx_runtime.JSX.Element;
+declare function DropdownItem({ children, onSelect, variant, disabled, className, }: DropdownItemProps): react_jsx_runtime.JSX.Element;
+type DropdownGroupProps = {
+    label: string;
+    children: React.ReactNode;
+};
+declare function DropdownGroup({ label, children }: DropdownGroupProps): react_jsx_runtime.JSX.Element;
+declare function DropdownSeparator(): react_jsx_runtime.JSX.Element;
 
 declare const Popover: react.FC<RadixPopover.PopoverProps>;
 declare const PopoverTrigger: react.ForwardRefExoticComponent<RadixPopover.PopoverTriggerProps & react.RefAttributes<HTMLButtonElement>>;
@@ -299,4 +312,4 @@ declare function Divider({ orientation, className, ...props }: DividerProps): re
 
 declare const DS_VERSION = "0.1.0";
 
-export { Avatar, type AvatarProps, Badge, type BadgeProps, Button, type ButtonProps, Checkbox, type CheckboxProps, Container, type ContainerProps, DS_VERSION, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogTitle, type DialogTitleProps, DialogTrigger, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownItem, type DropdownItemProps, DropdownTrigger, FormItem, type FormItemProps, Grid, type GridColumns, type GridProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, RadioGroup, type RadioGroupProps, RadioItem, type RadioItemProps, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Switch, type SwitchProps, Textarea, type TextareaProps, ToggleBar, type ToggleBarItem, type ToggleBarProps, Tooltip, type TooltipProps, UnexpectedError, type UnexpectedErrorProps, avatarVariants, badgeVariants, buttonVariants, cn };
+export { Avatar, type AvatarProps, Badge, type BadgeProps, Button, type ButtonProps, Checkbox, type CheckboxProps, Container, type ContainerProps, DS_VERSION, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogTitle, type DialogTitleProps, DialogTrigger, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownGroup, type DropdownGroupProps, DropdownItem, type DropdownItemProps, type DropdownProps, DropdownSeparator, DropdownTrigger, type DropdownTriggerProps, FormItem, type FormItemProps, Grid, type GridColumns, type GridProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, RadioGroup, type RadioGroupProps, RadioItem, type RadioItemProps, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Switch, type SwitchProps, Textarea, type TextareaProps, ToggleBar, type ToggleBarItem, type ToggleBarProps, Tooltip, type TooltipProps, UnexpectedError, type UnexpectedErrorProps, avatarVariants, badgeVariants, buttonVariants, cn };
