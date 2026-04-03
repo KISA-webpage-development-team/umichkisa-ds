@@ -70,7 +70,9 @@ const footerCode = `import { Dialog, DialogTrigger, DialogContent, DialogTitle, 
       <DialogClose asChild>
         <Button variant="secondary">Cancel</Button>
       </DialogClose>
-      <Button>Confirm</Button>
+      <DialogClose asChild>
+        <Button>Confirm</Button>
+      </DialogClose>
     </DialogFooter>
   </DialogContent>
 </Dialog>`
@@ -205,7 +207,9 @@ export default function DialogPage() {
               <DialogClose asChild>
                 <Button variant="secondary">Cancel</Button>
               </DialogClose>
-              <Button>Confirm</Button>
+              <DialogClose asChild>
+                <Button>Confirm</Button>
+              </DialogClose>
             </DialogFooter>
           </DialogContent>
         </Dialog>
@@ -247,7 +251,7 @@ export default function DialogPage() {
       {/* -- API Reference -------------------------------------------- */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        Dialog is a compound component built on Radix Dialog. Each sub-component accepts the props listed below.
+        Dialog is composed from several sub-components that you assemble together. Each accepts the props listed below.
       </p>
 
       {/* Dialog (Root) */}
@@ -346,7 +350,7 @@ export default function DialogPage() {
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></td>
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;sm&quot; | &quot;md&quot; | &quot;lg&quot; | &quot;full&quot;</code></td>
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;md&quot;</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Width of the dialog panel.</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">Width of the dialog panel. sm = 384px, md = 512px, lg = 672px, full = viewport width minus margin.</td>
             </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">showCloseButton</code></td>
