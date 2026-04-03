@@ -9,20 +9,13 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@mdx-js/loader": "^3.0.0",
-    "@mdx-js/react": "^3.0.0",
-    "@next/mdx": "^15.0.0",
     "@umichkisa-ds/web": "workspace:*",
     "next": "^15.0.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "rehype-pretty-code": "^0.14.0",
-    "remark-gfm": "4.0.1",
-    "shiki": "^1.0.0"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4.2.1",
-    "@types/mdx": "^2.0.13",
     "@types/node": "^22.0.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
