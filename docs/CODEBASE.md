@@ -79,6 +79,7 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 | Grid | `/components/grid` | ✅ Complete |
 | Forms Overview | `/components/forms` | ✅ Complete — compositional guide + realistic form demo |
 | Tooltip | `/components/tooltip` | ✅ Complete |
+| Popover | `/components/popover` | ✅ Complete |
 
 All docs pages (foundation and component) use `<Container size="md" as="article">` as their page wrapper. API Reference tables follow a standardized pattern (Container page is the gold standard). MDX infrastructure has been fully removed — all content is inline TSX with DS type tokens.
 
@@ -115,7 +116,7 @@ The sidebar uses collapsible categories that auto-expand based on the current ro
 | `UnexpectedError` | feedback | ✅ | |
 | `Dialog` | overlay | ✅ | Uses `@radix-ui/react-dialog` |
 | `Dropdown` | overlay | ✅ | Uses `@radix-ui/react-dropdown-menu` |
-| `Popover` | overlay | ✅ | Uses `@radix-ui/react-popover` |
+| `Popover` | overlay | ✅ | Uses `@radix-ui/react-popover`. Three exports (Popover, PopoverTrigger, PopoverContent). Full Radix Content props passthrough with defaults (`align="center"`, `sideOffset=4`). Fade/zoom/slide animations. `cn()` only. |
 | `Tooltip` | overlay | ✅ | Uses `@radix-ui/react-tooltip`. Single wrapper API (`<Tooltip content="..."><trigger /></Tooltip>`). Brand-styled bubble (navy bg + maize text). 4 props: content, children, side, delayDuration. Provider baked in per instance. |
 | `Avatar` | avatar | ✅ | Image with fallback chain: image → initials (from `name`) → icon (`user-round`). CVA `size` variant (sm 32px / md 40px / lg 56px). Brand background (`bg-brand-primary` + `text-brand-foreground`). |
 | `Container` | layout | ✅ | Page shell wrapper. CVA `size` variant (default 1536px / md 768px / sm 640px / prose ~65ch). Polymorphic `as` prop for semantic HTML elements. Responsive padding `px-4 md:px-6 lg:px-8`. |
