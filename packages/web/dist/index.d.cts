@@ -236,7 +236,7 @@ declare function LoadingSpinner({ fullScreen, label, className, }: LoadingSpinne
 type SkeletonProps = React.ComponentPropsWithoutRef<"div"> & {
     variant?: "rectangular" | "circular";
 };
-declare function Skeleton({ variant, className, ...props }: SkeletonProps): react_jsx_runtime.JSX.Element;
+declare function Skeleton({ variant, className, style, ...props }: SkeletonProps): react_jsx_runtime.JSX.Element;
 
 declare function NotFound(): react_jsx_runtime.JSX.Element;
 

@@ -886,16 +886,18 @@ import { jsx as jsx21 } from "react/jsx-runtime";
 function Skeleton({
   variant = "rectangular",
   className,
+  style,
   ...props
 }) {
   return /* @__PURE__ */ jsx21(
     "div",
     {
       className: cn(
-        "animate-pulse bg-surface-muted",
+        "bg-surface-muted",
         variant === "circular" ? "rounded-full" : "rounded-md w-full",
         className
       ),
+      style: { animation: "ds-pulse 2s ease-in-out infinite", ...style },
       ...props
     }
   );
@@ -1264,15 +1266,15 @@ function TabsList({
 }
 var tabsTriggerVariants = cva5(
   [
-    "inline-flex items-center justify-center cursor-pointer whitespace-nowrap shrink-0 transition-colors",
+    "inline-flex items-center justify-center cursor-pointer whitespace-nowrap shrink-0 transition-[color,background-color,border-color] duration-200 ease-in-out",
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]",
     "disabled:pointer-events-none disabled:text-disabled-foreground"
   ],
   {
     variants: {
       variant: {
-        underline: "border-b-2 border-transparent -mb-px text-muted-foreground hover:text-foreground data-[state=active]:border-brand-accent data-[state=active]:text-foreground",
-        pill: "rounded-md text-muted-foreground hover:text-foreground data-[state=active]:bg-brand-accent-subtle data-[state=active]:text-foreground"
+        underline: "border-b-2 border-transparent -mb-px text-muted-foreground hover:text-foreground hover:!font-bold data-[state=active]:border-brand-accent data-[state=active]:text-foreground data-[state=active]:!font-bold",
+        pill: "rounded-md text-muted-foreground hover:text-foreground hover:!font-bold data-[state=active]:bg-brand-primary data-[state=active]:text-brand-accent data-[state=active]:!font-bold"
       },
       size: {
         sm: "type-body-sm px-3 py-1.5",
