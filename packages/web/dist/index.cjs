@@ -1022,7 +1022,7 @@ function DialogContent({
       RadixDialog.Content,
       {
         className: cn(
-          "w-full rounded-lg border border-border bg-surface p-6 shadow-lg",
+          "relative w-full rounded-lg border border-border bg-surface p-6 shadow-lg",
           "data-[state=open]:animate-[dialog-content-in_150ms_ease-out]",
           "data-[state=closed]:animate-[dialog-content-out_100ms_ease-in]",
           "focus-visible:outline-none",
@@ -1036,7 +1036,7 @@ function DialogContent({
             {
               type: "button",
               className: cn(
-                "absolute right-4 top-4 rounded-sm p-1 text-muted-foreground relative",
+                "absolute right-4 top-4 rounded-sm p-1 text-muted-foreground",
                 "hover:text-foreground",
                 "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring",
                 "focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]",
