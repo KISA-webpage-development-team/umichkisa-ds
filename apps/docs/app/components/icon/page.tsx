@@ -1,4 +1,4 @@
-import { Icon } from '@umichkisa-ds/web'
+import { Container, Icon } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { SizesExample } from '@/components/SizesExample'
 
@@ -40,7 +40,7 @@ const buttonCode = `import { Icon } from '@umichkisa-ds/web'
 
 export default function IconPage() {
   return (
-    <article className="mx-auto max-w-3xl px-6 py-12 min-w-0 overflow-hidden">
+    <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Icon</h1>
@@ -240,6 +240,6 @@ export default function IconPage() {
         </table>
       </div>
 
-    </article>
+    </Container>
   )
 }

@@ -1,6 +1,7 @@
+import { Container } from '@umichkisa-ds/web'
 export default function ColorsOverviewPage() {
   return (
-    <article className="mx-auto max-w-3xl px-6 min-w-0 overflow-hidden">
+    <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Colors</h1>
@@ -141,6 +142,6 @@ export default function ColorsOverviewPage() {
         dark mode behavior. If this changes in a future version, it will be documented here.
       </p>
 
-    </article>
+    </Container>
   )
 }

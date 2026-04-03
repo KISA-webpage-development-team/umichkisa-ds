@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Input, Label } from '@umichkisa-ds/web'
+import { Container, Input, Label } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 
 const defaultCode = `import { Input } from '@umichkisa-ds/web'
@@ -55,7 +55,7 @@ export default function InputPage() {
   const [value, setValue] = useState('')
 
   return (
-    <article className="mx-auto max-w-3xl px-6 py-12 min-w-0 overflow-hidden">
+    <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Input</h1>
@@ -237,6 +237,6 @@ export default function InputPage() {
         </table>
       </div>
 
-    </article>
+    </Container>
   )
 }

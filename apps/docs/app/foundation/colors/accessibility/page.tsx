@@ -1,8 +1,9 @@
+import { Container } from '@umichkisa-ds/web'
 import { ContrastTable } from '@/components/ContrastTable'
 
 export default function ColorsAccessibilityPage() {
   return (
-    <article className="mx-auto max-w-3xl px-6 min-w-0 overflow-hidden">
+    <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Accessibility</h1>
@@ -109,6 +110,6 @@ export default function ColorsAccessibilityPage() {
         (5.9:1) passes for all text sizes.
       </p>
 
-    </article>
+    </Container>
   )
 }

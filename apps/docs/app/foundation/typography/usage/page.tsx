@@ -1,8 +1,9 @@
+import { Container } from '@umichkisa-ds/web'
 import { DoDont, Do, Dont } from '@/components/DoDont'
 
 export default function TypographyUsagePage() {
   return (
-    <article className="mx-auto max-w-3xl px-6 min-w-0 overflow-hidden">
+    <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Usage</h1>
@@ -227,6 +228,6 @@ export default function TypographyUsagePage() {
         verify visually.
       </p>
 
-    </article>
+    </Container>
   )
 }

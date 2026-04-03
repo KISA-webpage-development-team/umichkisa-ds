@@ -1,4 +1,4 @@
-import { Grid } from '@umichkisa-ds/web'
+import { Container, Grid } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 
 const basicCode = `import { Grid } from '@umichkisa-ds/web'
@@ -84,7 +84,7 @@ function Card({ title, description }: { title: string; description: string }) {
 
 export default function GridPage() {
   return (
-    <article className="mx-auto max-w-3xl px-6 py-12 min-w-0 overflow-hidden">
+    <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Grid</h1>
@@ -298,6 +298,6 @@ export default function GridPage() {
         </table>
       </div>
 
-    </article>
+    </Container>
   )
 }

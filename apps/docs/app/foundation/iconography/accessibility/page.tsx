@@ -1,6 +1,7 @@
+import { Container } from '@umichkisa-ds/web'
 export default function IconographyAccessibilityPage() {
   return (
-    <article className="mx-auto max-w-3xl px-6 min-w-0 overflow-hidden">
+    <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Accessibility</h1>
@@ -240,6 +241,6 @@ export default function IconographyAccessibilityPage() {
         </table>
       </div>
 
-    </article>
+    </Container>
   )
 }

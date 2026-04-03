@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { RadioGroup, RadioItem } from '@umichkisa-ds/web'
+import { Container, RadioGroup, RadioItem } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 
 const basicCode = `import { RadioGroup, RadioItem } from '@umichkisa-ds/web'
@@ -67,7 +67,7 @@ const controlledCode = `const [fruit, setFruit] = useState('banana')
 export default function RadioPage() {
   const [fruit, setFruit] = useState('banana')
   return (
-    <article className="mx-auto max-w-3xl px-6 py-12 min-w-0 overflow-hidden">
+    <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Radio</h1>
@@ -335,6 +335,6 @@ export default function RadioPage() {
         </table>
       </div>
 
-    </article>
+    </Container>
   )
 }

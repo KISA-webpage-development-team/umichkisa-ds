@@ -1,4 +1,4 @@
-import { Avatar } from '@umichkisa-ds/web'
+import { Container, Avatar } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 
 const defaultCode = `import { Avatar } from '@umichkisa-ds/web'
@@ -30,7 +30,7 @@ const errorFallbackCode = `import { Avatar } from '@umichkisa-ds/web'
 
 export default function AvatarPage() {
   return (
-    <article className="mx-auto max-w-3xl px-6 py-12 min-w-0 overflow-hidden">
+    <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Avatar</h1>
@@ -194,6 +194,6 @@ export default function AvatarPage() {
         </table>
       </div>
 
-    </article>
+    </Container>
   )
 }

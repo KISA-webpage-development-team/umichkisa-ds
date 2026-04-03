@@ -24,7 +24,7 @@ const polymorphicCode = `import { Container } from '@umichkisa-ds/web'
   <p>Section content.</p>
 </Container>`
 
-const pageStructureCode = `{/* Pattern: close Container, add banner, reopen Container */}
+const pageStructureCode = `{/* Pattern: close add banner, reopen Container */}
 
 <Container as="main">
   <p>Page content here.</p>
@@ -62,7 +62,7 @@ const breakoutCode = `{/* When you're inside a Container and need to break out *
 
 export default function ContainerPage() {
   return (
-    <article className="mx-auto max-w-3xl px-6 py-12 min-w-0 overflow-hidden">
+    <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Container</h1>
@@ -398,6 +398,6 @@ export default function ContainerPage() {
         </table>
       </div>
 
-    </article>
+    </Container>
   )
 }

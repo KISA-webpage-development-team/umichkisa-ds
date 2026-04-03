@@ -1,9 +1,10 @@
+import { Container } from '@umichkisa-ds/web'
 import { ColorSwatch } from '@/components/ColorSwatch'
 import { ColorSwatchGrid } from '@/components/ColorSwatchGrid'
 
 export default function ColorsPrimitivesPage() {
   return (
-    <article className="mx-auto max-w-3xl px-6 min-w-0 overflow-hidden">
+    <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Primitive Palette</h1>
@@ -72,6 +73,6 @@ export default function ColorsPrimitivesPage() {
         <ColorSwatch token="--primitive-green-500" value="oklch(64% 0.17 145)" label="Green 500" />
       </ColorSwatchGrid>
 
-    </article>
+    </Container>
   )
 }
