@@ -4,25 +4,30 @@ import { cn } from "@/utils/cn";
 export const Popover = RadixPopover.Root;
 export const PopoverTrigger = RadixPopover.Trigger;
 
-export type PopoverContentProps = {
-  children: React.ReactNode;
-  className?: string;
-};
+export type PopoverContentProps = React.ComponentPropsWithoutRef<
+  typeof RadixPopover.Content
+>;
 
-export function PopoverContent({ children, className }: PopoverContentProps) {
+export function PopoverContent({
+  className,
+  align = "center",
+  sideOffset = 4,
+  ...props
+}: PopoverContentProps) {
   return (
     <RadixPopover.Portal>
       <RadixPopover.Content
+        align={align}
+        sideOffset={sideOffset}
         className={cn(
-          "z-50 rounded-md",
-          "border border-[var(--color-border)] bg-[var(--color-surface)] shadow-md",
-          "p-4",
+          "z-50 rounded-md border border-border bg-surface p-4 shadow-md outline-hidden",
+          "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+          "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
+          "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
           className
         )}
-        sideOffset={4}
-      >
-        {children}
-      </RadixPopover.Content>
+        {...props}
+      />
     </RadixPopover.Portal>
   );
 }
