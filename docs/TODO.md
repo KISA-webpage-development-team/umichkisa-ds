@@ -78,7 +78,7 @@ Only show categories with ≥1 shipped component. When a batch ships a component
 ### Batch 7 — Overlays
 - [x] Tooltip (new)
 - [x] Popover (audit)
-- [ ] Dropdown (audit)
+- [x] Dropdown (audit)
 
 ### Batch 8 — Overlays cont'd + navigation
 - [ ] Dialog (audit)

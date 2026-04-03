@@ -70,3 +70,13 @@ Append-only log of API changes from existing implementations. Used when updating
 - `htmlFor` unchanged
 - Validation logic removed — consumer passes `error` string from external validation
 - Now composes with any form control (Input, Textarea, Select, etc.) via `children`
+
+## Dropdown
+
+- **Breaking:** Near-rewrite of compound component API
+- `DropdownContent` gains `side`, `align`, `sideOffset` positioning props
+- `DropdownItem` gains `variant` prop (`"default" | "destructive"`) and `disabled` prop
+- New exports: `DropdownGroup` (label + children), `DropdownSeparator`
+- Hover/focus styling changed from `bg-surface-muted` to `bg-brand-accent-subtle`
+- Fade+zoom open/close animations added
+- Client app uses full shadcn dropdown — when migrating, use DS version for simple action menus; keep shadcn for sub-menus/checkbox items until DS adds them
