@@ -1315,8 +1315,8 @@ var tabsTriggerVariants = (0, import_class_variance_authority5.cva)(
   {
     variants: {
       variant: {
-        underline: "border-b-2 border-transparent -mb-px text-muted-foreground hover:text-foreground data-[state=active]:border-brand-primary data-[state=active]:text-foreground",
-        pill: "rounded-md text-muted-foreground hover:text-foreground data-[state=active]:bg-surface data-[state=active]:text-foreground data-[state=active]:shadow-sm"
+        underline: "border-b-2 border-transparent -mb-px text-muted-foreground hover:text-foreground hover:bg-brand-accent-subtle data-[state=active]:border-brand-primary data-[state=active]:text-brand-primary",
+        pill: "rounded-md text-muted-foreground hover:text-foreground hover:bg-brand-accent-subtle data-[state=active]:bg-brand-primary data-[state=active]:text-brand-foreground"
       },
       size: {
         sm: "type-body-sm px-3 py-1.5",
