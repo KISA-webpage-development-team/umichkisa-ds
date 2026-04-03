@@ -994,7 +994,7 @@ function DialogDescription({ children, className }) {
   return /* @__PURE__ */ jsx25(
     RadixDialog.Description,
     {
-      className: cn("type-body-sm text-muted-foreground", className),
+      className: cn("type-body-sm text-muted-foreground mt-2", className),
       children
     }
   );
