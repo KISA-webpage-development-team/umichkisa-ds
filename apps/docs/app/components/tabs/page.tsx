@@ -1,132 +1,169 @@
 'use client'
 
 import { useState } from 'react'
-import { Container, Tabs, TabsList, TabsTrigger, TabsContent } from '@umichkisa-ds/web'
+import { Container, Tabs, TabsList, TabsTrigger, TabsContent, FormItem, Input } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 
-const basicCode = `import { Tabs, TabsList, TabsTrigger, TabsContent } from '@umichkisa-ds/web'
+const basicCode = `import { Container, Tabs, TabsList, TabsTrigger, TabsContent, FormItem, Input } from '@umichkisa-ds/web'
 
-<Tabs defaultValue="account">
-  <TabsList>
-    <TabsTrigger value="account">Account</TabsTrigger>
-    <TabsTrigger value="password">Password</TabsTrigger>
-    <TabsTrigger value="settings">Settings</TabsTrigger>
-  </TabsList>
-  <TabsContent value="account">
-    Update your account settings. Set your preferred language and timezone.
-  </TabsContent>
-  <TabsContent value="password">
-    Change your password. After saving, you'll be logged out.
-  </TabsContent>
-  <TabsContent value="settings">
-    Manage your notification preferences and privacy settings.
-  </TabsContent>
-</Tabs>`
+<Container size="sm">
+  <Tabs defaultValue="account">
+    <TabsList>
+      <TabsTrigger value="account">Account</TabsTrigger>
+      <TabsTrigger value="password">Password</TabsTrigger>
+      <TabsTrigger value="settings">Settings</TabsTrigger>
+    </TabsList>
+    <TabsContent value="account">
+      <FormItem label="Display name"><Input placeholder="Enter name" /></FormItem>
+      <FormItem label="Email" className="mt-4"><Input placeholder="you@example.com" /></FormItem>
+    </TabsContent>
+    <TabsContent value="password">
+      <FormItem label="Current password"><Input type="password" placeholder="••••••••" /></FormItem>
+      <FormItem label="New password" className="mt-4"><Input type="password" placeholder="••••••••" /></FormItem>
+    </TabsContent>
+    <TabsContent value="settings">
+      <FormItem label="Language"><Input placeholder="English" /></FormItem>
+      <FormItem label="Timezone" className="mt-4"><Input placeholder="UTC-5" /></FormItem>
+    </TabsContent>
+  </Tabs>
+</Container>`
 
-const pillCode = `import { Tabs, TabsList, TabsTrigger, TabsContent } from '@umichkisa-ds/web'
+const pillCode = `import { Container, Tabs, TabsList, TabsTrigger, TabsContent, FormItem, Input } from '@umichkisa-ds/web'
 
-<Tabs defaultValue="account">
-  <TabsList variant="pill">
-    <TabsTrigger value="account">Account</TabsTrigger>
-    <TabsTrigger value="password">Password</TabsTrigger>
-    <TabsTrigger value="settings">Settings</TabsTrigger>
-  </TabsList>
-  <TabsContent value="account">
-    Update your account settings. Set your preferred language and timezone.
-  </TabsContent>
-  <TabsContent value="password">
-    Change your password. After saving, you'll be logged out.
-  </TabsContent>
-  <TabsContent value="settings">
-    Manage your notification preferences and privacy settings.
-  </TabsContent>
-</Tabs>`
+<Container size="sm">
+  <Tabs defaultValue="account">
+    <TabsList variant="pill">
+      <TabsTrigger value="account">Account</TabsTrigger>
+      <TabsTrigger value="password">Password</TabsTrigger>
+      <TabsTrigger value="settings">Settings</TabsTrigger>
+    </TabsList>
+    <TabsContent value="account">
+      <FormItem label="Display name"><Input placeholder="Enter name" /></FormItem>
+      <FormItem label="Email" className="mt-4"><Input placeholder="you@example.com" /></FormItem>
+    </TabsContent>
+    <TabsContent value="password">
+      <FormItem label="Current password"><Input type="password" placeholder="••••••••" /></FormItem>
+      <FormItem label="New password" className="mt-4"><Input type="password" placeholder="••••••••" /></FormItem>
+    </TabsContent>
+    <TabsContent value="settings">
+      <FormItem label="Language"><Input placeholder="English" /></FormItem>
+      <FormItem label="Timezone" className="mt-4"><Input placeholder="UTC-5" /></FormItem>
+    </TabsContent>
+  </Tabs>
+</Container>`
 
-const sizeCode = `import { Tabs, TabsList, TabsTrigger, TabsContent } from '@umichkisa-ds/web'
+const sizeCode = `import { Container, Tabs, TabsList, TabsTrigger, TabsContent } from '@umichkisa-ds/web'
 
-{/* Small */}
-<Tabs defaultValue="account">
-  <TabsList size="sm">
-    <TabsTrigger value="account">Account</TabsTrigger>
-    <TabsTrigger value="password">Password</TabsTrigger>
-    <TabsTrigger value="settings">Settings</TabsTrigger>
-  </TabsList>
-  <TabsContent value="account">Small tab content.</TabsContent>
-</Tabs>
+<Container size="sm">
+  {/* Small */}
+  <Tabs defaultValue="profile">
+    <TabsList size="sm">
+      <TabsTrigger value="profile">Profile</TabsTrigger>
+      <TabsTrigger value="billing">Billing</TabsTrigger>
+      <TabsTrigger value="team">Team</TabsTrigger>
+    </TabsList>
+    <TabsContent value="profile">
+      <p className="type-body-sm text-foreground">Small size trigger with profile settings.</p>
+    </TabsContent>
+    <TabsContent value="billing">
+      <p className="type-body-sm text-foreground">Small size trigger with billing details.</p>
+    </TabsContent>
+    <TabsContent value="team">
+      <p className="type-body-sm text-foreground">Small size trigger with team members.</p>
+    </TabsContent>
+  </Tabs>
 
-{/* Medium (default) */}
-<Tabs defaultValue="account">
-  <TabsList size="md">
-    <TabsTrigger value="account">Account</TabsTrigger>
-    <TabsTrigger value="password">Password</TabsTrigger>
-    <TabsTrigger value="settings">Settings</TabsTrigger>
-  </TabsList>
-  <TabsContent value="account">Medium tab content.</TabsContent>
-</Tabs>`
+  {/* Medium (default) */}
+  <Tabs defaultValue="profile">
+    <TabsList size="md">
+      <TabsTrigger value="profile">Profile</TabsTrigger>
+      <TabsTrigger value="billing">Billing</TabsTrigger>
+      <TabsTrigger value="team">Team</TabsTrigger>
+    </TabsList>
+    <TabsContent value="profile">
+      <p className="type-body-sm text-foreground">Medium size trigger with profile settings.</p>
+    </TabsContent>
+    <TabsContent value="billing">
+      <p className="type-body-sm text-foreground">Medium size trigger with billing details.</p>
+    </TabsContent>
+    <TabsContent value="team">
+      <p className="type-body-sm text-foreground">Medium size trigger with team members.</p>
+    </TabsContent>
+  </Tabs>
+</Container>`
 
-const fullWidthCode = `import { Tabs, TabsList, TabsTrigger, TabsContent } from '@umichkisa-ds/web'
+const fullWidthCode = `import { Container, Tabs, TabsList, TabsTrigger, TabsContent } from '@umichkisa-ds/web'
 
-<Tabs defaultValue="account">
-  <TabsList fullWidth>
-    <TabsTrigger value="account">Account</TabsTrigger>
-    <TabsTrigger value="password">Password</TabsTrigger>
-    <TabsTrigger value="settings">Settings</TabsTrigger>
-  </TabsList>
-  <TabsContent value="account">
-    Update your account settings. Set your preferred language and timezone.
-  </TabsContent>
-  <TabsContent value="password">
-    Change your password. After saving, you'll be logged out.
-  </TabsContent>
-  <TabsContent value="settings">
-    Manage your notification preferences and privacy settings.
-  </TabsContent>
-</Tabs>`
+<Container size="sm">
+  <Tabs defaultValue="overview">
+    <TabsList fullWidth>
+      <TabsTrigger value="overview">Overview</TabsTrigger>
+      <TabsTrigger value="analytics">Analytics</TabsTrigger>
+      <TabsTrigger value="reports">Reports</TabsTrigger>
+    </TabsList>
+    <TabsContent value="overview">
+      <p className="type-body-sm text-foreground mb-3">Total members</p>
+      <p className="type-h3 text-foreground">128</p>
+    </TabsContent>
+    <TabsContent value="analytics">
+      <p className="type-body-sm text-foreground mb-3">Page views (30d)</p>
+      <p className="type-h3 text-foreground">4,231</p>
+    </TabsContent>
+    <TabsContent value="reports">
+      <p className="type-body-sm text-foreground mb-3">Reports generated</p>
+      <p className="type-h3 text-foreground">17</p>
+    </TabsContent>
+  </Tabs>
+</Container>`
 
-const disabledCode = `import { Tabs, TabsList, TabsTrigger, TabsContent } from '@umichkisa-ds/web'
+const disabledCode = `import { Container, Tabs, TabsList, TabsTrigger, TabsContent, FormItem, Input } from '@umichkisa-ds/web'
 
-<Tabs defaultValue="account">
-  <TabsList>
-    <TabsTrigger value="account">Account</TabsTrigger>
-    <TabsTrigger value="password" disabled>Password</TabsTrigger>
-    <TabsTrigger value="settings">Settings</TabsTrigger>
-  </TabsList>
-  <TabsContent value="account">
-    Update your account settings. Set your preferred language and timezone.
-  </TabsContent>
-  <TabsContent value="password">
-    Change your password. After saving, you'll be logged out.
-  </TabsContent>
-  <TabsContent value="settings">
-    Manage your notification preferences and privacy settings.
-  </TabsContent>
-</Tabs>`
+<Container size="sm">
+  <Tabs defaultValue="general">
+    <TabsList>
+      <TabsTrigger value="general">General</TabsTrigger>
+      <TabsTrigger value="security" disabled>Security</TabsTrigger>
+      <TabsTrigger value="notifications">Notifications</TabsTrigger>
+    </TabsList>
+    <TabsContent value="general">
+      <FormItem label="App name"><Input placeholder="My App" /></FormItem>
+    </TabsContent>
+    <TabsContent value="security">
+      <FormItem label="Two-factor auth"><Input placeholder="Enabled" /></FormItem>
+    </TabsContent>
+    <TabsContent value="notifications">
+      <FormItem label="Email digest"><Input placeholder="Weekly" /></FormItem>
+    </TabsContent>
+  </Tabs>
+</Container>`
 
 const controlledCode = `import { useState } from 'react'
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@umichkisa-ds/web'
+import { Container, Tabs, TabsList, TabsTrigger, TabsContent, FormItem, Input } from '@umichkisa-ds/web'
 
-const [activeTab, setActiveTab] = useState('account')
+const [activeTab, setActiveTab] = useState('members')
 
-<Tabs value={activeTab} onValueChange={setActiveTab}>
-  <TabsList>
-    <TabsTrigger value="account">Account</TabsTrigger>
-    <TabsTrigger value="password">Password</TabsTrigger>
-    <TabsTrigger value="settings">Settings</TabsTrigger>
-  </TabsList>
-  <TabsContent value="account">
-    Update your account settings. Set your preferred language and timezone.
-  </TabsContent>
-  <TabsContent value="password">
-    Change your password. After saving, you'll be logged out.
-  </TabsContent>
-  <TabsContent value="settings">
-    Manage your notification preferences and privacy settings.
-  </TabsContent>
-</Tabs>
-<p>Active tab: {activeTab}</p>`
+<Container size="sm">
+  <Tabs value={activeTab} onValueChange={setActiveTab}>
+    <TabsList>
+      <TabsTrigger value="members">Members</TabsTrigger>
+      <TabsTrigger value="roles">Roles</TabsTrigger>
+      <TabsTrigger value="invites">Invites</TabsTrigger>
+    </TabsList>
+    <TabsContent value="members">
+      <FormItem label="Search members"><Input placeholder="Search by name" /></FormItem>
+    </TabsContent>
+    <TabsContent value="roles">
+      <FormItem label="Role name"><Input placeholder="Admin" /></FormItem>
+    </TabsContent>
+    <TabsContent value="invites">
+      <FormItem label="Email address"><Input placeholder="user@example.com" /></FormItem>
+    </TabsContent>
+  </Tabs>
+  <p>Active tab: {activeTab}</p>
+</Container>`
 
 export default function TabsPage() {
-  const [activeTab, setActiveTab] = useState('account')
+  const [activeTab, setActiveTab] = useState('members')
 
   return (
     <Container size="md" as="article">
@@ -152,22 +189,27 @@ export default function TabsPage() {
         Underline variant (default) with three tab panels.
       </p>
       <ComponentPreview code={basicCode}>
-        <Tabs defaultValue="account">
-          <TabsList>
-            <TabsTrigger value="account">Account</TabsTrigger>
-            <TabsTrigger value="password">Password</TabsTrigger>
-            <TabsTrigger value="settings">Settings</TabsTrigger>
-          </TabsList>
-          <TabsContent value="account">
-            Update your account settings. Set your preferred language and timezone.
-          </TabsContent>
-          <TabsContent value="password">
-            Change your password. After saving, you&apos;ll be logged out.
-          </TabsContent>
-          <TabsContent value="settings">
-            Manage your notification preferences and privacy settings.
-          </TabsContent>
-        </Tabs>
+        <Container size="sm">
+          <Tabs defaultValue="account">
+            <TabsList>
+              <TabsTrigger value="account">Account</TabsTrigger>
+              <TabsTrigger value="password">Password</TabsTrigger>
+              <TabsTrigger value="settings">Settings</TabsTrigger>
+            </TabsList>
+            <TabsContent value="account">
+              <FormItem htmlFor="basic-name" label="Display name"><Input id="basic-name" placeholder="Enter name" /></FormItem>
+              <FormItem htmlFor="basic-email" label="Email" className="mt-4"><Input id="basic-email" placeholder="you@example.com" /></FormItem>
+            </TabsContent>
+            <TabsContent value="password">
+              <FormItem htmlFor="basic-curpw" label="Current password"><Input id="basic-curpw" type="password" placeholder="••••••••" /></FormItem>
+              <FormItem htmlFor="basic-newpw" label="New password" className="mt-4"><Input id="basic-newpw" type="password" placeholder="••••••••" /></FormItem>
+            </TabsContent>
+            <TabsContent value="settings">
+              <FormItem htmlFor="basic-lang" label="Language"><Input id="basic-lang" placeholder="English" /></FormItem>
+              <FormItem htmlFor="basic-tz" label="Timezone" className="mt-4"><Input id="basic-tz" placeholder="UTC-5" /></FormItem>
+            </TabsContent>
+          </Tabs>
+        </Container>
       </ComponentPreview>
 
       {/* Pill variant */}
@@ -180,22 +222,27 @@ export default function TabsPage() {
         on TabsList for a contained, rounded style.
       </p>
       <ComponentPreview code={pillCode}>
-        <Tabs defaultValue="account">
-          <TabsList variant="pill">
-            <TabsTrigger value="account">Account</TabsTrigger>
-            <TabsTrigger value="password">Password</TabsTrigger>
-            <TabsTrigger value="settings">Settings</TabsTrigger>
-          </TabsList>
-          <TabsContent value="account">
-            Update your account settings. Set your preferred language and timezone.
-          </TabsContent>
-          <TabsContent value="password">
-            Change your password. After saving, you&apos;ll be logged out.
-          </TabsContent>
-          <TabsContent value="settings">
-            Manage your notification preferences and privacy settings.
-          </TabsContent>
-        </Tabs>
+        <Container size="sm">
+          <Tabs defaultValue="account">
+            <TabsList variant="pill">
+              <TabsTrigger value="account">Account</TabsTrigger>
+              <TabsTrigger value="password">Password</TabsTrigger>
+              <TabsTrigger value="settings">Settings</TabsTrigger>
+            </TabsList>
+            <TabsContent value="account">
+              <FormItem htmlFor="pill-name" label="Display name"><Input id="pill-name" placeholder="Enter name" /></FormItem>
+              <FormItem htmlFor="pill-email" label="Email" className="mt-4"><Input id="pill-email" placeholder="you@example.com" /></FormItem>
+            </TabsContent>
+            <TabsContent value="password">
+              <FormItem htmlFor="pill-curpw" label="Current password"><Input id="pill-curpw" type="password" placeholder="••••••••" /></FormItem>
+              <FormItem htmlFor="pill-newpw" label="New password" className="mt-4"><Input id="pill-newpw" type="password" placeholder="••••••••" /></FormItem>
+            </TabsContent>
+            <TabsContent value="settings">
+              <FormItem htmlFor="pill-lang" label="Language"><Input id="pill-lang" placeholder="English" /></FormItem>
+              <FormItem htmlFor="pill-tz" label="Timezone" className="mt-4"><Input id="pill-tz" placeholder="UTC-5" /></FormItem>
+            </TabsContent>
+          </Tabs>
+        </Container>
       </ComponentPreview>
 
       {/* Sizes */}
@@ -208,30 +255,48 @@ export default function TabsPage() {
         prop on TabsList.
       </p>
       <ComponentPreview code={sizeCode}>
-        <div className="flex flex-col gap-8">
-          <div>
-            <p className="type-caption text-muted-foreground mb-2">size=&quot;sm&quot;</p>
-            <Tabs defaultValue="account">
-              <TabsList size="sm">
-                <TabsTrigger value="account">Account</TabsTrigger>
-                <TabsTrigger value="password">Password</TabsTrigger>
-                <TabsTrigger value="settings">Settings</TabsTrigger>
-              </TabsList>
-              <TabsContent value="account">Small tab content.</TabsContent>
-            </Tabs>
+        <Container size="sm">
+          <div className="flex flex-col gap-8">
+            <div>
+              <p className="type-caption text-muted-foreground mb-2">size=&quot;sm&quot;</p>
+              <Tabs defaultValue="profile">
+                <TabsList size="sm">
+                  <TabsTrigger value="profile">Profile</TabsTrigger>
+                  <TabsTrigger value="billing">Billing</TabsTrigger>
+                  <TabsTrigger value="team">Team</TabsTrigger>
+                </TabsList>
+                <TabsContent value="profile">
+                  <p className="type-body-sm text-foreground">Small size trigger with profile settings.</p>
+                </TabsContent>
+                <TabsContent value="billing">
+                  <p className="type-body-sm text-foreground">Small size trigger with billing details.</p>
+                </TabsContent>
+                <TabsContent value="team">
+                  <p className="type-body-sm text-foreground">Small size trigger with team members.</p>
+                </TabsContent>
+              </Tabs>
+            </div>
+            <div>
+              <p className="type-caption text-muted-foreground mb-2">size=&quot;md&quot;</p>
+              <Tabs defaultValue="profile">
+                <TabsList size="md">
+                  <TabsTrigger value="profile">Profile</TabsTrigger>
+                  <TabsTrigger value="billing">Billing</TabsTrigger>
+                  <TabsTrigger value="team">Team</TabsTrigger>
+                </TabsList>
+                <TabsContent value="profile">
+                  <p className="type-body-sm text-foreground">Medium size trigger with profile settings.</p>
+                </TabsContent>
+                <TabsContent value="billing">
+                  <p className="type-body-sm text-foreground">Medium size trigger with billing details.</p>
+                </TabsContent>
+                <TabsContent value="team">
+                  <p className="type-body-sm text-foreground">Medium size trigger with team members.</p>
+                </TabsContent>
+              </Tabs>
+            </div>
           </div>
-          <div>
-            <p className="type-caption text-muted-foreground mb-2">size=&quot;md&quot;</p>
-            <Tabs defaultValue="account">
-              <TabsList size="md">
-                <TabsTrigger value="account">Account</TabsTrigger>
-                <TabsTrigger value="password">Password</TabsTrigger>
-                <TabsTrigger value="settings">Settings</TabsTrigger>
-              </TabsList>
-              <TabsContent value="account">Medium tab content.</TabsContent>
-            </Tabs>
-          </div>
-        </div>
+        </Container>
       </ComponentPreview>
 
       {/* Full width */}
@@ -244,22 +309,27 @@ export default function TabsPage() {
         to stretch triggers to fill the container.
       </p>
       <ComponentPreview code={fullWidthCode}>
-        <Tabs defaultValue="account">
-          <TabsList fullWidth>
-            <TabsTrigger value="account">Account</TabsTrigger>
-            <TabsTrigger value="password">Password</TabsTrigger>
-            <TabsTrigger value="settings">Settings</TabsTrigger>
-          </TabsList>
-          <TabsContent value="account">
-            Update your account settings. Set your preferred language and timezone.
-          </TabsContent>
-          <TabsContent value="password">
-            Change your password. After saving, you&apos;ll be logged out.
-          </TabsContent>
-          <TabsContent value="settings">
-            Manage your notification preferences and privacy settings.
-          </TabsContent>
-        </Tabs>
+        <Container size="sm">
+          <Tabs defaultValue="overview">
+            <TabsList fullWidth>
+              <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="analytics">Analytics</TabsTrigger>
+              <TabsTrigger value="reports">Reports</TabsTrigger>
+            </TabsList>
+            <TabsContent value="overview">
+              <p className="type-body-sm text-foreground mb-3">Total members</p>
+              <p className="type-h3 text-foreground">128</p>
+            </TabsContent>
+            <TabsContent value="analytics">
+              <p className="type-body-sm text-foreground mb-3">Page views (30d)</p>
+              <p className="type-h3 text-foreground">4,231</p>
+            </TabsContent>
+            <TabsContent value="reports">
+              <p className="type-body-sm text-foreground mb-3">Reports generated</p>
+              <p className="type-h3 text-foreground">17</p>
+            </TabsContent>
+          </Tabs>
+        </Container>
       </ComponentPreview>
 
       {/* Disabled tab */}
@@ -273,22 +343,24 @@ export default function TabsPage() {
         skipped during keyboard navigation.
       </p>
       <ComponentPreview code={disabledCode}>
-        <Tabs defaultValue="account">
-          <TabsList>
-            <TabsTrigger value="account">Account</TabsTrigger>
-            <TabsTrigger value="password" disabled>Password</TabsTrigger>
-            <TabsTrigger value="settings">Settings</TabsTrigger>
-          </TabsList>
-          <TabsContent value="account">
-            Update your account settings. Set your preferred language and timezone.
-          </TabsContent>
-          <TabsContent value="password">
-            Change your password. After saving, you&apos;ll be logged out.
-          </TabsContent>
-          <TabsContent value="settings">
-            Manage your notification preferences and privacy settings.
-          </TabsContent>
-        </Tabs>
+        <Container size="sm">
+          <Tabs defaultValue="general">
+            <TabsList>
+              <TabsTrigger value="general">General</TabsTrigger>
+              <TabsTrigger value="security" disabled>Security</TabsTrigger>
+              <TabsTrigger value="notifications">Notifications</TabsTrigger>
+            </TabsList>
+            <TabsContent value="general">
+              <FormItem htmlFor="dis-app" label="App name"><Input id="dis-app" placeholder="My App" /></FormItem>
+            </TabsContent>
+            <TabsContent value="security">
+              <FormItem htmlFor="dis-2fa" label="Two-factor auth"><Input id="dis-2fa" placeholder="Enabled" /></FormItem>
+            </TabsContent>
+            <TabsContent value="notifications">
+              <FormItem htmlFor="dis-digest" label="Email digest"><Input id="dis-digest" placeholder="Weekly" /></FormItem>
+            </TabsContent>
+          </Tabs>
+        </Container>
       </ComponentPreview>
 
       {/* Controlled */}
@@ -306,27 +378,27 @@ export default function TabsPage() {
         parameters or external state.
       </p>
       <ComponentPreview code={controlledCode}>
-        <div>
+        <Container size="sm">
           <Tabs value={activeTab} onValueChange={setActiveTab}>
             <TabsList>
-              <TabsTrigger value="account">Account</TabsTrigger>
-              <TabsTrigger value="password">Password</TabsTrigger>
-              <TabsTrigger value="settings">Settings</TabsTrigger>
+              <TabsTrigger value="members">Members</TabsTrigger>
+              <TabsTrigger value="roles">Roles</TabsTrigger>
+              <TabsTrigger value="invites">Invites</TabsTrigger>
             </TabsList>
-            <TabsContent value="account">
-              Update your account settings. Set your preferred language and timezone.
+            <TabsContent value="members">
+              <FormItem htmlFor="ctrl-search" label="Search members"><Input id="ctrl-search" placeholder="Search by name" /></FormItem>
             </TabsContent>
-            <TabsContent value="password">
-              Change your password. After saving, you&apos;ll be logged out.
+            <TabsContent value="roles">
+              <FormItem htmlFor="ctrl-role" label="Role name"><Input id="ctrl-role" placeholder="Admin" /></FormItem>
             </TabsContent>
-            <TabsContent value="settings">
-              Manage your notification preferences and privacy settings.
+            <TabsContent value="invites">
+              <FormItem htmlFor="ctrl-email" label="Email address"><Input id="ctrl-email" placeholder="user@example.com" /></FormItem>
             </TabsContent>
           </Tabs>
           <p className="type-body-sm text-muted-foreground mt-3">
             Active tab: <span className="text-foreground">{activeTab}</span>
           </p>
-        </div>
+        </Container>
       </ComponentPreview>
 
       {/* Accessibility */}
