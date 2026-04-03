@@ -10,7 +10,7 @@ const basicCode = `import { Popover, PopoverTrigger, PopoverContent, Button } fr
     <Button variant="secondary">Open popover</Button>
   </PopoverTrigger>
   <PopoverContent>
-    <p>This is the popover content.</p>
+    <p className="type-body-sm text-foreground">This is the popover content.</p>
   </PopoverContent>
 </Popover>`
 
@@ -35,28 +35,36 @@ const placementCode = `import { Popover, PopoverTrigger, PopoverContent, Button 
   <PopoverTrigger asChild>
     <Button variant="secondary">Bottom</Button>
   </PopoverTrigger>
-  <PopoverContent side="bottom">Bottom content</PopoverContent>
+  <PopoverContent side="bottom">
+    <p className="type-body-sm text-foreground">Bottom content</p>
+  </PopoverContent>
 </Popover>
 
 <Popover>
   <PopoverTrigger asChild>
     <Button variant="secondary">Top</Button>
   </PopoverTrigger>
-  <PopoverContent side="top">Top content</PopoverContent>
+  <PopoverContent side="top">
+    <p className="type-body-sm text-foreground">Top content</p>
+  </PopoverContent>
 </Popover>
 
 <Popover>
   <PopoverTrigger asChild>
     <Button variant="secondary">Left</Button>
   </PopoverTrigger>
-  <PopoverContent side="left">Left content</PopoverContent>
+  <PopoverContent side="left">
+    <p className="type-body-sm text-foreground">Left content</p>
+  </PopoverContent>
 </Popover>
 
 <Popover>
   <PopoverTrigger asChild>
     <Button variant="secondary">Right</Button>
   </PopoverTrigger>
-  <PopoverContent side="right">Right content</PopoverContent>
+  <PopoverContent side="right">
+    <p className="type-body-sm text-foreground">Right content</p>
+  </PopoverContent>
 </Popover>`
 
 export default function PopoverPage() {
@@ -65,9 +73,13 @@ export default function PopoverPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Popover</h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground max-w-prose">
         Floating panel anchored to a trigger element for displaying rich content
         like forms, menus, or additional information.
+      </p>
+      <p className="type-body-sm mb-8 text-muted-foreground max-w-prose">
+        Use Popover for non-modal, anchored content like settings panels or detail
+        previews. For modal forms or confirmations, use Dialog. For action menus, use Dropdown.
       </p>
 
       {/* ── Examples ────────────────────────────────────────── */}
@@ -220,7 +232,7 @@ export default function PopoverPage() {
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">asChild</code></td>
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></td>
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Merge trigger props onto the child element instead of rendering a button.</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">Merge trigger props onto the child element. Without this, PopoverTrigger renders its own button — use asChild when you already have a Button component.</td>
             </tr>
           </tbody>
         </table>
