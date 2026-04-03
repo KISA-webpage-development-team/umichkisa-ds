@@ -28,7 +28,7 @@ const sizeMap = {
   sm: "max-w-sm",
   md: "max-w-lg",
   lg: "max-w-2xl",
-  full: "max-w-[calc(100vw-2rem)]",
+  full: "max-w-full",
 } as const;
 
 type DialogContentProps = {
@@ -53,36 +53,37 @@ function DialogContent({
           "data-[state=closed]:animate-[dialog-overlay-out_100ms_ease-in]"
         )}
       />
-      <RadixDialog.Content
-        className={cn(
-          "fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2",
-          "w-[calc(100%-2rem)] rounded-lg border border-border bg-surface p-6 shadow-lg",
-          "data-[state=open]:animate-[dialog-content-in_150ms_ease-out]",
-          "data-[state=closed]:animate-[dialog-content-out_100ms_ease-in]",
-          "focus-visible:outline-none",
-          sizeMap[size],
-          className
-        )}
-      >
-        {children}
-        {showCloseButton && (
-          <RadixDialog.Close asChild>
-            <button
-              type="button"
-              className={cn(
-                "absolute right-4 top-4 rounded-sm p-1 text-muted-foreground relative",
-                "hover:text-foreground",
-                "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring",
-                "focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]",
-                "after:absolute after:inset-[-8px] after:content-['']"
-              )}
-              aria-label="Close"
-            >
-              <Icon name="x" size="sm" />
-            </button>
-          </RadixDialog.Close>
-        )}
-      </RadixDialog.Content>
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <RadixDialog.Content
+          className={cn(
+            "w-full rounded-lg border border-border bg-surface p-6 shadow-lg",
+            "data-[state=open]:animate-[dialog-content-in_150ms_ease-out]",
+            "data-[state=closed]:animate-[dialog-content-out_100ms_ease-in]",
+            "focus-visible:outline-none",
+            sizeMap[size],
+            className
+          )}
+        >
+          {children}
+          {showCloseButton && (
+            <RadixDialog.Close asChild>
+              <button
+                type="button"
+                className={cn(
+                  "absolute right-4 top-4 rounded-sm p-1 text-muted-foreground relative",
+                  "hover:text-foreground",
+                  "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring",
+                  "focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]",
+                  "after:absolute after:inset-[-8px] after:content-['']"
+                )}
+                aria-label="Close"
+              >
+                <Icon name="x" size="sm" />
+              </button>
+            </RadixDialog.Close>
+          )}
+        </RadixDialog.Content>
+      </div>
     </RadixDialog.Portal>
   );
 }
