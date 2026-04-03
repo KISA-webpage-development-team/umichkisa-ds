@@ -90,3 +90,10 @@ Append-only log of API changes from existing implementations. Used when updating
 - New exports: `DialogDescription` (wraps Radix `aria-describedby`), `DialogFooter` (flex action bar)
 - Overlay + content now animated (fade + slide-up)
 - All styling migrated from `var()` syntax to Tailwind token classes
+
+## LoadingSpinner
+
+- `fullScreen` prop **removed** — wrap in a `fixed inset-0 z-50 flex items-center justify-center bg-surface` div instead
+- Default `label` changed from `"로딩중입니다"` to `"Loading"`
+- Label no longer renders visually by default — pass `showLabel` to display it
+- New `size` prop: `"sm" | "md" | "lg"` (default `"md"`)

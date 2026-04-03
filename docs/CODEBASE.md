@@ -85,6 +85,7 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 | Tabs | `/components/tabs` | ✅ Complete |
 | Alert | `/components/alert` | ✅ Complete |
 | Skeleton | `/components/skeleton` | ✅ Complete |
+| LoadingSpinner | `/components/loading-spinner` | ✅ Complete |
 
 All docs pages (foundation and component) use `<Container size="md" as="article">` as their page wrapper. API Reference tables follow a standardized pattern (Container page is the gold standard). MDX infrastructure has been fully removed — all content is inline TSX with DS type tokens.
 
@@ -116,7 +117,7 @@ The sidebar uses collapsible categories that auto-expand based on the current ro
 | `ToggleBar` | layout | ✅ | |
 | `Alert` | feedback | ✅ | CVA component with 4 variants (info/success/warning/error) mapped to DS feedback token pairs. `title` + `children` content model, default icon per variant overridable via `icon` prop. `border-l-4` accent + subtle bg. |
 | `Skeleton` | feedback | ✅ | Loading placeholder with rectangular/circular variants. `cn()` only. `bg-border` + `ds-pulse` keyframe animation. Consumer controls dimensions via `className`. |
-| `LoadingSpinner` | feedback | ✅ | |
+| `LoadingSpinner` | feedback | ✅ | Three sizes (sm/md/lg) with proportional border widths. `aria-label`-first labeling with optional `showLabel`. No `fullScreen` — documented as consumer pattern. `cn()` only, no CVA. |
 | `NotFound` | feedback | ✅ | |
 | `NotAuthorized` | feedback | ✅ | |
 | `NotLogin` | feedback | ✅ | |
