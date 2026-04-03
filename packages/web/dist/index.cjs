@@ -72,6 +72,7 @@ __export(src_exports, {
   Switch: () => Switch,
   Textarea: () => Textarea,
   ToggleBar: () => ToggleBar,
+  Tooltip: () => Tooltip,
   UnexpectedError: () => UnexpectedError,
   avatarVariants: () => avatarVariants,
   badgeVariants: () => badgeVariants,
@@ -1064,14 +1065,37 @@ function PopoverContent({ children, className }) {
   ) });
 }
 
-// src/components/divider/Divider.tsx
+// src/components/overlay/Tooltip.tsx
+var RadixTooltip = __toESM(require("@radix-ui/react-tooltip"), 1);
 var import_jsx_runtime28 = require("react/jsx-runtime");
+function Tooltip({
+  content,
+  children,
+  side = "top",
+  delayDuration = 200
+}) {
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(RadixTooltip.Provider, { delayDuration, children: /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(RadixTooltip.Root, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(RadixTooltip.Trigger, { asChild: true, children }),
+    /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(RadixTooltip.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+      RadixTooltip.Content,
+      {
+        side,
+        sideOffset: 4,
+        className: "z-50 rounded-md bg-[var(--color-brand-primary)] text-[var(--color-brand-foreground)] type-caption px-3 py-1.5 shadow-sm animate-in fade-in-0 zoom-in-95",
+        children: content
+      }
+    ) })
+  ] }) });
+}
+
+// src/components/divider/Divider.tsx
+var import_jsx_runtime29 = require("react/jsx-runtime");
 function Divider({
   orientation = "horizontal",
   className,
   ...props
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
     "hr",
     {
       role: "separator",
@@ -1131,6 +1155,7 @@ var DS_VERSION = "0.1.0";
   Switch,
   Textarea,
   ToggleBar,
+  Tooltip,
   UnexpectedError,
   avatarVariants,
   badgeVariants,

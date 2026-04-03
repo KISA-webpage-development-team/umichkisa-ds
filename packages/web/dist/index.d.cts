@@ -282,6 +282,18 @@ type PopoverContentProps = {
 };
 declare function PopoverContent({ children, className }: PopoverContentProps): react_jsx_runtime.JSX.Element;
 
+type TooltipProps = {
+    /** Text content displayed in the tooltip bubble. */
+    content: string;
+    /** The trigger element — must accept a ref. */
+    children: React.ReactNode;
+    /** Preferred side of the trigger to render the tooltip. */
+    side?: "top" | "right" | "bottom" | "left";
+    /** Milliseconds before the tooltip appears on hover. */
+    delayDuration?: number;
+};
+declare function Tooltip({ content, children, side, delayDuration, }: TooltipProps): react_jsx_runtime.JSX.Element;
+
 type DividerProps = {
     orientation?: "horizontal" | "vertical";
     className?: string;
@@ -290,4 +302,4 @@ declare function Divider({ orientation, className, ...props }: DividerProps): re
 
 declare const DS_VERSION = "0.1.0";
 
-export { Avatar, type AvatarProps, Badge, type BadgeProps, Button, type ButtonProps, Checkbox, type CheckboxProps, Container, type ContainerProps, DS_VERSION, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogTitle, type DialogTitleProps, DialogTrigger, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownItem, type DropdownItemProps, DropdownTrigger, FormItem, type FormItemProps, Grid, type GridColumns, type GridProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, RadioGroup, type RadioGroupProps, RadioItem, type RadioItemProps, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Switch, type SwitchProps, Textarea, type TextareaProps, ToggleBar, type ToggleBarItem, type ToggleBarProps, UnexpectedError, type UnexpectedErrorProps, avatarVariants, badgeVariants, buttonVariants, cn };
+export { Avatar, type AvatarProps, Badge, type BadgeProps, Button, type ButtonProps, Checkbox, type CheckboxProps, Container, type ContainerProps, DS_VERSION, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogTitle, type DialogTitleProps, DialogTrigger, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownItem, type DropdownItemProps, DropdownTrigger, FormItem, type FormItemProps, Grid, type GridColumns, type GridProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, RadioGroup, type RadioGroupProps, RadioItem, type RadioItemProps, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Switch, type SwitchProps, Textarea, type TextareaProps, ToggleBar, type ToggleBarItem, type ToggleBarProps, Tooltip, type TooltipProps, UnexpectedError, type UnexpectedErrorProps, avatarVariants, badgeVariants, buttonVariants, cn };

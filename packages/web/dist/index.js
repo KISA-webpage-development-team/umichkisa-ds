@@ -1010,14 +1010,37 @@ function PopoverContent({ children, className }) {
   ) });
 }
 
+// src/components/overlay/Tooltip.tsx
+import * as RadixTooltip from "@radix-ui/react-tooltip";
+import { jsx as jsx28, jsxs as jsxs14 } from "react/jsx-runtime";
+function Tooltip({
+  content,
+  children,
+  side = "top",
+  delayDuration = 200
+}) {
+  return /* @__PURE__ */ jsx28(RadixTooltip.Provider, { delayDuration, children: /* @__PURE__ */ jsxs14(RadixTooltip.Root, { children: [
+    /* @__PURE__ */ jsx28(RadixTooltip.Trigger, { asChild: true, children }),
+    /* @__PURE__ */ jsx28(RadixTooltip.Portal, { children: /* @__PURE__ */ jsx28(
+      RadixTooltip.Content,
+      {
+        side,
+        sideOffset: 4,
+        className: "z-50 rounded-md bg-[var(--color-brand-primary)] text-[var(--color-brand-foreground)] type-caption px-3 py-1.5 shadow-sm animate-in fade-in-0 zoom-in-95",
+        children: content
+      }
+    ) })
+  ] }) });
+}
+
 // src/components/divider/Divider.tsx
-import { jsx as jsx28 } from "react/jsx-runtime";
+import { jsx as jsx29 } from "react/jsx-runtime";
 function Divider({
   orientation = "horizontal",
   className,
   ...props
 }) {
-  return /* @__PURE__ */ jsx28(
+  return /* @__PURE__ */ jsx29(
     "hr",
     {
       role: "separator",
@@ -1076,6 +1099,7 @@ export {
   Switch,
   Textarea,
   ToggleBar,
+  Tooltip,
   UnexpectedError,
   avatarVariants,
   badgeVariants,

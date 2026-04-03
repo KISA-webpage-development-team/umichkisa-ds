@@ -105,6 +105,13 @@ const COMPONENT_ITEMS: NavItem[] = [
       { label: 'Badge',  href: '/components/badge' },
     ],
   },
+  {
+    label: 'Overlays',
+    href: '/components/tooltip',
+    children: [
+      { label: 'Tooltip', href: '/components/tooltip' },
+    ],
+  },
 ]
 
 const SECTIONS = {
