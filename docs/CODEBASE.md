@@ -83,6 +83,7 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 | Dialog | `/components/dialog` | ✅ Complete |
 | Dropdown | `/components/dropdown` | ✅ Complete |
 | Tabs | `/components/tabs` | ✅ Complete |
+| Alert | `/components/alert` | ✅ Complete |
 | Skeleton | `/components/skeleton` | ✅ Complete |
 
 All docs pages (foundation and component) use `<Container size="md" as="article">` as their page wrapper. API Reference tables follow a standardized pattern (Container page is the gold standard). MDX infrastructure has been fully removed — all content is inline TSX with DS type tokens.
@@ -113,6 +114,7 @@ The sidebar uses collapsible categories that auto-expand based on the current ro
 | `Divider` | divider | ✅ | Unified from HorizontalDivider + VerticalDivider. Semantic `<hr>`, `orientation` prop, `--color-border` token. |
 | `Grid` | layout | ✅ | Responsive equal-width column grid. `columns` prop (number or `{ base, md, lg }` responsive object, max 6). `gap` prop using DS spacing tiers (element/component/section). `cn()` only, no CVA. |
 | `ToggleBar` | layout | ✅ | |
+| `Alert` | feedback | ✅ | CVA component with 4 variants (info/success/warning/error) mapped to DS feedback token pairs. `title` + `children` content model, default icon per variant overridable via `icon` prop. `border-l-4` accent + subtle bg. |
 | `Skeleton` | feedback | ✅ | Loading placeholder with rectangular/circular variants. `cn()` only. `bg-border` + `ds-pulse` keyframe animation. Consumer controls dimensions via `className`. |
 | `LoadingSpinner` | feedback | ✅ | |
 | `NotFound` | feedback | ✅ | |
@@ -126,7 +128,7 @@ The sidebar uses collapsible categories that auto-expand based on the current ro
 | `Tabs` | navigation | ✅ | Compound component (Tabs, TabsList, TabsTrigger, TabsContent). Built from scratch (no Radix). CVA on triggers (variant × size). Underline/pill variants, sm/md sizes, fullWidth, disabled triggers. Controlled + uncontrolled. Auto-selects first tab. Full keyboard nav (arrow keys, Home/End). Horizontal scroll overflow. |
 | `Avatar` | avatar | ✅ | Image with fallback chain: image → initials (from `name`) → icon (`user-round`). CVA `size` variant (sm 32px / md 40px / lg 56px). Brand background (`bg-brand-primary` + `text-brand-foreground`). |
 | `Container` | layout | ✅ | Page shell wrapper. CVA `size` variant (default 1536px / md 768px / sm 640px / prose ~65ch). Polymorphic `as` prop for semantic HTML elements. Responsive padding `px-4 md:px-6 lg:px-8`. |
-| `Icon` | icon | ✅ | Single `<Icon name="..." />` component with static Lucide registry (26 icons: 24 Lucide + 2 custom SVG brand icons). Replaced 19 named `react-icons` components. |
+| `Icon` | icon | ✅ | Single `<Icon name="..." />` component with static Lucide registry (30 icons: 28 Lucide + 2 custom SVG brand icons). Replaced 19 named `react-icons` components. |
 
 ### Not Yet Implemented (V1 target)
 - `Card`, `ImageButton`, `ErrorBoundary`
