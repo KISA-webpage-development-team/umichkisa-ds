@@ -112,6 +112,5 @@ Only show categories with ≥1 shipped component. When a batch ships a component
 
 ### Post-v1.0
 - [ ] Form DX — custom hooks (useFormField, etc.) + form building guideline doc
-- [ ] Toggle checked state variant — navy + white (alternative to navy + maize for small-scale indicators)
 - [ ] Label component — add `id` prop support for `aria-labelledby` patterns
 - [ ] CodeBlock component — syntax-highlighted code blocks for docs (replace raw `<pre><code>`)
