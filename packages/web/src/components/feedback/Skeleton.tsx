@@ -7,15 +7,17 @@ type SkeletonProps = React.ComponentPropsWithoutRef<"div"> & {
 function Skeleton({
   variant = "rectangular",
   className,
+  style,
   ...props
 }: SkeletonProps) {
   return (
     <div
       className={cn(
-        "animate-pulse bg-surface-muted",
+        "bg-surface-muted",
         variant === "circular" ? "rounded-full" : "rounded-md w-full",
         className,
       )}
+      style={{ animation: "ds-pulse 2s ease-in-out infinite", ...style }}
       {...props}
     />
   );
