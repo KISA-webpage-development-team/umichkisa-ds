@@ -14,7 +14,7 @@ const circularCode = `import { Skeleton } from '@umichkisa-ds/web'
 
 const textBlockCode = `import { Skeleton } from '@umichkisa-ds/web'
 
-<div className="flex flex-col gap-2">
+<div className="flex flex-col gap-2 w-full">
   <Skeleton className="h-4 w-3/4" />
   <Skeleton className="h-4" />
   <Skeleton className="h-4 w-5/6" />
@@ -22,7 +22,7 @@ const textBlockCode = `import { Skeleton } from '@umichkisa-ds/web'
 
 const cardCompositionCode = `import { Skeleton } from '@umichkisa-ds/web'
 
-<div className="flex items-start gap-4 p-4 rounded-md border border-border">
+<div className="flex items-start gap-4 p-4 rounded-md border border-border w-full">
   <Skeleton variant="circular" className="h-10 w-10 shrink-0" />
   <div className="flex flex-col gap-2 flex-1">
     <Skeleton className="h-4 w-1/3" />
@@ -91,7 +91,7 @@ export default function SkeletonPage() {
         Stack multiple skeletons with varying widths to approximate a paragraph.
       </p>
       <ComponentPreview code={textBlockCode}>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 w-full">
           <Skeleton className="h-4 w-3/4" />
           <Skeleton className="h-4" />
           <Skeleton className="h-4 w-5/6" />
@@ -105,7 +105,7 @@ export default function SkeletonPage() {
         state for a card with an avatar and text content.
       </p>
       <ComponentPreview code={cardCompositionCode}>
-        <div className="flex items-start gap-4 p-4 rounded-md border border-border">
+        <div className="flex items-start gap-4 p-4 rounded-md border border-border w-full">
           <Skeleton variant="circular" className="h-10 w-10 shrink-0" />
           <div className="flex flex-col gap-2 flex-1">
             <Skeleton className="h-4 w-1/3" />
