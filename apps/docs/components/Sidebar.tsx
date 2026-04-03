@@ -114,6 +114,13 @@ const COMPONENT_ITEMS: NavItem[] = [
       { label: 'Tooltip',  href: '/components/tooltip' },
     ],
   },
+  {
+    label: 'Navigation',
+    href: '/components/tabs',
+    children: [
+      { label: 'Tabs', href: '/components/tabs' },
+    ],
+  },
 ]
 
 const SECTIONS = {
