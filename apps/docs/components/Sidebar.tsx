@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState, useCallback, useEffect } from 'react'
 
 interface SidebarProps {
   open: boolean
@@ -13,11 +12,6 @@ interface NavItem {
   label: string
   href: string
   children?: { label: string; href: string }[]
-}
-
-interface CategoryGroup {
-  label: string
-  items: NavItem[]
 }
 
 const FOUNDATION_ITEMS: NavItem[] = [
@@ -65,16 +59,15 @@ const FOUNDATION_ITEMS: NavItem[] = [
   },
 ]
 
-const COMPONENT_CATEGORIES: CategoryGroup[] = [
+const COMPONENT_ITEMS: NavItem[] = [
   {
     label: 'Icon',
-    items: [
-      { label: 'Icon', href: '/components/icon' },
-    ],
+    href: '/components/icon',
   },
   {
     label: 'Buttons',
-    items: [
+    href: '/components/button',
+    children: [
       { label: 'Button',     href: '/components/button' },
       { label: 'IconButton',  href: '/components/icon-button' },
       { label: 'LinkButton',  href: '/components/link-button' },
@@ -82,7 +75,8 @@ const COMPONENT_CATEGORIES: CategoryGroup[] = [
   },
   {
     label: 'Layout',
-    items: [
+    href: '/components/container',
+    children: [
       { label: 'Container', href: '/components/container' },
       { label: 'Divider',   href: '/components/divider' },
       { label: 'Grid',      href: '/components/grid' },
@@ -90,7 +84,8 @@ const COMPONENT_CATEGORIES: CategoryGroup[] = [
   },
   {
     label: 'Forms',
-    items: [
+    href: '/components/forms',
+    children: [
       { label: 'Forms Overview', href: '/components/forms' },
       { label: 'Checkbox',       href: '/components/checkbox' },
       { label: 'FormItem',       href: '/components/form-item' },
@@ -104,7 +99,8 @@ const COMPONENT_CATEGORIES: CategoryGroup[] = [
   },
   {
     label: 'Data Display',
-    items: [
+    href: '/components/avatar',
+    children: [
       { label: 'Avatar', href: '/components/avatar' },
       { label: 'Badge',  href: '/components/badge' },
     ],
@@ -112,44 +108,14 @@ const COMPONENT_CATEGORIES: CategoryGroup[] = [
 ]
 
 const SECTIONS = {
-  foundation: { label: 'Foundation', items: FOUNDATION_ITEMS, categories: null },
-  components: { label: 'Components', items: null, categories: COMPONENT_CATEGORIES },
+  foundation: { label: 'Foundation', items: FOUNDATION_ITEMS },
+  components: { label: 'Components', items: COMPONENT_ITEMS },
 }
 
 export function Sidebar({ open, onClose }: SidebarProps) {
   const pathname = usePathname()
   const isComponents = pathname.startsWith('/components')
   const section = isComponents ? SECTIONS.components : SECTIONS.foundation
-
-  // Determine which category contains the current route
-  const activeCategory = isComponents
-    ? COMPONENT_CATEGORIES.find((cat) =>
-        cat.items.some((item) => pathname === item.href || pathname.startsWith(item.href + '/'))
-      )?.label ?? null
-    : null
-
-  // Track categories the user has manually toggled
-  const [manualToggles, setManualToggles] = useState<Record<string, boolean>>({})
-
-  // Reset manual toggles when route changes
-  useEffect(() => {
-    setManualToggles({})
-  }, [pathname])
-
-  const isCategoryOpen = useCallback(
-    (label: string) => {
-      if (label in manualToggles) return manualToggles[label]
-      return label === activeCategory
-    },
-    [manualToggles, activeCategory]
-  )
-
-  const toggleCategory = useCallback((label: string) => {
-    setManualToggles((prev) => ({
-      ...prev,
-      [label]: !(prev[label] ?? label === activeCategory),
-    }))
-  }, [activeCategory])
 
   return (
     <>
@@ -179,11 +145,12 @@ export function Sidebar({ open, onClose }: SidebarProps) {
             {section.label}
           </span>
 
-          {/* Foundation section: render with existing nested children logic */}
-          {section.items?.map((item) => {
+          {section.items.map((item) => {
             if (item.children) {
-              const parentBase = item.href.substring(0, item.href.lastIndexOf('/'))
-              const isParentActive = pathname.startsWith(parentBase)
+              // For foundation: check URL prefix. For components: check if any child matches.
+              const isParentActive = isComponents
+                ? item.children.some((child) => pathname === child.href)
+                : pathname.startsWith(item.href.substring(0, item.href.lastIndexOf('/')))
               return (
                 <div key={item.href}>
                   <Link
@@ -209,7 +176,6 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                             href={child.href}
                             className={`block py-2 px-3
                               text-sm transition-colors rounded-md
-
                               duration-[120ms] focus-visible:outline
                               focus-visible:outline-2 focus-visible:outline-brand-primary
                               focus-visible:outline-offset-[-2px] ${
@@ -245,56 +211,6 @@ export function Sidebar({ open, onClose }: SidebarProps) {
               >
                 {item.label}
               </Link>
-            )
-          })}
-
-          {/* Components section: render collapsible categories */}
-          {section.categories?.map((category) => {
-            const isOpen = isCategoryOpen(category.label)
-            return (
-              <div key={category.label} className="mb-1">
-                <button
-                  type="button"
-                  onClick={() => toggleCategory(category.label)}
-                  className="flex w-full items-center justify-between py-2 px-3 text-xs uppercase tracking-wider text-muted-foreground hover:text-foreground transition-colors duration-[120ms]"
-                  aria-expanded={isOpen}
-                >
-                  {category.label}
-                  <svg
-                    className={`h-3 w-3 transition-transform duration-[150ms] ${isOpen ? 'rotate-90' : ''}`}
-                    viewBox="0 0 12 12"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M4.5 2.5L8 6L4.5 9.5" />
-                  </svg>
-                </button>
-                {isOpen && (
-                  <div className="ml-1">
-                    {category.items.map((item) => {
-                      const isActive = pathname === item.href
-                      return (
-                        <Link
-                          key={item.href}
-                          href={item.href}
-                          className={`block py-2 px-3 text-sm transition-colors rounded-md
-                            duration-[120ms] focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary focus-visible:outline-offset-[-2px] ${
-                            isActive
-                              ? 'font-sejong-bold text-foreground'
-                              : 'font-sejong-light text-muted-foreground hover:bg-surface-subtle'
-                          }`}
-                          onClick={onClose}
-                        >
-                          {item.label}
-                        </Link>
-                      )
-                    })}
-                  </div>
-                )}
-              </div>
             )
           })}
         </div>
