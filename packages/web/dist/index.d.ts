@@ -246,19 +246,34 @@ declare function UnexpectedError({ onRetry }: UnexpectedErrorProps): react_jsx_r
 
 declare function Icon({ name, size, label, className }: IconProps): react_jsx_runtime.JSX.Element;
 
-declare const Dialog: react.FC<RadixDialog.DialogProps>;
-declare const DialogTrigger: react.ForwardRefExoticComponent<RadixDialog.DialogTriggerProps & react.RefAttributes<HTMLButtonElement>>;
-declare const DialogClose: react.ForwardRefExoticComponent<RadixDialog.DialogCloseProps & react.RefAttributes<HTMLButtonElement>>;
+type DialogProps = React.ComponentPropsWithoutRef<typeof RadixDialog.Root>;
+declare function Dialog(props: DialogProps): react_jsx_runtime.JSX.Element;
+type DialogTriggerProps = React.ComponentPropsWithoutRef<typeof RadixDialog.Trigger>;
+declare function DialogTrigger(props: DialogTriggerProps): react_jsx_runtime.JSX.Element;
+type DialogCloseProps = React.ComponentPropsWithoutRef<typeof RadixDialog.Close>;
+declare function DialogClose(props: DialogCloseProps): react_jsx_runtime.JSX.Element;
 type DialogContentProps = {
     children: React.ReactNode;
+    size?: "sm" | "md" | "lg" | "full";
+    showCloseButton?: boolean;
     className?: string;
 };
-declare function DialogContent({ children, className }: DialogContentProps): react_jsx_runtime.JSX.Element;
+declare function DialogContent({ children, size, showCloseButton, className, }: DialogContentProps): react_jsx_runtime.JSX.Element;
 type DialogTitleProps = {
     children: React.ReactNode;
     className?: string;
 };
 declare function DialogTitle({ children, className }: DialogTitleProps): react_jsx_runtime.JSX.Element;
+type DialogDescriptionProps = {
+    children: React.ReactNode;
+    className?: string;
+};
+declare function DialogDescription({ children, className }: DialogDescriptionProps): react_jsx_runtime.JSX.Element;
+type DialogFooterProps = {
+    children: React.ReactNode;
+    className?: string;
+};
+declare function DialogFooter({ children, className }: DialogFooterProps): react_jsx_runtime.JSX.Element;
 
 type DropdownProps = React.ComponentPropsWithoutRef<typeof RadixDropdown.Root>;
 declare function Dropdown(props: DropdownProps): react_jsx_runtime.JSX.Element;
@@ -348,4 +363,4 @@ declare function TabsContent({ value, className, children }: TabsContentProps): 
 
 declare const DS_VERSION = "0.1.0";
 
-export { Avatar, type AvatarProps, Badge, type BadgeProps, Button, type ButtonProps, Checkbox, type CheckboxProps, Container, type ContainerProps, DS_VERSION, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogTitle, type DialogTitleProps, DialogTrigger, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownGroup, type DropdownGroupProps, DropdownItem, type DropdownItemProps, type DropdownProps, DropdownSeparator, DropdownTrigger, type DropdownTriggerProps, FormItem, type FormItemProps, Grid, type GridColumns, type GridProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, RadioGroup, type RadioGroupProps, RadioItem, type RadioItemProps, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Switch, type SwitchProps, Tabs, TabsContent, type TabsContentProps, TabsList, type TabsListProps, type TabsProps, TabsTrigger, type TabsTriggerProps, Textarea, type TextareaProps, ToggleBar, type ToggleBarItem, type ToggleBarProps, Tooltip, type TooltipProps, UnexpectedError, type UnexpectedErrorProps, avatarVariants, badgeVariants, buttonVariants, cn, tabsTriggerVariants };
+export { Avatar, type AvatarProps, Badge, type BadgeProps, Button, type ButtonProps, Checkbox, type CheckboxProps, Container, type ContainerProps, DS_VERSION, Dialog, DialogClose, type DialogCloseProps, DialogContent, type DialogContentProps, DialogDescription, type DialogDescriptionProps, DialogFooter, type DialogFooterProps, type DialogProps, DialogTitle, type DialogTitleProps, DialogTrigger, type DialogTriggerProps, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownGroup, type DropdownGroupProps, DropdownItem, type DropdownItemProps, type DropdownProps, DropdownSeparator, DropdownTrigger, type DropdownTriggerProps, FormItem, type FormItemProps, Grid, type GridColumns, type GridProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, RadioGroup, type RadioGroupProps, RadioItem, type RadioItemProps, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Switch, type SwitchProps, Tabs, TabsContent, type TabsContentProps, TabsList, type TabsListProps, type TabsProps, TabsTrigger, type TabsTriggerProps, Textarea, type TextareaProps, ToggleBar, type ToggleBarItem, type ToggleBarProps, Tooltip, type TooltipProps, UnexpectedError, type UnexpectedErrorProps, avatarVariants, badgeVariants, buttonVariants, cn, tabsTriggerVariants };

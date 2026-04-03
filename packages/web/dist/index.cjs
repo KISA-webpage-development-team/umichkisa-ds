@@ -40,6 +40,8 @@ __export(src_exports, {
   Dialog: () => Dialog,
   DialogClose: () => DialogClose,
   DialogContent: () => DialogContent,
+  DialogDescription: () => DialogDescription,
+  DialogFooter: () => DialogFooter,
   DialogTitle: () => DialogTitle,
   DialogTrigger: () => DialogTrigger,
   Divider: () => Divider,
@@ -984,35 +986,86 @@ function UnexpectedError({ onRetry }) {
 // src/components/overlay/Dialog.tsx
 var RadixDialog = __toESM(require("@radix-ui/react-dialog"), 1);
 var import_jsx_runtime25 = require("react/jsx-runtime");
-var Dialog = RadixDialog.Root;
-var DialogTrigger = RadixDialog.Trigger;
-var DialogClose = RadixDialog.Close;
-function DialogContent({ children, className }) {
+function Dialog(props) {
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(RadixDialog.Root, { ...props });
+}
+function DialogTrigger(props) {
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(RadixDialog.Trigger, { ...props });
+}
+function DialogClose(props) {
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(RadixDialog.Close, { ...props });
+}
+var sizeMap2 = {
+  sm: "max-w-sm",
+  md: "max-w-lg",
+  lg: "max-w-2xl",
+  full: "max-w-[calc(100vw-2rem)]"
+};
+function DialogContent({
+  children,
+  size = "md",
+  showCloseButton = true,
+  className
+}) {
   return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(RadixDialog.Portal, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(RadixDialog.Overlay, { className: "fixed inset-0 z-50 bg-black/50" }),
     /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+      RadixDialog.Overlay,
+      {
+        className: cn(
+          "fixed inset-0 z-50 bg-overlay",
+          "data-[state=open]:animate-[dialog-overlay-in_150ms_ease-out]",
+          "data-[state=closed]:animate-[dialog-overlay-out_100ms_ease-in]"
+        )
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
       RadixDialog.Content,
       {
         className: cn(
           "fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2",
-          "w-full max-w-lg rounded-lg",
-          "border border-[var(--color-border)] bg-[var(--color-surface)]",
-          "p-6 shadow-lg focus:outline-none",
+          "w-[calc(100%-2rem)] rounded-lg border border-border bg-surface p-6 shadow-lg",
+          "data-[state=open]:animate-[dialog-content-in_150ms_ease-out]",
+          "data-[state=closed]:animate-[dialog-content-out_100ms_ease-in]",
+          "focus-visible:outline-none",
+          sizeMap2[size],
           className
         ),
-        children
+        children: [
+          children,
+          showCloseButton && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(RadixDialog.Close, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+            "button",
+            {
+              type: "button",
+              className: cn(
+                "absolute right-4 top-4 rounded-sm p-1 text-muted-foreground relative",
+                "hover:text-foreground",
+                "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring",
+                "focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]",
+                "after:absolute after:inset-[-8px] after:content-['']"
+              ),
+              "aria-label": "Close",
+              children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Icon, { name: "x", size: "sm" })
+            }
+          ) })
+        ]
       }
     )
   ] });
 }
 function DialogTitle({ children, className }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(RadixDialog.Title, { className: cn("type-h3 text-foreground", className), children });
+}
+function DialogDescription({ children, className }) {
   return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
-    RadixDialog.Title,
+    RadixDialog.Description,
     {
-      className: cn("text-lg font-semibold text-[var(--color-foreground)] mb-4", className),
+      className: cn("type-body-sm text-muted-foreground", className),
       children
     }
   );
+}
+function DialogFooter({ children, className }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: cn("flex justify-end gap-2 mt-6", className), children });
 }
 
 // src/components/overlay/Dropdown.tsx
@@ -1384,6 +1437,8 @@ var DS_VERSION = "0.1.0";
   Dialog,
   DialogClose,
   DialogContent,
+  DialogDescription,
+  DialogFooter,
   DialogTitle,
   DialogTrigger,
   Divider,
