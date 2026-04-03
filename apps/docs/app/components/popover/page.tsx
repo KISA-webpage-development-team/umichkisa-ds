@@ -1,6 +1,6 @@
 'use client'
 
-import { Container, Popover, PopoverTrigger, PopoverContent, Button, Input, Label } from '@umichkisa-ds/web'
+import { Container, Popover, PopoverTrigger, PopoverContent, Button, Input, FormItem } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 
 const basicCode = `import { Popover, PopoverTrigger, PopoverContent, Button } from '@umichkisa-ds/web'
@@ -14,7 +14,7 @@ const basicCode = `import { Popover, PopoverTrigger, PopoverContent, Button } fr
   </PopoverContent>
 </Popover>`
 
-const formCode = `import { Popover, PopoverTrigger, PopoverContent, Button, Input, Label } from '@umichkisa-ds/web'
+const formCode = `import { Popover, PopoverTrigger, PopoverContent, Button, Input, FormItem } from '@umichkisa-ds/web'
 
 <Popover>
   <PopoverTrigger asChild>
@@ -22,8 +22,9 @@ const formCode = `import { Popover, PopoverTrigger, PopoverContent, Button, Inpu
   </PopoverTrigger>
   <PopoverContent>
     <div className="flex flex-col gap-4">
-      <Label htmlFor="name">Name</Label>
-      <Input id="name" placeholder="Enter your name" />
+      <FormItem htmlFor="name" label="Name">
+        <Input id="name" placeholder="Enter your name" />
+      </FormItem>
       <Button size="sm">Submit</Button>
     </div>
   </PopoverContent>
@@ -113,8 +114,9 @@ export default function PopoverPage() {
           </PopoverTrigger>
           <PopoverContent>
             <div className="flex flex-col gap-4">
-              <Label htmlFor="name">Name</Label>
-              <Input id="name" placeholder="Enter your name" />
+              <FormItem htmlFor="name" label="Name">
+                <Input id="name" placeholder="Enter your name" />
+              </FormItem>
               <Button size="sm">Submit</Button>
             </div>
           </PopoverContent>
