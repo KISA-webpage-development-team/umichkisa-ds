@@ -282,12 +282,12 @@ var buttonVariants = cva3(
     variants: {
       variant: {
         primary: [
-          "bg-brand-primary text-brand-foreground border border-brand-primary",
+          "bg-brand-primary text-brand-foreground border border-brand-primary !font-bold",
           "hover:bg-brand-primary-hover hover:border-brand-primary-hover",
           "active:bg-brand-primary-pressed active:border-brand-primary-pressed"
         ],
         secondary: [
-          "bg-surface-subtle text-foreground border border-border",
+          "bg-surface-subtle text-foreground border border-border !font-bold",
           "hover:bg-surface-muted hover:border-border-strong",
           "active:bg-border active:border-border-strong"
         ],
@@ -297,7 +297,7 @@ var buttonVariants = cva3(
           "active:bg-surface-muted"
         ],
         destructive: [
-          "bg-error text-error-foreground border border-error",
+          "bg-error text-error-foreground border border-error !font-bold",
           "hover:bg-error-hover hover:border-error-hover",
           "active:bg-error-pressed active:border-error-pressed"
         ]
