@@ -4,3 +4,5 @@ export { Dropdown, DropdownTrigger, DropdownContent, DropdownItem } from "./Drop
 export type { DropdownContentProps, DropdownItemProps } from "./Dropdown";
 export { Popover, PopoverTrigger, PopoverContent } from "./Popover";
 export type { PopoverContentProps } from "./Popover";
+export { Tooltip } from "./Tooltip";
+export type { TooltipProps } from "./Tooltip";
