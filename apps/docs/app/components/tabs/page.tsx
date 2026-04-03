@@ -207,13 +207,11 @@ export default function TabsPage() {
         <p className="type-body-sm text-muted-foreground mt-1">
           Available in small and medium (default) sizes.
         </p>
-        <div className="mt-4 flex flex-col gap-8">
-          <div>
-            <p className="type-body-sm text-muted-foreground mb-2">Small</p>
-            <ComponentPreview code={sizeCode}>
-              <div className="flex flex-col gap-8">
-                <div>
-                  <p className="type-caption text-muted-foreground mb-2">size=&quot;sm&quot;</p>
+        <div className="mt-4">
+          <ComponentPreview code={sizeCode}>
+            <div className="flex flex-col gap-8">
+              <div>
+                <p className="type-caption text-muted-foreground mb-2">size=&quot;sm&quot;</p>
                   <Tabs defaultValue="account">
                     <TabsList size="sm">
                       <TabsTrigger value="account">Account</TabsTrigger>
@@ -236,7 +234,6 @@ export default function TabsPage() {
                 </div>
               </div>
             </ComponentPreview>
-          </div>
         </div>
       </section>
 
@@ -355,6 +352,11 @@ export default function TabsPage() {
           <strong className="text-foreground">Home</strong> and{' '}
           <strong className="text-foreground">End</strong> to jump to the first or last trigger, and{' '}
           <strong className="text-foreground">Tab</strong> to move focus into the active panel.
+          Disabled triggers are automatically skipped during keyboard navigation.
+        </p>
+        <p className="type-body-sm text-muted-foreground mt-2">
+          TabsTrigger accepts any children, so you can compose icon + text layouts
+          inside triggers. Tabs are horizontal only.
         </p>
       </section>
 
@@ -386,7 +388,7 @@ export default function TabsPage() {
                   <td className="py-2 pr-4 text-foreground font-mono">defaultValue</td>
                   <td className="py-2 pr-4 text-muted-foreground font-mono">string</td>
                   <td className="py-2 pr-4 text-muted-foreground font-mono">&mdash;</td>
-                  <td className="py-2 text-muted-foreground">Initial active tab (uncontrolled)</td>
+                  <td className="py-2 text-muted-foreground">Initial active tab (uncontrolled). If omitted, the first tab is auto-selected.</td>
                 </tr>
                 <tr className="border-b border-border">
                   <td className="py-2 pr-4 text-foreground font-mono">onValueChange</td>
