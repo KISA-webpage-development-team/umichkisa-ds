@@ -881,54 +881,74 @@ function LoadingSpinner({
   );
 }
 
+// src/components/feedback/Skeleton.tsx
+import { jsx as jsx21 } from "react/jsx-runtime";
+function Skeleton({
+  variant = "rectangular",
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsx21(
+    "div",
+    {
+      className: cn(
+        "animate-pulse bg-surface-muted",
+        variant === "circular" ? "rounded-full" : "rounded-md w-full",
+        className
+      ),
+      ...props
+    }
+  );
+}
+
 // src/components/feedback/NotFound.tsx
-import { jsx as jsx21, jsxs as jsxs9 } from "react/jsx-runtime";
+import { jsx as jsx22, jsxs as jsxs9 } from "react/jsx-runtime";
 function NotFound() {
-  return /* @__PURE__ */ jsx21("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ jsxs9("div", { className: "max-w-lg w-full text-center", children: [
-    /* @__PURE__ */ jsx21("h1", { className: "text-4xl font-bold text-[var(--color-foreground)] mb-4", children: "404" }),
-    /* @__PURE__ */ jsx21("p", { className: "text-lg md:text-2xl font-semibold text-[var(--color-muted-foreground)] mb-6", children: "\uC874\uC7AC\uD558\uC9C0 \uC54A\uB294 \uD398\uC774\uC9C0\uC785\uB2C8\uB2E4" }),
-    /* @__PURE__ */ jsx21("div", { className: "flex justify-center w-[60%] mx-auto", children: /* @__PURE__ */ jsx21(LinkButton, { href: "/", variant: "primary", children: "\uD648\uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00\uAE30" }) })
+  return /* @__PURE__ */ jsx22("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ jsxs9("div", { className: "max-w-lg w-full text-center", children: [
+    /* @__PURE__ */ jsx22("h1", { className: "text-4xl font-bold text-[var(--color-foreground)] mb-4", children: "404" }),
+    /* @__PURE__ */ jsx22("p", { className: "text-lg md:text-2xl font-semibold text-[var(--color-muted-foreground)] mb-6", children: "\uC874\uC7AC\uD558\uC9C0 \uC54A\uB294 \uD398\uC774\uC9C0\uC785\uB2C8\uB2E4" }),
+    /* @__PURE__ */ jsx22("div", { className: "flex justify-center w-[60%] mx-auto", children: /* @__PURE__ */ jsx22(LinkButton, { href: "/", variant: "primary", children: "\uD648\uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00\uAE30" }) })
   ] }) });
 }
 
 // src/components/feedback/NotLogin.tsx
-import { jsx as jsx22, jsxs as jsxs10 } from "react/jsx-runtime";
+import { jsx as jsx23, jsxs as jsxs10 } from "react/jsx-runtime";
 function NotLogin() {
-  return /* @__PURE__ */ jsx22("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ jsxs10("div", { className: "max-w-lg w-full text-center", children: [
-    /* @__PURE__ */ jsx22("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uB85C\uADF8\uC778\uC774 \uD544\uC694\uD569\uB2C8\uB2E4" }),
-    /* @__PURE__ */ jsx22("div", { className: "flex justify-center", children: /* @__PURE__ */ jsx22(LinkButton, { href: "/signin", variant: "primary", children: "\uB85C\uADF8\uC778\uD558\uAE30" }) })
+  return /* @__PURE__ */ jsx23("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ jsxs10("div", { className: "max-w-lg w-full text-center", children: [
+    /* @__PURE__ */ jsx23("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uB85C\uADF8\uC778\uC774 \uD544\uC694\uD569\uB2C8\uB2E4" }),
+    /* @__PURE__ */ jsx23("div", { className: "flex justify-center", children: /* @__PURE__ */ jsx23(LinkButton, { href: "/signin", variant: "primary", children: "\uB85C\uADF8\uC778\uD558\uAE30" }) })
   ] }) });
 }
 
 // src/components/feedback/NotAuthorized.tsx
-import { jsx as jsx23, jsxs as jsxs11 } from "react/jsx-runtime";
+import { jsx as jsx24, jsxs as jsxs11 } from "react/jsx-runtime";
 function NotAuthorized() {
-  return /* @__PURE__ */ jsx23("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ jsxs11("div", { className: "max-w-lg w-full text-center", children: [
-    /* @__PURE__ */ jsx23("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uC811\uADFC \uAD8C\uD55C\uC774 \uC5C6\uC2B5\uB2C8\uB2E4" }),
-    /* @__PURE__ */ jsx23("div", { className: "flex justify-center", children: /* @__PURE__ */ jsx23(LinkButton, { href: "/", variant: "primary", children: "\uD648\uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00\uAE30" }) })
+  return /* @__PURE__ */ jsx24("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ jsxs11("div", { className: "max-w-lg w-full text-center", children: [
+    /* @__PURE__ */ jsx24("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uC811\uADFC \uAD8C\uD55C\uC774 \uC5C6\uC2B5\uB2C8\uB2E4" }),
+    /* @__PURE__ */ jsx24("div", { className: "flex justify-center", children: /* @__PURE__ */ jsx24(LinkButton, { href: "/", variant: "primary", children: "\uD648\uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00\uAE30" }) })
   ] }) });
 }
 
 // src/components/feedback/UnexpectedError.tsx
-import { jsx as jsx24, jsxs as jsxs12 } from "react/jsx-runtime";
+import { jsx as jsx25, jsxs as jsxs12 } from "react/jsx-runtime";
 function UnexpectedError({ onRetry }) {
-  return /* @__PURE__ */ jsx24("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ jsxs12("div", { className: "max-w-lg w-full text-center", children: [
-    /* @__PURE__ */ jsx24("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uC624\uB958\uAC00 \uBC1C\uC0DD\uD588\uC2B5\uB2C8\uB2E4" }),
-    /* @__PURE__ */ jsx24("p", { className: "text-[var(--color-muted-foreground)] mb-6", children: "\uC7A0\uC2DC \uD6C4 \uB2E4\uC2DC \uC2DC\uB3C4\uD574\uC8FC\uC138\uC694." }),
-    onRetry && /* @__PURE__ */ jsx24(Button, { onClick: onRetry, variant: "primary", children: "\uB2E4\uC2DC \uC2DC\uB3C4" })
+  return /* @__PURE__ */ jsx25("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ jsxs12("div", { className: "max-w-lg w-full text-center", children: [
+    /* @__PURE__ */ jsx25("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uC624\uB958\uAC00 \uBC1C\uC0DD\uD588\uC2B5\uB2C8\uB2E4" }),
+    /* @__PURE__ */ jsx25("p", { className: "text-[var(--color-muted-foreground)] mb-6", children: "\uC7A0\uC2DC \uD6C4 \uB2E4\uC2DC \uC2DC\uB3C4\uD574\uC8FC\uC138\uC694." }),
+    onRetry && /* @__PURE__ */ jsx25(Button, { onClick: onRetry, variant: "primary", children: "\uB2E4\uC2DC \uC2DC\uB3C4" })
   ] }) });
 }
 
 // src/components/overlay/Dialog.tsx
 import * as RadixDialog from "@radix-ui/react-dialog";
-import { jsx as jsx25, jsxs as jsxs13 } from "react/jsx-runtime";
+import { jsx as jsx26, jsxs as jsxs13 } from "react/jsx-runtime";
 var Dialog = RadixDialog.Root;
 var DialogTrigger = RadixDialog.Trigger;
 var DialogClose = RadixDialog.Close;
 function DialogContent({ children, className }) {
   return /* @__PURE__ */ jsxs13(RadixDialog.Portal, { children: [
-    /* @__PURE__ */ jsx25(RadixDialog.Overlay, { className: "fixed inset-0 z-50 bg-black/50" }),
-    /* @__PURE__ */ jsx25(
+    /* @__PURE__ */ jsx26(RadixDialog.Overlay, { className: "fixed inset-0 z-50 bg-black/50" }),
+    /* @__PURE__ */ jsx26(
       RadixDialog.Content,
       {
         className: cn(
@@ -944,7 +964,7 @@ function DialogContent({ children, className }) {
   ] });
 }
 function DialogTitle({ children, className }) {
-  return /* @__PURE__ */ jsx25(
+  return /* @__PURE__ */ jsx26(
     RadixDialog.Title,
     {
       className: cn("text-lg font-semibold text-[var(--color-foreground)] mb-4", className),
@@ -955,12 +975,12 @@ function DialogTitle({ children, className }) {
 
 // src/components/overlay/Dropdown.tsx
 import * as RadixDropdown from "@radix-ui/react-dropdown-menu";
-import { jsx as jsx26, jsxs as jsxs14 } from "react/jsx-runtime";
+import { jsx as jsx27, jsxs as jsxs14 } from "react/jsx-runtime";
 function Dropdown(props) {
-  return /* @__PURE__ */ jsx26(RadixDropdown.Root, { ...props });
+  return /* @__PURE__ */ jsx27(RadixDropdown.Root, { ...props });
 }
 function DropdownTrigger(props) {
-  return /* @__PURE__ */ jsx26(RadixDropdown.Trigger, { ...props });
+  return /* @__PURE__ */ jsx27(RadixDropdown.Trigger, { ...props });
 }
 function DropdownContent({
   children,
@@ -969,7 +989,7 @@ function DropdownContent({
   sideOffset = 4,
   className
 }) {
-  return /* @__PURE__ */ jsx26(RadixDropdown.Portal, { children: /* @__PURE__ */ jsx26(
+  return /* @__PURE__ */ jsx27(RadixDropdown.Portal, { children: /* @__PURE__ */ jsx27(
     RadixDropdown.Content,
     {
       side,
@@ -994,7 +1014,7 @@ function DropdownItem({
   disabled,
   className
 }) {
-  return /* @__PURE__ */ jsx26(
+  return /* @__PURE__ */ jsx27(
     RadixDropdown.Item,
     {
       onSelect,
@@ -1012,17 +1032,17 @@ function DropdownItem({
 }
 function DropdownGroup({ label, children }) {
   return /* @__PURE__ */ jsxs14(RadixDropdown.Group, { children: [
-    /* @__PURE__ */ jsx26(RadixDropdown.Label, { className: "px-3 py-2 type-caption text-muted-foreground", children: label }),
+    /* @__PURE__ */ jsx27(RadixDropdown.Label, { className: "px-3 py-2 type-caption text-muted-foreground", children: label }),
     children
   ] });
 }
 function DropdownSeparator() {
-  return /* @__PURE__ */ jsx26(RadixDropdown.Separator, { className: "mx-1 my-1 h-px bg-border" });
+  return /* @__PURE__ */ jsx27(RadixDropdown.Separator, { className: "mx-1 my-1 h-px bg-border" });
 }
 
 // src/components/overlay/Popover.tsx
 import * as RadixPopover from "@radix-ui/react-popover";
-import { jsx as jsx27 } from "react/jsx-runtime";
+import { jsx as jsx28 } from "react/jsx-runtime";
 var Popover = RadixPopover.Root;
 var PopoverTrigger = RadixPopover.Trigger;
 function PopoverContent({
@@ -1031,7 +1051,7 @@ function PopoverContent({
   sideOffset = 4,
   ...props
 }) {
-  return /* @__PURE__ */ jsx27(RadixPopover.Portal, { children: /* @__PURE__ */ jsx27(
+  return /* @__PURE__ */ jsx28(RadixPopover.Portal, { children: /* @__PURE__ */ jsx28(
     RadixPopover.Content,
     {
       align,
@@ -1050,16 +1070,16 @@ function PopoverContent({
 
 // src/components/overlay/Tooltip.tsx
 import * as RadixTooltip from "@radix-ui/react-tooltip";
-import { jsx as jsx28, jsxs as jsxs15 } from "react/jsx-runtime";
+import { jsx as jsx29, jsxs as jsxs15 } from "react/jsx-runtime";
 function Tooltip({
   content,
   children,
   side = "top",
   delayDuration = 200
 }) {
-  return /* @__PURE__ */ jsx28(RadixTooltip.Provider, { delayDuration, children: /* @__PURE__ */ jsxs15(RadixTooltip.Root, { children: [
-    /* @__PURE__ */ jsx28(RadixTooltip.Trigger, { asChild: true, children }),
-    /* @__PURE__ */ jsx28(RadixTooltip.Portal, { children: /* @__PURE__ */ jsx28(
+  return /* @__PURE__ */ jsx29(RadixTooltip.Provider, { delayDuration, children: /* @__PURE__ */ jsxs15(RadixTooltip.Root, { children: [
+    /* @__PURE__ */ jsx29(RadixTooltip.Trigger, { asChild: true, children }),
+    /* @__PURE__ */ jsx29(RadixTooltip.Portal, { children: /* @__PURE__ */ jsx29(
       RadixTooltip.Content,
       {
         side,
@@ -1072,13 +1092,13 @@ function Tooltip({
 }
 
 // src/components/divider/Divider.tsx
-import { jsx as jsx29 } from "react/jsx-runtime";
+import { jsx as jsx30 } from "react/jsx-runtime";
 function Divider({
   orientation = "horizontal",
   className,
   ...props
 }) {
-  return /* @__PURE__ */ jsx29(
+  return /* @__PURE__ */ jsx30(
     "hr",
     {
       role: "separator",
@@ -1136,6 +1156,7 @@ export {
   SelectItem,
   SelectSeparator,
   SelectTrigger,
+  Skeleton,
   Switch,
   Textarea,
   ToggleBar,
