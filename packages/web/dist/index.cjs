@@ -72,6 +72,10 @@ __export(src_exports, {
   SelectSeparator: () => SelectSeparator,
   SelectTrigger: () => SelectTrigger,
   Switch: () => Switch,
+  Tabs: () => Tabs,
+  TabsContent: () => TabsContent,
+  TabsList: () => TabsList,
+  TabsTrigger: () => TabsTrigger,
   Textarea: () => Textarea,
   ToggleBar: () => ToggleBar,
   Tooltip: () => Tooltip,
@@ -79,7 +83,8 @@ __export(src_exports, {
   avatarVariants: () => avatarVariants,
   badgeVariants: () => badgeVariants,
   buttonVariants: () => buttonVariants,
-  cn: () => cn
+  cn: () => cn,
+  tabsTriggerVariants: () => tabsTriggerVariants
 });
 module.exports = __toCommonJS(src_exports);
 
@@ -1150,6 +1155,222 @@ function Divider({
   );
 }
 
+// src/components/navigation/Tabs.tsx
+var import_react2 = require("react");
+var import_class_variance_authority5 = require("class-variance-authority");
+var import_jsx_runtime30 = require("react/jsx-runtime");
+var TabsContext = (0, import_react2.createContext)(null);
+function useTabsContext() {
+  const ctx = (0, import_react2.useContext)(TabsContext);
+  if (!ctx) {
+    throw new Error("Tabs compound components must be used within <Tabs>");
+  }
+  return ctx;
+}
+function Tabs({
+  value: controlledValue,
+  defaultValue,
+  onValueChange,
+  variant = "underline",
+  size = "md",
+  className,
+  children
+}) {
+  const [internalValue, setInternalValue] = (0, import_react2.useState)(defaultValue ?? "");
+  const registeredTabs = (0, import_react2.useRef)(/* @__PURE__ */ new Set());
+  const hasAutoSelected = (0, import_react2.useRef)(false);
+  const isControlled = controlledValue !== void 0;
+  const activeValue = isControlled ? controlledValue : internalValue;
+  const handleValueChange = (0, import_react2.useCallback)(
+    (newValue) => {
+      if (!isControlled) {
+        setInternalValue(newValue);
+      }
+      onValueChange?.(newValue);
+    },
+    [isControlled, onValueChange]
+  );
+  const registerTab = (0, import_react2.useCallback)(
+    (tabValue) => {
+      registeredTabs.current.add(tabValue);
+      if (!hasAutoSelected.current && !isControlled && !defaultValue) {
+        hasAutoSelected.current = true;
+        setInternalValue(tabValue);
+      }
+    },
+    [isControlled, defaultValue]
+  );
+  const unregisterTab = (0, import_react2.useCallback)((tabValue) => {
+    registeredTabs.current.delete(tabValue);
+  }, []);
+  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+    TabsContext.Provider,
+    {
+      value: {
+        value: activeValue,
+        onValueChange: handleValueChange,
+        variant,
+        size,
+        registerTab,
+        unregisterTab
+      },
+      children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("div", { className, children })
+    }
+  );
+}
+function TabsList({
+  variant,
+  size,
+  fullWidth = false,
+  className,
+  children
+}) {
+  const ctx = useTabsContext();
+  const resolvedVariant = variant ?? ctx.variant;
+  const resolvedSize = size ?? ctx.size;
+  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+    TabsContext.Provider,
+    {
+      value: {
+        ...ctx,
+        variant: resolvedVariant,
+        size: resolvedSize
+      },
+      children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+        "div",
+        {
+          role: "tablist",
+          "aria-orientation": "horizontal",
+          className: cn(
+            "flex items-center overflow-x-auto scrollbar-none",
+            resolvedVariant === "underline" && "border-b border-border",
+            resolvedVariant === "pill" && "bg-surface-subtle rounded-lg p-1",
+            fullWidth && "[&>button]:flex-1",
+            className
+          ),
+          children
+        }
+      )
+    }
+  );
+}
+var tabsTriggerVariants = (0, import_class_variance_authority5.cva)(
+  [
+    "inline-flex items-center justify-center cursor-pointer whitespace-nowrap transition-colors",
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]",
+    "disabled:pointer-events-none disabled:text-disabled-foreground"
+  ],
+  {
+    variants: {
+      variant: {
+        underline: "border-b-2 border-transparent -mb-px text-muted-foreground hover:text-foreground data-[state=active]:border-brand-primary data-[state=active]:text-foreground",
+        pill: "rounded-md text-muted-foreground hover:text-foreground data-[state=active]:bg-surface data-[state=active]:text-foreground data-[state=active]:shadow-sm"
+      },
+      size: {
+        sm: "type-body-sm px-3 py-1.5",
+        md: "type-body-sm px-4 py-2"
+      }
+    },
+    compoundVariants: [
+      { variant: "pill", size: "sm", className: "px-3 py-1" },
+      { variant: "pill", size: "md", className: "px-4 py-1.5" }
+    ],
+    defaultVariants: {
+      variant: "underline",
+      size: "md"
+    }
+  }
+);
+function TabsTrigger({ value, disabled, className, children }) {
+  const ctx = useTabsContext();
+  const isActive = ctx.value === value;
+  const triggerId = `tab-${value}`;
+  const panelId = `tabpanel-${value}`;
+  (0, import_react2.useEffect)(() => {
+    ctx.registerTab(value);
+    return () => ctx.unregisterTab(value);
+  }, [value]);
+  function handleClick() {
+    if (!disabled) {
+      ctx.onValueChange(value);
+    }
+  }
+  function handleKeyDown(e) {
+    const tablist = e.currentTarget.closest('[role="tablist"]');
+    if (!tablist) return;
+    const triggers = Array.from(
+      tablist.querySelectorAll('[role="tab"]:not([disabled])')
+    );
+    const currentIndex = triggers.indexOf(e.currentTarget);
+    if (currentIndex === -1) return;
+    let nextIndex = null;
+    switch (e.key) {
+      case "ArrowRight":
+        nextIndex = (currentIndex + 1) % triggers.length;
+        break;
+      case "ArrowLeft":
+        nextIndex = (currentIndex - 1 + triggers.length) % triggers.length;
+        break;
+      case "Home":
+        nextIndex = 0;
+        break;
+      case "End":
+        nextIndex = triggers.length - 1;
+        break;
+      default:
+        return;
+    }
+    e.preventDefault();
+    const nextTrigger = triggers[nextIndex];
+    nextTrigger.focus();
+    const nextValue = nextTrigger.getAttribute("data-value");
+    if (nextValue) {
+      ctx.onValueChange(nextValue);
+    }
+  }
+  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+    "button",
+    {
+      role: "tab",
+      type: "button",
+      id: triggerId,
+      "aria-selected": isActive,
+      "aria-controls": panelId,
+      tabIndex: isActive ? 0 : -1,
+      "data-state": isActive ? "active" : "inactive",
+      "data-value": value,
+      disabled,
+      "aria-disabled": disabled ? "true" : void 0,
+      "data-disabled": disabled ? "" : void 0,
+      className: cn(
+        tabsTriggerVariants({ variant: ctx.variant, size: ctx.size }),
+        className
+      ),
+      onClick: handleClick,
+      onKeyDown: handleKeyDown,
+      children
+    }
+  );
+}
+function TabsContent({ value, className, children }) {
+  const ctx = useTabsContext();
+  const isActive = ctx.value === value;
+  if (!isActive) return null;
+  const triggerId = `tab-${value}`;
+  const panelId = `tabpanel-${value}`;
+  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+    "div",
+    {
+      role: "tabpanel",
+      id: panelId,
+      "aria-labelledby": triggerId,
+      tabIndex: 0,
+      className: cn("mt-4", className),
+      children
+    }
+  );
+}
+
 // src/index.ts
 var DS_VERSION = "0.1.0";
 // Annotate the CommonJS export names for ESM import in node:
@@ -1195,6 +1416,10 @@ var DS_VERSION = "0.1.0";
   SelectSeparator,
   SelectTrigger,
   Switch,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
   Textarea,
   ToggleBar,
   Tooltip,
@@ -1202,6 +1427,7 @@ var DS_VERSION = "0.1.0";
   avatarVariants,
   badgeVariants,
   buttonVariants,
-  cn
+  cn,
+  tabsTriggerVariants
 });
 //# sourceMappingURL=index.cjs.map

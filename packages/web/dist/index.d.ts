@@ -310,6 +310,42 @@ type DividerProps = {
 } & Omit<React.ComponentPropsWithoutRef<"hr">, "className">;
 declare function Divider({ orientation, className, ...props }: DividerProps): react_jsx_runtime.JSX.Element;
 
+type TabsProps = {
+    value?: string;
+    defaultValue?: string;
+    onValueChange?: (value: string) => void;
+    variant?: "underline" | "pill";
+    size?: "sm" | "md";
+    className?: string;
+    children: React.ReactNode;
+};
+declare function Tabs({ value: controlledValue, defaultValue, onValueChange, variant, size, className, children, }: TabsProps): react_jsx_runtime.JSX.Element;
+type TabsListProps = {
+    variant?: "underline" | "pill";
+    size?: "sm" | "md";
+    fullWidth?: boolean;
+    className?: string;
+    children: React.ReactNode;
+};
+declare function TabsList({ variant, size, fullWidth, className, children, }: TabsListProps): react_jsx_runtime.JSX.Element;
+declare const tabsTriggerVariants: (props?: ({
+    variant?: "underline" | "pill" | null | undefined;
+    size?: "sm" | "md" | null | undefined;
+} & class_variance_authority_types.ClassProp) | undefined) => string;
+type TabsTriggerProps = VariantProps<typeof tabsTriggerVariants> & {
+    value: string;
+    disabled?: boolean;
+    className?: string;
+    children: React.ReactNode;
+};
+declare function TabsTrigger({ value, disabled, className, children }: TabsTriggerProps): react_jsx_runtime.JSX.Element;
+type TabsContentProps = {
+    value: string;
+    className?: string;
+    children: React.ReactNode;
+};
+declare function TabsContent({ value, className, children }: TabsContentProps): react_jsx_runtime.JSX.Element | null;
+
 declare const DS_VERSION = "0.1.0";
 
-export { Avatar, type AvatarProps, Badge, type BadgeProps, Button, type ButtonProps, Checkbox, type CheckboxProps, Container, type ContainerProps, DS_VERSION, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogTitle, type DialogTitleProps, DialogTrigger, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownGroup, type DropdownGroupProps, DropdownItem, type DropdownItemProps, type DropdownProps, DropdownSeparator, DropdownTrigger, type DropdownTriggerProps, FormItem, type FormItemProps, Grid, type GridColumns, type GridProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, RadioGroup, type RadioGroupProps, RadioItem, type RadioItemProps, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Switch, type SwitchProps, Textarea, type TextareaProps, ToggleBar, type ToggleBarItem, type ToggleBarProps, Tooltip, type TooltipProps, UnexpectedError, type UnexpectedErrorProps, avatarVariants, badgeVariants, buttonVariants, cn };
+export { Avatar, type AvatarProps, Badge, type BadgeProps, Button, type ButtonProps, Checkbox, type CheckboxProps, Container, type ContainerProps, DS_VERSION, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogTitle, type DialogTitleProps, DialogTrigger, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownGroup, type DropdownGroupProps, DropdownItem, type DropdownItemProps, type DropdownProps, DropdownSeparator, DropdownTrigger, type DropdownTriggerProps, FormItem, type FormItemProps, Grid, type GridColumns, type GridProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, RadioGroup, type RadioGroupProps, RadioItem, type RadioItemProps, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Switch, type SwitchProps, Tabs, TabsContent, type TabsContentProps, TabsList, type TabsListProps, type TabsProps, TabsTrigger, type TabsTriggerProps, Textarea, type TextareaProps, ToggleBar, type ToggleBarItem, type ToggleBarProps, Tooltip, type TooltipProps, UnexpectedError, type UnexpectedErrorProps, avatarVariants, badgeVariants, buttonVariants, cn, tabsTriggerVariants };
