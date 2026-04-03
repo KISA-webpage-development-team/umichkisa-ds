@@ -50,7 +50,7 @@ function Switch({
       {/* Thumb */}
       <span
         className={cn(
-          "pointer-events-none absolute rounded-full bg-foreground transition-all duration-200",
+          "pointer-events-none absolute rounded-full bg-brand-primary transition-all duration-200",
           "peer-checked:bg-surface",
           "peer-disabled:bg-disabled-foreground",
           "peer-disabled:peer-checked:bg-surface",
