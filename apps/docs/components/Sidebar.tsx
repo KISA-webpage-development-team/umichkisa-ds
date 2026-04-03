@@ -107,10 +107,11 @@ const COMPONENT_ITEMS: NavItem[] = [
   },
   {
     label: 'Overlays',
-    href: '/components/popover',
+    href: '/components/dropdown',
     children: [
-      { label: 'Popover', href: '/components/popover' },
-      { label: 'Tooltip', href: '/components/tooltip' },
+      { label: 'Dropdown', href: '/components/dropdown' },
+      { label: 'Popover',  href: '/components/popover' },
+      { label: 'Tooltip',  href: '/components/tooltip' },
     ],
   },
 ]

@@ -25,7 +25,7 @@ export function Tooltip({
           <RadixTooltip.Content
             side={side}
             sideOffset={4}
-            className="z-50 rounded-md bg-[var(--color-brand-primary)] text-[var(--color-brand-foreground)] type-caption px-3 py-1.5 shadow-sm animate-in fade-in-0 zoom-in-95"
+            className="z-50 rounded-md bg-[var(--color-brand-primary)] text-[var(--color-brand-foreground)] type-caption px-3 py-1.5 shadow-sm data-[state=delayed-open]:animate-[tooltip-in_150ms_ease-out] data-[state=closed]:animate-[tooltip-out_100ms_ease-in]"
           >
             {content}
           </RadixTooltip.Content>
