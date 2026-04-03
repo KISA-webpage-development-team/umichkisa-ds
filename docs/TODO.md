@@ -82,7 +82,7 @@ Only show categories with ≥1 shipped component. When a batch ships a component
 
 ### Batch 8 — Overlays cont'd + navigation
 - [ ] Dialog (audit)
-- [ ] Tabs (new)
+- [x] Tabs (new)
 
 ### Batch 9 — Feedback
 - [ ] Skeleton (new)
