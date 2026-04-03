@@ -157,7 +157,9 @@ export default function AlertPage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         Override the default variant icon by passing a Lucide icon name to the{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">icon</code>{' '}
-        prop. The icon must be registered in the icon registry.
+        prop. The icon must be registered in the{' '}
+        <a href="/components/icon" className="text-link underline hover:text-brand-primary">Icon</a>{' '}
+        registry.
       </p>
       <ComponentPreview code={customIconCode}>
         <Alert variant="info" icon="eye" title="Visibility notice">
@@ -267,7 +269,11 @@ export default function AlertPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           &lt;div&gt;
         </code>{' '}
-        attributes.
+        attributes — pass{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          role=&quot;alert&quot;
+        </code>{' '}
+        for dynamic alerts that should be announced by screen readers.
       </p>
       <div className="my-6 overflow-x-auto">
         <table className="w-full border-collapse border border-border">
