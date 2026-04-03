@@ -100,6 +100,8 @@ export default function DropdownPage() {
       <p className="type-body mb-8 text-foreground max-w-prose">
         Action menu triggered by a button. Built on Radix DropdownMenu for full keyboard navigation
         and accessibility. Compose sub-components together — trigger, content panel, and menu items.
+        Use Dropdown for action menus (edit, delete, share). For value selection from a list,
+        use Select instead.
       </p>
 
       {/* -- Examples ------------------------------------------------- */}
@@ -137,7 +139,12 @@ export default function DropdownPage() {
       {/* With groups */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">With groups</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Group related items with{' '}
+        Use groups when items need a visible heading. For a simple visual break without labels,
+        use{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          DropdownSeparator
+        </code>{' '}
+        instead. Group related items with{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           DropdownGroup
         </code>{' '}
