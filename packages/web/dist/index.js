@@ -893,7 +893,7 @@ function Skeleton({
     "div",
     {
       className: cn(
-        "bg-surface-muted",
+        "bg-border",
         variant === "circular" ? "rounded-full" : "rounded-md w-full",
         className
       ),
@@ -1273,8 +1273,8 @@ var tabsTriggerVariants = cva5(
   {
     variants: {
       variant: {
-        underline: "border-b-2 border-transparent -mb-px text-muted-foreground hover:text-foreground hover:!font-bold data-[state=active]:border-brand-accent data-[state=active]:text-foreground data-[state=active]:!font-bold",
-        pill: "rounded-md text-muted-foreground hover:text-foreground hover:!font-bold data-[state=active]:bg-brand-primary data-[state=active]:text-brand-accent data-[state=active]:!font-bold"
+        underline: "border-b-2 border-transparent -mb-px text-muted-foreground hover:text-foreground data-[state=active]:border-brand-accent data-[state=active]:text-foreground data-[state=active]:!font-bold",
+        pill: "rounded-md text-muted-foreground hover:text-foreground data-[state=active]:bg-brand-primary data-[state=active]:text-brand-accent data-[state=active]:!font-bold"
       },
       size: {
         sm: "type-body-sm px-3 py-1.5",
