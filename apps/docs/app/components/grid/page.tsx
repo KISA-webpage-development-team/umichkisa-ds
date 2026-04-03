@@ -263,35 +263,35 @@ export default function GridPage() {
         <table className="w-full border-collapse border border-border">
           <thead className="bg-surface-subtle">
             <tr>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Prop</th>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Type</th>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Default</th>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Description</th>
+              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Prop</th>
+              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Type</th>
+              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Default</th>
+              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Description</th>
             </tr>
           </thead>
           <tbody>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">columns</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">number | {'{ base?, md?, lg? }'}</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">1</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">columns</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">number | {'{ base?, md?, lg? }'}</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">1</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Number of equal-width columns. Pass a number for fixed, or a responsive object for breakpoint control. Max 6.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">gap</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">&quot;element&quot; | &quot;component&quot; | &quot;section&quot;</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">&quot;component&quot;</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">gap</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;element&quot; | &quot;component&quot; | &quot;section&quot;</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;component&quot;</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Gap between items, mapped to the DS spacing tiers: element (8px), component (16px), section (24px).</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">className</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">—</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Merged via cn(). Use for layout utilities only.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">children</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">ReactNode</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">—</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Grid items.</td>
             </tr>
           </tbody>

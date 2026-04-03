@@ -114,39 +114,39 @@ export default function LabelPage() {
         </code>{' '}
         attributes.
       </p>
-      <div className="my-4 overflow-x-auto">
+      <div className="my-6 overflow-x-auto">
         <table className="w-full border-collapse border border-border">
           <thead className="bg-surface-subtle">
             <tr>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Prop</th>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Type</th>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Default</th>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Description</th>
+              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Prop</th>
+              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Type</th>
+              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Default</th>
+              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Description</th>
             </tr>
           </thead>
           <tbody>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">htmlFor</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">required</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">htmlFor</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">required</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">The id of the form control this label is associated with.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">required</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">boolean</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">false</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">required</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Appends a red asterisk to indicate the field is required.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">className</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">—</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Merged via cn(). Use for layout utilities only.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">children</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">ReactNode</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">required</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">required</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Label text content.</td>
             </tr>
           </tbody>

@@ -159,35 +159,35 @@ export default function AvatarPage() {
         <table className="w-full border-collapse border border-border">
           <thead className="bg-surface-subtle">
             <tr>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Prop</th>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Type</th>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Default</th>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Description</th>
+              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Prop</th>
+              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Type</th>
+              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Default</th>
+              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Description</th>
             </tr>
           </thead>
           <tbody>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">src</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">&mdash;</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">src</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Image URL. Falls back to initials or icon on error.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">name</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">&mdash;</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">name</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
               <td className="px-4 py-3 type-body-sm text-foreground">User name. Used for alt text and initials fallback.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">size</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">&quot;sm&quot; | &quot;md&quot; | &quot;lg&quot;</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">&#39;md&#39;</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;sm&quot; | &quot;md&quot; | &quot;lg&quot;</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;md&#39;</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Avatar size. sm = 32px, md = 40px, lg = 56px.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">className</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">&mdash;</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Merged via cn(). Use for layout utilities only.</td>
             </tr>
           </tbody>

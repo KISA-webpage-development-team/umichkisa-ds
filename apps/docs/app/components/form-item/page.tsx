@@ -363,53 +363,53 @@ export default function FormItemPage() {
         <table className="w-full border-collapse border border-border">
           <thead className="bg-surface-subtle">
             <tr>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Prop</th>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Type</th>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Default</th>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Description</th>
+              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Prop</th>
+              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Type</th>
+              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Default</th>
+              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Description</th>
             </tr>
           </thead>
           <tbody>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">htmlFor</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">—</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">htmlFor</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Connects the label to the form control via matching id.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">label</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">—</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">label</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Text rendered inside the Label component.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">required</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">boolean</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">false</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">required</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Shows a required asterisk on the label.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">error</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">—</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">error</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Validation error message. When set, replaces the description text.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">description</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">—</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">description</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Helper text shown below the form control. Hidden when error is set.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">className</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">—</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Additional CSS classes applied to the outer wrapper div.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">children</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">ReactNode</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">—</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
               <td className="px-4 py-3 type-body-sm text-foreground">The form control (Input, Textarea, Select, etc.).</td>
             </tr>
           </tbody>

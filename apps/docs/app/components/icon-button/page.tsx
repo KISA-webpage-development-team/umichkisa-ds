@@ -157,49 +157,49 @@ export default function IconButtonPage() {
         <table className="w-full border-collapse border border-border">
           <thead className="bg-surface-subtle">
             <tr>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Prop</th>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Type</th>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Default</th>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Description</th>
+              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Prop</th>
+              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Type</th>
+              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Default</th>
+              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Description</th>
             </tr>
           </thead>
           <tbody>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">icon</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">IconName</td>
-              <td className="px-4 py-3 type-caption text-foreground">—</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">icon</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">IconName</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Lucide icon name in kebab-case. Required. See the{' '}
                 <a href="/components/icon" className="text-link underline hover:text-brand-primary">Icon</a>{' '}
                 page for available names.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">aria-label</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
-              <td className="px-4 py-3 type-caption text-foreground">—</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">aria-label</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Accessible label. Required — there is no visible text.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">variant</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">&#39;primary&#39; | &#39;secondary&#39; | &#39;tertiary&#39; | &#39;destructive&#39;</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">&#39;secondary&#39;</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">variant</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;primary&#39; | &#39;secondary&#39; | &#39;tertiary&#39; | &#39;destructive&#39;</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;secondary&#39;</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Visual style. Passed through to Button.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">size</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">&#39;md&#39;</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;md&#39;</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Controls square dimensions (32 / 40 / 48px) and icon size.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-caption font-mono text-foreground">disabled</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">boolean</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">false</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">disabled</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Disables the button, reducing opacity and blocking pointer events.</td>
             </tr>
             <tr>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">className</td>
-              <td className="px-4 py-3 type-caption font-mono text-foreground">string</td>
-              <td className="px-4 py-3 type-caption text-foreground">—</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Merged via cn(). Use for layout utilities only — never override variant styles.</td>
             </tr>
           </tbody>
