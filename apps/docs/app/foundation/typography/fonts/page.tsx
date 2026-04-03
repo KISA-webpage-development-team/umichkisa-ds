@@ -224,6 +224,117 @@ export default function TypographyFontsPage() {
         configured once at the font loading layer and apply globally.
       </p>
 
+      <hr className="my-8 border-0 border-t border-border" />
+
+      {/* ── Next.js Setup ──────────────────────────────────── */}
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Next.js Setup</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
+        Next.js apps should use{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">next/font/local</code>{' '}
+        for SejongHospital. This automatically preloads the font files, converts them
+        to an optimized format, and injects CSS variables on{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&lt;html&gt;</code>{' '}
+        that override the DS{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@font-face</code>{' '}
+        declarations. Without this, the 1.2 MB TTF files load late and cause a visible
+        flash of unstyled text on first visit.
+      </p>
+
+      <h3 className="type-h3 mt-6 mb-2 text-foreground">1. Load fonts in root layout</h3>
+      <p className="type-body mb-4 text-foreground max-w-prose">
+        In your{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">app/layout.tsx</code>,
+        import the font files from the DS package and create font instances with
+        matching CSS variable names:
+      </p>
+
+      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
+        <code className="type-caption font-mono text-foreground">{`import localFont from 'next/font/local'
+
+const sejongBold = localFont({
+  src: '<path-to>/Sejonghospital-Bold.ttf',
+  variable: '--font-sejong-bold',
+  display: 'swap',
+})
+
+const sejongLight = localFont({
+  src: '<path-to>/Sejonghospital-Light.ttf',
+  variable: '--font-sejong-light',
+  display: 'swap',
+})`}</code>
+      </pre>
+
+      <p className="type-body mb-4 text-foreground max-w-prose">
+        The font files live in{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">packages/web/src/fonts/</code>.
+        Adjust the{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">src</code>{' '}
+        path based on your app&#39;s location relative to the monorepo root.
+      </p>
+
+      <h3 className="type-h3 mt-6 mb-2 text-foreground">2. Apply CSS variables on html</h3>
+      <p className="type-body mb-4 text-foreground max-w-prose">
+        Pass the{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">.variable</code>{' '}
+        classes to the{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&lt;html&gt;</code>{' '}
+        element so the CSS variables are available to all descendants:
+      </p>
+
+      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
+        <code className="type-caption font-mono text-foreground">{`<html lang="en" className={\`\${sejongBold.variable} \${sejongLight.variable}\`}>
+  <body>
+    {children}
+  </body>
+</html>`}</code>
+      </pre>
+
+      <h3 className="type-h3 mt-6 mb-2 text-foreground">3. Load Pretendard from CDN</h3>
+      <p className="type-body mb-4 text-foreground max-w-prose">
+        Pretendard is loaded via a CDN stylesheet link in{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&lt;head&gt;</code>.
+        Add a{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">preconnect</code>{' '}
+        hint to speed up the connection:
+      </p>
+
+      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
+        <code className="type-caption font-mono text-foreground">{`<head>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
+  />
+</head>`}</code>
+      </pre>
+
+      <h3 className="type-h3 mt-6 mb-2 text-foreground">How it works</h3>
+      <p className="type-body mb-4 text-foreground max-w-prose">
+        The DS package already declares{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@font-face</code>{' '}
+        rules and{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">:root</code>{' '}
+        CSS variables for all fonts. When you use{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">next/font/local</code>{' '}
+        with the same{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">variable</code>{' '}
+        name (e.g.{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--font-sejong-bold</code>
+        ), Next.js generates a scoped class on{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&lt;html&gt;</code>{' '}
+        that overrides the DS variable with the preloaded font. The rest of the system
+        — type utilities, component styles — picks it up automatically.
+      </p>
+
+      <blockquote className="border-l-[3px] border-brand-accent bg-surface-subtle pl-4 py-2 my-4 rounded-r">
+        <span className="italic text-muted-foreground type-body-sm">
+          Non-Next.js consumers can skip this step entirely. The DS{' '}
+          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@font-face</code>{' '}
+          declarations work on their own — fonts will load via the standard CSS path. The
+          trade-off is a brief flash of system font on first visit while the TTF files download.
+        </span>
+      </blockquote>
+
     </Container>
   )
 }
