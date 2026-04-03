@@ -80,6 +80,7 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 | Forms Overview | `/components/forms` | ✅ Complete — compositional guide + realistic form demo |
 | Tooltip | `/components/tooltip` | ✅ Complete |
 | Popover | `/components/popover` | ✅ Complete |
+| Dialog | `/components/dialog` | ✅ Complete |
 | Dropdown | `/components/dropdown` | ✅ Complete |
 | Tabs | `/components/tabs` | ✅ Complete |
 
@@ -116,7 +117,7 @@ The sidebar uses collapsible categories that auto-expand based on the current ro
 | `NotAuthorized` | feedback | ✅ | |
 | `NotLogin` | feedback | ✅ | |
 | `UnexpectedError` | feedback | ✅ | |
-| `Dialog` | overlay | ✅ | Uses `@radix-ui/react-dialog` |
+| `Dialog` | overlay | ✅ | Radix compound component (Dialog, DialogTrigger, DialogClose, DialogContent, DialogTitle, DialogDescription, DialogFooter). 4 sizes (sm/md/lg/full). Built-in close button with `showCloseButton` opt-out. Custom keyframe animations (overlay fade + content slide-up). `cn()` only. |
 | `Dropdown` | overlay | ✅ | Radix compound component (Dropdown, DropdownTrigger, DropdownContent, DropdownItem, DropdownGroup, DropdownSeparator). `variant` prop on items (default/destructive). `side`/`align`/`sideOffset` on content. Fade+zoom animations. `cn()` only. |
 | `Popover` | overlay | ✅ | Uses `@radix-ui/react-popover`. Three exports (Popover, PopoverTrigger, PopoverContent). Full Radix Content props passthrough with defaults (`align="center"`, `sideOffset=4`). Fade/zoom/slide animations. `cn()` only. |
 | `Tooltip` | overlay | ✅ | Uses `@radix-ui/react-tooltip`. Single wrapper API (`<Tooltip content="..."><trigger /></Tooltip>`). Brand-styled bubble (navy bg + maize text). 4 props: content, children, side, delayDuration. Provider baked in per instance. |

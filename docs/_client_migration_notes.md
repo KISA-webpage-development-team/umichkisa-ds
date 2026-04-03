@@ -80,3 +80,13 @@ Append-only log of API changes from existing implementations. Used when updating
 - Hover/focus styling changed from `bg-surface-muted` to `bg-brand-accent-subtle`
 - Fade+zoom open/close animations added
 - Client app uses full shadcn dropdown — when migrating, use DS version for simple action menus; keep shadcn for sub-menus/checkbox items until DS adds them
+
+## Dialog
+
+- **Near-rewrite** of compound component
+- `DialogContent` gains `size` prop (`"sm" | "md" | "lg" | "full"`, default `"md"`)
+- `DialogContent` gains `showCloseButton` prop (default `true`) — built-in X close button
+- `DialogTitle` restyled from raw `text-lg font-semibold` to `type-h3 text-foreground`
+- New exports: `DialogDescription` (wraps Radix `aria-describedby`), `DialogFooter` (flex action bar)
+- Overlay + content now animated (fade + slide-up)
+- All styling migrated from `var()` syntax to Tailwind token classes
