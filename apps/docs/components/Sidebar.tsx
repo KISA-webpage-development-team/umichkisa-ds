@@ -126,6 +126,7 @@ const COMPONENT_ITEMS: NavItem[] = [
     label: 'Feedback',
     href: '/components/skeleton',
     children: [
+      { label: 'LoadingSpinner', href: '/components/loading-spinner' },
       { label: 'Skeleton', href: '/components/skeleton' },
     ],
   },
