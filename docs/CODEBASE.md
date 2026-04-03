@@ -113,7 +113,7 @@ The sidebar uses collapsible categories that auto-expand based on the current ro
 | `Divider` | divider | ✅ | Unified from HorizontalDivider + VerticalDivider. Semantic `<hr>`, `orientation` prop, `--color-border` token. |
 | `Grid` | layout | ✅ | Responsive equal-width column grid. `columns` prop (number or `{ base, md, lg }` responsive object, max 6). `gap` prop using DS spacing tiers (element/component/section). `cn()` only, no CVA. |
 | `ToggleBar` | layout | ✅ | |
-| `Skeleton` | feedback | ✅ | Loading placeholder with rectangular/circular variants. `cn()` only. `bg-surface-muted` + `ds-pulse` keyframe animation. Consumer controls dimensions via `className`. |
+| `Skeleton` | feedback | ✅ | Loading placeholder with rectangular/circular variants. `cn()` only. `bg-border` + `ds-pulse` keyframe animation. Consumer controls dimensions via `className`. |
 | `LoadingSpinner` | feedback | ✅ | |
 | `NotFound` | feedback | ✅ | |
 | `NotAuthorized` | feedback | ✅ | |

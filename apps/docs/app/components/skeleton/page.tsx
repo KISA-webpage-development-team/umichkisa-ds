@@ -3,11 +3,14 @@ import { ComponentPreview } from '@/components/ComponentPreview'
 
 const defaultCode = `import { Skeleton } from '@umichkisa-ds/web'
 
-<Skeleton className="h-4" />`
+<div className="flex flex-col gap-4 w-full">
+  <Skeleton className="h-6 w-2/5" />
+  <Skeleton className="h-32" />
+</div>`
 
 const circularCode = `import { Skeleton } from '@umichkisa-ds/web'
 
-<Skeleton variant="circular" className="h-10 w-10" />`
+<Skeleton variant="circular" className="h-14 w-14" />`
 
 const textBlockCode = `import { Skeleton } from '@umichkisa-ds/web'
 
@@ -59,10 +62,14 @@ export default function SkeletonPage() {
       {/* Default */}
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Default</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        A full-width rectangular placeholder. Set height with a utility class.
+        A heading placeholder with a content block below. Set dimensions with
+        Tailwind height and width utilities.
       </p>
       <ComponentPreview code={defaultCode}>
-        <Skeleton className="h-4" />
+        <div className="flex flex-col gap-4 w-full">
+          <Skeleton className="h-6 w-2/5" />
+          <Skeleton className="h-32" />
+        </div>
       </ComponentPreview>
 
       {/* Circular */}
@@ -75,7 +82,7 @@ export default function SkeletonPage() {
         for avatar or icon placeholders. Provide explicit width and height.
       </p>
       <ComponentPreview code={circularCode}>
-        <Skeleton variant="circular" className="h-10 w-10" />
+        <Skeleton variant="circular" className="h-14 w-14" />
       </ComponentPreview>
 
       {/* Text block */}

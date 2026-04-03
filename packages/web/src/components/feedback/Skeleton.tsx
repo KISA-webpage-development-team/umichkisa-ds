@@ -13,7 +13,7 @@ function Skeleton({
   return (
     <div
       className={cn(
-        "bg-surface-muted",
+        "bg-border",
         variant === "circular" ? "rounded-full" : "rounded-md w-full",
         className,
       )}
