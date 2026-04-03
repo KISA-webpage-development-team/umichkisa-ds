@@ -11,7 +11,7 @@
   --color-brand-accent-subtle:  var(--primitive-michigan-maize-light);
 
   /* Color — Interactive states */
-  --color-brand-primary-hover:   oklch(25% 0.075 243);
+  --color-brand-primary-hover:   oklch(30% 0.08 243);
   --color-brand-primary-pressed: oklch(15% 0.05 243);
   --color-brand-accent-hover:    oklch(76% 0.185 91);
   --color-brand-accent-pressed:  oklch(70% 0.185 91);
