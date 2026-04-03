@@ -76,7 +76,7 @@ Only show categories with ≥1 shipped component. When a batch ships a component
 - [x] Remove MDX infrastructure (packages, config, content files)
 
 ### Batch 7 — Overlays
-- [ ] Tooltip (new)
+- [x] Tooltip (new)
 - [ ] Popover (audit)
 - [ ] Dropdown (audit)
 
