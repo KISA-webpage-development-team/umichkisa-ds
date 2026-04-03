@@ -39,6 +39,21 @@ export default function LoadingSpinnerPage() {
         Animated spinner for indicating loading state. Renders an accessible
         spinning indicator that can optionally display a visible label.
       </p>
+      <p className="type-body-sm mb-4 text-muted-foreground max-w-prose">
+        The{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          label
+        </code>{' '}
+        prop always sets an{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          aria-label
+        </code>{' '}
+        for screen readers. By default the label is invisible. Pass{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          showLabel
+        </code>{' '}
+        to also render it visually below the spinner.
+      </p>
       <p className="type-body-sm mb-8 text-muted-foreground max-w-prose">
         Use <strong>LoadingSpinner</strong> for indeterminate waits such as data
         fetching or form submission. Use <strong>Skeleton</strong> for
