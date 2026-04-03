@@ -276,11 +276,8 @@ declare function DropdownItem({ children, onSelect, className }: DropdownItemPro
 
 declare const Popover: react.FC<RadixPopover.PopoverProps>;
 declare const PopoverTrigger: react.ForwardRefExoticComponent<RadixPopover.PopoverTriggerProps & react.RefAttributes<HTMLButtonElement>>;
-type PopoverContentProps = {
-    children: React.ReactNode;
-    className?: string;
-};
-declare function PopoverContent({ children, className }: PopoverContentProps): react_jsx_runtime.JSX.Element;
+type PopoverContentProps = React.ComponentPropsWithoutRef<typeof RadixPopover.Content>;
+declare function PopoverContent({ className, align, sideOffset, ...props }: PopoverContentProps): react_jsx_runtime.JSX.Element;
 
 type TooltipProps = {
     /** Text content displayed in the tooltip bubble. */

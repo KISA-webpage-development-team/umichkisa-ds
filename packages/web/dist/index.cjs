@@ -1049,18 +1049,25 @@ var RadixPopover = __toESM(require("@radix-ui/react-popover"), 1);
 var import_jsx_runtime27 = require("react/jsx-runtime");
 var Popover = RadixPopover.Root;
 var PopoverTrigger = RadixPopover.Trigger;
-function PopoverContent({ children, className }) {
+function PopoverContent({
+  className,
+  align = "center",
+  sideOffset = 4,
+  ...props
+}) {
   return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(RadixPopover.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
     RadixPopover.Content,
     {
+      align,
+      sideOffset,
       className: cn(
-        "z-50 rounded-md",
-        "border border-[var(--color-border)] bg-[var(--color-surface)] shadow-md",
-        "p-4",
+        "z-50 rounded-md border border-border bg-surface p-4 shadow-md outline-hidden",
+        "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+        "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
+        "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
         className
       ),
-      sideOffset: 4,
-      children
+      ...props
     }
   ) });
 }
@@ -1081,7 +1088,7 @@ function Tooltip({
       {
         side,
         sideOffset: 4,
-        className: "z-50 rounded-md bg-[var(--color-brand-primary)] text-[var(--color-brand-foreground)] type-caption px-3 py-1.5 shadow-sm animate-in fade-in-0 zoom-in-95",
+        className: "z-50 rounded-md bg-[var(--color-brand-primary)] text-[var(--color-brand-foreground)] type-caption px-3 py-1.5 shadow-sm data-[state=delayed-open]:animate-[tooltip-in_150ms_ease-out] data-[state=closed]:animate-[tooltip-out_100ms_ease-in]",
         children: content
       }
     ) })
