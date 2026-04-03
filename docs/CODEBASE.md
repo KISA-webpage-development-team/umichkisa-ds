@@ -16,8 +16,7 @@ umichkisa-ds/
 │       ├── styles/        # index.css (entry, @font-face, type-* utilities)
 │       └── index.ts       # Public exports
 └── apps/docs/             # Documentation site (Next.js 15, App Router)
-    ├── app/               # Routes
-    ├── content/           # MDX source files
+    ├── app/               # Routes (all pages are inline TSX)
     └── components/        # Docs UI components (not exported)
 ```
 
@@ -80,7 +79,7 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 | Grid | `/components/grid` | ✅ Complete |
 | Forms Overview | `/components/forms` | ✅ Complete — compositional guide + realistic form demo |
 
-Note: `/components/[slug]` dynamic route also exists as a fallback for future MDX-based pages.
+All docs pages (foundation and component) use `<Container size="md" as="article">` as their page wrapper. API Reference tables follow a standardized pattern (Container page is the gold standard). MDX infrastructure has been fully removed — all content is inline TSX with DS type tokens.
 
 ### Sidebar Organization
 

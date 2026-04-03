@@ -69,8 +69,11 @@ Only show categories with ≥1 shipped component. When a batch ships a component
 - [x] Reorganize all form component docs pages in the design doc app
 - [x] Add official form demo page to docs app (replace /test/form with a proper docs page)
 
-### Batch 6.6 — Docs pages Container refactor
-- [ ] Replace `<article className="mx-auto max-w-3xl px-6 py-12 ...">` wrapper on all docs pages with `<Container>` component
+### Batch 6.6 — Docs pages consistency refactor
+- [x] Convert foundation MDX content to inline TSX with DS type tokens (18 pages)
+- [x] Replace article wrappers with `<Container size="md" as="article">` (36 pages)
+- [x] Standardize API Reference tables to Container page pattern (15 pages)
+- [x] Remove MDX infrastructure (packages, config, content files)
 
 ### Batch 7 — Overlays
 - [ ] Tooltip (new)
@@ -111,3 +114,4 @@ Only show categories with ≥1 shipped component. When a batch ships a component
 - [ ] Form DX — custom hooks (useFormField, etc.) + form building guideline doc
 - [ ] Toggle checked state variant — navy + white (alternative to navy + maize for small-scale indicators)
 - [ ] Label component — add `id` prop support for `aria-labelledby` patterns
+- [ ] CodeBlock component — syntax-highlighted code blocks for docs (replace raw `<pre><code>`)
