@@ -122,6 +122,13 @@ const COMPONENT_ITEMS: NavItem[] = [
       { label: 'Tabs', href: '/components/tabs' },
     ],
   },
+  {
+    label: 'Feedback',
+    href: '/components/skeleton',
+    children: [
+      { label: 'Skeleton', href: '/components/skeleton' },
+    ],
+  },
 ]
 
 const SECTIONS = {

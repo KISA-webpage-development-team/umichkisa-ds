@@ -73,6 +73,7 @@ __export(src_exports, {
   SelectItem: () => SelectItem,
   SelectSeparator: () => SelectSeparator,
   SelectTrigger: () => SelectTrigger,
+  Skeleton: () => Skeleton,
   Switch: () => Switch,
   Tabs: () => Tabs,
   TabsContent: () => TabsContent,
@@ -945,55 +946,75 @@ function LoadingSpinner({
   );
 }
 
-// src/components/feedback/NotFound.tsx
+// src/components/feedback/Skeleton.tsx
 var import_jsx_runtime21 = require("react/jsx-runtime");
+function Skeleton({
+  variant = "rectangular",
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+    "div",
+    {
+      className: cn(
+        "animate-pulse bg-surface-muted",
+        variant === "circular" ? "rounded-full" : "rounded-md w-full",
+        className
+      ),
+      ...props
+    }
+  );
+}
+
+// src/components/feedback/NotFound.tsx
+var import_jsx_runtime22 = require("react/jsx-runtime");
 function NotFound() {
-  return /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("h1", { className: "text-4xl font-bold text-[var(--color-foreground)] mb-4", children: "404" }),
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("p", { className: "text-lg md:text-2xl font-semibold text-[var(--color-muted-foreground)] mb-6", children: "\uC874\uC7AC\uD558\uC9C0 \uC54A\uB294 \uD398\uC774\uC9C0\uC785\uB2C8\uB2E4" }),
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "flex justify-center w-[60%] mx-auto", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(LinkButton, { href: "/", variant: "primary", children: "\uD648\uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00\uAE30" }) })
+  return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("h1", { className: "text-4xl font-bold text-[var(--color-foreground)] mb-4", children: "404" }),
+    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("p", { className: "text-lg md:text-2xl font-semibold text-[var(--color-muted-foreground)] mb-6", children: "\uC874\uC7AC\uD558\uC9C0 \uC54A\uB294 \uD398\uC774\uC9C0\uC785\uB2C8\uB2E4" }),
+    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "flex justify-center w-[60%] mx-auto", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(LinkButton, { href: "/", variant: "primary", children: "\uD648\uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00\uAE30" }) })
   ] }) });
 }
 
 // src/components/feedback/NotLogin.tsx
-var import_jsx_runtime22 = require("react/jsx-runtime");
+var import_jsx_runtime23 = require("react/jsx-runtime");
 function NotLogin() {
-  return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uB85C\uADF8\uC778\uC774 \uD544\uC694\uD569\uB2C8\uB2E4" }),
-    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "flex justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(LinkButton, { href: "/signin", variant: "primary", children: "\uB85C\uADF8\uC778\uD558\uAE30" }) })
+  return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uB85C\uADF8\uC778\uC774 \uD544\uC694\uD569\uB2C8\uB2E4" }),
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "flex justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(LinkButton, { href: "/signin", variant: "primary", children: "\uB85C\uADF8\uC778\uD558\uAE30" }) })
   ] }) });
 }
 
 // src/components/feedback/NotAuthorized.tsx
-var import_jsx_runtime23 = require("react/jsx-runtime");
+var import_jsx_runtime24 = require("react/jsx-runtime");
 function NotAuthorized() {
-  return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uC811\uADFC \uAD8C\uD55C\uC774 \uC5C6\uC2B5\uB2C8\uB2E4" }),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "flex justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(LinkButton, { href: "/", variant: "primary", children: "\uD648\uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00\uAE30" }) })
+  return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uC811\uADFC \uAD8C\uD55C\uC774 \uC5C6\uC2B5\uB2C8\uB2E4" }),
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "flex justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(LinkButton, { href: "/", variant: "primary", children: "\uD648\uD398\uC774\uC9C0\uB85C \uB3CC\uC544\uAC00\uAE30" }) })
   ] }) });
 }
 
 // src/components/feedback/UnexpectedError.tsx
-var import_jsx_runtime24 = require("react/jsx-runtime");
+var import_jsx_runtime25 = require("react/jsx-runtime");
 function UnexpectedError({ onRetry }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uC624\uB958\uAC00 \uBC1C\uC0DD\uD588\uC2B5\uB2C8\uB2E4" }),
-    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "text-[var(--color-muted-foreground)] mb-6", children: "\uC7A0\uC2DC \uD6C4 \uB2E4\uC2DC \uC2DC\uB3C4\uD574\uC8FC\uC138\uC694." }),
-    onRetry && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(Button, { onClick: onRetry, variant: "primary", children: "\uB2E4\uC2DC \uC2DC\uB3C4" })
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "h-full flex items-center justify-center px-4", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "max-w-lg w-full text-center", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("h1", { className: "text-2xl font-bold text-[var(--color-foreground)] mb-4", children: "\uC624\uB958\uAC00 \uBC1C\uC0DD\uD588\uC2B5\uB2C8\uB2E4" }),
+    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("p", { className: "text-[var(--color-muted-foreground)] mb-6", children: "\uC7A0\uC2DC \uD6C4 \uB2E4\uC2DC \uC2DC\uB3C4\uD574\uC8FC\uC138\uC694." }),
+    onRetry && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Button, { onClick: onRetry, variant: "primary", children: "\uB2E4\uC2DC \uC2DC\uB3C4" })
   ] }) });
 }
 
 // src/components/overlay/Dialog.tsx
 var RadixDialog = __toESM(require("@radix-ui/react-dialog"), 1);
-var import_jsx_runtime25 = require("react/jsx-runtime");
+var import_jsx_runtime26 = require("react/jsx-runtime");
 function Dialog(props) {
-  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(RadixDialog.Root, { ...props });
+  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(RadixDialog.Root, { ...props });
 }
 function DialogTrigger(props) {
-  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(RadixDialog.Trigger, { ...props });
+  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(RadixDialog.Trigger, { ...props });
 }
 function DialogClose(props) {
-  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(RadixDialog.Close, { ...props });
+  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(RadixDialog.Close, { ...props });
 }
 var sizeMap2 = {
   sm: "max-w-sm",
@@ -1007,8 +1028,8 @@ function DialogContent({
   showCloseButton = true,
   className
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(RadixDialog.Portal, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(RadixDialog.Portal, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
       RadixDialog.Overlay,
       {
         className: cn(
@@ -1018,7 +1039,7 @@ function DialogContent({
         )
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "fixed inset-0 z-50 flex items-center justify-center p-4", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: "fixed inset-0 z-50 flex items-center justify-center p-4", children: /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(
       RadixDialog.Content,
       {
         className: cn(
@@ -1031,7 +1052,7 @@ function DialogContent({
         ),
         children: [
           children,
-          showCloseButton && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(RadixDialog.Close, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+          showCloseButton && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(RadixDialog.Close, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
             "button",
             {
               type: "button",
@@ -1043,7 +1064,7 @@ function DialogContent({
                 "after:absolute after:inset-[-8px] after:content-['']"
               ),
               "aria-label": "Close",
-              children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Icon, { name: "x", size: "sm" })
+              children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Icon, { name: "x", size: "sm" })
             }
           ) })
         ]
@@ -1052,10 +1073,10 @@ function DialogContent({
   ] });
 }
 function DialogTitle({ children, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(RadixDialog.Title, { className: cn("type-h3 text-foreground", className), children });
+  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(RadixDialog.Title, { className: cn("type-h3 text-foreground", className), children });
 }
 function DialogDescription({ children, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
     RadixDialog.Description,
     {
       className: cn("type-body-sm text-muted-foreground mt-2", className),
@@ -1064,17 +1085,17 @@ function DialogDescription({ children, className }) {
   );
 }
 function DialogFooter({ children, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: cn("flex justify-end gap-2 mt-6", className), children });
+  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: cn("flex justify-end gap-2 mt-6", className), children });
 }
 
 // src/components/overlay/Dropdown.tsx
 var RadixDropdown = __toESM(require("@radix-ui/react-dropdown-menu"), 1);
-var import_jsx_runtime26 = require("react/jsx-runtime");
+var import_jsx_runtime27 = require("react/jsx-runtime");
 function Dropdown(props) {
-  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(RadixDropdown.Root, { ...props });
+  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(RadixDropdown.Root, { ...props });
 }
 function DropdownTrigger(props) {
-  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(RadixDropdown.Trigger, { ...props });
+  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(RadixDropdown.Trigger, { ...props });
 }
 function DropdownContent({
   children,
@@ -1083,7 +1104,7 @@ function DropdownContent({
   sideOffset = 4,
   className
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(RadixDropdown.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(RadixDropdown.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
     RadixDropdown.Content,
     {
       side,
@@ -1108,7 +1129,7 @@ function DropdownItem({
   disabled,
   className
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
     RadixDropdown.Item,
     {
       onSelect,
@@ -1125,18 +1146,18 @@ function DropdownItem({
   );
 }
 function DropdownGroup({ label, children }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(RadixDropdown.Group, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(RadixDropdown.Label, { className: "px-3 py-2 type-caption text-muted-foreground", children: label }),
+  return /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(RadixDropdown.Group, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(RadixDropdown.Label, { className: "px-3 py-2 type-caption text-muted-foreground", children: label }),
     children
   ] });
 }
 function DropdownSeparator() {
-  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(RadixDropdown.Separator, { className: "mx-1 my-1 h-px bg-border" });
+  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(RadixDropdown.Separator, { className: "mx-1 my-1 h-px bg-border" });
 }
 
 // src/components/overlay/Popover.tsx
 var RadixPopover = __toESM(require("@radix-ui/react-popover"), 1);
-var import_jsx_runtime27 = require("react/jsx-runtime");
+var import_jsx_runtime28 = require("react/jsx-runtime");
 var Popover = RadixPopover.Root;
 var PopoverTrigger = RadixPopover.Trigger;
 function PopoverContent({
@@ -1145,7 +1166,7 @@ function PopoverContent({
   sideOffset = 4,
   ...props
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(RadixPopover.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(RadixPopover.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
     RadixPopover.Content,
     {
       align,
@@ -1164,16 +1185,16 @@ function PopoverContent({
 
 // src/components/overlay/Tooltip.tsx
 var RadixTooltip = __toESM(require("@radix-ui/react-tooltip"), 1);
-var import_jsx_runtime28 = require("react/jsx-runtime");
+var import_jsx_runtime29 = require("react/jsx-runtime");
 function Tooltip({
   content,
   children,
   side = "top",
   delayDuration = 200
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(RadixTooltip.Provider, { delayDuration, children: /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(RadixTooltip.Root, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(RadixTooltip.Trigger, { asChild: true, children }),
-    /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(RadixTooltip.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(RadixTooltip.Provider, { delayDuration, children: /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(RadixTooltip.Root, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(RadixTooltip.Trigger, { asChild: true, children }),
+    /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(RadixTooltip.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
       RadixTooltip.Content,
       {
         side,
@@ -1186,13 +1207,13 @@ function Tooltip({
 }
 
 // src/components/divider/Divider.tsx
-var import_jsx_runtime29 = require("react/jsx-runtime");
+var import_jsx_runtime30 = require("react/jsx-runtime");
 function Divider({
   orientation = "horizontal",
   className,
   ...props
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
     "hr",
     {
       role: "separator",
@@ -1210,7 +1231,7 @@ function Divider({
 // src/components/navigation/Tabs.tsx
 var import_react2 = require("react");
 var import_class_variance_authority5 = require("class-variance-authority");
-var import_jsx_runtime30 = require("react/jsx-runtime");
+var import_jsx_runtime31 = require("react/jsx-runtime");
 var TabsContext = (0, import_react2.createContext)(null);
 function useTabsContext() {
   const ctx = (0, import_react2.useContext)(TabsContext);
@@ -1255,7 +1276,7 @@ function Tabs({
   const unregisterTab = (0, import_react2.useCallback)((tabValue) => {
     registeredTabs.current.delete(tabValue);
   }, []);
-  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
     TabsContext.Provider,
     {
       value: {
@@ -1266,7 +1287,7 @@ function Tabs({
         registerTab,
         unregisterTab
       },
-      children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("div", { className, children })
+      children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("div", { className, children })
     }
   );
 }
@@ -1280,7 +1301,7 @@ function TabsList({
   const ctx = useTabsContext();
   const resolvedVariant = variant ?? ctx.variant;
   const resolvedSize = size ?? ctx.size;
-  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
     TabsContext.Provider,
     {
       value: {
@@ -1288,13 +1309,13 @@ function TabsList({
         variant: resolvedVariant,
         size: resolvedSize
       },
-      children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+      children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
         "div",
         {
           role: "tablist",
           "aria-orientation": "horizontal",
           className: cn(
-            "flex items-center overflow-x-auto scrollbar-none",
+            "flex items-center overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
             resolvedVariant === "underline" && "border-b border-border",
             resolvedVariant === "pill" && "bg-surface-subtle rounded-lg p-1",
             fullWidth && "[&>button]:flex-1",
@@ -1308,15 +1329,15 @@ function TabsList({
 }
 var tabsTriggerVariants = (0, import_class_variance_authority5.cva)(
   [
-    "inline-flex items-center justify-center cursor-pointer whitespace-nowrap transition-colors",
+    "inline-flex items-center justify-center cursor-pointer whitespace-nowrap shrink-0 transition-colors",
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]",
     "disabled:pointer-events-none disabled:text-disabled-foreground"
   ],
   {
     variants: {
       variant: {
-        underline: "border-b-2 border-transparent -mb-px text-muted-foreground hover:text-foreground hover:bg-brand-accent-subtle data-[state=active]:border-brand-primary data-[state=active]:text-brand-primary",
-        pill: "rounded-md text-muted-foreground hover:text-foreground hover:bg-brand-accent-subtle data-[state=active]:bg-brand-primary data-[state=active]:text-brand-foreground"
+        underline: "border-b-2 border-transparent -mb-px text-muted-foreground hover:text-foreground data-[state=active]:border-brand-accent data-[state=active]:text-foreground",
+        pill: "rounded-md text-muted-foreground hover:text-foreground data-[state=active]:bg-brand-accent-subtle data-[state=active]:text-foreground"
       },
       size: {
         sm: "type-body-sm px-3 py-1.5",
@@ -1380,7 +1401,7 @@ function TabsTrigger({ value, disabled, className, children }) {
       ctx.onValueChange(nextValue);
     }
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
     "button",
     {
       role: "tab",
@@ -1410,7 +1431,7 @@ function TabsContent({ value, className, children }) {
   if (!isActive) return null;
   const triggerId = `tab-${value}`;
   const panelId = `tabpanel-${value}`;
-  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
     "div",
     {
       role: "tabpanel",
@@ -1469,6 +1490,7 @@ var DS_VERSION = "0.1.0";
   SelectItem,
   SelectSeparator,
   SelectTrigger,
+  Skeleton,
   Switch,
   Tabs,
   TabsContent,
