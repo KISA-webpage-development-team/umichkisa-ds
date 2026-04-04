@@ -6,6 +6,8 @@ import * as react from 'react';
 import * as lucide_react from 'lucide-react';
 import * as RadixSelect from '@radix-ui/react-select';
 import * as RadixRadioGroup from '@radix-ui/react-radio-group';
+import { ToasterProps as ToasterProps$1 } from 'sonner';
+export { toast } from 'sonner';
 import * as RadixDialog from '@radix-ui/react-dialog';
 import * as RadixDropdown from '@radix-ui/react-dropdown-menu';
 import * as RadixPopover from '@radix-ui/react-popover';
@@ -269,6 +271,9 @@ type UnexpectedErrorProps = {
 };
 declare function UnexpectedError({ onRetry }: UnexpectedErrorProps): react_jsx_runtime.JSX.Element;
 
+type ToasterProps = Pick<ToasterProps$1, "position" | "duration" | "expand" | "visibleToasts" | "closeButton" | "offset" | "gap" | "dir" | "className" | "style">;
+declare function Toaster({ position, duration, closeButton, ...props }: ToasterProps): react_jsx_runtime.JSX.Element;
+
 type DialogProps = React.ComponentPropsWithoutRef<typeof RadixDialog.Root>;
 declare function Dialog(props: DialogProps): react_jsx_runtime.JSX.Element;
 type DialogTriggerProps = React.ComponentPropsWithoutRef<typeof RadixDialog.Trigger>;
@@ -386,4 +391,4 @@ declare function TabsContent({ value, className, children }: TabsContentProps): 
 
 declare const DS_VERSION = "0.1.0";
 
-export { Alert, type AlertProps, Avatar, type AvatarProps, Badge, type BadgeProps, Button, type ButtonProps, Checkbox, type CheckboxProps, Container, type ContainerProps, DS_VERSION, Dialog, DialogClose, type DialogCloseProps, DialogContent, type DialogContentProps, DialogDescription, type DialogDescriptionProps, DialogFooter, type DialogFooterProps, type DialogProps, DialogTitle, type DialogTitleProps, DialogTrigger, type DialogTriggerProps, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownGroup, type DropdownGroupProps, DropdownItem, type DropdownItemProps, type DropdownProps, DropdownSeparator, DropdownTrigger, type DropdownTriggerProps, FormItem, type FormItemProps, Grid, type GridColumns, type GridProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, RadioGroup, type RadioGroupProps, RadioItem, type RadioItemProps, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Skeleton, type SkeletonProps, Switch, type SwitchProps, Tabs, TabsContent, type TabsContentProps, TabsList, type TabsListProps, type TabsProps, TabsTrigger, type TabsTriggerProps, Textarea, type TextareaProps, ToggleBar, type ToggleBarItem, type ToggleBarProps, Tooltip, type TooltipProps, UnexpectedError, type UnexpectedErrorProps, alertVariants, avatarVariants, badgeVariants, buttonVariants, cn, tabsTriggerVariants };
+export { Alert, type AlertProps, Avatar, type AvatarProps, Badge, type BadgeProps, Button, type ButtonProps, Checkbox, type CheckboxProps, Container, type ContainerProps, DS_VERSION, Dialog, DialogClose, type DialogCloseProps, DialogContent, type DialogContentProps, DialogDescription, type DialogDescriptionProps, DialogFooter, type DialogFooterProps, type DialogProps, DialogTitle, type DialogTitleProps, DialogTrigger, type DialogTriggerProps, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownGroup, type DropdownGroupProps, DropdownItem, type DropdownItemProps, type DropdownProps, DropdownSeparator, DropdownTrigger, type DropdownTriggerProps, FormItem, type FormItemProps, Grid, type GridColumns, type GridProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, RadioGroup, type RadioGroupProps, RadioItem, type RadioItemProps, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Skeleton, type SkeletonProps, Switch, type SwitchProps, Tabs, TabsContent, type TabsContentProps, TabsList, type TabsListProps, type TabsProps, TabsTrigger, type TabsTriggerProps, Textarea, type TextareaProps, Toaster, type ToasterProps, ToggleBar, type ToggleBarItem, type ToggleBarProps, Tooltip, type TooltipProps, UnexpectedError, type UnexpectedErrorProps, alertVariants, avatarVariants, badgeVariants, buttonVariants, cn, tabsTriggerVariants };
