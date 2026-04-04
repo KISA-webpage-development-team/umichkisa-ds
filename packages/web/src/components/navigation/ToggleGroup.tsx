@@ -13,7 +13,6 @@ export type ToggleGroupProps = {
   value: string;
   onValueChange: (value: string) => void;
   items: ToggleGroupItem[];
-  size?: "sm" | "md";
   fullWidth?: boolean;
   className?: string;
 };
@@ -22,7 +21,6 @@ export function ToggleGroup({
   value,
   onValueChange,
   items,
-  size = "md",
   fullWidth = false,
   className,
 }: ToggleGroupProps) {
@@ -67,8 +65,6 @@ export function ToggleGroup({
     [items.length, focusItem]
   );
 
-  const isSmall = size === "sm";
-
   return (
     <div
       role="radiogroup"
@@ -93,10 +89,7 @@ export function ToggleGroup({
             onClick={() => onValueChange(item.value)}
             onKeyDown={(e) => handleKeyDown(e, index)}
             className={cn(
-              "flex items-center cursor-pointer transition-colors rounded-md",
-              isSmall
-                ? "type-body-sm px-2.5 py-1 gap-1"
-                : "type-body px-3 py-1.5 gap-2",
+              "flex items-center cursor-pointer transition-colors rounded-md type-body-sm px-2.5 py-1 gap-1",
               fullWidth && "flex-1 justify-center",
               isSelected
                 ? "bg-brand-primary text-brand-foreground !font-semibold"

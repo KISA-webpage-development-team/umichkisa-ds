@@ -26,7 +26,6 @@ const [pageSize, setPageSize] = useState('10')
 <ToggleGroup
   value={pageSize}
   onValueChange={setPageSize}
-  size="sm"
   items={[
     { value: '10', label: '10' },
     { value: '25', label: '25' },
@@ -97,17 +96,14 @@ export default function ToggleGroupPage() {
       {/* Page size selector */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">Page size selector</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Compact selector for rows-per-page in a data table.
-        Uses{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size=&quot;sm&quot;</code>{' '}
-        for a smaller footprint that fits inline with table controls.
+        Text-only items for a compact inline selector, such as rows-per-page
+        in a data table.
       </p>
       <ComponentPreview code={pageSizeCode}>
         <div className="w-full">
           <ToggleGroup
             value={pageSize}
             onValueChange={setPageSize}
-            size="sm"
             items={[
               { value: '10', label: '10' },
               { value: '25', label: '25' },
@@ -172,12 +168,6 @@ export default function ToggleGroupPage() {
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ToggleGroupItem[]</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">—</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Array of options to display. See ToggleGroupItem below.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;sm&quot; | &quot;md&quot;</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;md&quot;</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Controls text size and padding.</td>
             </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">fullWidth</code></td>
