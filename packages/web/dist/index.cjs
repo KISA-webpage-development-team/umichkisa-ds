@@ -200,6 +200,7 @@ var registry = {
   "lock": import_lucide_react.Lock,
   "log-in": import_lucide_react.LogIn,
   "mail": import_lucide_react.Mail,
+  "menu": import_lucide_react.Menu,
   "message-square": import_lucide_react.MessageSquare,
   "minus": import_lucide_react.Minus,
   "pencil": import_lucide_react.Pencil,
