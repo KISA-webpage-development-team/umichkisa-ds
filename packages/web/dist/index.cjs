@@ -70,6 +70,7 @@ __export(src_exports, {
   Label: () => Label,
   LinkButton: () => LinkButton,
   LoadingSpinner: () => LoadingSpinner,
+  Pagination: () => Pagination,
   Popover: () => Popover,
   PopoverContent: () => PopoverContent,
   PopoverTrigger: () => PopoverTrigger,
@@ -165,6 +166,7 @@ var registry = {
   "arrow-left": import_lucide_react.ArrowLeft,
   "arrow-right": import_lucide_react.ArrowRight,
   "check": import_lucide_react.Check,
+  "chevron-left": import_lucide_react.ChevronLeft,
   "chevron-right": import_lucide_react.ChevronRight,
   "chevron-down": import_lucide_react.ChevronDown,
   "circle-check": import_lucide_react.CircleCheck,
@@ -1713,6 +1715,137 @@ function TabsContent({ value, className, children }) {
   );
 }
 
+// src/components/navigation/Pagination.tsx
+var import_jsx_runtime33 = require("react/jsx-runtime");
+function computePaginationRange(page, totalPages, siblingCount) {
+  const range = /* @__PURE__ */ new Set();
+  range.add(1);
+  range.add(totalPages);
+  const start = Math.max(2, page - siblingCount);
+  const end = Math.min(totalPages - 1, page + siblingCount);
+  for (let i = start; i <= end; i++) {
+    range.add(i);
+  }
+  const sorted = Array.from(range).sort((a, b) => a - b);
+  const result = [];
+  for (let i = 0; i < sorted.length; i++) {
+    if (i > 0 && sorted[i] - sorted[i - 1] > 1) {
+      result.push("ellipsis");
+    }
+    result.push(sorted[i]);
+  }
+  return result;
+}
+var pageButtonBase = [
+  "inline-flex items-center justify-center",
+  "h-9 min-w-9 rounded-md type-body-sm",
+  "transition-colors duration-150",
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]"
+].join(" ");
+function Pagination({
+  page,
+  totalPages,
+  onPageChange,
+  siblingCount = 1,
+  className
+}) {
+  const fullRange = computePaginationRange(page, totalPages, siblingCount);
+  const mobileRange = computePaginationRange(page, totalPages, 0);
+  const mobileSet = new Set(
+    mobileRange.map((item, i) => item === "ellipsis" ? `ellipsis-${i}` : String(item))
+  );
+  const isPrevDisabled = page <= 1;
+  const isNextDisabled = page >= totalPages;
+  return /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)("nav", { "aria-label": "Pagination", className: cn("flex items-center justify-center gap-1", className), children: [
+    /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
+      "button",
+      {
+        type: "button",
+        "aria-label": "Previous page",
+        disabled: isPrevDisabled,
+        "aria-disabled": isPrevDisabled ? "true" : void 0,
+        onClick: () => onPageChange(page - 1),
+        className: cn(
+          pageButtonBase,
+          "relative after:absolute after:inset-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:min-w-[44px] after:min-h-[44px] after:content-['']",
+          "text-foreground",
+          isPrevDisabled ? "text-disabled-foreground cursor-not-allowed" : "hover:bg-surface-subtle cursor-pointer"
+        ),
+        children: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Icon, { name: "chevron-left", size: "sm" })
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("div", { className: "hidden md:flex items-center gap-1", children: fullRange.map(
+      (item, index) => item === "ellipsis" ? /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
+        "span",
+        {
+          "aria-hidden": "true",
+          className: "inline-flex items-center justify-center h-9 min-w-9 type-body-sm text-muted-foreground select-none",
+          children: "..."
+        },
+        `ellipsis-${index}`
+      ) : /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
+        "button",
+        {
+          type: "button",
+          "aria-label": `Page ${item}`,
+          "aria-current": item === page ? "page" : void 0,
+          onClick: () => onPageChange(item),
+          className: cn(
+            pageButtonBase,
+            "cursor-pointer",
+            item === page ? "bg-brand-primary text-brand-foreground" : "text-foreground hover:bg-surface-subtle"
+          ),
+          children: item
+        },
+        item
+      )
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("div", { className: "flex md:hidden items-center gap-1", children: mobileRange.map(
+      (item, index) => item === "ellipsis" ? /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
+        "span",
+        {
+          "aria-hidden": "true",
+          className: "inline-flex items-center justify-center h-9 min-w-9 type-body-sm text-muted-foreground select-none",
+          children: "..."
+        },
+        `ellipsis-${index}`
+      ) : /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
+        "button",
+        {
+          type: "button",
+          "aria-label": `Page ${item}`,
+          "aria-current": item === page ? "page" : void 0,
+          onClick: () => onPageChange(item),
+          className: cn(
+            pageButtonBase,
+            "cursor-pointer",
+            item === page ? "bg-brand-primary text-brand-foreground" : "text-foreground hover:bg-surface-subtle"
+          ),
+          children: item
+        },
+        item
+      )
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
+      "button",
+      {
+        type: "button",
+        "aria-label": "Next page",
+        disabled: isNextDisabled,
+        "aria-disabled": isNextDisabled ? "true" : void 0,
+        onClick: () => onPageChange(page + 1),
+        className: cn(
+          pageButtonBase,
+          "relative after:absolute after:inset-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:min-w-[44px] after:min-h-[44px] after:content-['']",
+          "text-foreground",
+          isNextDisabled ? "text-disabled-foreground cursor-not-allowed" : "hover:bg-surface-subtle cursor-pointer"
+        ),
+        children: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Icon, { name: "chevron-right", size: "sm" })
+      }
+    )
+  ] });
+}
+
 // src/index.ts
 var DS_VERSION = "0.1.0";
 // Annotate the CommonJS export names for ESM import in node:
@@ -1756,6 +1889,7 @@ var DS_VERSION = "0.1.0";
   Label,
   LinkButton,
   LoadingSpinner,
+  Pagination,
   Popover,
   PopoverContent,
   PopoverTrigger,
