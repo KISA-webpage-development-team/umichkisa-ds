@@ -1,8 +1,7 @@
-'use client'
-
-import { useState } from 'react'
 import { Container, Tabs, TabsList, TabsTrigger, TabsContent, FormItem, Input } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
+import { ControlledDemo } from './_demos'
 
 const basicCode = `import { Container, Tabs, TabsList, TabsTrigger, TabsContent, FormItem, Input } from '@umichkisa-ds/web'
 
@@ -162,8 +161,22 @@ const [activeTab, setActiveTab] = useState('members')
   <p>Active tab: {activeTab}</p>
 </Container>`
 
-export default function TabsPage() {
-  const [activeTab, setActiveTab] = useState('members')
+export default async function TabsPage() {
+  const [
+    basicHighlighted,
+    pillHighlighted,
+    sizeHighlighted,
+    fullWidthHighlighted,
+    disabledHighlighted,
+    controlledHighlighted,
+  ] = await Promise.all([
+    highlight(basicCode),
+    highlight(pillCode),
+    highlight(sizeCode),
+    highlight(fullWidthCode),
+    highlight(disabledCode),
+    highlight(controlledCode),
+  ])
 
   return (
     <Container size="md" as="article">
@@ -188,7 +201,7 @@ export default function TabsPage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         Underline variant (default) with three tab panels.
       </p>
-      <ComponentPreview code={basicCode}>
+      <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
         <Container size="sm">
           <Tabs defaultValue="account">
             <TabsList>
@@ -221,7 +234,7 @@ export default function TabsPage() {
         </code>{' '}
         on TabsList for a contained, rounded style.
       </p>
-      <ComponentPreview code={pillCode}>
+      <ComponentPreview code={pillCode} highlightedCode={pillHighlighted}>
         <Container size="sm">
           <Tabs defaultValue="account">
             <TabsList variant="pill">
@@ -254,7 +267,7 @@ export default function TabsPage() {
         </code>{' '}
         prop on TabsList.
       </p>
-      <ComponentPreview code={sizeCode}>
+      <ComponentPreview code={sizeCode} highlightedCode={sizeHighlighted}>
         <Container size="sm">
           <div className="flex flex-col gap-8">
             <div>
@@ -308,7 +321,7 @@ export default function TabsPage() {
         </code>{' '}
         to stretch triggers to fill the container.
       </p>
-      <ComponentPreview code={fullWidthCode}>
+      <ComponentPreview code={fullWidthCode} highlightedCode={fullWidthHighlighted}>
         <Container size="sm">
           <Tabs defaultValue="overview">
             <TabsList fullWidth>
@@ -342,7 +355,7 @@ export default function TabsPage() {
         prop on a TabsTrigger to prevent interaction. Disabled triggers are
         skipped during keyboard navigation.
       </p>
-      <ComponentPreview code={disabledCode}>
+      <ComponentPreview code={disabledCode} highlightedCode={disabledHighlighted}>
         <Container size="sm">
           <Tabs defaultValue="general">
             <TabsList>
@@ -377,28 +390,8 @@ export default function TabsPage() {
         for controlled state. Useful when syncing tab selection with URL
         parameters or external state.
       </p>
-      <ComponentPreview code={controlledCode}>
-        <Container size="sm">
-          <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList>
-              <TabsTrigger value="members">Members</TabsTrigger>
-              <TabsTrigger value="roles">Roles</TabsTrigger>
-              <TabsTrigger value="invites">Invites</TabsTrigger>
-            </TabsList>
-            <TabsContent value="members">
-              <FormItem htmlFor="ctrl-search" label="Search members"><Input id="ctrl-search" placeholder="Search by name" /></FormItem>
-            </TabsContent>
-            <TabsContent value="roles">
-              <FormItem htmlFor="ctrl-role" label="Role name"><Input id="ctrl-role" placeholder="Admin" /></FormItem>
-            </TabsContent>
-            <TabsContent value="invites">
-              <FormItem htmlFor="ctrl-email" label="Email address"><Input id="ctrl-email" placeholder="user@example.com" /></FormItem>
-            </TabsContent>
-          </Tabs>
-          <p className="type-body-sm text-muted-foreground mt-3">
-            Active tab: <span className="text-foreground">{activeTab}</span>
-          </p>
-        </Container>
+      <ComponentPreview code={controlledCode} highlightedCode={controlledHighlighted}>
+        <ControlledDemo />
       </ComponentPreview>
 
       {/* Accessibility */}

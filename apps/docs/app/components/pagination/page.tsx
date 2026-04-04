@@ -1,8 +1,7 @@
-'use client'
-
-import { useState } from 'react'
-import { Container, Pagination } from '@umichkisa-ds/web'
+import { Container } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
+import { BasicDemo, ManyPagesDemo, SiblingCountDemo, FewPagesDemo } from './_demos'
 
 const basicCode = `import { useState } from 'react'
 import { Pagination } from '@umichkisa-ds/web'
@@ -66,11 +65,18 @@ function Announcements() {
   )
 }`
 
-export default function PaginationPage() {
-  const [basicPage, setBasicPage] = useState(1)
-  const [manyPage, setManyPage] = useState(25)
-  const [siblingPage, setSiblingPage] = useState(15)
-  const [fewPage, setFewPage] = useState(1)
+export default async function PaginationPage() {
+  const [
+    basicHighlighted,
+    manyPagesHighlighted,
+    siblingCountHighlighted,
+    fewPagesHighlighted,
+  ] = await Promise.all([
+    highlight(basicCode),
+    highlight(manyPagesCode),
+    highlight(siblingCountCode),
+    highlight(fewPagesCode),
+  ])
 
   return (
     <Container size="md" as="article">
@@ -96,12 +102,8 @@ export default function PaginationPage() {
         A simple paginated list with 10 pages. Click the page numbers or arrows
         to navigate.
       </p>
-      <ComponentPreview code={basicCode}>
-        <Pagination
-          page={basicPage}
-          totalPages={10}
-          onPageChange={setBasicPage}
-        />
+      <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
+        <BasicDemo />
       </ComponentPreview>
 
       {/* Many pages */}
@@ -111,12 +113,8 @@ export default function PaginationPage() {
         sibling pages (the page numbers immediately left and right of the current
         page). Navigate to see the window shift.
       </p>
-      <ComponentPreview code={manyPagesCode}>
-        <Pagination
-          page={manyPage}
-          totalPages={49}
-          onPageChange={setManyPage}
-        />
+      <ComponentPreview code={manyPagesCode} highlightedCode={manyPagesHighlighted}>
+        <ManyPagesDemo />
       </ComponentPreview>
 
       {/* Custom sibling count */}
@@ -127,13 +125,8 @@ export default function PaginationPage() {
         {' '}to show more page numbers around the current page. Useful for search
         results or data tables where users jump between nearby pages frequently.
       </p>
-      <ComponentPreview code={siblingCountCode}>
-        <Pagination
-          page={siblingPage}
-          totalPages={30}
-          onPageChange={setSiblingPage}
-          siblingCount={2}
-        />
+      <ComponentPreview code={siblingCountCode} highlightedCode={siblingCountHighlighted}>
+        <SiblingCountDemo />
       </ComponentPreview>
 
       {/* Few pages */}
@@ -142,12 +135,8 @@ export default function PaginationPage() {
         When the total number of pages is small, all page numbers display without
         ellipsis. The previous button is disabled on the first page.
       </p>
-      <ComponentPreview code={fewPagesCode}>
-        <Pagination
-          page={fewPage}
-          totalPages={3}
-          onPageChange={setFewPage}
-        />
+      <ComponentPreview code={fewPagesCode} highlightedCode={fewPagesHighlighted}>
+        <FewPagesDemo />
       </ComponentPreview>
 
       {/* -- API Reference -------------------------------------------- */}

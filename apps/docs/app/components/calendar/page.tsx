@@ -1,10 +1,7 @@
-'use client'
-
-import { useState } from 'react'
-import { Container, Calendar, Button, Icon } from '@umichkisa-ds/web'
-import type { DateRange } from '@umichkisa-ds/web'
+import { Container } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
-import { format, addMonths, subMonths } from 'date-fns'
+import { highlight } from '@/lib/highlight'
+import { SingleDateDemo, RangeDemo, DisabledDatesDemo, MultiMonthDemo, ControlledMonthDemo } from './_demos'
 
 const basicCode = `import { useState } from 'react'
 import { Calendar } from '@umichkisa-ds/web'
@@ -118,13 +115,20 @@ function NavigableCalendar() {
   )
 }`
 
-export default function CalendarPage() {
-  const [singleDate, setSingleDate] = useState<Date | undefined>()
-  const [range, setRange] = useState<DateRange | undefined>()
-  const [disabledDate, setDisabledDate] = useState<Date | undefined>()
-  const [multiRange, setMultiRange] = useState<DateRange | undefined>()
-  const [controlledMonth, setControlledMonth] = useState(new Date())
-  const [controlledDate, setControlledDate] = useState<Date | undefined>()
+export default async function CalendarPage() {
+  const [
+    basicHighlighted,
+    rangeHighlighted,
+    disabledHighlighted,
+    multiMonthHighlighted,
+    controlledMonthHighlighted,
+  ] = await Promise.all([
+    highlight(basicCode),
+    highlight(rangeCode),
+    highlight(disabledCode),
+    highlight(multiMonthCode),
+    highlight(controlledMonthCode),
+  ])
 
   return (
     <Container size="md" as="article">
@@ -148,19 +152,8 @@ export default function CalendarPage() {
         Select a single date, such as scheduling a meeting. The selected date
         is highlighted with the brand primary color.
       </p>
-      <ComponentPreview code={basicCode}>
-        <div className="w-full flex flex-col items-center gap-2">
-          <Calendar
-            mode="single"
-            selected={singleDate}
-            onSelect={setSingleDate}
-          />
-          {singleDate && (
-            <p className="type-body-sm text-foreground">
-              Meeting scheduled for {format(singleDate, 'MMMM d, yyyy')}
-            </p>
-          )}
-        </div>
+      <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
+        <SingleDateDemo />
       </ComponentPreview>
 
       {/* Range selection */}
@@ -169,21 +162,8 @@ export default function CalendarPage() {
         Select a date range for scenarios like booking a stay. Click once to
         set the start date, then click again to set the end date.
       </p>
-      <ComponentPreview code={rangeCode}>
-        <div className="w-full flex flex-col items-center gap-2">
-          <Calendar
-            mode="range"
-            selected={range}
-            onSelect={setRange}
-          />
-          {range?.from && (
-            <p className="type-body-sm text-foreground">
-              {range.to
-                ? `${format(range.from, 'MMM d')} — ${format(range.to, 'MMM d, yyyy')}`
-                : `Check-in: ${format(range.from, 'MMM d, yyyy')}`}
-            </p>
-          )}
-        </div>
+      <ComponentPreview code={rangeCode} highlightedCode={rangeHighlighted}>
+        <RangeDemo />
       </ComponentPreview>
 
       {/* Disabled dates */}
@@ -193,15 +173,8 @@ export default function CalendarPage() {
         ensure only future dates can be selected — useful for event
         registration or appointment booking.
       </p>
-      <ComponentPreview code={disabledCode}>
-        <div className="w-full flex flex-col items-center">
-          <Calendar
-            mode="single"
-            selected={disabledDate}
-            onSelect={setDisabledDate}
-            disabled={{ before: new Date() }}
-          />
-        </div>
+      <ComponentPreview code={disabledCode} highlightedCode={disabledHighlighted}>
+        <DisabledDatesDemo />
       </ComponentPreview>
 
       {/* Multiple months */}
@@ -210,20 +183,8 @@ export default function CalendarPage() {
         Display two months side by side for easier range selection. On mobile,
         the months stack vertically automatically.
       </p>
-      <ComponentPreview code={multiMonthCode}>
-        <div className="w-full flex flex-col items-center gap-2">
-          <Calendar
-            mode="range"
-            selected={multiRange}
-            onSelect={setMultiRange}
-            numberOfMonths={2}
-          />
-          {multiRange?.from && multiRange?.to && (
-            <p className="type-body-sm text-foreground">
-              {format(multiRange.from, 'MMM d')} — {format(multiRange.to, 'MMM d, yyyy')}
-            </p>
-          )}
-        </div>
+      <ComponentPreview code={multiMonthCode} highlightedCode={multiMonthHighlighted}>
+        <MultiMonthDemo />
       </ComponentPreview>
 
       {/* Controlled month */}
@@ -233,27 +194,8 @@ export default function CalendarPage() {
         need to programmatically jump to a specific month, such as navigating
         to an event date.
       </p>
-      <ComponentPreview code={controlledMonthCode}>
-        <div className="w-full flex flex-col items-center">
-          <div className="flex items-center justify-between w-[280px] mb-2">
-            <Button variant="secondary" size="sm" onClick={() => setControlledMonth(subMonths(controlledMonth, 1))}>
-              <Icon name="chevron-left" size="sm" /> Prev
-            </Button>
-            <span className="type-body-sm !font-semibold text-foreground">
-              {format(controlledMonth, 'MMMM yyyy')}
-            </span>
-            <Button variant="secondary" size="sm" onClick={() => setControlledMonth(addMonths(controlledMonth, 1))}>
-              Next <Icon name="chevron-right" size="sm" />
-            </Button>
-          </div>
-          <Calendar
-            mode="single"
-            selected={controlledDate}
-            onSelect={setControlledDate}
-            month={controlledMonth}
-            onMonthChange={setControlledMonth}
-          />
-        </div>
+      <ComponentPreview code={controlledMonthCode} highlightedCode={controlledMonthHighlighted}>
+        <ControlledMonthDemo />
       </ComponentPreview>
 
       {/* -- API Reference -------------------------------------------- */}

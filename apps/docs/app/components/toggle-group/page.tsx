@@ -1,8 +1,7 @@
-'use client'
-
-import { useState } from 'react'
-import { Container, ToggleGroup, Icon } from '@umichkisa-ds/web'
+import { Container } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
+import { ContentViewDemo, PageSizeDemo, FullWidthDemo } from './_demos'
 
 const contentViewCode = `import { useState } from 'react'
 import { ToggleGroup, Icon } from '@umichkisa-ds/web'
@@ -48,10 +47,16 @@ const [view, setView] = useState('posts')
   ]}
 />`
 
-export default function ToggleGroupPage() {
-  const [view, setView] = useState('posts')
-  const [pageSize, setPageSize] = useState('10')
-  const [fullWidthView, setFullWidthView] = useState('posts')
+export default async function ToggleGroupPage() {
+  const [
+    contentViewHighlighted,
+    pageSizeHighlighted,
+    fullWidthHighlighted,
+  ] = await Promise.all([
+    highlight(contentViewCode),
+    highlight(pageSizeCode),
+    highlight(fullWidthCode),
+  ])
 
   return (
     <Container size="md" as="article">
@@ -80,17 +85,8 @@ export default function ToggleGroupPage() {
         user profile board with Posts and Comments views. Each item includes
         an icon for quick visual identification.
       </p>
-      <ComponentPreview code={contentViewCode}>
-        <div className="w-full">
-          <ToggleGroup
-            value={view}
-            onValueChange={setView}
-            items={[
-              { value: 'posts', label: 'Posts', icon: <Icon name="list" size="sm" /> },
-              { value: 'comments', label: 'Comments', icon: <Icon name="message-square" size="sm" /> },
-            ]}
-          />
-        </div>
+      <ComponentPreview code={contentViewCode} highlightedCode={contentViewHighlighted}>
+        <ContentViewDemo />
       </ComponentPreview>
 
       {/* Page size selector */}
@@ -99,18 +95,8 @@ export default function ToggleGroupPage() {
         Text-only items for a compact inline selector, such as rows-per-page
         in a data table.
       </p>
-      <ComponentPreview code={pageSizeCode}>
-        <div className="w-full">
-          <ToggleGroup
-            value={pageSize}
-            onValueChange={setPageSize}
-            items={[
-              { value: '10', label: '10' },
-              { value: '25', label: '25' },
-              { value: '50', label: '50' },
-            ]}
-          />
-        </div>
+      <ComponentPreview code={pageSizeCode} highlightedCode={pageSizeHighlighted}>
+        <PageSizeDemo />
       </ComponentPreview>
 
       {/* Full width */}
@@ -121,18 +107,8 @@ export default function ToggleGroupPage() {
         to distribute items evenly across the container. Useful when the
         ToggleGroup spans the full width of a content section.
       </p>
-      <ComponentPreview code={fullWidthCode}>
-        <div className="w-full">
-          <ToggleGroup
-            value={fullWidthView}
-            onValueChange={setFullWidthView}
-            fullWidth
-            items={[
-              { value: 'posts', label: 'Posts', icon: <Icon name="list" size="sm" /> },
-              { value: 'comments', label: 'Comments', icon: <Icon name="message-square" size="sm" /> },
-            ]}
-          />
-        </div>
+      <ComponentPreview code={fullWidthCode} highlightedCode={fullWidthHighlighted}>
+        <FullWidthDemo />
       </ComponentPreview>
 
       {/* -- API Reference -------------------------------------------- */}

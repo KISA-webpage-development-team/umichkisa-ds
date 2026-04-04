@@ -1,10 +1,7 @@
-'use client'
-
-import { useState } from 'react'
-import { Container, Toaster, toast, Button } from '@umichkisa-ds/web'
+import { Container } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
-
-type Position = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right'
+import { highlight } from '@/lib/highlight'
+import { BasicDemo, VariantsDemo, DescriptionDemo, ActionDemo, PromiseDemo, PositionDemo } from './_demos'
 
 const setupCode = `// app/layout.tsx (or your root layout)
 import { Toaster } from '@umichkisa-ds/web'
@@ -76,19 +73,32 @@ const promiseCode = `import { toast } from '@umichkisa-ds/web'
   Save changes
 </Button>`
 
-const POSITIONS: Position[] = ['top-left', 'top-center', 'top-right', 'bottom-left', 'bottom-center', 'bottom-right']
-
 const positionCode = `import { Toaster } from '@umichkisa-ds/web'
 
 // Set position on the Toaster provider
 <Toaster position="bottom-right" />`
 
-export default function ToastPage() {
-  const [position, setPosition] = useState<Position>('top-center')
+export default async function ToastPage() {
+  const [
+    setupHighlighted,
+    basicHighlighted,
+    variantsHighlighted,
+    descriptionHighlighted,
+    actionHighlighted,
+    promiseHighlighted,
+    positionHighlighted,
+  ] = await Promise.all([
+    highlight(setupCode),
+    highlight(basicCode),
+    highlight(variantsCode),
+    highlight(descriptionCode),
+    highlight(actionCode),
+    highlight(promiseCode),
+    highlight(positionCode),
+  ])
 
   return (
     <Container size="md" as="article">
-      <Toaster position={position} />
 
       {/* -- Header -------------------------------------------------- */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Toast</h1>
@@ -115,7 +125,7 @@ export default function ToastPage() {
         that all <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">toast()</code> calls
         target.
       </p>
-      <ComponentPreview code={setupCode}>
+      <ComponentPreview code={setupCode} highlightedCode={setupHighlighted}>
         <div className="type-body-sm text-muted-foreground">
           Add the Toaster component to your root layout — see the code panel for
           the full example.
@@ -128,10 +138,8 @@ export default function ToastPage() {
         Call <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">toast()</code> from
         anywhere in your app. Pass a string message as the first argument.
       </p>
-      <ComponentPreview code={basicCode}>
-        <Button onClick={() => toast('Event has been created')}>
-          Show toast
-        </Button>
+      <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
+        <BasicDemo />
       </ComponentPreview>
 
       {/* -- Variants ------------------------------------------------ */}
@@ -145,24 +153,8 @@ export default function ToastPage() {
         add a colored left border, tinted background, and matching icon —
         consistent with the Alert component.
       </p>
-      <ComponentPreview code={variantsCode}>
-        <div className="flex flex-wrap gap-2">
-          <Button variant="secondary" onClick={() => toast('A neutral notification')}>
-            Default
-          </Button>
-          <Button variant="secondary" onClick={() => toast.info('This is an informational message')}>
-            Info
-          </Button>
-          <Button onClick={() => toast.success('Action completed successfully')}>
-            Success
-          </Button>
-          <Button variant="secondary" onClick={() => toast.warning('Please review before continuing')}>
-            Warning
-          </Button>
-          <Button variant="destructive" onClick={() => toast.error('Something went wrong')}>
-            Error
-          </Button>
-        </div>
+      <ComponentPreview code={variantsCode} highlightedCode={variantsHighlighted}>
+        <VariantsDemo />
       </ComponentPreview>
 
       {/* -- With Description ---------------------------------------- */}
@@ -171,10 +163,8 @@ export default function ToastPage() {
         Pass a <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">description</code> option
         to add secondary text below the title.
       </p>
-      <ComponentPreview code={descriptionCode}>
-        <Button onClick={() => toast('Event created', { description: 'Monday, January 3rd at 6:00 PM' })}>
-          With description
-        </Button>
+      <ComponentPreview code={descriptionCode} highlightedCode={descriptionHighlighted}>
+        <DescriptionDemo />
       </ComponentPreview>
 
       {/* -- With Action --------------------------------------------- */}
@@ -184,15 +174,8 @@ export default function ToastPage() {
         Provide a <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">label</code> and
         an <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">onClick</code> handler.
       </p>
-      <ComponentPreview code={actionCode}>
-        <Button onClick={() => toast('Event deleted', {
-          action: {
-            label: 'Undo',
-            onClick: () => console.log('Undo clicked'),
-          },
-        })}>
-          With action
-        </Button>
+      <ComponentPreview code={actionCode} highlightedCode={actionHighlighted}>
+        <ActionDemo />
       </ComponentPreview>
 
       {/* -- Promise ------------------------------------------------- */}
@@ -202,19 +185,8 @@ export default function ToastPage() {
         show loading, success, and error states for async operations. The toast
         updates automatically as the promise resolves or rejects.
       </p>
-      <ComponentPreview code={promiseCode}>
-        <Button onClick={() => {
-          toast.promise(
-            new Promise((resolve) => setTimeout(resolve, 2000)),
-            {
-              loading: 'Saving changes...',
-              success: 'Changes saved successfully',
-              error: 'Failed to save changes',
-            }
-          )
-        }}>
-          Save changes
-        </Button>
+      <ComponentPreview code={promiseCode} highlightedCode={promiseHighlighted}>
+        <PromiseDemo />
       </ComponentPreview>
 
       {/* -- Positioning --------------------------------------------- */}
@@ -224,30 +196,8 @@ export default function ToastPage() {
         on <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Toaster />'}</code> controls
         where toasts appear. Click a position below to try it out.
       </p>
-      <ComponentPreview code={positionCode}>
-        <div className="w-full px-6 flex flex-col gap-4">
-          <div className="grid grid-cols-3 gap-2">
-            {POSITIONS.map((pos) => (
-              <Button
-                key={pos}
-                variant={position === pos ? 'primary' : 'secondary'}
-                size="sm"
-                className="w-full"
-                onClick={() => {
-                  setPosition(pos)
-                  toast.dismiss()
-                  setTimeout(() => toast(`Position: ${pos}`), 100)
-                }}
-              >
-                {pos}
-              </Button>
-            ))}
-          </div>
-          <p className="type-caption text-muted-foreground text-center">
-            Current: <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{position}</code>.
-            On mobile, toasts automatically switch to full-width at the top of the screen.
-          </p>
-        </div>
+      <ComponentPreview code={positionCode} highlightedCode={positionHighlighted}>
+        <PositionDemo />
       </ComponentPreview>
 
       {/* -- API Reference ------------------------------------------- */}

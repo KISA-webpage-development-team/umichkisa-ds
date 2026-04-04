@@ -1,5 +1,3 @@
-'use client'
-
 import {
   Container,
   Table,
@@ -14,6 +12,8 @@ import {
   TableMobileItem,
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
+import { ClickableRowsDemo } from './_demos'
 
 const basicCode = `import {
   Table, TableHeader, TableBody, TableRow, TableHead, TableCell,
@@ -235,7 +235,21 @@ const responsiveCode = `import {
   </TableMobileList>
 </div>`
 
-export default function TablePage() {
+export default async function TablePage() {
+  const [
+    basicHighlighted,
+    bulletinHighlighted,
+    clickableHighlighted,
+    footerHighlighted,
+    responsiveHighlighted,
+  ] = await Promise.all([
+    highlight(basicCode),
+    highlight(bulletinCode),
+    highlight(clickableCode),
+    highlight(footerCode),
+    highlight(responsiveCode),
+  ])
+
   return (
     <Container size="md" as="article">
 
@@ -281,7 +295,7 @@ TableMobileList           {/* mobile alternative */}
         A member directory table with four columns. TableHeader provides column
         labels and TableBody holds the data rows.
       </p>
-      <ComponentPreview code={basicCode}>
+      <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
         <div className="w-full">
           <Table>
             <TableHeader>
@@ -337,7 +351,7 @@ TableMobileList           {/* mobile alternative */}
         </code>{' '}
         to visually distinguish pinned content from regular posts.
       </p>
-      <ComponentPreview code={bulletinCode}>
+      <ComponentPreview code={bulletinCode} highlightedCode={bulletinHighlighted}>
         <div className="w-full">
         <Table>
           <TableHeader>
@@ -397,43 +411,8 @@ TableMobileList           {/* mobile alternative */}
         handler to TableRow for navigable rows — ideal for bulletin boards
         where clicking a row opens the post.
       </p>
-      <ComponentPreview code={clickableCode}>
-        <div className="w-full">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>#</TableHead>
-                <TableHead>제목</TableHead>
-                <TableHead>작성자</TableHead>
-                <TableHead>날짜</TableHead>
-                <TableHead>조회</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow className="cursor-pointer" onClick={() => alert('Navigating to post 5')}>
-                <TableCell>5</TableCell>
-                <TableCell>겨울방학 스터디 모집합니다</TableCell>
-                <TableCell>김민수</TableCell>
-                <TableCell>2025-02-28</TableCell>
-                <TableCell>89</TableCell>
-              </TableRow>
-              <TableRow className="cursor-pointer" onClick={() => alert('Navigating to post 4')}>
-                <TableCell>4</TableCell>
-                <TableCell>족발 같이 시켜먹을 사람</TableCell>
-                <TableCell>이서연</TableCell>
-                <TableCell>2025-02-27</TableCell>
-                <TableCell>156</TableCell>
-              </TableRow>
-              <TableRow className="cursor-pointer" onClick={() => alert('Navigating to post 3')}>
-                <TableCell>3</TableCell>
-                <TableCell>기숙사 계약 관련 질문</TableCell>
-                <TableCell>박지훈</TableCell>
-                <TableCell>2025-02-26</TableCell>
-                <TableCell>67</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </div>
+      <ComponentPreview code={clickableCode} highlightedCode={clickableHighlighted}>
+        <ClickableRowsDemo />
       </ComponentPreview>
 
       {/* With Footer */}
@@ -446,7 +425,7 @@ TableMobileList           {/* mobile alternative */}
         </code>{' '}
         to merge cells for the summary label.
       </p>
-      <ComponentPreview code={footerCode}>
+      <ComponentPreview code={footerCode} highlightedCode={footerHighlighted}>
         <div className="w-full">
         <Table>
           <TableHeader>
@@ -499,7 +478,7 @@ TableMobileList           {/* mobile alternative */}
         array and render both layouts — CSS handles which one is visible.
       </p>
 
-      <ComponentPreview code={responsiveCode}>
+      <ComponentPreview code={responsiveCode} highlightedCode={responsiveHighlighted}>
         <div className="w-full flex flex-col gap-6">
           <div>
             <p className="type-label mb-2 text-muted-foreground">Desktop view</p>
