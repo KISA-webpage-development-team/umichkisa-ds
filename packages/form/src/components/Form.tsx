@@ -4,6 +4,13 @@ import {
   type FieldValues,
   type SubmitHandler,
 } from "react-hook-form";
+import { FormInput } from "./fields/FormInput";
+import { FormTextarea } from "./fields/FormTextarea";
+import { FormSelect } from "./fields/FormSelect";
+import { FormCheckbox } from "./fields/FormCheckbox";
+import { FormRadio } from "./fields/FormRadio";
+import { FormSwitch } from "./fields/FormSwitch";
+import { FormButton } from "./fields/FormButton";
 
 export type FormProps<T extends FieldValues = FieldValues> = {
   form: UseFormReturn<T>;
@@ -12,7 +19,7 @@ export type FormProps<T extends FieldValues = FieldValues> = {
   className?: string;
 };
 
-export function Form<T extends FieldValues = FieldValues>({
+function FormRoot<T extends FieldValues = FieldValues>({
   form,
   onSubmit,
   children,
@@ -30,3 +37,13 @@ export function Form<T extends FieldValues = FieldValues>({
     </FormProvider>
   );
 }
+
+export const Form = Object.assign(FormRoot, {
+  Input: FormInput,
+  Textarea: FormTextarea,
+  Select: FormSelect,
+  Checkbox: FormCheckbox,
+  Radio: FormRadio,
+  Switch: FormSwitch,
+  Button: FormButton,
+});
