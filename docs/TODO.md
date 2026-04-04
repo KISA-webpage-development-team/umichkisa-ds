@@ -115,5 +115,5 @@ Only show categories with ≥1 shipped component. When a batch ships a component
 ### Post-v1.0
 - [ ] Docs app Header & Sidebar redesign
 - [ ] Fill in index pages (/components, /foundation, etc.)
-- [ ] Label component — add `id` prop support for `aria-labelledby` patterns
+- [x] Label component — add `id` prop support for `aria-labelledby` patterns
 - [x] CodeBlock component — syntax-highlighted code blocks for docs (replace raw `<pre><code>`)
