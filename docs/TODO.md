@@ -101,7 +101,7 @@ Only show categories with ≥1 shipped component. When a batch ships a component
 - [x] Accordion (new)
 
 ### Batch 12 — Data display
-- [ ] Pagination (new)
+- [x] Pagination (new)
 - [ ] Table (new)
 
 ### Batch 13 — Standalone utilities

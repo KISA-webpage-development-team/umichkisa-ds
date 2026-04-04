@@ -88,6 +88,7 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 | Dialog | `/components/dialog` | ✅ Complete |
 | Dropdown | `/components/dropdown` | ✅ Complete |
 | Tabs | `/components/tabs` | ✅ Complete |
+| Pagination | `/components/pagination` | ✅ Complete |
 | Alert | `/components/alert` | ✅ Complete |
 | Skeleton | `/components/skeleton` | ✅ Complete |
 | LoadingSpinner | `/components/loading-spinner` | ✅ Complete |
@@ -143,6 +144,7 @@ The sidebar uses collapsible categories that auto-expand based on the current ro
 | `Popover` | overlay | ✅ | Uses `@radix-ui/react-popover`. Three exports (Popover, PopoverTrigger, PopoverContent). Full Radix Content props passthrough with defaults (`align="center"`, `sideOffset=4`). Fade/zoom/slide animations. `cn()` only. |
 | `Tooltip` | overlay | ✅ | Uses `@radix-ui/react-tooltip`. Single wrapper API (`<Tooltip content="..."><trigger /></Tooltip>`). Brand-styled bubble (navy bg + maize text). 4 props: content, children, side, delayDuration. Provider baked in per instance. |
 | `Tabs` | navigation | ✅ | Compound component (Tabs, TabsList, TabsTrigger, TabsContent). Built from scratch (no Radix). CVA on triggers (variant × size). Underline/pill variants, sm/md sizes, fullWidth, disabled triggers. Controlled + uncontrolled. Auto-selects first tab. Full keyboard nav (arrow keys, Home/End). Horizontal scroll overflow. |
+| `Pagination` | navigation | ✅ | Controlled only (page, totalPages, onPageChange). siblingCount prop (default 1). Responsive: mobile forces siblingCount=0 via CSS show/hide. Static ellipsis. Prev/next arrows with ::after touch targets. Nav landmark + aria-current. `cn()` only. |
 | `Avatar` | display | ✅ | Image with fallback chain: image → initials (from `name`) → icon (`user-round`). CVA `size` variant (sm 32px / md 40px / lg 56px). Brand background (`bg-brand-primary` + `text-brand-foreground`). |
 | `Accordion` | display | ✅ | Radix compound component (Accordion, AccordionItem, AccordionTrigger, AccordionContent). `type` prop (single/multiple), single defaults to collapsible. CSS keyframe height animation. `showChevron` prop on trigger. `disabled` on items. `divide-y divide-border` between items. `cn()` only, no CVA. |
 | `Card` | display | ✅ | Compound component (Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter). `cn()` only, no CVA. `bg-surface-subtle` + `border-border` + `rounded-md`. CardTitle has polymorphic `as` prop (h1–h6, default h3). |
