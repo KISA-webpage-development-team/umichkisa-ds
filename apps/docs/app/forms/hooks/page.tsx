@@ -1,8 +1,7 @@
-'use client'
-
-import { Container, Input, Button, FormItem } from '@umichkisa-ds/web'
-import { useForm, Form, useFormField, useFormStatus } from '@umichkisa-ds/form'
+import { Container } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
+import { UseFormFieldDemo, UseFormStatusDemo } from './_demos'
 
 /* ── Code strings ──────────────────────────────────────────── */
 
@@ -65,85 +64,14 @@ function SettingsForm() {
   )
 }`
 
-/* ── Demo: useFormField ───────────────────────────────────── */
-
-type ProfileValues = { name: string; email: string }
-
-function NameField() {
-  const { inputProps, error } = useFormField<ProfileValues>('name', {
-    required: 'Name is required',
-  })
-  const { value, ...rest } = inputProps
-
-  return (
-    <FormItem htmlFor="name" label="Name" error={error} required>
-      <Input id="name" value={value as string} {...rest} />
-    </FormItem>
-  )
-}
-
-function EmailField() {
-  const { inputProps, error } = useFormField<ProfileValues>('email', {
-    required: 'Email is required',
-  })
-  const { value, ...rest } = inputProps
-
-  return (
-    <FormItem htmlFor="email" label="Email" error={error} required>
-      <Input id="email" type="email" value={value as string} {...rest} />
-    </FormItem>
-  )
-}
-
-function UseFormFieldDemo() {
-  const form = useForm<ProfileValues>({
-    defaultValues: { name: '', email: '' },
-  })
-
-  return (
-    <Form form={form} onSubmit={(data) => alert(`${data.name} / ${data.email}`)} className="w-full max-w-sm">
-      <NameField />
-      <EmailField />
-      <Button type="submit">Save</Button>
-    </Form>
-  )
-}
-
-/* ── Demo: useFormStatus ──────────────────────────────────── */
-
-function SubmitFooter() {
-  const { isSubmitting, isValid, isDirty } = useFormStatus()
-
-  return (
-    <div className="flex items-center justify-between pt-2">
-      <span className="type-body-sm text-muted-foreground">
-        {isDirty ? 'Unsaved changes' : 'No changes'}
-      </span>
-      <Button type="submit" disabled={isSubmitting || !isValid}>
-        {isSubmitting ? 'Saving...' : 'Save changes'}
-      </Button>
-    </div>
-  )
-}
-
-type SettingsValues = { name: string }
-
-function UseFormStatusDemo() {
-  const form = useForm<SettingsValues>({
-    defaultValues: { name: '' },
-  })
-
-  return (
-    <Form form={form} onSubmit={(data) => alert(`Saved: ${data.name}`)} className="w-full max-w-sm">
-      <Form.Input name="name" label="Display Name" rules={{ required: 'Required' }} />
-      <SubmitFooter />
-    </Form>
-  )
-}
-
 /* ── Page ──────────────────────────────────────────────────── */
 
-export default function HooksPage() {
+export default async function HooksPage() {
+  const [useFormFieldHighlighted, useFormStatusHighlighted] = await Promise.all([
+    highlight(useFormFieldCode),
+    highlight(useFormStatusCode),
+  ])
+
   return (
     <Container size="md" as="article">
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">
@@ -164,7 +92,7 @@ export default function HooksPage() {
         when you need a custom field layout — for example, a label beside the
         input instead of above it.
       </p>
-      <ComponentPreview code={useFormFieldCode}>
+      <ComponentPreview code={useFormFieldCode} highlightedCode={useFormFieldHighlighted}>
         <UseFormFieldDemo />
       </ComponentPreview>
 
@@ -236,7 +164,7 @@ export default function HooksPage() {
         called within a <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Form>'}</code> or{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">FormProvider</code> context.
       </p>
-      <ComponentPreview code={useFormStatusCode}>
+      <ComponentPreview code={useFormStatusCode} highlightedCode={useFormStatusHighlighted}>
         <UseFormStatusDemo />
       </ComponentPreview>
 

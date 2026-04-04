@@ -1,8 +1,18 @@
-'use client'
-
-import { useState } from 'react'
-import { Container, DatePicker, DateRangePicker, type DateRange } from '@umichkisa-ds/web'
+import { Container } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
+import {
+  BasicDemo,
+  DefaultValueDemo,
+  DateBoundsDemo,
+  DisabledDemo,
+  InvalidDemo,
+  CustomFormatDemo,
+  RangeBasicDemo,
+  RangeDefaultDemo,
+  RangeDisabledDemo,
+  RangeInvalidDemo,
+} from './_demos'
 
 // ── DatePicker Examples ──────────────────────────────────────
 
@@ -121,24 +131,32 @@ function EventForm() {
 
 // ── Page ─────────────────────────────────────────────────────
 
-export default function DatePickerPage() {
-  const [basicDate, setBasicDate] = useState<Date>()
-  const [defaultDate, setDefaultDate] = useState<Date | undefined>(new Date(2000, 0, 15))
-  const [boundsDate, setBoundsDate] = useState<Date>()
-  const [invalidDate, setInvalidDate] = useState<Date>()
-  const [customDate, setCustomDate] = useState<Date>()
-  const [rangeBasic, setRangeBasic] = useState<DateRange>()
-  const [rangeDefault, setRangeDefault] = useState<DateRange | undefined>({
-    from: new Date(2026, 0, 1),
-    to: new Date(2026, 0, 31),
-  })
-  const [rangeInvalid, setRangeInvalid] = useState<DateRange>()
-
-  const tomorrow = new Date()
-  tomorrow.setDate(tomorrow.getDate() + 1)
-
-  const formatKorean = (d: Date) =>
-    `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일`
+export default async function DatePickerPage() {
+  const [
+    basicHighlighted,
+    defaultValueHighlighted,
+    dateBoundsHighlighted,
+    disabledHighlighted,
+    invalidHighlighted,
+    customFormatHighlighted,
+    rangeBasicHighlighted,
+    rangeDefaultHighlighted,
+    rangeDisabledHighlighted,
+    rangeInvalidHighlighted,
+    formHighlighted,
+  ] = await Promise.all([
+    highlight(basicCode),
+    highlight(defaultValueCode),
+    highlight(dateBoundsCode),
+    highlight(disabledCode),
+    highlight(invalidCode),
+    highlight(customFormatCode),
+    highlight(rangeBasicCode),
+    highlight(rangeDefaultCode),
+    highlight(rangeDisabledCode),
+    highlight(rangeInvalidCode),
+    highlight(formCode),
+  ])
 
   return (
     <Container size="md" as="article">
@@ -164,10 +182,8 @@ export default function DatePickerPage() {
         open the calendar, then click a date to select it.
       </p>
       <div className="w-full">
-        <ComponentPreview code={basicCode}>
-          <div className="w-72">
-            <DatePicker value={basicDate} onChange={setBasicDate} placeholder="Pick an event date" />
-          </div>
+        <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
+          <BasicDemo />
         </ComponentPreview>
       </div>
 
@@ -178,10 +194,8 @@ export default function DatePickerPage() {
         like a profile birth date field.
       </p>
       <div className="w-full">
-        <ComponentPreview code={defaultValueCode}>
-          <div className="w-72">
-            <DatePicker value={defaultDate} onChange={setDefaultDate} placeholder="Birth date" />
-          </div>
+        <ComponentPreview code={defaultValueCode} highlightedCode={defaultValueHighlighted}>
+          <DefaultValueDemo />
         </ComponentPreview>
       </div>
 
@@ -193,15 +207,8 @@ export default function DatePickerPage() {
         Here, past dates are disabled for a hotel check-in picker.
       </p>
       <div className="w-full">
-        <ComponentPreview code={dateBoundsCode}>
-          <div className="w-72">
-            <DatePicker
-              value={boundsDate}
-              onChange={setBoundsDate}
-              placeholder="Choose a check-in date"
-              calendarProps={{ disabled: { before: tomorrow } }}
-            />
-          </div>
+        <ComponentPreview code={dateBoundsCode} highlightedCode={dateBoundsHighlighted}>
+          <DateBoundsDemo />
         </ComponentPreview>
       </div>
 
@@ -212,10 +219,8 @@ export default function DatePickerPage() {
         hasn&apos;t been filled yet.
       </p>
       <div className="w-full">
-        <ComponentPreview code={disabledCode}>
-          <div className="w-72">
-            <DatePicker disabled placeholder="Not available" />
-          </div>
+        <ComponentPreview code={disabledCode} highlightedCode={disabledHighlighted}>
+          <DisabledDemo />
         </ComponentPreview>
       </div>
 
@@ -226,10 +231,8 @@ export default function DatePickerPage() {
         error messages in forms.
       </p>
       <div className="w-full">
-        <ComponentPreview code={invalidCode}>
-          <div className="w-72">
-            <DatePicker value={invalidDate} onChange={setInvalidDate} invalid placeholder="Required" />
-          </div>
+        <ComponentPreview code={invalidCode} highlightedCode={invalidHighlighted}>
+          <InvalidDemo />
         </ComponentPreview>
       </div>
 
@@ -243,15 +246,8 @@ export default function DatePickerPage() {
         function. This example uses Korean date formatting.
       </p>
       <div className="w-full">
-        <ComponentPreview code={customFormatCode}>
-          <div className="w-72">
-            <DatePicker
-              value={customDate}
-              onChange={setCustomDate}
-              formatDate={formatKorean}
-              placeholder="날짜 선택"
-            />
-          </div>
+        <ComponentPreview code={customFormatCode} highlightedCode={customFormatHighlighted}>
+          <CustomFormatDemo />
         </ComponentPreview>
       </div>
 
@@ -265,10 +261,8 @@ export default function DatePickerPage() {
         both dates are picked.
       </p>
       <div className="w-full">
-        <ComponentPreview code={rangeBasicCode}>
-          <div className="w-80">
-            <DateRangePicker value={rangeBasic} onChange={setRangeBasic} placeholder="Select trip dates" />
-          </div>
+        <ComponentPreview code={rangeBasicCode} highlightedCode={rangeBasicHighlighted}>
+          <RangeBasicDemo />
         </ComponentPreview>
       </div>
 
@@ -279,10 +273,8 @@ export default function DatePickerPage() {
         or editing existing bookings.
       </p>
       <div className="w-full">
-        <ComponentPreview code={rangeDefaultCode}>
-          <div className="w-80">
-            <DateRangePicker value={rangeDefault} onChange={setRangeDefault} placeholder="Report period" />
-          </div>
+        <ComponentPreview code={rangeDefaultCode} highlightedCode={rangeDefaultHighlighted}>
+          <RangeDefaultDemo />
         </ComponentPreview>
       </div>
 
@@ -292,10 +284,8 @@ export default function DatePickerPage() {
         A disabled range picker.
       </p>
       <div className="w-full">
-        <ComponentPreview code={rangeDisabledCode}>
-          <div className="w-80">
-            <DateRangePicker disabled placeholder="Not available" />
-          </div>
+        <ComponentPreview code={rangeDisabledCode} highlightedCode={rangeDisabledHighlighted}>
+          <RangeDisabledDemo />
         </ComponentPreview>
       </div>
 
@@ -305,10 +295,8 @@ export default function DatePickerPage() {
         The invalid state for range pickers, signaling a validation error.
       </p>
       <div className="w-full">
-        <ComponentPreview code={rangeInvalidCode}>
-          <div className="w-80">
-            <DateRangePicker value={rangeInvalid} onChange={setRangeInvalid} invalid placeholder="Required" />
-          </div>
+        <ComponentPreview code={rangeInvalidCode} highlightedCode={rangeInvalidHighlighted}>
+          <RangeInvalidDemo />
         </ComponentPreview>
       </div>
 
@@ -325,7 +313,7 @@ export default function DatePickerPage() {
         FormItem, validation, and error display.
       </p>
       <div className="w-full">
-        <ComponentPreview code={formCode}>
+        <ComponentPreview code={formCode} highlightedCode={formHighlighted}>
           <p className="type-body-sm text-muted-foreground">
             Live demo available on the{' '}
             <a href="/forms/form-component" className="text-link underline hover:text-brand-primary">Form Component</a>{' '}

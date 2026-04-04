@@ -1,8 +1,18 @@
-'use client'
-
-import { Container, SelectTrigger, SelectContent, SelectItem, RadioItem } from '@umichkisa-ds/web'
-import { useForm, Form } from '@umichkisa-ds/form'
+import { Container } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
+import {
+  FormRootDemo,
+  InputDemo,
+  TextareaDemo,
+  SelectDemo,
+  CheckboxDemo,
+  RadioDemo,
+  SwitchDemo,
+  DatePickerDemo,
+  DateRangePickerDemo,
+  ButtonDemo,
+} from './_demos'
 
 /* ── Code strings ──────────────────────────────────────────── */
 
@@ -99,187 +109,33 @@ const buttonCode = `// Auto-disables while form is submitting
 // Also disable when form has validation errors
 <Form.Button disableWhenInvalid>Submit</Form.Button>`
 
-/* ── Demo components ──────────────────────────────────────── */
-
-type ContactValues = { name: string; message: string }
-
-function FormRootDemo() {
-  const form = useForm<ContactValues>({
-    defaultValues: { name: '', message: '' },
-  })
-
-  return (
-    <Form form={form} onSubmit={(data) => alert(`From ${data.name}: ${data.message}`)} className="w-full max-w-sm">
-      <Form.Input name="name" label="Name" rules={{ required: 'Name is required' }} />
-      <Form.Textarea name="message" label="Message" rules={{ required: 'Message is required' }} />
-      <Form.Button>Send</Form.Button>
-    </Form>
-  )
-}
-
-type InputDemoValues = { email: string }
-
-function InputDemo() {
-  const form = useForm<InputDemoValues>({ defaultValues: { email: '' } })
-
-  return (
-    <Form form={form} onSubmit={() => {}} className="w-full max-w-sm">
-      <Form.Input
-        name="email"
-        label="Email"
-        type="email"
-        placeholder="you@umich.edu"
-        description="We'll use your UMich email for verification."
-        rules={{ required: 'Email is required' }}
-      />
-    </Form>
-  )
-}
-
-type TextareaDemoValues = { bio: string }
-
-function TextareaDemo() {
-  const form = useForm<TextareaDemoValues>({ defaultValues: { bio: '' } })
-
-  return (
-    <Form form={form} onSubmit={() => {}} className="w-full max-w-sm">
-      <Form.Textarea
-        name="bio"
-        label="Bio"
-        placeholder="Tell us about yourself..."
-        description="Minimum 10 characters."
-        rules={{
-          required: 'Bio is required',
-          minLength: { value: 10, message: 'At least 10 characters' },
-        }}
-      />
-    </Form>
-  )
-}
-
-type SelectDemoValues = { role: string }
-
-function SelectDemo() {
-  const form = useForm<SelectDemoValues>({ defaultValues: { role: '' } })
-
-  return (
-    <Form form={form} onSubmit={() => {}} className="w-full max-w-sm">
-      <Form.Select name="role" label="Role" rules={{ required: 'Select a role' }}>
-        <SelectTrigger placeholder="Choose a role" />
-        <SelectContent>
-          <SelectItem value="member">Member</SelectItem>
-          <SelectItem value="officer">Officer</SelectItem>
-          <SelectItem value="president">President</SelectItem>
-        </SelectContent>
-      </Form.Select>
-    </Form>
-  )
-}
-
-type CheckboxDemoValues = { terms: boolean }
-
-function CheckboxDemo() {
-  const form = useForm<CheckboxDemoValues>({ defaultValues: { terms: false } })
-
-  return (
-    <Form form={form} onSubmit={() => {}} className="w-full max-w-sm">
-      <Form.Checkbox
-        name="terms"
-        label="I agree to the terms and conditions"
-        rules={{ required: 'You must agree to continue' }}
-      />
-    </Form>
-  )
-}
-
-type RadioDemoValues = { contact: string }
-
-function RadioDemo() {
-  const form = useForm<RadioDemoValues>({ defaultValues: { contact: '' } })
-
-  return (
-    <Form form={form} onSubmit={() => {}} className="w-full max-w-sm">
-      <Form.Radio
-        name="contact"
-        label="Preferred contact method"
-        rules={{ required: 'Select a contact method' }}
-      >
-        <RadioItem value="email" text="Email" />
-        <RadioItem value="kakao" text="KakaoTalk" />
-        <RadioItem value="phone" text="Phone" />
-      </Form.Radio>
-    </Form>
-  )
-}
-
-type SwitchDemoValues = { notifications: boolean }
-
-function SwitchDemo() {
-  const form = useForm<SwitchDemoValues>({ defaultValues: { notifications: false } })
-
-  return (
-    <Form form={form} onSubmit={() => {}} className="w-full max-w-sm">
-      <Form.Switch
-        name="notifications"
-        label="Email notifications"
-        description="Receive updates about KISA events and announcements."
-      />
-    </Form>
-  )
-}
-
-type DatePickerDemoValues = { eventDate: Date | undefined }
-
-function DatePickerDemo() {
-  const form = useForm<DatePickerDemoValues>({ defaultValues: { eventDate: undefined } })
-
-  return (
-    <Form form={form} onSubmit={() => {}} className="w-full max-w-sm">
-      <Form.DatePicker
-        name="eventDate"
-        label="Event date"
-        rules={{ required: 'Date is required' }}
-        placeholder="Pick a date"
-      />
-    </Form>
-  )
-}
-
-type DateRangePickerDemoValues = { availability: { from?: Date; to?: Date } | undefined }
-
-function DateRangePickerDemo() {
-  const form = useForm<DateRangePickerDemoValues>({ defaultValues: { availability: undefined } })
-
-  return (
-    <Form form={form} onSubmit={() => {}} className="w-full max-w-sm">
-      <Form.DateRangePicker
-        name="availability"
-        label="Availability"
-        description="When are you available for this event?"
-        placeholder="Select dates"
-      />
-    </Form>
-  )
-}
-
-type ButtonDemoValues = { name: string }
-
-function ButtonDemo() {
-  const form = useForm<ButtonDemoValues>({ defaultValues: { name: '' } })
-
-  return (
-    <div className="w-full max-w-sm">
-      <Form form={form} onSubmit={(data) => alert(`Hello, ${data.name}!`)}>
-        <Form.Input name="name" label="Name" rules={{ required: 'Name is required' }} />
-        <Form.Button disableWhenInvalid>Submit</Form.Button>
-      </Form>
-    </div>
-  )
-}
-
 /* ── Page ──────────────────────────────────────────────────── */
 
-export default function FormComponentPage() {
+export default async function FormComponentPage() {
+  const [
+    formRootHighlighted,
+    inputHighlighted,
+    textareaHighlighted,
+    selectHighlighted,
+    checkboxHighlighted,
+    radioHighlighted,
+    switchHighlighted,
+    datePickerHighlighted,
+    dateRangePickerHighlighted,
+    buttonHighlighted,
+  ] = await Promise.all([
+    highlight(formRootCode),
+    highlight(inputCode),
+    highlight(textareaCode),
+    highlight(selectCode),
+    highlight(checkboxCode),
+    highlight(radioCode),
+    highlight(switchCode),
+    highlight(datePickerCode),
+    highlight(dateRangePickerCode),
+    highlight(buttonCode),
+  ])
+
   return (
     <Container size="md" as="article">
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">
@@ -301,7 +157,7 @@ export default function FormComponentPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">useForm</code> and an{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">onSubmit</code> handler.
       </p>
-      <ComponentPreview code={formRootCode}>
+      <ComponentPreview code={formRootCode} highlightedCode={formRootHighlighted}>
         <FormRootDemo />
       </ComponentPreview>
 
@@ -316,7 +172,7 @@ export default function FormComponentPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">rules</code> for validation and{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">description</code> for helper text.
       </p>
-      <ComponentPreview code={inputCode}>
+      <ComponentPreview code={inputCode} highlightedCode={inputHighlighted}>
         <InputDemo />
       </ComponentPreview>
 
@@ -330,7 +186,7 @@ export default function FormComponentPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">minLength</code> and{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">maxLength</code> validation.
       </p>
-      <ComponentPreview code={textareaCode}>
+      <ComponentPreview code={textareaCode} highlightedCode={textareaHighlighted}>
         <TextareaDemo />
       </ComponentPreview>
 
@@ -346,7 +202,7 @@ export default function FormComponentPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">SelectItem</code> as children — these are
         imported from <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@umichkisa-ds/web</code>.
       </p>
-      <ComponentPreview code={selectCode}>
+      <ComponentPreview code={selectCode} highlightedCode={selectHighlighted}>
         <SelectDemo />
       </ComponentPreview>
 
@@ -360,7 +216,7 @@ export default function FormComponentPage() {
         boolean. Use <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">required</code> to enforce
         agreement flows.
       </p>
-      <ComponentPreview code={checkboxCode}>
+      <ComponentPreview code={checkboxCode} highlightedCode={checkboxHighlighted}>
         <CheckboxDemo />
       </ComponentPreview>
 
@@ -374,7 +230,7 @@ export default function FormComponentPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">RadioItem</code> components as children,
         imported from <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@umichkisa-ds/web</code>.
       </p>
-      <ComponentPreview code={radioCode}>
+      <ComponentPreview code={radioCode} highlightedCode={radioHighlighted}>
         <RadioDemo />
       </ComponentPreview>
 
@@ -387,7 +243,7 @@ export default function FormComponentPage() {
         A toggle switch for boolean settings. Useful for preferences and
         opt-in/opt-out controls.
       </p>
-      <ComponentPreview code={switchCode}>
+      <ComponentPreview code={switchCode} highlightedCode={switchHighlighted}>
         <SwitchDemo />
       </ComponentPreview>
 
@@ -402,7 +258,7 @@ export default function FormComponentPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">placeholder</code> and{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">formatDate</code> props.
       </p>
-      <ComponentPreview code={datePickerCode}>
+      <ComponentPreview code={datePickerCode} highlightedCode={datePickerHighlighted}>
         <DatePickerDemo />
       </ComponentPreview>
 
@@ -417,7 +273,7 @@ export default function FormComponentPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">placeholder</code> and{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">formatDate</code> props.
       </p>
-      <ComponentPreview code={dateRangePickerCode}>
+      <ComponentPreview code={dateRangePickerCode} highlightedCode={dateRangePickerHighlighted}>
         <DateRangePickerDemo />
       </ComponentPreview>
 
@@ -430,7 +286,7 @@ export default function FormComponentPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">disableWhenInvalid</code> to also disable
         when validation errors exist.
       </p>
-      <ComponentPreview code={buttonCode}>
+      <ComponentPreview code={buttonCode} highlightedCode={buttonHighlighted}>
         <ButtonDemo />
       </ComponentPreview>
 
