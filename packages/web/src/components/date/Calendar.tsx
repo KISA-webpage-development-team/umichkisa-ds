@@ -75,13 +75,13 @@ export function Calendar({
         disabled: "text-disabled-foreground pointer-events-none",
         hidden: "invisible",
         selected:
-          "bg-brand-primary !text-brand-foreground hover:bg-brand-primary rounded-md",
+          "[&>button]:bg-brand-primary [&>button]:!text-brand-foreground [&>button]:hover:bg-brand-primary",
         range_start:
-          "bg-brand-primary !text-brand-foreground rounded-l-md rounded-r-none",
+          "bg-brand-accent-subtle rounded-l-md rounded-r-none",
         range_end:
-          "bg-brand-primary !text-brand-foreground rounded-r-md rounded-l-none",
+          "bg-brand-accent-subtle rounded-r-md rounded-l-none",
         range_middle:
-          "!bg-brand-accent-subtle !text-foreground !rounded-none",
+          "!bg-brand-accent-subtle !rounded-none [&>button]:!bg-transparent [&>button]:!text-foreground",
         ...classNamesProp,
       }}
       components={{

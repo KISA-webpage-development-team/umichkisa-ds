@@ -2030,10 +2030,11 @@ function Calendar({
         weekdays: "flex",
         weekday: "type-caption text-muted-foreground w-9 text-center",
         week: "flex w-full mt-1",
-        day: "relative w-9 h-9 text-center p-0",
+        day: "relative w-9 h-9 text-center p-0 text-foreground",
         day_button: cn(
           "inline-flex items-center justify-center w-9 h-9 rounded-md",
-          "type-body-sm text-foreground",
+          "type-body-sm text-inherit",
+          "transition-[color,background-color] duration-200 ease-in-out",
           "hover:bg-brand-accent-subtle hover:text-brand-primary",
           "outline-2 outline-offset-2 outline-transparent",
           "focus-visible:outline-focus-ring focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]",
@@ -2045,10 +2046,10 @@ function Calendar({
         outside: "text-muted-foreground opacity-50",
         disabled: "text-disabled-foreground pointer-events-none",
         hidden: "invisible",
-        selected: "bg-brand-primary text-brand-foreground hover:bg-brand-primary rounded-md",
-        range_start: "bg-brand-primary text-brand-foreground rounded-l-md rounded-r-none",
-        range_end: "bg-brand-primary text-brand-foreground rounded-r-md rounded-l-none",
-        range_middle: "bg-brand-accent-subtle text-foreground rounded-none",
+        selected: "[&>button]:bg-brand-primary [&>button]:!text-brand-foreground [&>button]:hover:bg-brand-primary",
+        range_start: "bg-brand-accent-subtle rounded-l-md rounded-r-none",
+        range_end: "bg-brand-accent-subtle rounded-r-md rounded-l-none",
+        range_middle: "!bg-brand-accent-subtle !rounded-none [&>button]:!bg-transparent [&>button]:!text-foreground",
         ...classNamesProp
       },
       components: {
