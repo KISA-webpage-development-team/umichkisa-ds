@@ -220,10 +220,12 @@ function ButtonDemo() {
   const form = useForm<ButtonDemoValues>({ defaultValues: { name: '' } })
 
   return (
-    <Form form={form} onSubmit={(data) => alert(`Hello, ${data.name}!`)} className="w-full max-w-sm">
-      <Form.Input name="name" label="Name" rules={{ required: 'Name is required' }} />
-      <Form.Button disableWhenInvalid>Submit</Form.Button>
-    </Form>
+    <div className="w-full max-w-sm">
+      <Form form={form} onSubmit={(data) => alert(`Hello, ${data.name}!`)}>
+        <Form.Input name="name" label="Name" rules={{ required: 'Name is required' }} />
+        <Form.Button disableWhenInvalid>Submit</Form.Button>
+      </Form>
+    </div>
   )
 }
 
@@ -258,7 +260,10 @@ export default function FormComponentPage() {
       {/* ── Form.Input ────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.Input</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        Renders a labeled input field with automatic error display. Accepts all
+        Wraps{' '}
+        <a href="/components/input" className="text-link underline hover:text-brand-primary">Input</a> +{' '}
+        <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>{' '}
+        with automatic error display. Accepts all
         native input attributes plus{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">rules</code> for validation and{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">description</code> for helper text.
@@ -270,6 +275,9 @@ export default function FormComponentPage() {
       {/* ── Form.Textarea ─────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.Textarea</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
+        Wraps{' '}
+        <a href="/components/textarea" className="text-link underline hover:text-brand-primary">Textarea</a> +{' '}
+        <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>.{' '}
         Same pattern as Form.Input but for multi-line text. Supports{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">minLength</code> and{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">maxLength</code> validation.
@@ -281,7 +289,10 @@ export default function FormComponentPage() {
       {/* ── Form.Select ───────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.Select</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        Wraps the DS Select component. Pass{' '}
+        Wraps the DS{' '}
+        <a href="/components/select" className="text-link underline hover:text-brand-primary">Select</a> +{' '}
+        <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>.{' '}
+        Pass{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">SelectTrigger</code>,{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">SelectContent</code>, and{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">SelectItem</code> as children — these are
@@ -294,6 +305,9 @@ export default function FormComponentPage() {
       {/* ── Form.Checkbox ─────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.Checkbox</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
+        Wraps{' '}
+        <a href="/components/checkbox" className="text-link underline hover:text-brand-primary">Checkbox</a> +{' '}
+        <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>.{' '}
         A single checkbox with label and optional description. The value is a
         boolean. Use <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">required</code> to enforce
         agreement flows.
@@ -305,7 +319,10 @@ export default function FormComponentPage() {
       {/* ── Form.Radio ────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.Radio</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        A radio group with labeled options. Pass{' '}
+        Wraps{' '}
+        <a href="/components/radio" className="text-link underline hover:text-brand-primary">RadioGroup</a> +{' '}
+        <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>.{' '}
+        Pass{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">RadioItem</code> components as children,
         imported from <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@umichkisa-ds/web</code>.
       </p>
@@ -316,6 +333,9 @@ export default function FormComponentPage() {
       {/* ── Form.Switch ───────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.Switch</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
+        Wraps{' '}
+        <a href="/components/switch" className="text-link underline hover:text-brand-primary">Switch</a> +{' '}
+        <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>.{' '}
         A toggle switch for boolean settings. Useful for preferences and
         opt-in/opt-out controls.
       </p>
@@ -326,7 +346,9 @@ export default function FormComponentPage() {
       {/* ── Form.Button ───────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.Button</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        A submit button that auto-disables while the form is submitting. Add{' '}
+        Wraps{' '}
+        <a href="/components/button" className="text-link underline hover:text-brand-primary">Button</a>{' '}
+        as a submit button that auto-disables while the form is submitting. Add{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">disableWhenInvalid</code> to also disable
         when validation errors exist.
       </p>
