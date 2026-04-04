@@ -20,13 +20,13 @@ export function Header({ onMenuClick }: HeaderProps) {
   return (
     <header
       className="fixed top-0 left-0 right-0 h-16
-       bg-surface border-b border-border
-       flex items-center justify-between
+       bg-surface
+       flex items-center
        px-6 z-[var(--docs-z-header)]"
       role="banner"
     >
-        <div className="flex items-center gap-10">
-          {/* Hamburger: mobile only, always visible */}
+        {/* Left: hamburger (mobile only) */}
+        <div className="flex items-center lg:hidden">
           <IconButton
             icon="menu"
             variant="tertiary"
@@ -34,9 +34,12 @@ export function Header({ onMenuClick }: HeaderProps) {
             aria-label="Open navigation menu"
             aria-controls="docs-sidebar"
             onClick={onMenuClick}
-            className="flex lg:hidden"
           />
+        </div>
 
+        {/* Center on mobile, left-aligned on desktop */}
+        <div className="absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0
+          flex items-center gap-8">
           <Link
             href="/"
             className="flex items-center gap-2
@@ -50,7 +53,7 @@ export function Header({ onMenuClick }: HeaderProps) {
               className="rounded-full shrink-0"
               priority
             />
-            <span className="hidden md:inline">KISA Design System</span>
+            <span className="whitespace-nowrap">KISA Design System</span>
           </Link>
 
           {/* Section nav — desktop only */}
@@ -60,10 +63,10 @@ export function Header({ onMenuClick }: HeaderProps) {
                 key={s.href}
                 href={s.href}
                 className={`px-3 py-1.5 rounded-md
-                  type-body !font-sejong-bold transition-colors duration-150 ${
+                  type-body transition-colors duration-150 ${
                   pathname.startsWith(s.prefix)
-                    ? 'text-foreground'
-                    : 'text-muted-foreground hover:bg-brand-accent-subtle hover:text-foreground'
+                    ? 'text-brand-primary !font-semibold'
+                    : 'text-foreground hover:text-brand-primary hover:!font-semibold'
                 }`}
               >
                 {s.label}
@@ -72,10 +75,11 @@ export function Header({ onMenuClick }: HeaderProps) {
           </nav>
         </div>
 
-        <div className="flex items-center gap-3">
+        {/* Right: badge + GitHub */}
+        <div className="ml-auto flex items-center gap-3">
           <Badge
             size="sm"
-            className="hidden lg:inline-flex bg-brand-accent text-brand-primary border-brand-accent !font-sejong-bold rounded-full"
+            className="hidden lg:inline-flex bg-brand-accent text-brand-primary border-brand-accent rounded-full"
           >
             {DS_VERSION}
           </Badge>

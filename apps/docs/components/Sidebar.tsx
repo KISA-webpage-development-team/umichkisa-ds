@@ -219,7 +219,9 @@ export function Sidebar({ open, onClose }: SidebarProps) {
       <nav
         id="docs-sidebar"
         className={`fixed top-[var(--docs-header-h)] left-0 bottom-0
-          w-[var(--docs-sidebar-w)] bg-surface border-r border-border
+          w-[var(--docs-sidebar-w)] bg-surface
+          after:absolute after:right-0 after:top-8 after:bottom-8
+          after:w-px after:bg-border
           overflow-y-auto scrollbar-hidden
           z-[var(--docs-z-sidebar)]
           flex flex-col
@@ -239,32 +241,84 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           />
         </div>
 
-        <div className="px-6 py-4 flex flex-col gap-6">
+        {/* Mobile nav: section headings with current section expanded */}
+        <div className="lg:hidden pl-14 pr-8 py-8 flex flex-col gap-4">
+          {([
+            { label: 'Foundation', href: '/foundation', prefix: '/foundation', key: 'foundation' as SectionKey },
+            { label: 'Components', href: '/components', prefix: '/components', key: 'components' as SectionKey },
+            { label: 'Forms', href: '/forms/overview', prefix: '/forms', key: 'forms' as SectionKey },
+          ]).map((s) => {
+            const isCurrent = pathname.startsWith(s.prefix)
+            return (
+              <div key={s.key}>
+                <Link
+                  href={s.href}
+                  className={`inline-block w-fit py-1 px-2 rounded-sm
+                    type-body !font-sejong-bold transition-colors duration-150
+                    ${isCurrent
+                      ? 'text-brand-primary !font-semibold'
+                      : 'text-foreground hover:text-brand-primary'
+                    }`}
+                  onClick={isCurrent ? undefined : onClose}
+                >
+                  {s.label}
+                </Link>
+
+                {/* Expand children for current section */}
+                {isCurrent && (
+                  <div className="ml-2 mt-2 flex flex-col gap-2">
+                    {SECTIONS[s.key].flatMap((cat) => cat.items).map((item) => {
+                      const isActive = pathname === item.href
+                      return (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className={`inline-block w-fit py-1 px-2 rounded-sm
+                            type-body
+                            transition-colors duration-150
+                            ${isActive
+                              ? 'text-brand-primary bg-brand-accent-subtle !font-semibold'
+                              : 'text-foreground hover:bg-brand-accent-subtle'
+                            }`}
+                          onClick={onClose}
+                        >
+                          {item.label}
+                        </Link>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
+            )
+          })}
+        </div>
+
+        {/* Desktop nav: current section categories only */}
+        <div className="hidden lg:flex pl-14 pr-8 py-8 flex-col gap-6">
           {categories.map((category) => (
             <div key={category.label}>
               {/* Category heading — non-interactive */}
-              <span className="block type-body !font-sejong-bold text-foreground mb-1 px-3">
+              <span className="block type-body-sm !font-sejong-bold text-foreground mb-2 px-2">
                 {category.label}
               </span>
 
               {/* Nav links — indented under heading */}
-              <div className="flex flex-col">
+              <div className="ml-2 flex flex-col gap-2">
                 {category.items.map((item) => {
                   const isActive = pathname === item.href
                   return (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`block py-2 px-3 ml-3 rounded-md
-                        type-body !font-sejong-bold
+                      className={`inline-block w-fit py-1 px-2 rounded-sm
+                        type-body-sm
                         transition-colors duration-150
                         focus-visible:outline focus-visible:outline-2
                         focus-visible:outline-brand-primary focus-visible:outline-offset-[-2px]
                         ${isActive
-                          ? 'text-foreground bg-surface-subtle'
-                          : 'text-muted-foreground hover:text-foreground hover:bg-brand-accent-subtle'
+                          ? 'text-brand-primary bg-brand-accent-subtle !font-semibold'
+                          : 'text-foreground hover:bg-brand-accent-subtle'
                         }`}
-                      onClick={onClose}
                     >
                       {item.label}
                     </Link>

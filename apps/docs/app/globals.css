@@ -19,7 +19,7 @@
  */
 :root {
   --docs-header-h:  64px;
-  --docs-sidebar-w: 240px;
+  --docs-sidebar-w: 280px;
 
   /* z-index scale — never use values outside this set */
   --docs-z-sticky:   10;
