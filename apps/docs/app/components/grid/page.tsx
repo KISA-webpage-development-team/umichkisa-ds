@@ -43,10 +43,11 @@ const gapSectionCode = `import { Grid } from '@umichkisa-ds/web'
 
 const realWorldElementCode = `import { Grid } from '@umichkisa-ds/web'
 
-<Grid columns={{ base: 1, md: 2, lg: 3 }} gap="element">
-  <Card />
-  <Card />
-  <Card />
+<Grid columns={{ base: 2, md: 3, lg: 4 }} gap="element">
+  <Tag>React</Tag>
+  <Tag>TypeScript</Tag>
+  <Tag>Tailwind</Tag>
+  ...
 </Grid>`
 
 const realWorldComponentCode = `import { Grid } from '@umichkisa-ds/web'
@@ -60,9 +61,9 @@ const realWorldComponentCode = `import { Grid } from '@umichkisa-ds/web'
 const realWorldSectionCode = `import { Grid } from '@umichkisa-ds/web'
 
 <Grid columns={{ base: 1, md: 2, lg: 3 }} gap="section">
-  <Card />
-  <Card />
-  <Card />
+  <FeatureBlock icon="..." title="..." description="..." />
+  <FeatureBlock icon="..." title="..." description="..." />
+  <FeatureBlock icon="..." title="..." description="..." />
 </Grid>`
 
 function Placeholder({ label }: { label: string }) {
@@ -73,9 +74,27 @@ function Placeholder({ label }: { label: string }) {
   )
 }
 
+function Tag({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center justify-center rounded-full border border-border bg-surface px-3 py-1 type-caption text-foreground">
+      {children}
+    </span>
+  )
+}
+
 function Card({ title, description }: { title: string; description: string }) {
   return (
     <div className="rounded-lg border border-border bg-surface p-4 flex flex-col gap-2">
+      <h4 className="type-label text-foreground">{title}</h4>
+      <p className="type-body-sm text-muted-foreground">{description}</p>
+    </div>
+  )
+}
+
+function FeatureBlock({ icon, title, description }: { icon: string; title: string; description: string }) {
+  return (
+    <div className="flex flex-col gap-3 p-6 rounded-lg border border-border bg-surface">
+      <span className="type-h2">{icon}</span>
       <h4 className="type-label text-foreground">{title}</h4>
       <p className="type-body-sm text-muted-foreground">{description}</p>
     </div>
@@ -211,16 +230,21 @@ export default function GridPage() {
         of a realistic layout.
       </p>
 
-      {/* Element gap cards */}
+      {/* Element gap tags */}
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Element gap</h3>
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
-        Dense card grid — useful for compact dashboards or thumbnail galleries.
+        Tight spacing for small, repeating elements — tags, badges, or icon buttons.
       </p>
       <ComponentPreview code={realWorldElementCode}>
-        <Grid columns={{ base: 1, md: 2, lg: 3 }} gap="element">
-          <Card title="Analytics" description="View traffic and engagement metrics across all pages." />
-          <Card title="Members" description="Manage team members, roles, and permissions." />
-          <Card title="Settings" description="Configure organization preferences and integrations." />
+        <Grid columns={{ base: 2, md: 3, lg: 4 }} gap="element">
+          <Tag>React</Tag>
+          <Tag>TypeScript</Tag>
+          <Tag>Tailwind CSS</Tag>
+          <Tag>Next.js</Tag>
+          <Tag>Node.js</Tag>
+          <Tag>Figma</Tag>
+          <Tag>GraphQL</Tag>
+          <Tag>PostgreSQL</Tag>
         </Grid>
       </ComponentPreview>
 
@@ -237,16 +261,16 @@ export default function GridPage() {
         </Grid>
       </ComponentPreview>
 
-      {/* Section gap cards */}
+      {/* Section gap feature blocks */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">Section gap</h3>
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
-        Spacious card grid — for feature showcases and landing pages.
+        Spacious spacing for feature showcases and landing page sections.
       </p>
       <ComponentPreview code={realWorldSectionCode}>
         <Grid columns={{ base: 1, md: 2, lg: 3 }} gap="section">
-          <Card title="Analytics" description="View traffic and engagement metrics across all pages." />
-          <Card title="Members" description="Manage team members, roles, and permissions." />
-          <Card title="Settings" description="Configure organization preferences and integrations." />
+          <FeatureBlock icon="📊" title="Analytics" description="Track engagement metrics, page views, and user behavior across your entire platform." />
+          <FeatureBlock icon="🔒" title="Security" description="Enterprise-grade encryption, SSO integration, and role-based access controls built in." />
+          <FeatureBlock icon="⚡" title="Performance" description="Sub-100ms response times with edge caching and automatic scaling for any traffic level." />
         </Grid>
       </ComponentPreview>
 
