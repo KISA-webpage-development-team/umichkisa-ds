@@ -206,13 +206,20 @@ export default async function SelectPage() {
           aria-labelledby
         </code>{' '}
         on the trigger to associate the label for screen readers.
+        {' '}When using{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          FormItem
+        </code>
+        , the label automatically receives an id of{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          {'{htmlFor}-label'}
+        </code>
+        {' '}&mdash; reference it on the trigger.
       </p>
       <ComponentPreview code={withLabelCode} highlightedCode={withLabelHighlighted}>
         <div className="w-full max-w-sm">
           <div className="flex flex-col gap-2">
-            <span id="fruit-label-demo">
-              <Label htmlFor="fruit-label-demo">Fruit</Label>
-            </span>
+            <Label htmlFor="fruit-label-demo" id="fruit-label-demo">Fruit</Label>
             <Select>
               <SelectTrigger placeholder="Select a fruit..." aria-labelledby="fruit-label-demo" />
               <SelectContent>
