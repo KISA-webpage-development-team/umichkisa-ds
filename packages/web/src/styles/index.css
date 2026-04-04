@@ -127,7 +127,7 @@
     border-radius: 9999px;
     border-style: solid;
     border-color: var(--color-border);
-    border-top-color: var(--color-brand-primary);
+    border-top-color: var(--color-brand-accent);
     animation: ds-spin 0.8s linear infinite;
   }
 

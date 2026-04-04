@@ -36,7 +36,7 @@ export function LoadingSpinner({
         aria-label={label}
       />
       {showLabel && (
-        <p className="type-caption text-muted-foreground">{label}</p>
+        <p className="type-body-sm !font-semibold text-brand-primary">{label}</p>
       )}
     </div>
   );
