@@ -7,7 +7,7 @@ const basicCode = `import { Dialog, DialogTrigger, DialogContent, DialogTitle, D
 
 <Dialog>
   <DialogTrigger asChild>
-    <Button variant="secondary">Open dialog</Button>
+    <Button variant="primary">Open dialog</Button>
   </DialogTrigger>
   <DialogContent>
     <DialogTitle>Basic dialog</DialogTitle>
@@ -19,7 +19,7 @@ const sizesCode = `import { Dialog, DialogTrigger, DialogContent, DialogTitle, D
 
 <Dialog>
   <DialogTrigger asChild>
-    <Button variant="secondary">Small</Button>
+    <Button variant="primary">Small</Button>
   </DialogTrigger>
   <DialogContent size="sm">
     <DialogTitle>Small dialog</DialogTitle>
@@ -29,7 +29,7 @@ const sizesCode = `import { Dialog, DialogTrigger, DialogContent, DialogTitle, D
 
 <Dialog>
   <DialogTrigger asChild>
-    <Button variant="secondary">Medium</Button>
+    <Button variant="primary">Medium</Button>
   </DialogTrigger>
   <DialogContent size="md">
     <DialogTitle>Medium dialog</DialogTitle>
@@ -39,7 +39,7 @@ const sizesCode = `import { Dialog, DialogTrigger, DialogContent, DialogTitle, D
 
 <Dialog>
   <DialogTrigger asChild>
-    <Button variant="secondary">Large</Button>
+    <Button variant="primary">Large</Button>
   </DialogTrigger>
   <DialogContent size="lg">
     <DialogTitle>Large dialog</DialogTitle>
@@ -49,7 +49,7 @@ const sizesCode = `import { Dialog, DialogTrigger, DialogContent, DialogTitle, D
 
 <Dialog>
   <DialogTrigger asChild>
-    <Button variant="secondary">Full</Button>
+    <Button variant="primary">Full</Button>
   </DialogTrigger>
   <DialogContent size="full">
     <DialogTitle>Full dialog</DialogTitle>
@@ -61,14 +61,14 @@ const footerCode = `import { Dialog, DialogTrigger, DialogContent, DialogTitle, 
 
 <Dialog>
   <DialogTrigger asChild>
-    <Button variant="secondary">Confirm action</Button>
+    <Button variant="primary">Confirm action</Button>
   </DialogTrigger>
   <DialogContent>
     <DialogTitle>Are you sure?</DialogTitle>
     <DialogDescription>This action cannot be undone. This will permanently delete your account and remove your data from our servers.</DialogDescription>
     <DialogFooter>
       <DialogClose asChild>
-        <Button variant="secondary">Cancel</Button>
+        <Button variant="primary">Cancel</Button>
       </DialogClose>
       <DialogClose asChild>
         <Button>Confirm</Button>
@@ -81,14 +81,14 @@ const customCloseCode = `import { Dialog, DialogTrigger, DialogContent, DialogTi
 
 <Dialog>
   <DialogTrigger asChild>
-    <Button variant="secondary">Custom close</Button>
+    <Button variant="primary">Custom close</Button>
   </DialogTrigger>
   <DialogContent showCloseButton={false}>
     <DialogTitle>Custom close behavior</DialogTitle>
     <DialogDescription>This dialog hides the default close button. Use the footer actions to dismiss it.</DialogDescription>
     <DialogFooter>
       <DialogClose asChild>
-        <Button variant="secondary">Discard</Button>
+        <Button variant="primary">Discard</Button>
       </DialogClose>
       <DialogClose asChild>
         <Button>Save changes</Button>
@@ -125,7 +125,7 @@ export default function DialogPage() {
       <ComponentPreview code={basicCode}>
         <Dialog>
           <DialogTrigger asChild>
-            <Button variant="secondary">Open dialog</Button>
+            <Button variant="primary">Open dialog</Button>
           </DialogTrigger>
           <DialogContent>
             <DialogTitle>Basic dialog</DialogTitle>
@@ -148,7 +148,7 @@ export default function DialogPage() {
         <div className="flex flex-wrap gap-2">
           <Dialog>
             <DialogTrigger asChild>
-              <Button variant="secondary">Small</Button>
+              <Button variant="primary">Small</Button>
             </DialogTrigger>
             <DialogContent size="sm">
               <DialogTitle>Small dialog</DialogTitle>
@@ -157,7 +157,7 @@ export default function DialogPage() {
           </Dialog>
           <Dialog>
             <DialogTrigger asChild>
-              <Button variant="secondary">Medium</Button>
+              <Button variant="primary">Medium</Button>
             </DialogTrigger>
             <DialogContent size="md">
               <DialogTitle>Medium dialog</DialogTitle>
@@ -166,7 +166,7 @@ export default function DialogPage() {
           </Dialog>
           <Dialog>
             <DialogTrigger asChild>
-              <Button variant="secondary">Large</Button>
+              <Button variant="primary">Large</Button>
             </DialogTrigger>
             <DialogContent size="lg">
               <DialogTitle>Large dialog</DialogTitle>
@@ -175,7 +175,7 @@ export default function DialogPage() {
           </Dialog>
           <Dialog>
             <DialogTrigger asChild>
-              <Button variant="secondary">Full</Button>
+              <Button variant="primary">Full</Button>
             </DialogTrigger>
             <DialogContent size="full">
               <DialogTitle>Full dialog</DialogTitle>
@@ -198,14 +198,14 @@ export default function DialogPage() {
       <ComponentPreview code={footerCode}>
         <Dialog>
           <DialogTrigger asChild>
-            <Button variant="secondary">Confirm action</Button>
+            <Button variant="primary">Confirm action</Button>
           </DialogTrigger>
           <DialogContent>
             <DialogTitle>Are you sure?</DialogTitle>
             <DialogDescription>This action cannot be undone. This will permanently delete your account and remove your data from our servers.</DialogDescription>
             <DialogFooter>
               <DialogClose asChild>
-                <Button variant="secondary">Cancel</Button>
+                <Button variant="primary">Cancel</Button>
               </DialogClose>
               <DialogClose asChild>
                 <Button>Confirm</Button>
@@ -231,14 +231,14 @@ export default function DialogPage() {
       <ComponentPreview code={customCloseCode}>
         <Dialog>
           <DialogTrigger asChild>
-            <Button variant="secondary">Custom close</Button>
+            <Button variant="primary">Custom close</Button>
           </DialogTrigger>
           <DialogContent showCloseButton={false}>
             <DialogTitle>Custom close behavior</DialogTitle>
             <DialogDescription>This dialog hides the default close button. Use the footer actions to dismiss it.</DialogDescription>
             <DialogFooter>
               <DialogClose asChild>
-                <Button variant="secondary">Discard</Button>
+                <Button variant="primary">Discard</Button>
               </DialogClose>
               <DialogClose asChild>
                 <Button>Save changes</Button>

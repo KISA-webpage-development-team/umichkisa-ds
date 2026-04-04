@@ -8,7 +8,7 @@ import { Button } from '@umichkisa-ds/web'
 
 <Dropdown>
   <DropdownTrigger asChild>
-    <Button variant="secondary">Actions</Button>
+    <Button variant="primary">Actions</Button>
   </DropdownTrigger>
   <DropdownContent>
     <DropdownItem>Edit</DropdownItem>
@@ -22,7 +22,7 @@ import { Button } from '@umichkisa-ds/web'
 
 <Dropdown>
   <DropdownTrigger asChild>
-    <Button variant="secondary">Actions</Button>
+    <Button variant="primary">Actions</Button>
   </DropdownTrigger>
   <DropdownContent>
     <DropdownGroup label="Actions">
@@ -40,7 +40,7 @@ import { Button } from '@umichkisa-ds/web'
 
 <Dropdown>
   <DropdownTrigger asChild>
-    <Button variant="secondary">Actions</Button>
+    <Button variant="primary">Actions</Button>
   </DropdownTrigger>
   <DropdownContent>
     <DropdownItem>Edit</DropdownItem>
@@ -55,7 +55,7 @@ import { Button } from '@umichkisa-ds/web'
 
 <Dropdown>
   <DropdownTrigger asChild>
-    <Button variant="secondary">Actions</Button>
+    <Button variant="primary">Actions</Button>
   </DropdownTrigger>
   <DropdownContent>
     <DropdownItem>Edit</DropdownItem>
@@ -68,7 +68,7 @@ import { Button } from '@umichkisa-ds/web'
 
 <Dropdown>
   <DropdownTrigger asChild>
-    <Button variant="secondary">Actions</Button>
+    <Button variant="primary">Actions</Button>
   </DropdownTrigger>
   <DropdownContent>
     <DropdownItem>Edit</DropdownItem>
@@ -82,7 +82,7 @@ import { Button } from '@umichkisa-ds/web'
 
 <Dropdown>
   <DropdownTrigger asChild>
-    <Button variant="secondary">Actions</Button>
+    <Button variant="primary">Actions</Button>
   </DropdownTrigger>
   <DropdownContent align="end">
     <DropdownItem>Edit</DropdownItem>
@@ -126,7 +126,7 @@ export default function DropdownPage() {
       <ComponentPreview code={basicCode}>
         <Dropdown>
           <DropdownTrigger asChild>
-            <Button variant="secondary">Actions</Button>
+            <Button variant="primary">Actions</Button>
           </DropdownTrigger>
           <DropdownContent>
             <DropdownItem>Edit</DropdownItem>
@@ -157,7 +157,7 @@ export default function DropdownPage() {
       <ComponentPreview code={groupsCode}>
         <Dropdown>
           <DropdownTrigger asChild>
-            <Button variant="secondary">Actions</Button>
+            <Button variant="primary">Actions</Button>
           </DropdownTrigger>
           <DropdownContent>
             <DropdownGroup label="Actions">
@@ -183,7 +183,7 @@ export default function DropdownPage() {
       <ComponentPreview code={separatorCode}>
         <Dropdown>
           <DropdownTrigger asChild>
-            <Button variant="secondary">Actions</Button>
+            <Button variant="primary">Actions</Button>
           </DropdownTrigger>
           <DropdownContent>
             <DropdownItem>Edit</DropdownItem>
@@ -206,7 +206,7 @@ export default function DropdownPage() {
       <ComponentPreview code={destructiveCode}>
         <Dropdown>
           <DropdownTrigger asChild>
-            <Button variant="secondary">Actions</Button>
+            <Button variant="primary">Actions</Button>
           </DropdownTrigger>
           <DropdownContent>
             <DropdownItem>Edit</DropdownItem>
@@ -227,7 +227,7 @@ export default function DropdownPage() {
       <ComponentPreview code={disabledCode}>
         <Dropdown>
           <DropdownTrigger asChild>
-            <Button variant="secondary">Actions</Button>
+            <Button variant="primary">Actions</Button>
           </DropdownTrigger>
           <DropdownContent>
             <DropdownItem>Edit</DropdownItem>
@@ -260,7 +260,7 @@ export default function DropdownPage() {
         <div className="flex justify-end">
           <Dropdown>
             <DropdownTrigger asChild>
-              <Button variant="secondary">Actions</Button>
+              <Button variant="primary">Actions</Button>
             </DropdownTrigger>
             <DropdownContent align="end">
               <DropdownItem>Edit</DropdownItem>

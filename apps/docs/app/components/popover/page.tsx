@@ -7,7 +7,7 @@ const basicCode = `import { Popover, PopoverTrigger, PopoverContent, Button } fr
 
 <Popover>
   <PopoverTrigger asChild>
-    <Button variant="secondary">Open popover</Button>
+    <Button variant="primary">Open popover</Button>
   </PopoverTrigger>
   <PopoverContent>
     <p className="type-body-sm text-foreground">This is the popover content.</p>
@@ -18,7 +18,7 @@ const formCode = `import { Popover, PopoverTrigger, PopoverContent, Button, Inpu
 
 <Popover>
   <PopoverTrigger asChild>
-    <Button variant="secondary">Update name</Button>
+    <Button variant="primary">Update name</Button>
   </PopoverTrigger>
   <PopoverContent>
     <div className="flex flex-col gap-4">
@@ -34,7 +34,7 @@ const placementCode = `import { Popover, PopoverTrigger, PopoverContent, Button 
 
 <Popover>
   <PopoverTrigger asChild>
-    <Button variant="secondary">Bottom</Button>
+    <Button variant="primary">Bottom</Button>
   </PopoverTrigger>
   <PopoverContent side="bottom">
     <p className="type-body-sm text-foreground">Bottom content</p>
@@ -43,7 +43,7 @@ const placementCode = `import { Popover, PopoverTrigger, PopoverContent, Button 
 
 <Popover>
   <PopoverTrigger asChild>
-    <Button variant="secondary">Top</Button>
+    <Button variant="primary">Top</Button>
   </PopoverTrigger>
   <PopoverContent side="top">
     <p className="type-body-sm text-foreground">Top content</p>
@@ -52,7 +52,7 @@ const placementCode = `import { Popover, PopoverTrigger, PopoverContent, Button 
 
 <Popover>
   <PopoverTrigger asChild>
-    <Button variant="secondary">Left</Button>
+    <Button variant="primary">Left</Button>
   </PopoverTrigger>
   <PopoverContent side="left">
     <p className="type-body-sm text-foreground">Left content</p>
@@ -61,7 +61,7 @@ const placementCode = `import { Popover, PopoverTrigger, PopoverContent, Button 
 
 <Popover>
   <PopoverTrigger asChild>
-    <Button variant="secondary">Right</Button>
+    <Button variant="primary">Right</Button>
   </PopoverTrigger>
   <PopoverContent side="right">
     <p className="type-body-sm text-foreground">Right content</p>
@@ -94,7 +94,7 @@ export default function PopoverPage() {
       <ComponentPreview code={basicCode}>
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant="secondary">Open popover</Button>
+            <Button variant="primary">Open popover</Button>
           </PopoverTrigger>
           <PopoverContent>
             <p className="type-body-sm text-foreground">This is the popover content.</p>
@@ -110,7 +110,7 @@ export default function PopoverPage() {
       <ComponentPreview code={formCode}>
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant="secondary">Update name</Button>
+            <Button variant="primary">Update name</Button>
           </PopoverTrigger>
           <PopoverContent>
             <div className="flex flex-col gap-4">
@@ -140,7 +140,7 @@ export default function PopoverPage() {
         <div className="flex items-center gap-4 flex-wrap">
           <Popover>
             <PopoverTrigger asChild>
-              <Button variant="secondary">Bottom</Button>
+              <Button variant="primary">Bottom</Button>
             </PopoverTrigger>
             <PopoverContent side="bottom">
               <p className="type-body-sm text-foreground">Bottom content</p>
@@ -148,7 +148,7 @@ export default function PopoverPage() {
           </Popover>
           <Popover>
             <PopoverTrigger asChild>
-              <Button variant="secondary">Top</Button>
+              <Button variant="primary">Top</Button>
             </PopoverTrigger>
             <PopoverContent side="top">
               <p className="type-body-sm text-foreground">Top content</p>
@@ -156,7 +156,7 @@ export default function PopoverPage() {
           </Popover>
           <Popover>
             <PopoverTrigger asChild>
-              <Button variant="secondary">Left</Button>
+              <Button variant="primary">Left</Button>
             </PopoverTrigger>
             <PopoverContent side="left">
               <p className="type-body-sm text-foreground">Left content</p>
@@ -164,7 +164,7 @@ export default function PopoverPage() {
           </Popover>
           <Popover>
             <PopoverTrigger asChild>
-              <Button variant="secondary">Right</Button>
+              <Button variant="primary">Right</Button>
             </PopoverTrigger>
             <PopoverContent side="right">
               <p className="type-body-sm text-foreground">Right content</p>
