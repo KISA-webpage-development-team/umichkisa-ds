@@ -502,7 +502,7 @@ var TableMobileItem = React.forwardRef(({ className, ...props }, ref) => /* @__P
   "li",
   {
     ref,
-    className: cn("flex flex-col gap-1 px-4 py-3 text-foreground", className),
+    className: cn("flex flex-col gap-1 px-4 py-3 text-foreground hover:bg-surface-subtle transition-colors", className),
     ...props
   }
 ));
@@ -1845,7 +1845,7 @@ function Pagination({
             ),
             children: "..."
           },
-          `ellipsis-${index}`
+          `slot-${index}`
         );
       }
       const isCurrent = item === page;
@@ -1865,7 +1865,7 @@ function Pagination({
           ),
           children: item
         },
-        item
+        `slot-${index}`
       );
     }),
     /* @__PURE__ */ jsx34(
