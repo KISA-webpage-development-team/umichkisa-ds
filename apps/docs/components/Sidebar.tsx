@@ -99,11 +99,12 @@ const COMPONENT_ITEMS: NavItem[] = [
   },
   {
     label: 'Data Display',
-    href: '/components/avatar',
+    href: '/components/accordion',
     children: [
-      { label: 'Avatar', href: '/components/avatar' },
-      { label: 'Badge',  href: '/components/badge' },
-      { label: 'Card',   href: '/components/card' },
+      { label: 'Accordion', href: '/components/accordion' },
+      { label: 'Avatar',    href: '/components/avatar' },
+      { label: 'Badge',     href: '/components/badge' },
+      { label: 'Card',      href: '/components/card' },
     ],
   },
   {

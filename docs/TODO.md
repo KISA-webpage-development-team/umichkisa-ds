@@ -97,7 +97,7 @@ Only show categories with ≥1 shipped component. When a batch ships a component
 - [x] `@umichkisa-ds/form` — custom hooks for validation, form submission, and form state management (pair with `@umichkisa-ds/web` form components)
 
 ### Batch 11 — Complex components
-- [ ] Card (new)
+- [x] Card (new)
 - [ ] Accordion (new)
 
 ### Batch 12 — Data display

@@ -34,6 +34,60 @@ type BadgeProps = React.ComponentPropsWithoutRef<"span"> & VariantProps<typeof b
 };
 declare function Badge({ variant, size, className, asChild, ...props }: BadgeProps): react_jsx_runtime.JSX.Element;
 
+type AccordionSingleProps = {
+    type?: "single";
+    value?: string;
+    defaultValue?: string;
+    onValueChange?: (value: string) => void;
+    children: React.ReactNode;
+    className?: string;
+};
+type AccordionMultipleProps = {
+    type: "multiple";
+    value?: string[];
+    defaultValue?: string[];
+    onValueChange?: (value: string[]) => void;
+    children: React.ReactNode;
+    className?: string;
+};
+type AccordionProps = AccordionSingleProps | AccordionMultipleProps;
+declare function Accordion({ className, ...props }: AccordionProps): react_jsx_runtime.JSX.Element;
+type AccordionItemProps = {
+    value: string;
+    disabled?: boolean;
+    children: React.ReactNode;
+    className?: string;
+};
+declare function AccordionItem({ className, ...props }: AccordionItemProps): react_jsx_runtime.JSX.Element;
+type AccordionTriggerProps = {
+    children: React.ReactNode;
+    showChevron?: boolean;
+    className?: string;
+};
+declare function AccordionTrigger({ children, showChevron, className, }: AccordionTriggerProps): react_jsx_runtime.JSX.Element;
+type AccordionContentProps = {
+    children: React.ReactNode;
+    className?: string;
+};
+declare function AccordionContent({ children, className, }: AccordionContentProps): react_jsx_runtime.JSX.Element;
+
+type CardProps = React.HTMLAttributes<HTMLDivElement>;
+declare function Card({ className, ...props }: CardProps): react_jsx_runtime.JSX.Element;
+type CardHeaderProps = React.HTMLAttributes<HTMLDivElement>;
+declare function CardHeader({ className, ...props }: CardHeaderProps): react_jsx_runtime.JSX.Element;
+type HeadingElement = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+type CardTitleProps = React.HTMLAttributes<HTMLHeadingElement> & {
+    /** HTML heading element to render. Default: "h3". */
+    as?: HeadingElement;
+};
+declare function CardTitle({ as: Component, className, ...props }: CardTitleProps): react_jsx_runtime.JSX.Element;
+type CardDescriptionProps = React.HTMLAttributes<HTMLParagraphElement>;
+declare function CardDescription({ className, ...props }: CardDescriptionProps): react_jsx_runtime.JSX.Element;
+type CardContentProps = React.HTMLAttributes<HTMLDivElement>;
+declare function CardContent({ className, ...props }: CardContentProps): react_jsx_runtime.JSX.Element;
+type CardFooterProps = React.HTMLAttributes<HTMLDivElement>;
+declare function CardFooter({ className, ...props }: CardFooterProps): react_jsx_runtime.JSX.Element;
+
 declare const buttonVariants: (props?: ({
     variant?: "primary" | "secondary" | "tertiary" | "destructive" | null | undefined;
     size?: "sm" | "md" | "lg" | null | undefined;
@@ -359,23 +413,6 @@ type TooltipProps = {
 };
 declare function Tooltip({ content, children, side, delayDuration, }: TooltipProps): react_jsx_runtime.JSX.Element;
 
-type CardProps = React.HTMLAttributes<HTMLDivElement>;
-declare function Card({ className, ...props }: CardProps): react_jsx_runtime.JSX.Element;
-type CardHeaderProps = React.HTMLAttributes<HTMLDivElement>;
-declare function CardHeader({ className, ...props }: CardHeaderProps): react_jsx_runtime.JSX.Element;
-type HeadingElement = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-type CardTitleProps = React.HTMLAttributes<HTMLHeadingElement> & {
-    /** HTML heading element to render. Default: "h3". */
-    as?: HeadingElement;
-};
-declare function CardTitle({ as: Component, className, ...props }: CardTitleProps): react_jsx_runtime.JSX.Element;
-type CardDescriptionProps = React.HTMLAttributes<HTMLParagraphElement>;
-declare function CardDescription({ className, ...props }: CardDescriptionProps): react_jsx_runtime.JSX.Element;
-type CardContentProps = React.HTMLAttributes<HTMLDivElement>;
-declare function CardContent({ className, ...props }: CardContentProps): react_jsx_runtime.JSX.Element;
-type CardFooterProps = React.HTMLAttributes<HTMLDivElement>;
-declare function CardFooter({ className, ...props }: CardFooterProps): react_jsx_runtime.JSX.Element;
-
 type DividerProps = {
     orientation?: "horizontal" | "vertical";
     className?: string;
@@ -420,4 +457,4 @@ declare function TabsContent({ value, className, children }: TabsContentProps): 
 
 declare const DS_VERSION = "0.1.0";
 
-export { Alert, type AlertProps, Avatar, type AvatarProps, Badge, type BadgeProps, Button, type ButtonProps, Card, CardContent, type CardContentProps, CardDescription, type CardDescriptionProps, CardFooter, type CardFooterProps, CardHeader, type CardHeaderProps, type CardProps, CardTitle, type CardTitleProps, Checkbox, type CheckboxProps, Container, type ContainerProps, DS_VERSION, Dialog, DialogClose, type DialogCloseProps, DialogContent, type DialogContentProps, DialogDescription, type DialogDescriptionProps, DialogFooter, type DialogFooterProps, type DialogProps, DialogTitle, type DialogTitleProps, DialogTrigger, type DialogTriggerProps, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownGroup, type DropdownGroupProps, DropdownItem, type DropdownItemProps, type DropdownProps, DropdownSeparator, DropdownTrigger, type DropdownTriggerProps, FormItem, type FormItemProps, Grid, type GridColumns, type GridProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, RadioGroup, type RadioGroupProps, RadioItem, type RadioItemProps, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Skeleton, type SkeletonProps, StatusView, type StatusViewProps, Switch, type SwitchProps, Tabs, TabsContent, type TabsContentProps, TabsList, type TabsListProps, type TabsProps, TabsTrigger, type TabsTriggerProps, Textarea, type TextareaProps, Toaster, type ToasterProps, ToggleBar, type ToggleBarItem, type ToggleBarProps, Tooltip, type TooltipProps, alertVariants, avatarVariants, badgeVariants, buttonVariants, cn, tabsTriggerVariants };
+export { Accordion, AccordionContent, type AccordionContentProps, AccordionItem, type AccordionItemProps, type AccordionProps, AccordionTrigger, type AccordionTriggerProps, Alert, type AlertProps, Avatar, type AvatarProps, Badge, type BadgeProps, Button, type ButtonProps, Card, CardContent, type CardContentProps, CardDescription, type CardDescriptionProps, CardFooter, type CardFooterProps, CardHeader, type CardHeaderProps, type CardProps, CardTitle, type CardTitleProps, Checkbox, type CheckboxProps, Container, type ContainerProps, DS_VERSION, Dialog, DialogClose, type DialogCloseProps, DialogContent, type DialogContentProps, DialogDescription, type DialogDescriptionProps, DialogFooter, type DialogFooterProps, type DialogProps, DialogTitle, type DialogTitleProps, DialogTrigger, type DialogTriggerProps, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownGroup, type DropdownGroupProps, DropdownItem, type DropdownItemProps, type DropdownProps, DropdownSeparator, DropdownTrigger, type DropdownTriggerProps, FormItem, type FormItemProps, Grid, type GridColumns, type GridProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, RadioGroup, type RadioGroupProps, RadioItem, type RadioItemProps, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Skeleton, type SkeletonProps, StatusView, type StatusViewProps, Switch, type SwitchProps, Tabs, TabsContent, type TabsContentProps, TabsList, type TabsListProps, type TabsProps, TabsTrigger, type TabsTriggerProps, Textarea, type TextareaProps, Toaster, type ToasterProps, ToggleBar, type ToggleBarItem, type ToggleBarProps, Tooltip, type TooltipProps, alertVariants, avatarVariants, badgeVariants, buttonVariants, cn, tabsTriggerVariants };
