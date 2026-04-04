@@ -103,6 +103,7 @@ const COMPONENT_ITEMS: NavItem[] = [
     children: [
       { label: 'Avatar', href: '/components/avatar' },
       { label: 'Badge',  href: '/components/badge' },
+      { label: 'Table',  href: '/components/table' },
     ],
   },
   {
