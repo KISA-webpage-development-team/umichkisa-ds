@@ -73,7 +73,7 @@ export function ToggleGroup({
     <div
       role="radiogroup"
       className={cn(
-        "inline-flex items-center rounded-md border border-border",
+        "inline-flex items-center gap-1",
         fullWidth && "w-full",
         className
       )}
@@ -95,12 +95,12 @@ export function ToggleGroup({
             className={cn(
               "flex items-center cursor-pointer transition-colors rounded-md",
               isSmall
-                ? "type-body-sm px-2 py-1 gap-1"
+                ? "type-body-sm px-2.5 py-1 gap-1"
                 : "type-body px-3 py-1.5 gap-2",
               fullWidth && "flex-1 justify-center",
               isSelected
-                ? "bg-[var(--color-surface-subtle)] text-foreground !font-semibold"
-                : "text-muted-foreground hover:text-foreground hover:bg-[var(--color-surface-subtle)] active:opacity-90",
+                ? "bg-brand-primary text-brand-foreground !font-semibold"
+                : "text-muted-foreground hover:bg-brand-accent-subtle hover:text-brand-primary active:opacity-90",
               "outline-none focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-[var(--color-focus-ring)] focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]"
             )}
           >
