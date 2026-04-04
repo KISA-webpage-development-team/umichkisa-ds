@@ -12,6 +12,7 @@ import {
   TableMobileItem,
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { CodeBlock } from '@/components/CodeBlock'
 import { highlight } from '@/lib/highlight'
 import { ClickableRowsDemo } from './_demos'
 
@@ -271,7 +272,7 @@ export default async function TablePage() {
         Table is composed from 10 sub-components that mirror native HTML table
         elements. Here is how they nest together:
       </p>
-      <pre className="my-6 rounded-lg border border-border bg-surface-muted px-4 py-4 type-caption font-mono text-foreground overflow-x-auto whitespace-pre">{`Table
+      <CodeBlock code={`Table
 ├── TableCaption          {/* optional accessible description */}
 ├── TableHeader
 │   └── TableRow
@@ -284,7 +285,7 @@ export default async function TablePage() {
         └── TableCell
 
 TableMobileList           {/* mobile alternative */}
-└── TableMobileItem`}</pre>
+└── TableMobileItem`} lang="text" />
 
       {/* -- Examples ------------------------------------------------- */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>

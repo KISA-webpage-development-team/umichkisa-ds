@@ -1,5 +1,6 @@
 import { Container, Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Button, Badge, Avatar, Grid, Icon } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { CodeBlock } from '@/components/CodeBlock'
 import { highlight } from '@/lib/highlight'
 
 const basicCode = `import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@umichkisa-ds/web'
@@ -136,14 +137,12 @@ export default async function CardPage() {
 
       {/* -- Anatomy -------------------------------------------------- */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Anatomy</h2>
-      <pre className="rounded-md border border-border bg-surface-subtle px-4 py-3 type-caption font-mono text-foreground overflow-x-auto mb-8">
-{`Card              ← border + background, no padding
+      <CodeBlock code={`Card              ← border + background, no padding
   CardHeader      ← p-4
     CardTitle     ← heading (h3 by default)
     CardDescription ← muted supporting text
   CardContent     ← px-4 pb-4 (add pt-4 when no header)
-  CardFooter      ← flex row, px-4 pb-4`}
-      </pre>
+  CardFooter      ← flex row, px-4 pb-4`} lang="text" />
 
       {/* -- Examples ------------------------------------------------- */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
