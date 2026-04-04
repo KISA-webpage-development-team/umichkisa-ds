@@ -40,17 +40,23 @@ describe("Form", () => {
     );
   });
 
-  it("passes className to form element", () => {
+  it("applies default flex column layout with gap-4", () => {
+    render(<TestForm onSubmit={() => {}} />);
+    const form = document.querySelector("form");
+    expect(form).toHaveClass("flex", "flex-col", "gap-4");
+  });
+
+  it("merges className with default layout", () => {
     function TestFormWithClass() {
       const form = useRHFForm();
       return (
-        <Form form={form} onSubmit={() => {}} className="my-form">
+        <Form form={form} onSubmit={() => {}} className="max-w-sm">
           <button type="submit">Go</button>
         </Form>
       );
     }
     render(<TestFormWithClass />);
     const form = document.querySelector("form");
-    expect(form).toHaveClass("my-form");
+    expect(form).toHaveClass("flex", "flex-col", "gap-4", "max-w-sm");
   });
 });

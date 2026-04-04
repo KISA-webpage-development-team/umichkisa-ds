@@ -16,7 +16,7 @@ function ContactForm() {
   })
 
   return (
-    <Form form={form} onSubmit={(data) => console.log(data)} className="flex flex-col gap-4">
+    <Form form={form} onSubmit={(data) => console.log(data)}>
       <Form.Input name="name" label="Name" rules={{ required: 'Name is required' }} />
       <Form.Textarea name="message" label="Message" rules={{ required: 'Message is required' }} />
       <Form.Button>Send</Form.Button>
@@ -95,7 +95,7 @@ function FormRootDemo() {
   })
 
   return (
-    <Form form={form} onSubmit={(data) => alert(`From ${data.name}: ${data.message}`)} className="flex flex-col gap-4 w-full max-w-sm">
+    <Form form={form} onSubmit={(data) => alert(`From ${data.name}: ${data.message}`)} className="w-full max-w-sm">
       <Form.Input name="name" label="Name" rules={{ required: 'Name is required' }} />
       <Form.Textarea name="message" label="Message" rules={{ required: 'Message is required' }} />
       <Form.Button>Send</Form.Button>
@@ -220,7 +220,7 @@ function ButtonDemo() {
   const form = useForm<ButtonDemoValues>({ defaultValues: { name: '' } })
 
   return (
-    <Form form={form} onSubmit={(data) => alert(`Hello, ${data.name}!`)} className="flex flex-col gap-4 w-full max-w-sm">
+    <Form form={form} onSubmit={(data) => alert(`Hello, ${data.name}!`)} className="w-full max-w-sm">
       <Form.Input name="name" label="Name" rules={{ required: 'Name is required' }} />
       <Form.Button disableWhenInvalid>Submit</Form.Button>
     </Form>

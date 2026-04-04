@@ -24,7 +24,7 @@ function LoginForm() {
   }
 
   return (
-    <Form form={form} onSubmit={onSubmit} className="flex flex-col gap-4">
+    <Form form={form} onSubmit={onSubmit}>
       <Form.Input
         name="email"
         label="Email"
@@ -58,7 +58,7 @@ function QuickStartDemo() {
   }
 
   return (
-    <Form form={form} onSubmit={onSubmit} className="flex flex-col gap-4 w-full max-w-sm">
+    <Form form={form} onSubmit={onSubmit} className="w-full max-w-sm">
       <Form.Input
         name="email"
         label="Email"

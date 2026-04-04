@@ -4,6 +4,7 @@ import {
   type FieldValues,
   type SubmitHandler,
 } from "react-hook-form";
+import { cn } from "@umichkisa-ds/web";
 import { FormInput } from "./fields/FormInput";
 import { FormTextarea } from "./fields/FormTextarea";
 import { FormSelect } from "./fields/FormSelect";
@@ -29,7 +30,7 @@ function FormRoot<T extends FieldValues = FieldValues>({
     <FormProvider {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className={className}
+        className={cn("flex flex-col gap-4", className)}
         noValidate
       >
         {children}

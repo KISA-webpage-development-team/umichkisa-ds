@@ -97,7 +97,7 @@ function ValidationDemo() {
   })
 
   return (
-    <Form form={form} onSubmit={(data) => alert(`Valid! ${data.name} / ${data.email}`)} className="flex flex-col gap-4 w-full max-w-sm">
+    <Form form={form} onSubmit={(data) => alert(`Valid! ${data.name} / ${data.email}`)} className="w-full max-w-sm">
       <Form.Input
         name="name"
         label="Full Name"

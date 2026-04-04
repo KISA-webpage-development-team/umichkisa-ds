@@ -62,7 +62,7 @@ function SettingsForm() {
   const form = useForm({ defaultValues: { name: '' } })
 
   return (
-    <Form form={form} onSubmit={(data) => console.log(data)} className="flex flex-col gap-4">
+    <Form form={form} onSubmit={(data) => console.log(data)}>
       <Form.Input name="name" label="Display Name" rules={{ required: 'Required' }} />
       <SubmitFooter />
     </Form>
@@ -143,7 +143,7 @@ function UseFormStatusDemo() {
   })
 
   return (
-    <Form form={form} onSubmit={(data) => alert(`Saved: ${data.name}`)} className="flex flex-col gap-4 w-full max-w-sm">
+    <Form form={form} onSubmit={(data) => alert(`Saved: ${data.name}`)} className="w-full max-w-sm">
       <Form.Input name="name" label="Display Name" rules={{ required: 'Required' }} />
       <SubmitFooter />
     </Form>

@@ -21,7 +21,7 @@ function SignupForm() {
   }
 
   return (
-    <Form form={form} onSubmit={onSubmit} className="flex flex-col gap-4">
+    <Form form={form} onSubmit={onSubmit}>
       <Form.Input name="name" label="Full Name" rules={{ required: 'Name is required' }} />
       <Form.Input name="email" label="Email" type="email" rules={{ required: 'Email is required' }} />
       <Form.Button>Sign up</Form.Button>
@@ -66,7 +66,7 @@ function BasicDemo() {
   }
 
   return (
-    <Form form={form} onSubmit={onSubmit} className="flex flex-col gap-4 w-full max-w-sm">
+    <Form form={form} onSubmit={onSubmit} className="w-full max-w-sm">
       <Form.Input name="name" label="Full Name" rules={{ required: 'Name is required' }} />
       <Form.Input name="email" label="Email" type="email" rules={{ required: 'Email is required' }} />
       <Form.Button>Sign up</Form.Button>

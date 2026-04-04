@@ -35,7 +35,7 @@ function LoginForm() {
   }
 
   return (
-    <Form form={form} onSubmit={onSubmit} className="flex flex-col gap-4">
+    <Form form={form} onSubmit={onSubmit}>
       <Form.Input
         name="email"
         label="Email"
@@ -68,7 +68,7 @@ function LoginDemo() {
     <Form
       form={form}
       onSubmit={(data) => alert(`Logged in as ${data.email}`)}
-      className="flex flex-col gap-4 w-full max-w-sm"
+      className="w-full max-w-sm"
     >
       <Form.Input
         name="email"
@@ -118,7 +118,7 @@ function ProfileForm() {
   })
 
   return (
-    <Form form={form} onSubmit={(data) => console.log(data)} className="flex flex-col gap-4">
+    <Form form={form} onSubmit={(data) => console.log(data)}>
       <Form.Input
         name="name"
         label="Full Name"
@@ -178,7 +178,7 @@ function ProfileDemo() {
     <Form
       form={form}
       onSubmit={(data) => alert(`Saved profile for ${data.name} (${data.gradYear})`)}
-      className="flex flex-col gap-4 w-full max-w-sm"
+      className="w-full max-w-sm"
     >
       <Form.Input
         name="name"
@@ -235,7 +235,7 @@ function FeedbackForm() {
   })
 
   return (
-    <Form form={form} onSubmit={(data) => console.log(data)} className="flex flex-col gap-4">
+    <Form form={form} onSubmit={(data) => console.log(data)}>
       <Form.Select
         name="subject"
         label="Subject"
@@ -283,7 +283,7 @@ function FeedbackDemo() {
     <Form
       form={form}
       onSubmit={(data) => alert(`Feedback sent about "${data.subject}"`)}
-      className="flex flex-col gap-4 w-full max-w-sm"
+      className="w-full max-w-sm"
     >
       <Form.Select
         name="subject"
