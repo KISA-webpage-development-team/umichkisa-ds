@@ -139,21 +139,21 @@ function ValidationDemo() {
 export default function ValidationPage() {
   return (
     <Container size="md" as="article">
-      <h1 className="type-heading-2xl !font-semibold tracking-tight mt-8 mb-2 text-foreground">
+      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">
         Validation
       </h1>
       <p className="type-body mb-8 text-muted-foreground max-w-prose">
         How form validation works with the{' '}
-        <code className="type-code">onTouched</code> default, built-in rules,
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">onTouched</code> default, built-in rules,
         and custom validators.
       </p>
 
       {/* ── onTouched Lifecycle ────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">
         The onTouched Lifecycle
       </h2>
-      <p className="type-body mb-4 text-muted-foreground max-w-prose">
-        The default <code className="type-code">onTouched</code> mode strikes
+      <p className="type-body mb-4 text-foreground max-w-prose">
+        The default <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">onTouched</code> mode strikes
         the right balance: errors appear after the user leaves a field (blur),
         and clear immediately as they correct the input. This prevents errors
         from flashing while typing but still provides feedback before submission.
@@ -165,8 +165,8 @@ export default function ValidationPage() {
       </div>
 
       {/* ── Live Demo ─────────────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">Try It</h2>
-      <p className="type-body mb-4 text-muted-foreground max-w-prose">
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Try It</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
         This form combines required, pattern, minLength, and custom validators.
         Tab through fields to see errors appear on blur, then type to watch them
         clear.
@@ -176,7 +176,7 @@ export default function ValidationPage() {
       </ComponentPreview>
 
       {/* ── Built-in Rules ────────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">Built-in Rules</h2>
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Built-in Rules</h2>
 
       <h3 className="type-body !font-semibold mt-6 mb-2 text-foreground">required</h3>
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
@@ -221,10 +221,10 @@ export default function ValidationPage() {
       </div>
 
       {/* ── Custom Validators ─────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">Custom Validators</h2>
-      <p className="type-body mb-4 text-muted-foreground max-w-prose">
-        Use the <code className="type-code">validate</code> rule for complex
-        logic. Return <code className="type-code">true</code> for valid or a
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Custom Validators</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
+        Use the <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">validate</code> rule for complex
+        logic. Return <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">true</code> for valid or a
         string error message. You can run multiple checks in sequence.
       </p>
       <div className="my-4 border border-border rounded-lg bg-surface-muted overflow-x-auto">
@@ -234,8 +234,8 @@ export default function ValidationPage() {
       </div>
 
       {/* ── Combining Rules ───────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">Combining Rules</h2>
-      <p className="type-body mb-4 text-muted-foreground max-w-prose">
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Combining Rules</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
         All rules can be used together on a single field. They are checked in
         order: required first, then minLength/maxLength, then pattern, then
         validate.
@@ -247,11 +247,11 @@ export default function ValidationPage() {
       </div>
 
       {/* ── Overriding Mode ───────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">Overriding Validation Mode</h2>
-      <p className="type-body mb-4 text-muted-foreground max-w-prose">
-        While <code className="type-code">onTouched</code> is the recommended
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Overriding Validation Mode</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
+        While <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">onTouched</code> is the recommended
         default, you can override the mode per-form via{' '}
-        <code className="type-code">useForm</code>.
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">useForm</code>.
       </p>
       <div className="my-4 border border-border rounded-lg bg-surface-muted overflow-x-auto">
         <pre className="type-caption font-mono text-foreground px-4 py-4 whitespace-pre">

@@ -438,18 +438,18 @@ function HooksLoginDemo() {
 export default function ExamplesPage() {
   return (
     <Container size="md" as="article">
-      <h1 className="type-heading-2xl !font-semibold tracking-tight mt-8 mb-2 text-foreground">
+      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">
         Examples
       </h1>
       <p className="type-body mb-8 text-muted-foreground max-w-prose">
         Live interactive forms you can try right here. Each example is a
         complete, working form using{' '}
-        <code className="type-code">@umichkisa-ds/form</code>.
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@umichkisa-ds/form</code>.
       </p>
 
       {/* ── Login Form ────────────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">Login Form</h2>
-      <p className="type-body mb-4 text-muted-foreground max-w-prose">
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Login Form</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
         A simple login form with email and password validation. Try submitting
         with empty fields or a short password to see validation in action.
       </p>
@@ -458,8 +458,8 @@ export default function ExamplesPage() {
       </ComponentPreview>
 
       {/* ── Profile Edit ──────────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">Profile Edit</h2>
-      <p className="type-body mb-4 text-muted-foreground max-w-prose">
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Profile Edit</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
         A KISA member profile editor demonstrating text inputs, textarea, number
         validation, radio groups, and a switch toggle.
       </p>
@@ -468,8 +468,8 @@ export default function ExamplesPage() {
       </ComponentPreview>
 
       {/* ── Feedback Form ─────────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">Feedback Form</h2>
-      <p className="type-body mb-4 text-muted-foreground max-w-prose">
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Feedback Form</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
         A feedback form with a select dropdown, textarea with minimum length,
         and an optional anonymous checkbox.
       </p>
@@ -478,11 +478,11 @@ export default function ExamplesPage() {
       </ComponentPreview>
 
       {/* ── Using Hooks ───────────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">Using Hooks</h2>
-      <p className="type-body mb-4 text-muted-foreground max-w-prose">
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Using Hooks</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
         The same login form rebuilt using{' '}
-        <code className="type-code">useFormField</code> and{' '}
-        <code className="type-code">useFormStatus</code> hooks. The result is
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">useFormField</code> and{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">useFormStatus</code> hooks. The result is
         identical but gives you full control over the field layout and submit
         button behavior.
       </p>

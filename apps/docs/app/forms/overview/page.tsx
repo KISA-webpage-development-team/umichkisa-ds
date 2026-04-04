@@ -80,18 +80,18 @@ function QuickStartDemo() {
 export default function FormsOverviewPage() {
   return (
     <Container size="md" as="article">
-      <h1 className="type-heading-2xl !font-semibold tracking-tight mt-8 mb-2 text-foreground">
+      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">
         Forms
       </h1>
       <p className="type-body mb-8 text-muted-foreground max-w-prose">
         A thin integration layer between{' '}
-        <code className="type-code">react-hook-form</code> and the KISA Design
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">react-hook-form</code> and the KISA Design
         System. It provides sensible defaults, automatic error wiring, and
         compound components that eliminate boilerplate.
       </p>
 
       {/* ── Installation ──────────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">Installation</h2>
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Installation</h2>
       <div className="my-4 border border-border rounded-lg bg-surface-muted overflow-x-auto">
         <pre className="type-caption font-mono text-foreground px-4 py-4 whitespace-pre">
           <code>{installCode}</code>
@@ -99,18 +99,18 @@ export default function FormsOverviewPage() {
       </div>
       <p className="type-body-sm mb-8 text-muted-foreground max-w-prose">
         The package requires{' '}
-        <code className="type-code">@umichkisa-ds/web</code> as a peer
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@umichkisa-ds/web</code> as a peer
         dependency — it wraps DS form primitives (Input, Textarea, Select, etc.)
         with react-hook-form controllers.
       </p>
 
       {/* ── Quick Start ───────────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">Quick Start</h2>
-      <p className="type-body mb-4 text-muted-foreground max-w-prose">
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Quick Start</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
         A complete login form in under 30 lines. The{' '}
-        <code className="type-code">useForm</code> hook provides a form
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">useForm</code> hook provides a form
         instance, and the{' '}
-        <code className="type-code">{'<Form>'}</code> compound component handles
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Form>'}</code> compound component handles
         context, submission, and error display automatically.
       </p>
       <ComponentPreview code={quickStartCode}>
@@ -118,7 +118,7 @@ export default function FormsOverviewPage() {
       </ComponentPreview>
 
       {/* ── What's Inside ─────────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">{"What's Inside"}</h2>
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">{"What's Inside"}</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
         <Link
           href="/forms/use-form"
@@ -126,7 +126,7 @@ export default function FormsOverviewPage() {
         >
           <h3 className="type-body !font-semibold text-foreground mb-1">useForm</h3>
           <p className="type-body-sm text-muted-foreground">
-            Wrapper hook with <code className="type-code">onTouched</code> validation mode by default. Drop-in replacement for react-hook-form.
+            Wrapper hook with <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">onTouched</code> validation mode by default. Drop-in replacement for react-hook-form.
           </p>
         </Link>
 

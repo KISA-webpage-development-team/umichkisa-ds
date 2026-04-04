@@ -8,7 +8,7 @@ import { Sidebar } from '@/components/Sidebar'
 export function DocsShell({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const pathname = usePathname()
-  const showSidebar = pathname.startsWith('/foundation') || pathname.startsWith('/components')
+  const showSidebar = pathname.startsWith('/foundation') || pathname.startsWith('/components') || pathname.startsWith('/forms')
 
   return (
     <>

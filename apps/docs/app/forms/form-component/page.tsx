@@ -232,70 +232,70 @@ function ButtonDemo() {
 export default function FormComponentPage() {
   return (
     <Container size="md" as="article">
-      <h1 className="type-heading-2xl !font-semibold tracking-tight mt-8 mb-2 text-foreground">
+      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">
         Form Component
       </h1>
       <p className="type-body mb-8 text-muted-foreground max-w-prose">
-        The <code className="type-code">{'<Form>'}</code> compound component
+        The <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Form>'}</code> compound component
         provides context, submission handling, and field sub-components that
         automatically wire up labels, errors, and validation.
       </p>
 
       {/* ── Form Root ─────────────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">{'<Form>'}</h2>
-      <p className="type-body mb-4 text-muted-foreground max-w-prose">
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">{'<Form>'}</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
         The root component wraps your fields in a{' '}
-        <code className="type-code">FormProvider</code> and a native{' '}
-        <code className="type-code">{'<form>'}</code> element. Pass the{' '}
-        <code className="type-code">form</code> instance from{' '}
-        <code className="type-code">useForm</code> and an{' '}
-        <code className="type-code">onSubmit</code> handler.
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">FormProvider</code> and a native{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<form>'}</code> element. Pass the{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">form</code> instance from{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">useForm</code> and an{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">onSubmit</code> handler.
       </p>
       <ComponentPreview code={formRootCode}>
         <FormRootDemo />
       </ComponentPreview>
 
       {/* ── Form.Input ────────────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">Form.Input</h2>
-      <p className="type-body mb-4 text-muted-foreground max-w-prose">
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.Input</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
         Renders a labeled input field with automatic error display. Accepts all
         native input attributes plus{' '}
-        <code className="type-code">rules</code> for validation and{' '}
-        <code className="type-code">description</code> for helper text.
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">rules</code> for validation and{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">description</code> for helper text.
       </p>
       <ComponentPreview code={inputCode}>
         <InputDemo />
       </ComponentPreview>
 
       {/* ── Form.Textarea ─────────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">Form.Textarea</h2>
-      <p className="type-body mb-4 text-muted-foreground max-w-prose">
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.Textarea</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
         Same pattern as Form.Input but for multi-line text. Supports{' '}
-        <code className="type-code">minLength</code> and{' '}
-        <code className="type-code">maxLength</code> validation.
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">minLength</code> and{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">maxLength</code> validation.
       </p>
       <ComponentPreview code={textareaCode}>
         <TextareaDemo />
       </ComponentPreview>
 
       {/* ── Form.Select ───────────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">Form.Select</h2>
-      <p className="type-body mb-4 text-muted-foreground max-w-prose">
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.Select</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
         Wraps the DS Select component. Pass{' '}
-        <code className="type-code">SelectTrigger</code>,{' '}
-        <code className="type-code">SelectContent</code>, and{' '}
-        <code className="type-code">SelectItem</code> as children — these are
-        imported from <code className="type-code">@umichkisa-ds/web</code>.
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">SelectTrigger</code>,{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">SelectContent</code>, and{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">SelectItem</code> as children — these are
+        imported from <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@umichkisa-ds/web</code>.
       </p>
       <ComponentPreview code={selectCode}>
         <SelectDemo />
       </ComponentPreview>
 
       {/* ── Form.Checkbox ─────────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">Form.Checkbox</h2>
-      <p className="type-body mb-4 text-muted-foreground max-w-prose">
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.Checkbox</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
         A single checkbox with label and optional description. The value is a
-        boolean. Use <code className="type-code">required</code> to enforce
+        boolean. Use <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">required</code> to enforce
         agreement flows.
       </p>
       <ComponentPreview code={checkboxCode}>
@@ -303,19 +303,19 @@ export default function FormComponentPage() {
       </ComponentPreview>
 
       {/* ── Form.Radio ────────────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">Form.Radio</h2>
-      <p className="type-body mb-4 text-muted-foreground max-w-prose">
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.Radio</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
         A radio group with labeled options. Pass{' '}
-        <code className="type-code">RadioItem</code> components as children,
-        imported from <code className="type-code">@umichkisa-ds/web</code>.
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">RadioItem</code> components as children,
+        imported from <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@umichkisa-ds/web</code>.
       </p>
       <ComponentPreview code={radioCode}>
         <RadioDemo />
       </ComponentPreview>
 
       {/* ── Form.Switch ───────────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">Form.Switch</h2>
-      <p className="type-body mb-4 text-muted-foreground max-w-prose">
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.Switch</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
         A toggle switch for boolean settings. Useful for preferences and
         opt-in/opt-out controls.
       </p>
@@ -324,10 +324,10 @@ export default function FormComponentPage() {
       </ComponentPreview>
 
       {/* ── Form.Button ───────────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">Form.Button</h2>
-      <p className="type-body mb-4 text-muted-foreground max-w-prose">
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.Button</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
         A submit button that auto-disables while the form is submitting. Add{' '}
-        <code className="type-code">disableWhenInvalid</code> to also disable
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">disableWhenInvalid</code> to also disable
         when validation errors exist.
       </p>
       <ComponentPreview code={buttonCode}>
@@ -335,8 +335,8 @@ export default function FormComponentPage() {
       </ComponentPreview>
 
       {/* ── Shared Props ──────────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">Shared Field Props</h2>
-      <p className="type-body mb-4 text-muted-foreground max-w-prose">
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Shared Field Props</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
         All field sub-components (Input, Textarea, Select, Checkbox, Radio,
         Switch) share these props:
       </p>
@@ -352,32 +352,32 @@ export default function FormComponentPage() {
           </thead>
           <tbody>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="type-code">name</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="type-code">string</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">name</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></td>
               <td className="px-4 py-3 text-foreground">Yes</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Field name matching a key in your form values type.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="type-code">label</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="type-code">string</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">label</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></td>
               <td className="px-4 py-3 text-foreground">Yes</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Visible label text. Also used for accessibility.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="type-code">rules</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="type-code">RegisterOptions</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">rules</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">RegisterOptions</code></td>
               <td className="px-4 py-3 text-foreground">No</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Validation rules (required, minLength, pattern, validate, etc.).</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="type-code">description</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="type-code">string</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">description</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></td>
               <td className="px-4 py-3 text-foreground">No</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Helper text shown below the field.</td>
             </tr>
             <tr>
-              <td className="px-4 py-3 text-foreground"><code className="type-code">className</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="type-code">string</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">className</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></td>
               <td className="px-4 py-3 text-foreground">No</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Applied to the FormItem wrapper for layout spacing.</td>
             </tr>

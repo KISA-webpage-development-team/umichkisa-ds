@@ -155,20 +155,20 @@ function UseFormStatusDemo() {
 export default function HooksPage() {
   return (
     <Container size="md" as="article">
-      <h1 className="type-heading-2xl !font-semibold tracking-tight mt-8 mb-2 text-foreground">
+      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">
         Hooks
       </h1>
       <p className="type-body mb-8 text-muted-foreground max-w-prose">
         For cases where the compound{' '}
-        <code className="type-code">{'<Form>'}</code> components don&apos;t fit
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Form>'}</code> components don&apos;t fit
         your layout, use these hooks to build custom field layouts and
         status-aware UI.
       </p>
 
       {/* ── useFormField ──────────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">useFormField</h2>
-      <p className="type-body mb-4 text-muted-foreground max-w-prose">
-        Returns <code className="type-code">inputProps</code> that you spread
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">useFormField</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
+        Returns <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">inputProps</code> that you spread
         onto any DS input component, plus the current error state. Use this
         when you need a custom field layout — for example, a label beside the
         input instead of above it.
@@ -189,13 +189,13 @@ export default function HooksPage() {
           </thead>
           <tbody>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="type-code">name</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="type-code">string</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">name</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Field name matching a key in your form values type.</td>
             </tr>
             <tr>
-              <td className="px-4 py-3 text-foreground"><code className="type-code">rules</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="type-code">RegisterOptions</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">rules</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">RegisterOptions</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Optional validation rules (same as compound components).</td>
             </tr>
           </tbody>
@@ -214,23 +214,23 @@ export default function HooksPage() {
           </thead>
           <tbody>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="type-code">value</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="type-code">unknown</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">value</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">unknown</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Current field value.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="type-code">invalid</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="type-code">boolean</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">invalid</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">boolean</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Whether the field has a validation error.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="type-code">error</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="type-code">string | undefined</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">error</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string | undefined</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Error message string, if any.</td>
             </tr>
             <tr>
-              <td className="px-4 py-3 text-foreground"><code className="type-code">inputProps</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="type-code">object</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">inputProps</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">object</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Spread onto your input: name, value, onChange, onBlur, invalid, ref.</td>
             </tr>
           </tbody>
@@ -238,12 +238,12 @@ export default function HooksPage() {
       </div>
 
       {/* ── useFormStatus ─────────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">useFormStatus</h2>
-      <p className="type-body mb-4 text-muted-foreground max-w-prose">
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">useFormStatus</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
         Returns the form&apos;s submission and validity state. Use this to build
         custom submit footers, progress indicators, or conditional UI. Must be
-        called within a <code className="type-code">{'<Form>'}</code> or{' '}
-        <code className="type-code">FormProvider</code> context.
+        called within a <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Form>'}</code> or{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">FormProvider</code> context.
       </p>
       <ComponentPreview code={useFormStatusCode}>
         <UseFormStatusDemo />
@@ -261,18 +261,18 @@ export default function HooksPage() {
           </thead>
           <tbody>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="type-code">isSubmitting</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="type-code">boolean</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">isSubmitting</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">boolean</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">True while the onSubmit handler is running (including async).</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="type-code">isValid</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="type-code">boolean</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">isValid</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">boolean</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">True when all fields pass validation.</td>
             </tr>
             <tr>
-              <td className="px-4 py-3 text-foreground"><code className="type-code">isDirty</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="type-code">boolean</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">isDirty</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">boolean</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">True when any field value differs from defaultValues.</td>
             </tr>
           </tbody>
@@ -280,7 +280,7 @@ export default function HooksPage() {
       </div>
 
       {/* ── Decision Guide ────────────────────────────────── */}
-      <h2 className="type-heading-lg !font-semibold mt-8 mb-4 text-foreground">When to Use What</h2>
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">When to Use What</h2>
       <div className="my-6 overflow-x-auto">
         <table className="w-full border-collapse border border-border">
           <thead className="bg-surface-subtle">
@@ -291,15 +291,15 @@ export default function HooksPage() {
           </thead>
           <tbody>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="type-code">Form.Input</code> etc.</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Form.Input</code> etc.</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Standard forms with label-above-field layout. Handles 90% of cases with zero boilerplate.</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="type-code">useFormField</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">useFormField</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Custom field layouts (e.g., inline labels, grouped fields) or wrapping non-DS inputs.</td>
             </tr>
             <tr>
-              <td className="px-4 py-3 text-foreground"><code className="type-code">useFormStatus</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">useFormStatus</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Custom submit footers, dirty indicators, or any UI that reacts to form state.</td>
             </tr>
           </tbody>
