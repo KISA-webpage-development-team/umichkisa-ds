@@ -98,7 +98,7 @@ Only show categories with ≥1 shipped component. When a batch ships a component
 
 ### Batch 11 — Complex components
 - [x] Card (new)
-- [ ] Accordion (new)
+- [x] Accordion (new)
 
 ### Batch 12 — Data display
 - [ ] Pagination (new)
