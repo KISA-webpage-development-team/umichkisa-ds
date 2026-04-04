@@ -1778,8 +1778,8 @@ function computePaginationRange(page, totalPages, siblingCount) {
 }
 var pageButtonBase = [
   "inline-flex items-center justify-center",
-  "h-9 min-w-9 rounded-md type-body-sm",
-  "transition-all duration-150 ease-in-out",
+  "h-9 w-9 rounded-md type-body-sm",
+  "transition-[color,background-color] duration-200 ease-in-out",
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]"
 ].join(" ");
 function Pagination({
@@ -1840,7 +1840,7 @@ function Pagination({
           {
             "aria-hidden": "true",
             className: cn(
-              "items-center justify-center h-9 min-w-9 type-body-sm text-muted-foreground select-none",
+              "items-center justify-center h-9 w-9 type-body-sm text-muted-foreground select-none",
               showOnMobile ? "inline-flex" : "hidden md:inline-flex"
             ),
             children: "..."
