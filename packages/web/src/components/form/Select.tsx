@@ -13,13 +13,15 @@ function Select(props: SelectProps) {
 type SelectTriggerProps = {
   placeholder?: string;
   invalid?: boolean;
+  "aria-labelledby"?: string;
   className?: string;
 };
 
-function SelectTrigger({ placeholder, invalid = false, className }: SelectTriggerProps) {
+function SelectTrigger({ placeholder, invalid = false, "aria-labelledby": ariaLabelledBy, className }: SelectTriggerProps) {
   return (
     <RadixSelect.Trigger
       aria-invalid={invalid}
+      aria-labelledby={ariaLabelledBy}
       className={cn(
         "flex w-full items-center justify-between rounded-md border border-border-strong bg-surface px-3 py-2 type-body-sm text-foreground transition-colors",
         "placeholder:text-muted-foreground",

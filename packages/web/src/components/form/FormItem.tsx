@@ -22,7 +22,7 @@ export function FormItem({
 }: FormItemProps) {
   return (
     <div className={cn("flex flex-col gap-2", className)}>
-      <Label htmlFor={htmlFor} required={required}>
+      <Label htmlFor={htmlFor} id={`${htmlFor}-label`} required={required}>
         {label}
       </Label>
       {children}

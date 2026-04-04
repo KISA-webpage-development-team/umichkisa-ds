@@ -35,6 +35,7 @@ export function FormRadio({
     >
       <RadioGroup
         invalid={!!error}
+        aria-labelledby={`${name}-label`}
         value={field.value}
         onValueChange={(val) => {
           field.onChange(val);
