@@ -15,6 +15,11 @@ umichkisa-ds/
 │       ├── tokens/        # primitives.css, semantic.css
 │       ├── styles/        # index.css (entry, @font-face, type-* utilities)
 │       └── index.ts       # Public exports
+├── packages/form/         # Form DX layer (published)
+│   └── src/
+│       ├── hooks/         # useForm, useFormField, useFormStatus
+│       ├── components/    # Form compound component (Form.Input, .Textarea, etc.)
+│       └── index.ts       # Public exports
 └── apps/docs/             # Documentation site (Next.js 15, App Router)
     ├── app/               # Routes (all pages are inline TSX)
     └── components/        # Docs UI components (not exported)
@@ -90,6 +95,16 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 
 All docs pages (foundation and component) use `<Container size="md" as="article">` as their page wrapper. API Reference tables follow a standardized pattern (Container page is the gold standard). MDX infrastructure has been fully removed — all content is inline TSX with DS type tokens.
 
+### Forms (new top-level section)
+| Page | Route | Status |
+|---|---|---|
+| Overview | `/forms/overview` | ✅ Complete — installation, quick start, what's inside |
+| useForm | `/forms/use-form` | ✅ Complete — API, validation modes, form methods |
+| Form Component | `/forms/form-component` | ✅ Complete — all 7 compound components with live demos |
+| Validation | `/forms/validation` | ✅ Complete — rules API, custom validators, mode override |
+| Hooks | `/forms/hooks` | ✅ Complete — useFormField, useFormStatus, decision guide |
+| Examples | `/forms/examples` | ✅ Complete — 4 live interactive forms (login, profile, feedback, hooks) |
+
 ### Sidebar Organization
 
 The sidebar uses collapsible categories that auto-expand based on the current route. Categories are defined in `apps/docs/components/Sidebar.tsx` as `COMPONENT_CATEGORIES`. Only categories with ≥1 shipped component are shown. See `docs/TODO.md` for the full category mapping.
@@ -129,6 +144,23 @@ The sidebar uses collapsible categories that auto-expand based on the current ro
 | `Avatar` | avatar | ✅ | Image with fallback chain: image → initials (from `name`) → icon (`user-round`). CVA `size` variant (sm 32px / md 40px / lg 56px). Brand background (`bg-brand-primary` + `text-brand-foreground`). |
 | `Container` | layout | ✅ | Page shell wrapper. CVA `size` variant (default 1536px / md 768px / sm 640px / prose ~65ch). Polymorphic `as` prop for semantic HTML elements. Responsive padding `px-4 md:px-6 lg:px-8`. |
 | `Icon` | icon | ✅ | Single `<Icon name="..." />` component with static Lucide registry (30 icons: 28 Lucide + 2 custom SVG brand icons). Replaced 19 named `react-icons` components. |
+
+### Form DX Package (`packages/form`)
+| Export | Type | Notes |
+|---|---|---|
+| `useForm` | hook | Thin wrapper over RHF's useForm, defaults `mode: "onTouched"` |
+| `useFormField` | hook | Wraps `useController`, returns `{ value, invalid, error, inputProps }` for manual DS component wiring |
+| `useFormStatus` | hook | Returns `{ isSubmitting, isValid, isDirty }` from form context |
+| `Form` | component | `<form>` + `FormProvider`, takes `form` instance + `onSubmit` |
+| `Form.Input` | compound | Wraps DS `Input` + `FormItem` with `useController` |
+| `Form.Textarea` | compound | Wraps DS `Textarea` + `FormItem` |
+| `Form.Select` | compound | Wraps Radix `Select` root, wires `value`/`onValueChange` |
+| `Form.Checkbox` | compound | Boolean field, wraps DS `Checkbox` |
+| `Form.Radio` | compound | Wraps Radix `RadioGroup`, children are `RadioItem` from web |
+| `Form.Switch` | compound | Boolean field, wraps DS `Switch` |
+| `Form.Button` | compound | DS `Button` with auto-disable during submit, `disableWhenInvalid` prop |
+
+Peer dependencies: `react`, `react-dom`, `react-hook-form`, `@umichkisa-ds/web`
 
 ### Not Yet Implemented (V1 target)
 - `Card`, `ImageButton`, `ErrorBoundary`

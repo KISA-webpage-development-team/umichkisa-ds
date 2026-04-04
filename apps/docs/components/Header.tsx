@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation'
 const SECTIONS = [
   { label: 'Foundation', href: '/foundation', prefix: '/foundation' },
   { label: 'Components', href: '/components', prefix: '/components' },
+  { label: 'Forms', href: '/forms/overview', prefix: '/forms' },
 ]
 
 interface HeaderProps {

@@ -9,7 +9,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@umichkisa-ds/form": "workspace:*",
     "@umichkisa-ds/web": "workspace:*",
+    "react-hook-form": "^7.50.0",
     "next": "^15.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"

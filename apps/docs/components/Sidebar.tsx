@@ -135,15 +135,30 @@ const COMPONENT_ITEMS: NavItem[] = [
   },
 ]
 
+const FORMS_ITEMS: NavItem[] = [
+  { label: 'Overview', href: '/forms/overview' },
+  { label: 'useForm', href: '/forms/use-form' },
+  { label: 'Form Component', href: '/forms/form-component' },
+  { label: 'Validation', href: '/forms/validation' },
+  { label: 'Hooks', href: '/forms/hooks' },
+  { label: 'Examples', href: '/forms/examples' },
+]
+
 const SECTIONS = {
   foundation: { label: 'Foundation', items: FOUNDATION_ITEMS },
   components: { label: 'Components', items: COMPONENT_ITEMS },
+  forms: { label: 'Forms', items: FORMS_ITEMS },
 }
 
 export function Sidebar({ open, onClose }: SidebarProps) {
   const pathname = usePathname()
+  const isForms = pathname.startsWith('/forms')
   const isComponents = pathname.startsWith('/components')
-  const section = isComponents ? SECTIONS.components : SECTIONS.foundation
+  const section = isForms
+    ? SECTIONS.forms
+    : isComponents
+      ? SECTIONS.components
+      : SECTIONS.foundation
 
   return (
     <>
