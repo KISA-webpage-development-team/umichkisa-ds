@@ -94,6 +94,7 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 | LoadingSpinner | `/components/loading-spinner` | ✅ Complete |
 | Toast | `/components/toast` | ✅ Complete |
 | Card | `/components/card` | ✅ Complete |
+| Table | `/components/table` | ✅ Complete |
 | Accordion | `/components/accordion` | ✅ Complete |
 
 All docs pages (foundation and component) use `<Container size="md" as="article">` as their page wrapper. API Reference tables follow a standardized pattern (Container page is the gold standard). MDX infrastructure has been fully removed — all content is inline TSX with DS type tokens.
@@ -148,6 +149,7 @@ The sidebar uses collapsible categories that auto-expand based on the current ro
 | `Avatar` | display | ✅ | Image with fallback chain: image → initials (from `name`) → icon (`user-round`). CVA `size` variant (sm 32px / md 40px / lg 56px). Brand background (`bg-brand-primary` + `text-brand-foreground`). |
 | `Accordion` | display | ✅ | Radix compound component (Accordion, AccordionItem, AccordionTrigger, AccordionContent). `type` prop (single/multiple), single defaults to collapsible. CSS keyframe height animation. `showChevron` prop on trigger. `disabled` on items. `divide-y divide-border` between items. `cn()` only, no CVA. |
 | `Card` | display | ✅ | Compound component (Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter). `cn()` only, no CVA. `bg-surface-subtle` + `border-border` + `rounded-md`. CardTitle has polymorphic `as` prop (h1–h6, default h3). |
+| `Table` | display | ✅ | Compound component (Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableCaption, TableFooter, TableMobileList, TableMobileItem). `cn()` only, no CVA. `type-label` for header weight, `divide-y divide-border` row separators, `hover:bg-surface-subtle` row hover. Mobile primitives (TableMobileList + TableMobileItem) for responsive bulletin board pattern. |
 | `Container` | layout | ✅ | Page shell wrapper. CVA `size` variant (default 1536px / md 768px / sm 640px / prose ~65ch). Polymorphic `as` prop for semantic HTML elements. Responsive padding `px-4 md:px-6 lg:px-8`. |
 | `Icon` | icon | ✅ | Single `<Icon name="..." />` component with static Lucide registry (30 icons: 28 Lucide + 2 custom SVG brand icons). Replaced 19 named `react-icons` components. |
 

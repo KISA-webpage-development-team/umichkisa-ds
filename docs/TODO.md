@@ -102,7 +102,7 @@ Only show categories with ≥1 shipped component. When a batch ships a component
 
 ### Batch 12 — Data display
 - [x] Pagination (new)
-- [ ] Table (new)
+- [x] Table (new)
 
 ### Batch 13 — Standalone utilities
 - [ ] ToggleBar (audit)
