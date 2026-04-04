@@ -77,10 +77,11 @@ function NameField() {
   const { inputProps, error } = useFormField<ProfileValues>('name', {
     required: 'Name is required',
   })
+  const { value, ...rest } = inputProps
 
   return (
     <FormItem htmlFor="name" label="Name" error={error} required>
-      <Input id="name" {...inputProps} />
+      <Input id="name" value={value as string} {...rest} />
     </FormItem>
   )
 }
@@ -89,10 +90,11 @@ function EmailField() {
   const { inputProps, error } = useFormField<ProfileValues>('email', {
     required: 'Email is required',
   })
+  const { value, ...rest } = inputProps
 
   return (
     <FormItem htmlFor="email" label="Email" error={error} required>
-      <Input id="email" type="email" {...inputProps} />
+      <Input id="email" type="email" value={value as string} {...rest} />
     </FormItem>
   )
 }

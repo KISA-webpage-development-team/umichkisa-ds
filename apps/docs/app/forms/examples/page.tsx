@@ -141,9 +141,9 @@ function ProfileForm() {
         }}
       />
       <Form.Radio name="contact" label="Preferred Contact" rules={{ required: 'Choose one' }}>
-        <RadioItem value="email" label="Email" />
-        <RadioItem value="kakao" label="KakaoTalk" />
-        <RadioItem value="phone" label="Phone" />
+        <RadioItem value="email" text="Email" />
+        <RadioItem value="kakao" text="KakaoTalk" />
+        <RadioItem value="phone" text="Phone" />
       </Form.Radio>
       <Form.Switch
         name="notifications"
@@ -202,9 +202,9 @@ function ProfileDemo() {
         }}
       />
       <Form.Radio name="contact" label="Preferred Contact" rules={{ required: 'Choose one' }}>
-        <RadioItem value="email" label="Email" />
-        <RadioItem value="kakao" label="KakaoTalk" />
-        <RadioItem value="phone" label="Phone" />
+        <RadioItem value="email" text="Email" />
+        <RadioItem value="kakao" text="KakaoTalk" />
+        <RadioItem value="phone" text="Phone" />
       </Form.Radio>
       <Form.Switch
         name="notifications"
@@ -384,9 +384,10 @@ function HooksEmailField() {
   const { inputProps, error } = useFormField<HooksLoginValues>('email', {
     required: 'Email is required',
   })
+  const { value, ...rest } = inputProps
   return (
     <FormItem htmlFor="hooks-email" label="Email" error={error} required>
-      <Input id="hooks-email" type="email" placeholder="you@umich.edu" {...inputProps} />
+      <Input id="hooks-email" type="email" placeholder="you@umich.edu" value={value as string} {...rest} />
     </FormItem>
   )
 }
@@ -396,9 +397,10 @@ function HooksPasswordField() {
     required: 'Password is required',
     minLength: { value: 6, message: 'At least 6 characters' },
   })
+  const { value, ...rest } = inputProps
   return (
     <FormItem htmlFor="hooks-password" label="Password" error={error} required>
-      <Input id="hooks-password" type="password" {...inputProps} />
+      <Input id="hooks-password" type="password" value={value as string} {...rest} />
     </FormItem>
   )
 }

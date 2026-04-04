@@ -68,9 +68,9 @@ const radioCode = `import { RadioItem } from '@umichkisa-ds/web'
   label="Preferred contact method"
   rules={{ required: 'Select a contact method' }}
 >
-  <RadioItem value="email" label="Email" />
-  <RadioItem value="kakao" label="KakaoTalk" />
-  <RadioItem value="phone" label="Phone" />
+  <RadioItem value="email" text="Email" />
+  <RadioItem value="kakao" text="KakaoTalk" />
+  <RadioItem value="phone" text="Phone" />
 </Form.Radio>`
 
 const switchCode = `<Form.Switch
@@ -190,9 +190,9 @@ function RadioDemo() {
         label="Preferred contact method"
         rules={{ required: 'Select a contact method' }}
       >
-        <RadioItem value="email" label="Email" />
-        <RadioItem value="kakao" label="KakaoTalk" />
-        <RadioItem value="phone" label="Phone" />
+        <RadioItem value="email" text="Email" />
+        <RadioItem value="kakao" text="KakaoTalk" />
+        <RadioItem value="phone" text="Phone" />
       </Form.Radio>
     </Form>
   )
