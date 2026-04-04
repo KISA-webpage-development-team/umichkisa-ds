@@ -1,7 +1,6 @@
-'use client'
-
 import { Container, Popover, PopoverTrigger, PopoverContent, Button, Input, FormItem } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
 
 const basicCode = `import { Popover, PopoverTrigger, PopoverContent, Button } from '@umichkisa-ds/web'
 
@@ -68,7 +67,17 @@ const placementCode = `import { Popover, PopoverTrigger, PopoverContent, Button 
   </PopoverContent>
 </Popover>`
 
-export default function PopoverPage() {
+export default async function PopoverPage() {
+  const [
+    basicHighlighted,
+    formHighlighted,
+    placementHighlighted,
+  ] = await Promise.all([
+    highlight(basicCode),
+    highlight(formCode),
+    highlight(placementCode),
+  ])
+
   return (
     <Container size="md" as="article">
 
@@ -91,7 +100,7 @@ export default function PopoverPage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         A trigger button that opens a popover with simple text content.
       </p>
-      <ComponentPreview code={basicCode}>
+      <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
         <Popover>
           <PopoverTrigger asChild>
             <Button variant="primary">Open popover</Button>
@@ -107,7 +116,7 @@ export default function PopoverPage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         Popovers can contain rich content such as forms with labels, inputs, and buttons.
       </p>
-      <ComponentPreview code={formCode}>
+      <ComponentPreview code={formCode} highlightedCode={formHighlighted}>
         <Popover>
           <PopoverTrigger asChild>
             <Button variant="primary">Update name</Button>
@@ -136,7 +145,7 @@ export default function PopoverPage() {
         </code>{' '}
         to control which side the popover appears on.
       </p>
-      <ComponentPreview code={placementCode}>
+      <ComponentPreview code={placementCode} highlightedCode={placementHighlighted}>
         <div className="flex items-center gap-4 flex-wrap">
           <Popover>
             <PopoverTrigger asChild>

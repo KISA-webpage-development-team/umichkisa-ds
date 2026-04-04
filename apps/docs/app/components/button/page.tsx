@@ -1,5 +1,6 @@
 import { Container, Button, Icon } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
 
 const defaultCode = `import { Button } from '@umichkisa-ds/web'
 
@@ -32,7 +33,21 @@ const disabledCode = `import { Button } from '@umichkisa-ds/web'
 <Button variant="tertiary" disabled>Tertiary</Button>
 <Button variant="destructive" disabled>Destructive</Button>`
 
-export default function ButtonPage() {
+export default async function ButtonPage() {
+  const [
+    defaultHighlighted,
+    variantsHighlighted,
+    sizesHighlighted,
+    withIconHighlighted,
+    disabledHighlighted,
+  ] = await Promise.all([
+    highlight(defaultCode),
+    highlight(variantsCode),
+    highlight(sizesCode),
+    highlight(withIconCode),
+    highlight(disabledCode),
+  ])
+
   return (
     <Container size="md" as="article">
 
@@ -67,7 +82,7 @@ export default function ButtonPage() {
         </code>{' '}
         size by default.
       </p>
-      <ComponentPreview code={defaultCode}>
+      <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
         <Button>Label</Button>
       </ComponentPreview>
 
@@ -76,7 +91,7 @@ export default function ButtonPage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         Four semantic variants for different levels of emphasis and intent.
       </p>
-      <ComponentPreview code={variantsCode}>
+      <ComponentPreview code={variantsCode} highlightedCode={variantsHighlighted}>
         <div className="flex items-center gap-4">
           <Button variant="primary">Primary</Button>
           <Button variant="secondary">Secondary</Button>
@@ -100,7 +115,7 @@ export default function ButtonPage() {
         </code>{' '}
         (default) for most UI.
       </p>
-      <ComponentPreview code={sizesCode}>
+      <ComponentPreview code={sizesCode} highlightedCode={sizesHighlighted}>
         <div className="flex items-center gap-4">
           <Button size="sm">Small</Button>
           <Button size="md">Medium</Button>
@@ -121,7 +136,7 @@ export default function ButtonPage() {
         </code>{' '}
         component — never import Lucide icons directly.
       </p>
-      <ComponentPreview code={withIconCode}>
+      <ComponentPreview code={withIconCode} highlightedCode={withIconHighlighted}>
         <Button>
           <Icon name="plus" />
           Add item
@@ -137,7 +152,7 @@ export default function ButtonPage() {
         </code>{' '}
         to visually dim the button and block interaction. Works with all variants.
       </p>
-      <ComponentPreview code={disabledCode}>
+      <ComponentPreview code={disabledCode} highlightedCode={disabledHighlighted}>
         <div className="flex items-center gap-4">
           <Button variant="primary" disabled>Primary</Button>
           <Button variant="secondary" disabled>Secondary</Button>

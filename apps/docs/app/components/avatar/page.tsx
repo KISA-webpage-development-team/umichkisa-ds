@@ -1,5 +1,6 @@
 import { Container, Avatar } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
 
 const defaultCode = `import { Avatar } from '@umichkisa-ds/web'
 
@@ -28,7 +29,21 @@ const errorFallbackCode = `import { Avatar } from '@umichkisa-ds/web'
 {/* Broken src falls back to initials */}
 <Avatar src="/broken-image.jpg" name="Jioh In" />`
 
-export default function AvatarPage() {
+export default async function AvatarPage() {
+  const [
+    defaultHighlighted,
+    sizesHighlighted,
+    initialsHighlighted,
+    iconFallbackHighlighted,
+    errorFallbackHighlighted,
+  ] = await Promise.all([
+    highlight(defaultCode),
+    highlight(sizesCode),
+    highlight(initialsCode),
+    highlight(iconFallbackCode),
+    highlight(errorFallbackCode),
+  ])
+
   return (
     <Container size="md" as="article">
 
@@ -56,7 +71,7 @@ export default function AvatarPage() {
         </code>{' '}
         for the standard image avatar.
       </p>
-      <ComponentPreview code={defaultCode}>
+      <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
         <Avatar src="/img/demo-avatar.png" name="Jioh In" />
       </ComponentPreview>
 
@@ -77,7 +92,7 @@ export default function AvatarPage() {
         </code>{' '}
         for profile pages.
       </p>
-      <ComponentPreview code={sizesCode}>
+      <ComponentPreview code={sizesCode} highlightedCode={sizesHighlighted}>
         <div className="flex items-center gap-4">
           <Avatar src="/img/demo-avatar.png" name="Jioh In" size="sm" />
           <Avatar src="/img/demo-avatar.png" name="Jioh In" size="md" />
@@ -107,7 +122,7 @@ export default function AvatarPage() {
         </code>{' '}
         in the database — pass whichever is appropriate for the context.
       </p>
-      <ComponentPreview code={initialsCode}>
+      <ComponentPreview code={initialsCode} highlightedCode={initialsHighlighted}>
         <div className="flex items-center gap-4">
           <Avatar name="Jioh In" size="sm" />
           <Avatar name="Jioh In" size="md" />
@@ -128,7 +143,7 @@ export default function AvatarPage() {
         </code>{' '}
         is provided, a generic user icon is shown.
       </p>
-      <ComponentPreview code={iconFallbackCode}>
+      <ComponentPreview code={iconFallbackCode} highlightedCode={iconFallbackHighlighted}>
         <div className="flex items-center gap-4">
           <Avatar size="sm" />
           <Avatar size="md" />
@@ -146,7 +161,7 @@ export default function AvatarPage() {
         </code>{' '}
         is provided) or the icon fallback.
       </p>
-      <ComponentPreview code={errorFallbackCode}>
+      <ComponentPreview code={errorFallbackCode} highlightedCode={errorFallbackHighlighted}>
         <Avatar src="/broken-image.jpg" name="Jioh In" />
       </ComponentPreview>
 

@@ -1,5 +1,6 @@
 import { Container, Alert } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
 
 const variantsCode = `import { Alert } from '@umichkisa-ds/web'
 
@@ -97,7 +98,17 @@ const infoCalloutCode = `import { Alert } from '@umichkisa-ds/web'
   </p>
 </div>`
 
-export default function AlertPage() {
+export default async function AlertPage() {
+  const [variantsHighlighted, descriptionOnlyHighlighted, customIconHighlighted, withoutIconHighlighted, formValidationHighlighted, successConfirmationHighlighted, infoCalloutHighlighted] = await Promise.all([
+    highlight(variantsCode),
+    highlight(descriptionOnlyCode),
+    highlight(customIconCode),
+    highlight(withoutIconCode),
+    highlight(formValidationCode),
+    highlight(successConfirmationCode),
+    highlight(infoCalloutCode),
+  ]);
+
   return (
     <Container size="md" as="article">
 
@@ -122,7 +133,7 @@ export default function AlertPage() {
         Four semantic variants communicate different levels of feedback. Each
         variant applies a distinct border color, background, and default icon.
       </p>
-      <ComponentPreview code={variantsCode}>
+      <ComponentPreview code={variantsCode} highlightedCode={variantsHighlighted}>
         <div className="flex flex-col gap-4">
           <Alert variant="info" title="Information">
             This is an informational message with helpful context.
@@ -146,7 +157,7 @@ export default function AlertPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">title</code>{' '}
         prop to render a compact alert with only description content.
       </p>
-      <ComponentPreview code={descriptionOnlyCode}>
+      <ComponentPreview code={descriptionOnlyCode} highlightedCode={descriptionOnlyHighlighted}>
         <Alert variant="info">
           You can display an alert with only description content and no title.
         </Alert>
@@ -161,7 +172,7 @@ export default function AlertPage() {
         <a href="/components/icon" className="text-link underline hover:text-brand-primary">Icon</a>{' '}
         registry.
       </p>
-      <ComponentPreview code={customIconCode}>
+      <ComponentPreview code={customIconCode} highlightedCode={customIconHighlighted}>
         <Alert variant="info" icon="eye" title="Visibility notice">
           This content is publicly visible to all members of your organization.
         </Alert>
@@ -176,7 +187,7 @@ export default function AlertPage() {
         </code>{' '}
         to hide the icon entirely for a text-only alert.
       </p>
-      <ComponentPreview code={withoutIconCode}>
+      <ComponentPreview code={withoutIconCode} highlightedCode={withoutIconHighlighted}>
         <Alert variant="info" icon={null} title="Plain text alert">
           Icons can be hidden entirely by passing null to the icon prop.
         </Alert>
@@ -189,7 +200,7 @@ export default function AlertPage() {
         alert summarizes what needs attention while the form fields below
         highlight individual errors.
       </p>
-      <ComponentPreview code={formValidationCode}>
+      <ComponentPreview code={formValidationCode} highlightedCode={formValidationHighlighted}>
         <div className="flex flex-col gap-4 w-full">
           <Alert variant="error" title="Please fix the following errors before submitting">
             <ul className="list-disc pl-4 mt-2 flex flex-col gap-2">
@@ -217,7 +228,7 @@ export default function AlertPage() {
         A success alert shown after a form submission, displayed above the form
         content to confirm the action was completed.
       </p>
-      <ComponentPreview code={successConfirmationCode}>
+      <ComponentPreview code={successConfirmationCode} highlightedCode={successConfirmationHighlighted}>
         <div className="flex flex-col gap-4 w-full">
           <Alert variant="success" title="Profile updated successfully">
             Your changes have been saved and will take effect immediately.
@@ -245,7 +256,7 @@ export default function AlertPage() {
         An informational alert used as an aside within body content, drawing
         attention to a prerequisite or important note.
       </p>
-      <ComponentPreview code={infoCalloutCode}>
+      <ComponentPreview code={infoCalloutCode} highlightedCode={infoCalloutHighlighted}>
         <div className="flex flex-col gap-4 w-full">
           <p className="type-body text-foreground">
             To get started with the KISA Design System, install the package

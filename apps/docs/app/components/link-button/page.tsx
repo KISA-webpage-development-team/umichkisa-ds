@@ -1,5 +1,6 @@
 import { Container, LinkButton, Icon } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
 
 const defaultCode = `import { LinkButton } from '@umichkisa-ds/web'
 
@@ -42,7 +43,23 @@ const disabledCode = `import { LinkButton } from '@umichkisa-ds/web'
 <LinkButton variant="tertiary" href="#" disabled>Tertiary</LinkButton>
 <LinkButton variant="destructive" href="#" disabled>Destructive</LinkButton>`
 
-export default function LinkButtonPage() {
+export default async function LinkButtonPage() {
+  const [
+    defaultHighlighted,
+    variantsHighlighted,
+    sizesHighlighted,
+    withIconHighlighted,
+    externalLinkHighlighted,
+    disabledHighlighted,
+  ] = await Promise.all([
+    highlight(defaultCode),
+    highlight(variantsCode),
+    highlight(sizesCode),
+    highlight(withIconCode),
+    highlight(externalLinkCode),
+    highlight(disabledCode),
+  ])
+
   return (
     <Container size="md" as="article">
 
@@ -91,7 +108,7 @@ export default function LinkButtonPage() {
         </code>{' '}
         size by default.
       </p>
-      <ComponentPreview code={defaultCode}>
+      <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
         <LinkButton href="/home">Home</LinkButton>
       </ComponentPreview>
 
@@ -100,7 +117,7 @@ export default function LinkButtonPage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         Four variants for different levels of emphasis and intent.
       </p>
-      <ComponentPreview code={variantsCode}>
+      <ComponentPreview code={variantsCode} highlightedCode={variantsHighlighted}>
         <div className="flex items-center gap-4">
           <LinkButton variant="primary" href="#">Primary</LinkButton>
           <LinkButton variant="secondary" href="#">Secondary</LinkButton>
@@ -118,7 +135,7 @@ export default function LinkButtonPage() {
         </code>{' '}
         (default) for most UI.
       </p>
-      <ComponentPreview code={sizesCode}>
+      <ComponentPreview code={sizesCode} highlightedCode={sizesHighlighted}>
         <div className="flex items-center gap-4">
           <LinkButton size="sm" href="#">Small</LinkButton>
           <LinkButton size="md" href="#">Medium</LinkButton>
@@ -140,7 +157,7 @@ export default function LinkButtonPage() {
         </code>{' '}
         component — never import Lucide icons directly.
       </p>
-      <ComponentPreview code={withIconCode}>
+      <ComponentPreview code={withIconCode} highlightedCode={withIconHighlighted}>
         <LinkButton href="#">
           <Icon name="external-link" />
           Visit site
@@ -160,7 +177,7 @@ export default function LinkButtonPage() {
         </code>{' '}
         to prevent reverse tabnapping.
       </p>
-      <ComponentPreview code={externalLinkCode}>
+      <ComponentPreview code={externalLinkCode} highlightedCode={externalLinkHighlighted}>
         <LinkButton
           href="https://umichkisa.org"
           target="_blank"
@@ -188,7 +205,7 @@ export default function LinkButtonPage() {
         </code>{' '}
         to remove it from the tab order.
       </p>
-      <ComponentPreview code={disabledCode}>
+      <ComponentPreview code={disabledCode} highlightedCode={disabledHighlighted}>
         <div className="flex items-center gap-4">
           <LinkButton variant="primary" disabled>Primary</LinkButton>
           <LinkButton variant="secondary" disabled>Secondary</LinkButton>

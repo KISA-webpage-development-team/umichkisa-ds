@@ -1,5 +1,6 @@
 import { Container, Skeleton } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
 
 const defaultCode = `import { Skeleton } from '@umichkisa-ds/web'
 
@@ -31,7 +32,14 @@ const cardCompositionCode = `import { Skeleton } from '@umichkisa-ds/web'
   </div>
 </div>`
 
-export default function SkeletonPage() {
+export default async function SkeletonPage() {
+  const [defaultHighlighted, circularHighlighted, textBlockHighlighted, cardCompositionHighlighted] = await Promise.all([
+    highlight(defaultCode),
+    highlight(circularCode),
+    highlight(textBlockCode),
+    highlight(cardCompositionCode),
+  ]);
+
   return (
     <Container size="md" as="article">
 
@@ -65,7 +73,7 @@ export default function SkeletonPage() {
         A heading placeholder with a content block below. Set dimensions with
         Tailwind height and width utilities.
       </p>
-      <ComponentPreview code={defaultCode}>
+      <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
         <div className="flex flex-col gap-4 w-full">
           <Skeleton className="h-6 w-2/5" />
           <Skeleton className="h-32" />
@@ -81,7 +89,7 @@ export default function SkeletonPage() {
         </code>{' '}
         for avatar or icon placeholders. Provide explicit width and height.
       </p>
-      <ComponentPreview code={circularCode}>
+      <ComponentPreview code={circularCode} highlightedCode={circularHighlighted}>
         <Skeleton variant="circular" className="h-14 w-14" />
       </ComponentPreview>
 
@@ -90,7 +98,7 @@ export default function SkeletonPage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         Stack multiple skeletons with varying widths to approximate a paragraph.
       </p>
-      <ComponentPreview code={textBlockCode}>
+      <ComponentPreview code={textBlockCode} highlightedCode={textBlockHighlighted}>
         <div className="flex flex-col gap-2 w-full">
           <Skeleton className="h-4 w-3/4" />
           <Skeleton className="h-4" />
@@ -104,7 +112,7 @@ export default function SkeletonPage() {
         Combine circular and rectangular skeletons to create a realistic loading
         state for a card with an avatar and text content.
       </p>
-      <ComponentPreview code={cardCompositionCode}>
+      <ComponentPreview code={cardCompositionCode} highlightedCode={cardCompositionHighlighted}>
         <div className="flex items-start gap-4 p-4 rounded-md border border-border w-full">
           <Skeleton variant="circular" className="h-10 w-10 shrink-0" />
           <div className="flex flex-col gap-2 flex-1">

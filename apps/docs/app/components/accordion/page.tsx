@@ -1,7 +1,6 @@
-'use client'
-
 import { Container, Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
 
 const basicCode = `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@umichkisa-ds/web'
 
@@ -109,7 +108,14 @@ const noChevronCode = `import { Accordion, AccordionItem, AccordionTrigger, Acco
   </AccordionItem>
 </Accordion>`
 
-export default function AccordionPage() {
+export default async function AccordionPage() {
+  const [basicHighlighted, multipleHighlighted, disabledHighlighted, noChevronHighlighted] = await Promise.all([
+    highlight(basicCode),
+    highlight(multipleCode),
+    highlight(disabledCode),
+    highlight(noChevronCode),
+  ]);
+
   return (
     <Container size="md" as="article">
 
@@ -136,7 +142,7 @@ export default function AccordionPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">defaultValue</code>{' '}
         to expand an item on mount.
       </p>
-      <ComponentPreview code={basicCode}>
+      <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
         <div className="w-full">
         <Accordion type="single" defaultValue="what-is-kisa">
           <AccordionItem value="what-is-kisa">
@@ -174,7 +180,7 @@ export default function AccordionPage() {
         simultaneously. Useful for settings or filter panels where users
         configure independent groups.
       </p>
-      <ComponentPreview code={multipleCode}>
+      <ComponentPreview code={multipleCode} highlightedCode={multipleHighlighted}>
         <div className="w-full">
         <Accordion type="multiple" defaultValue={['notifications']}>
           <AccordionItem value="notifications">
@@ -209,7 +215,7 @@ export default function AccordionPage() {
         trigger text dims and the item is skipped during keyboard
         navigation.
       </p>
-      <ComponentPreview code={disabledCode}>
+      <ComponentPreview code={disabledCode} highlightedCode={disabledHighlighted}>
         <div className="w-full">
         <Accordion type="single">
           <AccordionItem value="current-events">
@@ -246,7 +252,7 @@ export default function AccordionPage() {
         on the trigger to hide the default indicator. Useful for
         numbered steps or custom trigger layouts.
       </p>
-      <ComponentPreview code={noChevronCode}>
+      <ComponentPreview code={noChevronCode} highlightedCode={noChevronHighlighted}>
         <div className="w-full">
         <Accordion type="single">
           <AccordionItem value="step-1">

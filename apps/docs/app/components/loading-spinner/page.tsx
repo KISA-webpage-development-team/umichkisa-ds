@@ -1,5 +1,6 @@
 import { Container, LoadingSpinner } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
 
 const defaultCode = `import { LoadingSpinner } from '@umichkisa-ds/web'
 
@@ -29,7 +30,15 @@ const overlayCode = `import { LoadingSpinner } from '@umichkisa-ds/web'
   <LoadingSpinner size="lg" label="Loading..." showLabel />
 </div>`
 
-export default function LoadingSpinnerPage() {
+export default async function LoadingSpinnerPage() {
+  const [defaultHighlighted, sizesHighlighted, withLabelHighlighted, inlineHighlighted, overlayHighlighted] = await Promise.all([
+    highlight(defaultCode),
+    highlight(sizesCode),
+    highlight(withLabelCode),
+    highlight(inlineCode),
+    highlight(overlayCode),
+  ]);
+
   return (
     <Container size="md" as="article">
 
@@ -77,7 +86,7 @@ export default function LoadingSpinnerPage() {
         </code>{' '}
         of &quot;Loading&quot;.
       </p>
-      <ComponentPreview code={defaultCode}>
+      <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
         <div className="flex items-center justify-center rounded-md border border-border p-8 w-full">
           <LoadingSpinner />
         </div>
@@ -89,7 +98,7 @@ export default function LoadingSpinnerPage() {
         Three sizes for different contexts: small for inline indicators, medium
         for section loaders, and large for prominent full-page states.
       </p>
-      <ComponentPreview code={sizesCode}>
+      <ComponentPreview code={sizesCode} highlightedCode={sizesHighlighted}>
         <div className="flex items-center gap-6">
           <div className="flex flex-col items-center gap-2">
             <div className="flex items-center justify-center rounded-md border border-border p-4">
@@ -122,7 +131,7 @@ export default function LoadingSpinnerPage() {
         to render the label text visually below the spinner. Useful for
         prominent loading states where users benefit from explicit feedback.
       </p>
-      <ComponentPreview code={withLabelCode}>
+      <ComponentPreview code={withLabelCode} highlightedCode={withLabelHighlighted}>
         <div className="flex items-center justify-center rounded-md border border-border p-8 w-full">
           <LoadingSpinner size="lg" label="Loading events..." showLabel />
         </div>
@@ -135,7 +144,7 @@ export default function LoadingSpinnerPage() {
         provides an accessible label while the adjacent text gives visual
         context.
       </p>
-      <ComponentPreview code={inlineCode}>
+      <ComponentPreview code={inlineCode} highlightedCode={inlineHighlighted}>
         <div className="flex items-center gap-2">
           <LoadingSpinner size="sm" label="Loading results" />
           <span className="type-body-sm text-muted-foreground">Loading results...</span>
@@ -149,7 +158,7 @@ export default function LoadingSpinnerPage() {
         critical loading state such as authentication or initial data fetch.
         The contained preview below simulates the effect.
       </p>
-      <ComponentPreview code={overlayCode}>
+      <ComponentPreview code={overlayCode} highlightedCode={overlayHighlighted}>
         <div className="relative rounded-md border border-border w-full h-48 overflow-hidden">
           <div className="absolute inset-0 flex items-center justify-center bg-surface z-10">
             <LoadingSpinner size="lg" label="Loading..." showLabel />

@@ -1,5 +1,6 @@
 import { Container, IconButton } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
 
 const defaultCode = `import { IconButton } from '@umichkisa-ds/web'
 
@@ -25,7 +26,19 @@ const disabledCode = `import { IconButton } from '@umichkisa-ds/web'
 <IconButton icon="x" variant="tertiary" disabled aria-label="Close" />
 <IconButton icon="trash-2" variant="destructive" disabled aria-label="Delete" />`
 
-export default function IconButtonPage() {
+export default async function IconButtonPage() {
+  const [
+    defaultHighlighted,
+    variantsHighlighted,
+    sizesHighlighted,
+    disabledHighlighted,
+  ] = await Promise.all([
+    highlight(defaultCode),
+    highlight(variantsCode),
+    highlight(sizesCode),
+    highlight(disabledCode),
+  ])
+
   return (
     <Container size="md" as="article">
 
@@ -60,7 +73,7 @@ export default function IconButtonPage() {
         </code>{' '}
         size by default.
       </p>
-      <ComponentPreview code={defaultCode}>
+      <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
         <IconButton icon="pencil" aria-label="Edit" />
       </ComponentPreview>
 
@@ -77,7 +90,7 @@ export default function IconButtonPage() {
         </code>{' '}
         sparingly — most icon buttons are utility actions.
       </p>
-      <ComponentPreview code={variantsCode}>
+      <ComponentPreview code={variantsCode} highlightedCode={variantsHighlighted}>
         <div className="flex items-center gap-4">
           <IconButton icon="plus" variant="primary" aria-label="Add" />
           <IconButton icon="pencil" variant="secondary" aria-label="Edit" />
@@ -107,7 +120,7 @@ export default function IconButtonPage() {
         </code>{' '}
         pseudo-element.
       </p>
-      <ComponentPreview code={sizesCode}>
+      <ComponentPreview code={sizesCode} highlightedCode={sizesHighlighted}>
         <div className="flex items-center gap-4">
           <IconButton icon="pencil" size="sm" aria-label="Edit" />
           <IconButton icon="pencil" size="md" aria-label="Edit" />
@@ -124,7 +137,7 @@ export default function IconButtonPage() {
         </code>{' '}
         to visually dim the button and block interaction. Works with all variants.
       </p>
-      <ComponentPreview code={disabledCode}>
+      <ComponentPreview code={disabledCode} highlightedCode={disabledHighlighted}>
         <div className="flex items-center gap-4">
           <IconButton icon="plus" variant="primary" disabled aria-label="Add" />
           <IconButton icon="pencil" variant="secondary" disabled aria-label="Edit" />

@@ -1,5 +1,6 @@
 import { Container, StatusView, LinkButton, Button } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
 
 const allVariantsCode = `import { StatusView } from '@umichkisa-ds/web'
 
@@ -40,7 +41,15 @@ const fullScreenCode = `import { StatusView, LinkButton } from '@umichkisa-ds/we
   />
 </div>`
 
-export default function StatusViewPage() {
+export default async function StatusViewPage() {
+  const [allVariantsHighlighted, withCodeHighlighted, customIconHighlighted, withActionHighlighted, fullScreenHighlighted] = await Promise.all([
+    highlight(allVariantsCode),
+    highlight(withCodeCode),
+    highlight(customIconCode),
+    highlight(withActionCode),
+    highlight(fullScreenCode),
+  ]);
+
   return (
     <Container size="md" as="article">
 
@@ -66,7 +75,7 @@ export default function StatusViewPage() {
         Four variants cover common status scenarios. Each provides a default
         icon, title, and description in Korean.
       </p>
-      <ComponentPreview code={allVariantsCode}>
+      <ComponentPreview code={allVariantsCode} highlightedCode={allVariantsHighlighted}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
           <div className="h-64 border border-border rounded-md">
             <StatusView variant="not-found" />
@@ -91,7 +100,7 @@ export default function StatusViewPage() {
         prop to display a large status code above the icon. Useful for HTTP
         error pages.
       </p>
-      <ComponentPreview code={withCodeCode}>
+      <ComponentPreview code={withCodeCode} highlightedCode={withCodeHighlighted}>
         <div className="h-72 border border-border rounded-md w-full">
           <StatusView variant="not-found" code="404" />
         </div>
@@ -106,7 +115,7 @@ export default function StatusViewPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">icon</code>{' '}
         prop. Title and description can also be overridden.
       </p>
-      <ComponentPreview code={customIconCode}>
+      <ComponentPreview code={customIconCode} highlightedCode={customIconHighlighted}>
         <div className="h-64 border border-border rounded-md w-full">
           <StatusView variant="error" icon="circle-x" title="서버 오류" description="잠시 후 다시 시도해 주세요." />
         </div>
@@ -120,7 +129,7 @@ export default function StatusViewPage() {
         prop accepts any React node — typically a button or link that helps the
         user recover from the status.
       </p>
-      <ComponentPreview code={withActionCode}>
+      <ComponentPreview code={withActionCode} highlightedCode={withActionHighlighted}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
           <div className="h-80 border border-border rounded-md">
             <StatusView
@@ -145,7 +154,7 @@ export default function StatusViewPage() {
         wrap it in a viewport-height container. The component handles centering
         automatically.
       </p>
-      <ComponentPreview code={fullScreenCode}>
+      <ComponentPreview code={fullScreenCode} highlightedCode={fullScreenHighlighted}>
         <div className="h-80 border border-border rounded-md w-full">
           <StatusView
             variant="not-found"

@@ -1,5 +1,6 @@
 import { Container, Grid } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
 
 const basicCode = `import { Grid } from '@umichkisa-ds/web'
 
@@ -101,7 +102,27 @@ function FeatureBlock({ icon, title, description }: { icon: string; title: strin
   )
 }
 
-export default function GridPage() {
+export default async function GridPage() {
+  const [
+    basicHighlighted,
+    responsiveHighlighted,
+    gapElementHighlighted,
+    gapComponentHighlighted,
+    gapSectionHighlighted,
+    realWorldElementHighlighted,
+    realWorldComponentHighlighted,
+    realWorldSectionHighlighted,
+  ] = await Promise.all([
+    highlight(basicCode),
+    highlight(responsiveCode),
+    highlight(gapElementCode),
+    highlight(gapComponentCode),
+    highlight(gapSectionCode),
+    highlight(realWorldElementCode),
+    highlight(realWorldComponentCode),
+    highlight(realWorldSectionCode),
+  ])
+
   return (
     <Container size="md" as="article">
 
@@ -135,7 +156,7 @@ export default function GridPage() {
         </code>{' '}
         for a fixed column count across all breakpoints.
       </p>
-      <ComponentPreview code={basicCode}>
+      <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
         <Grid columns={3}>
           {Array.from({ length: 6 }, (_, i) => (
             <Placeholder key={i} label={`Item ${i + 1}`} />
@@ -165,7 +186,7 @@ export default function GridPage() {
         , the grid defaults to 1 column at the smallest size.
         Resize your browser to see the reflow.
       </p>
-      <ComponentPreview code={responsiveCode}>
+      <ComponentPreview code={responsiveCode} highlightedCode={responsiveHighlighted}>
         <Grid columns={{ base: 1, md: 2, lg: 3 }}>
           {Array.from({ length: 6 }, (_, i) => (
             <Placeholder key={i} label={`Item ${i + 1}`} />
@@ -189,7 +210,7 @@ export default function GridPage() {
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
         Tight spacing for compact grids — icon grids, tag collections.
       </p>
-      <ComponentPreview code={gapElementCode}>
+      <ComponentPreview code={gapElementCode} highlightedCode={gapElementHighlighted}>
         <Grid columns={3} gap="element">
           {Array.from({ length: 6 }, (_, i) => (
             <Placeholder key={i} label={`${i + 1}`} />
@@ -202,7 +223,7 @@ export default function GridPage() {
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
         Default. Standard spacing for card grids and content blocks.
       </p>
-      <ComponentPreview code={gapComponentCode}>
+      <ComponentPreview code={gapComponentCode} highlightedCode={gapComponentHighlighted}>
         <Grid columns={3} gap="component">
           {Array.from({ length: 6 }, (_, i) => (
             <Placeholder key={i} label={`${i + 1}`} />
@@ -215,7 +236,7 @@ export default function GridPage() {
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
         Spacious spacing for feature grids and landing page layouts.
       </p>
-      <ComponentPreview code={gapSectionCode}>
+      <ComponentPreview code={gapSectionCode} highlightedCode={gapSectionHighlighted}>
         <Grid columns={3} gap="section">
           {Array.from({ length: 6 }, (_, i) => (
             <Placeholder key={i} label={`${i + 1}`} />
@@ -235,7 +256,7 @@ export default function GridPage() {
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
         Tight spacing for small, repeating elements — tags, badges, or icon buttons.
       </p>
-      <ComponentPreview code={realWorldElementCode}>
+      <ComponentPreview code={realWorldElementCode} highlightedCode={realWorldElementHighlighted}>
         <Grid columns={{ base: 2, md: 3, lg: 4 }} gap="element">
           <Tag>React</Tag>
           <Tag>TypeScript</Tag>
@@ -253,7 +274,7 @@ export default function GridPage() {
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
         Standard card grid — the default for most content layouts.
       </p>
-      <ComponentPreview code={realWorldComponentCode}>
+      <ComponentPreview code={realWorldComponentCode} highlightedCode={realWorldComponentHighlighted}>
         <Grid columns={{ base: 1, md: 2, lg: 3 }} gap="component">
           <Card title="Analytics" description="View traffic and engagement metrics across all pages." />
           <Card title="Members" description="Manage team members, roles, and permissions." />
@@ -266,7 +287,7 @@ export default function GridPage() {
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
         Spacious spacing for feature showcases and landing page sections.
       </p>
-      <ComponentPreview code={realWorldSectionCode}>
+      <ComponentPreview code={realWorldSectionCode} highlightedCode={realWorldSectionHighlighted}>
         <Grid columns={{ base: 1, md: 2, lg: 3 }} gap="section">
           <FeatureBlock icon="📊" title="Analytics" description="Track engagement metrics, page views, and user behavior across your entire platform." />
           <FeatureBlock icon="🔒" title="Security" description="Enterprise-grade encryption, SSO integration, and role-based access controls built in." />

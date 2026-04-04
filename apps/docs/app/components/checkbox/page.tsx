@@ -1,8 +1,7 @@
-'use client'
-
-import { useState } from 'react'
 import { Container, Checkbox, FormItem } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
+import { ControlledDemo } from './_demos'
 
 const defaultCode = `import { Checkbox } from '@umichkisa-ds/web'
 
@@ -47,8 +46,22 @@ const controlledCode = `const [agreed, setAgreed] = useState(false)
 />
 <p>{agreed ? 'Accepted' : 'Not accepted'}</p>`
 
-export default function CheckboxPage() {
-  const [agreed, setAgreed] = useState(false)
+export default async function CheckboxPage() {
+  const [
+    defaultHighlighted,
+    checkedHighlighted,
+    statesHighlighted,
+    withFormItemHighlighted,
+    withErrorHighlighted,
+    controlledHighlighted,
+  ] = await Promise.all([
+    highlight(defaultCode),
+    highlight(checkedCode),
+    highlight(statesCode),
+    highlight(withFormItemCode),
+    highlight(withErrorCode),
+    highlight(controlledCode),
+  ])
 
   return (
     <Container size="md" as="article">
@@ -75,7 +88,7 @@ export default function CheckboxPage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         A single unchecked checkbox with inline label text.
       </p>
-      <ComponentPreview code={defaultCode}>
+      <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
         <Checkbox text="Accept terms" />
       </ComponentPreview>
 
@@ -88,7 +101,7 @@ export default function CheckboxPage() {
         </code>{' '}
         set.
       </p>
-      <ComponentPreview code={checkedCode}>
+      <ComponentPreview code={checkedCode} highlightedCode={checkedHighlighted}>
         <Checkbox text="Accept terms" defaultChecked />
       </ComponentPreview>
 
@@ -97,7 +110,7 @@ export default function CheckboxPage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         Default, disabled unchecked, disabled checked, and invalid states.
       </p>
-      <ComponentPreview code={statesCode}>
+      <ComponentPreview code={statesCode} highlightedCode={statesHighlighted}>
         <div className="flex items-center gap-4">
           <Checkbox text="Default" />
           <Checkbox text="Disabled" disabled />
@@ -115,7 +128,7 @@ export default function CheckboxPage() {
         </code>{' '}
         for structured form layouts.
       </p>
-      <ComponentPreview code={withFormItemCode}>
+      <ComponentPreview code={withFormItemCode} highlightedCode={withFormItemHighlighted}>
         <FormItem htmlFor="terms" label="Terms">
           <Checkbox id="terms" text="I agree to the terms" />
         </FormItem>
@@ -134,7 +147,7 @@ export default function CheckboxPage() {
         </code>{' '}
         error message.
       </p>
-      <ComponentPreview code={withErrorCode}>
+      <ComponentPreview code={withErrorCode} highlightedCode={withErrorHighlighted}>
         <FormItem htmlFor="terms" label="Terms" error="You must accept the terms.">
           <Checkbox id="terms" text="Accept terms" invalid />
         </FormItem>
@@ -146,15 +159,8 @@ export default function CheckboxPage() {
         Checkbox supports both controlled and uncontrolled usage.
         Below is a controlled example with live state feedback.
       </p>
-      <ComponentPreview code={controlledCode}>
-        <div className="flex flex-col gap-2">
-          <Checkbox
-            text="I agree to the terms"
-            checked={agreed}
-            onChange={(e) => setAgreed(e.target.checked)}
-          />
-          <p className="type-caption text-muted-foreground">{agreed ? 'Accepted' : 'Not accepted'}</p>
-        </div>
+      <ComponentPreview code={controlledCode} highlightedCode={controlledHighlighted}>
+        <ControlledDemo />
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}

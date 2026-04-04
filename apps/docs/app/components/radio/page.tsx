@@ -1,8 +1,7 @@
-'use client'
-
-import { useState } from 'react'
 import { Container, RadioGroup, RadioItem } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
+import { ControlledDemo } from './_demos'
 
 const basicCode = `import { RadioGroup, RadioItem } from '@umichkisa-ds/web'
 
@@ -64,8 +63,25 @@ const controlledCode = `const [fruit, setFruit] = useState('banana')
 </RadioGroup>
 <p>You picked: {fruit}</p>`
 
-export default function RadioPage() {
-  const [fruit, setFruit] = useState('banana')
+export default async function RadioPage() {
+  const [
+    basicHighlighted,
+    horizontalHighlighted,
+    defaultValueHighlighted,
+    disabledGroupHighlighted,
+    disabledItemHighlighted,
+    invalidHighlighted,
+    controlledHighlighted,
+  ] = await Promise.all([
+    highlight(basicCode),
+    highlight(horizontalCode),
+    highlight(defaultValueCode),
+    highlight(disabledGroupCode),
+    highlight(disabledItemCode),
+    highlight(invalidCode),
+    highlight(controlledCode),
+  ])
+
   return (
     <Container size="md" as="article">
 
@@ -91,7 +107,7 @@ export default function RadioPage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         A vertical radio group with three options.
       </p>
-      <ComponentPreview code={basicCode}>
+      <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
         <RadioGroup>
           <RadioItem value="apple" text="Apple" />
           <RadioItem value="banana" text="Banana" />
@@ -108,7 +124,7 @@ export default function RadioPage() {
         </code>{' '}
         to lay out items in a row.
       </p>
-      <ComponentPreview code={horizontalCode}>
+      <ComponentPreview code={horizontalCode} highlightedCode={horizontalHighlighted}>
         <RadioGroup orientation="horizontal">
           <RadioItem value="small" text="Small" />
           <RadioItem value="medium" text="Medium" />
@@ -125,7 +141,7 @@ export default function RadioPage() {
         </code>{' '}
         to set the initial value without managing state.
       </p>
-      <ComponentPreview code={defaultValueCode}>
+      <ComponentPreview code={defaultValueCode} highlightedCode={defaultValueHighlighted}>
         <RadioGroup defaultValue="medium">
           <RadioItem value="small" text="Small" />
           <RadioItem value="medium" text="Medium" />
@@ -142,7 +158,7 @@ export default function RadioPage() {
         </code>{' '}
         on the group to disable all items.
       </p>
-      <ComponentPreview code={disabledGroupCode}>
+      <ComponentPreview code={disabledGroupCode} highlightedCode={disabledGroupHighlighted}>
         <RadioGroup disabled defaultValue="banana">
           <RadioItem value="apple" text="Apple" />
           <RadioItem value="banana" text="Banana" />
@@ -155,7 +171,7 @@ export default function RadioPage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         Disable a single item while the rest remain interactive.
       </p>
-      <ComponentPreview code={disabledItemCode}>
+      <ComponentPreview code={disabledItemCode} highlightedCode={disabledItemHighlighted}>
         <RadioGroup>
           <RadioItem value="apple" text="Apple" />
           <RadioItem value="banana" text="Banana" disabled />
@@ -176,7 +192,7 @@ export default function RadioPage() {
         </code>{' '}
         for the message.
       </p>
-      <ComponentPreview code={invalidCode}>
+      <ComponentPreview code={invalidCode} highlightedCode={invalidHighlighted}>
         <div className="flex flex-col gap-2">
           <RadioGroup invalid>
             <RadioItem value="apple" text="Apple" />
@@ -200,15 +216,8 @@ export default function RadioPage() {
         </code>{' '}
         for controlled state.
       </p>
-      <ComponentPreview code={controlledCode}>
-        <div className="flex flex-col gap-2">
-          <RadioGroup value={fruit} onValueChange={setFruit}>
-            <RadioItem value="apple" text="Apple" />
-            <RadioItem value="banana" text="Banana" />
-            <RadioItem value="cherry" text="Cherry" />
-          </RadioGroup>
-          <p className="type-caption text-muted-foreground">You picked: {fruit}</p>
-        </div>
+      <ComponentPreview code={controlledCode} highlightedCode={controlledHighlighted}>
+        <ControlledDemo />
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}

@@ -1,6 +1,7 @@
 import { Container, Icon } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { SizesExample } from '@/components/SizesExample'
+import { highlight } from '@/lib/highlight'
 
 const defaultCode = `import { Icon } from '@umichkisa-ds/web'
 
@@ -38,7 +39,14 @@ const buttonCode = `import { Icon } from '@umichkisa-ds/web'
   <Icon name="trash-2" />
 </button>`
 
-export default function IconPage() {
+export default async function IconPage() {
+  const [defaultHighlighted, colorHighlighted, labelHighlighted, buttonHighlighted] = await Promise.all([
+    highlight(defaultCode),
+    highlight(colorCode),
+    highlight(labelCode),
+    highlight(buttonCode),
+  ]);
+
   return (
     <Container size="md" as="article">
 
@@ -69,7 +77,7 @@ export default function IconPage() {
         </code>{' '}
         (20px) by default. Decorative — screen readers ignore it.
       </p>
-      <ComponentPreview code={defaultCode}>
+      <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
         <Icon name="arrow-right" />
       </ComponentPreview>
 
@@ -98,7 +106,7 @@ export default function IconPage() {
         </code>
         .
       </p>
-      <ComponentPreview code={colorCode}>
+      <ComponentPreview code={colorCode} highlightedCode={colorHighlighted}>
         <div className="flex items-center gap-4">
           <Icon name="plus" />
           <span className="text-brand-primary">
@@ -123,7 +131,7 @@ export default function IconPage() {
         </code>{' '}
         on the SVG so screen readers announce it.
       </p>
-      <ComponentPreview code={labelCode}>
+      <ComponentPreview code={labelCode} highlightedCode={labelHighlighted}>
         <Icon name="thumbs-up" label="Liked" />
       </ComponentPreview>
 
@@ -143,7 +151,7 @@ export default function IconPage() {
         </code>
         . The wrapper provides the accessible label and the minimum 44×44px touch target.
       </p>
-      <ComponentPreview code={buttonCode}>
+      <ComponentPreview code={buttonCode} highlightedCode={buttonHighlighted}>
         <button
           aria-label="Delete"
           className="cursor-pointer

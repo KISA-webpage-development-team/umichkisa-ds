@@ -1,8 +1,7 @@
-'use client'
-
-import { useState } from 'react'
 import { Container, Input, Label } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
+import { ControlledDemo } from './_demos'
 
 const defaultCode = `import { Input } from '@umichkisa-ds/web'
 
@@ -51,8 +50,22 @@ const controlledCode = `const [value, setValue] = useState('')
 />
 <p>{value.length}/50</p>`
 
-export default function InputPage() {
-  const [value, setValue] = useState('')
+export default async function InputPage() {
+  const [
+    defaultHighlighted,
+    statesHighlighted,
+    typesHighlighted,
+    withLabelHighlighted,
+    withErrorHighlighted,
+    controlledHighlighted,
+  ] = await Promise.all([
+    highlight(defaultCode),
+    highlight(statesCode),
+    highlight(typesCode),
+    highlight(withLabelCode),
+    highlight(withErrorCode),
+    highlight(controlledCode),
+  ])
 
   return (
     <Container size="md" as="article">
@@ -86,7 +99,7 @@ export default function InputPage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         The simplest usage. Renders a full-width text input.
       </p>
-      <ComponentPreview code={defaultCode}>
+      <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
         <div className="w-full max-w-sm">
           <Input placeholder="Enter text..." />
         </div>
@@ -97,7 +110,7 @@ export default function InputPage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         Default, disabled, and invalid states. Focus the input to see the focus styling.
       </p>
-      <ComponentPreview code={statesCode}>
+      <ComponentPreview code={statesCode} highlightedCode={statesHighlighted}>
         <div className="flex flex-col gap-4 w-full max-w-sm">
           <Input placeholder="Default" />
           <Input placeholder="Disabled" disabled />
@@ -117,7 +130,7 @@ export default function InputPage() {
           text
         </code>.
       </p>
-      <ComponentPreview code={typesCode}>
+      <ComponentPreview code={typesCode} highlightedCode={typesHighlighted}>
         <div className="flex flex-col gap-4 w-full max-w-sm">
           <Input type="text" placeholder="Text" />
           <Input type="email" placeholder="Email" />
@@ -139,7 +152,7 @@ export default function InputPage() {
         </code>{' '}
         between label and input.
       </p>
-      <ComponentPreview code={withLabelCode}>
+      <ComponentPreview code={withLabelCode} highlightedCode={withLabelHighlighted}>
         <div className="w-full max-w-sm">
           <div className="flex flex-col gap-2">
             <Label htmlFor="email-demo">Email</Label>
@@ -161,7 +174,7 @@ export default function InputPage() {
         </code>{' '}
         for the message.
       </p>
-      <ComponentPreview code={withErrorCode}>
+      <ComponentPreview code={withErrorCode} highlightedCode={withErrorHighlighted}>
         <div className="w-full max-w-sm">
           <div className="flex flex-col gap-2">
             <Label htmlFor="error-demo">Email</Label>
@@ -177,16 +190,8 @@ export default function InputPage() {
         Input supports both controlled and uncontrolled usage.
         Below is a controlled example with live character count.
       </p>
-      <ComponentPreview code={controlledCode}>
-        <div className="w-full max-w-sm flex flex-col gap-2">
-          <Input
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            placeholder="Type something..."
-            maxLength={50}
-          />
-          <p className="type-caption text-muted-foreground">{value.length}/50</p>
-        </div>
+      <ComponentPreview code={controlledCode} highlightedCode={controlledHighlighted}>
+        <ControlledDemo />
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}

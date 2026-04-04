@@ -1,7 +1,6 @@
-'use client'
-
 import { Container, Select, SelectTrigger, SelectContent, SelectItem, SelectGroup, SelectSeparator, Label } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
 
 const defaultCode = `import { Select, SelectTrigger, SelectContent, SelectItem } from '@umichkisa-ds/web'
 
@@ -82,7 +81,23 @@ const disabledCode = `import { Select, SelectTrigger, SelectContent, SelectItem 
   </SelectContent>
 </Select>`
 
-export default function SelectPage() {
+export default async function SelectPage() {
+  const [
+    defaultHighlighted,
+    placeholderHighlighted,
+    groupsHighlighted,
+    withLabelHighlighted,
+    invalidHighlighted,
+    disabledHighlighted,
+  ] = await Promise.all([
+    highlight(defaultCode),
+    highlight(placeholderCode),
+    highlight(groupsCode),
+    highlight(withLabelCode),
+    highlight(invalidCode),
+    highlight(disabledCode),
+  ])
+
   return (
     <Container size="md" as="article">
 
@@ -109,7 +124,7 @@ export default function SelectPage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         A basic select with a pre-selected value.
       </p>
-      <ComponentPreview code={defaultCode}>
+      <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
         <div className="w-full max-w-sm">
           <Select defaultValue="apple">
             <SelectTrigger />
@@ -135,7 +150,7 @@ export default function SelectPage() {
         </code>{' '}
         to show a prompt when no value is selected.
       </p>
-      <ComponentPreview code={placeholderCode}>
+      <ComponentPreview code={placeholderCode} highlightedCode={placeholderHighlighted}>
         <div className="w-full max-w-sm">
           <Select>
             <SelectTrigger placeholder="Select a fruit..." />
@@ -160,7 +175,7 @@ export default function SelectPage() {
           SelectSeparator
         </code>.
       </p>
-      <ComponentPreview code={groupsCode}>
+      <ComponentPreview code={groupsCode} highlightedCode={groupsHighlighted}>
         <div className="w-full max-w-sm">
           <Select>
             <SelectTrigger placeholder="Select an item..." />
@@ -192,7 +207,7 @@ export default function SelectPage() {
         </code>{' '}
         on the trigger to associate the label for screen readers.
       </p>
-      <ComponentPreview code={withLabelCode}>
+      <ComponentPreview code={withLabelCode} highlightedCode={withLabelHighlighted}>
         <div className="w-full max-w-sm">
           <div className="flex flex-col gap-2">
             <span id="fruit-label-demo">
@@ -222,7 +237,7 @@ export default function SelectPage() {
         </code>{' '}
         and an error message below.
       </p>
-      <ComponentPreview code={invalidCode}>
+      <ComponentPreview code={invalidCode} highlightedCode={invalidHighlighted}>
         <div className="w-full max-w-sm">
           <div className="flex flex-col gap-2">
             <Label htmlFor="fruit-invalid-demo">Fruit</Label>
@@ -243,7 +258,7 @@ export default function SelectPage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         The disabled state prevents interaction.
       </p>
-      <ComponentPreview code={disabledCode}>
+      <ComponentPreview code={disabledCode} highlightedCode={disabledHighlighted}>
         <div className="w-full max-w-sm">
           <Select disabled>
             <SelectTrigger placeholder="Select a fruit..." />

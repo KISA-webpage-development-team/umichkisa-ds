@@ -1,5 +1,6 @@
 import { Container, Tooltip, IconButton } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
 
 const defaultCode = `import { Tooltip, IconButton } from '@umichkisa-ds/web'
 
@@ -36,7 +37,19 @@ const delayCode = `import { Tooltip, IconButton } from '@umichkisa-ds/web'
   <IconButton icon="clock-9" aria-label="Slow tooltip" />
 </Tooltip>`
 
-export default function TooltipPage() {
+export default async function TooltipPage() {
+  const [
+    defaultHighlighted,
+    truncatedHighlighted,
+    placementHighlighted,
+    delayHighlighted,
+  ] = await Promise.all([
+    highlight(defaultCode),
+    highlight(truncatedCode),
+    highlight(placementCode),
+    highlight(delayCode),
+  ])
+
   return (
     <Container size="md" as="article">
 
@@ -61,7 +74,7 @@ export default function TooltipPage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         Wrap any trigger element. The tooltip appears on hover and focus.
       </p>
-      <ComponentPreview code={defaultCode}>
+      <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
         <Tooltip content="Delete item">
           <IconButton icon="trash-2" aria-label="Delete item" />
         </Tooltip>
@@ -73,7 +86,7 @@ export default function TooltipPage() {
         Tooltip works on any element, not just icon buttons. Wrap truncated
         text to reveal the full content on hover.
       </p>
-      <ComponentPreview code={truncatedCode}>
+      <ComponentPreview code={truncatedCode} highlightedCode={truncatedHighlighted}>
         <Tooltip content="This is the full text that was truncated because it is too long to display">
           <span className="type-body-sm text-foreground block max-w-[120px] truncate">
             This is the full text that was truncated because it is too long to display
@@ -92,7 +105,7 @@ export default function TooltipPage() {
         Radix automatically flips to an available side if the preferred one
         would overflow the viewport.
       </p>
-      <ComponentPreview code={placementCode}>
+      <ComponentPreview code={placementCode} highlightedCode={placementHighlighted}>
         <div className="flex items-center gap-4">
           <Tooltip content="Top" side="top">
             <IconButton icon="chevron-right" aria-label="Top" />
@@ -119,7 +132,7 @@ export default function TooltipPage() {
         to control how long (in milliseconds) the user must hover before
         the tooltip appears. Default is 200ms.
       </p>
-      <ComponentPreview code={delayCode}>
+      <ComponentPreview code={delayCode} highlightedCode={delayHighlighted}>
         <Tooltip content="Slow tooltip" delayDuration={800}>
           <IconButton icon="clock-9" aria-label="Slow tooltip" />
         </Tooltip>

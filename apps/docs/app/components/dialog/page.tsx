@@ -1,7 +1,6 @@
-'use client'
-
 import { Container, Dialog, DialogTrigger, DialogClose, DialogContent, DialogTitle, DialogDescription, DialogFooter, Button } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
 
 const basicCode = `import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, DialogClose, Button } from '@umichkisa-ds/web'
 
@@ -97,7 +96,14 @@ const customCloseCode = `import { Dialog, DialogTrigger, DialogContent, DialogTi
   </DialogContent>
 </Dialog>`
 
-export default function DialogPage() {
+export default async function DialogPage() {
+  const [basicHighlighted, sizesHighlighted, footerHighlighted, customCloseHighlighted] = await Promise.all([
+    highlight(basicCode),
+    highlight(sizesCode),
+    highlight(footerCode),
+    highlight(customCloseCode),
+  ]);
+
   return (
     <Container size="md" as="article">
 
@@ -122,7 +128,7 @@ export default function DialogPage() {
         A dialog with a title, description, and the default close button.
         Triggered via a secondary button.
       </p>
-      <ComponentPreview code={basicCode}>
+      <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
         <Dialog>
           <DialogTrigger asChild>
             <Button variant="primary">Open dialog</Button>
@@ -144,7 +150,7 @@ export default function DialogPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg</code>, and{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">full</code>.
       </p>
-      <ComponentPreview code={sizesCode}>
+      <ComponentPreview code={sizesCode} highlightedCode={sizesHighlighted}>
         <div className="flex flex-wrap gap-2">
           <Dialog>
             <DialogTrigger asChild>
@@ -195,7 +201,7 @@ export default function DialogPage() {
         </code>{' '}
         to dismiss the dialog without additional logic.
       </p>
-      <ComponentPreview code={footerCode}>
+      <ComponentPreview code={footerCode} highlightedCode={footerHighlighted}>
         <Dialog>
           <DialogTrigger asChild>
             <Button variant="primary">Confirm action</Button>
@@ -228,7 +234,7 @@ export default function DialogPage() {
         </code>{' '}
         for custom dismiss behavior.
       </p>
-      <ComponentPreview code={customCloseCode}>
+      <ComponentPreview code={customCloseCode} highlightedCode={customCloseHighlighted}>
         <Dialog>
           <DialogTrigger asChild>
             <Button variant="primary">Custom close</Button>

@@ -1,8 +1,7 @@
-'use client'
-
-import { useState } from 'react'
 import { Container, Switch, FormItem } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
+import { ControlledDemo } from './_demos'
 
 const defaultCode = `import { Switch } from '@umichkisa-ds/web'
 
@@ -55,8 +54,24 @@ const controlledCode = `const [enabled, setEnabled] = useState(false)
 />
 <p>{enabled ? 'On' : 'Off'}</p>`
 
-export default function SwitchPage() {
-  const [enabled, setEnabled] = useState(false)
+export default async function SwitchPage() {
+  const [
+    defaultHighlighted,
+    checkedHighlighted,
+    sizesHighlighted,
+    statesHighlighted,
+    withFormItemHighlighted,
+    withErrorHighlighted,
+    controlledHighlighted,
+  ] = await Promise.all([
+    highlight(defaultCode),
+    highlight(checkedCode),
+    highlight(sizesCode),
+    highlight(statesCode),
+    highlight(withFormItemCode),
+    highlight(withErrorCode),
+    highlight(controlledCode),
+  ])
 
   return (
     <Container size="md" as="article">
@@ -99,7 +114,7 @@ export default function SwitchPage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         A switch with inline label text in the off state.
       </p>
-      <ComponentPreview code={defaultCode}>
+      <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
         <Switch text="Enable notifications" />
       </ComponentPreview>
 
@@ -112,7 +127,7 @@ export default function SwitchPage() {
         </code>{' '}
         set.
       </p>
-      <ComponentPreview code={checkedCode}>
+      <ComponentPreview code={checkedCode} highlightedCode={checkedHighlighted}>
         <Switch text="Enable notifications" defaultChecked />
       </ComponentPreview>
 
@@ -129,7 +144,7 @@ export default function SwitchPage() {
         </code>
         ) for dense UI like table rows or settings panels.
       </p>
-      <ComponentPreview code={sizesCode}>
+      <ComponentPreview code={sizesCode} highlightedCode={sizesHighlighted}>
         <div className="flex flex-col gap-4">
           <Switch text="Default size" />
           <Switch size="sm" text="Small size" />
@@ -141,7 +156,7 @@ export default function SwitchPage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         Default, disabled off, disabled on, and invalid states.
       </p>
-      <ComponentPreview code={statesCode}>
+      <ComponentPreview code={statesCode} highlightedCode={statesHighlighted}>
         <div className="flex flex-col gap-4">
           <Switch text="Default" />
           <Switch text="Disabled" disabled />
@@ -163,7 +178,7 @@ export default function SwitchPage() {
         </code>{' '}
         prop provides a secondary inline label next to the control.
       </p>
-      <ComponentPreview code={withFormItemCode}>
+      <ComponentPreview code={withFormItemCode} highlightedCode={withFormItemHighlighted}>
         <FormItem htmlFor="notif" label="Notifications">
           <Switch id="notif" text="Send email updates" />
         </FormItem>
@@ -182,7 +197,7 @@ export default function SwitchPage() {
         </code>{' '}
         error message.
       </p>
-      <ComponentPreview code={withErrorCode}>
+      <ComponentPreview code={withErrorCode} highlightedCode={withErrorHighlighted}>
         <FormItem htmlFor="terms" label="Terms" error="You must accept the terms.">
           <Switch id="terms" text="Accept terms" invalid />
         </FormItem>
@@ -194,15 +209,8 @@ export default function SwitchPage() {
         Switch supports both controlled and uncontrolled usage.
         Below is a controlled example with live state feedback.
       </p>
-      <ComponentPreview code={controlledCode}>
-        <div className="flex flex-col gap-2">
-          <Switch
-            text="Dark mode"
-            checked={enabled}
-            onChange={(e) => setEnabled(e.target.checked)}
-          />
-          <p className="type-caption text-muted-foreground">{enabled ? 'On' : 'Off'}</p>
-        </div>
+      <ComponentPreview code={controlledCode} highlightedCode={controlledHighlighted}>
+        <ControlledDemo />
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}

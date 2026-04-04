@@ -1,7 +1,6 @@
-'use client'
-
 import { Container, Icon } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
 
 const basicCode = `import { OnlyMobileView } from '@umichkisa-ds/web'
 
@@ -21,7 +20,12 @@ const customMessageCode = `import { OnlyMobileView } from '@umichkisa-ds/web'
   </div>
 </OnlyMobileView>`
 
-export default function OnlyMobileViewPage() {
+export default async function OnlyMobileViewPage() {
+  const [basicHighlighted, customMessageHighlighted] = await Promise.all([
+    highlight(basicCode),
+    highlight(customMessageCode),
+  ]);
+
   return (
     <Container size="md" as="article">
 
@@ -49,7 +53,7 @@ export default function OnlyMobileViewPage() {
         simulates the overlay in a contained box — the actual component covers
         the full viewport.
       </p>
-      <ComponentPreview code={basicCode}>
+      <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
         <div className="w-full">
           <div className="relative w-full h-48 border border-border rounded-md overflow-hidden">
             {/* Simulated mobile content */}
@@ -78,7 +82,7 @@ export default function OnlyMobileViewPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">message</code>{' '}
         prop to override the default overlay text.
       </p>
-      <ComponentPreview code={customMessageCode}>
+      <ComponentPreview code={customMessageCode} highlightedCode={customMessageHighlighted}>
         <div className="w-full">
           <div className="relative w-full h-48 border border-border rounded-md overflow-hidden">
             <div className="p-4">

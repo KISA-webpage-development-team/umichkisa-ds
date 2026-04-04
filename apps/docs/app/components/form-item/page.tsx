@@ -1,14 +1,7 @@
-'use client'
-
-import { useState } from 'react'
 import {
   FormItem,
   Input,
   Textarea,
-  Select,
-  SelectTrigger,
-  SelectContent,
-  SelectItem,
   Checkbox,
   Switch,
   RadioGroup,
@@ -16,6 +9,8 @@ import {
   Container,
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
+import { WithSelectDemo } from './_demos'
 
 const basicCode = `import { FormItem, Input } from '@umichkisa-ds/web'
 
@@ -98,8 +93,30 @@ const [role, setRole] = useState('')
   </Select>
 </FormItem>`
 
-export default function FormItemPage() {
-  const [role, setRole] = useState('')
+export default async function FormItemPage() {
+  const [
+    basicHighlighted,
+    withDescriptionHighlighted,
+    withErrorHighlighted,
+    requiredHighlighted,
+    withTextareaHighlighted,
+    withCheckboxHighlighted,
+    withSwitchHighlighted,
+    withRadioHighlighted,
+    a11yHighlighted,
+    withSelectHighlighted,
+  ] = await Promise.all([
+    highlight(basicCode),
+    highlight(withDescriptionCode),
+    highlight(withErrorCode),
+    highlight(requiredCode),
+    highlight(withTextareaCode),
+    highlight(withCheckboxCode),
+    highlight(withSwitchCode),
+    highlight(withRadioCode),
+    highlight(a11yCode),
+    highlight(withSelectCode),
+  ])
 
   return (
     <Container size="md" as="article">
@@ -139,7 +156,7 @@ export default function FormItemPage() {
         </code>{' '}
         on the form control so the label is accessible.
       </p>
-      <ComponentPreview code={basicCode}>
+      <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
         <div className="w-full max-w-sm">
           <FormItem htmlFor="basic-name" label="Name">
             <Input id="basic-name" placeholder="Enter your name" />
@@ -156,7 +173,7 @@ export default function FormItemPage() {
         </code>{' '}
         prop to render helper text below the form control.
       </p>
-      <ComponentPreview code={withDescriptionCode}>
+      <ComponentPreview code={withDescriptionCode} highlightedCode={withDescriptionHighlighted}>
         <div className="w-full max-w-sm">
           <FormItem
             htmlFor="desc-email"
@@ -185,7 +202,7 @@ export default function FormItemPage() {
         </code>{' '}
         to the input for error border styling.
       </p>
-      <ComponentPreview code={withErrorCode}>
+      <ComponentPreview code={withErrorCode} highlightedCode={withErrorHighlighted}>
         <div className="w-full max-w-sm">
           <FormItem
             htmlFor="error-email"
@@ -206,7 +223,7 @@ export default function FormItemPage() {
         </code>{' '}
         to show an asterisk on the label.
       </p>
-      <ComponentPreview code={requiredCode}>
+      <ComponentPreview code={requiredCode} highlightedCode={requiredHighlighted}>
         <div className="w-full max-w-sm">
           <FormItem htmlFor="req-username" label="Username" required>
             <Input id="req-username" placeholder="Choose a username" />
@@ -222,7 +239,7 @@ export default function FormItemPage() {
           Textarea
         </code>.
       </p>
-      <ComponentPreview code={withTextareaCode}>
+      <ComponentPreview code={withTextareaCode} highlightedCode={withTextareaHighlighted}>
         <div className="w-full max-w-sm">
           <FormItem htmlFor="ta-bio" label="Bio" description="Tell us about yourself.">
             <Textarea id="ta-bio" placeholder="Write something..." />
@@ -239,19 +256,8 @@ export default function FormItemPage() {
         </code>{' '}
         API as well.
       </p>
-      <ComponentPreview code={withSelectCode}>
-        <div className="w-full max-w-sm">
-          <FormItem htmlFor="sel-role" label="Role" required>
-            <Select value={role} onValueChange={setRole}>
-              <SelectTrigger placeholder="Select a role" />
-              <SelectContent>
-                <SelectItem value="admin">Admin</SelectItem>
-                <SelectItem value="editor">Editor</SelectItem>
-                <SelectItem value="viewer">Viewer</SelectItem>
-              </SelectContent>
-            </Select>
-          </FormItem>
-        </div>
+      <ComponentPreview code={withSelectCode} highlightedCode={withSelectHighlighted}>
+        <WithSelectDemo />
       </ComponentPreview>
 
       {/* With Checkbox */}
@@ -267,7 +273,7 @@ export default function FormItemPage() {
         </code>{' '}
         prop for its inline label.
       </p>
-      <ComponentPreview code={withCheckboxCode}>
+      <ComponentPreview code={withCheckboxCode} highlightedCode={withCheckboxHighlighted}>
         <div className="w-full max-w-sm">
           <FormItem htmlFor="cb-terms" label="Terms" required>
             <Checkbox id="cb-terms" text="I agree to the terms and conditions" />
@@ -288,7 +294,7 @@ export default function FormItemPage() {
         </code>{' '}
         prop renders the inline label next to the toggle.
       </p>
-      <ComponentPreview code={withSwitchCode}>
+      <ComponentPreview code={withSwitchCode} highlightedCode={withSwitchHighlighted}>
         <div className="w-full max-w-sm">
           <FormItem htmlFor="sw-notifications" label="Notifications">
             <Switch id="sw-notifications" text="Send email updates" />
@@ -313,7 +319,7 @@ export default function FormItemPage() {
         </code>{' '}
         prop for its label.
       </p>
-      <ComponentPreview code={withRadioCode}>
+      <ComponentPreview code={withRadioCode} highlightedCode={withRadioHighlighted}>
         <div className="w-full max-w-sm">
           <FormItem htmlFor="rg-contact" label="Preferred contact">
             <RadioGroup>
@@ -342,7 +348,7 @@ export default function FormItemPage() {
         </code>{' '}
         on the form control to associate the helper text for screen readers.
       </p>
-      <ComponentPreview code={a11yCode}>
+      <ComponentPreview code={a11yCode} highlightedCode={a11yHighlighted}>
         <div className="w-full max-w-sm">
           <FormItem
             htmlFor="a11y-email"

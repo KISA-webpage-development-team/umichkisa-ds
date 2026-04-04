@@ -1,8 +1,7 @@
-'use client'
-
-import { useState } from 'react'
 import { Container, Textarea, Label } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
+import { ControlledDemo } from './_demos'
 
 const defaultCode = `import { Textarea } from '@umichkisa-ds/web'
 
@@ -44,8 +43,20 @@ const controlledCode = `const [value, setValue] = useState('')
 />
 <p>{value.length}/200</p>`
 
-export default function TextareaPage() {
-  const [value, setValue] = useState('')
+export default async function TextareaPage() {
+  const [
+    defaultHighlighted,
+    statesHighlighted,
+    withLabelHighlighted,
+    withErrorHighlighted,
+    controlledHighlighted,
+  ] = await Promise.all([
+    highlight(defaultCode),
+    highlight(statesCode),
+    highlight(withLabelCode),
+    highlight(withErrorCode),
+    highlight(controlledCode),
+  ])
 
   return (
     <Container size="md" as="article">
@@ -79,7 +90,7 @@ export default function TextareaPage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         The simplest usage. Renders a full-width multi-line text area.
       </p>
-      <ComponentPreview code={defaultCode}>
+      <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
         <div className="w-full max-w-sm">
           <Textarea placeholder="Enter your message..." />
         </div>
@@ -90,7 +101,7 @@ export default function TextareaPage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         Default, disabled, and invalid states. Focus the textarea to see the focus styling.
       </p>
-      <ComponentPreview code={statesCode}>
+      <ComponentPreview code={statesCode} highlightedCode={statesHighlighted}>
         <div className="flex flex-col gap-4 w-full max-w-sm">
           <Textarea placeholder="Default" />
           <Textarea placeholder="Disabled" disabled />
@@ -111,7 +122,7 @@ export default function TextareaPage() {
         </code>{' '}
         between label and textarea.
       </p>
-      <ComponentPreview code={withLabelCode}>
+      <ComponentPreview code={withLabelCode} highlightedCode={withLabelHighlighted}>
         <div className="w-full max-w-sm">
           <div className="flex flex-col gap-2">
             <Label htmlFor="message-demo">Message</Label>
@@ -133,7 +144,7 @@ export default function TextareaPage() {
         </code>{' '}
         for the message.
       </p>
-      <ComponentPreview code={withErrorCode}>
+      <ComponentPreview code={withErrorCode} highlightedCode={withErrorHighlighted}>
         <div className="w-full max-w-sm">
           <div className="flex flex-col gap-2">
             <Label htmlFor="error-demo">Message</Label>
@@ -149,16 +160,8 @@ export default function TextareaPage() {
         Textarea supports both controlled and uncontrolled usage.
         Below is a controlled example with live character count.
       </p>
-      <ComponentPreview code={controlledCode}>
-        <div className="w-full max-w-sm flex flex-col gap-2">
-          <Textarea
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            placeholder="Type something..."
-            maxLength={200}
-          />
-          <p className="type-caption text-muted-foreground">{value.length}/200</p>
-        </div>
+      <ComponentPreview code={controlledCode} highlightedCode={controlledHighlighted}>
+        <ControlledDemo />
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}

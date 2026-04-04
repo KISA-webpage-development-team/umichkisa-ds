@@ -1,7 +1,6 @@
-'use client'
-
 import { Container, Button, Dropdown, DropdownTrigger, DropdownContent, DropdownItem, DropdownGroup, DropdownSeparator } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
 
 const basicCode = `import { Dropdown, DropdownTrigger, DropdownContent, DropdownItem } from '@umichkisa-ds/web'
 import { Button } from '@umichkisa-ds/web'
@@ -91,7 +90,16 @@ import { Button } from '@umichkisa-ds/web'
   </DropdownContent>
 </Dropdown>`
 
-export default function DropdownPage() {
+export default async function DropdownPage() {
+  const [basicHighlighted, groupsHighlighted, separatorHighlighted, destructiveHighlighted, disabledHighlighted, positioningHighlighted] = await Promise.all([
+    highlight(basicCode),
+    highlight(groupsCode),
+    highlight(separatorCode),
+    highlight(destructiveCode),
+    highlight(disabledCode),
+    highlight(positioningCode),
+  ]);
+
   return (
     <Container size="md" as="article">
 
@@ -123,7 +131,7 @@ export default function DropdownPage() {
           asChild
         </code>.
       </p>
-      <ComponentPreview code={basicCode}>
+      <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
         <Dropdown>
           <DropdownTrigger asChild>
             <Button variant="primary">Actions</Button>
@@ -154,7 +162,7 @@ export default function DropdownPage() {
         </code>{' '}
         prop.
       </p>
-      <ComponentPreview code={groupsCode}>
+      <ComponentPreview code={groupsCode} highlightedCode={groupsHighlighted}>
         <Dropdown>
           <DropdownTrigger asChild>
             <Button variant="primary">Actions</Button>
@@ -180,7 +188,7 @@ export default function DropdownPage() {
         </code>{' '}
         to visually divide items into sections.
       </p>
-      <ComponentPreview code={separatorCode}>
+      <ComponentPreview code={separatorCode} highlightedCode={separatorHighlighted}>
         <Dropdown>
           <DropdownTrigger asChild>
             <Button variant="primary">Actions</Button>
@@ -203,7 +211,7 @@ export default function DropdownPage() {
         </code>{' '}
         to highlight dangerous actions like delete.
       </p>
-      <ComponentPreview code={destructiveCode}>
+      <ComponentPreview code={destructiveCode} highlightedCode={destructiveHighlighted}>
         <Dropdown>
           <DropdownTrigger asChild>
             <Button variant="primary">Actions</Button>
@@ -224,7 +232,7 @@ export default function DropdownPage() {
         </code>{' '}
         prop to prevent interaction with a menu item.
       </p>
-      <ComponentPreview code={disabledCode}>
+      <ComponentPreview code={disabledCode} highlightedCode={disabledHighlighted}>
         <Dropdown>
           <DropdownTrigger asChild>
             <Button variant="primary">Actions</Button>
@@ -256,7 +264,7 @@ export default function DropdownPage() {
         </code>{' '}
         to control where the menu appears.
       </p>
-      <ComponentPreview code={positioningCode}>
+      <ComponentPreview code={positioningCode} highlightedCode={positioningHighlighted}>
         <div className="flex justify-end">
           <Dropdown>
             <DropdownTrigger asChild>

@@ -1,5 +1,6 @@
 import { Container, Divider } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
 
 const defaultCode = `import { Divider } from '@umichkisa-ds/web'
 
@@ -23,7 +24,17 @@ const separatorCode = `import { Divider } from '@umichkisa-ds/web'
   <p>Third item</p>
 </div>`
 
-export default function DividerPage() {
+export default async function DividerPage() {
+  const [
+    defaultHighlighted,
+    verticalHighlighted,
+    separatorHighlighted,
+  ] = await Promise.all([
+    highlight(defaultCode),
+    highlight(verticalCode),
+    highlight(separatorCode),
+  ])
+
   return (
     <Container size="md" as="article">
 
@@ -51,7 +62,7 @@ export default function DividerPage() {
         No props required. Renders a horizontal line spanning the full width of
         its container.
       </p>
-      <ComponentPreview code={defaultCode}>
+      <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
         <Divider />
       </ComponentPreview>
 
@@ -65,7 +76,7 @@ export default function DividerPage() {
         to render a vertical separator. Place inside a flex container so it
         stretches to match the height of its siblings.
       </p>
-      <ComponentPreview code={verticalCode}>
+      <ComponentPreview code={verticalCode} highlightedCode={verticalHighlighted}>
         <div className="flex items-center gap-4 h-8">
           <span className="type-body text-foreground">Left</span>
           <Divider orientation="vertical" />
@@ -78,7 +89,7 @@ export default function DividerPage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         A common pattern: stacked items separated by horizontal dividers.
       </p>
-      <ComponentPreview code={separatorCode}>
+      <ComponentPreview code={separatorCode} highlightedCode={separatorHighlighted}>
         <div className="flex flex-col gap-4">
           <p className="type-body text-foreground">First item</p>
           <Divider />

@@ -1,7 +1,6 @@
-'use client'
-
 import { Container, Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Button, Badge, Avatar, Grid, Icon } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
 
 const basicCode = `import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@umichkisa-ds/web'
 
@@ -112,7 +111,14 @@ const compositionCode = `import { Card, CardContent, CardFooter, Avatar, Button,
   </CardFooter>
 </Card>`
 
-export default function CardPage() {
+export default async function CardPage() {
+  const [basicHighlighted, withFooterHighlighted, gridHighlighted, compositionHighlighted] = await Promise.all([
+    highlight(basicCode),
+    highlight(withFooterCode),
+    highlight(gridCode),
+    highlight(compositionCode),
+  ]);
+
   return (
     <Container size="md" as="article">
 
@@ -148,7 +154,7 @@ export default function CardPage() {
         A card with a header (title + description) and content section. Use this
         pattern for event announcements or informational blocks.
       </p>
-      <ComponentPreview code={basicCode}>
+      <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
         <Card className="max-w-md">
           <CardHeader>
             <CardTitle>Spring General Meeting</CardTitle>
@@ -169,7 +175,7 @@ export default function CardPage() {
         Add a CardFooter for action buttons. Combine with Badge for status
         indicators in the header.
       </p>
-      <ComponentPreview code={withFooterCode}>
+      <ComponentPreview code={withFooterCode} highlightedCode={withFooterHighlighted}>
         <Card className="max-w-md">
           <CardHeader>
             <div className="flex items-center justify-between">
@@ -197,7 +203,7 @@ export default function CardPage() {
         Place cards inside a Grid for multi-column layouts. Cards fill
         their column width — control the layout through Grid, not Card.
       </p>
-      <ComponentPreview code={gridCode}>
+      <ComponentPreview code={gridCode} highlightedCode={gridHighlighted}>
         <Grid columns={3}>
           <Card>
             <CardHeader>
@@ -256,7 +262,7 @@ export default function CardPage() {
         top padding to CardContent, and arrange content freely. Here, a member
         profile card with centered layout.
       </p>
-      <ComponentPreview code={compositionCode}>
+      <ComponentPreview code={compositionCode} highlightedCode={compositionHighlighted}>
         <Card className="max-w-sm">
           <CardContent className="pt-4 flex flex-col items-center gap-4">
             <Avatar src="/avatars/member.jpg" name="Jioh In" size="lg" />

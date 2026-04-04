@@ -1,5 +1,6 @@
 import { Container } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
 
 const defaultCode = `import { Container } from '@umichkisa-ds/web'
 
@@ -60,7 +61,21 @@ const breakoutCode = `{/* When you're inside a Container and need to break out *
   <p>Content continues below the banner.</p>
 </Container>`
 
-export default function ContainerPage() {
+export default async function ContainerPage() {
+  const [
+    defaultHighlighted,
+    allSizesHighlighted,
+    polymorphicHighlighted,
+    pageStructureHighlighted,
+    breakoutHighlighted,
+  ] = await Promise.all([
+    highlight(defaultCode),
+    highlight(allSizesCode),
+    highlight(polymorphicCode),
+    highlight(pageStructureCode),
+    highlight(breakoutCode),
+  ])
+
   return (
     <Container size="md" as="article">
 
@@ -97,7 +112,7 @@ export default function ContainerPage() {
         </code>{' '}
         (1536px) with responsive padding and centering.
       </p>
-      <ComponentPreview code={defaultCode}>
+      <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
         <div className="w-full">
           <Container className="border border-dashed border-border bg-surface rounded-lg py-4">
             <p className="type-body-sm text-foreground text-center">Page content constrained to 1536px with responsive padding.</p>
@@ -120,7 +135,7 @@ export default function ContainerPage() {
         </code>
         .
       </p>
-      <ComponentPreview code={allSizesCode}>
+      <ComponentPreview code={allSizesCode} highlightedCode={allSizesHighlighted}>
         <div className="w-full flex flex-col gap-2">
           {/* default — full width reference */}
           <div className="w-full rounded-md bg-brand-primary px-3 py-2 flex items-center justify-between">
@@ -202,7 +217,7 @@ export default function ContainerPage() {
         </code>
         ).
       </p>
-      <ComponentPreview code={polymorphicCode}>
+      <ComponentPreview code={polymorphicCode} highlightedCode={polymorphicHighlighted}>
         <div className="w-full flex flex-col gap-4">
           <Container as="main" id="main-content" className="border border-dashed border-border bg-surface rounded-lg py-3">
             <h1 className="type-body-sm text-foreground">Page Title</h1>
@@ -229,7 +244,7 @@ export default function ContainerPage() {
         Structure your page so banners are siblings to Containers, not children.
         Close the Container before the banner, then open a new one after.
       </p>
-      <ComponentPreview code={pageStructureCode}>
+      <ComponentPreview code={pageStructureCode} highlightedCode={pageStructureHighlighted}>
         {/* Simulated desktop viewport */}
         <div className="w-full rounded-lg border border-border overflow-hidden bg-surface">
           {/* Top bar */}
@@ -265,7 +280,7 @@ export default function ContainerPage() {
         use the viewport-width breakout trick. This forces an element to span
         the full screen regardless of any parent constraints.
       </p>
-      <ComponentPreview code={breakoutCode}>
+      <ComponentPreview code={breakoutCode} highlightedCode={breakoutHighlighted}>
         {/* Simulated desktop viewport */}
         <div className="w-full rounded-lg border border-border overflow-hidden bg-surface">
           {/* Top bar */}

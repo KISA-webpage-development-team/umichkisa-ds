@@ -1,8 +1,7 @@
-'use client'
-
-import { Container, Label, Input } from '@umichkisa-ds/web'
+import { Container, Label } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
-import { useState } from 'react'
+import { highlight } from '@/lib/highlight'
+import { WithInputDemo } from './_demos'
 
 const defaultCode = `import { Label } from '@umichkisa-ds/web'
 
@@ -30,8 +29,16 @@ const [value, setValue] = useState('')
   placeholder="Enter your username"
 />`
 
-export default function LabelPage() {
-  const [username, setUsername] = useState('')
+export default async function LabelPage() {
+  const [
+    defaultHighlighted,
+    requiredHighlighted,
+    withInputHighlighted,
+  ] = await Promise.all([
+    highlight(defaultCode),
+    highlight(requiredCode),
+    highlight(withInputCode),
+  ])
 
   return (
     <Container size="md" as="article">
@@ -62,7 +69,7 @@ export default function LabelPage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         A basic label linked to a form control by id.
       </p>
-      <ComponentPreview code={defaultCode}>
+      <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
         <Label htmlFor="name">Full name</Label>
       </ComponentPreview>
 
@@ -75,7 +82,7 @@ export default function LabelPage() {
         </code>{' '}
         is true, a red asterisk is appended to signal the field is mandatory.
       </p>
-      <ComponentPreview code={requiredCode}>
+      <ComponentPreview code={requiredCode} highlightedCode={requiredHighlighted}>
         <Label htmlFor="email" required>Email address</Label>
       </ComponentPreview>
 
@@ -92,17 +99,8 @@ export default function LabelPage() {
         </code>{' '}
         values. Clicking the label focuses the input.
       </p>
-      <ComponentPreview code={withInputCode}>
-        <div className="flex flex-col gap-2">
-          <Label htmlFor="username" required>Username</Label>
-          <Input
-            id="username"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter your username"
-          />
-        </div>
+      <ComponentPreview code={withInputCode} highlightedCode={withInputHighlighted}>
+        <WithInputDemo />
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}
