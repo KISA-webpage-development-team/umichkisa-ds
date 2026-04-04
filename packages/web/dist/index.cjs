@@ -81,6 +81,7 @@ __export(src_exports, {
   TabsList: () => TabsList,
   TabsTrigger: () => TabsTrigger,
   Textarea: () => Textarea,
+  Toaster: () => Toaster,
   ToggleBar: () => ToggleBar,
   Tooltip: () => Tooltip,
   UnexpectedError: () => UnexpectedError,
@@ -89,7 +90,8 @@ __export(src_exports, {
   badgeVariants: () => badgeVariants,
   buttonVariants: () => buttonVariants,
   cn: () => cn,
-  tabsTriggerVariants: () => tabsTriggerVariants
+  tabsTriggerVariants: () => tabsTriggerVariants,
+  toast: () => import_sonner.toast
 });
 module.exports = __toCommonJS(src_exports);
 
@@ -726,7 +728,7 @@ function Switch({
           "span",
           {
             className: cn(
-              "pointer-events-none absolute rounded-full bg-foreground transition-all duration-200",
+              "pointer-events-none absolute rounded-full bg-brand-primary transition-all duration-200",
               "peer-checked:bg-surface",
               "peer-disabled:bg-disabled-foreground",
               "peer-disabled:peer-checked:bg-surface",
@@ -1066,17 +1068,61 @@ function UnexpectedError({ onRetry }) {
   ] }) });
 }
 
+// src/components/feedback/Toast.tsx
+var import_sonner = require("sonner");
+var import_jsx_runtime27 = require("react/jsx-runtime");
+function Toaster({
+  position = "top-center",
+  duration = 4e3,
+  closeButton = true,
+  ...props
+}) {
+  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+    import_sonner.Toaster,
+    {
+      position,
+      duration,
+      closeButton,
+      theme: "light",
+      icons: {
+        success: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(Icon, { name: "circle-check", size: "sm" }),
+        info: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(Icon, { name: "info", size: "sm" }),
+        warning: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(Icon, { name: "triangle-alert", size: "sm" }),
+        error: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(Icon, { name: "circle-x", size: "sm" })
+      },
+      toastOptions: {
+        unstyled: true,
+        classNames: {
+          toast: "w-full flex items-center gap-2 rounded-md border border-border bg-surface p-4 shadow-lg",
+          title: "type-label text-foreground",
+          description: "type-body-sm text-muted-foreground",
+          actionButton: "type-caption text-brand-primary hover:underline cursor-pointer focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2 focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]",
+          cancelButton: "type-caption text-muted-foreground hover:text-foreground cursor-pointer focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2 focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]",
+          closeButton: "!bg-surface !border-border !text-muted-foreground hover:!text-foreground focus-visible:!outline-2 focus-visible:!outline-focus-ring focus-visible:!outline-offset-2 focus-visible:!shadow-[0_0_0_4px_var(--color-brand-primary)]",
+          success: "!border-l-4 !border-l-success !bg-success-subtle",
+          error: "!border-l-4 !border-l-error !bg-error-subtle",
+          warning: "!border-l-4 !border-l-warning !bg-warning-subtle",
+          info: "!border-l-4 !border-l-info !bg-info-subtle",
+          icon: "shrink-0",
+          content: "flex flex-col gap-1 min-w-0"
+        }
+      },
+      ...props
+    }
+  );
+}
+
 // src/components/overlay/Dialog.tsx
 var RadixDialog = __toESM(require("@radix-ui/react-dialog"), 1);
-var import_jsx_runtime27 = require("react/jsx-runtime");
+var import_jsx_runtime28 = require("react/jsx-runtime");
 function Dialog(props) {
-  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(RadixDialog.Root, { ...props });
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(RadixDialog.Root, { ...props });
 }
 function DialogTrigger(props) {
-  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(RadixDialog.Trigger, { ...props });
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(RadixDialog.Trigger, { ...props });
 }
 function DialogClose(props) {
-  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(RadixDialog.Close, { ...props });
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(RadixDialog.Close, { ...props });
 }
 var sizeMap2 = {
   sm: "max-w-sm",
@@ -1090,8 +1136,8 @@ function DialogContent({
   showCloseButton = true,
   className
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(RadixDialog.Portal, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(RadixDialog.Portal, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
       RadixDialog.Overlay,
       {
         className: cn(
@@ -1101,7 +1147,7 @@ function DialogContent({
         )
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { className: "fixed inset-0 z-50 flex items-center justify-center p-4", children: /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: "fixed inset-0 z-50 flex items-center justify-center p-4", children: /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(
       RadixDialog.Content,
       {
         className: cn(
@@ -1114,7 +1160,7 @@ function DialogContent({
         ),
         children: [
           children,
-          showCloseButton && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(RadixDialog.Close, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+          showCloseButton && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(RadixDialog.Close, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
             "button",
             {
               type: "button",
@@ -1126,7 +1172,7 @@ function DialogContent({
                 "after:absolute after:inset-[-8px] after:content-['']"
               ),
               "aria-label": "Close",
-              children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(Icon, { name: "x", size: "sm" })
+              children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(Icon, { name: "x", size: "sm" })
             }
           ) })
         ]
@@ -1135,10 +1181,10 @@ function DialogContent({
   ] });
 }
 function DialogTitle({ children, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(RadixDialog.Title, { className: cn("type-h3 text-foreground", className), children });
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(RadixDialog.Title, { className: cn("type-h3 text-foreground", className), children });
 }
 function DialogDescription({ children, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
     RadixDialog.Description,
     {
       className: cn("type-body-sm text-muted-foreground mt-2", className),
@@ -1147,17 +1193,17 @@ function DialogDescription({ children, className }) {
   );
 }
 function DialogFooter({ children, className }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { className: cn("flex justify-end gap-2 mt-6", className), children });
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: cn("flex justify-end gap-2 mt-6", className), children });
 }
 
 // src/components/overlay/Dropdown.tsx
 var RadixDropdown = __toESM(require("@radix-ui/react-dropdown-menu"), 1);
-var import_jsx_runtime28 = require("react/jsx-runtime");
+var import_jsx_runtime29 = require("react/jsx-runtime");
 function Dropdown(props) {
-  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(RadixDropdown.Root, { ...props });
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(RadixDropdown.Root, { ...props });
 }
 function DropdownTrigger(props) {
-  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(RadixDropdown.Trigger, { ...props });
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(RadixDropdown.Trigger, { ...props });
 }
 function DropdownContent({
   children,
@@ -1166,7 +1212,7 @@ function DropdownContent({
   sideOffset = 4,
   className
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(RadixDropdown.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(RadixDropdown.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
     RadixDropdown.Content,
     {
       side,
@@ -1191,7 +1237,7 @@ function DropdownItem({
   disabled,
   className
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
     RadixDropdown.Item,
     {
       onSelect,
@@ -1208,18 +1254,18 @@ function DropdownItem({
   );
 }
 function DropdownGroup({ label, children }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(RadixDropdown.Group, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(RadixDropdown.Label, { className: "px-3 py-2 type-caption text-muted-foreground", children: label }),
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(RadixDropdown.Group, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(RadixDropdown.Label, { className: "px-3 py-2 type-caption text-muted-foreground", children: label }),
     children
   ] });
 }
 function DropdownSeparator() {
-  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(RadixDropdown.Separator, { className: "mx-1 my-1 h-px bg-border" });
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(RadixDropdown.Separator, { className: "mx-1 my-1 h-px bg-border" });
 }
 
 // src/components/overlay/Popover.tsx
 var RadixPopover = __toESM(require("@radix-ui/react-popover"), 1);
-var import_jsx_runtime29 = require("react/jsx-runtime");
+var import_jsx_runtime30 = require("react/jsx-runtime");
 var Popover = RadixPopover.Root;
 var PopoverTrigger = RadixPopover.Trigger;
 function PopoverContent({
@@ -1228,7 +1274,7 @@ function PopoverContent({
   sideOffset = 4,
   ...props
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(RadixPopover.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(RadixPopover.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
     RadixPopover.Content,
     {
       align,
@@ -1247,16 +1293,16 @@ function PopoverContent({
 
 // src/components/overlay/Tooltip.tsx
 var RadixTooltip = __toESM(require("@radix-ui/react-tooltip"), 1);
-var import_jsx_runtime30 = require("react/jsx-runtime");
+var import_jsx_runtime31 = require("react/jsx-runtime");
 function Tooltip({
   content,
   children,
   side = "top",
   delayDuration = 200
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(RadixTooltip.Provider, { delayDuration, children: /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(RadixTooltip.Root, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(RadixTooltip.Trigger, { asChild: true, children }),
-    /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(RadixTooltip.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(RadixTooltip.Provider, { delayDuration, children: /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(RadixTooltip.Root, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(RadixTooltip.Trigger, { asChild: true, children }),
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(RadixTooltip.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
       RadixTooltip.Content,
       {
         side,
@@ -1269,13 +1315,13 @@ function Tooltip({
 }
 
 // src/components/divider/Divider.tsx
-var import_jsx_runtime31 = require("react/jsx-runtime");
+var import_jsx_runtime32 = require("react/jsx-runtime");
 function Divider({
   orientation = "horizontal",
   className,
   ...props
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
     "hr",
     {
       role: "separator",
@@ -1293,7 +1339,7 @@ function Divider({
 // src/components/navigation/Tabs.tsx
 var import_react2 = require("react");
 var import_class_variance_authority6 = require("class-variance-authority");
-var import_jsx_runtime32 = require("react/jsx-runtime");
+var import_jsx_runtime33 = require("react/jsx-runtime");
 var TabsContext = (0, import_react2.createContext)(null);
 function useTabsContext() {
   const ctx = (0, import_react2.useContext)(TabsContext);
@@ -1338,7 +1384,7 @@ function Tabs({
   const unregisterTab = (0, import_react2.useCallback)((tabValue) => {
     registeredTabs.current.delete(tabValue);
   }, []);
-  return /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
     TabsContext.Provider,
     {
       value: {
@@ -1349,7 +1395,7 @@ function Tabs({
         registerTab,
         unregisterTab
       },
-      children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("div", { className, children })
+      children: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("div", { className, children })
     }
   );
 }
@@ -1363,7 +1409,7 @@ function TabsList({
   const ctx = useTabsContext();
   const resolvedVariant = variant ?? ctx.variant;
   const resolvedSize = size ?? ctx.size;
-  return /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
     TabsContext.Provider,
     {
       value: {
@@ -1371,7 +1417,7 @@ function TabsList({
         variant: resolvedVariant,
         size: resolvedSize
       },
-      children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
+      children: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
         "div",
         {
           role: "tablist",
@@ -1463,7 +1509,7 @@ function TabsTrigger({ value, disabled, className, children }) {
       ctx.onValueChange(nextValue);
     }
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
     "button",
     {
       role: "tab",
@@ -1493,7 +1539,7 @@ function TabsContent({ value, className, children }) {
   if (!isActive) return null;
   const triggerId = `tab-${value}`;
   const panelId = `tabpanel-${value}`;
-  return /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
     "div",
     {
       role: "tabpanel",
@@ -1560,6 +1606,7 @@ var DS_VERSION = "0.1.0";
   TabsList,
   TabsTrigger,
   Textarea,
+  Toaster,
   ToggleBar,
   Tooltip,
   UnexpectedError,
@@ -1568,6 +1615,7 @@ var DS_VERSION = "0.1.0";
   badgeVariants,
   buttonVariants,
   cn,
-  tabsTriggerVariants
+  tabsTriggerVariants,
+  toast
 });
 //# sourceMappingURL=index.cjs.map
