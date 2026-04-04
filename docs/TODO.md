@@ -110,7 +110,7 @@ Only show categories with ≥1 shipped component. When a batch ships a component
 
 ### Batch 14 — Date & Time
 - [x] Calendar (new)
-- [ ] DatePicker (new, depends: Calendar)
+- [x] DatePicker (new, depends: Calendar)
 
 ### Post-v1.0
 - [ ] Docs app Header & Sidebar redesign

@@ -98,6 +98,7 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 | Accordion | `/components/accordion` | ✅ Complete |
 | OnlyMobileView | `/components/only-mobile-view` | ✅ Complete |
 | Calendar | `/components/calendar` | ✅ Complete |
+| DatePicker | `/components/datepicker` | ✅ Complete |
 
 All docs pages (foundation and component) use `<Container size="md" as="article">` as their page wrapper. API Reference tables follow a standardized pattern (Container page is the gold standard). MDX infrastructure has been fully removed — all content is inline TSX with DS type tokens.
 
@@ -154,8 +155,9 @@ The sidebar uses collapsible categories that auto-expand based on the current ro
 | `Table` | display | ✅ | Compound component (Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableCaption, TableFooter, TableMobileList, TableMobileItem). `cn()` only, no CVA. `type-label` for header weight, `divide-y divide-border` row separators, `hover:bg-surface-subtle` row hover. Mobile primitives (TableMobileList + TableMobileItem) for responsive bulletin board pattern. |
 | `OnlyMobileView` | utilities | ✅ | Gate component: renders children on mobile, shows fixed full-screen overlay with smartphone icon + message on `md:+`. Props: `message` (customizable text), `children`, `className`. `cn()` only, no CVA. |
 | `Calendar` | date | ✅ | Wraps react-day-picker v9 with DS styling via `classNames`. Single + range modes. Brand colors (navy selected, maize text, light maize range band). `showOutsideDays` default true. Custom `<Icon>` chevrons. Multi-month responsive stacking. 44px touch targets via `::after`. Re-exports `DateRange` type. `cn()` only, no CVA. |
+| `DatePicker` | date | ✅ | Composes Popover + Calendar + input-style `<button>` trigger. Exports `DatePicker` (single) and `DateRangePicker` (range) from one file. Props: `value`/`onChange`, `formatDate` (default MM/dd/yyyy), `placeholder`, `disabled`, `invalid`, `calendarProps` passthrough. Auto-closes on selection (single: immediate, range: after end date). `cn()` only, no CVA. Form wrappers: `FormDatePicker` + `FormDateRangePicker` in `@umichkisa-ds/form`. |
 | `Container` | layout | ✅ | Page shell wrapper. CVA `size` variant (default 1536px / md 768px / sm 640px / prose ~65ch). Polymorphic `as` prop for semantic HTML elements. Responsive padding `px-4 md:px-6 lg:px-8`. |
-| `Icon` | icon | ✅ | Single `<Icon name="..." />` component with static Lucide registry (30 icons: 28 Lucide + 2 custom SVG brand icons). Replaced 19 named `react-icons` components. |
+| `Icon` | icon | ✅ | Single `<Icon name="..." />` component with static Lucide registry (31 icons: 29 Lucide + 2 custom SVG brand icons). Replaced 19 named `react-icons` components. |
 
 ### Form DX Package (`packages/form`)
 | Export | Type | Notes |
