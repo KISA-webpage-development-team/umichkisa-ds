@@ -1,5 +1,6 @@
 import { Container, Badge, Icon } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
 
 const defaultCode = `import { Badge } from '@umichkisa-ds/web'
 
@@ -33,7 +34,21 @@ const asChildCode = `import { Badge } from '@umichkisa-ds/web'
   <a href="#">Clickable</a>
 </Badge>`
 
-export default function BadgePage() {
+export default async function BadgePage() {
+  const [
+    defaultHighlighted,
+    variantsHighlighted,
+    sizesHighlighted,
+    withIconHighlighted,
+    asChildHighlighted,
+  ] = await Promise.all([
+    highlight(defaultCode),
+    highlight(variantsCode),
+    highlight(sizesCode),
+    highlight(withIconCode),
+    highlight(asChildCode),
+  ])
+
   return (
     <Container size="md" as="article">
 
@@ -68,7 +83,7 @@ export default function BadgePage() {
         </code>{' '}
         size by default.
       </p>
-      <ComponentPreview code={defaultCode}>
+      <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
         <Badge>Label</Badge>
       </ComponentPreview>
 
@@ -77,7 +92,7 @@ export default function BadgePage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         Seven semantic variants for different levels of emphasis and intent.
       </p>
-      <ComponentPreview code={variantsCode}>
+      <ComponentPreview code={variantsCode} highlightedCode={variantsHighlighted}>
         <div className="flex items-center gap-4 flex-wrap">
           <Badge variant="default">Default</Badge>
           <Badge variant="brand">Brand</Badge>
@@ -103,7 +118,7 @@ export default function BadgePage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         Two sizes aligned to the spacing grid.
       </p>
-      <ComponentPreview code={sizesCode}>
+      <ComponentPreview code={sizesCode} highlightedCode={sizesHighlighted}>
         <div className="flex items-center gap-4">
           <Badge size="sm">Small</Badge>
           <Badge size="md">Medium</Badge>
@@ -115,7 +130,7 @@ export default function BadgePage() {
       <p className="type-body mb-2 text-foreground max-w-prose">
         Badge has built-in gap-1 so icons and text align automatically.
       </p>
-      <ComponentPreview code={withIconCode}>
+      <ComponentPreview code={withIconCode} highlightedCode={withIconHighlighted}>
         <Badge>
           <Icon name="thumbs-up" size="xs" />
           Approved
@@ -136,7 +151,7 @@ export default function BadgePage() {
         </code>
         — it passes all styling and props to the single child element you provide.
       </p>
-      <ComponentPreview code={asChildCode}>
+      <ComponentPreview code={asChildCode} highlightedCode={asChildHighlighted}>
         <Badge asChild>
           <a href="#">Clickable</a>
         </Badge>
