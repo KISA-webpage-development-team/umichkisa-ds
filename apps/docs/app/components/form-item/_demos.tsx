@@ -1,7 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import { FormItem, Select, SelectTrigger, SelectContent, SelectItem } from '@umichkisa-ds/web'
+import {
+  FormItem,
+  Select,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+} from '@umichkisa-ds/web'
 
 export function WithSelectDemo() {
   const [role, setRole] = useState('')
@@ -19,5 +25,19 @@ export function WithSelectDemo() {
         </Select>
       </FormItem>
     </div>
+  )
+}
+
+export function WithA11ySelectDemo() {
+  return (
+    <FormItem htmlFor="a11y-fruit" label="Fruit">
+      <Select>
+        <SelectTrigger placeholder="Pick a fruit..." aria-labelledby="a11y-fruit-label" />
+        <SelectContent>
+          <SelectItem value="apple">Apple</SelectItem>
+          <SelectItem value="banana">Banana</SelectItem>
+        </SelectContent>
+      </Select>
+    </FormItem>
   )
 }

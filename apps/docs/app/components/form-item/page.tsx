@@ -10,7 +10,7 @@ import {
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
-import { WithSelectDemo } from './_demos'
+import { WithSelectDemo, WithA11ySelectDemo } from './_demos'
 
 const basicCode = `import { FormItem, Input } from '@umichkisa-ds/web'
 
@@ -78,6 +78,18 @@ const a11yCode = `import { FormItem, Input } from '@umichkisa-ds/web'
   <Input id="email" aria-describedby="email-description" placeholder="you@example.com" />
 </FormItem>`
 
+const a11ySelectCode = `import { FormItem, Select, SelectTrigger, SelectContent, SelectItem } from '@umichkisa-ds/web'
+
+<FormItem htmlFor="fruit" label="Fruit">
+  <Select>
+    <SelectTrigger placeholder="Pick a fruit..." aria-labelledby="fruit-label" />
+    <SelectContent>
+      <SelectItem value="apple">Apple</SelectItem>
+      <SelectItem value="banana">Banana</SelectItem>
+    </SelectContent>
+  </Select>
+</FormItem>`
+
 const withSelectCode = `import { FormItem, Select, SelectTrigger, SelectContent, SelectItem } from '@umichkisa-ds/web'
 
 const [role, setRole] = useState('')
@@ -104,6 +116,7 @@ export default async function FormItemPage() {
     withSwitchHighlighted,
     withRadioHighlighted,
     a11yHighlighted,
+    a11ySelectHighlighted,
     withSelectHighlighted,
   ] = await Promise.all([
     highlight(basicCode),
@@ -115,6 +128,7 @@ export default async function FormItemPage() {
     highlight(withSwitchCode),
     highlight(withRadioCode),
     highlight(a11yCode),
+    highlight(a11ySelectCode),
     highlight(withSelectCode),
   ])
 
@@ -334,11 +348,13 @@ export default async function FormItemPage() {
       {/* ── Accessibility ────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Accessibility</h2>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        FormItem renders description and error text with predictable IDs:{' '}
+        FormItem generates predictable IDs on its internal elements:{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          {'{htmlFor}-label'}
+        </code>,{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           {'{htmlFor}-description'}
-        </code>{' '}
-        and{' '}
+        </code>, and{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           {'{htmlFor}-error'}
         </code>
@@ -346,7 +362,11 @@ export default async function FormItemPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           aria-describedby
         </code>{' '}
-        on the form control to associate the helper text for screen readers.
+        on the form control to associate helper text, and{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          aria-labelledby
+        </code>{' '}
+        for non-native triggers (e.g. Select).
       </p>
       <ComponentPreview code={a11yCode} highlightedCode={a11yHighlighted}>
         <div className="w-full max-w-sm">
@@ -357,6 +377,23 @@ export default async function FormItemPage() {
           >
             <Input id="a11y-email" aria-describedby="a11y-email-description" placeholder="you@example.com" />
           </FormItem>
+        </div>
+      </ComponentPreview>
+
+      <p className="type-body mt-4 mb-2 text-foreground max-w-prose">
+        For non-native triggers like Select, use{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          aria-labelledby
+        </code>{' '}
+        with the auto-generated{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          {'{htmlFor}-label'}
+        </code>{' '}
+        ID.
+      </p>
+      <ComponentPreview code={a11ySelectCode} highlightedCode={a11ySelectHighlighted}>
+        <div className="w-full max-w-sm">
+          <WithA11ySelectDemo />
         </div>
       </ComponentPreview>
 
