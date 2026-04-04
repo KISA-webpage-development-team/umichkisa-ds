@@ -70,7 +70,16 @@ Run from monorepo root (pnpm required):
 - `pnpm test` — run tests
 - `pnpm typecheck` — TypeScript check
 
-Or target a package: `pnpm --filter @umichkisa-ds/web build`
+Or target a package:
+```bash
+pnpm --filter @umichkisa-ds/web build
+pnpm --filter @umichkisa-ds/form build
+```
+
+## Packages
+
+- **`packages/web`** (`@umichkisa-ds/web`) — Component and token library. Peer deps: `react`, `react-dom`.
+- **`packages/form`** (`@umichkisa-ds/form`) — Form DX layer wrapping react-hook-form with DS components. Peer deps: `react`, `react-dom`, `react-hook-form`, `@umichkisa-ds/web`.
 
 ## Release (`packages/web`)
 
@@ -84,5 +93,6 @@ Or target a package: `pnpm --filter @umichkisa-ds/web build`
 
 Tokens: Tailwind v4 CSS-first `@theme {}` with OKLCH colors, three-tier model (primitives → semantic → component).
 Components: CVA variants, Radix UI for overlays only.
-Build: tsup outputs ESM + CJS + types + CSS bundle.
-Docs: Next.js 15 App Router, `@next/mdx`, Shiki. Content in `apps/docs/content/`.
+Form: `@umichkisa-ds/form` wraps react-hook-form — `Form` compound component (`Form.Input`, `Form.Select`, etc.) + hooks (`useForm`, `useFormField`, `useFormStatus`).
+Build: tsup outputs ESM + CJS + types (both packages). `packages/web` also bundles CSS.
+Docs: Next.js 15 App Router, inline TSX pages. Three top-level sections: Foundation, Components, Forms.
