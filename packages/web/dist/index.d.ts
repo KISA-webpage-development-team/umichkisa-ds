@@ -478,11 +478,10 @@ type ToggleGroupProps = {
     value: string;
     onValueChange: (value: string) => void;
     items: ToggleGroupItem[];
-    size?: "sm" | "md";
     fullWidth?: boolean;
     className?: string;
 };
-declare function ToggleGroup({ value, onValueChange, items, size, fullWidth, className, }: ToggleGroupProps): react_jsx_runtime.JSX.Element;
+declare function ToggleGroup({ value, onValueChange, items, fullWidth, className, }: ToggleGroupProps): react_jsx_runtime.JSX.Element;
 
 type OnlyMobileViewProps = {
     /** Content to render on mobile screens. */
