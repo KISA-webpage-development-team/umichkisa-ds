@@ -124,6 +124,7 @@ const COMPONENT_ITEMS: NavItem[] = [
     children: [
       { label: 'Pagination', href: '/components/pagination' },
       { label: 'Tabs', href: '/components/tabs' },
+      { label: 'ToggleBar', href: '/components/toggle-bar' },
     ],
   },
   {
