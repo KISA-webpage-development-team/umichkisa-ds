@@ -46,7 +46,7 @@ export function CodeBlockClient({
       {/* Code content */}
       {highlightedHtml ? (
         <div
-          className="overflow-x-auto [&_pre]:type-caption [&_pre]:font-mono [&_pre]:px-4 [&_pre]:py-4 [&_pre]:!bg-transparent [&_pre]:m-0 [&_code]:!bg-transparent"
+          className="overflow-x-auto [&_pre]:text-xs [&_pre]:leading-normal [&_pre]:font-mono [&_pre]:px-4 [&_pre]:py-4 [&_pre]:!bg-transparent [&_pre]:m-0 [&_code]:!bg-transparent"
           dangerouslySetInnerHTML={{ __html: highlightedHtml }}
         />
       ) : (
