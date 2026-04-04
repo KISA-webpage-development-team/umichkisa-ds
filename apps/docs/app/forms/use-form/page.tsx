@@ -1,8 +1,8 @@
-'use client'
-
 import { Container } from '@umichkisa-ds/web'
-import { useForm, Form } from '@umichkisa-ds/form'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { CodeBlock } from '@/components/CodeBlock'
+import { highlight } from '@/lib/highlight'
+import { BasicDemo } from './_demos'
 
 const basicCode = `import { useForm, Form } from '@umichkisa-ds/form'
 
@@ -51,30 +51,9 @@ form.setError('email', { message: 'Email already taken' })
 // Watch a field value reactively
 const name = form.watch('name')`
 
-type SignupValues = {
-  name: string
-  email: string
-}
+export default async function UseFormPage() {
+  const basicHighlighted = await highlight(basicCode, 'tsx')
 
-function BasicDemo() {
-  const form = useForm<SignupValues>({
-    defaultValues: { name: '', email: '' },
-  })
-
-  const onSubmit = (data: SignupValues) => {
-    alert(`Welcome, ${data.name}!`)
-  }
-
-  return (
-    <Form form={form} onSubmit={onSubmit} className="w-full max-w-sm">
-      <Form.Input name="name" label="Full Name" rules={{ required: 'Name is required' }} />
-      <Form.Input name="email" label="Email" type="email" rules={{ required: 'Email is required' }} />
-      <Form.Button>Sign up</Form.Button>
-    </Form>
-  )
-}
-
-export default function UseFormPage() {
   return (
     <Container size="md" as="article">
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">
@@ -95,7 +74,7 @@ export default function UseFormPage() {
         get a fully typed form instance. The returned object is passed to the{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Form>'}</code> component.
       </p>
-      <ComponentPreview code={basicCode}>
+      <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
         <BasicDemo />
       </ComponentPreview>
 
@@ -107,11 +86,7 @@ export default function UseFormPage() {
         then clear immediately as the user corrects the input. You can override
         this per-form.
       </p>
-      <div className="my-4 border border-border rounded-lg bg-surface-muted overflow-x-auto">
-        <pre className="type-caption font-mono text-foreground px-4 py-4 whitespace-pre">
-          <code>{modeCode}</code>
-        </pre>
-      </div>
+      <CodeBlock code={modeCode} lang="tsx" />
 
       {/* ── Form Methods ──────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Accessing Form Methods</h2>
@@ -121,11 +96,7 @@ export default function UseFormPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">setError()</code>, and{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">watch()</code>.
       </p>
-      <div className="my-4 border border-border rounded-lg bg-surface-muted overflow-x-auto">
-        <pre className="type-caption font-mono text-foreground px-4 py-4 whitespace-pre">
-          <code>{methodsCode}</code>
-        </pre>
-      </div>
+      <CodeBlock code={methodsCode} lang="tsx" />
 
       {/* ── API Reference ─────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>

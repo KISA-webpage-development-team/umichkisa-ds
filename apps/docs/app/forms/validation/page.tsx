@@ -1,8 +1,8 @@
-'use client'
-
 import { Container } from '@umichkisa-ds/web'
-import { useForm, Form } from '@umichkisa-ds/form'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { CodeBlock } from '@/components/CodeBlock'
+import { highlight } from '@/lib/highlight'
+import { ValidationDemo } from './_demos'
 
 /* ── Code strings ──────────────────────────────────────────── */
 
@@ -83,60 +83,13 @@ const form = useForm<MyValues>({ mode: 'onChange' })
 // Errors only appear on form submission
 const form = useForm<MyValues>({ mode: 'onSubmit' })`
 
-/* ── Demo components ──────────────────────────────────────── */
-
-type ValidationDemoValues = {
-  name: string
-  email: string
-  password: string
-}
-
-function ValidationDemo() {
-  const form = useForm<ValidationDemoValues>({
-    defaultValues: { name: '', email: '', password: '' },
-  })
-
-  return (
-    <Form form={form} onSubmit={(data) => alert(`Valid! ${data.name} / ${data.email}`)} className="w-full max-w-sm">
-      <Form.Input
-        name="name"
-        label="Full Name"
-        rules={{ required: 'Full name is required' }}
-      />
-      <Form.Input
-        name="email"
-        label="UMich Email"
-        type="email"
-        rules={{
-          required: 'Email is required',
-          pattern: {
-            value: /^[^@]+@umich\.edu$/,
-            message: 'Must be a @umich.edu email',
-          },
-        }}
-      />
-      <Form.Input
-        name="password"
-        label="Password"
-        type="password"
-        rules={{
-          required: 'Password is required',
-          minLength: { value: 8, message: 'At least 8 characters' },
-          validate: (value: string) => {
-            if (!/[A-Z]/.test(value)) return 'Must include an uppercase letter'
-            if (!/[0-9]/.test(value)) return 'Must include a number'
-            return true
-          },
-        }}
-      />
-      <Form.Button>Submit</Form.Button>
-    </Form>
-  )
-}
+const tryItCode = `// See the rules used in each field below`
 
 /* ── Page ──────────────────────────────────────────────────── */
 
-export default function ValidationPage() {
+export default async function ValidationPage() {
+  const tryItHighlighted = await highlight(tryItCode, 'tsx')
+
   return (
     <Container size="md" as="article">
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">
@@ -158,11 +111,7 @@ export default function ValidationPage() {
         and clear immediately as they correct the input. This prevents errors
         from flashing while typing but still provides feedback before submission.
       </p>
-      <div className="my-4 border border-border rounded-lg bg-surface-muted overflow-x-auto">
-        <pre className="type-caption font-mono text-foreground px-4 py-4 whitespace-pre">
-          <code>{lifecycleCode}</code>
-        </pre>
-      </div>
+      <CodeBlock code={lifecycleCode} lang="tsx" />
 
       {/* ── Live Demo ─────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Try It</h2>
@@ -171,7 +120,7 @@ export default function ValidationPage() {
         Tab through fields to see errors appear on blur, then type to watch them
         clear.
       </p>
-      <ComponentPreview code={`// See the rules used in each field below`}>
+      <ComponentPreview code={tryItCode} highlightedCode={tryItHighlighted}>
         <ValidationDemo />
       </ComponentPreview>
 
@@ -183,42 +132,26 @@ export default function ValidationPage() {
         Pass a string message to show when the field is empty. The label will
         also display a required indicator.
       </p>
-      <div className="my-4 border border-border rounded-lg bg-surface-muted overflow-x-auto">
-        <pre className="type-caption font-mono text-foreground px-4 py-4 whitespace-pre">
-          <code>{requiredCode}</code>
-        </pre>
-      </div>
+      <CodeBlock code={requiredCode} lang="tsx" />
 
       <h3 className="type-body !font-semibold mt-6 mb-2 text-foreground">minLength / maxLength</h3>
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
         Enforce character count limits on text fields.
       </p>
-      <div className="my-4 border border-border rounded-lg bg-surface-muted overflow-x-auto">
-        <pre className="type-caption font-mono text-foreground px-4 py-4 whitespace-pre">
-          <code>{minMaxLengthCode}</code>
-        </pre>
-      </div>
+      <CodeBlock code={minMaxLengthCode} lang="tsx" />
 
       <h3 className="type-body !font-semibold mt-6 mb-2 text-foreground">min / max</h3>
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
         Enforce numeric range limits on number inputs.
       </p>
-      <div className="my-4 border border-border rounded-lg bg-surface-muted overflow-x-auto">
-        <pre className="type-caption font-mono text-foreground px-4 py-4 whitespace-pre">
-          <code>{minMaxCode}</code>
-        </pre>
-      </div>
+      <CodeBlock code={minMaxCode} lang="tsx" />
 
       <h3 className="type-body !font-semibold mt-6 mb-2 text-foreground">pattern</h3>
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
         Validate against a regular expression. Useful for email formats,
         phone numbers, or custom patterns.
       </p>
-      <div className="my-4 border border-border rounded-lg bg-surface-muted overflow-x-auto">
-        <pre className="type-caption font-mono text-foreground px-4 py-4 whitespace-pre">
-          <code>{patternCode}</code>
-        </pre>
-      </div>
+      <CodeBlock code={patternCode} lang="tsx" />
 
       {/* ── Custom Validators ─────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Custom Validators</h2>
@@ -227,11 +160,7 @@ export default function ValidationPage() {
         logic. Return <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">true</code> for valid or a
         string error message. You can run multiple checks in sequence.
       </p>
-      <div className="my-4 border border-border rounded-lg bg-surface-muted overflow-x-auto">
-        <pre className="type-caption font-mono text-foreground px-4 py-4 whitespace-pre">
-          <code>{customCode}</code>
-        </pre>
-      </div>
+      <CodeBlock code={customCode} lang="tsx" />
 
       {/* ── Combining Rules ───────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Combining Rules</h2>
@@ -240,11 +169,7 @@ export default function ValidationPage() {
         order: required first, then minLength/maxLength, then pattern, then
         validate.
       </p>
-      <div className="my-4 border border-border rounded-lg bg-surface-muted overflow-x-auto">
-        <pre className="type-caption font-mono text-foreground px-4 py-4 whitespace-pre">
-          <code>{combineCode}</code>
-        </pre>
-      </div>
+      <CodeBlock code={combineCode} lang="tsx" />
 
       {/* ── Overriding Mode ───────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Overriding Validation Mode</h2>
@@ -253,11 +178,7 @@ export default function ValidationPage() {
         default, you can override the mode per-form via{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">useForm</code>.
       </p>
-      <div className="my-4 border border-border rounded-lg bg-surface-muted overflow-x-auto">
-        <pre className="type-caption font-mono text-foreground px-4 py-4 whitespace-pre">
-          <code>{overrideCode}</code>
-        </pre>
-      </div>
+      <CodeBlock code={overrideCode} lang="tsx" />
     </Container>
   )
 }

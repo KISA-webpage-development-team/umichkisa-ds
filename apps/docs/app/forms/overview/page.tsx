@@ -1,9 +1,9 @@
-'use client'
-
 import { Container } from '@umichkisa-ds/web'
-import { useForm, Form } from '@umichkisa-ds/form'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { CodeBlock } from '@/components/CodeBlock'
+import { highlight } from '@/lib/highlight'
 import Link from 'next/link'
+import { QuickStartDemo } from './_demos'
 
 const installCode = `npm install @umichkisa-ds/form react-hook-form`
 
@@ -43,41 +43,9 @@ function LoginForm() {
   )
 }`
 
-type LoginValues = {
-  email: string
-  password: string
-}
+export default async function FormsOverviewPage() {
+  const quickStartHighlighted = await highlight(quickStartCode, 'tsx')
 
-function QuickStartDemo() {
-  const form = useForm<LoginValues>({
-    defaultValues: { email: '', password: '' },
-  })
-
-  const onSubmit = (data: LoginValues) => {
-    alert(`Logged in as ${data.email}`)
-  }
-
-  return (
-    <Form form={form} onSubmit={onSubmit} className="w-full max-w-sm">
-      <Form.Input
-        name="email"
-        label="Email"
-        type="email"
-        placeholder="you@umich.edu"
-        rules={{ required: 'Email is required' }}
-      />
-      <Form.Input
-        name="password"
-        label="Password"
-        type="password"
-        rules={{ required: 'Password is required' }}
-      />
-      <Form.Button>Sign in</Form.Button>
-    </Form>
-  )
-}
-
-export default function FormsOverviewPage() {
   return (
     <Container size="md" as="article">
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">
@@ -92,11 +60,7 @@ export default function FormsOverviewPage() {
 
       {/* ── Installation ──────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Installation</h2>
-      <div className="my-4 border border-border rounded-lg bg-surface-muted overflow-x-auto">
-        <pre className="type-caption font-mono text-foreground px-4 py-4 whitespace-pre">
-          <code>{installCode}</code>
-        </pre>
-      </div>
+      <CodeBlock code={installCode} lang="bash" />
       <p className="type-body-sm mb-8 text-muted-foreground max-w-prose">
         The package requires{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@umichkisa-ds/web</code> as a peer
@@ -113,7 +77,7 @@ export default function FormsOverviewPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Form>'}</code> compound component handles
         context, submission, and error display automatically.
       </p>
-      <ComponentPreview code={quickStartCode}>
+      <ComponentPreview code={quickStartCode} highlightedCode={quickStartHighlighted}>
         <QuickStartDemo />
       </ComponentPreview>
 
