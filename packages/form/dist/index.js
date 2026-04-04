@@ -317,15 +317,103 @@ function FormButton({
   return /* @__PURE__ */ jsx7(Button, { type: "submit", disabled: isDisabled, ...rest, children });
 }
 
-// src/components/Form.tsx
+// src/components/fields/FormDatePicker.tsx
+import { useController as useController8, useFormContext as useFormContext9 } from "react-hook-form";
+import { DatePicker, FormItem as FormItem7 } from "@umichkisa-ds/web";
 import { jsx as jsx8 } from "react/jsx-runtime";
+function FormDatePicker({
+  name,
+  label,
+  rules,
+  description,
+  className,
+  placeholder,
+  formatDate
+}) {
+  const { control } = useFormContext9();
+  const {
+    field,
+    fieldState: { error }
+  } = useController8({ name, control, rules });
+  return /* @__PURE__ */ jsx8(
+    FormItem7,
+    {
+      htmlFor: name,
+      label,
+      required: !!rules?.required,
+      error: error?.message,
+      description,
+      className,
+      children: /* @__PURE__ */ jsx8(
+        DatePicker,
+        {
+          value: field.value,
+          onChange: (date) => {
+            field.onChange(date);
+            field.onBlur();
+          },
+          invalid: !!error,
+          placeholder,
+          formatDate
+        }
+      )
+    }
+  );
+}
+
+// src/components/fields/FormDateRangePicker.tsx
+import { useController as useController9, useFormContext as useFormContext10 } from "react-hook-form";
+import { DateRangePicker, FormItem as FormItem8 } from "@umichkisa-ds/web";
+import { jsx as jsx9 } from "react/jsx-runtime";
+function FormDateRangePicker({
+  name,
+  label,
+  rules,
+  description,
+  className,
+  placeholder,
+  formatDate
+}) {
+  const { control } = useFormContext10();
+  const {
+    field,
+    fieldState: { error }
+  } = useController9({ name, control, rules });
+  return /* @__PURE__ */ jsx9(
+    FormItem8,
+    {
+      htmlFor: name,
+      label,
+      required: !!rules?.required,
+      error: error?.message,
+      description,
+      className,
+      children: /* @__PURE__ */ jsx9(
+        DateRangePicker,
+        {
+          value: field.value,
+          onChange: (range) => {
+            field.onChange(range);
+            field.onBlur();
+          },
+          invalid: !!error,
+          placeholder,
+          formatDate
+        }
+      )
+    }
+  );
+}
+
+// src/components/Form.tsx
+import { jsx as jsx10 } from "react/jsx-runtime";
 function FormRoot({
   form,
   onSubmit,
   children,
   className
 }) {
-  return /* @__PURE__ */ jsx8(FormProvider, { ...form, children: /* @__PURE__ */ jsx8(
+  return /* @__PURE__ */ jsx10(FormProvider, { ...form, children: /* @__PURE__ */ jsx10(
     "form",
     {
       onSubmit: form.handleSubmit(onSubmit),
@@ -342,7 +430,9 @@ var Form = Object.assign(FormRoot, {
   Checkbox: FormCheckbox,
   Radio: FormRadio,
   Switch: FormSwitch,
-  Button: FormButton
+  Button: FormButton,
+  DatePicker: FormDatePicker,
+  DateRangePicker: FormDateRangePicker
 });
 export {
   Form,

@@ -12,6 +12,8 @@ import { FormCheckbox } from "./fields/FormCheckbox";
 import { FormRadio } from "./fields/FormRadio";
 import { FormSwitch } from "./fields/FormSwitch";
 import { FormButton } from "./fields/FormButton";
+import { FormDatePicker } from "./fields/FormDatePicker";
+import { FormDateRangePicker } from "./fields/FormDateRangePicker";
 
 export type FormProps<T extends FieldValues = FieldValues> = {
   form: UseFormReturn<T>;
@@ -47,4 +49,6 @@ export const Form = Object.assign(FormRoot, {
   Radio: FormRadio,
   Switch: FormSwitch,
   Button: FormButton,
+  DatePicker: FormDatePicker,
+  DateRangePicker: FormDateRangePicker,
 });

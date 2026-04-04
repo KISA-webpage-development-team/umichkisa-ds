@@ -82,6 +82,28 @@ type FormButtonProps = ButtonProps & {
 };
 declare function FormButton({ disableWhenInvalid, disabled, children, ...rest }: FormButtonProps): react_jsx_runtime.JSX.Element;
 
+type FormDatePickerProps = {
+    name: string;
+    label: string;
+    rules?: RegisterOptions;
+    description?: string;
+    className?: string;
+    placeholder?: string;
+    formatDate?: (date: Date) => string;
+};
+declare function FormDatePicker({ name, label, rules, description, className, placeholder, formatDate, }: FormDatePickerProps): react_jsx_runtime.JSX.Element;
+
+type FormDateRangePickerProps = {
+    name: string;
+    label: string;
+    rules?: RegisterOptions;
+    description?: string;
+    className?: string;
+    placeholder?: string;
+    formatDate?: (date: Date) => string;
+};
+declare function FormDateRangePicker({ name, label, rules, description, className, placeholder, formatDate, }: FormDateRangePickerProps): react_jsx_runtime.JSX.Element;
+
 type FormProps<T extends FieldValues = FieldValues> = {
     form: UseFormReturn<T>;
     onSubmit: SubmitHandler<T>;
@@ -97,6 +119,8 @@ declare const Form: typeof FormRoot & {
     Radio: typeof FormRadio;
     Switch: typeof FormSwitch;
     Button: typeof FormButton;
+    DatePicker: typeof FormDatePicker;
+    DateRangePicker: typeof FormDateRangePicker;
 };
 
-export { Form, type FormButtonProps, type FormCheckboxProps, type FormInputProps, type FormProps, type FormRadioProps, type FormSelectProps, type FormSwitchProps, type FormTextareaProps, type UseFormFieldReturn, type UseFormStatusReturn, useForm, useFormField, useFormStatus };
+export { Form, type FormButtonProps, type FormCheckboxProps, type FormDatePickerProps, type FormDateRangePickerProps, type FormInputProps, type FormProps, type FormRadioProps, type FormSelectProps, type FormSwitchProps, type FormTextareaProps, type UseFormFieldReturn, type UseFormStatusReturn, useForm, useFormField, useFormStatus };

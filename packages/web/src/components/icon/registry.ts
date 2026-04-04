@@ -1,6 +1,7 @@
 import {
   ArrowLeft,
   ArrowRight,
+  Calendar,
   Check,
   ChevronLeft,
   ChevronRight,
@@ -40,6 +41,7 @@ import { LinkedinIcon } from "./custom/LinkedinIcon";
 export const registry = {
   "arrow-left": ArrowLeft,
   "arrow-right": ArrowRight,
+  "calendar": Calendar,
   "check": Check,
   "chevron-left": ChevronLeft,
   "chevron-right": ChevronRight,

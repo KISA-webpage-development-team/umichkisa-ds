@@ -15,6 +15,7 @@ import { cva } from "class-variance-authority";
 import {
   ArrowLeft,
   ArrowRight,
+  Calendar,
   Check,
   ChevronLeft,
   ChevronRight,
@@ -97,6 +98,7 @@ function LinkedinIcon({
 var registry = {
   "arrow-left": ArrowLeft,
   "arrow-right": ArrowRight,
+  "calendar": Calendar,
   "check": Check,
   "chevron-left": ChevronLeft,
   "chevron-right": ChevronRight,
@@ -1988,7 +1990,7 @@ function Chevron({
   const name = orientation === "left" ? "chevron-left" : "chevron-right";
   return /* @__PURE__ */ jsx36(Icon, { name, size: "sm" });
 }
-function Calendar({
+function Calendar2({
   className,
   showOutsideDays = true,
   classNames: classNamesProp,
@@ -2061,6 +2063,101 @@ function Calendar({
   );
 }
 
+// src/components/date/DatePicker.tsx
+import { useState as useState3 } from "react";
+import { jsx as jsx37, jsxs as jsxs17 } from "react/jsx-runtime";
+function defaultFormatDate(date) {
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  const y = date.getFullYear();
+  return `${m}/${d}/${y}`;
+}
+var triggerClasses = (invalid, disabled) => cn(
+  "inline-flex w-full items-center justify-between rounded-md border border-border-strong bg-surface px-3 py-2 type-body-sm text-foreground transition-colors",
+  "focus-visible:outline-none focus-visible:border-brand-primary",
+  "disabled:pointer-events-none disabled:text-disabled-foreground disabled:bg-surface-subtle",
+  invalid && "border-error focus-visible:border-error"
+);
+function DatePicker({
+  value,
+  onChange,
+  formatDate = defaultFormatDate,
+  placeholder = "Select a date",
+  disabled = false,
+  invalid = false,
+  className,
+  calendarProps
+}) {
+  const [open, setOpen] = useState3(false);
+  return /* @__PURE__ */ jsxs17(Popover, { open, onOpenChange: setOpen, children: [
+    /* @__PURE__ */ jsx37(PopoverTrigger, { asChild: true, children: /* @__PURE__ */ jsxs17(
+      "button",
+      {
+        type: "button",
+        disabled,
+        className: cn(triggerClasses(invalid, disabled), className),
+        children: [
+          /* @__PURE__ */ jsx37("span", { className: cn(!value && "text-muted-foreground"), children: value ? formatDate(value) : placeholder }),
+          /* @__PURE__ */ jsx37(Icon, { name: "calendar", size: "sm" })
+        ]
+      }
+    ) }),
+    /* @__PURE__ */ jsx37(PopoverContent, { align: "start", className: "w-auto p-0", children: /* @__PURE__ */ jsx37(
+      Calendar2,
+      {
+        mode: "single",
+        selected: value,
+        onSelect: (date) => {
+          onChange?.(date);
+          setOpen(false);
+        },
+        ...calendarProps
+      }
+    ) })
+  ] });
+}
+function DateRangePicker({
+  value,
+  onChange,
+  formatDate = defaultFormatDate,
+  placeholder = "Select a date range",
+  disabled = false,
+  invalid = false,
+  className,
+  calendarProps
+}) {
+  const [open, setOpen] = useState3(false);
+  const displayValue = value?.from && value?.to ? `${formatDate(value.from)} \u2013 ${formatDate(value.to)}` : value?.from ? formatDate(value.from) : void 0;
+  return /* @__PURE__ */ jsxs17(Popover, { open, onOpenChange: setOpen, children: [
+    /* @__PURE__ */ jsx37(PopoverTrigger, { asChild: true, children: /* @__PURE__ */ jsxs17(
+      "button",
+      {
+        type: "button",
+        disabled,
+        className: cn(triggerClasses(invalid, disabled), className),
+        children: [
+          /* @__PURE__ */ jsx37("span", { className: cn(!displayValue && "text-muted-foreground"), children: displayValue ?? placeholder }),
+          /* @__PURE__ */ jsx37(Icon, { name: "calendar", size: "sm" })
+        ]
+      }
+    ) }),
+    /* @__PURE__ */ jsx37(PopoverContent, { align: "start", className: "w-auto p-0", children: /* @__PURE__ */ jsx37(
+      Calendar2,
+      {
+        mode: "range",
+        selected: value,
+        onSelect: (range) => {
+          onChange?.(range);
+          if (range?.from && range?.to) {
+            setOpen(false);
+          }
+        },
+        ...calendarProps
+      }
+    ) })
+  ] });
+}
+
 // src/index.ts
 var DS_VERSION = "0.1.0";
 export {
@@ -2072,7 +2169,7 @@ export {
   Avatar,
   Badge,
   Button,
-  Calendar,
+  Calendar2 as Calendar,
   Card,
   CardContent,
   CardDescription,
@@ -2082,6 +2179,8 @@ export {
   Checkbox,
   Container,
   DS_VERSION,
+  DatePicker,
+  DateRangePicker,
   Dialog,
   DialogClose,
   DialogContent,

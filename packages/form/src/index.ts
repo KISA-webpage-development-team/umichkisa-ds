@@ -18,3 +18,5 @@ export type { FormCheckboxProps } from "./components/fields/FormCheckbox";
 export type { FormRadioProps } from "./components/fields/FormRadio";
 export type { FormSwitchProps } from "./components/fields/FormSwitch";
 export type { FormButtonProps } from "./components/fields/FormButton";
+export type { FormDatePickerProps } from "./components/fields/FormDatePicker";
+export type { FormDateRangePickerProps } from "./components/fields/FormDateRangePicker";
