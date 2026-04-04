@@ -405,74 +405,75 @@ TableMobileList           {/* mobile alternative */}
         to toggle between the two layouts. In practice, map over your data
         array and render both layouts — CSS handles which one is visible.
       </p>
+
+      <p className="type-label mt-6 mb-2 text-foreground">Desktop view</p>
       <ComponentPreview code={responsiveCode}>
         <div className="w-full">
-          {/* Desktop table */}
-          <div className="hidden md:block">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>#</TableHead>
-                  <TableHead>제목</TableHead>
-                  <TableHead>작성자</TableHead>
-                  <TableHead>날짜</TableHead>
-                  <TableHead>조회</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow className="bg-surface-subtle">
-                  <TableCell>—</TableCell>
-                  <TableCell>[공지] 2025 봄학기 회비 납부 안내</TableCell>
-                  <TableCell>운영진</TableCell>
-                  <TableCell>2025-03-01</TableCell>
-                  <TableCell>342</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>5</TableCell>
-                  <TableCell>겨울방학 스터디 모집합니다</TableCell>
-                  <TableCell>김민수</TableCell>
-                  <TableCell>2025-02-28</TableCell>
-                  <TableCell>89</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>4</TableCell>
-                  <TableCell>족발 같이 시켜먹을 사람</TableCell>
-                  <TableCell>이서연</TableCell>
-                  <TableCell>2025-02-27</TableCell>
-                  <TableCell>156</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>3</TableCell>
-                  <TableCell>기숙사 계약 관련 질문</TableCell>
-                  <TableCell>박지훈</TableCell>
-                  <TableCell>2025-02-26</TableCell>
-                  <TableCell>67</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </div>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>#</TableHead>
+                <TableHead>제목</TableHead>
+                <TableHead>작성자</TableHead>
+                <TableHead>날짜</TableHead>
+                <TableHead>조회</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow className="bg-surface-subtle">
+                <TableCell>—</TableCell>
+                <TableCell>[공지] 2025 봄학기 회비 납부 안내</TableCell>
+                <TableCell>운영진</TableCell>
+                <TableCell>2025-03-01</TableCell>
+                <TableCell>342</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>5</TableCell>
+                <TableCell>겨울방학 스터디 모집합니다</TableCell>
+                <TableCell>김민수</TableCell>
+                <TableCell>2025-02-28</TableCell>
+                <TableCell>89</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>4</TableCell>
+                <TableCell>족발 같이 시켜먹을 사람</TableCell>
+                <TableCell>이서연</TableCell>
+                <TableCell>2025-02-27</TableCell>
+                <TableCell>156</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>3</TableCell>
+                <TableCell>기숙사 계약 관련 질문</TableCell>
+                <TableCell>박지훈</TableCell>
+                <TableCell>2025-02-26</TableCell>
+                <TableCell>67</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+      </ComponentPreview>
 
-          {/* Mobile list */}
-          <div className="block md:hidden">
-            <TableMobileList>
-              <TableMobileItem>
-                <span>[공지] 2025 봄학기 회비 납부 안내</span>
-                <span className="type-caption text-muted-foreground">2025-03-01 · 운영진 · 342 views</span>
-              </TableMobileItem>
-              <TableMobileItem>
-                <span>겨울방학 스터디 모집합니다</span>
-                <span className="type-caption text-muted-foreground">2025-02-28 · 김민수 · 89 views</span>
-              </TableMobileItem>
-              <TableMobileItem>
-                <span>족발 같이 시켜먹을 사람</span>
-                <span className="type-caption text-muted-foreground">2025-02-27 · 이서연 · 156 views</span>
-              </TableMobileItem>
-              <TableMobileItem>
-                <span>기숙사 계약 관련 질문</span>
-                <span className="type-caption text-muted-foreground">2025-02-26 · 박지훈 · 67 views</span>
-              </TableMobileItem>
-            </TableMobileList>
-          </div>
+      <p className="type-label mt-6 mb-2 text-foreground">Mobile view</p>
+      <ComponentPreview code={responsiveCode}>
+        <div className="w-full">
+          <TableMobileList>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground">[공지] 2025 봄학기 회비 납부 안내</span>
+              <span className="type-caption text-muted-foreground">2025-03-01 · 운영진 · 342 views</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground">겨울방학 스터디 모집합니다</span>
+              <span className="type-caption text-muted-foreground">2025-02-28 · 김민수 · 89 views</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground">족발 같이 시켜먹을 사람</span>
+              <span className="type-caption text-muted-foreground">2025-02-27 · 이서연 · 156 views</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground">기숙사 계약 관련 질문</span>
+              <span className="type-caption text-muted-foreground">2025-02-26 · 박지훈 · 67 views</span>
+            </TableMobileItem>
+          </TableMobileList>
         </div>
       </ComponentPreview>
 
