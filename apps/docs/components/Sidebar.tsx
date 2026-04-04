@@ -170,6 +170,12 @@ const SECTIONS: Record<SectionKey, SidebarCategory[]> = {
   forms: FORMS_CATEGORIES,
 }
 
+const ALL_CATEGORIES: SidebarCategory[] = [
+  ...FOUNDATION_CATEGORIES,
+  ...COMPONENT_CATEGORIES,
+  ...FORMS_CATEGORIES,
+]
+
 /* ── Helpers ─────────────────────────────────────────────────────── */
 
 function getSectionKey(pathname: string): SectionKey | null {
@@ -194,7 +200,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
   // Other pages (homepage): show all sections for mobile nav
   const categories = sectionKey
     ? SECTIONS[sectionKey]
-    : [...FOUNDATION_CATEGORIES, ...COMPONENT_CATEGORIES, ...FORMS_CATEGORIES]
+    : ALL_CATEGORIES
 
   // Desktop: only visible on section pages
   const desktopVisibility = sectionKey ? 'lg:translate-x-0' : ''
