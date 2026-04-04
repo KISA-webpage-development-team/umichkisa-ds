@@ -1035,8 +1035,8 @@ var import_jsx_runtime23 = require("react/jsx-runtime");
 var variantDefaults = {
   "not-found": {
     icon: "file-x",
-    title: "404",
-    description: "\uC874\uC7AC\uD558\uC9C0 \uC54A\uB294 \uD398\uC774\uC9C0\uC785\uB2C8\uB2E4"
+    title: "\uD398\uC774\uC9C0\uB97C \uCC3E\uC744 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4",
+    description: "\uC694\uCCAD\uD558\uC2E0 \uD398\uC774\uC9C0\uAC00 \uC874\uC7AC\uD558\uC9C0 \uC54A\uAC70\uB098 \uC774\uB3D9\uB418\uC5C8\uC2B5\uB2C8\uB2E4"
   },
   "not-authorized": {
     icon: "shield-x",
@@ -1078,10 +1078,10 @@ function StatusView({
         className
       ),
       children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex flex-col items-center gap-4 max-w-sm", children: [
-        code && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "type-display font-sejong-bold tracking-tight text-foreground", children: code }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "text-muted-foreground", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Icon, { name: resolvedIcon, size: "xl" }) }),
+        code && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "type-display font-sejong-bold tracking-tight text-brand-primary", children: code }),
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "text-brand-primary-mid", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Icon, { name: resolvedIcon, size: "xl" }) }),
         /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex flex-col items-center gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "type-h2 text-foreground", children: resolvedTitle }),
+          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "type-h2 text-brand-primary", children: resolvedTitle }),
           /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "type-body text-muted-foreground", children: resolvedDescription })
         ] }),
         action && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "mt-2", children: action })
