@@ -188,6 +188,8 @@ var registry = {
   "circle-minus": import_lucide_react.CircleMinus,
   "circle-plus": import_lucide_react.CirclePlus,
   "circle-x": import_lucide_react.CircleX,
+  "clipboard-check": import_lucide_react.ClipboardCheck,
+  "clipboard-copy": import_lucide_react.ClipboardCopy,
   "clock-9": import_lucide_react.Clock9,
   "external-link": import_lucide_react.ExternalLink,
   "eye": import_lucide_react.Eye,
