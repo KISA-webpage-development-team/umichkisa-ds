@@ -100,8 +100,9 @@ export default function StatusViewPage() {
       {/* Custom icon */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">Custom icon</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Override the default variant icon by passing a registered Lucide icon
-        name to the{' '}
+        Override the default variant icon by passing any icon name from the{' '}
+        <a href="/components/icon" className="text-link underline hover:text-brand-primary">Icon registry</a>{' '}
+        to the{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">icon</code>{' '}
         prop. Title and description can also be overridden.
       </p>
@@ -234,7 +235,7 @@ export default function StatusViewPage() {
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">icon</code></td>
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">IconName</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">(variant default)</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Override the variant&apos;s default icon. Must be a registered icon name.</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">Override the variant&apos;s default icon. See <a href="/components/icon" className="text-link underline hover:text-brand-primary">Icon</a> for available names.</td>
             </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">title</code></td>
@@ -258,7 +259,7 @@ export default function StatusViewPage() {
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></td>
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Merged via cn(). Applied to the outer wrapper for layout utilities.</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">Merged via cn(). Use for layout utilities (width, height, margin, padding).</td>
             </tr>
           </tbody>
         </table>
