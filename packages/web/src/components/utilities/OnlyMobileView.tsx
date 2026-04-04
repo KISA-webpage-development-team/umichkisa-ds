@@ -27,7 +27,7 @@ export function OnlyMobileView({
         <div className="text-brand-primary">
           <Icon name="smartphone" size="xl" />
         </div>
-        <p className="type-h3 text-foreground text-center px-4">
+        <p className="type-h3 text-brand-primary text-center px-4">
           {message}
         </p>
       </div>

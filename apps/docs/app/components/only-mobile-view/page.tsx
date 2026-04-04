@@ -63,7 +63,7 @@ export default function OnlyMobileViewPage() {
               <div className="text-brand-primary">
                 <Icon name="smartphone" size="xl" />
               </div>
-              <p className="type-h3 text-foreground text-center px-4">
+              <p className="type-h3 text-brand-primary text-center px-4">
                 Only Mobile View is supported.
               </p>
             </div>
@@ -90,7 +90,7 @@ export default function OnlyMobileViewPage() {
               <div className="text-brand-primary">
                 <Icon name="smartphone" size="xl" />
               </div>
-              <p className="type-h3 text-foreground text-center px-4">
+              <p className="type-h3 text-brand-primary text-center px-4">
                 Please use a mobile device to access this page.
               </p>
             </div>
