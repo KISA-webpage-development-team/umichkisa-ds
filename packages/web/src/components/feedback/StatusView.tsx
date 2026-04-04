@@ -82,7 +82,7 @@ export function StatusView({
             {code}
           </p>
         )}
-        <div className="text-brand-accent">
+        <div className="text-brand-primary-mid">
           <Icon name={resolvedIcon} size="xl" />
         </div>
         <div className="flex flex-col items-center gap-2">
