@@ -78,13 +78,14 @@ export function StatusView({
     >
       <div className="flex flex-col items-center gap-4 max-w-sm">
         {code && (
-          <p className="type-display font-sejong-bold tracking-tight text-foreground">
+          <p className="type-display font-sejong-bold tracking-tight text-brand-primary">
             {code}
           </p>
         )}
-        <div className="text-muted-foreground">
+        <div className="text-brand-primary">
           <Icon name={resolvedIcon} size="xl" />
         </div>
+        <div className="w-8 h-0.5 bg-brand-accent rounded-full" />
         <div className="flex flex-col items-center gap-2">
           <p className="type-h2 text-foreground">{resolvedTitle}</p>
           <p className="type-body text-muted-foreground">
