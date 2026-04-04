@@ -2,14 +2,12 @@
 
 import { Container, Input, Button, FormItem } from '@umichkisa-ds/web'
 import { useForm, Form, useFormField, useFormStatus } from '@umichkisa-ds/form'
-import { FormProvider } from 'react-hook-form'
 import { ComponentPreview } from '@/components/ComponentPreview'
 
 /* ── Code strings ──────────────────────────────────────────── */
 
-const useFormFieldCode = `import { useForm, useFormField } from '@umichkisa-ds/form'
+const useFormFieldCode = `import { useForm, Form, useFormField } from '@umichkisa-ds/form'
 import { Input, FormItem } from '@umichkisa-ds/web'
-import { FormProvider } from 'react-hook-form'
 
 type ProfileValues = { name: string; email: string }
 
@@ -31,12 +29,10 @@ function ProfileForm() {
   })
 
   return (
-    <FormProvider {...form}>
-      <form onSubmit={form.handleSubmit(console.log)} className="flex flex-col gap-4">
-        <NameField />
-        <button type="submit">Save</button>
-      </form>
-    </FormProvider>
+    <Form form={form} onSubmit={console.log}>
+      <NameField />
+      <button type="submit">Save</button>
+    </Form>
   )
 }`
 
@@ -105,16 +101,11 @@ function UseFormFieldDemo() {
   })
 
   return (
-    <FormProvider {...form}>
-      <form
-        onSubmit={form.handleSubmit((data) => alert(`${data.name} / ${data.email}`))}
-        className="flex flex-col gap-4 w-full max-w-sm"
-      >
-        <NameField />
-        <EmailField />
-        <Button type="submit">Save</Button>
-      </form>
-    </FormProvider>
+    <Form form={form} onSubmit={(data) => alert(`${data.name} / ${data.email}`)} className="w-full max-w-sm">
+      <NameField />
+      <EmailField />
+      <Button type="submit">Save</Button>
+    </Form>
   )
 }
 
@@ -291,7 +282,7 @@ export default function HooksPage() {
           </thead>
           <tbody>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Form.Input</code> etc.</td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Form.*</code> compounds</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Standard forms with label-above-field layout. Handles 90% of cases with zero boilerplate.</td>
             </tr>
             <tr className="border-b border-border">
