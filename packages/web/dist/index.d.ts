@@ -289,19 +289,6 @@ type GridProps = React.HTMLAttributes<HTMLDivElement> & {
 };
 declare function Grid({ columns, gap, className, children, ...props }: GridProps): react_jsx_runtime.JSX.Element;
 
-type ToggleBarItem = {
-    view: string;
-    text: string;
-    icon?: React.ReactNode;
-};
-type ToggleBarProps = {
-    activeView: string;
-    onViewChange: (view: string) => void;
-    items: ToggleBarItem[];
-    className?: string;
-};
-declare function ToggleBar({ activeView, onViewChange, items, className }: ToggleBarProps): react_jsx_runtime.JSX.Element;
-
 declare function Icon({ name, size, label, className }: IconProps): react_jsx_runtime.JSX.Element;
 
 declare const alertVariants: (props?: ({
@@ -480,6 +467,21 @@ type PaginationProps = {
     className?: string;
 };
 declare function Pagination({ page, totalPages, onPageChange, siblingCount, className, }: PaginationProps): react_jsx_runtime.JSX.Element;
+
+type ToggleBarItem = {
+    value: string;
+    label: string;
+    icon?: ReactNode;
+};
+type ToggleBarProps = {
+    value: string;
+    onValueChange: (value: string) => void;
+    items: ToggleBarItem[];
+    size?: "sm" | "md";
+    fullWidth?: boolean;
+    className?: string;
+};
+declare function ToggleBar({ value, onValueChange, items, size, fullWidth, className, }: ToggleBarProps): react_jsx_runtime.JSX.Element;
 
 declare const DS_VERSION = "0.1.0";
 
