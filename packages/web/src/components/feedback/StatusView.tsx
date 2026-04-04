@@ -82,12 +82,11 @@ export function StatusView({
             {code}
           </p>
         )}
-        <div className="text-brand-primary">
+        <div className="text-brand-accent">
           <Icon name={resolvedIcon} size="xl" />
         </div>
-        <div className="w-8 h-0.5 bg-brand-accent rounded-full" />
         <div className="flex flex-col items-center gap-2">
-          <p className="type-h2 text-foreground">{resolvedTitle}</p>
+          <p className="type-h2 text-brand-primary">{resolvedTitle}</p>
           <p className="type-body text-muted-foreground">
             {resolvedDescription}
           </p>
