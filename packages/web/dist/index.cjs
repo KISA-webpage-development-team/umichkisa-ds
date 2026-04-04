@@ -726,7 +726,7 @@ function Switch({
           "span",
           {
             className: cn(
-              "pointer-events-none absolute rounded-full bg-foreground transition-all duration-200",
+              "pointer-events-none absolute rounded-full bg-brand-primary transition-all duration-200",
               "peer-checked:bg-surface",
               "peer-disabled:bg-disabled-foreground",
               "peer-disabled:peer-checked:bg-surface",
@@ -926,14 +926,14 @@ function ToggleBar({ activeView, onViewChange, items, className }) {
 var import_class_variance_authority5 = require("class-variance-authority");
 var import_jsx_runtime20 = require("react/jsx-runtime");
 var alertVariants = (0, import_class_variance_authority5.cva)(
-  "w-full flex items-center gap-2 rounded-lg border-l-4 p-4",
+  "w-full flex items-start gap-2 rounded-md border px-3 py-3",
   {
     variants: {
       variant: {
-        info: "border-l-info bg-info-subtle",
-        success: "border-l-success bg-success-subtle",
-        warning: "border-l-warning bg-warning-subtle",
-        error: "border-l-error bg-error-subtle"
+        info: "border-info bg-info-subtle",
+        success: "border-success bg-success-subtle",
+        warning: "border-warning bg-warning-subtle",
+        error: "border-error bg-error-subtle"
       }
     },
     defaultVariants: {
@@ -963,8 +963,8 @@ function Alert({
 }) {
   const resolvedIcon = icon === null ? null : icon ?? variantIcons[variant];
   return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: cn(alertVariants({ variant }), className), ...props, children: [
-    resolvedIcon && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: cn("shrink-0", variantIconColors[variant]), children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(Icon, { name: resolvedIcon, size: "sm" }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex flex-col gap-2 min-w-0", children: [
+    resolvedIcon && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: cn("shrink-0 mt-0.5", variantIconColors[variant]), children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(Icon, { name: resolvedIcon, size: "sm" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex flex-col gap-1 min-w-0", children: [
       title && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "type-body-sm text-foreground", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { children: title }) }),
       children && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "type-body-sm text-foreground", children })
     ] })

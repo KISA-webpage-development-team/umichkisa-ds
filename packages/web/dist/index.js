@@ -663,7 +663,7 @@ function Switch({
           "span",
           {
             className: cn(
-              "pointer-events-none absolute rounded-full bg-foreground transition-all duration-200",
+              "pointer-events-none absolute rounded-full bg-brand-primary transition-all duration-200",
               "peer-checked:bg-surface",
               "peer-disabled:bg-disabled-foreground",
               "peer-disabled:peer-checked:bg-surface",
@@ -863,14 +863,14 @@ function ToggleBar({ activeView, onViewChange, items, className }) {
 import { cva as cva5 } from "class-variance-authority";
 import { jsx as jsx20, jsxs as jsxs8 } from "react/jsx-runtime";
 var alertVariants = cva5(
-  "w-full flex items-center gap-2 rounded-lg border-l-4 p-4",
+  "w-full flex items-start gap-2 rounded-md border px-3 py-3",
   {
     variants: {
       variant: {
-        info: "border-l-info bg-info-subtle",
-        success: "border-l-success bg-success-subtle",
-        warning: "border-l-warning bg-warning-subtle",
-        error: "border-l-error bg-error-subtle"
+        info: "border-info bg-info-subtle",
+        success: "border-success bg-success-subtle",
+        warning: "border-warning bg-warning-subtle",
+        error: "border-error bg-error-subtle"
       }
     },
     defaultVariants: {
@@ -900,8 +900,8 @@ function Alert({
 }) {
   const resolvedIcon = icon === null ? null : icon ?? variantIcons[variant];
   return /* @__PURE__ */ jsxs8("div", { className: cn(alertVariants({ variant }), className), ...props, children: [
-    resolvedIcon && /* @__PURE__ */ jsx20("div", { className: cn("shrink-0", variantIconColors[variant]), children: /* @__PURE__ */ jsx20(Icon, { name: resolvedIcon, size: "sm" }) }),
-    /* @__PURE__ */ jsxs8("div", { className: "flex flex-col gap-2 min-w-0", children: [
+    resolvedIcon && /* @__PURE__ */ jsx20("div", { className: cn("shrink-0 mt-0.5", variantIconColors[variant]), children: /* @__PURE__ */ jsx20(Icon, { name: resolvedIcon, size: "sm" }) }),
+    /* @__PURE__ */ jsxs8("div", { className: "flex flex-col gap-1 min-w-0", children: [
       title && /* @__PURE__ */ jsx20("p", { className: "type-body-sm text-foreground", children: /* @__PURE__ */ jsx20("strong", { children: title }) }),
       children && /* @__PURE__ */ jsx20("div", { className: "type-body-sm text-foreground", children })
     ] })

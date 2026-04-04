@@ -4,14 +4,14 @@ import { Icon } from "@/components/icon";
 import type { IconName } from "@/components/icon";
 
 const alertVariants = cva(
-  "w-full flex items-center gap-2 rounded-lg border-l-4 p-4",
+  "w-full flex items-start gap-2 rounded-md border px-3 py-3",
   {
     variants: {
       variant: {
-        info: "border-l-info bg-info-subtle",
-        success: "border-l-success bg-success-subtle",
-        warning: "border-l-warning bg-warning-subtle",
-        error: "border-l-error bg-error-subtle",
+        info: "border-info bg-info-subtle",
+        success: "border-success bg-success-subtle",
+        warning: "border-warning bg-warning-subtle",
+        error: "border-error bg-error-subtle",
       },
     },
     defaultVariants: {
@@ -53,11 +53,11 @@ function Alert({
   return (
     <div className={cn(alertVariants({ variant }), className)} {...props}>
       {resolvedIcon && (
-        <div className={cn("shrink-0", variantIconColors[variant!])}>
+        <div className={cn("shrink-0 mt-0.5", variantIconColors[variant!])}>
           <Icon name={resolvedIcon} size="sm" />
         </div>
       )}
-      <div className="flex flex-col gap-2 min-w-0">
+      <div className="flex flex-col gap-1 min-w-0">
         {title && (
           <p className="type-body-sm text-foreground"><strong>{title}</strong></p>
         )}
