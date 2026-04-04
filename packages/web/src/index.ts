@@ -10,4 +10,5 @@ export * from "./components/icon";
 export * from "./components/overlay";
 export * from "./components/divider";
 export * from "./components/navigation";
+export * from "./components/utilities";
 export * from "./components/display";

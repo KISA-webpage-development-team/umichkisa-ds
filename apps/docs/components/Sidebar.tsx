@@ -137,6 +137,13 @@ const COMPONENT_ITEMS: NavItem[] = [
       { label: 'Toast',    href: '/components/toast' },
     ],
   },
+  {
+    label: 'Utilities',
+    href: '/components/only-mobile-view',
+    children: [
+      { label: 'OnlyMobileView', href: '/components/only-mobile-view' },
+    ],
+  },
 ]
 
 const FORMS_ITEMS: NavItem[] = [
