@@ -105,6 +105,7 @@ const COMPONENT_ITEMS: NavItem[] = [
       { label: 'Avatar',    href: '/components/avatar' },
       { label: 'Badge',     href: '/components/badge' },
       { label: 'Card',      href: '/components/card' },
+      { label: 'Table',     href: '/components/table' },
     ],
   },
   {

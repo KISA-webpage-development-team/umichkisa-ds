@@ -74,8 +74,10 @@ function AccordionTrigger({
       <div>
         <RadixAccordion.Trigger
           className={cn(
-            "flex w-full items-center justify-between py-4 type-body !font-semibold text-foreground",
-            "hover:underline",
+            "group flex w-full items-center justify-between py-4 type-body !font-semibold text-foreground",
+            "underline decoration-transparent decoration-2 underline-offset-4 transition-[text-decoration-color] duration-150",
+            "hover:decoration-brand-accent",
+            "data-[state=open]:text-brand-primary",
             "disabled:pointer-events-none disabled:text-disabled-foreground",
             "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring",
             "focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]",
@@ -88,7 +90,7 @@ function AccordionTrigger({
             <Icon
               name="chevron-down"
               size="sm"
-              className="shrink-0 transition-transform duration-200"
+              className="shrink-0 transition-colors duration-150 group-hover:text-brand-accent"
             />
           )}
         </RadixAccordion.Trigger>

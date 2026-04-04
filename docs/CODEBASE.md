@@ -134,7 +134,7 @@ The sidebar uses collapsible categories that auto-expand based on the current ro
 | `Divider` | divider | ✅ | Unified from HorizontalDivider + VerticalDivider. Semantic `<hr>`, `orientation` prop, `--color-border` token. |
 | `Grid` | layout | ✅ | Responsive equal-width column grid. `columns` prop (number or `{ base, md, lg }` responsive object, max 6). `gap` prop using DS spacing tiers (element/component/section). `cn()` only, no CVA. |
 | `ToggleBar` | layout | ✅ | |
-| `Alert` | feedback | ✅ | CVA component with 4 variants (info/success/warning/error) mapped to DS feedback token pairs. `title` + `children` content model, default icon per variant overridable via `icon` prop. `border-l-4` accent + subtle bg. |
+| `Alert` | feedback | ✅ | CVA component with 4 variants (info/success/warning/error) mapped to DS feedback token pairs. `title` + `children` content model, default icon per variant overridable via `icon` prop. Full `border` (all sides) + subtle bg + `rounded-md`. |
 | `Skeleton` | feedback | ✅ | Loading placeholder with rectangular/circular variants. `cn()` only. `bg-border` + `ds-pulse` keyframe animation. Consumer controls dimensions via `className`. |
 | `LoadingSpinner` | feedback | ✅ | Three sizes (sm/md/lg) with proportional border widths. `aria-label`-first labeling with optional `showLabel`. No `fullScreen` — documented as consumer pattern. `cn()` only, no CVA. |
 | `Toaster` / `toast` | feedback | ✅ | Sonner wrapper with DS token styling via `classNames` API. `Toaster` provider (mount once, default `top-center`) + `toast()` imperative function. Five variants (default/info/success/warning/error) with auto-mapped icons matching Alert. |

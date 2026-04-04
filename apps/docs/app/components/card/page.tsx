@@ -22,7 +22,7 @@ const withFooterCode = `import { Card, CardHeader, CardTitle, CardDescription, C
 
 <Card>
   <CardHeader>
-    <div className="flex items-center gap-2">
+    <div className="flex items-center justify-between">
       <CardTitle>Korean Culture Night</CardTitle>
       <Badge variant="info">Upcoming</Badge>
     </div>
@@ -172,7 +172,7 @@ export default function CardPage() {
       <ComponentPreview code={withFooterCode}>
         <Card className="max-w-md">
           <CardHeader>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-between">
               <CardTitle>Korean Culture Night</CardTitle>
               <Badge variant="info">Upcoming</Badge>
             </div>
