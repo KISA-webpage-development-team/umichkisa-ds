@@ -211,6 +211,27 @@ export default function TablePage() {
         viewports, pair with TableMobileList for a stacked card layout.
       </p>
 
+      {/* -- Composition ----------------------------------------------- */}
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Composition</h2>
+      <p className="type-body mb-2 text-foreground max-w-prose">
+        Table is composed from 10 sub-components that mirror native HTML table
+        elements. Here is how they nest together:
+      </p>
+      <pre className="my-6 rounded-lg border border-border bg-surface-muted px-4 py-4 type-caption font-mono text-foreground overflow-x-auto whitespace-pre">{`Table
+├── TableCaption          {/* optional accessible description */}
+├── TableHeader
+│   └── TableRow
+│       └── TableHead     {/* <th> header cells */}
+├── TableBody
+│   └── TableRow
+│       └── TableCell     {/* <td> body cells */}
+└── TableFooter           {/* optional summary/totals */}
+    └── TableRow
+        └── TableCell
+
+TableMobileList           {/* mobile alternative */}
+└── TableMobileItem`}</pre>
+
       {/* -- Examples ------------------------------------------------- */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
 
@@ -381,7 +402,8 @@ export default function TablePage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           block md:hidden
         </code>{' '}
-        to toggle between the two layouts.
+        to toggle between the two layouts. In practice, map over your data
+        array and render both layouts — CSS handles which one is visible.
       </p>
       <ComponentPreview code={responsiveCode}>
         <div className="w-full">
@@ -460,7 +482,9 @@ export default function TablePage() {
         Table is composed from several sub-components that you assemble together.
         All sub-components accept a{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">className</code>{' '}
-        prop (merged via cn()) plus native HTML attributes for the element they wrap.
+        prop plus native HTML attributes for the element they wrap. Your custom
+        classes are merged with built-in defaults using Tailwind&#39;s class merge
+        utility, so you can safely override any default style.
       </p>
 
       {/* Table */}
