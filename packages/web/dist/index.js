@@ -1868,10 +1868,10 @@ function Pagination({
   ] });
 }
 
-// src/components/navigation/ToggleBar.tsx
+// src/components/navigation/ToggleGroup.tsx
 import { useRef as useRef2, useCallback as useCallback3 } from "react";
 import { jsx as jsx34, jsxs as jsxs15 } from "react/jsx-runtime";
-function ToggleBar({
+function ToggleGroup({
   value,
   onValueChange,
   items,
@@ -1920,7 +1920,11 @@ function ToggleBar({
     "div",
     {
       role: "radiogroup",
-      className: cn("flex", fullWidth && "w-full", className),
+      className: cn(
+        "inline-flex items-center rounded-md border border-border",
+        fullWidth && "w-full",
+        className
+      ),
       children: items.map((item, index) => {
         const isSelected = value === item.value;
         return /* @__PURE__ */ jsxs15(
@@ -1936,10 +1940,10 @@ function ToggleBar({
             onClick: () => onValueChange(item.value),
             onKeyDown: (e) => handleKeyDown(e, index),
             className: cn(
-              "flex items-center border-b-2 cursor-pointer transition-colors",
-              isSmall ? "type-body-sm px-2 py-1.5 gap-1" : "type-body px-3 py-2 gap-2",
+              "flex items-center cursor-pointer transition-colors rounded-md",
+              isSmall ? "type-body-sm px-2 py-1 gap-1" : "type-body px-3 py-1.5 gap-2",
               fullWidth && "flex-1 justify-center",
-              isSelected ? "text-foreground !font-semibold border-[var(--color-brand-primary)]" : "text-muted-foreground border-transparent hover:text-foreground hover:bg-[var(--color-surface-subtle)] active:opacity-90",
+              isSelected ? "bg-[var(--color-surface-subtle)] text-foreground !font-semibold" : "text-muted-foreground hover:text-foreground hover:bg-[var(--color-surface-subtle)] active:opacity-90",
               "outline-none focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-[var(--color-focus-ring)] focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]"
             ),
             children: [
@@ -1970,7 +1974,7 @@ function OnlyMobileView({
         "aria-live": "polite",
         children: [
           /* @__PURE__ */ jsx35("div", { className: "text-brand-primary", children: /* @__PURE__ */ jsx35(Icon, { name: "smartphone", size: "xl" }) }),
-          /* @__PURE__ */ jsx35("p", { className: "type-h3 text-foreground text-center px-4", children: message })
+          /* @__PURE__ */ jsx35("p", { className: "type-h3 text-brand-primary text-center px-4", children: message })
         ]
       }
     ),
@@ -2052,7 +2056,7 @@ export {
   TabsTrigger,
   Textarea,
   Toaster,
-  ToggleBar,
+  ToggleGroup,
   Tooltip,
   alertVariants,
   avatarVariants,

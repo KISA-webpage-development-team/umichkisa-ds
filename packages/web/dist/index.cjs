@@ -102,7 +102,7 @@ __export(src_exports, {
   TabsTrigger: () => TabsTrigger,
   Textarea: () => Textarea,
   Toaster: () => Toaster,
-  ToggleBar: () => ToggleBar,
+  ToggleGroup: () => ToggleGroup,
   Tooltip: () => Tooltip,
   alertVariants: () => alertVariants,
   avatarVariants: () => avatarVariants,
@@ -1944,10 +1944,10 @@ function Pagination({
   ] });
 }
 
-// src/components/navigation/ToggleBar.tsx
+// src/components/navigation/ToggleGroup.tsx
 var import_react4 = require("react");
 var import_jsx_runtime34 = require("react/jsx-runtime");
-function ToggleBar({
+function ToggleGroup({
   value,
   onValueChange,
   items,
@@ -1996,7 +1996,11 @@ function ToggleBar({
     "div",
     {
       role: "radiogroup",
-      className: cn("flex", fullWidth && "w-full", className),
+      className: cn(
+        "inline-flex items-center rounded-md border border-border",
+        fullWidth && "w-full",
+        className
+      ),
       children: items.map((item, index) => {
         const isSelected = value === item.value;
         return /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)(
@@ -2012,10 +2016,10 @@ function ToggleBar({
             onClick: () => onValueChange(item.value),
             onKeyDown: (e) => handleKeyDown(e, index),
             className: cn(
-              "flex items-center border-b-2 cursor-pointer transition-colors",
-              isSmall ? "type-body-sm px-2 py-1.5 gap-1" : "type-body px-3 py-2 gap-2",
+              "flex items-center cursor-pointer transition-colors rounded-md",
+              isSmall ? "type-body-sm px-2 py-1 gap-1" : "type-body px-3 py-1.5 gap-2",
               fullWidth && "flex-1 justify-center",
-              isSelected ? "text-foreground !font-semibold border-[var(--color-brand-primary)]" : "text-muted-foreground border-transparent hover:text-foreground hover:bg-[var(--color-surface-subtle)] active:opacity-90",
+              isSelected ? "bg-[var(--color-surface-subtle)] text-foreground !font-semibold" : "text-muted-foreground hover:text-foreground hover:bg-[var(--color-surface-subtle)] active:opacity-90",
               "outline-none focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-[var(--color-focus-ring)] focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]"
             ),
             children: [
@@ -2046,7 +2050,7 @@ function OnlyMobileView({
         "aria-live": "polite",
         children: [
           /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("div", { className: "text-brand-primary", children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(Icon, { name: "smartphone", size: "xl" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("p", { className: "type-h3 text-foreground text-center px-4", children: message })
+          /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("p", { className: "type-h3 text-brand-primary text-center px-4", children: message })
         ]
       }
     ),
@@ -2129,7 +2133,7 @@ var DS_VERSION = "0.1.0";
   TabsTrigger,
   Textarea,
   Toaster,
-  ToggleBar,
+  ToggleGroup,
   Tooltip,
   alertVariants,
   avatarVariants,

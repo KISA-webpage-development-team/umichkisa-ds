@@ -1,15 +1,15 @@
 'use client'
 
 import { useState } from 'react'
-import { Container, ToggleBar, Icon } from '@umichkisa-ds/web'
+import { Container, ToggleGroup, Icon } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 
 const contentViewCode = `import { useState } from 'react'
-import { ToggleBar, Icon } from '@umichkisa-ds/web'
+import { ToggleGroup, Icon } from '@umichkisa-ds/web'
 
 const [view, setView] = useState('posts')
 
-<ToggleBar
+<ToggleGroup
   value={view}
   onValueChange={setView}
   items={[
@@ -19,11 +19,11 @@ const [view, setView] = useState('posts')
 />`
 
 const pageSizeCode = `import { useState } from 'react'
-import { ToggleBar } from '@umichkisa-ds/web'
+import { ToggleGroup } from '@umichkisa-ds/web'
 
 const [pageSize, setPageSize] = useState('10')
 
-<ToggleBar
+<ToggleGroup
   value={pageSize}
   onValueChange={setPageSize}
   size="sm"
@@ -35,11 +35,11 @@ const [pageSize, setPageSize] = useState('10')
 />`
 
 const fullWidthCode = `import { useState } from 'react'
-import { ToggleBar, Icon } from '@umichkisa-ds/web'
+import { ToggleGroup, Icon } from '@umichkisa-ds/web'
 
 const [view, setView] = useState('posts')
 
-<ToggleBar
+<ToggleGroup
   value={view}
   onValueChange={setView}
   fullWidth
@@ -49,7 +49,7 @@ const [view, setView] = useState('posts')
   ]}
 />`
 
-export default function ToggleBarPage() {
+export default function ToggleGroupPage() {
   const [view, setView] = useState('posts')
   const [pageSize, setPageSize] = useState('10')
   const [fullWidthView, setFullWidthView] = useState('posts')
@@ -58,11 +58,12 @@ export default function ToggleBarPage() {
     <Container size="md" as="article">
 
       {/* -- Header -------------------------------------------------- */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">ToggleBar</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">ToggleGroup</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        A segmented control for switching between a small set of options.
-        Use ToggleBar for view switches, page size selectors, or any
-        mutually exclusive choice within a compact inline layout.
+        A group of small buttons for switching between a small set of
+        mutually exclusive options. Use ToggleGroup for view switches,
+        page size selectors, or any single-choice toggle within a compact
+        inline layout.
       </p>
       <p className="type-body-sm mb-8 text-muted-foreground max-w-prose">
         Keyboard accessible — use arrow keys to move between options.
@@ -82,7 +83,7 @@ export default function ToggleBarPage() {
       </p>
       <ComponentPreview code={contentViewCode}>
         <div className="w-full">
-          <ToggleBar
+          <ToggleGroup
             value={view}
             onValueChange={setView}
             items={[
@@ -103,7 +104,7 @@ export default function ToggleBarPage() {
       </p>
       <ComponentPreview code={pageSizeCode}>
         <div className="w-full">
-          <ToggleBar
+          <ToggleGroup
             value={pageSize}
             onValueChange={setPageSize}
             size="sm"
@@ -122,11 +123,11 @@ export default function ToggleBarPage() {
         Set{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">fullWidth</code>{' '}
         to distribute items evenly across the container. Useful when the
-        ToggleBar spans the full width of a content section.
+        ToggleGroup spans the full width of a content section.
       </p>
       <ComponentPreview code={fullWidthCode}>
         <div className="w-full">
-          <ToggleBar
+          <ToggleGroup
             value={fullWidthView}
             onValueChange={setFullWidthView}
             fullWidth
@@ -141,8 +142,8 @@ export default function ToggleBarPage() {
       {/* -- API Reference -------------------------------------------- */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
 
-      {/* ToggleBar */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">ToggleBar</h3>
+      {/* ToggleGroup */}
+      <h3 className="type-h3 mt-8 mb-2 text-foreground">ToggleGroup</h3>
       <div className="my-6 overflow-x-auto">
         <table className="w-full border-collapse border border-border">
           <thead className="bg-surface-subtle">
@@ -168,9 +169,9 @@ export default function ToggleBarPage() {
             </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">items</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ToggleBarItem[]</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ToggleGroupItem[]</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Array of options to display. See ToggleBarItem below.</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">Array of options to display. See ToggleGroupItem below.</td>
             </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></td>
@@ -194,8 +195,8 @@ export default function ToggleBarPage() {
         </table>
       </div>
 
-      {/* ToggleBarItem */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">ToggleBarItem</h3>
+      {/* ToggleGroupItem */}
+      <h3 className="type-h3 mt-8 mb-2 text-foreground">ToggleGroupItem</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Shape of each option in the items array.
       </p>

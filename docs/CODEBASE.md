@@ -96,6 +96,7 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 | Card | `/components/card` | ✅ Complete |
 | Table | `/components/table` | ✅ Complete |
 | Accordion | `/components/accordion` | ✅ Complete |
+| OnlyMobileView | `/components/only-mobile-view` | ✅ Complete |
 
 All docs pages (foundation and component) use `<Container size="md" as="article">` as their page wrapper. API Reference tables follow a standardized pattern (Container page is the gold standard). MDX infrastructure has been fully removed — all content is inline TSX with DS type tokens.
 
@@ -134,7 +135,7 @@ The sidebar uses collapsible categories that auto-expand based on the current ro
 | `FormItem` | form | ✅ | Presentation-only layout wrapper (label, children, description, error). Renders Label internally, accepts any form control as children. `cn()` only, no validation logic. |
 | `Divider` | divider | ✅ | Unified from HorizontalDivider + VerticalDivider. Semantic `<hr>`, `orientation` prop, `--color-border` token. |
 | `Grid` | layout | ✅ | Responsive equal-width column grid. `columns` prop (number or `{ base, md, lg }` responsive object, max 6). `gap` prop using DS spacing tiers (element/component/section). `cn()` only, no CVA. |
-| `ToggleBar` | navigation | ✅ | Segmented control with radiogroup semantics. `value`/`onValueChange` controlled API, `items` array with optional icons. `size` (sm/md), `fullWidth` props. Roving tabindex keyboard nav. `cn()` only, no CVA. |
+| `ToggleGroup` | navigation | ✅ | Outlined button-group segmented control with radiogroup semantics. `value`/`onValueChange` controlled API, `items` array with optional icons. `size` (sm/md), `fullWidth` props. Roving tabindex keyboard nav. `cn()` only, no CVA. |
 | `Alert` | feedback | ✅ | CVA component with 4 variants (info/success/warning/error) mapped to DS feedback token pairs. `title` + `children` content model, default icon per variant overridable via `icon` prop. Full `border` (all sides) + subtle bg + `rounded-md`. |
 | `Skeleton` | feedback | ✅ | Loading placeholder with rectangular/circular variants. `cn()` only. `bg-border` + `ds-pulse` keyframe animation. Consumer controls dimensions via `className`. |
 | `LoadingSpinner` | feedback | ✅ | Three sizes (sm/md/lg) with proportional border widths. `aria-label`-first labeling with optional `showLabel`. No `fullScreen` — documented as consumer pattern. `cn()` only, no CVA. |
@@ -150,6 +151,7 @@ The sidebar uses collapsible categories that auto-expand based on the current ro
 | `Accordion` | display | ✅ | Radix compound component (Accordion, AccordionItem, AccordionTrigger, AccordionContent). `type` prop (single/multiple), single defaults to collapsible. CSS keyframe height animation. `showChevron` prop on trigger. `disabled` on items. `divide-y divide-border` between items. `cn()` only, no CVA. |
 | `Card` | display | ✅ | Compound component (Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter). `cn()` only, no CVA. `bg-surface-subtle` + `border-border` + `rounded-md`. CardTitle has polymorphic `as` prop (h1–h6, default h3). |
 | `Table` | display | ✅ | Compound component (Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableCaption, TableFooter, TableMobileList, TableMobileItem). `cn()` only, no CVA. `type-label` for header weight, `divide-y divide-border` row separators, `hover:bg-surface-subtle` row hover. Mobile primitives (TableMobileList + TableMobileItem) for responsive bulletin board pattern. |
+| `OnlyMobileView` | utilities | ✅ | Gate component: renders children on mobile, shows fixed full-screen overlay with smartphone icon + message on `md:+`. Props: `message` (customizable text), `children`, `className`. `cn()` only, no CVA. |
 | `Container` | layout | ✅ | Page shell wrapper. CVA `size` variant (default 1536px / md 768px / sm 640px / prose ~65ch). Polymorphic `as` prop for semantic HTML elements. Responsive padding `px-4 md:px-6 lg:px-8`. |
 | `Icon` | icon | ✅ | Single `<Icon name="..." />` component with static Lucide registry (30 icons: 28 Lucide + 2 custom SVG brand icons). Replaced 19 named `react-icons` components. |
 
@@ -172,7 +174,7 @@ Peer dependencies: `react`, `react-dom`, `react-hook-form`, `@umichkisa-ds/web`
 
 ### Not Yet Implemented (V1 target)
 - `ImageButton`, `ErrorBoundary`
-- `OnlyMobileView`, `UnderConstruction`
+- `UnderConstruction`
 
 - `DatePicker`, `Calendar` (deferred to v1.1)
 

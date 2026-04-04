@@ -469,20 +469,20 @@ type PaginationProps = {
 };
 declare function Pagination({ page, totalPages, onPageChange, siblingCount, className, }: PaginationProps): react_jsx_runtime.JSX.Element;
 
-type ToggleBarItem = {
+type ToggleGroupItem = {
     value: string;
     label: string;
     icon?: ReactNode;
 };
-type ToggleBarProps = {
+type ToggleGroupProps = {
     value: string;
     onValueChange: (value: string) => void;
-    items: ToggleBarItem[];
+    items: ToggleGroupItem[];
     size?: "sm" | "md";
     fullWidth?: boolean;
     className?: string;
 };
-declare function ToggleBar({ value, onValueChange, items, size, fullWidth, className, }: ToggleBarProps): react_jsx_runtime.JSX.Element;
+declare function ToggleGroup({ value, onValueChange, items, size, fullWidth, className, }: ToggleGroupProps): react_jsx_runtime.JSX.Element;
 
 type OnlyMobileViewProps = {
     /** Content to render on mobile screens. */
@@ -496,4 +496,4 @@ declare function OnlyMobileView({ children, message, className, }: OnlyMobileVie
 
 declare const DS_VERSION = "0.1.0";
 
-export { Accordion, AccordionContent, type AccordionContentProps, AccordionItem, type AccordionItemProps, type AccordionProps, AccordionTrigger, type AccordionTriggerProps, Alert, type AlertProps, Avatar, type AvatarProps, Badge, type BadgeProps, Button, type ButtonProps, Card, CardContent, type CardContentProps, CardDescription, type CardDescriptionProps, CardFooter, type CardFooterProps, CardHeader, type CardHeaderProps, type CardProps, CardTitle, type CardTitleProps, Checkbox, type CheckboxProps, Container, type ContainerProps, DS_VERSION, Dialog, DialogClose, type DialogCloseProps, DialogContent, type DialogContentProps, DialogDescription, type DialogDescriptionProps, DialogFooter, type DialogFooterProps, type DialogProps, DialogTitle, type DialogTitleProps, DialogTrigger, type DialogTriggerProps, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownGroup, type DropdownGroupProps, DropdownItem, type DropdownItemProps, type DropdownProps, DropdownSeparator, DropdownTrigger, type DropdownTriggerProps, FormItem, type FormItemProps, Grid, type GridColumns, type GridProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, OnlyMobileView, type OnlyMobileViewProps, Pagination, type PaginationProps, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, RadioGroup, type RadioGroupProps, RadioItem, type RadioItemProps, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Skeleton, type SkeletonProps, StatusView, type StatusViewProps, Switch, type SwitchProps, Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableMobileItem, TableMobileList, TableRow, Tabs, TabsContent, type TabsContentProps, TabsList, type TabsListProps, type TabsProps, TabsTrigger, type TabsTriggerProps, Textarea, type TextareaProps, Toaster, type ToasterProps, ToggleBar, type ToggleBarItem, type ToggleBarProps, Tooltip, type TooltipProps, alertVariants, avatarVariants, badgeVariants, buttonVariants, cn, tabsTriggerVariants };
+export { Accordion, AccordionContent, type AccordionContentProps, AccordionItem, type AccordionItemProps, type AccordionProps, AccordionTrigger, type AccordionTriggerProps, Alert, type AlertProps, Avatar, type AvatarProps, Badge, type BadgeProps, Button, type ButtonProps, Card, CardContent, type CardContentProps, CardDescription, type CardDescriptionProps, CardFooter, type CardFooterProps, CardHeader, type CardHeaderProps, type CardProps, CardTitle, type CardTitleProps, Checkbox, type CheckboxProps, Container, type ContainerProps, DS_VERSION, Dialog, DialogClose, type DialogCloseProps, DialogContent, type DialogContentProps, DialogDescription, type DialogDescriptionProps, DialogFooter, type DialogFooterProps, type DialogProps, DialogTitle, type DialogTitleProps, DialogTrigger, type DialogTriggerProps, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownGroup, type DropdownGroupProps, DropdownItem, type DropdownItemProps, type DropdownProps, DropdownSeparator, DropdownTrigger, type DropdownTriggerProps, FormItem, type FormItemProps, Grid, type GridColumns, type GridProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, OnlyMobileView, type OnlyMobileViewProps, Pagination, type PaginationProps, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, RadioGroup, type RadioGroupProps, RadioItem, type RadioItemProps, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Skeleton, type SkeletonProps, StatusView, type StatusViewProps, Switch, type SwitchProps, Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableMobileItem, TableMobileList, TableRow, Tabs, TabsContent, type TabsContentProps, TabsList, type TabsListProps, type TabsProps, TabsTrigger, type TabsTriggerProps, Textarea, type TextareaProps, Toaster, type ToasterProps, ToggleGroup, type ToggleGroupItem, type ToggleGroupProps, Tooltip, type TooltipProps, alertVariants, avatarVariants, badgeVariants, buttonVariants, cn, tabsTriggerVariants };

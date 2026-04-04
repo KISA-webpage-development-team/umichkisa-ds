@@ -112,15 +112,16 @@ Key changes:
 - No built-in routing or auth dependencies — consumer provides action buttons
 - All text defaults are in Korean but overridable via `title` and `description` props
 
-## ToggleBar (was CustomToggleBar)
+## ToggleGroup (was CustomToggleBar)
 
-- `CustomToggleBar` renamed to `ToggleBar`
+- `CustomToggleBar` renamed to `ToggleGroup`
 - `activeView` renamed to `value`
 - `setActiveView` renamed to `onValueChange`
 - `viewList` renamed to `items`
-- `ViewListItem` type renamed to `ToggleBarItem`
+- `ViewListItem` type renamed to `ToggleGroupItem`
 - Item shape: `view` → `value`, `text` → `label`, `icon` stays optional
 - New `size` prop: `"sm" | "md"` (default `"md"`)
 - New `fullWidth` prop (default `false`)
+- Visual restyle: tab-like bottom-border → outlined button group
 - Moved from `layout/` to `navigation/` category
 - Separate CSS file (`styles.css`) removed — all styling is inline Tailwind

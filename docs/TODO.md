@@ -105,8 +105,8 @@ Only show categories with ≥1 shipped component. When a batch ships a component
 - [x] Table (new)
 
 ### Batch 13 — Standalone utilities
-- [x] ToggleBar (audit)
-- [ ] OnlyMobileView (new)
+- [x] ToggleGroup (was ToggleBar, audit)
+- [x] OnlyMobileView (new)
 
 ### Batch 14 — Date & Time
 - [ ] Calendar (new)

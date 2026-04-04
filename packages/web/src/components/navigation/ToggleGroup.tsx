@@ -3,29 +3,29 @@
 import { useRef, useCallback, type ReactNode, type KeyboardEvent } from "react";
 import { cn } from "@/utils/cn";
 
-export type ToggleBarItem = {
+export type ToggleGroupItem = {
   value: string;
   label: string;
   icon?: ReactNode;
 };
 
-export type ToggleBarProps = {
+export type ToggleGroupProps = {
   value: string;
   onValueChange: (value: string) => void;
-  items: ToggleBarItem[];
+  items: ToggleGroupItem[];
   size?: "sm" | "md";
   fullWidth?: boolean;
   className?: string;
 };
 
-export function ToggleBar({
+export function ToggleGroup({
   value,
   onValueChange,
   items,
   size = "md",
   fullWidth = false,
   className,
-}: ToggleBarProps) {
+}: ToggleGroupProps) {
   const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const focusItem = useCallback(
@@ -72,7 +72,11 @@ export function ToggleBar({
   return (
     <div
       role="radiogroup"
-      className={cn("flex", fullWidth && "w-full", className)}
+      className={cn(
+        "inline-flex items-center rounded-md border border-border",
+        fullWidth && "w-full",
+        className
+      )}
     >
       {items.map((item, index) => {
         const isSelected = value === item.value;
@@ -89,14 +93,14 @@ export function ToggleBar({
             onClick={() => onValueChange(item.value)}
             onKeyDown={(e) => handleKeyDown(e, index)}
             className={cn(
-              "flex items-center border-b-2 cursor-pointer transition-colors",
+              "flex items-center cursor-pointer transition-colors rounded-md",
               isSmall
-                ? "type-body-sm px-2 py-1.5 gap-1"
-                : "type-body px-3 py-2 gap-2",
+                ? "type-body-sm px-2 py-1 gap-1"
+                : "type-body px-3 py-1.5 gap-2",
               fullWidth && "flex-1 justify-center",
               isSelected
-                ? "text-foreground !font-semibold border-[var(--color-brand-primary)]"
-                : "text-muted-foreground border-transparent hover:text-foreground hover:bg-[var(--color-surface-subtle)] active:opacity-90",
+                ? "bg-[var(--color-surface-subtle)] text-foreground !font-semibold"
+                : "text-muted-foreground hover:text-foreground hover:bg-[var(--color-surface-subtle)] active:opacity-90",
               "outline-none focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-[var(--color-focus-ring)] focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]"
             )}
           >
