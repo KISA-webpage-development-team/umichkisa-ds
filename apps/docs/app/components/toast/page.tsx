@@ -34,13 +34,13 @@ const variantsCode = `import { toast } from '@umichkisa-ds/web'
 <Button variant="secondary" onClick={() => toast.info('This is an informational message')}>
   Info
 </Button>
-<Button variant="secondary" onClick={() => toast.success('Action completed successfully')}>
+<Button onClick={() => toast.success('Action completed successfully')}>
   Success
 </Button>
 <Button variant="secondary" onClick={() => toast.warning('Please review before continuing')}>
   Warning
 </Button>
-<Button variant="secondary" onClick={() => toast.error('Something went wrong')}>
+<Button variant="destructive" onClick={() => toast.error('Something went wrong')}>
   Error
 </Button>`
 
@@ -153,13 +153,13 @@ export default function ToastPage() {
           <Button variant="secondary" onClick={() => toast.info('This is an informational message')}>
             Info
           </Button>
-          <Button variant="secondary" onClick={() => toast.success('Action completed successfully')}>
+          <Button onClick={() => toast.success('Action completed successfully')}>
             Success
           </Button>
           <Button variant="secondary" onClick={() => toast.warning('Please review before continuing')}>
             Warning
           </Button>
-          <Button variant="secondary" onClick={() => toast.error('Something went wrong')}>
+          <Button variant="destructive" onClick={() => toast.error('Something went wrong')}>
             Error
           </Button>
         </div>
