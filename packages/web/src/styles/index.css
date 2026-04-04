@@ -116,6 +116,16 @@
   to   { opacity: 0; transform: translateY(8px) scale(0.96); }
 }
 
+@keyframes accordion-down {
+  from { height: 0; }
+  to   { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to   { height: 0; }
+}
+
 @layer ds-base {
   *, *::before, *::after {
     box-sizing: border-box;
