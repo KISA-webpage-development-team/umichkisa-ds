@@ -18,7 +18,7 @@
  * min-h-[calc(100vh-var(--docs-header-h))].
  */
 :root {
-  --docs-header-h:  80px;
+  --docs-header-h:  64px;
   --docs-sidebar-w: 240px;
 
   /* z-index scale — never use values outside this set */
