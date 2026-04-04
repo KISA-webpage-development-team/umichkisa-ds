@@ -1281,14 +1281,69 @@ function Tooltip({
   ] }) });
 }
 
-// src/components/divider/Divider.tsx
+// src/components/display/Card.tsx
 import { jsx as jsx29 } from "react/jsx-runtime";
+function Card({ className, ...props }) {
+  return /* @__PURE__ */ jsx29(
+    "div",
+    {
+      className: cn(
+        "bg-surface-subtle border border-border rounded-md",
+        className
+      ),
+      ...props
+    }
+  );
+}
+function CardHeader({ className, ...props }) {
+  return /* @__PURE__ */ jsx29("div", { className: cn("p-4", className), ...props });
+}
+function CardTitle({
+  as: Component = "h3",
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsx29(
+    Component,
+    {
+      className: cn("type-h4 text-foreground", className),
+      ...props
+    }
+  );
+}
+function CardDescription({
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsx29(
+    "p",
+    {
+      className: cn("type-body-sm text-muted-foreground", className),
+      ...props
+    }
+  );
+}
+function CardContent({ className, ...props }) {
+  return /* @__PURE__ */ jsx29("div", { className: cn("px-4 pb-4", className), ...props });
+}
+function CardFooter({ className, ...props }) {
+  return /* @__PURE__ */ jsx29(
+    "div",
+    {
+      className: cn("flex items-center gap-2 px-4 pb-4", className),
+      ...props
+    }
+  );
+}
+
+// src/components/divider/Divider.tsx
+import { jsx as jsx30 } from "react/jsx-runtime";
 function Divider({
   orientation = "horizontal",
   className,
   ...props
 }) {
-  return /* @__PURE__ */ jsx29(
+  return /* @__PURE__ */ jsx30(
     "hr",
     {
       role: "separator",
@@ -1306,7 +1361,7 @@ function Divider({
 // src/components/navigation/Tabs.tsx
 import { createContext, useContext, useRef, useState as useState2, useCallback, useEffect } from "react";
 import { cva as cva6 } from "class-variance-authority";
-import { jsx as jsx30 } from "react/jsx-runtime";
+import { jsx as jsx31 } from "react/jsx-runtime";
 var TabsContext = createContext(null);
 function useTabsContext() {
   const ctx = useContext(TabsContext);
@@ -1351,7 +1406,7 @@ function Tabs({
   const unregisterTab = useCallback((tabValue) => {
     registeredTabs.current.delete(tabValue);
   }, []);
-  return /* @__PURE__ */ jsx30(
+  return /* @__PURE__ */ jsx31(
     TabsContext.Provider,
     {
       value: {
@@ -1362,7 +1417,7 @@ function Tabs({
         registerTab,
         unregisterTab
       },
-      children: /* @__PURE__ */ jsx30("div", { className, children })
+      children: /* @__PURE__ */ jsx31("div", { className, children })
     }
   );
 }
@@ -1376,7 +1431,7 @@ function TabsList({
   const ctx = useTabsContext();
   const resolvedVariant = variant ?? ctx.variant;
   const resolvedSize = size ?? ctx.size;
-  return /* @__PURE__ */ jsx30(
+  return /* @__PURE__ */ jsx31(
     TabsContext.Provider,
     {
       value: {
@@ -1384,7 +1439,7 @@ function TabsList({
         variant: resolvedVariant,
         size: resolvedSize
       },
-      children: /* @__PURE__ */ jsx30(
+      children: /* @__PURE__ */ jsx31(
         "div",
         {
           role: "tablist",
@@ -1476,7 +1531,7 @@ function TabsTrigger({ value, disabled, className, children }) {
       ctx.onValueChange(nextValue);
     }
   }
-  return /* @__PURE__ */ jsx30(
+  return /* @__PURE__ */ jsx31(
     "button",
     {
       role: "tab",
@@ -1506,7 +1561,7 @@ function TabsContent({ value, className, children }) {
   if (!isActive) return null;
   const triggerId = `tab-${value}`;
   const panelId = `tabpanel-${value}`;
-  return /* @__PURE__ */ jsx30(
+  return /* @__PURE__ */ jsx31(
     "div",
     {
       role: "tabpanel",
@@ -1526,6 +1581,12 @@ export {
   Avatar,
   Badge,
   Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
   Checkbox,
   Container,
   DS_VERSION,

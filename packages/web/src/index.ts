@@ -9,5 +9,6 @@ export * from "./components/layout";
 export * from "./components/feedback";
 export * from "./components/icon";
 export * from "./components/overlay";
+export * from "./components/display";
 export * from "./components/divider";
 export * from "./components/navigation";

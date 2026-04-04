@@ -35,6 +35,12 @@ __export(src_exports, {
   Avatar: () => Avatar,
   Badge: () => Badge,
   Button: () => Button,
+  Card: () => Card,
+  CardContent: () => CardContent,
+  CardDescription: () => CardDescription,
+  CardFooter: () => CardFooter,
+  CardHeader: () => CardHeader,
+  CardTitle: () => CardTitle,
   Checkbox: () => Checkbox,
   Container: () => Container,
   DS_VERSION: () => DS_VERSION,
@@ -1337,14 +1343,69 @@ function Tooltip({
   ] }) });
 }
 
-// src/components/divider/Divider.tsx
+// src/components/display/Card.tsx
 var import_jsx_runtime29 = require("react/jsx-runtime");
+function Card({ className, ...props }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+    "div",
+    {
+      className: cn(
+        "bg-surface-subtle border border-border rounded-md",
+        className
+      ),
+      ...props
+    }
+  );
+}
+function CardHeader({ className, ...props }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: cn("p-4", className), ...props });
+}
+function CardTitle({
+  as: Component = "h3",
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+    Component,
+    {
+      className: cn("type-h4 text-foreground", className),
+      ...props
+    }
+  );
+}
+function CardDescription({
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+    "p",
+    {
+      className: cn("type-body-sm text-muted-foreground", className),
+      ...props
+    }
+  );
+}
+function CardContent({ className, ...props }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: cn("px-4 pb-4", className), ...props });
+}
+function CardFooter({ className, ...props }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+    "div",
+    {
+      className: cn("flex items-center gap-2 px-4 pb-4", className),
+      ...props
+    }
+  );
+}
+
+// src/components/divider/Divider.tsx
+var import_jsx_runtime30 = require("react/jsx-runtime");
 function Divider({
   orientation = "horizontal",
   className,
   ...props
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
     "hr",
     {
       role: "separator",
@@ -1362,7 +1423,7 @@ function Divider({
 // src/components/navigation/Tabs.tsx
 var import_react2 = require("react");
 var import_class_variance_authority6 = require("class-variance-authority");
-var import_jsx_runtime30 = require("react/jsx-runtime");
+var import_jsx_runtime31 = require("react/jsx-runtime");
 var TabsContext = (0, import_react2.createContext)(null);
 function useTabsContext() {
   const ctx = (0, import_react2.useContext)(TabsContext);
@@ -1407,7 +1468,7 @@ function Tabs({
   const unregisterTab = (0, import_react2.useCallback)((tabValue) => {
     registeredTabs.current.delete(tabValue);
   }, []);
-  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
     TabsContext.Provider,
     {
       value: {
@@ -1418,7 +1479,7 @@ function Tabs({
         registerTab,
         unregisterTab
       },
-      children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("div", { className, children })
+      children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("div", { className, children })
     }
   );
 }
@@ -1432,7 +1493,7 @@ function TabsList({
   const ctx = useTabsContext();
   const resolvedVariant = variant ?? ctx.variant;
   const resolvedSize = size ?? ctx.size;
-  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
     TabsContext.Provider,
     {
       value: {
@@ -1440,7 +1501,7 @@ function TabsList({
         variant: resolvedVariant,
         size: resolvedSize
       },
-      children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+      children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
         "div",
         {
           role: "tablist",
@@ -1532,7 +1593,7 @@ function TabsTrigger({ value, disabled, className, children }) {
       ctx.onValueChange(nextValue);
     }
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
     "button",
     {
       role: "tab",
@@ -1562,7 +1623,7 @@ function TabsContent({ value, className, children }) {
   if (!isActive) return null;
   const triggerId = `tab-${value}`;
   const panelId = `tabpanel-${value}`;
-  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
     "div",
     {
       role: "tabpanel",
@@ -1583,6 +1644,12 @@ var DS_VERSION = "0.1.0";
   Avatar,
   Badge,
   Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
   Checkbox,
   Container,
   DS_VERSION,
