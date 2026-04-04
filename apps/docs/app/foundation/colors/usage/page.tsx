@@ -1,8 +1,9 @@
 import { Container } from '@umichkisa-ds/web'
 import { DoDont } from '@/components/DoDont'
 import { Do, Dont } from '@/components/DoDont'
+import { CodeBlock } from '@/components/CodeBlock'
 
-export default function ColorsUsagePage() {
+export default async function ColorsUsagePage() {
   return (
     <Container size="md" as="article">
 
@@ -75,11 +76,9 @@ export default function ColorsUsagePage() {
         surface scale.
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`--color-surface               (white)      Page background
+      <CodeBlock code={`--color-surface               (white)      Page background
   └── --color-surface-subtle  (gray-100)   Cards, panels
-        └── --color-surface-muted  (gray-50)    Items inside cards`}</code>
-      </pre>
+        └── --color-surface-muted  (gray-50)    Items inside cards`} lang="text" />
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         A practical example: the page sits on{' '}

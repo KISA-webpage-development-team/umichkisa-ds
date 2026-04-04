@@ -1,5 +1,6 @@
 import { Container } from '@umichkisa-ds/web'
-export default function LayoutSpacingPage() {
+import { CodeBlock } from '@/components/CodeBlock'
+export default async function LayoutSpacingPage() {
   return (
     <Container size="md" as="article">
 
@@ -183,11 +184,9 @@ export default function LayoutSpacingPage() {
         The full page shell combines max-width, centering, and the default inset into one element. This is the wrapping element that all page content lives inside.
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`<div class="mx-auto w-full max-w-screen-2xl px-4 md:px-10 lg:px-16">
+      <CodeBlock code={`<div class="mx-auto w-full max-w-screen-2xl px-4 md:px-10 lg:px-16">
   <!-- page content -->
-</div>`}</code>
-      </pre>
+</div>`} lang="tsx" />
 
       <ul className="type-body text-foreground max-w-prose flex flex-col gap-2">
         <li className="flex gap-2">
@@ -240,14 +239,12 @@ export default function LayoutSpacingPage() {
         Some elements — navbars, hero banners, full-width section dividers — must span the full viewport width without being clipped by max-width. Use a full-width outer wrapper with the page shell pattern nested inside for content alignment:
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`<div class="w-full bg-brand-primary">
+      <CodeBlock code={`<div class="w-full bg-brand-primary">
   <!-- full-bleed background -->
   <div class="mx-auto w-full max-w-screen-2xl px-4 md:px-10 lg:px-16">
     <!-- constrained content — aligns with the rest of the page -->
   </div>
-</div>`}</code>
-      </pre>
+</div>`} lang="tsx" />
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         The outer element carries the background color or image and spans the full viewport. The inner element applies max-width and inset so that content aligns with the rest of the page layout.

@@ -1,5 +1,6 @@
 import { Container } from '@umichkisa-ds/web'
-export default function TypographyFontsPage() {
+import { CodeBlock } from '@/components/CodeBlock'
+export default async function TypographyFontsPage() {
   return (
     <Container size="md" as="article">
 
@@ -67,9 +68,7 @@ export default function TypographyFontsPage() {
         If SejongHospital fails to load, the browser falls back to:
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`'SejongHospital', system-ui, -apple-system, sans-serif`}</code>
-      </pre>
+      <CodeBlock code={`'SejongHospital', system-ui, -apple-system, sans-serif`} lang="css" />
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         There is no equivalent decorative fallback — the heading degrades gracefully to a
@@ -144,9 +143,7 @@ export default function TypographyFontsPage() {
         If Pretendard fails to load, the browser falls back to:
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, -apple-system, sans-serif`}</code>
-      </pre>
+      <CodeBlock code={`'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, -apple-system, sans-serif`} lang="css" />
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         The Korean-capable fallbacks ({' '}
@@ -248,8 +245,7 @@ export default function TypographyFontsPage() {
         matching CSS variable names:
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`import localFont from 'next/font/local'
+      <CodeBlock code={`import localFont from 'next/font/local'
 
 const sejongBold = localFont({
   src: '<path-to>/Sejonghospital-Bold.ttf',
@@ -261,8 +257,7 @@ const sejongLight = localFont({
   src: '<path-to>/Sejonghospital-Light.ttf',
   variable: '--font-sejong-light',
   display: 'swap',
-})`}</code>
-      </pre>
+})`} lang="tsx" />
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         The font files live in{' '}
@@ -281,13 +276,11 @@ const sejongLight = localFont({
         element so the CSS variables are available to all descendants:
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`<html lang="en" className={\`\${sejongBold.variable} \${sejongLight.variable}\`}>
+      <CodeBlock code={`<html lang="en" className={\`\${sejongBold.variable} \${sejongLight.variable}\`}>
   <body>
     {children}
   </body>
-</html>`}</code>
-      </pre>
+</html>`} lang="tsx" />
 
       <h3 className="type-h3 mt-6 mb-2 text-foreground">3. Load Pretendard from CDN</h3>
       <p className="type-body mb-4 text-foreground max-w-prose">
@@ -298,15 +291,13 @@ const sejongLight = localFont({
         hint to speed up the connection:
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`<head>
+      <CodeBlock code={`<head>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
   />
-</head>`}</code>
-      </pre>
+</head>`} lang="tsx" />
 
       <h3 className="type-h3 mt-6 mb-2 text-foreground">How it works</h3>
       <p className="type-body mb-4 text-foreground max-w-prose">

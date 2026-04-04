@@ -1,7 +1,8 @@
 import { Container } from '@umichkisa-ds/web'
 import Link from 'next/link'
+import { CodeBlock } from '@/components/CodeBlock'
 
-export default function LayoutOverviewPage() {
+export default async function LayoutOverviewPage() {
   return (
     <Container size="md" as="article">
 
@@ -99,8 +100,7 @@ export default function LayoutOverviewPage() {
         This allows keyboard and screen reader users to bypass repeated navigation on every page load.
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`<a
+      <CodeBlock code={`<a
   href="#main-content"
   class="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-4 focus-visible:left-4 focus-visible:z-50 focus-visible:px-4 focus-visible:py-2 focus-visible:bg-surface focus-visible:text-foreground focus-visible:rounded focus-visible:shadow-lg"
 >
@@ -108,8 +108,7 @@ export default function LayoutOverviewPage() {
 </a>
 <main id="main-content">
   <!-- page content -->
-</main>`}</code>
-      </pre>
+</main>`} lang="tsx" />
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         These are implementation requirements for the page shell, not component-level concerns. They are configured once and apply globally.

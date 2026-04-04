@@ -1,5 +1,6 @@
 import { Container } from '@umichkisa-ds/web'
-export default function IconographyAccessibilityPage() {
+import { CodeBlock } from '@/components/CodeBlock'
+export default async function IconographyAccessibilityPage() {
   return (
     <Container size="md" as="article">
 
@@ -45,14 +46,12 @@ export default function IconographyAccessibilityPage() {
         Use decorative icons whenever visible text already describes the action or content:
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`// The button label "Save changes" is the announcement.
+      <CodeBlock code={`// The button label "Save changes" is the announcement.
 // The icon adds visual reinforcement — screen readers ignore it.
 <button>
   <Icon name="save" />
   Save changes
-</button>`}</code>
-      </pre>
+</button>`} lang="tsx" />
 
       <hr className="my-8 border-0 border-t border-border" />
 
@@ -74,10 +73,8 @@ export default function IconographyAccessibilityPage() {
         text label nearby explains what it represents:
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`// A status dot with no label — the icon must announce its own meaning.
-<Icon name="check-circle" label="Verified" />`}</code>
-      </pre>
+      <CodeBlock code={`// A status dot with no label — the icon must announce its own meaning.
+<Icon name="check-circle" label="Verified" />`} lang="tsx" />
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         Do not use{' '}
@@ -145,14 +142,12 @@ export default function IconographyAccessibilityPage() {
         on the button so the icon is centered inside regardless of its visual size:
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`<button
+      <CodeBlock code={`<button
   aria-label="Close"
   className="flex items-center justify-center min-w-[44px] min-h-[44px]"
 >
   <Icon name="x" />
-</button>`}</code>
-      </pre>
+</button>`} lang="tsx" />
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         This approach works for any icon size — the wrapper always meets 44×44px. Never rely on padding calculated from the icon{"'"}s pixel size, as changing the{' '}
@@ -195,16 +190,14 @@ export default function IconographyAccessibilityPage() {
         {' '}The label carries the accessible meaning; the icon adds visual reinforcement.
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`// ✅ correct — icon + text label; icon contrast alone does not matter
+      <CodeBlock code={`// ✅ correct — icon + text label; icon contrast alone does not matter
 <span className="flex items-center gap-2">
   <span className="text-success"><Icon name="check-circle" /></span>
   <span className="text-foreground">Profile saved</span>
 </span>
 
 // ❌ wrong — standalone icon with --color-success, fails 3:1
-<span className="text-success"><Icon name="check-circle" label="Success" /></span>`}</code>
-      </pre>
+<span className="text-success"><Icon name="check-circle" label="Success" /></span>`} lang="tsx" />
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-error</code>{' '}

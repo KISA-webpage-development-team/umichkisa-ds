@@ -1,5 +1,6 @@
 import { Container } from '@umichkisa-ds/web'
-export default function IconographyLibraryPage() {
+import { CodeBlock } from '@/components/CodeBlock'
+export default async function IconographyLibraryPage() {
   return (
     <Container size="md" as="article">
 
@@ -68,11 +69,9 @@ export default function IconographyLibraryPage() {
         component takes the same name as a string:
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`<Icon name="arrow-right" />
+      <CodeBlock code={`<Icon name="arrow-right" />
 <Icon name="chevron-down" />
-<Icon name="alert-triangle" />`}</code>
-      </pre>
+<Icon name="alert-triangle" />`} lang="tsx" />
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         The name in the{' '}

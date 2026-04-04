@@ -1,5 +1,6 @@
 import { Container } from '@umichkisa-ds/web'
-export default function IconographySizesPage() {
+import { CodeBlock } from '@/components/CodeBlock'
+export default async function IconographySizesPage() {
   return (
     <Container size="md" as="article">
 
@@ -175,13 +176,11 @@ export default function IconographySizesPage() {
         prop.
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`// ✅ correct — fixed size, component handles responsiveness
+      <CodeBlock code={`// ✅ correct — fixed size, component handles responsiveness
 <Icon name="search" size="md" />
 
 // ❌ wrong — breakpoint prefix on icon size
-<Icon name="search" size="sm" className="md:w-5 md:h-5" />`}</code>
-      </pre>
+<Icon name="search" size="sm" className="md:w-5 md:h-5" />`} lang="tsx" />
 
     </Container>
   )

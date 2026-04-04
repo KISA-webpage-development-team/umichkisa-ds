@@ -1,8 +1,9 @@
 import { Container } from '@umichkisa-ds/web'
 import { ColorSwatch } from '@/components/ColorSwatch'
 import { ColorSwatchGrid } from '@/components/ColorSwatchGrid'
+import { CodeBlock } from '@/components/CodeBlock'
 
-export default function ColorsTokensPage() {
+export default async function ColorsTokensPage() {
   return (
     <Container size="md" as="article">
 
@@ -414,14 +415,12 @@ export default function ColorsTokensPage() {
         <strong className="font-semibold text-foreground">Focus ring implementation pattern:</strong>
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`/* Applied to every interactive element */
+      <CodeBlock code={`/* Applied to every interactive element */
 :focus-visible {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
   box-shadow: 0 0 0 4px var(--color-brand-primary);
-}`}</code>
-      </pre>
+}`} lang="css" />
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         The{' '}

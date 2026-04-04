@@ -1,5 +1,6 @@
 import { Container } from '@umichkisa-ds/web'
-export default function ColorsOverviewPage() {
+import { CodeBlock } from '@/components/CodeBlock'
+export default async function ColorsOverviewPage() {
   return (
     <Container size="md" as="article">
 
@@ -94,10 +95,8 @@ export default function ColorsOverviewPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">packages/web/src/tokens/semantic.css</code>.
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`--color-brand-primary: var(--primitive-michigan-blue);
---color-foreground:    var(--primitive-gray-900);`}</code>
-      </pre>
+      <CodeBlock code={`--color-brand-primary: var(--primitive-michigan-blue);
+--color-foreground:    var(--primitive-gray-900);`} lang="css" />
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         The name tells you what the color is <em>for</em>, not what it looks like. This matters
@@ -115,12 +114,10 @@ export default function ColorsOverviewPage() {
         The component layer is where semantic tokens get applied to actual UI elements.
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`.btn-primary {
+      <CodeBlock code={`.btn-primary {
   background-color: var(--color-brand-primary);
   color:            var(--color-brand-foreground);
-}`}</code>
-      </pre>
+}`} lang="css" />
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         The component does not know what color{' '}

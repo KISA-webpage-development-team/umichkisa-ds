@@ -1,8 +1,9 @@
 import { Container } from '@umichkisa-ds/web'
 import { DoDont } from '@/components/DoDont'
 import { Do, Dont } from '@/components/DoDont'
+import { CodeBlock } from '@/components/CodeBlock'
 
-export default function IconographyUsagePage() {
+export default async function IconographyUsagePage() {
   return (
     <Container size="md" as="article">
 
@@ -18,16 +19,14 @@ export default function IconographyUsagePage() {
         system. Never import a Lucide icon directly into a component.
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`// Default size (md = 20px), decorative
+      <CodeBlock code={`// Default size (md = 20px), decorative
 <Icon name="arrow-right" />
 
 // Explicit size
 <Icon name="arrow-right" size="lg" />
 
 // Semantic — announced by screen readers
-<Icon name="x" label="Close" />`}</code>
-      </pre>
+<Icon name="x" label="Close" />`} lang="tsx" />
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         <strong className="font-semibold text-foreground">Props:</strong>
@@ -91,15 +90,13 @@ export default function IconographyUsagePage() {
         {' '}The wrapper provides the interaction model, the keyboard target, and the accessible label.
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`// ✅ correct — button provides interaction semantics
+      <CodeBlock code={`// ✅ correct — button provides interaction semantics
 <button aria-label="Close">
   <Icon name="x" />
 </button>
 
 // ❌ wrong — icon has no interaction semantics
-<Icon name="x" onClick={close} />`}</code>
-      </pre>
+<Icon name="x" onClick={close} />`} lang="tsx" />
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         The wrapper also provides the touch target. Interactive elements must have a
@@ -119,12 +116,10 @@ export default function IconographyUsagePage() {
         provides consistent spacing.
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`<button className="flex items-center gap-2">
+      <CodeBlock code={`<button className="flex items-center gap-2">
   <Icon name="plus" size="sm" />
   <span>Add member</span>
-</button>`}</code>
-      </pre>
+</button>`} lang="tsx" />
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         The{' '}
@@ -149,13 +144,11 @@ export default function IconographyUsagePage() {
         for sighted users who may not recognize the icon.
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`<Tooltip content="Close dialog">
+      <CodeBlock code={`<Tooltip content="Close dialog">
   <button aria-label="Close dialog">
     <Icon name="x" />
   </button>
-</Tooltip>`}</code>
-      </pre>
+</Tooltip>`} lang="tsx" />
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         The{' '}
@@ -180,8 +173,7 @@ export default function IconographyUsagePage() {
         {' '}To change an icon{"'"}s color, change the text color of its container using semantic tokens.
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`// Muted info icon
+      <CodeBlock code={`// Muted info icon
 <span className="text-muted-foreground">
   <Icon name="info" />
 </span>
@@ -189,8 +181,7 @@ export default function IconographyUsagePage() {
 // Error state
 <span className="text-error">
   <Icon name="alert-triangle" />
-</span>`}</code>
-      </pre>
+</span>`} lang="tsx" />
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         Never pass a color prop to{' '}
@@ -213,11 +204,9 @@ export default function IconographyUsagePage() {
         — the same token as disabled text. Never reduce size or weight to communicate disabled state. Only color changes.
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`<span className="text-disabled-foreground">
+      <CodeBlock code={`<span className="text-disabled-foreground">
   <Icon name="lock" />
-</span>`}</code>
-      </pre>
+</span>`} lang="tsx" />
 
       <hr className="my-8 border-0 border-t border-border" />
 
@@ -234,15 +223,13 @@ export default function IconographyUsagePage() {
         prop.
       </p>
 
-      <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-        <code className="type-caption font-mono text-foreground">{`// ✅ correct — component variant controls icon size internally
+      <CodeBlock code={`// ✅ correct — component variant controls icon size internally
 <Button size="sm"> {/* Button uses sm icon internally on mobile */}
   <Icon name="plus" size="sm" />
 </Button>
 
 // ❌ wrong — breakpoint prefix on the icon directly
-<Icon name="plus" size="sm" className="md:w-5 md:h-5" />`}</code>
-      </pre>
+<Icon name="plus" size="sm" className="md:w-5 md:h-5" />`} lang="tsx" />
 
       <hr className="my-8 border-0 border-t border-border" />
 
@@ -254,17 +241,13 @@ export default function IconographyUsagePage() {
       <DoDont>
         <Do>
           <p className="type-body text-foreground">Wrap interactive icons in a <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">button</code> or <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">a</code>. The wrapper carries the interaction semantics and accessible label.</p>
-          <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-            <code className="type-caption font-mono text-foreground">{`<button aria-label="Delete">
+          <CodeBlock code={`<button aria-label="Delete">
   <Icon name="trash-2" />
-</button>`}</code>
-          </pre>
+</button>`} lang="tsx" />
         </Do>
         <Dont>
           <p className="type-body text-foreground">Attach event handlers directly to <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Icon</code>. The SVG element has no button role and is not keyboard-reachable by default.</p>
-          <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-            <code className="type-caption font-mono text-foreground">{`<Icon name="trash-2" onClick={handleDelete} />`}</code>
-          </pre>
+          <CodeBlock code={`<Icon name="trash-2" onClick={handleDelete} />`} lang="tsx" />
         </Dont>
       </DoDont>
 
@@ -273,15 +256,11 @@ export default function IconographyUsagePage() {
       <DoDont>
         <Do>
           <p className="type-body text-foreground">Use the <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size</code> prop from the defined scale. Every size maps to a predictable pixel value and 4px grid step.</p>
-          <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-            <code className="type-caption font-mono text-foreground">{`<Icon name="search" size="sm" />`}</code>
-          </pre>
+          <CodeBlock code={`<Icon name="search" size="sm" />`} lang="tsx" />
         </Do>
         <Dont>
           <p className="type-body text-foreground">Apply Tailwind text size classes to icons. Font-size utilities are not reliable for SVG sizing and produce unpredictable results.</p>
-          <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-            <code className="type-caption font-mono text-foreground">{`<Icon name="search" className="text-xl" />`}</code>
-          </pre>
+          <CodeBlock code={`<Icon name="search" className="text-xl" />`} lang="tsx" />
         </Dont>
       </DoDont>
 
@@ -290,17 +269,13 @@ export default function IconographyUsagePage() {
       <DoDont>
         <Do>
           <p className="type-body text-foreground">Control icon color through the parent{"'"}s text color using semantic tokens. The icon inherits <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">currentColor</code>.</p>
-          <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-            <code className="type-caption font-mono text-foreground">{`<span className="text-error">
+          <CodeBlock code={`<span className="text-error">
   <Icon name="alert-triangle" />
-</span>`}</code>
-          </pre>
+</span>`} lang="tsx" />
         </Do>
         <Dont>
           <p className="type-body text-foreground">Pass raw color values inline to an icon. This bypasses the semantic token system and cannot be updated globally.</p>
-          <pre className="overflow-x-auto max-w-full rounded-lg bg-surface-muted p-4 my-4">
-            <code className="type-caption font-mono text-foreground">{`<Icon name="alert-triangle" color="#ef4444" />`}</code>
-          </pre>
+          <CodeBlock code={`<Icon name="alert-triangle" color="#ef4444" />`} lang="tsx" />
         </Dont>
       </DoDont>
 
