@@ -39,6 +39,7 @@ __export(src_exports, {
   Avatar: () => Avatar,
   Badge: () => Badge,
   Button: () => Button,
+  Calendar: () => Calendar,
   Card: () => Card,
   CardContent: () => CardContent,
   CardDescription: () => CardDescription,
@@ -2058,6 +2059,87 @@ function OnlyMobileView({
   ] });
 }
 
+// src/components/date/Calendar.tsx
+var import_react_day_picker = require("react-day-picker");
+var import_jsx_runtime36 = require("react/jsx-runtime");
+function Chevron({
+  orientation
+}) {
+  const name = orientation === "left" ? "chevron-left" : "chevron-right";
+  return /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(Icon, { name, size: "sm" });
+}
+function Calendar({
+  className,
+  showOutsideDays = true,
+  classNames: classNamesProp,
+  components: componentsProp,
+  ...props
+}) {
+  return /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(
+    import_react_day_picker.DayPicker,
+    {
+      showOutsideDays,
+      className: cn("p-3", className),
+      classNames: {
+        months: "flex flex-col md:flex-row gap-4",
+        month: "flex flex-col gap-4",
+        month_caption: "flex justify-center items-center pt-1 relative",
+        caption_label: "type-body-sm !font-semibold text-foreground",
+        nav: "flex items-center gap-1",
+        button_previous: cn(
+          "absolute left-1 top-0 z-10",
+          "inline-flex items-center justify-center",
+          "h-7 w-7 rounded-md border border-border bg-surface",
+          "text-foreground hover:bg-surface-subtle",
+          "outline-2 outline-offset-2 outline-transparent",
+          "focus-visible:outline-focus-ring focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]",
+          "relative after:absolute after:inset-1/2 after:-translate-x-1/2 after:-translate-y-1/2",
+          "after:min-w-[44px] after:min-h-[44px]"
+        ),
+        button_next: cn(
+          "absolute right-1 top-0 z-10",
+          "inline-flex items-center justify-center",
+          "h-7 w-7 rounded-md border border-border bg-surface",
+          "text-foreground hover:bg-surface-subtle",
+          "outline-2 outline-offset-2 outline-transparent",
+          "focus-visible:outline-focus-ring focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]",
+          "relative after:absolute after:inset-1/2 after:-translate-x-1/2 after:-translate-y-1/2",
+          "after:min-w-[44px] after:min-h-[44px]"
+        ),
+        month_grid: "w-full border-collapse",
+        weekdays: "flex",
+        weekday: "type-caption text-muted-foreground w-9 text-center",
+        week: "flex w-full mt-1",
+        day: "relative w-9 h-9 text-center p-0",
+        day_button: cn(
+          "inline-flex items-center justify-center w-9 h-9 rounded-md",
+          "type-body-sm text-foreground",
+          "hover:bg-surface-subtle",
+          "outline-2 outline-offset-2 outline-transparent",
+          "focus-visible:outline-focus-ring focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]",
+          // ::after pseudo-element for 44px touch target
+          "relative after:absolute after:inset-1/2 after:-translate-x-1/2 after:-translate-y-1/2",
+          "after:min-w-[44px] after:min-h-[44px]"
+        ),
+        today: "bg-surface-subtle text-foreground !font-semibold rounded-md",
+        outside: "text-muted-foreground opacity-50",
+        disabled: "text-disabled-foreground pointer-events-none",
+        hidden: "invisible",
+        selected: "bg-brand-primary text-brand-foreground hover:bg-brand-primary rounded-md",
+        range_start: "bg-brand-primary text-brand-foreground rounded-l-md rounded-r-none",
+        range_end: "bg-brand-primary text-brand-foreground rounded-r-md rounded-l-none",
+        range_middle: "bg-brand-accent-subtle text-foreground rounded-none",
+        ...classNamesProp
+      },
+      components: {
+        Chevron,
+        ...componentsProp
+      },
+      ...props
+    }
+  );
+}
+
 // src/index.ts
 var DS_VERSION = "0.1.0";
 // Annotate the CommonJS export names for ESM import in node:
@@ -2070,6 +2152,7 @@ var DS_VERSION = "0.1.0";
   Avatar,
   Badge,
   Button,
+  Calendar,
   Card,
   CardContent,
   CardDescription,

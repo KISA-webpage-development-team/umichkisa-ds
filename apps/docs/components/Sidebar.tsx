@@ -145,6 +145,13 @@ const COMPONENT_ITEMS: NavItem[] = [
       { label: 'OnlyMobileView', href: '/components/only-mobile-view' },
     ],
   },
+  {
+    label: 'Date & Time',
+    href: '/components/calendar',
+    children: [
+      { label: 'Calendar', href: '/components/calendar' },
+    ],
+  },
 ]
 
 const FORMS_ITEMS: NavItem[] = [
