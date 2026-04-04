@@ -109,7 +109,7 @@ Only show categories with ≥1 shipped component. When a batch ships a component
 - [x] OnlyMobileView (new)
 
 ### Batch 14 — Date & Time
-- [ ] Calendar (new)
+- [x] Calendar (new)
 - [ ] DatePicker (new, depends: Calendar)
 
 ### Post-v1.0
