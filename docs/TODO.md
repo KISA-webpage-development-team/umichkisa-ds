@@ -90,7 +90,7 @@ Only show categories with ≥1 shipped component. When a batch ships a component
 - [x] Alert (new)
 
 ### Batch 10 — Feedback cont'd
-- [ ] Toast (new)
+- [x] Toast (new)
 - [ ] NotFound / NotAuthorized / NotLogin / UnexpectedError (audit, 4-in-1)
 
 ### Batch 10.5 — Form DX package
