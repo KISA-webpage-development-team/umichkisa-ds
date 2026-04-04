@@ -137,6 +137,7 @@ export default function AccordionPage() {
         to expand an item on mount.
       </p>
       <ComponentPreview code={basicCode}>
+        <div className="w-full">
         <Accordion type="single" defaultValue="what-is-kisa">
           <AccordionItem value="what-is-kisa">
             <AccordionTrigger>What is KISA?</AccordionTrigger>
@@ -163,6 +164,7 @@ export default function AccordionPage() {
             </AccordionContent>
           </AccordionItem>
         </Accordion>
+        </div>
       </ComponentPreview>
 
       {/* Multiple / Settings */}
@@ -173,6 +175,7 @@ export default function AccordionPage() {
         configure independent groups.
       </p>
       <ComponentPreview code={multipleCode}>
+        <div className="w-full">
         <Accordion type="multiple" defaultValue={['notifications']}>
           <AccordionItem value="notifications">
             <AccordionTrigger>Notifications</AccordionTrigger>
@@ -196,6 +199,7 @@ export default function AccordionPage() {
             </AccordionContent>
           </AccordionItem>
         </Accordion>
+        </div>
       </ComponentPreview>
 
       {/* Disabled */}
@@ -206,6 +210,7 @@ export default function AccordionPage() {
         navigation.
       </p>
       <ComponentPreview code={disabledCode}>
+        <div className="w-full">
         <Accordion type="single">
           <AccordionItem value="current-events">
             <AccordionTrigger>Current events</AccordionTrigger>
@@ -228,6 +233,7 @@ export default function AccordionPage() {
             </AccordionContent>
           </AccordionItem>
         </Accordion>
+        </div>
       </ComponentPreview>
 
       {/* No chevron */}
@@ -241,6 +247,7 @@ export default function AccordionPage() {
         numbered steps or custom trigger layouts.
       </p>
       <ComponentPreview code={noChevronCode}>
+        <div className="w-full">
         <Accordion type="single">
           <AccordionItem value="step-1">
             <AccordionTrigger showChevron={false}>1. Create an account</AccordionTrigger>
@@ -264,6 +271,7 @@ export default function AccordionPage() {
             </AccordionContent>
           </AccordionItem>
         </Accordion>
+        </div>
       </ComponentPreview>
 
       {/* -- API Reference -------------------------------------------- */}
