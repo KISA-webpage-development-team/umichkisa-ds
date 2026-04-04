@@ -79,6 +79,20 @@ const switchCode = `<Form.Switch
   description="Receive updates about KISA events and announcements."
 />`
 
+const datePickerCode = `<Form.DatePicker
+  name="eventDate"
+  label="Event date"
+  rules={{ required: 'Date is required' }}
+  placeholder="Pick a date"
+/>`
+
+const dateRangePickerCode = `<Form.DateRangePicker
+  name="availability"
+  label="Availability"
+  description="When are you available for this event?"
+  placeholder="Select dates"
+/>`
+
 const buttonCode = `// Auto-disables while form is submitting
 <Form.Button>Submit</Form.Button>
 
@@ -343,6 +357,36 @@ export default function FormComponentPage() {
         <SwitchDemo />
       </ComponentPreview>
 
+      {/* ── Form.DatePicker ──────────────────────────────── */}
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.DatePicker</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
+        Wraps{' '}
+        <a href="/components/datepicker" className="text-link underline hover:text-brand-primary">DatePicker</a> +{' '}
+        <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>.{' '}
+        A single date picker for selecting dates like event dates, birth dates,
+        or deadlines. Supports{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">placeholder</code> and{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">formatDate</code> props.
+      </p>
+      <ComponentPreview code={datePickerCode}>
+        <p className="type-body-sm text-muted-foreground">See DatePicker component page for live examples.</p>
+      </ComponentPreview>
+
+      {/* ── Form.DateRangePicker ─────────────────────────── */}
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.DateRangePicker</h2>
+      <p className="type-body mb-4 text-foreground max-w-prose">
+        Wraps{' '}
+        <a href="/components/datepicker" className="text-link underline hover:text-brand-primary">DateRangePicker</a> +{' '}
+        <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>.{' '}
+        A date range picker for selecting start and end dates, useful for trip
+        booking, report periods, or availability windows. Supports{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">placeholder</code> and{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">formatDate</code> props.
+      </p>
+      <ComponentPreview code={dateRangePickerCode}>
+        <p className="type-body-sm text-muted-foreground">See DatePicker component page for live examples.</p>
+      </ComponentPreview>
+
       {/* ── Form.Button ───────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.Button</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
@@ -360,7 +404,7 @@ export default function FormComponentPage() {
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Shared Field Props</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         All field sub-components (Input, Textarea, Select, Checkbox, Radio,
-        Switch) share these props:
+        Switch, DatePicker, DateRangePicker) share these props:
       </p>
       <div className="my-6 overflow-x-auto">
         <table className="w-full border-collapse border border-border">
