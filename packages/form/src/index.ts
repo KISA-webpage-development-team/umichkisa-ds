@@ -4,3 +4,5 @@
 export { useForm } from "./hooks/useForm";
 export { useFormField } from "./hooks/useFormField";
 export type { UseFormFieldReturn } from "./hooks/useFormField";
+export { useFormStatus } from "./hooks/useFormStatus";
+export type { UseFormStatusReturn } from "./hooks/useFormStatus";
