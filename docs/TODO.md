@@ -93,6 +93,9 @@ Only show categories with ≥1 shipped component. When a batch ships a component
 - [ ] Toast (new)
 - [ ] NotFound / NotAuthorized / NotLogin / UnexpectedError (audit, 4-in-1)
 
+### Batch 10.5 — Form DX package
+- [ ] `@umichkisa-ds/form` — custom hooks for validation, form submission, and form state management (pair with `@umichkisa-ds/web` form components)
+
 ### Batch 11 — Complex components
 - [ ] Card (new)
 - [ ] Accordion (new)
@@ -106,11 +109,12 @@ Only show categories with ≥1 shipped component. When a batch ships a component
 - [ ] OnlyMobileView (new)
 - [ ] UnderConstruction (new)
 
-### Batch 14 — Deferred (v1.1)
+### Batch 14 — Date & Time
 - [ ] Calendar (new)
 - [ ] DatePicker (new, depends: Calendar)
 
 ### Post-v1.0
-- [ ] Form DX — custom hooks (useFormField, etc.) + form building guideline doc
+- [ ] Docs app Header & Sidebar redesign
+- [ ] Fill in index pages (/components, /foundation, etc.)
 - [ ] Label component — add `id` prop support for `aria-labelledby` patterns
 - [ ] CodeBlock component — syntax-highlighted code blocks for docs (replace raw `<pre><code>`)
