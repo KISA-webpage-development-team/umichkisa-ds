@@ -111,3 +111,16 @@ Key changes:
 - `onRetry` prop removed — pass a `<Button>` via the `action` prop instead
 - No built-in routing or auth dependencies — consumer provides action buttons
 - All text defaults are in Korean but overridable via `title` and `description` props
+
+## ToggleBar (was CustomToggleBar)
+
+- `CustomToggleBar` renamed to `ToggleBar`
+- `activeView` renamed to `value`
+- `setActiveView` renamed to `onValueChange`
+- `viewList` renamed to `items`
+- `ViewListItem` type renamed to `ToggleBarItem`
+- Item shape: `view` → `value`, `text` → `label`, `icon` stays optional
+- New `size` prop: `"sm" | "md"` (default `"md"`)
+- New `fullWidth` prop (default `false`)
+- Moved from `layout/` to `navigation/` category
+- Separate CSS file (`styles.css`) removed — all styling is inline Tailwind

@@ -40,6 +40,7 @@ import {
   Reply,
   ShieldX,
   ShoppingCart,
+  Smartphone,
   ThumbsUp,
   Ticket,
   Trash2,
@@ -121,6 +122,7 @@ var registry = {
   "reply": Reply,
   "shield-x": ShieldX,
   "shopping-cart": ShoppingCart,
+  "smartphone": Smartphone,
   "thumbs-up": ThumbsUp,
   "ticket": Ticket,
   "trash-2": Trash2,
@@ -1952,6 +1954,30 @@ function ToggleBar({
   );
 }
 
+// src/components/utilities/OnlyMobileView.tsx
+import { jsx as jsx35, jsxs as jsxs16 } from "react/jsx-runtime";
+function OnlyMobileView({
+  children,
+  message = "Only Mobile View is supported.",
+  className
+}) {
+  return /* @__PURE__ */ jsxs16("div", { className: cn(className), children: [
+    /* @__PURE__ */ jsxs16(
+      "div",
+      {
+        className: "hidden md:flex fixed inset-0 z-50 flex-col items-center justify-center gap-4 bg-surface",
+        role: "status",
+        "aria-live": "polite",
+        children: [
+          /* @__PURE__ */ jsx35("div", { className: "text-brand-primary", children: /* @__PURE__ */ jsx35(Icon, { name: "smartphone", size: "xl" }) }),
+          /* @__PURE__ */ jsx35("p", { className: "type-h3 text-foreground text-center px-4", children: message })
+        ]
+      }
+    ),
+    /* @__PURE__ */ jsx35("div", { className: "md:hidden", children })
+  ] });
+}
+
 // src/index.ts
 var DS_VERSION = "0.1.0";
 export {
@@ -1994,6 +2020,7 @@ export {
   Label,
   LinkButton,
   LoadingSpinner,
+  OnlyMobileView,
   Pagination,
   Popover,
   PopoverContent,

@@ -70,6 +70,7 @@ __export(src_exports, {
   Label: () => Label,
   LinkButton: () => LinkButton,
   LoadingSpinner: () => LoadingSpinner,
+  OnlyMobileView: () => OnlyMobileView,
   Pagination: () => Pagination,
   Popover: () => Popover,
   PopoverContent: () => PopoverContent,
@@ -200,6 +201,7 @@ var registry = {
   "reply": import_lucide_react.Reply,
   "shield-x": import_lucide_react.ShieldX,
   "shopping-cart": import_lucide_react.ShoppingCart,
+  "smartphone": import_lucide_react.Smartphone,
   "thumbs-up": import_lucide_react.ThumbsUp,
   "ticket": import_lucide_react.Ticket,
   "trash-2": import_lucide_react.Trash2,
@@ -2028,6 +2030,30 @@ function ToggleBar({
   );
 }
 
+// src/components/utilities/OnlyMobileView.tsx
+var import_jsx_runtime35 = require("react/jsx-runtime");
+function OnlyMobileView({
+  children,
+  message = "Only Mobile View is supported.",
+  className
+}) {
+  return /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)("div", { className: cn(className), children: [
+    /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(
+      "div",
+      {
+        className: "hidden md:flex fixed inset-0 z-50 flex-col items-center justify-center gap-4 bg-surface",
+        role: "status",
+        "aria-live": "polite",
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("div", { className: "text-brand-primary", children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(Icon, { name: "smartphone", size: "xl" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("p", { className: "type-h3 text-foreground text-center px-4", children: message })
+        ]
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("div", { className: "md:hidden", children })
+  ] });
+}
+
 // src/index.ts
 var DS_VERSION = "0.1.0";
 // Annotate the CommonJS export names for ESM import in node:
@@ -2071,6 +2097,7 @@ var DS_VERSION = "0.1.0";
   Label,
   LinkButton,
   LoadingSpinner,
+  OnlyMobileView,
   Pagination,
   Popover,
   PopoverContent,
