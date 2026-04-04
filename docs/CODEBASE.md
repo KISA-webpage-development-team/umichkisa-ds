@@ -120,10 +120,7 @@ The sidebar uses collapsible categories that auto-expand based on the current ro
 | `Skeleton` | feedback | ✅ | Loading placeholder with rectangular/circular variants. `cn()` only. `bg-border` + `ds-pulse` keyframe animation. Consumer controls dimensions via `className`. |
 | `LoadingSpinner` | feedback | ✅ | Three sizes (sm/md/lg) with proportional border widths. `aria-label`-first labeling with optional `showLabel`. No `fullScreen` — documented as consumer pattern. `cn()` only, no CVA. |
 | `Toaster` / `toast` | feedback | ✅ | Sonner wrapper with DS token styling via `classNames` API. `Toaster` provider (mount once, default `top-center`) + `toast()` imperative function. Five variants (default/info/success/warning/error) with auto-mapped icons matching Alert. |
-| `NotFound` | feedback | ✅ | |
-| `NotAuthorized` | feedback | ✅ | |
-| `NotLogin` | feedback | ✅ | |
-| `UnexpectedError` | feedback | ✅ | |
+| `StatusView` | feedback | ✅ | Centered status message for error pages, auth gates, and empty states. 4 variants (not-found/not-authorized/not-logged-in/error) with Korean default text. Optional `code` prop for HTTP status display. `action` ReactNode slot. `icon` override. `cn()` only, no CVA. Replaces NotFound, NotAuthorized, NotLogin, UnexpectedError. |
 | `Dialog` | overlay | ✅ | Radix compound component (Dialog, DialogTrigger, DialogClose, DialogContent, DialogTitle, DialogDescription, DialogFooter). 4 sizes (sm/md/lg/full). Built-in close button with `showCloseButton` opt-out. Custom keyframe animations (overlay fade + content slide-up). `cn()` only. |
 | `Dropdown` | overlay | ✅ | Radix compound component (Dropdown, DropdownTrigger, DropdownContent, DropdownItem, DropdownGroup, DropdownSeparator). `variant` prop on items (default/destructive). `side`/`align`/`sideOffset` on content. Fade+zoom animations. `cn()` only. |
 | `Popover` | overlay | ✅ | Uses `@radix-ui/react-popover`. Three exports (Popover, PopoverTrigger, PopoverContent). Full Radix Content props passthrough with defaults (`align="center"`, `sideOffset=4`). Fade/zoom/slide animations. `cn()` only. |
