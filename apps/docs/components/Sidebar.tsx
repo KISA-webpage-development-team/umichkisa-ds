@@ -117,8 +117,9 @@ const COMPONENT_ITEMS: NavItem[] = [
   },
   {
     label: 'Navigation',
-    href: '/components/tabs',
+    href: '/components/pagination',
     children: [
+      { label: 'Pagination', href: '/components/pagination' },
       { label: 'Tabs', href: '/components/tabs' },
     ],
   },
