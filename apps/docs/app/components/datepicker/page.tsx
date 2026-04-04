@@ -326,7 +326,11 @@ export default function DatePickerPage() {
       </p>
       <div className="w-full">
         <ComponentPreview code={formCode}>
-          <p className="type-body-sm text-muted-foreground">See code example below for Form.DatePicker and Form.DateRangePicker usage.</p>
+          <p className="type-body-sm text-muted-foreground">
+            Live demo available on the{' '}
+            <a href="/forms/form-component" className="text-link underline hover:text-brand-primary">Form Component</a>{' '}
+            page.
+          </p>
         </ComponentPreview>
       </div>
 

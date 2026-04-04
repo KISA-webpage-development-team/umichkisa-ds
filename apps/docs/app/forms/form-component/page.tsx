@@ -228,6 +228,40 @@ function SwitchDemo() {
   )
 }
 
+type DatePickerDemoValues = { eventDate: Date | undefined }
+
+function DatePickerDemo() {
+  const form = useForm<DatePickerDemoValues>({ defaultValues: { eventDate: undefined } })
+
+  return (
+    <Form form={form} onSubmit={() => {}} className="w-full max-w-sm">
+      <Form.DatePicker
+        name="eventDate"
+        label="Event date"
+        rules={{ required: 'Date is required' }}
+        placeholder="Pick a date"
+      />
+    </Form>
+  )
+}
+
+type DateRangePickerDemoValues = { availability: { from?: Date; to?: Date } | undefined }
+
+function DateRangePickerDemo() {
+  const form = useForm<DateRangePickerDemoValues>({ defaultValues: { availability: undefined } })
+
+  return (
+    <Form form={form} onSubmit={() => {}} className="w-full max-w-sm">
+      <Form.DateRangePicker
+        name="availability"
+        label="Availability"
+        description="When are you available for this event?"
+        placeholder="Select dates"
+      />
+    </Form>
+  )
+}
+
 type ButtonDemoValues = { name: string }
 
 function ButtonDemo() {
@@ -369,7 +403,7 @@ export default function FormComponentPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">formatDate</code> props.
       </p>
       <ComponentPreview code={datePickerCode}>
-        <p className="type-body-sm text-muted-foreground">See DatePicker component page for live examples.</p>
+        <DatePickerDemo />
       </ComponentPreview>
 
       {/* ── Form.DateRangePicker ─────────────────────────── */}
@@ -384,7 +418,7 @@ export default function FormComponentPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">formatDate</code> props.
       </p>
       <ComponentPreview code={dateRangePickerCode}>
-        <p className="type-body-sm text-muted-foreground">See DatePicker component page for live examples.</p>
+        <DateRangePickerDemo />
       </ComponentPreview>
 
       {/* ── Form.Button ───────────────────────────────────── */}
