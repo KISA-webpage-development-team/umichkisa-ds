@@ -1,7 +1,7 @@
 import { Container, Label } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
-import { WithInputDemo } from './_demos'
+import { WithInputDemo, WithAriaDemo } from './_demos'
 
 const defaultCode = `import { Label } from '@umichkisa-ds/web'
 
@@ -29,15 +29,30 @@ const [value, setValue] = useState('')
   placeholder="Enter your username"
 />`
 
+const withAriaCode = `import { Label, Select, SelectTrigger, SelectContent, SelectItem } from '@umichkisa-ds/web'
+
+<div className="flex flex-col gap-2">
+  <Label htmlFor="fruit" id="fruit-label">Fruit</Label>
+  <Select>
+    <SelectTrigger placeholder="Select a fruit..." aria-labelledby="fruit-label" />
+    <SelectContent>
+      <SelectItem value="apple">Apple</SelectItem>
+      <SelectItem value="banana">Banana</SelectItem>
+    </SelectContent>
+  </Select>
+</div>`
+
 export default async function LabelPage() {
   const [
     defaultHighlighted,
     requiredHighlighted,
     withInputHighlighted,
+    withAriaHighlighted,
   ] = await Promise.all([
     highlight(defaultCode),
     highlight(requiredCode),
     highlight(withInputCode),
+    highlight(withAriaCode),
   ])
 
   return (
@@ -103,6 +118,26 @@ export default async function LabelPage() {
         <WithInputDemo />
       </ComponentPreview>
 
+      {/* With aria-labelledby */}
+      <h3 className="type-h3 mt-8 mb-2 text-foreground">With aria-labelledby</h3>
+      <p className="type-body mb-2 text-foreground max-w-prose">
+        For non-native form controls like Radix Select, use{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          id
+        </code>{' '}
+        on the Label and{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          aria-labelledby
+        </code>{' '}
+        on the trigger instead of{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          htmlFor
+        </code>.
+      </p>
+      <ComponentPreview code={withAriaCode} highlightedCode={withAriaHighlighted}>
+        <WithAriaDemo />
+      </ComponentPreview>
+
       {/* ── API Reference ────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
@@ -128,6 +163,12 @@ export default async function LabelPage() {
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">required</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">The id of the form control this label is associated with.</td>
+            </tr>
+            <tr className="border-b border-border">
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">id</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">HTML id attribute. Use when other elements need to reference this label via aria-labelledby.</td>
             </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">required</code></td>
