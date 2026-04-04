@@ -1067,7 +1067,7 @@ function Toaster({
           error: "!border-error !bg-error-subtle",
           warning: "!border-warning !bg-warning-subtle",
           info: "!border-info !bg-info-subtle",
-          icon: "shrink-0 flex items-center",
+          icon: "relative shrink-0 flex items-center w-4 h-4",
           content: "flex flex-1 flex-col gap-1 min-w-0"
         }
       },

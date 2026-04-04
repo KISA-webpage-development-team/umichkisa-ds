@@ -1,7 +1,10 @@
 'use client'
 
+import { useState } from 'react'
 import { Container, Toaster, toast, Button } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+
+type Position = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right'
 
 const setupCode = `// app/layout.tsx (or your root layout)
 import { Toaster } from '@umichkisa-ds/web'
@@ -73,10 +76,19 @@ const promiseCode = `import { toast } from '@umichkisa-ds/web'
   Save changes
 </Button>`
 
+const POSITIONS: Position[] = ['top-left', 'top-center', 'top-right', 'bottom-left', 'bottom-center', 'bottom-right']
+
+const positionCode = `import { Toaster } from '@umichkisa-ds/web'
+
+// Set position on the Toaster provider
+<Toaster position="bottom-right" />`
+
 export default function ToastPage() {
+  const [position, setPosition] = useState<Position>('top-center')
+
   return (
     <Container size="md" as="article">
-      <Toaster />
+      <Toaster position={position} />
 
       {/* -- Header -------------------------------------------------- */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Toast</h1>
@@ -207,24 +219,36 @@ export default function ToastPage() {
 
       {/* -- Positioning --------------------------------------------- */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Positioning</h2>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground max-w-prose">
         The <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">position</code> prop
         on <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Toaster />'}</code> controls
-        where toasts appear. The default is <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">top-center</code>.
+        where toasts appear. Click a position below to try it out.
       </p>
-      <p className="type-body-sm mb-2 text-foreground max-w-prose">
-        Available positions:{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">top-left</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">top-center</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">top-right</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">bottom-left</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">bottom-center</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">bottom-right</code>.
-      </p>
-      <p className="type-body-sm mb-8 text-muted-foreground max-w-prose">
-        On mobile devices, toasts automatically switch to full-width at the top
-        of the screen regardless of the configured position.
-      </p>
+      <ComponentPreview code={positionCode}>
+        <div className="w-full px-6 flex flex-col gap-4">
+          <div className="grid grid-cols-3 gap-2">
+            {POSITIONS.map((pos) => (
+              <Button
+                key={pos}
+                variant={position === pos ? 'primary' : 'secondary'}
+                size="sm"
+                className="w-full"
+                onClick={() => {
+                  setPosition(pos)
+                  toast.dismiss()
+                  setTimeout(() => toast(`Position: ${pos}`), 100)
+                }}
+              >
+                {pos}
+              </Button>
+            ))}
+          </div>
+          <p className="type-caption text-muted-foreground text-center">
+            Current: <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{position}</code>.
+            On mobile, toasts automatically switch to full-width at the top of the screen.
+          </p>
+        </div>
+      </ComponentPreview>
 
       {/* -- API Reference ------------------------------------------- */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
@@ -257,12 +281,6 @@ export default function ToastPage() {
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">number</code></td>
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">4000</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Default auto-dismiss time in milliseconds.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">closeButton</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">true</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Show a dismiss button on each toast.</td>
             </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">expand</code></td>
