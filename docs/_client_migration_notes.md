@@ -97,3 +97,17 @@ Append-only log of API changes from existing implementations. Used when updating
 - Default `label` changed from `"로딩중입니다"` to `"Loading"`
 - Label no longer renders visually by default — pass `showLabel` to display it
 - New `size` prop: `"sm" | "md" | "lg"` (default `"md"`)
+
+## StatusView (replaces NotFound, NotAuthorized, NotLogin, UnexpectedError)
+
+Four separate status components consolidated into a single `StatusView` with a `variant` prop.
+
+- `<NotFound />` → `<StatusView variant="not-found" code="404" action={<LinkButton href="/">홈페이지로 돌아가기</LinkButton>} />`
+- `<NotAuthorized />` → `<StatusView variant="not-authorized" action={<LinkButton href="/">홈페이지로 돌아가기</LinkButton>} />`
+- `<NotLogin />` → `<StatusView variant="not-logged-in" action={/* your sign-in button */} />`
+- `<UnexpectedError onRetry={fn} />` → `<StatusView variant="error" action={<Button onClick={fn}>다시 시도</Button>} />`
+
+Key changes:
+- `onRetry` prop removed — pass a `<Button>` via the `action` prop instead
+- No built-in routing or auth dependencies — consumer provides action buttons
+- All text defaults are in Korean but overridable via `title` and `description` props
