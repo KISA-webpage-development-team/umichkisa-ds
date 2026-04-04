@@ -1020,9 +1020,12 @@ function StatusView({
       ),
       children: /* @__PURE__ */ jsxs10("div", { className: "flex flex-col items-center gap-4 max-w-sm", children: [
         code && /* @__PURE__ */ jsx23("p", { className: "type-display font-sejong-bold tracking-tight text-brand-primary", children: code }),
-        /* @__PURE__ */ jsx23("div", { className: "text-brand-primary-mid", children: /* @__PURE__ */ jsx23(Icon, { name: resolvedIcon, size: "xl" }) }),
+        !code && /* @__PURE__ */ jsx23("div", { className: "text-brand-primary", children: /* @__PURE__ */ jsx23(Icon, { name: resolvedIcon, size: "xl" }) }),
         /* @__PURE__ */ jsxs10("div", { className: "flex flex-col items-center gap-2", children: [
-          /* @__PURE__ */ jsx23("p", { className: "type-h2 text-brand-primary", children: resolvedTitle }),
+          /* @__PURE__ */ jsxs10("p", { className: "flex items-center gap-2 type-h2 text-brand-primary", children: [
+            code && /* @__PURE__ */ jsx23("span", { className: "text-brand-primary", children: /* @__PURE__ */ jsx23(Icon, { name: resolvedIcon, size: "md" }) }),
+            resolvedTitle
+          ] }),
           /* @__PURE__ */ jsx23("p", { className: "type-body text-muted-foreground", children: resolvedDescription })
         ] }),
         action && /* @__PURE__ */ jsx23("div", { className: "mt-2", children: action })

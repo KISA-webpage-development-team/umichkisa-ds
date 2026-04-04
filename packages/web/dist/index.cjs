@@ -1079,9 +1079,12 @@ function StatusView({
       ),
       children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex flex-col items-center gap-4 max-w-sm", children: [
         code && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "type-display font-sejong-bold tracking-tight text-brand-primary", children: code }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "text-brand-primary-mid", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Icon, { name: resolvedIcon, size: "xl" }) }),
+        !code && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "text-brand-primary", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Icon, { name: resolvedIcon, size: "xl" }) }),
         /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex flex-col items-center gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "type-h2 text-brand-primary", children: resolvedTitle }),
+          /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("p", { className: "flex items-center gap-2 type-h2 text-brand-primary", children: [
+            code && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "text-brand-primary", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Icon, { name: resolvedIcon, size: "md" }) }),
+            resolvedTitle
+          ] }),
           /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "type-body text-muted-foreground", children: resolvedDescription })
         ] }),
         action && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "mt-2", children: action })
