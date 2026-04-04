@@ -175,8 +175,8 @@ export default function StatusViewPage() {
             <tr className="border-b border-border">
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">not-found</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">file-x</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">404</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">존재하지 않는 페이지입니다</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">페이지를 찾을 수 없습니다</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">요청하신 페이지가 존재하지 않거나 이동되었습니다</td>
             </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">not-authorized</code></td>

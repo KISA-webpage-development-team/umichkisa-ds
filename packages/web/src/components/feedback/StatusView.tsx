@@ -32,8 +32,8 @@ const variantDefaults: Record<
 > = {
   "not-found": {
     icon: "file-x",
-    title: "404",
-    description: "존재하지 않는 페이지입니다",
+    title: "페이지를 찾을 수 없습니다",
+    description: "요청하신 페이지가 존재하지 않거나 이동되었습니다",
   },
   "not-authorized": {
     icon: "shield-x",
