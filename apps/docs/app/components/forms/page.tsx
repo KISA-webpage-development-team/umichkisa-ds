@@ -92,13 +92,22 @@ export default function FormsPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Forms</h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground max-w-prose">
         How to compose form components in the KISA design system.{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           FormItem
         </code>{' '}
         is the composition wrapper that pairs a label, description, and error message with any
         form control for consistent structure and spacing.
+      </p>
+      <p className="type-body-sm mb-8 text-muted-foreground max-w-prose">
+        For form state management, validation, and submission handling, see the{' '}
+        <a href="/forms/overview" className="text-link underline hover:text-brand-primary">
+          Forms
+        </a>{' '}
+        section — it provides a{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Form>'}</code>{' '}
+        compound component that wires these primitives to react-hook-form automatically.
       </p>
 
       {/* ── Section 1: Composition Patterns ─────────────────── */}
