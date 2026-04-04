@@ -668,11 +668,12 @@ function Input({ invalid = false, className, type = "text", ...props }) {
 
 // src/components/form/Label.tsx
 import { jsx as jsx13, jsxs as jsxs2 } from "react/jsx-runtime";
-function Label({ htmlFor, required = false, className, children }) {
+function Label({ htmlFor, id, required = false, className, children }) {
   return /* @__PURE__ */ jsxs2(
     "label",
     {
       htmlFor,
+      id,
       className: cn(
         "type-label text-foreground",
         className
@@ -697,7 +698,7 @@ function FormItem({
   children
 }) {
   return /* @__PURE__ */ jsxs3("div", { className: cn("flex flex-col gap-2", className), children: [
-    /* @__PURE__ */ jsx14(Label, { htmlFor, required, children: label }),
+    /* @__PURE__ */ jsx14(Label, { htmlFor, id: `${htmlFor}-label`, required, children: label }),
     children,
     description && !error && /* @__PURE__ */ jsx14(
       "p",
@@ -781,11 +782,12 @@ import { jsx as jsx16, jsxs as jsxs5 } from "react/jsx-runtime";
 function Select(props) {
   return /* @__PURE__ */ jsx16(RadixSelect.Root, { ...props });
 }
-function SelectTrigger({ placeholder, invalid = false, className }) {
+function SelectTrigger({ placeholder, invalid = false, "aria-labelledby": ariaLabelledBy, className }) {
   return /* @__PURE__ */ jsxs5(
     RadixSelect.Trigger,
     {
       "aria-invalid": invalid,
+      "aria-labelledby": ariaLabelledBy,
       className: cn(
         "flex w-full items-center justify-between rounded-md border border-border-strong bg-surface px-3 py-2 type-body-sm text-foreground transition-colors",
         "placeholder:text-muted-foreground",

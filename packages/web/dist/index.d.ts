@@ -197,11 +197,12 @@ declare function Input({ invalid, className, type, ...props }: InputProps): reac
 
 type LabelProps = {
     htmlFor: string;
+    id?: string;
     required?: boolean;
     className?: string;
     children: React.ReactNode;
 };
-declare function Label({ htmlFor, required, className, children }: LabelProps): react_jsx_runtime.JSX.Element;
+declare function Label({ htmlFor, id, required, className, children }: LabelProps): react_jsx_runtime.JSX.Element;
 
 type FormItemProps = {
     htmlFor: string;
@@ -225,9 +226,10 @@ declare function Select(props: SelectProps): react_jsx_runtime.JSX.Element;
 type SelectTriggerProps = {
     placeholder?: string;
     invalid?: boolean;
+    "aria-labelledby"?: string;
     className?: string;
 };
-declare function SelectTrigger({ placeholder, invalid, className }: SelectTriggerProps): react_jsx_runtime.JSX.Element;
+declare function SelectTrigger({ placeholder, invalid, "aria-labelledby": ariaLabelledBy, className }: SelectTriggerProps): react_jsx_runtime.JSX.Element;
 type SelectContentProps = {
     children: React.ReactNode;
     className?: string;

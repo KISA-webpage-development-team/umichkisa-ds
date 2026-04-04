@@ -746,11 +746,12 @@ function Input({ invalid = false, className, type = "text", ...props }) {
 
 // src/components/form/Label.tsx
 var import_jsx_runtime13 = require("react/jsx-runtime");
-function Label({ htmlFor, required = false, className, children }) {
+function Label({ htmlFor, id, required = false, className, children }) {
   return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
     "label",
     {
       htmlFor,
+      id,
       className: cn(
         "type-label text-foreground",
         className
@@ -775,7 +776,7 @@ function FormItem({
   children
 }) {
   return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: cn("flex flex-col gap-2", className), children: [
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Label, { htmlFor, required, children: label }),
+    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Label, { htmlFor, id: `${htmlFor}-label`, required, children: label }),
     children,
     description && !error && /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
       "p",
@@ -859,11 +860,12 @@ var import_jsx_runtime16 = require("react/jsx-runtime");
 function Select(props) {
   return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(RadixSelect.Root, { ...props });
 }
-function SelectTrigger({ placeholder, invalid = false, className }) {
+function SelectTrigger({ placeholder, invalid = false, "aria-labelledby": ariaLabelledBy, className }) {
   return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
     RadixSelect.Trigger,
     {
       "aria-invalid": invalid,
+      "aria-labelledby": ariaLabelledBy,
       className: cn(
         "flex w-full items-center justify-between rounded-md border border-border-strong bg-surface px-3 py-2 type-body-sm text-foreground transition-colors",
         "placeholder:text-muted-foreground",
