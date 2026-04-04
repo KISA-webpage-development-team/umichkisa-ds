@@ -129,6 +129,7 @@ const COMPONENT_ITEMS: NavItem[] = [
       { label: 'Alert',          href: '/components/alert' },
       { label: 'LoadingSpinner', href: '/components/loading-spinner' },
       { label: 'Skeleton', href: '/components/skeleton' },
+      { label: 'StatusView', href: '/components/status-view' },
     ],
   },
 ]
