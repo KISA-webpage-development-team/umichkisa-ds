@@ -205,8 +205,14 @@ No `dist/styles.css` import. Font injection handled separately (unchanged). Toke
 ## Docs UI Components (not part of the library)
 
 Already built for the docs site itself:
-`ColorSwatch`, `ColorSwatchGrid`, `ContrastTable`, `DoDont`, `Callout`, `Sidebar`, `Header`, `ComponentPreview`, `SizesExample`
+`ColorSwatch`, `ColorSwatchGrid`, `ContrastTable`, `DoDont`, `Callout`, `Sidebar`, `Header`, `ComponentPreview`, `SizesExample`, `CodeBlock`, `CodeBlockClient`
 Located in `apps/docs/components/`.
+
+### CodeBlock Infrastructure
+- `apps/docs/lib/highlight.ts` — singleton Shiki highlighter (server-only), exports `highlight(code, lang)` returning HTML string. Languages: tsx, css, bash, json, text.
+- `apps/docs/components/CodeBlock.tsx` — async server component for standalone code blocks. Calls `highlight()` + wraps in `CodeBlockClient`.
+- `apps/docs/components/CodeBlockClient.tsx` — `"use client"` shell with copy-to-clipboard (icon swap: clipboard-copy → clipboard-check, 2s). Used by both CodeBlock and ComponentPreview.
+- `ComponentPreview` accepts optional `highlightedCode` (pre-rendered HTML string) and `lang` props. Pages call `highlight()` at the server level and pass results down.
 
 ### Token Alignment Audit (Step 0.5)
 | Component | Status | Notes |

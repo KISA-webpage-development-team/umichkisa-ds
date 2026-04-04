@@ -116,4 +116,4 @@ Only show categories with ≥1 shipped component. When a batch ships a component
 - [ ] Docs app Header & Sidebar redesign
 - [ ] Fill in index pages (/components, /foundation, etc.)
 - [ ] Label component — add `id` prop support for `aria-labelledby` patterns
-- [ ] CodeBlock component — syntax-highlighted code blocks for docs (replace raw `<pre><code>`)
+- [x] CodeBlock component — syntax-highlighted code blocks for docs (replace raw `<pre><code>`)
