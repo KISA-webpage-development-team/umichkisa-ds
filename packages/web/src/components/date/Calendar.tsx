@@ -26,28 +26,28 @@ export function Calendar({
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
-      className={cn("p-3", className)}
+      className={cn("relative p-3", className)}
       classNames={{
         months: "flex flex-col md:flex-row gap-4",
         month: "flex flex-col gap-4",
-        month_caption: "flex justify-center items-center pt-1 relative",
+        month_caption: "flex justify-center items-center pt-1",
         caption_label: "type-body-sm !font-semibold text-foreground",
-        nav: "flex items-center gap-1",
+        nav: "absolute top-3 right-3 left-3 flex items-center justify-between z-10 pointer-events-none",
         button_previous: cn(
-          "absolute left-1 top-0 z-10",
+          "pointer-events-auto",
           "inline-flex items-center justify-center",
-          "h-7 w-7 rounded-md border border-border bg-surface",
-          "text-foreground hover:bg-surface-subtle",
+          "h-7 w-7 rounded-md",
+          "text-foreground hover:bg-brand-accent-subtle hover:text-brand-primary",
           "outline-2 outline-offset-2 outline-transparent",
           "focus-visible:outline-focus-ring focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]",
           "relative after:absolute after:inset-1/2 after:-translate-x-1/2 after:-translate-y-1/2",
           "after:min-w-[44px] after:min-h-[44px]"
         ),
         button_next: cn(
-          "absolute right-1 top-0 z-10",
+          "pointer-events-auto",
           "inline-flex items-center justify-center",
-          "h-7 w-7 rounded-md border border-border bg-surface",
-          "text-foreground hover:bg-surface-subtle",
+          "h-7 w-7 rounded-md",
+          "text-foreground hover:bg-brand-accent-subtle hover:text-brand-primary",
           "outline-2 outline-offset-2 outline-transparent",
           "focus-visible:outline-focus-ring focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]",
           "relative after:absolute after:inset-1/2 after:-translate-x-1/2 after:-translate-y-1/2",
@@ -62,7 +62,7 @@ export function Calendar({
         day_button: cn(
           "inline-flex items-center justify-center w-9 h-9 rounded-md",
           "type-body-sm text-foreground",
-          "hover:bg-surface-subtle",
+          "hover:bg-brand-accent-subtle hover:text-brand-primary",
           "outline-2 outline-offset-2 outline-transparent",
           "focus-visible:outline-focus-ring focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]",
           // ::after pseudo-element for 44px touch target
