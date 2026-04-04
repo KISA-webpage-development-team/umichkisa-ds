@@ -150,6 +150,7 @@ const COMPONENT_ITEMS: NavItem[] = [
     href: '/components/calendar',
     children: [
       { label: 'Calendar', href: '/components/calendar' },
+      { label: 'DatePicker', href: '/components/datepicker' },
     ],
   },
 ]

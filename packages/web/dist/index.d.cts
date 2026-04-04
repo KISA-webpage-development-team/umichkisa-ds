@@ -12,7 +12,7 @@ export { toast } from 'sonner';
 import * as RadixDialog from '@radix-ui/react-dialog';
 import * as RadixDropdown from '@radix-ui/react-dropdown-menu';
 import * as RadixPopover from '@radix-ui/react-popover';
-import { DayPickerProps } from 'react-day-picker';
+import { DayPickerProps, DateRange } from 'react-day-picker';
 export { DateRange } from 'react-day-picker';
 
 declare function cn(...inputs: ClassValue[]): string;
@@ -133,6 +133,7 @@ declare function LinkedinIcon({ size, className, ...props }: CustomIconProps): r
 declare const registry: {
     readonly "arrow-left": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly "arrow-right": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly calendar: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly check: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly "chevron-left": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly "chevron-right": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
@@ -500,6 +501,29 @@ type CalendarProps = DayPickerProps & {
 };
 declare function Calendar({ className, showOutsideDays, classNames: classNamesProp, components: componentsProp, ...props }: CalendarProps): react_jsx_runtime.JSX.Element;
 
+type DatePickerProps = {
+    value?: Date;
+    onChange?: (date: Date | undefined) => void;
+    formatDate?: (date: Date) => string;
+    placeholder?: string;
+    disabled?: boolean;
+    invalid?: boolean;
+    className?: string;
+    calendarProps?: Omit<CalendarProps, "mode" | "selected" | "onSelect">;
+};
+declare function DatePicker({ value, onChange, formatDate, placeholder, disabled, invalid, className, calendarProps, }: DatePickerProps): react_jsx_runtime.JSX.Element;
+type DateRangePickerProps = {
+    value?: DateRange;
+    onChange?: (range: DateRange | undefined) => void;
+    formatDate?: (date: Date) => string;
+    placeholder?: string;
+    disabled?: boolean;
+    invalid?: boolean;
+    className?: string;
+    calendarProps?: Omit<CalendarProps, "mode" | "selected" | "onSelect">;
+};
+declare function DateRangePicker({ value, onChange, formatDate, placeholder, disabled, invalid, className, calendarProps, }: DateRangePickerProps): react_jsx_runtime.JSX.Element;
+
 declare const DS_VERSION = "0.1.0";
 
-export { Accordion, AccordionContent, type AccordionContentProps, AccordionItem, type AccordionItemProps, type AccordionProps, AccordionTrigger, type AccordionTriggerProps, Alert, type AlertProps, Avatar, type AvatarProps, Badge, type BadgeProps, Button, type ButtonProps, Calendar, type CalendarProps, Card, CardContent, type CardContentProps, CardDescription, type CardDescriptionProps, CardFooter, type CardFooterProps, CardHeader, type CardHeaderProps, type CardProps, CardTitle, type CardTitleProps, Checkbox, type CheckboxProps, Container, type ContainerProps, DS_VERSION, Dialog, DialogClose, type DialogCloseProps, DialogContent, type DialogContentProps, DialogDescription, type DialogDescriptionProps, DialogFooter, type DialogFooterProps, type DialogProps, DialogTitle, type DialogTitleProps, DialogTrigger, type DialogTriggerProps, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownGroup, type DropdownGroupProps, DropdownItem, type DropdownItemProps, type DropdownProps, DropdownSeparator, DropdownTrigger, type DropdownTriggerProps, FormItem, type FormItemProps, Grid, type GridColumns, type GridProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, OnlyMobileView, type OnlyMobileViewProps, Pagination, type PaginationProps, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, RadioGroup, type RadioGroupProps, RadioItem, type RadioItemProps, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Skeleton, type SkeletonProps, StatusView, type StatusViewProps, Switch, type SwitchProps, Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableMobileItem, TableMobileList, TableRow, Tabs, TabsContent, type TabsContentProps, TabsList, type TabsListProps, type TabsProps, TabsTrigger, type TabsTriggerProps, Textarea, type TextareaProps, Toaster, type ToasterProps, ToggleGroup, type ToggleGroupItem, type ToggleGroupProps, Tooltip, type TooltipProps, alertVariants, avatarVariants, badgeVariants, buttonVariants, cn, tabsTriggerVariants };
+export { Accordion, AccordionContent, type AccordionContentProps, AccordionItem, type AccordionItemProps, type AccordionProps, AccordionTrigger, type AccordionTriggerProps, Alert, type AlertProps, Avatar, type AvatarProps, Badge, type BadgeProps, Button, type ButtonProps, Calendar, type CalendarProps, Card, CardContent, type CardContentProps, CardDescription, type CardDescriptionProps, CardFooter, type CardFooterProps, CardHeader, type CardHeaderProps, type CardProps, CardTitle, type CardTitleProps, Checkbox, type CheckboxProps, Container, type ContainerProps, DS_VERSION, DatePicker, type DatePickerProps, DateRangePicker, type DateRangePickerProps, Dialog, DialogClose, type DialogCloseProps, DialogContent, type DialogContentProps, DialogDescription, type DialogDescriptionProps, DialogFooter, type DialogFooterProps, type DialogProps, DialogTitle, type DialogTitleProps, DialogTrigger, type DialogTriggerProps, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownGroup, type DropdownGroupProps, DropdownItem, type DropdownItemProps, type DropdownProps, DropdownSeparator, DropdownTrigger, type DropdownTriggerProps, FormItem, type FormItemProps, Grid, type GridColumns, type GridProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, OnlyMobileView, type OnlyMobileViewProps, Pagination, type PaginationProps, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, RadioGroup, type RadioGroupProps, RadioItem, type RadioItemProps, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Skeleton, type SkeletonProps, StatusView, type StatusViewProps, Switch, type SwitchProps, Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableMobileItem, TableMobileList, TableRow, Tabs, TabsContent, type TabsContentProps, TabsList, type TabsListProps, type TabsProps, TabsTrigger, type TabsTriggerProps, Textarea, type TextareaProps, Toaster, type ToasterProps, ToggleGroup, type ToggleGroupItem, type ToggleGroupProps, Tooltip, type TooltipProps, alertVariants, avatarVariants, badgeVariants, buttonVariants, cn, tabsTriggerVariants };

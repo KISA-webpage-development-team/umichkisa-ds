@@ -70,8 +70,8 @@ function useFormStatus() {
 }
 
 // src/components/Form.tsx
-var import_react_hook_form11 = require("react-hook-form");
-var import_web8 = require("@umichkisa-ds/web");
+var import_react_hook_form13 = require("react-hook-form");
+var import_web10 = require("@umichkisa-ds/web");
 
 // src/components/fields/FormInput.tsx
 var import_react_hook_form4 = require("react-hook-form");
@@ -339,19 +339,107 @@ function FormButton({
   return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_web7.Button, { type: "submit", disabled: isDisabled, ...rest, children });
 }
 
-// src/components/Form.tsx
+// src/components/fields/FormDatePicker.tsx
+var import_react_hook_form11 = require("react-hook-form");
+var import_web8 = require("@umichkisa-ds/web");
 var import_jsx_runtime8 = require("react/jsx-runtime");
+function FormDatePicker({
+  name,
+  label,
+  rules,
+  description,
+  className,
+  placeholder,
+  formatDate
+}) {
+  const { control } = (0, import_react_hook_form11.useFormContext)();
+  const {
+    field,
+    fieldState: { error }
+  } = (0, import_react_hook_form11.useController)({ name, control, rules });
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+    import_web8.FormItem,
+    {
+      htmlFor: name,
+      label,
+      required: !!rules?.required,
+      error: error?.message,
+      description,
+      className,
+      children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+        import_web8.DatePicker,
+        {
+          value: field.value,
+          onChange: (date) => {
+            field.onChange(date);
+            field.onBlur();
+          },
+          invalid: !!error,
+          placeholder,
+          formatDate
+        }
+      )
+    }
+  );
+}
+
+// src/components/fields/FormDateRangePicker.tsx
+var import_react_hook_form12 = require("react-hook-form");
+var import_web9 = require("@umichkisa-ds/web");
+var import_jsx_runtime9 = require("react/jsx-runtime");
+function FormDateRangePicker({
+  name,
+  label,
+  rules,
+  description,
+  className,
+  placeholder,
+  formatDate
+}) {
+  const { control } = (0, import_react_hook_form12.useFormContext)();
+  const {
+    field,
+    fieldState: { error }
+  } = (0, import_react_hook_form12.useController)({ name, control, rules });
+  return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+    import_web9.FormItem,
+    {
+      htmlFor: name,
+      label,
+      required: !!rules?.required,
+      error: error?.message,
+      description,
+      className,
+      children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+        import_web9.DateRangePicker,
+        {
+          value: field.value,
+          onChange: (range) => {
+            field.onChange(range);
+            field.onBlur();
+          },
+          invalid: !!error,
+          placeholder,
+          formatDate
+        }
+      )
+    }
+  );
+}
+
+// src/components/Form.tsx
+var import_jsx_runtime10 = require("react/jsx-runtime");
 function FormRoot({
   form,
   onSubmit,
   children,
   className
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_react_hook_form11.FormProvider, { ...form, children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(import_react_hook_form13.FormProvider, { ...form, children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
     "form",
     {
       onSubmit: form.handleSubmit(onSubmit),
-      className: (0, import_web8.cn)("flex flex-col gap-4", className),
+      className: (0, import_web10.cn)("flex flex-col gap-4", className),
       noValidate: true,
       children
     }
@@ -364,7 +452,9 @@ var Form = Object.assign(FormRoot, {
   Checkbox: FormCheckbox,
   Radio: FormRadio,
   Switch: FormSwitch,
-  Button: FormButton
+  Button: FormButton,
+  DatePicker: FormDatePicker,
+  DateRangePicker: FormDateRangePicker
 });
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
