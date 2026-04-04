@@ -1,6 +1,6 @@
 'use client'
 
-import { Badge, Container, DS_VERSION, IconButton } from '@umichkisa-ds/web'
+import { Badge, DS_VERSION, IconButton } from '@umichkisa-ds/web'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -21,10 +21,10 @@ export function Header({ onMenuClick }: HeaderProps) {
     <header
       className="fixed top-0 left-0 right-0 h-16
        bg-surface border-b border-border
-       z-[var(--docs-z-header)]"
+       flex items-center justify-between
+       px-6 z-[var(--docs-z-header)]"
       role="banner"
     >
-      <Container className="flex items-center justify-between h-full">
         <div className="flex items-center gap-10">
           {/* Hamburger: mobile only, always visible */}
           <IconButton
@@ -40,7 +40,7 @@ export function Header({ onMenuClick }: HeaderProps) {
           <Link
             href="/"
             className="flex items-center gap-2
-              type-body font-sejong-bold text-brand-primary"
+              type-body !font-sejong-bold text-brand-primary"
           >
             <Image
               src="/kisa_logo.png"
@@ -60,7 +60,7 @@ export function Header({ onMenuClick }: HeaderProps) {
                 key={s.href}
                 href={s.href}
                 className={`px-3 py-1.5 rounded-md
-                  type-body font-sejong-bold transition-colors duration-150 ${
+                  type-body !font-sejong-bold transition-colors duration-150 ${
                   pathname.startsWith(s.prefix)
                     ? 'text-foreground'
                     : 'text-muted-foreground hover:bg-brand-accent-subtle hover:text-foreground'
@@ -75,7 +75,7 @@ export function Header({ onMenuClick }: HeaderProps) {
         <div className="flex items-center gap-3">
           <Badge
             size="sm"
-            className="hidden lg:inline-flex bg-brand-accent text-brand-primary border-brand-accent font-sejong-bold rounded-full"
+            className="hidden lg:inline-flex bg-brand-accent text-brand-primary border-brand-accent !font-sejong-bold rounded-full"
           >
             {DS_VERSION}
           </Badge>
@@ -94,7 +94,6 @@ export function Header({ onMenuClick }: HeaderProps) {
             />
           </a>
         </div>
-      </Container>
     </header>
   )
 }

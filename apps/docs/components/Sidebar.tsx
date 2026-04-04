@@ -243,7 +243,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           {categories.map((category) => (
             <div key={category.label}>
               {/* Category heading — non-interactive */}
-              <span className="block type-body font-sejong-bold text-foreground mb-1 px-3">
+              <span className="block type-body !font-sejong-bold text-foreground mb-1 px-3">
                 {category.label}
               </span>
 
@@ -256,7 +256,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                       key={item.href}
                       href={item.href}
                       className={`block py-2 px-3 ml-3 rounded-md
-                        type-body font-sejong-bold
+                        type-body !font-sejong-bold
                         transition-colors duration-150
                         focus-visible:outline focus-visible:outline-2
                         focus-visible:outline-brand-primary focus-visible:outline-offset-[-2px]
