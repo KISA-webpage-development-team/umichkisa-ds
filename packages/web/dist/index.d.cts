@@ -3,6 +3,7 @@ import * as react_jsx_runtime from 'react/jsx-runtime';
 import * as class_variance_authority_types from 'class-variance-authority/types';
 import { VariantProps } from 'class-variance-authority';
 import * as react from 'react';
+import { ReactNode } from 'react';
 import * as lucide_react from 'lucide-react';
 import * as RadixSelect from '@radix-ui/react-select';
 import * as RadixRadioGroup from '@radix-ui/react-radio-group';
@@ -75,16 +76,19 @@ declare const registry: {
     readonly "clock-9": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly "external-link": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly eye: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "file-x": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly "graduation-cap": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly info: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly list: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly lock: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "log-in": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly mail: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly "message-square": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly minus: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly pencil: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly plus: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly reply: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+    readonly "shield-x": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly "shopping-cart": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly "thumbs-up": react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
     readonly ticket: react.ForwardRefExoticComponent<Omit<lucide_react.LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
@@ -260,19 +264,27 @@ type SkeletonProps = React.ComponentPropsWithoutRef<"div"> & {
 };
 declare function Skeleton({ variant, className, style, ...props }: SkeletonProps): react_jsx_runtime.JSX.Element;
 
-declare function NotFound(): react_jsx_runtime.JSX.Element;
-
-declare function NotLogin(): react_jsx_runtime.JSX.Element;
-
-declare function NotAuthorized(): react_jsx_runtime.JSX.Element;
-
-type UnexpectedErrorProps = {
-    onRetry?: () => void;
+type StatusViewVariant = "not-found" | "not-authorized" | "not-logged-in" | "error";
+type StatusViewProps = {
+    /** Determines default icon, title, and description. */
+    variant: StatusViewVariant;
+    /** Large status code displayed above the icon (e.g. "404"). */
+    code?: string;
+    /** Override the variant's default icon. Pass a registered Lucide icon name. */
+    icon?: IconName;
+    /** Override the variant's default title. */
+    title?: string;
+    /** Override the variant's default description. */
+    description?: string;
+    /** Optional action area rendered below the description. */
+    action?: ReactNode;
+    /** Applied to the outer wrapper div. */
+    className?: string;
 };
-declare function UnexpectedError({ onRetry }: UnexpectedErrorProps): react_jsx_runtime.JSX.Element;
+declare function StatusView({ variant, code, icon, title, description, action, className, }: StatusViewProps): react_jsx_runtime.JSX.Element;
 
-type ToasterProps = Pick<ToasterProps$1, "position" | "duration" | "expand" | "visibleToasts" | "closeButton" | "offset" | "gap" | "dir" | "className" | "style">;
-declare function Toaster({ position, duration, closeButton, ...props }: ToasterProps): react_jsx_runtime.JSX.Element;
+type ToasterProps = Pick<ToasterProps$1, "position" | "duration" | "expand" | "visibleToasts" | "offset" | "gap" | "dir" | "className" | "style">;
+declare function Toaster({ position, duration, ...props }: ToasterProps): react_jsx_runtime.JSX.Element;
 
 type DialogProps = React.ComponentPropsWithoutRef<typeof RadixDialog.Root>;
 declare function Dialog(props: DialogProps): react_jsx_runtime.JSX.Element;
@@ -391,4 +403,4 @@ declare function TabsContent({ value, className, children }: TabsContentProps): 
 
 declare const DS_VERSION = "0.1.0";
 
-export { Alert, type AlertProps, Avatar, type AvatarProps, Badge, type BadgeProps, Button, type ButtonProps, Checkbox, type CheckboxProps, Container, type ContainerProps, DS_VERSION, Dialog, DialogClose, type DialogCloseProps, DialogContent, type DialogContentProps, DialogDescription, type DialogDescriptionProps, DialogFooter, type DialogFooterProps, type DialogProps, DialogTitle, type DialogTitleProps, DialogTrigger, type DialogTriggerProps, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownGroup, type DropdownGroupProps, DropdownItem, type DropdownItemProps, type DropdownProps, DropdownSeparator, DropdownTrigger, type DropdownTriggerProps, FormItem, type FormItemProps, Grid, type GridColumns, type GridProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, NotAuthorized, NotFound, NotLogin, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, RadioGroup, type RadioGroupProps, RadioItem, type RadioItemProps, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Skeleton, type SkeletonProps, Switch, type SwitchProps, Tabs, TabsContent, type TabsContentProps, TabsList, type TabsListProps, type TabsProps, TabsTrigger, type TabsTriggerProps, Textarea, type TextareaProps, Toaster, type ToasterProps, ToggleBar, type ToggleBarItem, type ToggleBarProps, Tooltip, type TooltipProps, UnexpectedError, type UnexpectedErrorProps, alertVariants, avatarVariants, badgeVariants, buttonVariants, cn, tabsTriggerVariants };
+export { Alert, type AlertProps, Avatar, type AvatarProps, Badge, type BadgeProps, Button, type ButtonProps, Checkbox, type CheckboxProps, Container, type ContainerProps, DS_VERSION, Dialog, DialogClose, type DialogCloseProps, DialogContent, type DialogContentProps, DialogDescription, type DialogDescriptionProps, DialogFooter, type DialogFooterProps, type DialogProps, DialogTitle, type DialogTitleProps, DialogTrigger, type DialogTriggerProps, Divider, type DividerProps, Dropdown, DropdownContent, type DropdownContentProps, DropdownGroup, type DropdownGroupProps, DropdownItem, type DropdownItemProps, type DropdownProps, DropdownSeparator, DropdownTrigger, type DropdownTriggerProps, FormItem, type FormItemProps, Grid, type GridColumns, type GridProps, Icon, IconButton, type IconButtonProps, type IconName, type IconProps, type IconSize, Input, type InputProps, Label, type LabelProps, LinkButton, type LinkButtonProps, LoadingSpinner, type LoadingSpinnerProps, Popover, PopoverContent, type PopoverContentProps, PopoverTrigger, RadioGroup, type RadioGroupProps, RadioItem, type RadioItemProps, Select, SelectContent, type SelectContentProps, SelectGroup, type SelectGroupProps, SelectItem, type SelectItemProps, type SelectProps, SelectSeparator, SelectTrigger, type SelectTriggerProps, Skeleton, type SkeletonProps, StatusView, type StatusViewProps, Switch, type SwitchProps, Tabs, TabsContent, type TabsContentProps, TabsList, type TabsListProps, type TabsProps, TabsTrigger, type TabsTriggerProps, Textarea, type TextareaProps, Toaster, type ToasterProps, ToggleBar, type ToggleBarItem, type ToggleBarProps, Tooltip, type TooltipProps, alertVariants, avatarVariants, badgeVariants, buttonVariants, cn, tabsTriggerVariants };
