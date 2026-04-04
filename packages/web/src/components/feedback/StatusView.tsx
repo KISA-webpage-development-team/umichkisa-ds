@@ -82,11 +82,20 @@ export function StatusView({
             {code}
           </p>
         )}
-        <div className="text-brand-primary">
-          <Icon name={resolvedIcon} size="xl" />
-        </div>
+        {!code && (
+          <div className="text-brand-primary">
+            <Icon name={resolvedIcon} size="xl" />
+          </div>
+        )}
         <div className="flex flex-col items-center gap-2">
-          <p className="type-h2 text-brand-primary">{resolvedTitle}</p>
+          <p className="flex items-center gap-2 type-h2 text-brand-primary">
+            {code && (
+              <span className="text-brand-primary">
+                <Icon name={resolvedIcon} size="md" />
+              </span>
+            )}
+            {resolvedTitle}
+          </p>
           <p className="type-body text-muted-foreground">
             {resolvedDescription}
           </p>
