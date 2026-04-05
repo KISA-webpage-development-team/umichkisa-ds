@@ -191,46 +191,31 @@ Prefer: Wrapping icon-only buttons in a `<Tooltip>` for sighted users. The toolt
 
 ## Accessibility
 
-_Cross-cutting a11y rules consolidated from all foundation sections._
+_Rules unique to this section — domain-specific a11y rules live in their respective sections (Colors, Typography, etc.)._
 
-### Colors — Contrast Requirements (from foundation/colors/accessibility)
+### Contrast Thresholds
 
 Must: Maintain minimum 4.5:1 contrast ratio for normal body text (WCAG AA). [source:foundation/colors/accessibility]
 Must: Maintain minimum 3:1 contrast ratio for large text (18px+ or 14px bold) and non-text UI components (borders, icons). [source:foundation/colors/accessibility]
 Avoid: `--color-muted-foreground` at small text sizes on `--color-surface-subtle` — 4.2:1 passes large text only. Use `--color-foreground` if the content needs to be readable at small sizes. [source:foundation/colors/accessibility]
 Avoid: `--color-muted-foreground` at small text sizes on `--color-surface-muted` — 3.8:1 passes large text only. Use `--color-foreground` inside card detail rows if content is small. [source:foundation/colors/accessibility]
-Never: Use `--color-success` (2.2:1) as standalone text or icon color — fails both text and non-text contrast thresholds. [source:foundation/colors/accessibility]
-Must: Pair `--color-warning` (3.0:1) and `--color-success` with `--color-foreground` labels whenever they convey readable information. [source:foundation/colors/accessibility]
 
-### Typography — Readability & State Communication
+### Typography Floor
 
-Must: Never communicate disabled state through reduced font size or weight — color (`text-disabled-foreground`) is the only permitted signal. Reducing size or weight harms readability for low-vision users. [source:foundation/typography/usage]
 Must: Error and helper text must use `type-caption` (0.75rem / 12px) as the minimum — never use custom smaller sizes below this floor. [source:foundation/typography/usage]
-Must: Links must be distinguishable from surrounding static text by both color (`text-link`) and decoration (`underline`) — color alone is not sufficient. [source:foundation/typography/usage]
-Must: Keep body text within `max-w-prose` (~65 characters) — lines that stretch full container width impair readability for users with cognitive or visual processing differences. [source:foundation/typography/usage]
 
-### Layout — Landmark Regions & Skip Navigation
+### Landmark Regions & Skip Navigation
 
 Must: Use semantic landmark elements in the page shell: `<header>` (site header), `<nav>` (navigation, with `aria-label` if multiple), `<main>` (primary content), `<footer>` (site footer). [source:foundation/layout/overview]
 Must: Every page must include a skip link — a visually hidden anchor targeting `<main id="main-content">` that becomes visible on focus-visible. [source:foundation/layout/overview]
-Never: Omit `id="main-content"` on the `<main>` element when a skip link is present. [source:foundation/layout/overview]
 
-### Focus
+### Touch Targets
 
-Must: Every interactive element must have a visible focus indicator when navigated by keyboard. [source:foundation/colors/usage]
-Must: Use the dual-ring focus implementation for **buttons and icon-only interactive elements** — maize `outline` (visible on dark backgrounds, 8.2:1 on navy) + navy `box-shadow` offset (visible on light backgrounds). [source:foundation/colors/tokens]
-Must: Use the simplified border-color focus pattern for **form controls** (Input, Textarea, Select, Checkbox, Switch, Radio) — `outline: none` + `border-color: var(--color-brand-primary)`. [source:implementation/form-controls]
-Never: Remove the focus indicator entirely — `outline: none` is only permitted on form controls that use `border-color` as their focus signal. [source:foundation/colors/usage]
+Must: Interactive wrappers around icons must be at least 44×44px. [source:foundation/iconography/accessibility]
+Prefer: The `::after` pseudo-element technique for compact interactive elements — positioned absolutely, centered, with `min-w-[44px] min-h-[44px]`, `position: relative` on the wrapper. Extends touch target without inflating the visible box. [source:foundation/iconography/accessibility]
 
-### Iconography — Touch Targets & Contrast
+### Icon Contrast
 
-Must: Interactive wrappers around icons must be at least 44×44px. Use `min-w-[44px] min-h-[44px] flex items-center justify-center` on the button — this works for any icon size. [source:foundation/iconography/accessibility]
-Never: Rely on padding calculated from icon pixel size for touch target — changing the `size` prop would break the math. [source:foundation/iconography/accessibility]
-Prefer: The `::after` pseudo-element technique for compact interactive elements (e.g., icon-only buttons) where the visual size is intentionally smaller than 44×44px. The `::after` is positioned absolutely, centered, with `min-w-[44px] min-h-[44px]` — extending the touch target without inflating the visible box. [source:foundation/iconography/accessibility]
-Must: When using the `::after` technique, set `position: relative` on the interactive element so the pseudo-element is anchored correctly. [source:foundation/iconography/accessibility]
-Never: Use `--color-success` (2.2:1) as a standalone icon color — fails non-text contrast (3:1 required). [source:foundation/iconography/accessibility]
-Never: Use `--color-warning` (3.0:1) as a standalone icon color — at the exact floor, not a safe pass. [source:foundation/iconography/accessibility]
-Must: When using `--color-success` or `--color-warning` for feedback icons, always pair with a `text-foreground` text label. The label carries the accessible meaning. [source:foundation/iconography/accessibility]
 Must: Decorative icons (`aria-hidden="true"`) have no contrast requirement. Only semantic icons (with `label` prop) are subject to the 3:1 non-text contrast threshold. [source:foundation/iconography/accessibility]
 
 ---
