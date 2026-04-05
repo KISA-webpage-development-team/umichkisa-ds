@@ -1,4 +1,4 @@
-import { Container } from '@umichkisa-ds/web'
+import { Alert, Container } from '@umichkisa-ds/web'
 import { ColorSwatch } from '@/components/ColorSwatch'
 import { ColorSwatchGrid } from '@/components/ColorSwatchGrid'
 import { CodeBlock } from '@/components/CodeBlock'
@@ -153,21 +153,6 @@ export default async function ColorsTokensPage() {
           </tbody>
         </table>
       </div>
-
-      <blockquote className="border-l-[3px] border-brand-accent bg-surface-subtle pl-4 py-2 my-4 rounded-r">
-        <span className="italic text-muted-foreground type-body">
-          <strong className="font-semibold text-foreground">Note on naming:</strong>{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-muted</code>{' '}
-          maps to{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">gray-50</code>,
-          which is <em>lighter</em> than{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-subtle</code>{' '}
-          (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">gray-100</code>).
-          The name {'"'}muted{'"'} refers to reduced visual weight — not a darker value.
-          A lighter background inside a darker card reads as elevated, not subdued.
-          Do not invert this assumption.
-        </span>
-      </blockquote>
 
       <ColorSwatchGrid>
         <ColorSwatch token="--color-surface"        label="Surface" />
@@ -334,9 +319,8 @@ export default async function ColorsTokensPage() {
         <ColorSwatch token="--color-info-subtle"    label="Info Subtle" />
       </ColorSwatchGrid>
 
-      <blockquote className="border-l-[3px] border-brand-accent bg-surface-subtle pl-4 py-2 my-4 rounded-r">
-        <span className="italic text-muted-foreground type-body">
-          <strong className="font-semibold text-foreground">On <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-info</code> and <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-link</code>:</strong>{' '}
+      <Alert variant="info" title="On --color-info and --color-link" className="my-4">
+        <p>
           Both resolve to{' '}
           <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-blue-mid</code>{' '}
           — the same rendered color. This is intentional: blue reads as both informational and
@@ -346,8 +330,8 @@ export default async function ColorsTokensPage() {
           for state indicators and alert borders,{' '}
           <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-link</code>{' '}
           for clickable inline text.
-        </span>
-      </blockquote>
+        </p>
+      </Alert>
 
       {/* ── Interactive ─────────────────────────────────────── */}
       <h2 className="type-h2 mt-6 mb-2 text-foreground">Interactive</h2>
@@ -431,9 +415,8 @@ export default async function ColorsTokensPage() {
         Do not apply one without the other.
       </p>
 
-      <blockquote className="border-l-[3px] border-brand-accent bg-surface-subtle pl-4 py-2 my-4 rounded-r">
-        <span className="italic text-muted-foreground type-body">
-          <strong className="font-semibold text-foreground">Interim — Neutral interactive states:</strong>{' '}
+      <Alert variant="info" title="Interim — Neutral interactive states" className="my-4">
+        <p>
           Interactive tokens currently cover brand-primary and brand-accent elements only.
           For neutral/gray elements (secondary buttons, ghost buttons, form inputs), use{' '}
           <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-subtle</code>{' '}
@@ -441,8 +424,8 @@ export default async function ColorsTokensPage() {
           <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-border-strong</code>{' '}
           as hover border as an interim convention. This guidance will be superseded when
           dedicated neutral interactive tokens are defined.
-        </span>
-      </blockquote>
+        </p>
+      </Alert>
 
       {/* ── Overlay ─────────────────────────────────────────── */}
       <h2 className="type-h2 mt-6 mb-2 text-foreground">Overlay</h2>
