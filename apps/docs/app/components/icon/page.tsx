@@ -51,7 +51,7 @@ export default async function IconPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Icon</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Icon</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
         The single canonical way to render icons in the KISA design system. Wraps
         Lucide icons with consistent sizing, color inheritance via{' '}

@@ -4,7 +4,7 @@ export default function TypographyScalePage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Type Scale</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Type Scale</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Each role in the hierarchy is defined as a single semantic utility class. Rather than
         composing raw Tailwind utilities every time, you apply one class —{' '}

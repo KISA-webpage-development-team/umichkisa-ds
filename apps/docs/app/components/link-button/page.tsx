@@ -64,7 +64,7 @@ export default async function LinkButtonPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">LinkButton</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">LinkButton</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
         A navigation element styled as a button, for links that need
         button-level visual weight. Renders as an{' '}

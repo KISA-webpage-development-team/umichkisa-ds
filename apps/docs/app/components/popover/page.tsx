@@ -82,7 +82,7 @@ export default async function PopoverPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Popover</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Popover</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Floating panel anchored to a trigger element for displaying rich content
         like forms, menus, or additional information.

@@ -5,7 +5,7 @@ export default async function IconographyAccessibilityPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Accessibility</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Accessibility</h1>
 
       {/* ── The Problem Icons Create ────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">The Problem Icons Create</h2>

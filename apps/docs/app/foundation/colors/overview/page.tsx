@@ -5,7 +5,7 @@ export default async function ColorsOverviewPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Colors</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Colors</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Color is one of the most visible decisions in any interface. Done inconsistently,
         it creates visual noise — a button is one shade of blue here, another shade there,

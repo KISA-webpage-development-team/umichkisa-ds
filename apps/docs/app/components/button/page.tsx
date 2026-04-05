@@ -52,7 +52,7 @@ export default async function ButtonPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Button</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Button</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
         The primary interactive element for triggering actions. Supports four
         semantic variants, three sizes, and built-in{' '}

@@ -127,7 +127,7 @@ export default async function GridPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Grid</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Grid</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
         Responsive equal-width column layout for repeating items. Handles the
         common pattern of reflowing content from fewer columns on mobile to more

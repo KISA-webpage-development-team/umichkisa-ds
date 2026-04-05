@@ -86,7 +86,7 @@ export default async function RadioPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Radio</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Radio</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
         Use{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">

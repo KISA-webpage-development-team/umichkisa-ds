@@ -255,7 +255,7 @@ export default async function TablePage() {
     <Container size="md" as="article">
 
       {/* -- Header -------------------------------------------------- */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Table</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Table</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Displays structured tabular data in rows and columns with optional headers,
         footers, and captions.

@@ -8,7 +8,7 @@ export default async function IconographyUsagePage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Usage</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Usage</h1>
 
       {/* ── The <Icon> Component ─────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">The <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code> Component</h2>

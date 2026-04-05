@@ -43,7 +43,7 @@ export default async function LoadingSpinnerPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">LoadingSpinner</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">LoadingSpinner</h1>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Animated spinner for indicating loading state. Renders an accessible
         spinning indicator that can optionally display a visible label.

@@ -124,7 +124,7 @@ export default async function CardPage() {
     <Container size="md" as="article">
 
       {/* -- Header -------------------------------------------------- */}
-      <h1 className="type-h1 mt-8 mb-4 text-foreground">Card</h1>
+      <h1 className="type-h1 mb-4 text-foreground">Card</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         A container for grouping related content and actions into a single visual
         unit with a subtle background and border.

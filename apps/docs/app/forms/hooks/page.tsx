@@ -74,7 +74,7 @@ export default async function HooksPage() {
 
   return (
     <Container size="md" as="article">
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">
         Hooks
       </h1>
       <p className="type-body mb-8 text-muted-foreground max-w-prose">

@@ -5,7 +5,7 @@ export default async function IconographySizesPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Icon Sizes</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Icon Sizes</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Icons do not have one right size. A navigation icon and a display illustration
         serve different purposes and live in different contexts. The size scale exists so

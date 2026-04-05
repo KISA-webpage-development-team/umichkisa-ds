@@ -108,7 +108,7 @@ export default async function DialogPage() {
     <Container size="md" as="article">
 
       {/* -- Header -------------------------------------------------- */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Dialog</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Dialog</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Modal overlay for confirmations, forms, and focused tasks that require
         user attention before continuing.

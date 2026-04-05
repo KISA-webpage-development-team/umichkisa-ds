@@ -44,7 +44,7 @@ export default async function SkeletonPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Skeleton</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Skeleton</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
         Visual placeholder for content that is loading. Renders a pulsing block
         that approximates the shape of the real content, reducing perceived wait

@@ -182,7 +182,7 @@ export default async function TabsPage() {
     <Container size="md" as="article">
 
       {/* -- Header -------------------------------------------------- */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Tabs</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Tabs</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Organize content into multiple panels, activated one at a time.
         Tabs keep related content grouped while reducing clutter.

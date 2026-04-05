@@ -82,7 +82,7 @@ export default async function PaginationPage() {
     <Container size="md" as="article">
 
       {/* -- Header -------------------------------------------------- */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Pagination</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Pagination</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Navigation control for moving between pages of content. Displays page
         numbers with ellipsis for large ranges and previous/next arrows.

@@ -6,7 +6,7 @@ export default function TypographyUsagePage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Usage</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Usage</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Rules and patterns for applying the type system consistently across the product.
       </p>

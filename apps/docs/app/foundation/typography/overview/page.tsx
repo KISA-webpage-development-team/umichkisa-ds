@@ -4,7 +4,7 @@ export default function TypographyOverviewPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Typography</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Typography</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Typography is the most read part of any interface. Users may not notice a well-chosen
         font — but they will notice when something feels off. Inconsistency in type is one of

@@ -48,7 +48,7 @@ export default async function FormsOverviewPage() {
 
   return (
     <Container size="md" as="article">
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">
         Forms
       </h1>
       <p className="type-body mb-8 text-muted-foreground max-w-prose">

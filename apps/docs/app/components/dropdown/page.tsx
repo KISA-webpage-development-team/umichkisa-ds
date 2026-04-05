@@ -104,7 +104,7 @@ export default async function DropdownPage() {
     <Container size="md" as="article">
 
       {/* -- Header -------------------------------------------------- */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Dropdown</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Dropdown</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
         Action menu triggered by a button. Built on Radix DropdownMenu for full keyboard navigation
         and accessibility. Compose sub-components together — trigger, content panel, and menu items.

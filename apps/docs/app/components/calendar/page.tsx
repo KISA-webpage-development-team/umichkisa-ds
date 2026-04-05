@@ -134,7 +134,7 @@ export default async function CalendarPage() {
     <Container size="md" as="article">
 
       {/* -- Header -------------------------------------------------- */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Calendar</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Calendar</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         A date calendar for selecting single dates or date ranges.
       </p>

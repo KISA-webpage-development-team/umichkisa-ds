@@ -5,7 +5,7 @@ export default async function TypographyFontsPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">The Two Fonts</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">The Two Fonts</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The KISA type system is built on two product fonts — SejongHospital for brand presence,
         Pretendard for everything else — plus Geist Mono for code in this documentation site.

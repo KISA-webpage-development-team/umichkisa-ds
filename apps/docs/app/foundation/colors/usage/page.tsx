@@ -8,7 +8,7 @@ export default async function ColorsUsagePage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Usage Guidelines</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Usage Guidelines</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         This section explains when to reach for each token. The token reference tells
         you what each token is. This section tells you how to use it.

@@ -102,7 +102,7 @@ export default async function SelectPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Select</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Select</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
         Custom dropdown for choosing from predefined options. Built on Radix Select for full styling
         control and accessibility. Instead of a single element, you compose multiple sub-components

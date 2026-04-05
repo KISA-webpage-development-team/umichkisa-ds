@@ -54,7 +54,7 @@ export default async function TooltipPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Tooltip</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Tooltip</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
         Informational text label that appears on hover or focus. Use for
         icon-only buttons, truncated text, or any element that benefits from a

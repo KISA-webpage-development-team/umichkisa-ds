@@ -4,7 +4,7 @@ export default function IconographyOverviewPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Iconography</h1>
+      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Iconography</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Icons carry meaning silently. A trash can means delete. A magnifying glass means
         search. Done consistently, icons reduce reading load and make interfaces feel
