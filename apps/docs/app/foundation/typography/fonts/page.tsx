@@ -1,4 +1,4 @@
-import { Container } from '@umichkisa-ds/web'
+import { Container, Card, CardContent, CardFooter, Alert, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
 import { CodeBlock } from '@/components/CodeBlock'
 export default async function TypographyFontsPage() {
   return (
@@ -24,32 +24,50 @@ export default async function TypographyFontsPage() {
         It ships with two weights only:
       </p>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Weight</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Class</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Use</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Light 300</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-sejong-light</code>
-              </td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Decorative display, large pull quotes</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Bold 700</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-sejong-bold</code>
-              </td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Default for all Display and H1</td>
-            </tr>
-          </tbody>
-        </table>
+      {/* Desktop */}
+      <div className="hidden md:block my-6">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Weight</TableHead>
+              <TableHead>Class</TableHead>
+              <TableHead>Use</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell>Light 300</TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-sejong-light</code></TableCell>
+              <TableCell>Decorative display, large pull quotes</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Bold 700</TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-sejong-bold</code></TableCell>
+              <TableCell>Default for all Display and H1</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
+      {/* Mobile */}
+      <div className="block md:hidden my-6">
+        <TableMobileList>
+          <TableMobileItem>
+            <span className="type-caption text-muted-foreground">Weight</span>
+            <span className="type-body-sm text-foreground">Light 300</span>
+            <span className="type-caption text-muted-foreground">Class</span>
+            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-sejong-light</code>
+            <span className="type-caption text-muted-foreground">Use</span>
+            <span className="type-body-sm text-foreground">Decorative display, large pull quotes</span>
+          </TableMobileItem>
+          <TableMobileItem>
+            <span className="type-caption text-muted-foreground">Weight</span>
+            <span className="type-body-sm text-foreground">Bold 700</span>
+            <span className="type-caption text-muted-foreground">Class</span>
+            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-sejong-bold</code>
+            <span className="type-caption text-muted-foreground">Use</span>
+            <span className="type-body-sm text-foreground">Default for all Display and H1</span>
+          </TableMobileItem>
+        </TableMobileList>
       </div>
 
       <p className="type-body mb-4 text-foreground max-w-prose">
@@ -59,7 +77,6 @@ export default async function TypographyFontsPage() {
         or larger, paired alongside a Bold display line. Never use Light in app UI. Never use
         it below{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-4xl</code>.
-        If you are unsure, use Bold.
       </p>
 
       {/* ── Fallback stack ──────────────────────────────────── */}
@@ -78,16 +95,17 @@ export default async function TypographyFontsPage() {
       </p>
 
       {/* ── SejongHospital specimen ─────────────────────────── */}
-      <div className="my-8 rounded-xl border border-border overflow-hidden">
-        <div className="bg-[#00274c] px-8 py-10">
-          <p className="text-5xl font-sejong-bold text-[#ffcb05]">University of Michigan</p>
-          <p className="mt-3 text-2xl font-sejong-light text-[#e8f0f7] opacity-70">Korean International Students Association</p>
-        </div>
-        <div className="bg-surface-subtle px-8 py-4 flex gap-8">
-          <span className="text-xs text-muted-foreground font-mono">Bold 700 — font-sejong-bold</span>
-          <span className="text-xs text-muted-foreground font-mono">Light 300 — font-sejong-light</span>
-        </div>
-      </div>
+      {/* Raw utilities: specimen demonstrating font appearance, not type scale */}
+      <Card className="my-8 overflow-hidden">
+        <CardContent className="bg-brand-primary py-10">
+          <p className="text-3xl md:text-5xl font-sejong-bold text-brand-foreground">University of Michigan</p>
+          <p className="mt-3 text-xl md:text-2xl font-sejong-light text-brand-foreground opacity-50">Korean International Students Association</p>
+        </CardContent>
+        <CardFooter className="gap-8">
+          <span className="type-caption text-muted-foreground font-mono">Bold 700 — font-sejong-bold</span>
+          <span className="type-caption text-muted-foreground font-mono">Light 300 — font-sejong-light</span>
+        </CardFooter>
+      </Card>
 
       <hr className="my-8 border-0 border-t border-border" />
 
@@ -102,39 +120,63 @@ export default async function TypographyFontsPage() {
         The three weights used in the type scale:
       </p>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Weight</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Tailwind class</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Use</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Regular 400</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code>
-              </td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Body text, captions</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Medium 500</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-medium</code>
-              </td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Labels, navigation items</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Semibold 600</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-semibold</code>
-              </td>
-              <td className="px-4 py-3 type-body-sm text-foreground">H2, H3, emphasized text</td>
-            </tr>
-          </tbody>
-        </table>
+      {/* Desktop */}
+      <div className="hidden md:block my-6">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Weight</TableHead>
+              <TableHead>Tailwind class</TableHead>
+              <TableHead>Use</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell>Regular 400</TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code></TableCell>
+              <TableCell>Body text, captions</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Medium 500</TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-medium</code></TableCell>
+              <TableCell>Labels, navigation items</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Semibold 600</TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-semibold</code></TableCell>
+              <TableCell>H2, H3, emphasized text</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
+      {/* Mobile */}
+      <div className="block md:hidden my-6">
+        <TableMobileList>
+          <TableMobileItem>
+            <span className="type-caption text-muted-foreground">Weight</span>
+            <span className="type-body-sm text-foreground">Regular 400</span>
+            <span className="type-caption text-muted-foreground">Tailwind class</span>
+            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code>
+            <span className="type-caption text-muted-foreground">Use</span>
+            <span className="type-body-sm text-foreground">Body text, captions</span>
+          </TableMobileItem>
+          <TableMobileItem>
+            <span className="type-caption text-muted-foreground">Weight</span>
+            <span className="type-body-sm text-foreground">Medium 500</span>
+            <span className="type-caption text-muted-foreground">Tailwind class</span>
+            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-medium</code>
+            <span className="type-caption text-muted-foreground">Use</span>
+            <span className="type-body-sm text-foreground">Labels, navigation items</span>
+          </TableMobileItem>
+          <TableMobileItem>
+            <span className="type-caption text-muted-foreground">Weight</span>
+            <span className="type-body-sm text-foreground">Semibold 600</span>
+            <span className="type-caption text-muted-foreground">Tailwind class</span>
+            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-semibold</code>
+            <span className="type-caption text-muted-foreground">Use</span>
+            <span className="type-body-sm text-foreground">H2, H3, emphasized text</span>
+          </TableMobileItem>
+        </TableMobileList>
       </div>
 
       {/* ── Pretendard fallback stack ──────────────────────── */}
@@ -153,17 +195,19 @@ export default async function TypographyFontsPage() {
       </p>
 
       {/* ── Pretendard specimen ─────────────────────────────── */}
-      <div className="my-8 rounded-xl border border-border overflow-hidden">
-        <div className="bg-surface px-8 py-8 space-y-4">
+      {/* Raw utilities: specimen demonstrating font appearance, not type scale */}
+      <Card className="my-8 overflow-hidden">
+        <CardContent className="space-y-4 py-8">
           <p className="text-3xl font-pretendard font-semibold text-foreground">Section Heading — Semibold 600</p>
           <p className="text-base font-pretendard font-normal text-foreground leading-relaxed">Body text — Regular 400. The quick brown fox jumps over the lazy dog. Pretendard reads cleanly at every size from caption to heading.</p>
+          <p className="text-base font-pretendard font-normal text-foreground leading-relaxed">본문 텍스트 — 미시간 대학교 한인학생회. 한국어와 영어를 동일한 품질로 지원합니다.</p>
           <p className="text-sm font-pretendard font-medium text-muted-foreground">Label or navigation item — Medium 500</p>
           <p className="text-xs font-pretendard font-normal text-muted-foreground">Caption text — Regular 400</p>
-        </div>
-        <div className="bg-surface-subtle px-8 py-4">
-          <span className="text-xs text-muted-foreground font-mono">font-pretendard — weights 400 · 500 · 600</span>
-        </div>
-      </div>
+        </CardContent>
+        <CardFooter>
+          <span className="type-caption text-muted-foreground font-mono">font-pretendard — weights 400 · 500 · 600</span>
+        </CardFooter>
+      </Card>
 
       <hr className="my-8 border-0 border-t border-border" />
 
@@ -175,25 +219,37 @@ export default async function TypographyFontsPage() {
         client application does not use it.
       </p>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Weight</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Tailwind class</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Use</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Regular 400</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code>
-              </td>
-              <td className="px-4 py-3 type-body-sm text-foreground">All code contexts</td>
-            </tr>
-          </tbody>
-        </table>
+      {/* Desktop */}
+      <div className="hidden md:block my-6">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Weight</TableHead>
+              <TableHead>Tailwind class</TableHead>
+              <TableHead>Use</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell>Regular 400</TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code></TableCell>
+              <TableCell>All code contexts</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
+      {/* Mobile */}
+      <div className="block md:hidden my-6">
+        <TableMobileList>
+          <TableMobileItem>
+            <span className="type-caption text-muted-foreground">Weight</span>
+            <span className="type-body-sm text-foreground">Regular 400</span>
+            <span className="type-caption text-muted-foreground">Tailwind class</span>
+            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code>
+            <span className="type-caption text-muted-foreground">Use</span>
+            <span className="type-body-sm text-foreground">All code contexts</span>
+          </TableMobileItem>
+        </TableMobileList>
       </div>
 
       <hr className="my-8 border-0 border-t border-border" />
@@ -317,14 +373,12 @@ const sejongLight = localFont({
         — type utilities, component styles — picks it up automatically.
       </p>
 
-      <blockquote className="border-l-[3px] border-brand-accent bg-surface-subtle pl-4 py-2 my-4 rounded-r">
-        <span className="italic text-muted-foreground type-body-sm">
-          Non-Next.js consumers can skip this step entirely. The DS{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@font-face</code>{' '}
-          declarations work on their own — fonts will load via the standard CSS path. The
-          trade-off is a brief flash of system font on first visit while the TTF files download.
-        </span>
-      </blockquote>
+      <Alert className="my-4">
+        Non-Next.js consumers can skip this step entirely. The DS{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@font-face</code>{' '}
+        declarations work on their own — fonts will load via the standard CSS path. The
+        trade-off is a brief flash of system font on first visit while the TTF files download.
+      </Alert>
 
     </Container>
   )
