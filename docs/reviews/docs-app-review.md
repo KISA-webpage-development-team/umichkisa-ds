@@ -55,3 +55,54 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 - Mobile review was code-based (browser viewport couldn't be reduced below ~1920px CSS width through the DevTunnel).
 - Desktop scroll screenshots rendered blank due to VSCode tunnel rendering limitations. Below-fold content was reviewed via source code + rendered text extraction.
 
+## /foundation/colors/usage
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | 10 raw HTML `<table>` elements — migrate to DS `Table` + `TableMobileList`/`TableMobileItem` with `hidden md:block` / `block md:hidden` toggle. |
+| 2 | major | ds-violation | both | Raw `<blockquote>` (line 356) with `border-l-[3px] border-brand-accent` (arbitrary value + prohibited left border accent). Replace with `<Alert variant="info" title="Exception — Small-scale fill indicators">`. |
+| 3 | minor | content | both | Missing space on line 27: `says"this is KISA."` → `says "this is KISA."`. |
+| 4 | minor | content | both | `--color-brand-primary-mid` list includes "Hyperlinks within body text" — conflicts with DS_CONSTRAINTS which mandates `--color-link` for hyperlinks. Remove the bullet. |
+| 5 | major | ds-violation | both | `DoDont.tsx` shared component uses raw divs with `rounded-xl` (should be `rounded-md`), `border-l-4` (prohibited left border accent), and hand-rolled feedback colors. Refactor: `Do` → `<Alert variant="success" title="Do">`, `Dont` → `<Alert variant="error" title="Don't">`. Cascades to all pages using DoDont. |
+| 6 | major | ds-violation | both | 108 inline `<code>` elements use `type-caption font-mono` (12px) inside `type-body` (16px) or `type-body-sm` (14px) text — creates visual size stutter. Create `<InlineCode>` docs component (inherits parent font size, adds `font-mono bg-surface-subtle rounded px-1 py-0.5 text-foreground`) and replace all instances on this page. Cross-page migration is a separate TODO item. |
+
+**Dropped findings:**
+- Findings #3/#4 from initial review (arbitrary value + left border accent on blockquote): absorbed into #2
+- Finding #5-responsive (tables cramped at mobile): absorbed into #1 (TableMobileList migration)
+- Redundant Do's and Don'ts section: kept — it's a valid pedagogical pattern (prose teaches, Do/Don't reinforces), not content redundancy
+
+**Notes:**
+- Desktop scroll screenshots rendered blank due to VSCode tunnel rendering limitations. Below-fold content was reviewed via source code + accessibility tree + rendered text extraction.
+- Mobile review confirmed tables technically fit at 375px (no overflow) but cell content is cramped. DoDont grids correctly stack to single column.
+- Finding #5 (DoDont.tsx) is a shared docs component — fix cascades to all pages using it.
+- Finding #6 (InlineCode) — component created here, cross-page sweep added as standalone TODO item under "Docs App Enhancements".
+
+## /foundation/colors/accessibility
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | Legend uses raw OKLCH inline styles (`oklch(35% 0.12 145)`, `oklch(48% 0.14 55)`); ContrastTable uses raw `<table>` instead of DS `Table` component; Legend uses raw `<div>` instead of DS `Card` component. Migrate ContrastTable to DS `Table`/`TableHeader`/`TableBody`/`TableRow`/`TableHead`/`TableCell` + `TableMobileList`/`TableMobileItem` for mobile. Migrate legend to DS `Card` with `PassBadge` components replacing raw colored text. |
+| 2 | minor | content | both | Pre-table paragraph (lines 27-29) duplicates the Legend by explaining AA/Large only/By design labels. Remove label explanations from the paragraph — let the Legend card be the single source. |
+| 3 | minor | content | both | The 6 "On X:" rationale paragraphs lack a section heading (`h2`). Add heading for scannability and anchor-link support. |
+| 4 | minor | content | both | Page references "WCAG AA" as the industry standard but never links to the official W3C documentation. Add link at the first mention only. |
+
+**Dropped findings:**
+- Prev/next page navigation: docs-wide enhancement, added to TODO.md
+- Legend spacing (`gap-1`, `mb-1`): absorbed into Card migration (#1)
+- Mobile layout unverified: absorbed into Table migration (#1) — DS Table with TableMobileList handles mobile by design
+
+**Notes:**
+- Desktop scroll screenshots rendered blank due to VSCode tunnel rendering limitations. Below-fold content was reviewed via source code + rendered text extraction.
+- Mobile review could not resize viewport below 1920px through DevTunnel. Mobile behavior will be verified after DS Table migration.
+
+## /foundation/typography/overview
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | Raw HTML `<table>` with manual utility classes (`border-collapse`, `px-4 py-3`, etc.) — migrate to DS `Table` component (`Table`, `TableHeader`, `TableBody`, `TableRow`, `TableHead`, `TableCell`). Already migrated on `colors/tokens`. |
+| 2 | minor | content | both | Closing paragraph after the table is redundant — repeats the intro (SejongHospital = brand, Pretendard = everything else, Geist Mono = docs only). The table is self-explanatory. Remove entirely. |
+
+**Dropped findings:**
+- `my-8` on `<hr>` and `mt-8` on `<h2>`: established pattern across all reviewed pages
+- Mobile viewport could not be visually tested (browser viewport stuck at 1920px through DevTunnel). Code review shows no mobile-specific concerns — page has no custom breakpoints, relies on `DocsLayout` and `type-*` classes.
+

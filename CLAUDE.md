@@ -13,10 +13,11 @@ Reading a spec is allowed. Reporting what the next task is is allowed. But writi
 ### Startup
 1. Read `docs/TODO.md` — find the first unchecked `- [ ]` item
 2. If the user specifies a task in their first message, work on that instead
-3. If the task links to a spec (`docs/specs/X.md`), read it
-4. If no spec exists, dedicate this session to writing the spec — do not execute the task
-5. For any task that modifies `.tsx` files, also read `docs/DS_CONSTRAINTS.md`
-6. Read `docs/CODEBASE.md` only if the spec instructs it
+3. If the next work is a **batch** (multiple tasks grouped together), present **all tasks in the batch** and let the user choose which to work on. Do NOT auto-select the first one.
+4. If the task links to a spec (`docs/specs/X.md`), read it
+5. If no spec exists, dedicate this session to writing the spec — do not execute the task
+6. For any task that modifies `.tsx` files, also read `docs/DS_CONSTRAINTS.md`
+7. Read `docs/CODEBASE.md` only if the spec instructs it
 
 ### Natural Breakpoints
 At every natural breakpoint (spec complete, phase complete, or context ≥ 70%), stop and present:

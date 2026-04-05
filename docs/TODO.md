@@ -20,12 +20,12 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Fix `/foundation/colors/tokens`
 
 ### Batch 2 — Colors + Typography
-- [ ] Review `/foundation/colors/usage`
+- [x] Review `/foundation/colors/usage`
 - [ ] Fix `/foundation/colors/usage`
-- [ ] Review `/foundation/colors/accessibility`
+- [x] Review `/foundation/colors/accessibility`
 - [ ] Fix `/foundation/colors/accessibility`
-- [ ] Review `/foundation/typography/overview`
-- [ ] Fix `/foundation/typography/overview`
+- [x] Review `/foundation/typography/overview`
+- [x] Fix `/foundation/typography/overview`
 
 ### Batch 3 — Typography + Layout
 - [ ] Review `/foundation/typography/scale`
@@ -176,3 +176,5 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 ## Docs App Enhancements
 
 - [ ] Add `id` attributes to all heading elements (`h2`, `h3`) across docs pages for anchor linking and TOC support
+- [ ] Create `<InlineCode>` docs component (inherits parent font size, adds `font-mono bg-surface-subtle rounded px-1 py-0.5`) and migrate all raw `<code className="...type-caption font-mono...">` across all docs pages
+- [ ] Add prev/next page navigation to docs page footer
