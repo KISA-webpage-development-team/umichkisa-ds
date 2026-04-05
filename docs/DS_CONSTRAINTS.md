@@ -12,14 +12,12 @@ _Each section is self-contained and designed to be injected as skill context in 
 
 Must: Use semantic tokens (`--color-*`) in all component CSS and inline styles — never raw hex, raw OKLCH values, or primitive tokens. [source:foundation/colors/overview]
 Never: Reference `--primitive-*` tokens directly in component code. [source:foundation/colors/overview]
-Never: Hardcode hex values in components — they cannot be updated globally and drift from the system. [source:foundation/colors/usage]
 Never: Implement dark mode — no `.dark` class, no `prefers-color-scheme` media queries, no dark-mode token layer. This design system is light mode only. [source:foundation/colors/overview]
 
 ### Naming (-subtle / -muted)
 
 Must: Treat `-subtle` tokens as container/background roles — tinted regions, alert box fills, card backgrounds. [source:foundation/colors/tokens]
 Must: Treat `-muted` tokens as deprioritized roles — lower-contrast text, elevated inner surfaces. [source:foundation/colors/tokens]
-Never: Use `-subtle` and `-muted` interchangeably — they serve different purposes and are not synonyms. [source:foundation/colors/tokens]
 
 ### Brand Colors
 
@@ -32,14 +30,11 @@ Prefer: Reserving brand colors for intentional, sparse placement — navbars, he
 ### Surface Depth
 
 Must: Follow the three-level surface depth model: page → `--color-surface`, cards/panels → `--color-surface-subtle`, items inside cards → `--color-surface-muted`. [source:foundation/colors/usage]
-Never: Skip surface levels (e.g. placing a card item directly on `--color-surface`). [source:foundation/colors/usage]
-Never: Invent background colors outside the three surface tokens. [source:foundation/colors/usage]
 
 ### Text
 
 Must: Use `--color-link` (not `--color-brand-accent`) for all hyperlinks and inline clickable text. [source:foundation/colors/usage]
 Never: Use `--color-disabled-foreground` for content that needs to be read — intentionally below contrast thresholds. [source:foundation/colors/usage]
-Never: Use `--color-link` for decorative or non-interactive text. [source:foundation/colors/usage]
 Never: Use `--color-brand-foreground` outside of `--color-brand-primary` backgrounds. [source:foundation/colors/tokens]
 
 ### Info vs Link
@@ -57,7 +52,6 @@ Avoid: Using `--color-error` for small body text — passes large text only (3.9
 
 ### Interactive States
 
-Must: Cycle through default → hover → pressed → focus states for every interactive element using brand colors. [source:foundation/colors/usage]
 Must: Implement the dual-ring focus pattern on **buttons and icon-only interactive elements**: `outline: 2px solid var(--color-focus-ring)` (maize, contrast on dark) + `box-shadow: 0 0 0 4px var(--color-brand-primary)` (navy, contrast on light). Both rings must be present. [source:foundation/colors/tokens]
 Exception: **Form controls** (Input, Textarea, Select, Checkbox, Switch, Radio) use a simplified focus pattern: `outline: none` + `border-color: var(--color-brand-primary)`. The border color change is sufficient for elements that already have a visible border. [source:implementation/form-controls]
 Never: Remove the focus indicator entirely — every interactive element must have a visible focus state. Buttons use the dual-ring; form controls use the border-color change. [source:foundation/colors/usage]
@@ -87,10 +81,8 @@ Must: Preload SejongHospital — it appears in Display and H1 (above-the-fold on
 Must: Use `type-*` semantic utility classes for all typography — never compose raw Tailwind utilities (`text-base font-normal leading-relaxed`) in component code. [source:foundation/typography/usage]
 Must: Apply `tracking-tight` to `type-display` and `type-h1`; use `tracking-normal` for all other type roles. [source:foundation/typography/scale]
 Must: Use `type-display` for hero sections and landing pages; use `type-h1` for page titles within the app. [source:foundation/typography/scale]
-Never: Apply both `type-display` and `type-h1` styling on the same page. [source:foundation/typography/scale]
 Prefer: Applying `type-h2` styling to a semantic `<h1>` element when `type-display` is already used on the page — visual hierarchy takes precedence over the class name. [source:foundation/typography/scale]
 Must: Rely on `type-*` class definitions for responsive behavior — do not add breakpoint overrides for typography in components. [source:foundation/typography/scale]
-Avoid: `sm:`, `xl:`, or `2xl:` breakpoint prefixes for typography overrides — the layout system uses three tiers only (default, `md:`, `lg:`). [source:foundation/typography/scale]
 
 ### Usage
 
@@ -109,11 +101,8 @@ Must: Use `type-caption` + `text-muted-foreground` for helper text (instructions
 
 Must: Use `text-link` for all link color — never `text-foreground`. [source:foundation/typography/usage]
 Must: Underline links by default (`underline`). Hover state: `text-brand-primary`. No separate visited style. [source:foundation/typography/usage]
-Never: Apply a separate `type-*` class to links — links inherit the type class of their container. [source:foundation/typography/usage]
-
 ### Truncation
 
-Never: Truncate `type-body` in article or long-form content reading contexts. [source:foundation/typography/usage]
 Must: Use `truncate` for single-line UI element truncation (nav items, table cells, tags, badges). [source:foundation/typography/usage]
 Prefer: `line-clamp-2` for card titles; `line-clamp-3` for card descriptions when multi-line truncation is needed. [source:foundation/typography/usage]
 
