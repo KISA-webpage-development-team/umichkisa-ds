@@ -1,5 +1,5 @@
-import { Container } from '@umichkisa-ds/web'
-import { ContrastTable } from '@/components/ContrastTable'
+import { Card, CardContent, Container } from '@umichkisa-ds/web'
+import { ContrastTable, PassBadge } from '@/components/ContrastTable'
 
 export default function ColorsAccessibilityPage() {
   return (
@@ -47,14 +47,25 @@ export default function ColorsAccessibilityPage() {
       ]} />
 
       {/* Legend */}
-      <div className="mt-4 rounded-lg px-4 py-3 type-body-sm bg-surface-subtle border border-border">
-        <p className="font-semibold mb-1 text-foreground">Legend</p>
-        <ul className="flex flex-col gap-1 text-muted-foreground">
-          <li><strong style={{ color: "oklch(35% 0.12 145)" }}>AA</strong> — Passes WCAG AA for all text sizes (4.5:1+).</li>
-          <li><strong style={{ color: "oklch(48% 0.14 55)" }}>Large only</strong> — Passes WCAG AA for large text only (18px+ or 14px bold, 3:1+). Do not use at small sizes.</li>
-          <li><strong className="text-muted-foreground">By design</strong> — Intentionally below contrast thresholds. See notes below for rationale.</li>
-        </ul>
-      </div>
+      <Card className="mt-4 hover:border-border hover:bg-surface-subtle">
+        <CardContent className="pt-4">
+          <p className="type-body-sm mb-2 text-foreground"><strong>Legend</strong></p>
+          <ul className="flex flex-col gap-2 type-body-sm text-muted-foreground">
+            <li className="flex items-center gap-2">
+              <PassBadge passes="aa" />
+              <span>Passes WCAG AA for all text sizes (4.5:1+).</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <PassBadge passes="large-only" />
+              <span>Passes for large text only (18px+ or 14px bold, 3:1+). Do not use at small sizes.</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <PassBadge passes="intentional-fail" />
+              <span>Intentionally below contrast thresholds. See rationale below.</span>
+            </li>
+          </ul>
+        </CardContent>
+      </Card>
 
       <h2 className="type-h2 text-foreground mt-8 mb-4">Rationale</h2>
 
