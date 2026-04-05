@@ -105,7 +105,7 @@ No `dist/styles.css` import. Font injection handled separately (unchanged). Toke
 ## Docs UI Components (not part of the library)
 
 Already built for the docs site itself:
-`ColorSwatch`, `ColorSwatchGrid`, `ContrastTable`, `DoDont`, `Callout`, `Sidebar`, `Header`, `ComponentPreview`, `SizesExample`, `CodeBlock`, `CodeBlockClient`
+`ColorSwatch`, `ColorSwatchGrid`, `ContrastTable`, `DoDont`, `Callout`, `Sidebar`, `Header`, `Footer`, `ComponentPreview`, `SizesExample`, `CodeBlock`, `CodeBlockClient`
 Located in `apps/docs/components/`.
 
 ### CodeBlock Infrastructure

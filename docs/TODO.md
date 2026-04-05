@@ -4,7 +4,7 @@
 
 - [x] Docs components token gap — fix Callout, DoDont, ContrastTable to use DS semantic tokens
 - [x] Table component — KISA-specific design treatment (minor design task)
-- [ ] Add `<footer>` landmark to docs app layout
+- [x] Add `<footer>` landmark to docs app layout
 
 ## Docs App UI Review (Batch, in parallel)
 
