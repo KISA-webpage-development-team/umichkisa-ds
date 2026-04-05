@@ -545,7 +545,7 @@ var TableHead = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ 
   "th",
   {
     ref,
-    className: cn("px-4 py-3 text-left type-label text-brand-primary", className),
+    className: cn("px-4 py-3 text-left type-body !font-medium text-brand-primary", className),
     ...props
   }
 ));
