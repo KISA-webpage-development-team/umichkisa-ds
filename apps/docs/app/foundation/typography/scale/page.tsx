@@ -1,4 +1,4 @@
-import { Alert, Container } from '@umichkisa-ds/web'
+import { Alert, Container, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
 export default function TypographyScalePage() {
   return (
     <Container size="md" as="article">
@@ -53,94 +53,132 @@ export default function TypographyScalePage() {
       </div>
 
       {/* ── Scale reference table ──────────────────────────── */}
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Class</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Font</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Tailwind</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Size</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Weight</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Line height</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Tracking</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-display</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-sejong-bold</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-5xl</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">3rem / 48px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">1.25</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">tracking-tight</code></td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h1</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-sejong-bold</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-4xl</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">2.25rem / 36px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">1.25</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">tracking-tight</code></td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h2</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-pretendard</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-2xl</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">1.5rem / 24px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-semibold</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">1.375</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">tracking-normal</code></td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h3</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-pretendard</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-xl</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">1.25rem / 20px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-semibold</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">1.375</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">tracking-normal</code></td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-body</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-pretendard</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-base</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">1rem / 16px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">1.625</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">tracking-normal</code></td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-body-sm</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-pretendard</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-sm</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">0.875rem / 14px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">1.5</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">tracking-normal</code></td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-label</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-pretendard</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-sm</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">0.875rem / 14px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-medium</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">1.5</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">tracking-normal</code></td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-caption</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-pretendard</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-xs</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">0.75rem / 12px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">1.5</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">tracking-normal</code></td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Class</TableHead>
+                <TableHead>Font</TableHead>
+                <TableHead>Tailwind</TableHead>
+                <TableHead>Size</TableHead>
+                <TableHead>Weight</TableHead>
+                <TableHead>Line height</TableHead>
+                <TableHead>Tracking</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-display</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-sejong-bold</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-5xl</code></TableCell>
+                <TableCell>3rem / 48px</TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>1.25</TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">tracking-tight</code></TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h1</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-sejong-bold</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-4xl</code></TableCell>
+                <TableCell>2.25rem / 36px</TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>1.25</TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">tracking-tight</code></TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h2</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-pretendard</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-2xl</code></TableCell>
+                <TableCell>1.5rem / 24px</TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-semibold</code></TableCell>
+                <TableCell>1.375</TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">tracking-normal</code></TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h3</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-pretendard</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-xl</code></TableCell>
+                <TableCell>1.25rem / 20px</TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-semibold</code></TableCell>
+                <TableCell>1.375</TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">tracking-normal</code></TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-body</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-pretendard</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-base</code></TableCell>
+                <TableCell>1rem / 16px</TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code></TableCell>
+                <TableCell>1.625</TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">tracking-normal</code></TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-body-sm</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-pretendard</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-sm</code></TableCell>
+                <TableCell>0.875rem / 14px</TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code></TableCell>
+                <TableCell>1.5</TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">tracking-normal</code></TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-label</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-pretendard</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-sm</code></TableCell>
+                <TableCell>0.875rem / 14px</TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-medium</code></TableCell>
+                <TableCell>1.5</TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">tracking-normal</code></TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-caption</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-pretendard</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-xs</code></TableCell>
+                <TableCell>0.75rem / 12px</TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code></TableCell>
+                <TableCell>1.5</TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">tracking-normal</code></TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-display</code>
+              <span className="type-caption text-muted-foreground">font-sejong-bold · 3rem / 48px · Line height 1.25 · tracking-tight</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h1</code>
+              <span className="type-caption text-muted-foreground">font-sejong-bold · 2.25rem / 36px · Line height 1.25 · tracking-tight</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h2</code>
+              <span className="type-caption text-muted-foreground">font-pretendard · 1.5rem / 24px · Line height 1.375 · tracking-normal</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h3</code>
+              <span className="type-caption text-muted-foreground">font-pretendard · 1.25rem / 20px · Line height 1.375 · tracking-normal</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-body</code>
+              <span className="type-caption text-muted-foreground">font-pretendard · 1rem / 16px · Line height 1.625 · tracking-normal</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-body-sm</code>
+              <span className="type-caption text-muted-foreground">font-pretendard · 0.875rem / 14px · Line height 1.5 · tracking-normal</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-label</code>
+              <span className="type-caption text-muted-foreground">font-pretendard · 0.875rem / 14px · Line height 1.5 · tracking-normal</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-caption</code>
+              <span className="type-caption text-muted-foreground">font-pretendard · 0.75rem / 12px · Line height 1.5 · tracking-normal</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
       {/* ── Notes ──────────────────────────────────────────── */}
@@ -195,43 +233,65 @@ export default function TypographyScalePage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg:</code>):
       </p>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Class</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Mobile (default)</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Tablet <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md:</code></th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Desktop <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg:</code></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-display</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">2rem / 32px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">2.5rem / 40px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">3rem / 48px</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h1</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">1.75rem / 28px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">2rem / 32px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">2.25rem / 36px</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h2</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">1.25rem / 20px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">1.375rem / 22px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">1.5rem / 24px</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h3</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">1.125rem / 18px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">1.25rem / 20px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">1.25rem / 20px</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Class</TableHead>
+                <TableHead>Mobile (default)</TableHead>
+                <TableHead>Tablet <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md:</code></TableHead>
+                <TableHead>Desktop <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg:</code></TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-display</code></TableCell>
+                <TableCell>2rem / 32px</TableCell>
+                <TableCell>2.5rem / 40px</TableCell>
+                <TableCell>3rem / 48px</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h1</code></TableCell>
+                <TableCell>1.75rem / 28px</TableCell>
+                <TableCell>2rem / 32px</TableCell>
+                <TableCell>2.25rem / 36px</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h2</code></TableCell>
+                <TableCell>1.25rem / 20px</TableCell>
+                <TableCell>1.375rem / 22px</TableCell>
+                <TableCell>1.5rem / 24px</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h3</code></TableCell>
+                <TableCell>1.125rem / 18px</TableCell>
+                <TableCell>1.25rem / 20px</TableCell>
+                <TableCell>1.25rem / 20px</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-display</code>
+              <span className="type-caption text-muted-foreground">Mobile: 2rem / 32px · Tablet: 2.5rem / 40px · Desktop: 3rem / 48px</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h1</code>
+              <span className="type-caption text-muted-foreground">Mobile: 1.75rem / 28px · Tablet: 2rem / 32px · Desktop: 2.25rem / 36px</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h2</code>
+              <span className="type-caption text-muted-foreground">Mobile: 1.25rem / 20px · Tablet: 1.375rem / 22px · Desktop: 1.5rem / 24px</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h3</code>
+              <span className="type-caption text-muted-foreground">Mobile: 1.125rem / 18px · Tablet: 1.25rem / 20px · Desktop: 1.25rem / 20px</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
       <p className="type-body mb-4 text-foreground max-w-prose">
