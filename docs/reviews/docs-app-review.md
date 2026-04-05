@@ -106,3 +106,40 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 - `my-8` on `<hr>` and `mt-8` on `<h2>`: established pattern across all reviewed pages
 - Mobile viewport could not be visually tested (browser viewport stuck at 1920px through DevTunnel). Code review shows no mobile-specific concerns — page has no custom breakpoints, relies on `DocsLayout` and `type-*` classes.
 
+## /foundation/typography/scale
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | 2 raw HTML `<table>` elements (scale reference + responsive behavior) — migrate to DS `Table` component with `TableMobileList`/`TableMobileItem` for mobile list view. |
+| 2 | major | ds-violation | both | 4 raw `<blockquote>` elements (Note, Display vs H1, Body SM vs Label, Avoid breakpoints) — replace with DS `<Alert>` component. First 3 → `variant="info"`, last → `variant="warning"`. |
+| 3 | major | ds-violation | both | 8 type specimen labels use raw `text-xs` instead of semantic `type-caption` class. |
+| 4 | minor | styling | both | Inconsistent spacing — `space-y-8` (32px), `px-8 py-10`, `my-8`, `my-6`, `my-4` don't follow the three-tier vertical spacing system. Normalize to section (`gap-6`), component (`gap-4`), element (`gap-2`) tiers. Specimen container padding → `p-6`. |
+| 5 | minor | content | both | Note blockquote (about `@media` overrides in `type-*` classes) and Responsive Behavior closing paragraph ("Responsive scaling is baked into the `type-*` class definitions") convey the same point. Consolidate — keep the closing paragraph, fold Tailwind-column clarification into a brief inline note or table heading. |
+
+**Dropped findings:**
+- 7-column table overflow on mobile: redundant with #1 — DS Table component handles mobile via list view
+- Display/H1 weight column shows "—": intentional — Font column already shows `font-sejong-bold`, implying Bold
+
+**Notes:**
+- Desktop scroll screenshots rendered blank due to VSCode tunnel rendering limitations. Below-fold content reviewed via source code + accessibility tree.
+- Mobile top viewport confirmed working (responsive typography scaling correctly). Table overflow (576px vs 520px viewport) handled by `overflow-x: auto` wrapper, will be replaced by DS Table mobile list view.
+
+## /foundation/typography/fonts
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | Raw hex colors (`#00274c`, `#ffcb05`, `#e8f0f7`) in SejongHospital specimen card. Replace with semantic tokens: `bg-brand-primary`, `text-brand-foreground`, `text-brand-foreground opacity-50`. Also remove `opacity-70` non-DS pattern. |
+| 2 | major | ds-violation | both | Both specimen cards use raw `<div>` with manual `rounded-xl border border-border overflow-hidden`. Wrap in DS `Card` + `CardContent`/`CardFooter`. Raw Tailwind typography inside specimens stays (font demo, not type scale — add code comment). |
+| 3 | minor | ds-violation | both | Specimen footer labels use `text-xs text-muted-foreground font-mono` — replace `text-xs` with `type-caption`. |
+| 4 | major | ds-violation | both | Raw `<blockquote>` with `border-l-[3px] border-brand-accent` (arbitrary value + prohibited left border accent). Replace with DS `<Alert>` component. |
+| 5 | major | ds-violation | both | 3 raw HTML `<table>` elements (SejongHospital weights, Pretendard weights, Geist Mono weight) — migrate to DS `Table` + `TableMobileList`/`TableMobileItem` with `hidden md:block` / `block md:hidden` toggle. |
+| 6 | minor | content | both | Redundant sentence "If you are unsure, use Bold." — same guidance already conveyed in preceding text. Remove. |
+| 7 | minor | content | both | Pretendard specimen shows only Latin text despite page claiming "supports Korean and Latin with equal fidelity." Add Korean line (e.g. "미시간 대학교 한인학생회"). |
+| 8 | minor | responsive | both | SejongHospital specimen `text-5xl` may overflow at 375px. Add responsive sizing: `text-3xl md:text-5xl`. Same for subtitle line. |
+
+**Dropped findings:**
+- `opacity-70` on specimen text: merged into #1 (semantic token migration)
+- `h3 mb-2` tight spacing: correct element-tier (8px) spacing per DS spacing system
+- Specimen `px-8` fixed padding: resolved by Card migration (#2) — Card provides its own padding
+- Mobile viewport could not be visually tested (browser viewport stuck at 1920px through DevTunnel). Mobile issues identified via source code review.
+

@@ -28,9 +28,9 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Fix `/foundation/typography/overview`
 
 ### Batch 3 — Typography + Layout
-- [ ] Review `/foundation/typography/scale`
-- [ ] Fix `/foundation/typography/scale`
-- [ ] Review `/foundation/typography/fonts`
+- [x] Review `/foundation/typography/scale`
+- [x] Fix `/foundation/typography/scale`
+- [x] Review `/foundation/typography/fonts`
 - [ ] Fix `/foundation/typography/fonts`
 - [ ] Review `/foundation/typography/usage`
 - [ ] Fix `/foundation/typography/usage`
