@@ -1,4 +1,4 @@
-import { Container } from '@umichkisa-ds/web'
+import { Alert, Container } from '@umichkisa-ds/web'
 export default function TypographyScalePage() {
   return (
     <Container size="md" as="article">
@@ -144,46 +144,34 @@ export default function TypographyScalePage() {
       </div>
 
       {/* ── Notes ──────────────────────────────────────────── */}
-      <blockquote className="border-l-[3px] border-brand-accent bg-surface-subtle pl-4 py-2 my-4 rounded-r">
-        <span className="italic text-muted-foreground type-body">
-          <strong className="font-semibold text-foreground">Note:</strong> The Tailwind column
-          shows the equivalent Tailwind v4 font-size token for developer reference. The actual
-          values are implemented as responsive{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@media</code>{' '}
-          overrides inside the{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-*</code>{' '}
-          class definitions — these are not Tailwind utilities.
-        </span>
-      </blockquote>
-
-      <blockquote className="border-l-[3px] border-brand-accent bg-surface-subtle pl-4 py-2 my-4 rounded-r">
-        <span className="italic text-muted-foreground type-body">
-          <strong className="font-semibold text-foreground">Display vs H1:</strong> Both use
-          SejongHospital Bold. The distinction is context, not style — Display is for hero
-          sections and landing pages, H1 is for page titles within the app. Never apply both{' '}
+      <Alert variant="info" title="Display vs H1" className="my-4">
+        <p>
+          Both use SejongHospital Bold. The distinction is context, not style —
+          Display is for hero sections and landing pages, H1 is for page titles
+          within the app. Never apply both{' '}
           <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-display</code>{' '}
           and{' '}
           <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h1</code>{' '}
-          styling on the same page. If a page has a Display hero and requires a semantic{' '}
+          styling on the same page. If a page has a Display hero and requires a
+          semantic{' '}
           <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&lt;h1&gt;</code>{' '}
           element for accessibility, apply{' '}
           <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h2</code>{' '}
           styling to the{' '}
           <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&lt;h1&gt;</code>{' '}
           — the visual hierarchy takes precedence over the class name.
-        </span>
-      </blockquote>
+        </p>
+      </Alert>
 
-      <blockquote className="border-l-[3px] border-brand-accent bg-surface-subtle pl-4 py-2 my-4 rounded-r">
-        <span className="italic text-muted-foreground type-body">
-          <strong className="font-semibold text-foreground">Body SM vs Label:</strong> Same
-          size, different weight. Body SM ({' '}
+      <Alert variant="info" title="Body SM vs Label" className="my-4">
+        <p>
+          Same size, different weight. Body SM ({' '}
           <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code>{' '}
           ) is for reading. Label ({' '}
           <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-medium</code>{' '}
           ) is for interacting. The extra weight signals that something is actionable.
-        </span>
-      </blockquote>
+        </p>
+      </Alert>
 
       <hr className="my-6 border-0 border-t border-border" />
 
@@ -251,21 +239,26 @@ export default function TypographyScalePage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-*</code>{' '}
         class definitions. Components do not need to apply breakpoint overrides — reaching for{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-display</code>{' '}
-        on any viewport automatically applies the correct size.
+        on any viewport automatically applies the correct size. The Tailwind column
+        in the scale reference table above shows the equivalent font-size token for
+        developer reference only — the actual values come from responsive{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@media</code>{' '}
+        overrides inside each class definition.
       </p>
 
-      <blockquote className="border-l-[3px] border-brand-accent bg-surface-subtle pl-4 py-2 my-4 rounded-r">
-        <span className="italic text-muted-foreground type-body">
+      <Alert variant="warning" className="my-4">
+        <p>
           Avoid{' '}
           <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">sm:</code>,{' '}
           <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">xl:</code>,
           or{' '}
           <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">2xl:</code>{' '}
-          for typography overrides. The layout system operates on three tiers only. See{' '}
-          <a href="/foundation/layout/breakpoints" className="text-link underline-offset-2 hover:underline">Breakpoints</a>{' '}
+          for typography overrides. The layout system operates on three tiers only.
+          See{' '}
+          <a href="/foundation/layout/breakpoints" className="text-link underline underline-offset-2 hover:text-brand-primary">Breakpoints</a>{' '}
           for the full breakpoint policy.
-        </span>
-      </blockquote>
+        </p>
+      </Alert>
 
     </Container>
   )
