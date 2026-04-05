@@ -16,7 +16,7 @@ export default async function ColorsTokensPage() {
       </p>
 
       {/* ── Brand ───────────────────────────────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Brand</h3>
+      <h2 className="type-h2 mt-6 mb-2 text-foreground">Brand</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The Michigan brand colors. These define the visual identity of KISA across
         every surface.
@@ -80,7 +80,7 @@ export default async function ColorsTokensPage() {
       <hr className="my-8 border-0 border-t border-border" />
 
       {/* ── Understanding -subtle and -muted ────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Understanding <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-subtle</code> and <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-muted</code></h3>
+      <h2 className="type-h2 mt-6 mb-2 text-foreground">Understanding <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-subtle</code> and <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-muted</code></h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Two suffixes appear across multiple token groups —{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-subtle</code> and{' '}
@@ -119,7 +119,7 @@ export default async function ColorsTokensPage() {
       <hr className="my-8 border-0 border-t border-border" />
 
       {/* ── Surface ─────────────────────────────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Surface</h3>
+      <h2 className="type-h2 mt-6 mb-2 text-foreground">Surface</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Background colors that define the depth layers of the UI. Think of them as
         elevation — the higher you stack an element, the more tinted its background.
@@ -176,7 +176,7 @@ export default async function ColorsTokensPage() {
       </ColorSwatchGrid>
 
       {/* ── Border ──────────────────────────────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Border</h3>
+      <h2 className="type-h2 mt-6 mb-2 text-foreground">Border</h2>
 
       <div className="my-6 overflow-x-auto">
         <table className="w-full border-collapse border border-border">
@@ -208,7 +208,7 @@ export default async function ColorsTokensPage() {
       </ColorSwatchGrid>
 
       {/* ── Text ────────────────────────────────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Text</h3>
+      <h2 className="type-h2 mt-6 mb-2 text-foreground">Text</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Text tokens cover every role in the typographic hierarchy, plus two special
         cases for colored surfaces.
@@ -262,7 +262,7 @@ export default async function ColorsTokensPage() {
       </ColorSwatchGrid>
 
       {/* ── Feedback ────────────────────────────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Feedback</h3>
+      <h2 className="type-h2 mt-6 mb-2 text-foreground">Feedback</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Feedback colors communicate system states. Each state has two tokens: a solid
         color for icons, borders, and text labels, and a subtle tint for background
@@ -350,7 +350,7 @@ export default async function ColorsTokensPage() {
       </blockquote>
 
       {/* ── Interactive ─────────────────────────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Interactive</h3>
+      <h2 className="type-h2 mt-6 mb-2 text-foreground">Interactive</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Tokens for the hover and pressed states of both brand colors, plus the focus
         ring shown when navigating with a keyboard.
@@ -445,7 +445,7 @@ export default async function ColorsTokensPage() {
       </blockquote>
 
       {/* ── Overlay ─────────────────────────────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Overlay</h3>
+      <h2 className="type-h2 mt-6 mb-2 text-foreground">Overlay</h2>
 
       <div className="my-6 overflow-x-auto">
         <table className="w-full border-collapse border border-border">
