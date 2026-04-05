@@ -518,7 +518,7 @@ var TableHeader = React.forwardRef(({ className, ...props }, ref) => /* @__PURE_
   "thead",
   {
     ref,
-    className: cn("border-b border-border-strong", className),
+    className: cn("border-b border-brand-primary", className),
     ...props
   }
 ));
@@ -536,7 +536,7 @@ var TableRow = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ *
   "tr",
   {
     ref,
-    className: cn("hover:bg-surface-subtle transition-colors", className),
+    className: cn("transition-colors [tbody_&]:hover:bg-brand-accent-subtle", className),
     ...props
   }
 ));
@@ -545,7 +545,7 @@ var TableHead = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ 
   "th",
   {
     ref,
-    className: cn("px-4 py-3 text-left type-label text-muted-foreground", className),
+    className: cn("px-4 py-3 text-left type-label text-brand-primary", className),
     ...props
   }
 ));
@@ -590,7 +590,7 @@ var TableMobileItem = React.forwardRef(({ className, ...props }, ref) => /* @__P
   "li",
   {
     ref,
-    className: cn("flex flex-col gap-1 px-4 py-3 text-foreground hover:bg-surface-subtle transition-colors", className),
+    className: cn("flex flex-col gap-1 px-4 py-3 text-foreground hover:bg-brand-accent-subtle transition-colors", className),
     ...props
   }
 ));

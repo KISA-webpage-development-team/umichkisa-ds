@@ -10,7 +10,7 @@
   --primitive-michigan-blue-mid:    oklch(32% 0.09 243);    /* #00568a */
   --primitive-michigan-blue-light:  oklch(94% 0.018 243);   /* #e8f0f7 */
   --primitive-michigan-maize:       oklch(83% 0.185 91);    /* #ffcb05 */
-  --primitive-michigan-maize-light: oklch(93% 0.1 91);      /* #ffe98a */
+  --primitive-michigan-maize-light: oklch(96% 0.06 91);     /* lighter maize wash */
 
   /* Gray scale */
   --primitive-gray-50:  oklch(98% 0.002 264);
