@@ -11,7 +11,7 @@ export function Footer() {
 
   return (
     <footer
-      className={`mt-16 py-8 px-6 lg:px-12 text-center ${hasSidebar ? 'lg:ml-[var(--docs-sidebar-w)]' : ''}`}
+      className={`mt-auto py-8 px-6 lg:px-12 text-center ${hasSidebar ? 'lg:ml-[var(--docs-sidebar-w)]' : ''}`}
     >
       <p className="type-caption text-muted-foreground">
         KISA Design System · ©{' '}
