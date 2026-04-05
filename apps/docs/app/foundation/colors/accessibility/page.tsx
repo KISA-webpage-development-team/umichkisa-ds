@@ -14,7 +14,7 @@ export default function ColorsAccessibilityPage() {
         A ratio of 21:1 is the maximum — black text on white.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        WCAG AA is the industry standard accessibility level. It requires:
+        <a href="https://www.w3.org/WAI/WCAG21/Understanding/conformance#levels" className="text-link underline hover:text-brand-primary">WCAG AA</a> is the industry standard accessibility level. It requires:
       </p>
       <ul className="type-body text-foreground max-w-prose flex flex-col gap-2 mb-4">
         <li className="flex gap-2"><span className="text-muted-foreground">&bull;</span><strong className="font-semibold text-foreground">4.5:1</strong> minimum for normal body text</li>
@@ -24,9 +24,7 @@ export default function ColorsAccessibilityPage() {
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         The table below shows the contrast ratios for the token pairs you will use most
-        often. Pairs labeled <strong className="font-semibold text-foreground">AA</strong> pass WCAG AA for normal text.
-        Pairs labeled <strong className="font-semibold text-foreground">Large only</strong> pass only for large text (18px+ or 14px bold).
-        Pairs labeled <strong className="font-semibold text-foreground">By design</strong> intentionally fail — they are designed that way.
+        often. See the legend below the table for how to read the badges.
       </p>
 
       <ContrastTable rows={[
@@ -58,7 +56,9 @@ export default function ColorsAccessibilityPage() {
         </ul>
       </div>
 
-      <p className="type-body mb-4 mt-6 text-foreground max-w-prose">
+      <h2 className="type-h2 text-foreground mt-8 mb-4">Rationale</h2>
+
+      <p className="type-body mb-4 text-foreground max-w-prose">
         <strong className="font-semibold text-foreground">On <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-disabled-foreground</code>:</strong>{' '}
         The 2.8:1 ratio is intentional. Disabled elements are not meant to be read — they communicate
         {'"'}this action is not available.{'"'} If a user needs to read it, it should not be disabled.
