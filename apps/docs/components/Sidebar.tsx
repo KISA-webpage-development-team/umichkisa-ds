@@ -230,39 +230,39 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           ${open ? 'translate-x-0 shadow-lg' : '-translate-x-full lg:shadow-none'}`}
         aria-label="Documentation navigation"
       >
-        {/* Close button: mobile-only, top-right of sidebar */}
-        <div className="flex lg:hidden justify-end px-4 pt-3">
-          <IconButton
-            icon="x"
-            variant="tertiary"
-            size="sm"
-            aria-label="Close navigation menu"
-            onClick={onClose}
-          />
-        </div>
-
         {/* Mobile nav: section headings with current section expanded */}
         <div className="lg:hidden pl-14 pr-8 py-8 flex flex-col gap-4">
           {([
             { label: 'Foundation', href: '/foundation', prefix: '/foundation', key: 'foundation' as SectionKey },
             { label: 'Components', href: '/components', prefix: '/components', key: 'components' as SectionKey },
             { label: 'Forms', href: '/forms/overview', prefix: '/forms', key: 'forms' as SectionKey },
-          ]).map((s) => {
+          ]).map((s, i) => {
             const isCurrent = pathname.startsWith(s.prefix)
             return (
               <div key={s.key}>
-                <Link
-                  href={s.href}
-                  className={`inline-block w-fit py-1 px-2 rounded-sm
-                    type-body !font-sejong-bold transition-colors duration-150
-                    ${isCurrent
-                      ? 'text-brand-primary !font-semibold'
-                      : 'text-foreground hover:text-brand-primary'
-                    }`}
-                  onClick={isCurrent ? undefined : onClose}
-                >
-                  {s.label}
-                </Link>
+                <div className={`flex items-center ${i === 0 ? 'justify-between' : ''}`}>
+                  <Link
+                    href={s.href}
+                    className={`inline-block w-fit py-1 px-2 rounded-sm
+                      type-body !font-sejong-bold transition-colors duration-150
+                      ${isCurrent
+                        ? 'text-brand-primary !font-semibold'
+                        : 'text-foreground hover:text-brand-primary'
+                      }`}
+                    onClick={isCurrent ? undefined : onClose}
+                  >
+                    {s.label}
+                  </Link>
+                  {i === 0 && (
+                    <IconButton
+                      icon="x"
+                      variant="tertiary"
+                      size="sm"
+                      aria-label="Close navigation menu"
+                      onClick={onClose}
+                    />
+                  )}
+                </div>
 
                 {/* Expand children for current section */}
                 {isCurrent && (
@@ -295,8 +295,8 @@ export function Sidebar({ open, onClose }: SidebarProps) {
 
         {/* Desktop nav: current section categories only */}
         <div className="hidden lg:flex pl-14 pr-8 py-8 flex-col gap-6">
-          {categories.map((category) => (
-            <div key={category.label}>
+          {categories.map((category, idx) => (
+            <div key={`${idx}-${category.label}`}>
               {/* Category heading — non-interactive */}
               <span className="block type-body-sm !font-sejong-bold text-foreground mb-2 px-2">
                 {category.label}
