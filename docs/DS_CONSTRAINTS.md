@@ -220,20 +220,12 @@ Must: Decorative icons (`aria-hidden="true"`) have no contrast requirement. Only
 
 ---
 
-## Components (General)
-
-_Universal rules that apply to every component regardless of domain._
-_Cross-cutting rules accumulated during the component phase._
-
----
-
 ## Form Controls
 
 ### Toggle Controls (Checkbox, Switch, Radio)
 
 Must: Toggle controls (Checkbox, Switch, RadioItem) use the `text` string prop for inline label text — never pass label content as children or via external markup. [source:form-ui-review/2026-03-31]
 Must: Toggle inline label text uses `type-body-sm text-foreground`. Exception: Switch `size="sm"` uses `type-caption`. [source:form-ui-review/2026-03-31]
-Must: Disabled toggle controls dim both the control and the inline text (`text-disabled-foreground`). [source:form-ui-review/2026-03-31]
 
 ### FormItem Composition
 
