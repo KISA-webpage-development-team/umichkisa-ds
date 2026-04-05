@@ -1,4 +1,4 @@
-import { Alert, Container } from '@umichkisa-ds/web'
+import { Alert, Container, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
 import { DoDont } from '@/components/DoDont'
 import { Do, Dont } from '@/components/DoDont'
 import { CodeBlock } from '@/components/CodeBlock'
@@ -191,33 +191,56 @@ export default async function ColorsUsagePage() {
         <InlineCode>--color-brand-primary</InlineCode>:
       </p>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">State</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Token</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Default</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-primary</InlineCode></td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Hover</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-primary-hover</InlineCode></td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Pressed</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-primary-pressed</InlineCode></td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Focus ring</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-focus-ring</InlineCode></td>
-            </tr>
-          </tbody>
-        </table>
+      {/* ── Table 1: Brand-primary interactive states (2-col) ── */}
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>State</TableHead>
+                <TableHead>Token</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell>Default</TableCell>
+                <TableCell><InlineCode>--color-brand-primary</InlineCode></TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Hover</TableCell>
+                <TableCell><InlineCode>--color-brand-primary-hover</InlineCode></TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Pressed</TableCell>
+                <TableCell><InlineCode>--color-brand-primary-pressed</InlineCode></TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Focus ring</TableCell>
+                <TableCell><InlineCode>--color-focus-ring</InlineCode></TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <span>Default</span>
+              <InlineCode>--color-brand-primary</InlineCode>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span>Hover</span>
+              <InlineCode>--color-brand-primary-hover</InlineCode>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span>Pressed</span>
+              <InlineCode>--color-brand-primary-pressed</InlineCode>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span>Focus ring</span>
+              <InlineCode>--color-focus-ring</InlineCode>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
       <p className="type-body mb-4 text-foreground max-w-prose">
@@ -225,33 +248,56 @@ export default async function ColorsUsagePage() {
         <InlineCode>--color-brand-accent</InlineCode>:
       </p>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">State</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Token</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Default</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-accent</InlineCode></td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Hover</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-accent-hover</InlineCode></td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Pressed</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-accent-pressed</InlineCode></td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Focus ring</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-focus-ring</InlineCode></td>
-            </tr>
-          </tbody>
-        </table>
+      {/* ── Table 2: Brand-accent interactive states (2-col) ── */}
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>State</TableHead>
+                <TableHead>Token</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell>Default</TableCell>
+                <TableCell><InlineCode>--color-brand-accent</InlineCode></TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Hover</TableCell>
+                <TableCell><InlineCode>--color-brand-accent-hover</InlineCode></TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Pressed</TableCell>
+                <TableCell><InlineCode>--color-brand-accent-pressed</InlineCode></TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Focus ring</TableCell>
+                <TableCell><InlineCode>--color-focus-ring</InlineCode></TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <span>Default</span>
+              <InlineCode>--color-brand-accent</InlineCode>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span>Hover</span>
+              <InlineCode>--color-brand-accent-hover</InlineCode>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span>Pressed</span>
+              <InlineCode>--color-brand-accent-pressed</InlineCode>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span>Focus ring</span>
+              <InlineCode>--color-focus-ring</InlineCode>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
       <p className="type-body mb-4 text-foreground max-w-prose">
@@ -274,37 +320,56 @@ export default async function ColorsUsagePage() {
         Indicators follow the <strong className="font-semibold text-foreground">stroke vs fill</strong> rule:
       </p>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Control</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Indicator type</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Token</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Rationale</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Checkbox checkmark</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Stroke (thin lines)</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-foreground</InlineCode> (maize)</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Narrow strokes read as accent</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Radio dot</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Fill (solid circle)</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-surface</InlineCode> (white)</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Solid fills in maize are too heavy at small scale</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Switch thumb</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Fill (solid circle)</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-surface</InlineCode> (white)</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Same as Radio</td>
-            </tr>
-          </tbody>
-        </table>
+      {/* ── Table 3: Toggle controls (4-col) ── */}
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Control</TableHead>
+                <TableHead>Indicator type</TableHead>
+                <TableHead>Token</TableHead>
+                <TableHead>Rationale</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell>Checkbox checkmark</TableCell>
+                <TableCell>Stroke (thin lines)</TableCell>
+                <TableCell><InlineCode>--color-brand-foreground</InlineCode> (maize)</TableCell>
+                <TableCell>Narrow strokes read as accent</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Radio dot</TableCell>
+                <TableCell>Fill (solid circle)</TableCell>
+                <TableCell><InlineCode>--color-surface</InlineCode> (white)</TableCell>
+                <TableCell>Solid fills in maize are too heavy at small scale</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Switch thumb</TableCell>
+                <TableCell>Fill (solid circle)</TableCell>
+                <TableCell><InlineCode>--color-surface</InlineCode> (white)</TableCell>
+                <TableCell>Same as Radio</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <span>Checkbox checkmark</span>
+              <span className="type-caption text-muted-foreground">Stroke (thin lines) · <InlineCode>--color-brand-foreground</InlineCode> (maize) · Narrow strokes read as accent</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span>Radio dot</span>
+              <span className="type-caption text-muted-foreground">Fill (solid circle) · <InlineCode>--color-surface</InlineCode> (white) · Solid fills in maize are too heavy at small scale</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span>Switch thumb</span>
+              <span className="type-caption text-muted-foreground">Fill (solid circle) · <InlineCode>--color-surface</InlineCode> (white) · Same as Radio</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
       <p className="type-body mb-4 text-foreground max-w-prose">
@@ -405,256 +470,410 @@ export default async function ColorsUsagePage() {
         The table below lists the most natural utility or utilities for each token, grouped by semantic role.
       </p>
 
-      {/* Brand utilities */}
+      {/* ── Table 4: Brand utilities (3-col) ── */}
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Brand</h3>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">CSS Variable</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Tailwind Utility</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-primary</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-brand-primary</InlineCode> / <InlineCode>text-brand-primary</InlineCode> / <InlineCode>border-brand-primary</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Michigan navy — primary brand surface and emphasis</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-primary-mid</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>text-brand-primary-mid</InlineCode> / <InlineCode>border-brand-primary-mid</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Mid-weight navy — hyperlinks, secondary highlights</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-accent</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-brand-accent</InlineCode> / <InlineCode>text-brand-accent</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Michigan maize — attention signal, focus, CTAs</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-accent-subtle</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-brand-accent-subtle</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Light maize tint — subtle accent backgrounds</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>CSS Variable</TableHead>
+                <TableHead>Tailwind Utility</TableHead>
+                <TableHead>Role</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><InlineCode>--color-brand-primary</InlineCode></TableCell>
+                <TableCell><InlineCode>bg-brand-primary</InlineCode> / <InlineCode>text-brand-primary</InlineCode> / <InlineCode>border-brand-primary</InlineCode></TableCell>
+                <TableCell>Michigan navy — primary brand surface and emphasis</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><InlineCode>--color-brand-primary-mid</InlineCode></TableCell>
+                <TableCell><InlineCode>text-brand-primary-mid</InlineCode> / <InlineCode>border-brand-primary-mid</InlineCode></TableCell>
+                <TableCell>Mid-weight navy — hyperlinks, secondary highlights</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><InlineCode>--color-brand-accent</InlineCode></TableCell>
+                <TableCell><InlineCode>bg-brand-accent</InlineCode> / <InlineCode>text-brand-accent</InlineCode></TableCell>
+                <TableCell>Michigan maize — attention signal, focus, CTAs</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><InlineCode>--color-brand-accent-subtle</InlineCode></TableCell>
+                <TableCell><InlineCode>bg-brand-accent-subtle</InlineCode></TableCell>
+                <TableCell>Light maize tint — subtle accent backgrounds</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <InlineCode>--color-brand-primary</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>bg-brand-primary</InlineCode> / <InlineCode>text-brand-primary</InlineCode> / <InlineCode>border-brand-primary</InlineCode> — Michigan navy — primary brand surface and emphasis</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <InlineCode>--color-brand-primary-mid</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>text-brand-primary-mid</InlineCode> / <InlineCode>border-brand-primary-mid</InlineCode> — Mid-weight navy — hyperlinks, secondary highlights</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <InlineCode>--color-brand-accent</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>bg-brand-accent</InlineCode> / <InlineCode>text-brand-accent</InlineCode> — Michigan maize — attention signal, focus, CTAs</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <InlineCode>--color-brand-accent-subtle</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>bg-brand-accent-subtle</InlineCode> — Light maize tint — subtle accent backgrounds</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
-      {/* Interactive States utilities */}
+      {/* ── Table 5: Interactive States utilities (3-col) ── */}
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Interactive States</h3>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">CSS Variable</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Tailwind Utility</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-primary-hover</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-brand-primary-hover</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Navy hover state background</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-primary-pressed</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-brand-primary-pressed</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Navy pressed/active state background</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-accent-hover</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-brand-accent-hover</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Maize hover state background</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-accent-pressed</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-brand-accent-pressed</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Maize pressed/active state background</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-focus-ring</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>outline-focus-ring</InlineCode> / <InlineCode>ring-focus-ring</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Maize focus ring — keyboard navigation indicator</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>CSS Variable</TableHead>
+                <TableHead>Tailwind Utility</TableHead>
+                <TableHead>Role</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><InlineCode>--color-brand-primary-hover</InlineCode></TableCell>
+                <TableCell><InlineCode>bg-brand-primary-hover</InlineCode></TableCell>
+                <TableCell>Navy hover state background</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><InlineCode>--color-brand-primary-pressed</InlineCode></TableCell>
+                <TableCell><InlineCode>bg-brand-primary-pressed</InlineCode></TableCell>
+                <TableCell>Navy pressed/active state background</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><InlineCode>--color-brand-accent-hover</InlineCode></TableCell>
+                <TableCell><InlineCode>bg-brand-accent-hover</InlineCode></TableCell>
+                <TableCell>Maize hover state background</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><InlineCode>--color-brand-accent-pressed</InlineCode></TableCell>
+                <TableCell><InlineCode>bg-brand-accent-pressed</InlineCode></TableCell>
+                <TableCell>Maize pressed/active state background</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><InlineCode>--color-focus-ring</InlineCode></TableCell>
+                <TableCell><InlineCode>outline-focus-ring</InlineCode> / <InlineCode>ring-focus-ring</InlineCode></TableCell>
+                <TableCell>Maize focus ring — keyboard navigation indicator</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <InlineCode>--color-brand-primary-hover</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>bg-brand-primary-hover</InlineCode> — Navy hover state background</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <InlineCode>--color-brand-primary-pressed</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>bg-brand-primary-pressed</InlineCode> — Navy pressed/active state background</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <InlineCode>--color-brand-accent-hover</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>bg-brand-accent-hover</InlineCode> — Maize hover state background</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <InlineCode>--color-brand-accent-pressed</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>bg-brand-accent-pressed</InlineCode> — Maize pressed/active state background</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <InlineCode>--color-focus-ring</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>outline-focus-ring</InlineCode> / <InlineCode>ring-focus-ring</InlineCode> — Maize focus ring — keyboard navigation indicator</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
-      {/* Surface utilities */}
+      {/* ── Table 6: Surface utilities (3-col) ── */}
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Surface</h3>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">CSS Variable</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Tailwind Utility</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-surface</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-surface</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Page background (white)</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-surface-subtle</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-surface-subtle</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Cards, panels — first depth level (gray-100)</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-surface-muted</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-surface-muted</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Items inside cards — second depth level (gray-50)</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>CSS Variable</TableHead>
+                <TableHead>Tailwind Utility</TableHead>
+                <TableHead>Role</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><InlineCode>--color-surface</InlineCode></TableCell>
+                <TableCell><InlineCode>bg-surface</InlineCode></TableCell>
+                <TableCell>Page background (white)</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><InlineCode>--color-surface-subtle</InlineCode></TableCell>
+                <TableCell><InlineCode>bg-surface-subtle</InlineCode></TableCell>
+                <TableCell>Cards, panels — first depth level (gray-100)</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><InlineCode>--color-surface-muted</InlineCode></TableCell>
+                <TableCell><InlineCode>bg-surface-muted</InlineCode></TableCell>
+                <TableCell>Items inside cards — second depth level (gray-50)</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <InlineCode>--color-surface</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>bg-surface</InlineCode> — Page background (white)</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <InlineCode>--color-surface-subtle</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>bg-surface-subtle</InlineCode> — Cards, panels — first depth level (gray-100)</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <InlineCode>--color-surface-muted</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>bg-surface-muted</InlineCode> — Items inside cards — second depth level (gray-50)</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
-      {/* Border utilities */}
+      {/* ── Table 7: Border utilities (3-col) ── */}
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Border</h3>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">CSS Variable</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Tailwind Utility</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-border</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>border-border</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Default border — dividers, input outlines (gray-200)</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-border-strong</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>border-border-strong</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Stronger border — hover states, emphasis (gray-300)</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>CSS Variable</TableHead>
+                <TableHead>Tailwind Utility</TableHead>
+                <TableHead>Role</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><InlineCode>--color-border</InlineCode></TableCell>
+                <TableCell><InlineCode>border-border</InlineCode></TableCell>
+                <TableCell>Default border — dividers, input outlines (gray-200)</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><InlineCode>--color-border-strong</InlineCode></TableCell>
+                <TableCell><InlineCode>border-border-strong</InlineCode></TableCell>
+                <TableCell>Stronger border — hover states, emphasis (gray-300)</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <InlineCode>--color-border</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>border-border</InlineCode> — Default border — dividers, input outlines (gray-200)</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <InlineCode>--color-border-strong</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>border-border-strong</InlineCode> — Stronger border — hover states, emphasis (gray-300)</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
-      {/* Text utilities */}
+      {/* ── Table 8: Text utilities (3-col) ── */}
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Text</h3>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">CSS Variable</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Tailwind Utility</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-foreground</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>text-foreground</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Primary text — all readable content (gray-900)</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-muted-foreground</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>text-muted-foreground</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Secondary text — captions, metadata, helper text (gray-500)</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-disabled-foreground</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>text-disabled-foreground</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Disabled state text and icons (gray-400)</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-foreground</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>text-brand-foreground</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Text on brand-primary backgrounds — maize on navy</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-link</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>text-link</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Hyperlink text color — signals clickability</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>CSS Variable</TableHead>
+                <TableHead>Tailwind Utility</TableHead>
+                <TableHead>Role</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><InlineCode>--color-foreground</InlineCode></TableCell>
+                <TableCell><InlineCode>text-foreground</InlineCode></TableCell>
+                <TableCell>Primary text — all readable content (gray-900)</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><InlineCode>--color-muted-foreground</InlineCode></TableCell>
+                <TableCell><InlineCode>text-muted-foreground</InlineCode></TableCell>
+                <TableCell>Secondary text — captions, metadata, helper text (gray-500)</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><InlineCode>--color-disabled-foreground</InlineCode></TableCell>
+                <TableCell><InlineCode>text-disabled-foreground</InlineCode></TableCell>
+                <TableCell>Disabled state text and icons (gray-400)</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><InlineCode>--color-brand-foreground</InlineCode></TableCell>
+                <TableCell><InlineCode>text-brand-foreground</InlineCode></TableCell>
+                <TableCell>Text on brand-primary backgrounds — maize on navy</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><InlineCode>--color-link</InlineCode></TableCell>
+                <TableCell><InlineCode>text-link</InlineCode></TableCell>
+                <TableCell>Hyperlink text color — signals clickability</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <InlineCode>--color-foreground</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>text-foreground</InlineCode> — Primary text — all readable content (gray-900)</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <InlineCode>--color-muted-foreground</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>text-muted-foreground</InlineCode> — Secondary text — captions, metadata, helper text (gray-500)</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <InlineCode>--color-disabled-foreground</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>text-disabled-foreground</InlineCode> — Disabled state text and icons (gray-400)</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <InlineCode>--color-brand-foreground</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>text-brand-foreground</InlineCode> — Text on brand-primary backgrounds — maize on navy</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <InlineCode>--color-link</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>text-link</InlineCode> — Hyperlink text color — signals clickability</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
-      {/* Feedback utilities */}
+      {/* ── Table 9: Feedback utilities (3-col) ── */}
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Feedback</h3>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">CSS Variable</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Tailwind Utility</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-error</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>text-error</InlineCode> / <InlineCode>border-error</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Error state — icons, borders, text labels</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-error-subtle</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-error-subtle</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Error state — alert and callout box background</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-success</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>text-success</InlineCode> / <InlineCode>border-success</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Success state — icons and borders (pair with <InlineCode>text-foreground</InlineCode> label)</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-success-subtle</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-success-subtle</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Success state — alert and callout box background</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-warning</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>text-warning</InlineCode> / <InlineCode>border-warning</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Warning state — icons and borders (pair with <InlineCode>text-foreground</InlineCode> label)</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-warning-subtle</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-warning-subtle</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Warning state — alert and callout box background</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-info</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>text-info</InlineCode> / <InlineCode>border-info</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Info state — neutral notices, documentation callouts</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-info-subtle</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-info-subtle</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Info state — alert and callout box background</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>CSS Variable</TableHead>
+                <TableHead>Tailwind Utility</TableHead>
+                <TableHead>Role</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><InlineCode>--color-error</InlineCode></TableCell>
+                <TableCell><InlineCode>text-error</InlineCode> / <InlineCode>border-error</InlineCode></TableCell>
+                <TableCell>Error state — icons, borders, text labels</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><InlineCode>--color-error-subtle</InlineCode></TableCell>
+                <TableCell><InlineCode>bg-error-subtle</InlineCode></TableCell>
+                <TableCell>Error state — alert and callout box background</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><InlineCode>--color-success</InlineCode></TableCell>
+                <TableCell><InlineCode>text-success</InlineCode> / <InlineCode>border-success</InlineCode></TableCell>
+                <TableCell>Success state — icons and borders (pair with <InlineCode>text-foreground</InlineCode> label)</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><InlineCode>--color-success-subtle</InlineCode></TableCell>
+                <TableCell><InlineCode>bg-success-subtle</InlineCode></TableCell>
+                <TableCell>Success state — alert and callout box background</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><InlineCode>--color-warning</InlineCode></TableCell>
+                <TableCell><InlineCode>text-warning</InlineCode> / <InlineCode>border-warning</InlineCode></TableCell>
+                <TableCell>Warning state — icons and borders (pair with <InlineCode>text-foreground</InlineCode> label)</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><InlineCode>--color-warning-subtle</InlineCode></TableCell>
+                <TableCell><InlineCode>bg-warning-subtle</InlineCode></TableCell>
+                <TableCell>Warning state — alert and callout box background</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><InlineCode>--color-info</InlineCode></TableCell>
+                <TableCell><InlineCode>text-info</InlineCode> / <InlineCode>border-info</InlineCode></TableCell>
+                <TableCell>Info state — neutral notices, documentation callouts</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><InlineCode>--color-info-subtle</InlineCode></TableCell>
+                <TableCell><InlineCode>bg-info-subtle</InlineCode></TableCell>
+                <TableCell>Info state — alert and callout box background</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <InlineCode>--color-error</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>text-error</InlineCode> / <InlineCode>border-error</InlineCode> — Error state — icons, borders, text labels</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <InlineCode>--color-error-subtle</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>bg-error-subtle</InlineCode> — Error state — alert and callout box background</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <InlineCode>--color-success</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>text-success</InlineCode> / <InlineCode>border-success</InlineCode> — Success state — icons and borders (pair with <InlineCode>text-foreground</InlineCode> label)</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <InlineCode>--color-success-subtle</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>bg-success-subtle</InlineCode> — Success state — alert and callout box background</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <InlineCode>--color-warning</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>text-warning</InlineCode> / <InlineCode>border-warning</InlineCode> — Warning state — icons and borders (pair with <InlineCode>text-foreground</InlineCode> label)</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <InlineCode>--color-warning-subtle</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>bg-warning-subtle</InlineCode> — Warning state — alert and callout box background</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <InlineCode>--color-info</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>text-info</InlineCode> / <InlineCode>border-info</InlineCode> — Info state — neutral notices, documentation callouts</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <InlineCode>--color-info-subtle</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>bg-info-subtle</InlineCode> — Info state — alert and callout box background</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
-      {/* Overlay utilities */}
+      {/* ── Table 10: Overlay utilities (3-col) ── */}
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Overlay</h3>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">CSS Variable</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Tailwind Utility</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-overlay</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-overlay</InlineCode></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Modal/dialog scrim — semi-transparent black (40% opacity)</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>CSS Variable</TableHead>
+                <TableHead>Tailwind Utility</TableHead>
+                <TableHead>Role</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><InlineCode>--color-overlay</InlineCode></TableCell>
+                <TableCell><InlineCode>bg-overlay</InlineCode></TableCell>
+                <TableCell>Modal/dialog scrim — semi-transparent black (40% opacity)</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <InlineCode>--color-overlay</InlineCode>
+              <span className="type-caption text-muted-foreground"><InlineCode>bg-overlay</InlineCode> — Modal/dialog scrim — semi-transparent black (40% opacity)</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
     </Container>
