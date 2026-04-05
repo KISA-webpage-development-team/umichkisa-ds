@@ -1,4 +1,4 @@
-import { Container, Card, CardContent, CardFooter, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
+import { Container, Card, CardContent, CardFooter, Alert, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
 import { CodeBlock } from '@/components/CodeBlock'
 export default async function TypographyFontsPage() {
   return (
@@ -374,14 +374,12 @@ const sejongLight = localFont({
         — type utilities, component styles — picks it up automatically.
       </p>
 
-      <blockquote className="border-l-[3px] border-brand-accent bg-surface-subtle pl-4 py-2 my-4 rounded-r">
-        <span className="italic text-muted-foreground type-body-sm">
-          Non-Next.js consumers can skip this step entirely. The DS{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@font-face</code>{' '}
-          declarations work on their own — fonts will load via the standard CSS path. The
-          trade-off is a brief flash of system font on first visit while the TTF files download.
-        </span>
-      </blockquote>
+      <Alert className="my-4">
+        Non-Next.js consumers can skip this step entirely. The DS{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@font-face</code>{' '}
+        declarations work on their own — fonts will load via the standard CSS path. The
+        trade-off is a brief flash of system font on first visit while the TTF files download.
+      </Alert>
 
     </Container>
   )
