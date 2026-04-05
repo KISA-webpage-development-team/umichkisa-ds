@@ -1,4 +1,4 @@
-import { Container } from '@umichkisa-ds/web'
+import { Container, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
 import { CodeBlock } from '@/components/CodeBlock'
 export default async function TypographyFontsPage() {
   return (
@@ -24,32 +24,50 @@ export default async function TypographyFontsPage() {
         It ships with two weights only:
       </p>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Weight</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Class</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Use</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Light 300</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-sejong-light</code>
-              </td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Decorative display, large pull quotes</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Bold 700</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-sejong-bold</code>
-              </td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Default for all Display and H1</td>
-            </tr>
-          </tbody>
-        </table>
+      {/* Desktop */}
+      <div className="hidden md:block my-6">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Weight</TableHead>
+              <TableHead>Class</TableHead>
+              <TableHead>Use</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell>Light 300</TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-sejong-light</code></TableCell>
+              <TableCell>Decorative display, large pull quotes</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Bold 700</TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-sejong-bold</code></TableCell>
+              <TableCell>Default for all Display and H1</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
+      {/* Mobile */}
+      <div className="block md:hidden my-6">
+        <TableMobileList>
+          <TableMobileItem>
+            <span className="type-caption text-muted-foreground">Weight</span>
+            <span className="type-body-sm text-foreground">Light 300</span>
+            <span className="type-caption text-muted-foreground">Class</span>
+            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-sejong-light</code>
+            <span className="type-caption text-muted-foreground">Use</span>
+            <span className="type-body-sm text-foreground">Decorative display, large pull quotes</span>
+          </TableMobileItem>
+          <TableMobileItem>
+            <span className="type-caption text-muted-foreground">Weight</span>
+            <span className="type-body-sm text-foreground">Bold 700</span>
+            <span className="type-caption text-muted-foreground">Class</span>
+            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-sejong-bold</code>
+            <span className="type-caption text-muted-foreground">Use</span>
+            <span className="type-body-sm text-foreground">Default for all Display and H1</span>
+          </TableMobileItem>
+        </TableMobileList>
       </div>
 
       <p className="type-body mb-4 text-foreground max-w-prose">
@@ -102,39 +120,63 @@ export default async function TypographyFontsPage() {
         The three weights used in the type scale:
       </p>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Weight</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Tailwind class</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Use</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Regular 400</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code>
-              </td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Body text, captions</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Medium 500</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-medium</code>
-              </td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Labels, navigation items</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Semibold 600</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-semibold</code>
-              </td>
-              <td className="px-4 py-3 type-body-sm text-foreground">H2, H3, emphasized text</td>
-            </tr>
-          </tbody>
-        </table>
+      {/* Desktop */}
+      <div className="hidden md:block my-6">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Weight</TableHead>
+              <TableHead>Tailwind class</TableHead>
+              <TableHead>Use</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell>Regular 400</TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code></TableCell>
+              <TableCell>Body text, captions</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Medium 500</TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-medium</code></TableCell>
+              <TableCell>Labels, navigation items</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Semibold 600</TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-semibold</code></TableCell>
+              <TableCell>H2, H3, emphasized text</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
+      {/* Mobile */}
+      <div className="block md:hidden my-6">
+        <TableMobileList>
+          <TableMobileItem>
+            <span className="type-caption text-muted-foreground">Weight</span>
+            <span className="type-body-sm text-foreground">Regular 400</span>
+            <span className="type-caption text-muted-foreground">Tailwind class</span>
+            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code>
+            <span className="type-caption text-muted-foreground">Use</span>
+            <span className="type-body-sm text-foreground">Body text, captions</span>
+          </TableMobileItem>
+          <TableMobileItem>
+            <span className="type-caption text-muted-foreground">Weight</span>
+            <span className="type-body-sm text-foreground">Medium 500</span>
+            <span className="type-caption text-muted-foreground">Tailwind class</span>
+            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-medium</code>
+            <span className="type-caption text-muted-foreground">Use</span>
+            <span className="type-body-sm text-foreground">Labels, navigation items</span>
+          </TableMobileItem>
+          <TableMobileItem>
+            <span className="type-caption text-muted-foreground">Weight</span>
+            <span className="type-body-sm text-foreground">Semibold 600</span>
+            <span className="type-caption text-muted-foreground">Tailwind class</span>
+            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-semibold</code>
+            <span className="type-caption text-muted-foreground">Use</span>
+            <span className="type-body-sm text-foreground">H2, H3, emphasized text</span>
+          </TableMobileItem>
+        </TableMobileList>
       </div>
 
       {/* ── Pretendard fallback stack ──────────────────────── */}
@@ -175,25 +217,37 @@ export default async function TypographyFontsPage() {
         client application does not use it.
       </p>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Weight</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Tailwind class</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Use</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Regular 400</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code>
-              </td>
-              <td className="px-4 py-3 type-body-sm text-foreground">All code contexts</td>
-            </tr>
-          </tbody>
-        </table>
+      {/* Desktop */}
+      <div className="hidden md:block my-6">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Weight</TableHead>
+              <TableHead>Tailwind class</TableHead>
+              <TableHead>Use</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell>Regular 400</TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code></TableCell>
+              <TableCell>All code contexts</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
+      {/* Mobile */}
+      <div className="block md:hidden my-6">
+        <TableMobileList>
+          <TableMobileItem>
+            <span className="type-caption text-muted-foreground">Weight</span>
+            <span className="type-body-sm text-foreground">Regular 400</span>
+            <span className="type-caption text-muted-foreground">Tailwind class</span>
+            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code>
+            <span className="type-caption text-muted-foreground">Use</span>
+            <span className="type-body-sm text-foreground">All code contexts</span>
+          </TableMobileItem>
+        </TableMobileList>
       </div>
 
       <hr className="my-8 border-0 border-t border-border" />
