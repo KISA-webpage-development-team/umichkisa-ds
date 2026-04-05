@@ -1,4 +1,4 @@
-import { Card, CardContent } from '@umichkisa-ds/web'
+import { Card, CardContent, CardFooter } from '@umichkisa-ds/web'
 
 type ColorSwatchProps = {
   token: string
@@ -42,7 +42,7 @@ export function ColorSwatch({ token, value, hex, label }: ColorSwatchProps) {
       </CardContent>
 
       {/* Meta */}
-      <CardContent className="space-y-1">
+      <CardFooter className="flex-col items-start gap-1">
         <p className="break-words type-caption font-mono !font-semibold !leading-snug text-foreground">
           {token}
         </p>
@@ -62,7 +62,7 @@ export function ColorSwatch({ token, value, hex, label }: ColorSwatchProps) {
         <p className="pt-0.5 type-caption !font-medium text-muted-foreground">
           {label}
         </p>
-      </CardContent>
+      </CardFooter>
     </Card>
   )
 }
