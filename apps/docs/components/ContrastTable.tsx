@@ -1,4 +1,9 @@
-type PassResult = "aa" | "large-only" | "intentional-fail"
+import {
+  Table, TableHeader, TableBody, TableRow, TableHead, TableCell,
+  TableMobileList, TableMobileItem,
+} from '@umichkisa-ds/web'
+
+export type PassResult = "aa" | "large-only" | "intentional-fail"
 
 type ContrastRow = {
   foreground: string
@@ -11,7 +16,7 @@ type ContrastTableProps = {
   rows: ContrastRow[]
 }
 
-function PassBadge({ passes }: { passes: PassResult }) {
+export function PassBadge({ passes }: { passes: PassResult }) {
   if (passes === "aa") {
     return (
       <span className="inline-flex items-center gap-1.5 rounded-full border border-success bg-success-subtle px-2.5 py-1 type-caption uppercase tracking-normal text-foreground">
@@ -54,61 +59,79 @@ function ColorDot({ token }: { token: string }) {
 
 export function ContrastTable({ rows }: ContrastTableProps) {
   return (
-    <div className="my-6 overflow-x-auto rounded-xl border border-border">
-      <table className="w-full border-collapse">
-        <thead>
-          <tr className="bg-surface-subtle">
-            {["Foreground", "Background", "Ratio", "WCAG AA"].map((heading) => (
-              <th
-                key={heading}
-                className="border-b border-border px-4 py-3 text-left type-caption uppercase tracking-normal text-muted-foreground"
-              >
-                {heading}
-              </th>
+    <div className="my-6">
+      {/* Desktop table */}
+      <div className="hidden md:block">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Foreground</TableHead>
+              <TableHead>Background</TableHead>
+              <TableHead>Ratio</TableHead>
+              <TableHead>WCAG AA</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {rows.map((row, i) => (
+              <TableRow key={i}>
+                <TableCell>
+                  <div className="flex items-center gap-2.5">
+                    <ColorDot token={row.foreground} />
+                    <code className="type-caption font-mono text-foreground">
+                      {row.foreground}
+                    </code>
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <div className="flex items-center gap-2.5">
+                    <ColorDot token={row.background} />
+                    <code className="type-caption font-mono text-foreground">
+                      {row.background}
+                    </code>
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <span className="type-body-sm font-mono tabular-nums text-foreground">
+                    <strong>{row.ratio}</strong>
+                  </span>
+                </TableCell>
+                <TableCell>
+                  <PassBadge passes={row.passes} />
+                </TableCell>
+              </TableRow>
             ))}
-          </tr>
-        </thead>
-        <tbody>
+          </TableBody>
+        </Table>
+      </div>
+
+      {/* Mobile stacked list */}
+      <div className="block md:hidden">
+        <TableMobileList>
           {rows.map((row, i) => (
-            <tr
-              key={i}
-              className={`${i % 2 === 0 ? "bg-surface" : "bg-surface-subtle"} ${i < rows.length - 1 ? "border-b border-border" : ""}`}
-            >
-              {/* Foreground */}
-              <td className="px-4 py-3">
-                <div className="flex items-center gap-2.5">
+            <TableMobileItem key={i}>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
                   <ColorDot token={row.foreground} />
                   <code className="type-caption font-mono text-foreground">
                     {row.foreground}
                   </code>
                 </div>
-              </td>
-
-              {/* Background */}
-              <td className="px-4 py-3">
-                <div className="flex items-center gap-2.5">
-                  <ColorDot token={row.background} />
-                  <code className="type-caption font-mono text-foreground">
-                    {row.background}
-                  </code>
-                </div>
-              </td>
-
-              {/* Ratio */}
-              <td className="px-4 py-3">
-                <span className="type-body-sm font-mono text-foreground tabular-nums">
+                <PassBadge passes={row.passes} />
+              </div>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <span className="type-caption text-muted-foreground">on</span>
+                <ColorDot token={row.background} />
+                <code className="type-caption font-mono text-muted-foreground">
+                  {row.background}
+                </code>
+                <span className="ml-auto type-body-sm font-mono tabular-nums text-foreground">
                   <strong>{row.ratio}</strong>
                 </span>
-              </td>
-
-              {/* Badge */}
-              <td className="px-4 py-3">
-                <PassBadge passes={row.passes} />
-              </td>
-            </tr>
+              </div>
+            </TableMobileItem>
           ))}
-        </tbody>
-      </table>
+        </TableMobileList>
+      </div>
     </div>
   )
 }
