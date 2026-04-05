@@ -431,7 +431,7 @@ var Table = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ j
   "table",
   {
     ref,
-    className: cn("w-full caption-bottom type-body-sm text-foreground", className),
+    className: cn("w-full caption-bottom type-body text-foreground", className),
     ...props
   }
 ) }));
