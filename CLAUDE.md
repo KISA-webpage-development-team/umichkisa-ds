@@ -15,7 +15,7 @@ Reading a spec is allowed. Reporting what the next task is is allowed. But writi
 2. If the user specifies a task in their first message, work on that instead
 3. If the task links to a spec (`docs/specs/X.md`), read it
 4. If no spec exists, dedicate this session to writing the spec — do not execute the task
-5. For component sessions, also read `docs/DS_CONSTRAINTS.md`
+5. For any task that modifies `.tsx` files, also read `docs/DS_CONSTRAINTS.md`
 6. Read `docs/CODEBASE.md` only if the spec instructs it
 
 ### Natural Breakpoints
@@ -32,26 +32,6 @@ Before marking any task done in `docs/TODO.md`:
 1. Run `pnpm build` and `pnpm typecheck` — both must pass
 2. Update `docs/CODEBASE.md` status tables to reflect completed work
 3. Check off the item in `docs/TODO.md`
-
-**Parallel worktree sessions (component phase only):** Steps 2 and 3 happen on `main` after the worktree is merged — not during the session. Each session is user-assigned ("work on Button") — do not auto-pick. See `docs/specs/component.md` for worktree setup.
-
-### Context ≥ 70%
-Present the breakpoint options above. Do not append session state automatically.
-
-### Appending Session State
-Only append session state to the current spec file under `## Last Session` when:
-- A breakpoint is reached AND the user chooses option (b) clear context, OR
-- The user explicitly requests it
-
-Format:
-```
-## Last Session [date]
-Task: [step or component name]
-Done: [1-2 lines]
-Last file: [path]
-Next action: [exact next step]
-Blockers: [none / description]
-```
 
 ---
 
@@ -81,11 +61,19 @@ pnpm --filter @umichkisa-ds/form build
 - **`packages/web`** (`@umichkisa-ds/web`) — Component and token library. Peer deps: `react`, `react-dom`.
 - **`packages/form`** (`@umichkisa-ds/form`) — Form DX layer wrapping react-hook-form with DS components. Peer deps: `react`, `react-dom`, `react-hook-form`, `@umichkisa-ds/web`.
 
-## Release (`packages/web`)
+## Release
 
+### `packages/web`
 1. `pnpm --filter @umichkisa-ds/web build`
 2. `git add packages/web/dist/`
 3. `git tag vX.X.X`
+4. `git push && git push --tags`
+5. In client: bump tag in package.json, run `npm install`
+
+### `packages/form`
+1. `pnpm --filter @umichkisa-ds/form build`
+2. `git add packages/form/dist/`
+3. `git tag form-vX.X.X`
 4. `git push && git push --tags`
 5. In client: bump tag in package.json, run `npm install`
 
