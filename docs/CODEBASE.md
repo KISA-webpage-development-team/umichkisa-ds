@@ -4,29 +4,6 @@ Quick-reference for AI-assisted sessions. Update when you discover something new
 
 ---
 
-## Monorepo Structure
-
-```
-umichkisa-ds/
-├── packages/web/          # Component library (published)
-│   └── src/
-│       ├── components/    # All components
-│       ├── fonts/         # SejongHospital-Bold.ttf, SejongHospital-Light.ttf
-│       ├── tokens/        # primitives.css, semantic.css
-│       ├── styles/        # index.css (entry, @font-face, type-* utilities)
-│       └── index.ts       # Public exports
-├── packages/form/         # Form DX layer (published)
-│   └── src/
-│       ├── hooks/         # useForm, useFormField, useFormStatus
-│       ├── components/    # Form compound component (Form.Input, .Textarea, etc.)
-│       └── index.ts       # Public exports
-└── apps/docs/             # Documentation site (Next.js 15, App Router)
-    ├── app/               # Routes (all pages are inline TSX)
-    └── components/        # Docs UI components (not exported)
-```
-
----
-
 ## Token Architecture
 
 Three-tier model:
@@ -49,72 +26,6 @@ This means `--font-sejong-bold` / `--font-sejong-light` tokens work via `font-fa
 `build:css` copies fonts to `dist/fonts/` and rewrites the URL in `dist/styles.css` from `url('../fonts/...)` to `url('./fonts/...)` for the pre-built CSS path.
 
 The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to load these same fonts, which overrides the DS `:root` token via class specificity on `<html>`. This is intentional — next/font handles preloading in the docs app. External consumers (no next/font/local) rely on the DS `@font-face` directly.
-
----
-
-## Docs Content Status
-
-### Foundation (complete)
-| Section | Pages | Status |
-|---|---|---|
-| Colors | overview, primitives, tokens, usage, accessibility | ✅ Complete |
-| Typography | overview, fonts, scale, usage | ✅ Complete |
-| Layout | overview, breakpoints, spacing, usage | ✅ Complete (usage is placeholder) |
-| Iconography | overview, library, sizes, usage, accessibility | ✅ Complete |
-
-### Components
-| Page | Route | Status |
-|---|---|---|
-| Icon | `/components/icon` | ✅ Complete |
-| Button | `/components/button` | ✅ Complete |
-| Divider | `/components/divider` | ✅ Complete |
-| LinkButton | `/components/link-button` | ✅ Complete |
-| Badge | `/components/badge` | ✅ Complete |
-| IconButton | `/components/icon-button` | ✅ Complete |
-| Label | `/components/label` | ✅ Complete |
-| Input | `/components/input` | ✅ Complete |
-| Textarea | `/components/textarea` | ✅ Complete |
-| Select | `/components/select` | ✅ Complete |
-| Checkbox | `/components/checkbox` | ✅ Complete |
-| Radio | `/components/radio` | ✅ Complete |
-| Switch | `/components/switch` | ✅ Complete |
-| FormItem | `/components/form-item` | ✅ Complete |
-| Avatar | `/components/avatar` | ✅ Complete |
-| Container | `/components/container` | ✅ Complete |
-| Grid | `/components/grid` | ✅ Complete |
-| Forms Overview | `/components/forms` | ✅ Complete — compositional guide + realistic form demo |
-| Tooltip | `/components/tooltip` | ✅ Complete |
-| Popover | `/components/popover` | ✅ Complete |
-| Dialog | `/components/dialog` | ✅ Complete |
-| Dropdown | `/components/dropdown` | ✅ Complete |
-| Tabs | `/components/tabs` | ✅ Complete |
-| Pagination | `/components/pagination` | ✅ Complete |
-| Alert | `/components/alert` | ✅ Complete |
-| Skeleton | `/components/skeleton` | ✅ Complete |
-| LoadingSpinner | `/components/loading-spinner` | ✅ Complete |
-| Toast | `/components/toast` | ✅ Complete |
-| Card | `/components/card` | ✅ Complete |
-| Table | `/components/table` | ✅ Complete |
-| Accordion | `/components/accordion` | ✅ Complete |
-| OnlyMobileView | `/components/only-mobile-view` | ✅ Complete |
-| Calendar | `/components/calendar` | ✅ Complete |
-| DatePicker | `/components/datepicker` | ✅ Complete |
-
-All docs pages (foundation and component) use `<Container size="md" as="article">` as their page wrapper. API Reference tables follow a standardized pattern (Container page is the gold standard). MDX infrastructure has been fully removed — all content is inline TSX with DS type tokens.
-
-### Forms (new top-level section)
-| Page | Route | Status |
-|---|---|---|
-| Overview | `/forms/overview` | ✅ Complete — installation, quick start, what's inside |
-| useForm | `/forms/use-form` | ✅ Complete — API, validation modes, form methods |
-| Form Component | `/forms/form-component` | ✅ Complete — all 7 compound components with live demos |
-| Validation | `/forms/validation` | ✅ Complete — rules API, custom validators, mode override |
-| Hooks | `/forms/hooks` | ✅ Complete — useFormField, useFormStatus, decision guide |
-| Examples | `/forms/examples` | ✅ Complete — 4 live interactive forms (login, profile, feedback, hooks) |
-
-### Sidebar Organization
-
-The sidebar uses collapsible categories that auto-expand based on the current route. Categories are defined in `apps/docs/components/Sidebar.tsx` as `COMPONENT_CATEGORIES`. Only categories with ≥1 shipped component are shown. See `docs/TODO.md` for the full category mapping.
 
 ---
 
@@ -181,14 +92,6 @@ Peer dependencies: `react`, `react-dom`, `react-hook-form`, `@umichkisa-ds/web`
 
 ---
 
-## Reference: Client App
-
-The consuming app lives at `../KISA-website/client/src/components/ui/`.
-Use as a **requirements reference only** — not as an implementation template.
-The client currently uses: custom CSS components + shadcn primitives (accordion, badge, card, calendar, date-picker, dialog, dropdown-menu, popover).
-
----
-
 ## Docs App Infrastructure
 
 ### `apps/docs/app/globals.css`
@@ -211,14 +114,5 @@ Located in `apps/docs/components/`.
 - `apps/docs/components/CodeBlockClient.tsx` — `"use client"` shell with copy-to-clipboard (icon swap: clipboard-copy → clipboard-check, 2s). Used by both CodeBlock and ComponentPreview.
 - `ComponentPreview` accepts optional `highlightedCode` (pre-rendered HTML string) and `lang` props. Pages call `highlight()` at the server level and pass results down.
 
-### Token Alignment Audit (Step 0.5)
-| Component | Status | Notes |
-|---|---|---|
-| `DocsShell` | ✅ Clean | No raw color violations |
-| `Header` | ✅ Clean | No raw color violations |
-| `Sidebar` | ✅ Clean | No raw color violations |
-| `Callout` | ⚠ DS gap | Uses Tailwind color utilities not yet mapped to DS semantic tokens |
-| `DoDont` | ⚠ DS gap | Uses Tailwind color utilities not yet mapped to DS semantic tokens |
-| `ContrastTable` | ⚠ DS gap | Uses Tailwind color utilities not yet mapped to DS semantic tokens |
-| `ComponentPreview` | ✅ Clean | Uses Tailwind token utilities only |
-| `SizesExample`     | ✅ Clean | Uses Tailwind token utilities only |
+### Token Gaps (tracked in TODO.md)
+`Callout`, `DoDont`, `ContrastTable` still use raw Tailwind color utilities instead of DS semantic tokens.
