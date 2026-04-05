@@ -1,7 +1,8 @@
-import { Container } from '@umichkisa-ds/web'
+import { Alert, Container } from '@umichkisa-ds/web'
 import { DoDont } from '@/components/DoDont'
 import { Do, Dont } from '@/components/DoDont'
 import { CodeBlock } from '@/components/CodeBlock'
+import { InlineCode } from '@/components/InlineCode'
 
 export default async function ColorsUsagePage() {
   return (
@@ -18,18 +19,18 @@ export default async function ColorsUsagePage() {
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Brand Colors</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         <strong className="font-semibold text-foreground">
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code> is the anchor.{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent</code> is the signal.
+          <InlineCode>--color-brand-primary</InlineCode> is the anchor.{' '}
+          <InlineCode>--color-brand-accent</InlineCode> is the signal.
         </strong>
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Think of navy as the container and maize as the content inside it. Navy says
-        {'"'}this is KISA.{'"'} Maize says {'"'}look at this.{'"'}
+        {' "'}this is KISA.{'"'} Maize says {'"'}look at this.{'"'}
       </p>
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code>{' '}
+        <InlineCode>--color-brand-primary</InlineCode>{' '}
         for:
       </p>
       <ul className="type-body text-foreground max-w-prose flex flex-col gap-2 mb-4">
@@ -41,11 +42,11 @@ export default async function ColorsUsagePage() {
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent</code>{' '}
+        <InlineCode>--color-brand-accent</InlineCode>{' '}
         for:
       </p>
       <ul className="type-body text-foreground max-w-prose flex flex-col gap-2 mb-4">
-        <li className="flex gap-2"><span className="text-muted-foreground">&bull;</span>Text labels on top of <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code> backgrounds</li>
+        <li className="flex gap-2"><span className="text-muted-foreground">&bull;</span>Text labels on top of <InlineCode>--color-brand-primary</InlineCode> backgrounds</li>
         <li className="flex gap-2"><span className="text-muted-foreground">&bull;</span>Focus ring on interactive elements</li>
         <li className="flex gap-2"><span className="text-muted-foreground">&bull;</span>Badges, tags, and highlights that need to draw attention</li>
         <li className="flex gap-2"><span className="text-muted-foreground">&bull;</span>The most important CTA on a page when you want maximum visibility</li>
@@ -53,11 +54,10 @@ export default async function ColorsUsagePage() {
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-mid</code>{' '}
+        <InlineCode>--color-brand-primary-mid</InlineCode>{' '}
         for:
       </p>
       <ul className="type-body text-foreground max-w-prose flex flex-col gap-2 mb-4">
-        <li className="flex gap-2"><span className="text-muted-foreground">&bull;</span>Hyperlinks within body text</li>
         <li className="flex gap-2"><span className="text-muted-foreground">&bull;</span>Secondary navigation highlights</li>
         <li className="flex gap-2"><span className="text-muted-foreground">&bull;</span>Any context where full navy would feel too heavy but you still need blue</li>
       </ul>
@@ -82,16 +82,16 @@ export default async function ColorsUsagePage() {
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         A practical example: the page sits on{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface</code>.
+        <InlineCode>--color-surface</InlineCode>.
         An event card sits on{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-subtle</code>.
+        <InlineCode>--color-surface-subtle</InlineCode>.
         Inside that card, individual detail rows use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-muted</code>{' '}
+        <InlineCode>--color-surface-muted</InlineCode>{' '}
         — which is lighter than the card, lifting items visually above the card background.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Do not skip levels. A card item should not sit directly on{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface</code>{' '}
+        <InlineCode>--color-surface</InlineCode>{' '}
         (the page background) — it would look uncontained. Do not invent new background
         colors outside of these three tokens.
       </p>
@@ -104,21 +104,21 @@ export default async function ColorsUsagePage() {
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         <strong className="font-semibold text-foreground">
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-foreground</code>
+          <InlineCode>--color-foreground</InlineCode>
         </strong>{' '}
         — everything users need to read. Headings, body paragraphs, button labels, form values.
         If it carries meaning, it gets primary.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         <strong className="font-semibold text-foreground">
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-muted-foreground</code>
+          <InlineCode>--color-muted-foreground</InlineCode>
         </strong>{' '}
         — supporting information. Timestamps, captions, helper text below form fields,
         secondary metadata on cards. It is readable but visually recedes behind primary text.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         <strong className="font-semibold text-foreground">
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-disabled-foreground</code>
+          <InlineCode>--color-disabled-foreground</InlineCode>
         </strong>{' '}
         — text on disabled UI elements only. It is intentionally below WCAG contrast requirements
         because disabled elements are meant to signal {'"'}this is not available right now.{'"'} Never use
@@ -126,20 +126,20 @@ export default async function ColorsUsagePage() {
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         <strong className="font-semibold text-foreground">
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-foreground</code>
+          <InlineCode>--color-brand-foreground</InlineCode>
         </strong>{' '}
         — the only text token to use when the background is{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code>.
+        <InlineCode>--color-brand-primary</InlineCode>.
         On a dark navy surface, gray-900 text is nearly invisible. Maize text is what belongs there.
         Do not use white — it is not a KISA brand color and it disrupts the visual identity.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         <strong className="font-semibold text-foreground">
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-link</code>
+          <InlineCode>--color-link</InlineCode>
         </strong>{' '}
         — hyperlinks only. It is a distinct blue that signals clickability. Do not use it for
         decorative text. Do not use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent</code>{' '}
+        <InlineCode>--color-brand-accent</InlineCode>{' '}
         (maize) for links — yellow text on a white background is nearly unreadable and gives
         no visual signal that the text is interactive.
       </p>
@@ -151,23 +151,23 @@ export default async function ColorsUsagePage() {
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The <strong className="font-semibold text-foreground">solid token</strong> (
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-error</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-success</code>,
+        <InlineCode>--color-error</InlineCode>,{' '}
+        <InlineCode>--color-success</InlineCode>,
         etc.) goes on text, icons, and borders — small, precise uses where the color itself
         carries the message.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The <strong className="font-semibold text-foreground">subtle token</strong> (
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-error-subtle</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-success-subtle</code>,
+        <InlineCode>--color-error-subtle</InlineCode>,{' '}
+        <InlineCode>--color-success-subtle</InlineCode>,
         etc.) goes on the background of the entire alert or callout box. It creates a tinted
         region around the message without overwhelming the page.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         A typical error alert uses both:{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-error-subtle</code>{' '}
+        <InlineCode>--color-error-subtle</InlineCode>{' '}
         as the box background,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-error</code>{' '}
+        <InlineCode>--color-error</InlineCode>{' '}
         as the icon color and border.
       </p>
 
@@ -188,7 +188,7 @@ export default async function ColorsUsagePage() {
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         For elements built on{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code>:
+        <InlineCode>--color-brand-primary</InlineCode>:
       </p>
 
       <div className="my-6 overflow-x-auto">
@@ -202,19 +202,19 @@ export default async function ColorsUsagePage() {
           <tbody>
             <tr className="border-b border-border">
               <td className="px-4 py-3 type-body-sm text-foreground">Default</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-primary</InlineCode></td>
             </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 type-body-sm text-foreground">Hover</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-hover</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-primary-hover</InlineCode></td>
             </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 type-body-sm text-foreground">Pressed</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-pressed</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-primary-pressed</InlineCode></td>
             </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 type-body-sm text-foreground">Focus ring</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-focus-ring</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-focus-ring</InlineCode></td>
             </tr>
           </tbody>
         </table>
@@ -222,7 +222,7 @@ export default async function ColorsUsagePage() {
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         For elements built on{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent</code>:
+        <InlineCode>--color-brand-accent</InlineCode>:
       </p>
 
       <div className="my-6 overflow-x-auto">
@@ -236,19 +236,19 @@ export default async function ColorsUsagePage() {
           <tbody>
             <tr className="border-b border-border">
               <td className="px-4 py-3 type-body-sm text-foreground">Default</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-accent</InlineCode></td>
             </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 type-body-sm text-foreground">Hover</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent-hover</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-accent-hover</InlineCode></td>
             </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 type-body-sm text-foreground">Pressed</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent-pressed</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-accent-pressed</InlineCode></td>
             </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 type-body-sm text-foreground">Focus ring</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-focus-ring</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-focus-ring</InlineCode></td>
             </tr>
           </tbody>
         </table>
@@ -256,18 +256,18 @@ export default async function ColorsUsagePage() {
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         The focus ring (
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-focus-ring</code>)
+        <InlineCode>--color-focus-ring</InlineCode>)
         is always maize regardless of which brand color the element uses. It appears when a user
         navigates with a keyboard instead of a mouse. It must always be visible — do not remove it,
         do not reduce its opacity, do not hide it with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">outline: none</code>.
+        <InlineCode>outline: none</InlineCode>.
       </p>
 
       {/* ── Toggle Controls ─────────────────────────────────── */}
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Toggle Controls (Checked State)</h3>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Toggle controls (Checkbox, Radio, Switch) use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code>{' '}
+        <InlineCode>--color-brand-primary</InlineCode>{' '}
         as the checked background — navy signals {'"'}selected{'"'} and carries the brand identity.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
@@ -288,19 +288,19 @@ export default async function ColorsUsagePage() {
             <tr className="border-b border-border">
               <td className="px-4 py-3 type-body-sm text-foreground">Checkbox checkmark</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Stroke (thin lines)</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-foreground</code> (maize)</td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-foreground</InlineCode> (maize)</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Narrow strokes read as accent</td>
             </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 type-body-sm text-foreground">Radio dot</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Fill (solid circle)</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface</code> (white)</td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-surface</InlineCode> (white)</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Solid fills in maize are too heavy at small scale</td>
             </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 type-body-sm text-foreground">Switch thumb</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Fill (solid circle)</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface</code> (white)</td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-surface</InlineCode> (white)</td>
               <td className="px-4 py-3 type-body-sm text-foreground">Same as Radio</td>
             </tr>
           </tbody>
@@ -309,7 +309,7 @@ export default async function ColorsUsagePage() {
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         Form controls use a simplified focus pattern:{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">border-color: var(--color-brand-primary)</code>{' '}
+        <InlineCode>border-color: var(--color-brand-primary)</InlineCode>{' '}
         instead of the dual-ring. The border color change is sufficient for elements that
         already have a visible border.
       </p>
@@ -318,9 +318,9 @@ export default async function ColorsUsagePage() {
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Interactive Lists</h3>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Select items, Dropdown items, and Popover menu items use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent-subtle</code>{' '}
+        <InlineCode>--color-brand-accent-subtle</InlineCode>{' '}
         (light maize) as the hover/focus background, and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code>{' '}
+        <InlineCode>--color-brand-primary</InlineCode>{' '}
         (navy) for selected-item indicators (check icons).
       </p>
 
@@ -353,20 +353,17 @@ export default async function ColorsUsagePage() {
         </Dont>
       </DoDont>
 
-      <blockquote className="border-l-[3px] border-brand-accent bg-surface-subtle pl-4 py-2 my-4 rounded-r">
-        <span className="italic text-muted-foreground type-body">
-          <strong className="font-semibold text-foreground">Exception — Small-scale fill indicators:</strong>{' '}
+      <Alert variant="info" title="Exception — Small-scale fill indicators">
           Toggle controls (Radio dot, Switch thumb) use{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface</code>{' '}
+          <InlineCode>--color-surface</InlineCode>{' '}
           (white) on{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code>{' '}
+          <InlineCode>--color-brand-primary</InlineCode>{' '}
           instead of maize. At 10–20px, maize fills a solid shape too heavily — white provides
           clean contrast while navy carries the brand. Stroke-based indicators (Checkbox checkmark)
           still use{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-foreground</code>{' '}
+          <InlineCode>--color-brand-foreground</InlineCode>{' '}
           (maize) because strokes are narrow enough for the accent to read correctly.
-        </span>
-      </blockquote>
+      </Alert>
 
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Background colors</h3>
       <DoDont>
@@ -398,13 +395,13 @@ export default async function ColorsUsagePage() {
       <h2 className="type-h2 mt-8 mb-4 text-foreground">{"Token → Utility Reference"}</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Every{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-*</code>{' '}
+        <InlineCode>--color-*</InlineCode>{' '}
         token registered in{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@theme inline</code>{' '}
+        <InlineCode>@theme inline</InlineCode>{' '}
         generates three Tailwind utilities automatically:{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">bg-*</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-*</code>, and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">border-*</code>.
+        <InlineCode>bg-*</InlineCode>,{' '}
+        <InlineCode>text-*</InlineCode>, and{' '}
+        <InlineCode>border-*</InlineCode>.
         The table below lists the most natural utility or utilities for each token, grouped by semantic role.
       </p>
 
@@ -421,23 +418,23 @@ export default async function ColorsUsagePage() {
           </thead>
           <tbody>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">bg-brand-primary</code> / <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-brand-primary</code> / <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">border-brand-primary</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-primary</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-brand-primary</InlineCode> / <InlineCode>text-brand-primary</InlineCode> / <InlineCode>border-brand-primary</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Michigan navy — primary brand surface and emphasis</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-mid</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-brand-primary-mid</code> / <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">border-brand-primary-mid</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-primary-mid</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>text-brand-primary-mid</InlineCode> / <InlineCode>border-brand-primary-mid</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Mid-weight navy — hyperlinks, secondary highlights</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">bg-brand-accent</code> / <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-brand-accent</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-accent</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-brand-accent</InlineCode> / <InlineCode>text-brand-accent</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Michigan maize — attention signal, focus, CTAs</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent-subtle</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">bg-brand-accent-subtle</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-accent-subtle</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-brand-accent-subtle</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Light maize tint — subtle accent backgrounds</td>
             </tr>
           </tbody>
@@ -457,28 +454,28 @@ export default async function ColorsUsagePage() {
           </thead>
           <tbody>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-hover</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">bg-brand-primary-hover</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-primary-hover</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-brand-primary-hover</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Navy hover state background</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-pressed</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">bg-brand-primary-pressed</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-primary-pressed</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-brand-primary-pressed</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Navy pressed/active state background</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent-hover</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">bg-brand-accent-hover</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-accent-hover</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-brand-accent-hover</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Maize hover state background</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent-pressed</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">bg-brand-accent-pressed</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-accent-pressed</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-brand-accent-pressed</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Maize pressed/active state background</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-focus-ring</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">outline-focus-ring</code> / <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">ring-focus-ring</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-focus-ring</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>outline-focus-ring</InlineCode> / <InlineCode>ring-focus-ring</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Maize focus ring — keyboard navigation indicator</td>
             </tr>
           </tbody>
@@ -498,18 +495,18 @@ export default async function ColorsUsagePage() {
           </thead>
           <tbody>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">bg-surface</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-surface</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-surface</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Page background (white)</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-subtle</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">bg-surface-subtle</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-surface-subtle</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-surface-subtle</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Cards, panels — first depth level (gray-100)</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-muted</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">bg-surface-muted</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-surface-muted</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-surface-muted</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Items inside cards — second depth level (gray-50)</td>
             </tr>
           </tbody>
@@ -529,13 +526,13 @@ export default async function ColorsUsagePage() {
           </thead>
           <tbody>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-border</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">border-border</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-border</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>border-border</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Default border — dividers, input outlines (gray-200)</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-border-strong</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">border-border-strong</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-border-strong</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>border-border-strong</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Stronger border — hover states, emphasis (gray-300)</td>
             </tr>
           </tbody>
@@ -555,28 +552,28 @@ export default async function ColorsUsagePage() {
           </thead>
           <tbody>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-foreground</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-foreground</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-foreground</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>text-foreground</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Primary text — all readable content (gray-900)</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-muted-foreground</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-muted-foreground</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-muted-foreground</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>text-muted-foreground</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Secondary text — captions, metadata, helper text (gray-500)</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-disabled-foreground</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-disabled-foreground</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-disabled-foreground</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>text-disabled-foreground</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Disabled state text and icons (gray-400)</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-foreground</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-brand-foreground</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-brand-foreground</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>text-brand-foreground</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Text on brand-primary backgrounds — maize on navy</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-link</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-link</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-link</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>text-link</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Hyperlink text color — signals clickability</td>
             </tr>
           </tbody>
@@ -596,43 +593,43 @@ export default async function ColorsUsagePage() {
           </thead>
           <tbody>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-error</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-error</code> / <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">border-error</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-error</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>text-error</InlineCode> / <InlineCode>border-error</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Error state — icons, borders, text labels</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-error-subtle</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">bg-error-subtle</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-error-subtle</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-error-subtle</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Error state — alert and callout box background</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-success</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-success</code> / <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">border-success</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Success state — icons and borders (pair with <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-foreground</code> label)</td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-success</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>text-success</InlineCode> / <InlineCode>border-success</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground">Success state — icons and borders (pair with <InlineCode>text-foreground</InlineCode> label)</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-success-subtle</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">bg-success-subtle</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-success-subtle</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-success-subtle</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Success state — alert and callout box background</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-warning</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-warning</code> / <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">border-warning</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Warning state — icons and borders (pair with <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-foreground</code> label)</td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-warning</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>text-warning</InlineCode> / <InlineCode>border-warning</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground">Warning state — icons and borders (pair with <InlineCode>text-foreground</InlineCode> label)</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-warning-subtle</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">bg-warning-subtle</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-warning-subtle</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-warning-subtle</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Warning state — alert and callout box background</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-info</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-info</code> / <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">border-info</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-info</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>text-info</InlineCode> / <InlineCode>border-info</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Info state — neutral notices, documentation callouts</td>
             </tr>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-info-subtle</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">bg-info-subtle</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-info-subtle</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-info-subtle</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Info state — alert and callout box background</td>
             </tr>
           </tbody>
@@ -652,8 +649,8 @@ export default async function ColorsUsagePage() {
           </thead>
           <tbody>
             <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-overlay</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">bg-overlay</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>--color-overlay</InlineCode></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><InlineCode>bg-overlay</InlineCode></td>
               <td className="px-4 py-3 type-body-sm text-foreground">Modal/dialog scrim — semi-transparent black (40% opacity)</td>
             </tr>
           </tbody>
