@@ -21,9 +21,9 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 
 ### Batch 2 — Colors + Typography
 - [x] Review `/foundation/colors/usage`
-- [ ] Fix `/foundation/colors/usage`
+- [x] Fix `/foundation/colors/usage`
 - [x] Review `/foundation/colors/accessibility`
-- [ ] Fix `/foundation/colors/accessibility`
+- [x] Fix `/foundation/colors/accessibility`
 - [x] Review `/foundation/typography/overview`
 - [x] Fix `/foundation/typography/overview`
 
