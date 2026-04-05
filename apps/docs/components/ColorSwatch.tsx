@@ -22,10 +22,10 @@ export function ColorSwatch({ token, value, hex, label }: ColorSwatchProps) {
     token.includes("overlay")
 
   return (
-    <Card className="overflow-hidden !bg-surface">
+    <Card className="overflow-hidden !p-0 !gap-0 !bg-surface">
       {/* Color block */}
       <div
-        className="-mx-4 -mt-4 relative h-20 w-full"
+        className="relative h-20 w-full"
         style={{
           backgroundColor: `var(${token})`,
           backgroundImage: isLight
@@ -42,7 +42,7 @@ export function ColorSwatch({ token, value, hex, label }: ColorSwatchProps) {
       </div>
 
       {/* Meta */}
-      <div className="space-y-1">
+      <div className="space-y-1 p-3">
         <p className="break-words type-caption font-mono !font-semibold !leading-snug text-foreground">
           {token}
         </p>
