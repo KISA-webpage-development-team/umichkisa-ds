@@ -1,4 +1,4 @@
-import { Card } from '@umichkisa-ds/web'
+import { Card, CardContent } from '@umichkisa-ds/web'
 
 type ColorSwatchProps = {
   token: string
@@ -22,10 +22,10 @@ export function ColorSwatch({ token, value, hex, label }: ColorSwatchProps) {
     token.includes("overlay")
 
   return (
-    <Card className="overflow-hidden !p-0 !gap-0 !bg-surface">
+    <Card className="overflow-hidden !bg-surface">
       {/* Color block */}
-      <div
-        className="relative h-20 w-full"
+      <CardContent
+        className="-mx-4 -mt-4 relative h-20 w-full"
         style={{
           backgroundColor: `var(${token})`,
           backgroundImage: isLight
@@ -39,10 +39,10 @@ export function ColorSwatch({ token, value, hex, label }: ColorSwatchProps) {
           style={{ backgroundColor: `var(${token})` }}
           aria-hidden="true"
         />
-      </div>
+      </CardContent>
 
       {/* Meta */}
-      <div className="space-y-1 p-3">
+      <CardContent className="space-y-1">
         <p className="break-words type-caption font-mono !font-semibold !leading-snug text-foreground">
           {token}
         </p>
@@ -62,7 +62,7 @@ export function ColorSwatch({ token, value, hex, label }: ColorSwatchProps) {
         <p className="pt-0.5 type-caption !font-medium text-muted-foreground">
           {label}
         </p>
-      </div>
+      </CardContent>
     </Card>
   )
 }
