@@ -15,8 +15,8 @@ export default function TypographyScalePage() {
       </p>
 
       {/* ── Scale specimen ─────────────────────────────────── */}
-      <div className="my-8 rounded-xl border border-border overflow-hidden">
-        <div className="bg-surface px-8 py-10 space-y-8">
+      <div className="my-6 rounded-xl border border-border overflow-hidden">
+        <div className="bg-surface px-6 py-6 space-y-6">
           <div>
             <p className="type-display text-foreground">Display</p>
             <p className="mt-1 type-caption text-muted-foreground font-mono">type-display</p>
@@ -185,10 +185,10 @@ export default function TypographyScalePage() {
         </span>
       </blockquote>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <hr className="my-6 border-0 border-t border-border" />
 
       {/* ── Responsive Behavior ────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Responsive Behavior</h2>
+      <h2 className="type-h2 mt-6 mb-4 text-foreground">Responsive Behavior</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-body</code>,{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-body-sm</code>,{' '}
