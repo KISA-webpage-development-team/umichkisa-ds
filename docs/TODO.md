@@ -1,6 +1,6 @@
 # TODO
 
-## Pre-v1.0 (Batch)
+## Pre-v1.0 (Batch, in parallel)
 
 - [x] Docs components token gap — fix Callout, DoDont, ContrastTable to use DS semantic tokens
 - [x] Table component — KISA-specific design treatment (minor design task)
