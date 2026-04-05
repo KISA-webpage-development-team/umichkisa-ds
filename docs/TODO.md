@@ -12,8 +12,8 @@ _Spec: `docs/specs/review-docs-app-ui-skill-design.md` | Skill: `review-docs-app
 _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for review, `ds-constrained-execution` for fixes._
 
 ### Batch 1 — Colors
-- [ ] Review `/foundation/colors/overview`
-- [ ] Fix `/foundation/colors/overview`
+- [x] Review `/foundation/colors/overview`
+- [x] Fix `/foundation/colors/overview`
 - [ ] Review `/foundation/colors/primitives`
 - [ ] Fix `/foundation/colors/primitives`
 - [ ] Review `/foundation/colors/tokens`
@@ -172,3 +172,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [ ] Home page content (`/`)
 - [ ] Components index page content (`/components`)
 - [ ] Foundation index page content (`/foundation`)
+
+## Docs App Enhancements
+
+- [ ] Add `id` attributes to all heading elements (`h2`, `h3`) across docs pages for anchor linking and TOC support

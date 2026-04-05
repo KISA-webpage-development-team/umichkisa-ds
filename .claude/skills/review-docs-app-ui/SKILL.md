@@ -78,8 +78,7 @@ Read the page source and rendered text. Check:
    - Description
    - Screenshot saved to `docs/reviews/screenshots/<page-slug>-<n>.png`
 
-> **Checkpoint:** Desktop review complete. [N findings so far.]
-> Ready to proceed to mobile review. Go ahead?
+_No checkpoint here — proceed directly to Step 2._
 
 ## Step 2: Mobile Review (375px)
 
@@ -89,12 +88,13 @@ Read the page source and rendered text. Check:
 4. Tag findings as `mobile` (or update existing to `both` if same issue)
 5. Pay special attention to `responsive` type — things that work at 1280px but break at 375px
 
-> **Checkpoint:** Mobile review complete. [N total findings.]
-> Ready to record findings. Go ahead?
+_No checkpoint here — proceed directly to Step 3._
 
-## Step 3: Record Findings
+## Step 3: Record & Discuss Findings
 
-Append a new section to `docs/reviews/docs-app-review.md`:
+1. Present a concise summary of all findings to the user (table format).
+2. **Immediately invoke `grill-me`** to discuss findings one by one. The user may also add manual findings from their own review during this session.
+3. After grill-me resolves all findings, record the **final** (post-discussion) findings to `docs/reviews/docs-app-review.md`:
 
 ```markdown
 ## <page-path>
@@ -103,13 +103,10 @@ Append a new section to `docs/reviews/docs-app-review.md`:
 |---|----------|------|----------|---------|------------|
 | 1 | major | ds-violation | desktop | ... | [screenshot](screenshots/<slug>-1.png) |
 
-**Notes:** (optional)
+**Notes:** (optional — include dropped findings and reasons)
 ```
 
-If zero findings, skip to Step 5.
-
-> **Checkpoint:** Findings recorded in docs/reviews/docs-app-review.md.
-> Ready to write fix plan. Go ahead?
+If zero findings remain after discussion, skip to Step 5.
 
 ## Step 4: Write Fix Plan
 
@@ -121,6 +118,7 @@ Invoke `superpowers:writing-plans`.
 - Reference the finding number (e.g., "Fix #3 from review")
 
 > **Checkpoint:** Fix plan saved at `docs/plans/review-fix-<page-slug>.md`.
+> Ready to update TODO and hand off. Go ahead?
 
 ## Step 5: Update TODO
 
@@ -137,11 +135,13 @@ Present:
 > **Fix plan:** `docs/plans/review-fix-<page-slug>.md`
 >
 > How would you like to proceed?
-> **(a)** Continue in this session — invoke `ds-constrained-execution` to implement fixes
+> **(a)** Continue in this session — create a worktree, then implement fixes
 > **(b)** Fresh session — copy-paste this prompt:
 > ```
-> Pick up fix task for <page-path>. Read docs/plans/review-fix-<page-slug>.md and docs/DS_CONSTRAINTS.md, then invoke ds-constrained-execution to implement the fix plan.
+> Pick up fix task for <page-path>. Read docs/plans/review-fix-<page-slug>.md and docs/DS_CONSTRAINTS.md, then invoke superpowers:using-git-worktrees to create a worktree, then invoke ds-constrained-execution to implement the fix plan.
 > ```
+
+When the user picks **(a)**: invoke `superpowers:using-git-worktrees` first, then invoke `ds-constrained-execution` with the fix plan inside the worktree. After fixes are complete, **do NOT merge automatically** — present the diff and ask the user for confirmation before merging the worktree branch.
 
 If zero findings:
 
