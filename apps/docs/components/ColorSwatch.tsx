@@ -1,3 +1,5 @@
+import { Card } from '@umichkisa-ds/web'
+
 type ColorSwatchProps = {
   token: string
   value?: string
@@ -20,17 +22,14 @@ export function ColorSwatch({ token, value, hex, label }: ColorSwatchProps) {
     token.includes("overlay")
 
   return (
-    <div
-      className="group overflow-hidden rounded-xl border transition-all duration-200 hover:shadow-lg"
-      style={{ borderColor: "var(--color-border)" }}
-    >
+    <Card className="overflow-hidden !p-0 !bg-surface">
       {/* Color block */}
       <div
         className="relative h-20 w-full"
         style={{
           backgroundColor: `var(${token})`,
           backgroundImage: isLight
-            ? "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Crect width='4' height='4' fill='%23e5e7eb'/%3E%3Crect x='4' y='4' width='4' height='4' fill='%23e5e7eb'/%3E%3C/svg%3E\")"
+            ? "repeating-conic-gradient(var(--color-border) 0% 25%, transparent 0% 50%)"
             : undefined,
           backgroundSize: isLight ? "8px 8px" : undefined,
         }}
@@ -43,42 +42,27 @@ export function ColorSwatch({ token, value, hex, label }: ColorSwatchProps) {
       </div>
 
       {/* Meta */}
-      <div
-        className="space-y-1 p-3"
-        style={{ backgroundColor: "var(--color-surface)" }}
-      >
-        <p
-          className="break-all font-mono text-[11px] font-semibold leading-snug"
-          style={{ color: "var(--color-foreground)" }}
-        >
+      <div className="space-y-1 p-3">
+        <p className="break-words type-caption font-mono !font-semibold !leading-snug text-foreground">
           {token}
         </p>
 
         {value && (
-          <p
-            className="font-mono text-[10px] leading-snug"
-            style={{ color: "var(--color-muted-foreground)" }}
-          >
+          <p className="type-caption font-mono !leading-snug text-muted-foreground">
             {value}
           </p>
         )}
 
         {hex && (
-          <p
-            className="font-mono text-[10px] uppercase leading-snug"
-            style={{ color: "var(--color-muted-foreground)" }}
-          >
+          <p className="type-caption font-mono uppercase !leading-snug text-muted-foreground">
             {hex}
           </p>
         )}
 
-        <p
-          className="pt-0.5 text-[11px] font-medium"
-          style={{ color: "var(--color-muted-foreground)" }}
-        >
+        <p className="pt-0.5 type-caption !font-medium text-muted-foreground">
           {label}
         </p>
       </div>
-    </div>
+    </Card>
   )
 }
