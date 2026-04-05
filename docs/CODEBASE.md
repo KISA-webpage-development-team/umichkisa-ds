@@ -176,11 +176,8 @@ The sidebar uses collapsible categories that auto-expand based on the current ro
 
 Peer dependencies: `react`, `react-dom`, `react-hook-form`, `@umichkisa-ds/web`
 
-### Not Yet Implemented (V1 target)
-- `ImageButton`, `ErrorBoundary`
-- `UnderConstruction`
-
-- `DatePicker` (deferred to v1.1)
+### Not Yet Implemented
+- `ImageButton`, `ErrorBoundary`, `UnderConstruction` — deferred, not currently planned for v1.0
 
 ---
 
