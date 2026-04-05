@@ -13,6 +13,9 @@ Accepts a page path as argument: `/review-docs-app-ui /foundation/colors/overvie
 
 If no argument (including when user says "pick up the task"):
 
+0. **Check for Chrome extension.** Try to access `mcp__claude-in-chrome__tabs_context_mcp`. If the Chrome MCP tools are unavailable, **stop immediately** and warn:
+   > Chrome extension is not connected. Please restart with `claude --chrome` and try again.
+   Do NOT proceed to any later steps.
 1. Read `docs/TODO.md` § Docs App UI Review
 2. Find the first batch that has any unchecked items (review or fix)
 3. List all unchecked tasks in that batch and present them:
