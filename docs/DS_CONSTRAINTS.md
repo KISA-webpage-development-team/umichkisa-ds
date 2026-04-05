@@ -114,16 +114,12 @@ Prefer: `line-clamp-2` for card titles; `line-clamp-3` for card descriptions whe
 
 Must: Use only the three layout tiers — default (mobile), `md:` (≥ 768px), `lg:` (≥ 1024px) — for all responsive behavior. [source:foundation/layout/breakpoints]
 Never: Use `sm:`, `xl:`, or `2xl:` breakpoints. If a layout cannot be solved with three tiers, the problem is in the component or design, not the breakpoint system. [source:foundation/layout/breakpoints]
-Must: Design decisions are made for the desktop tier first. `md:` and `lg:` ensure the layout holds at smaller sizes — not the other way around. [source:foundation/layout/breakpoints]
 
 ### Spacing
 
 Must: All spacing values must come from Tailwind's built-in scale (4px base unit). Never use arbitrary values (`px-[24px]`, `mt-[13px]`). [source:foundation/layout/spacing]
-Must: Apply the default inset for horizontal breathing room: `px-4` (mobile), `px-6` (tablet), `px-8` (desktop). [source:foundation/layout/spacing]
-Must: Constrain all page content to `max-w-screen-2xl` (1536px), centered with `mx-auto`. [source:foundation/layout/spacing]
 Must: Default column gutter is `gap-2` (8px) for inline and form layouts — consistent across all breakpoints. [source:foundation/layout/spacing]
 Must: Grid component uses the three-tier gap system (`element` / `component` / `section`) for content grid layouts. Default is `component` (16px). [source:foundation/layout/spacing]
-Never: Use arbitrary gap values outside the three-tier system. [source:foundation/layout/spacing]
 
 ### Vertical Spacing
 
@@ -138,7 +134,6 @@ Must: Section tier (`gap-6`) for gaps between major page sections. Section tier 
 Must: The page shell must combine all four concerns together: `mx-auto w-full max-w-screen-2xl px-4 md:px-6 lg:px-8`. Never apply only part of this pattern. [source:foundation/layout/spacing]
 Must: Use the `Container` component to apply the page shell pattern — never manually compose the utility classes. [source:component/container]
 Must: For full-bleed elements (navbar, hero, footer), apply background to a full-width outer wrapper and nest the `Container` inside for content alignment. [source:foundation/layout/spacing]
-Never: Apply a full-bleed background directly to the `Container` element — this clips the background at the max-width. [source:foundation/layout/spacing]
 Never: Nest `Container` components — each page region gets one Container at most. [source:component/container]
 
 ---
@@ -155,7 +150,6 @@ Prefer: Exhausting the Lucide search (including synonyms) before adding a custom
 
 Must: Custom SVGs that replace missing Lucide icons must match Lucide's visual language exactly: `viewBox="0 0 24 24"`, `stroke-width="2"`, `stroke="currentColor"`, `fill="none"`, `stroke-linecap="round"`, `stroke-linejoin="round"`. [source:foundation/iconography/library]
 Exception: Brand icons (e.g., GitHub, LinkedIn) are registered in the `<Icon>` system as fill-based SVGs with their original viewBox. They do not need to match Lucide's stroke style. This keeps brand icon usage consistent with all other icons via `<Icon name="github" />`. [source:implementation/icon]
-Never: Use a second icon library when a Lucide icon is unavailable — use an inline SVG with Lucide-matching attributes. [source:foundation/iconography/library]
 Never: Put complex illustrations through the `<Icon>` system — use `<img>` or an inline SVG component instead. Simple brand logos are permitted. [source:foundation/iconography/library]
 
 ### Naming
@@ -174,18 +168,14 @@ Never: Provide `label` prop on `<Icon>` when the wrapper button already has `ari
 Must: Use `md` (20px) as the default icon size for buttons, nav items, and general UI. [source:foundation/iconography/sizes]
 Must: Match icon size to text context — `sm` (16px) with caption/label text, `md` (20px) with body text, `md`/`lg` with subheadings, `lg` (24px) with headings. [source:foundation/iconography/sizes]
 Never: Apply breakpoint prefixes (`md:`, `lg:`) directly to icon size. Icon size is determined by component context. If a component changes size across breakpoints, the icon size change is encapsulated inside that component's variant logic. [source:foundation/iconography/sizes]
-Never: Set icon size via `text-*` font-size utilities — SVG size is controlled by `width`/`height` attributes via the `size` prop. [source:foundation/iconography/sizes]
-
 ### Color
 
 Must: Control icon color through the parent element's text color using semantic tokens — icons inherit `currentColor`. [source:foundation/iconography/usage]
 Must: Use `text-disabled-foreground` for disabled icons — same token as disabled text. Never reduce size or weight to communicate disabled state. [source:foundation/iconography/usage]
-Never: Pass color or fill values directly to `<Icon>` — use semantic token classes on the parent wrapper. [source:foundation/iconography/usage]
 
 ### Interactivity
 
-Never: Attach event handlers (e.g. `onClick`) directly to `<Icon>` — SVGs have no button role and are not keyboard-reachable by default. [source:foundation/iconography/usage]
-Must: Wrap interactive icons in a `<button>` or `<a>`. The wrapper provides interaction semantics, keyboard target, and accessible label. [source:foundation/iconography/usage]
+Never: Attach event handlers (e.g. `onClick`) directly to `<Icon>` — SVGs have no button role and are not keyboard-reachable by default. Wrap in `<button>` or `<a>`. [source:foundation/iconography/usage]
 
 ### Icon + Text Layout
 
