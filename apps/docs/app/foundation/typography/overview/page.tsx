@@ -1,4 +1,4 @@
-import { Container } from '@umichkisa-ds/web'
+import { Container, Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@umichkisa-ds/web'
 export default function TypographyOverviewPage() {
   return (
     <Container size="md" as="article">
@@ -26,40 +26,34 @@ export default function TypographyOverviewPage() {
       {/* ── Fonts at a Glance ──────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Fonts at a Glance</h2>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Font</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Role</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Where it appears</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">SejongHospital Bold</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Brand &amp; Display</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Display, H1 only</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Pretendard</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Body, UI &amp; Everything Else</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">H2 and below, all body text</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Geist Mono</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Code</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">This documentation site only</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Font</TableHead>
+              <TableHead>Role</TableHead>
+              <TableHead>Where it appears</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell>SejongHospital Bold</TableCell>
+              <TableCell>Brand & Display</TableCell>
+              <TableCell>Display, H1 only</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Pretendard</TableCell>
+              <TableCell>Body, UI & Everything Else</TableCell>
+              <TableCell>H2 and below, all body text</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Geist Mono</TableCell>
+              <TableCell>Code</TableCell>
+              <TableCell>This documentation site only</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
-
-      <p className="type-body mb-4 text-foreground max-w-prose">
-        SejongHospital is the identity font — it appears only where KISA&#39;s brand presence
-        matters most. Pretendard carries the rest of the interface. Geist Mono sits outside the
-        Rule of Two entirely; it is a documentation tool, not a product font.
-      </p>
 
     </Container>
   )
