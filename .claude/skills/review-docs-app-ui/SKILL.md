@@ -40,7 +40,7 @@ If no argument (including when user says "pick up the task"):
 ## Step 1: Desktop Review (1280px)
 
 1. Set browser to **1280px** width
-2. Navigate to the page via the tunnel URL
+2. Navigate to `https://vnw20xbg-3000.asse.devtunnels.ms<page-path>` (e.g., `https://vnw20xbg-3000.asse.devtunnels.ms/foundation/colors/overview`)
 3. Screenshot the full page — scroll top to bottom, capture each viewport
 4. Run three review passes on each screenshot, **one by one** with the user:
 
@@ -149,6 +149,7 @@ If zero findings:
 
 ## Reference
 
+- **Docs app URL:** `https://vnw20xbg-3000.asse.devtunnels.ms` (VSCode tunnel localhost)
 - Spec: `docs/specs/review-docs-app-ui-skill-design.md`
 - Constraints: `docs/DS_CONSTRAINTS.md`
 - Findings: `docs/reviews/docs-app-review.md`
