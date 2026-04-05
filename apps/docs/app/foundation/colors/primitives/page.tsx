@@ -1,4 +1,4 @@
-import { Container } from '@umichkisa-ds/web'
+import { Alert, Container } from '@umichkisa-ds/web'
 import { ColorSwatch } from '@/components/ColorSwatch'
 import { ColorSwatchGrid } from '@/components/ColorSwatchGrid'
 
@@ -8,12 +8,6 @@ export default function ColorsPrimitivesPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mt-8 mb-4 text-foreground">Primitive Palette</h1>
-
-      <blockquote className="border-l-[3px] border-brand-accent bg-surface-subtle pl-4 py-2 my-4 rounded-r">
-        <span className="italic text-muted-foreground type-body">
-          These are the raw color values the system is built from. You will not reference these directly in components — they exist only to feed into semantic tokens.
-        </span>
-      </blockquote>
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         These are the raw colors the entire system is built from. They are defined in{' '}
@@ -61,11 +55,11 @@ export default function ColorsPrimitivesPage() {
         Base colors for feedback states and neutral anchors.
       </p>
 
-      <blockquote className="border-l-[3px] border-brand-accent bg-surface-subtle pl-4 py-2 my-4 rounded-r">
-        <span className="italic text-muted-foreground type-body">
-          <strong className="font-semibold text-foreground">On hex values:</strong> Michigan brand colors show exact hex values from the official UMich brand guidelines. Utility colors (red, green) have no canonical hex — OKLCH is the authoritative definition. Inspect the browser to get the rendered value.
-        </span>
-      </blockquote>
+      <Alert variant="info" title="On hex values" className="mb-4">
+        Michigan brand colors show exact hex values from the official UMich brand guidelines.
+        Utility colors (red, green) have no canonical hex — OKLCH is the authoritative definition.
+        Inspect the browser to get the rendered value.
+      </Alert>
 
       <ColorSwatchGrid>
         <ColorSwatch token="--primitive-white"     value="oklch(100% 0 0)"      hex="#ffffff"  label="White" />
