@@ -77,7 +77,6 @@ export default async function TypographyFontsPage() {
         or larger, paired alongside a Bold display line. Never use Light in app UI. Never use
         it below{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-4xl</code>.
-        If you are unsure, use Bold.
       </p>
 
       {/* ── Fallback stack ──────────────────────────────────── */}
