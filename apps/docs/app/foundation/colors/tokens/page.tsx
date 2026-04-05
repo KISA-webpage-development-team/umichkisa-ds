@@ -1,4 +1,4 @@
-import { Alert, Container } from '@umichkisa-ds/web'
+import { Alert, Container, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
 import { ColorSwatch } from '@/components/ColorSwatch'
 import { ColorSwatchGrid } from '@/components/ColorSwatchGrid'
 import { CodeBlock } from '@/components/CodeBlock'
@@ -22,38 +22,60 @@ export default async function ColorsTokensPage() {
         every surface.
       </p>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Token</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Maps to</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-blue</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Anchor color. Navbars, hero sections, primary button backgrounds.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-mid</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-blue-mid</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Softer blue. Link text, secondary UI highlights. Use cases will grow over time.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-maize</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Action color. CTAs, focus rings, text on brand backgrounds.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent-subtle</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-maize-light</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Light maize tint. Callout backgrounds, highlighted regions.</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Token</TableHead>
+                <TableHead>Maps to</TableHead>
+                <TableHead>Role</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-blue</code></TableCell>
+                <TableCell>Anchor color. Navbars, hero sections, primary button backgrounds.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-mid</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-blue-mid</code></TableCell>
+                <TableCell>Softer blue. Link text, secondary UI highlights. Use cases will grow over time.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-maize</code></TableCell>
+                <TableCell>Action color. CTAs, focus rings, text on brand backgrounds.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent-subtle</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-maize-light</code></TableCell>
+                <TableCell>Light maize tint. Callout backgrounds, highlighted regions.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code>
+              <span className="type-caption text-muted-foreground">--primitive-michigan-blue · Anchor color. Navbars, hero sections, primary button backgrounds.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-mid</code>
+              <span className="type-caption text-muted-foreground">--primitive-michigan-blue-mid · Softer blue. Link text, secondary UI highlights. Use cases will grow over time.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent</code>
+              <span className="type-caption text-muted-foreground">--primitive-michigan-maize · Action color. CTAs, focus rings, text on brand backgrounds.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent-subtle</code>
+              <span className="type-caption text-muted-foreground">--primitive-michigan-maize-light · Light maize tint. Callout backgrounds, highlighted regions.</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
       <ColorSwatchGrid>
@@ -125,33 +147,51 @@ export default async function ColorsTokensPage() {
         elevation — the higher you stack an element, the more tinted its background.
       </p>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Token</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Maps to</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-white</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Page background. The base layer everything sits on.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-subtle</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-gray-100</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Cards and panels. One step above the page.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-muted</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-gray-50</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Items inside cards. Sits lighter inside a darker card.</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Token</TableHead>
+                <TableHead>Maps to</TableHead>
+                <TableHead>Role</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-white</code></TableCell>
+                <TableCell>Page background. The base layer everything sits on.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-subtle</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-gray-100</code></TableCell>
+                <TableCell>Cards and panels. One step above the page.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-muted</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-gray-50</code></TableCell>
+                <TableCell>Items inside cards. Sits lighter inside a darker card.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface</code>
+              <span className="type-caption text-muted-foreground">--primitive-white · Page background. The base layer everything sits on.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-subtle</code>
+              <span className="type-caption text-muted-foreground">--primitive-gray-100 · Cards and panels. One step above the page.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-muted</code>
+              <span className="type-caption text-muted-foreground">--primitive-gray-50 · Items inside cards. Sits lighter inside a darker card.</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
       <ColorSwatchGrid>
@@ -163,28 +203,42 @@ export default async function ColorsTokensPage() {
       {/* ── Border ──────────────────────────────────────────── */}
       <h2 className="type-h2 mt-6 mb-2 text-foreground">Border</h2>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Token</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Maps to</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-border</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-gray-200</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Default dividers, input field outlines.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-border-strong</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-gray-300</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Emphasized borders, active input states.</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Token</TableHead>
+                <TableHead>Maps to</TableHead>
+                <TableHead>Role</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-border</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-gray-200</code></TableCell>
+                <TableCell>Default dividers, input field outlines.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-border-strong</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-gray-300</code></TableCell>
+                <TableCell>Emphasized borders, active input states.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-border</code>
+              <span className="type-caption text-muted-foreground">--primitive-gray-200 · Default dividers, input field outlines.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-border-strong</code>
+              <span className="type-caption text-muted-foreground">--primitive-gray-300 · Emphasized borders, active input states.</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
       <ColorSwatchGrid>
@@ -199,43 +253,69 @@ export default async function ColorsTokensPage() {
         cases for colored surfaces.
       </p>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Token</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Maps to</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-foreground</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-gray-900</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Body text, headings. Default for all readable content.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-muted-foreground</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-gray-500</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Captions, secondary labels, timestamps.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-disabled-foreground</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-gray-400</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Disabled state text. Intentionally low contrast — do not use for readable content.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-foreground</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-maize</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Text sitting on <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code> backgrounds (navbars, hero sections, primary buttons).</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-link</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-mid</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Hyperlinks and inline clickable text.</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Token</TableHead>
+                <TableHead>Maps to</TableHead>
+                <TableHead>Role</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-foreground</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-gray-900</code></TableCell>
+                <TableCell>Body text, headings. Default for all readable content.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-muted-foreground</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-gray-500</code></TableCell>
+                <TableCell>Captions, secondary labels, timestamps.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-disabled-foreground</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-gray-400</code></TableCell>
+                <TableCell>Disabled state text. Intentionally low contrast — do not use for readable content.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-foreground</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-maize</code></TableCell>
+                <TableCell>Text sitting on <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code> backgrounds (navbars, hero sections, primary buttons).</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-link</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-mid</code></TableCell>
+                <TableCell>Hyperlinks and inline clickable text.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-foreground</code>
+              <span className="type-caption text-muted-foreground">--primitive-gray-900 · Body text, headings. Default for all readable content.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-muted-foreground</code>
+              <span className="type-caption text-muted-foreground">--primitive-gray-500 · Captions, secondary labels, timestamps.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-disabled-foreground</code>
+              <span className="type-caption text-muted-foreground">--primitive-gray-400 · Disabled state text. Intentionally low contrast — do not use for readable content.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-foreground</code>
+              <span className="type-caption text-muted-foreground">--primitive-michigan-maize · Text sitting on --color-brand-primary backgrounds (navbars, hero sections, primary buttons).</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-link</code>
+              <span className="type-caption text-muted-foreground">--color-brand-primary-mid · Hyperlinks and inline clickable text.</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
       <ColorSwatchGrid>
@@ -254,58 +334,96 @@ export default async function ColorsTokensPage() {
         surfaces like alert boxes.
       </p>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Token</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Maps to</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-error</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-red-500</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Error state. Form validation failures, destructive action warnings.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-error-subtle</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(97% 0.02 27)</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Background for error alert boxes.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-success</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-green-500</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Success state. Confirmations, completed actions.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-success-subtle</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(97% 0.02 145)</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Background for success alert boxes.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-warning</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(72% 0.15 60)</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Warning state. Non-blocking issues that need attention.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-warning-subtle</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(97% 0.02 60)</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Background for warning alert boxes.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-info</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-blue-mid</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Informational state. Neutral tips, contextual help.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-info-subtle</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-blue-light</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Background for info alert boxes.</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Token</TableHead>
+                <TableHead>Maps to</TableHead>
+                <TableHead>Role</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-error</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-red-500</code></TableCell>
+                <TableCell>Error state. Form validation failures, destructive action warnings.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-error-subtle</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(97% 0.02 27)</code></TableCell>
+                <TableCell>Background for error alert boxes.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-success</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-green-500</code></TableCell>
+                <TableCell>Success state. Confirmations, completed actions.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-success-subtle</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(97% 0.02 145)</code></TableCell>
+                <TableCell>Background for success alert boxes.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-warning</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(72% 0.15 60)</code></TableCell>
+                <TableCell>Warning state. Non-blocking issues that need attention.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-warning-subtle</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(97% 0.02 60)</code></TableCell>
+                <TableCell>Background for warning alert boxes.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-info</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-blue-mid</code></TableCell>
+                <TableCell>Informational state. Neutral tips, contextual help.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-info-subtle</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-blue-light</code></TableCell>
+                <TableCell>Background for info alert boxes.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-error</code>
+              <span className="type-caption text-muted-foreground">--primitive-red-500 · Error state. Form validation failures, destructive action warnings.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-error-subtle</code>
+              <span className="type-caption text-muted-foreground">oklch(97% 0.02 27) · Background for error alert boxes.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-success</code>
+              <span className="type-caption text-muted-foreground">--primitive-green-500 · Success state. Confirmations, completed actions.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-success-subtle</code>
+              <span className="type-caption text-muted-foreground">oklch(97% 0.02 145) · Background for success alert boxes.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-warning</code>
+              <span className="type-caption text-muted-foreground">oklch(72% 0.15 60) · Warning state. Non-blocking issues that need attention.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-warning-subtle</code>
+              <span className="type-caption text-muted-foreground">oklch(97% 0.02 60) · Background for warning alert boxes.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-info</code>
+              <span className="type-caption text-muted-foreground">--primitive-michigan-blue-mid · Informational state. Neutral tips, contextual help.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-info-subtle</code>
+              <span className="type-caption text-muted-foreground">--primitive-michigan-blue-light · Background for info alert boxes.</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
       <ColorSwatchGrid>
@@ -348,43 +466,69 @@ export default async function ColorsTokensPage() {
         the only way to show a visible state change.
       </p>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Token</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Value</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-hover</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(25% 0.075 243)</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Hover state on brand-primary elements. Slightly lighter than base.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-pressed</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(15% 0.05 243)</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Pressed state on brand-primary elements. Slightly darker than base.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent-hover</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(76% 0.185 91)</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Hover state on brand-accent elements. Darker maize.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent-pressed</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(70% 0.185 91)</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Pressed state on brand-accent elements. Even darker maize.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-focus-ring</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-maize</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Keyboard focus indicator. Use as a dual-ring: maize outer ring + 4px dark offset ring (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code>). The maize ring provides contrast on dark surfaces; the offset ring provides contrast on white/light surfaces.</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Token</TableHead>
+                <TableHead>Value</TableHead>
+                <TableHead>Role</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-hover</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(25% 0.075 243)</code></TableCell>
+                <TableCell>Hover state on brand-primary elements. Slightly lighter than base.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-pressed</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(15% 0.05 243)</code></TableCell>
+                <TableCell>Pressed state on brand-primary elements. Slightly darker than base.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent-hover</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(76% 0.185 91)</code></TableCell>
+                <TableCell>Hover state on brand-accent elements. Darker maize.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent-pressed</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(70% 0.185 91)</code></TableCell>
+                <TableCell>Pressed state on brand-accent elements. Even darker maize.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-focus-ring</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-maize</code></TableCell>
+                <TableCell>Keyboard focus indicator. Use as a dual-ring: maize outer ring + 4px dark offset ring (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code>). The maize ring provides contrast on dark surfaces; the offset ring provides contrast on white/light surfaces.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-hover</code>
+              <span className="type-caption text-muted-foreground">oklch(25% 0.075 243) · Hover state on brand-primary elements. Slightly lighter than base.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-pressed</code>
+              <span className="type-caption text-muted-foreground">oklch(15% 0.05 243) · Pressed state on brand-primary elements. Slightly darker than base.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent-hover</code>
+              <span className="type-caption text-muted-foreground">oklch(76% 0.185 91) · Hover state on brand-accent elements. Darker maize.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent-pressed</code>
+              <span className="type-caption text-muted-foreground">oklch(70% 0.185 91) · Pressed state on brand-accent elements. Even darker maize.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-focus-ring</code>
+              <span className="type-caption text-muted-foreground">--primitive-michigan-maize · Keyboard focus indicator. Use as a dual-ring: maize outer ring + 4px dark offset ring (--color-brand-primary). The maize ring provides contrast on dark surfaces; the offset ring provides contrast on white/light surfaces.</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
       <ColorSwatchGrid>
@@ -439,23 +583,33 @@ export default async function ColorsTokensPage() {
       {/* ── Overlay ─────────────────────────────────────────── */}
       <h2 className="type-h2 mt-6 mb-2 text-foreground">Overlay</h2>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Token</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Value</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-overlay</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(0% 0 0 / 40%)</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Scrim behind modals and drawers. Dims the page without fully obscuring it.</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Token</TableHead>
+                <TableHead>Value</TableHead>
+                <TableHead>Role</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-overlay</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(0% 0 0 / 40%)</code></TableCell>
+                <TableCell>Scrim behind modals and drawers. Dims the page without fully obscuring it.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-overlay</code>
+              <span className="type-caption text-muted-foreground">oklch(0% 0 0 / 40%) · Scrim behind modals and drawers. Dims the page without fully obscuring it.</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
       <ColorSwatchGrid>
