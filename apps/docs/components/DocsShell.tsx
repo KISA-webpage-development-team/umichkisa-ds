@@ -9,7 +9,7 @@ export function DocsShell({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       {/* Skip link: off-screen by default, jumps into view on focus */}
       <a
         href="#main-content"
@@ -19,10 +19,10 @@ export function DocsShell({ children }: { children: React.ReactNode }) {
       </a>
       <Header onMenuClick={() => setSidebarOpen(true)} />
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-      <main className="pt-[var(--docs-header-h)]" id="main-content">
+      <main className="pt-[var(--docs-header-h)] flex-1" id="main-content">
         {children}
       </main>
       <Footer />
-    </>
+    </div>
   )
 }
