@@ -45,9 +45,22 @@ Before touching more components, I invested in process. This turned out to be th
 highest-leverage work of the entire project.
 
 ### DS Documentation Review
-I wrote `DS_CONSTRAINTS.md` — a living constraint document covering colors, typography,
-layout, iconography, accessibility, and form controls. Every component would be built
-and reviewed against these rules.
+I wrote two key documents early on:
+
+- **`DS_CONSTRAINTS.md`** — a living constraint document covering colors, typography,
+  layout, iconography, accessibility, and form controls. Every component would be built
+  and reviewed against these rules. It started small and grew with each batch — when a
+  component revealed a new pattern or edge case, the constraint was codified so every
+  future component would follow it. By the end, it held ~120 rules across 6 domains.
+  The `ds-constrained-execution` skill made this document load-bearing: every `.tsx` file
+  was automatically reviewed against it before it could land.
+
+- **`DECISIONS.md`** — an architectural decision log (ADR-style) that captured early
+  choices like "client app is reference only, not implementation template" and "Lucide as
+  single icon source." This was useful during bootstrapping to keep sessions aligned on
+  foundational decisions. Over time, the decisions either became self-evident from the
+  code or were absorbed into `DS_CONSTRAINTS.md` and Claude Code's memory system, so the
+  file was retired before v1.0.
 
 ### Token & Styles Audit
 Audited the token layer to ensure the three-tier model (primitives → semantic → component)

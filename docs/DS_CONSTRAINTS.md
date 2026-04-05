@@ -259,7 +259,7 @@ Must: Decorative icons (`aria-hidden="true"`) have no contrast requirement. Only
 ## Components (General)
 
 _Universal rules that apply to every component regardless of domain._
-_To be populated from `docs/DECISIONS.md` and cross-cutting rules during Step -1._
+_Cross-cutting rules accumulated during the component phase._
 
 ---
 
