@@ -399,7 +399,7 @@ export default async function ColorsTokensPage() {
         <strong className="font-semibold text-foreground">Focus ring implementation pattern:</strong>
       </p>
 
-      <CodeBlock code={`/* Applied to every interactive element */
+      <CodeBlock code={`/* Applied to buttons and clickable elements */
 :focus-visible {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
@@ -413,6 +413,15 @@ export default async function ColorsTokensPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">box-shadow</code>{' '}
         (navy) provides contrast against white/light backgrounds. Both must be present.
         Do not apply one without the other.
+      </p>
+
+      <p className="type-body mb-4 text-foreground max-w-prose">
+        <strong className="!font-semibold text-foreground">Exception — Form controls:</strong>{' '}
+        Inputs, textareas, selects, and toggle controls use a simpler focus pattern:{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">outline: none</code>{' '}
+        +{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">border-color: var(--color-brand-primary)</code>.
+        The border color change is sufficient for elements that already have a visible border.
       </p>
 
       <Alert variant="info" title="Interim — Neutral interactive states" className="my-4">
