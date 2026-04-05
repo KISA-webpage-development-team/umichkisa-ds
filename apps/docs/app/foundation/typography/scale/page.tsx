@@ -19,35 +19,35 @@ export default function TypographyScalePage() {
         <div className="bg-surface px-8 py-10 space-y-8">
           <div>
             <p className="type-display text-foreground">Display</p>
-            <p className="mt-1 text-xs text-muted-foreground font-mono">type-display</p>
+            <p className="mt-1 type-caption text-muted-foreground font-mono">type-display</p>
           </div>
           <div>
             <p className="type-h1 text-foreground">Heading 1</p>
-            <p className="mt-1 text-xs text-muted-foreground font-mono">type-h1</p>
+            <p className="mt-1 type-caption text-muted-foreground font-mono">type-h1</p>
           </div>
           <div>
             <p className="type-h2 text-foreground">Heading 2</p>
-            <p className="mt-1 text-xs text-muted-foreground font-mono">type-h2</p>
+            <p className="mt-1 type-caption text-muted-foreground font-mono">type-h2</p>
           </div>
           <div>
             <p className="type-h3 text-foreground">Heading 3</p>
-            <p className="mt-1 text-xs text-muted-foreground font-mono">type-h3</p>
+            <p className="mt-1 type-caption text-muted-foreground font-mono">type-h3</p>
           </div>
           <div>
             <p className="type-body text-foreground">Body — the default for all paragraph text and long-form content.</p>
-            <p className="mt-1 text-xs text-muted-foreground font-mono">type-body</p>
+            <p className="mt-1 type-caption text-muted-foreground font-mono">type-body</p>
           </div>
           <div>
             <p className="type-body-sm text-foreground">Body SM — secondary text, dense layouts, supporting information.</p>
-            <p className="mt-1 text-xs text-muted-foreground font-mono">type-body-sm</p>
+            <p className="mt-1 type-caption text-muted-foreground font-mono">type-body-sm</p>
           </div>
           <div>
             <p className="type-label text-foreground">Label — buttons, navigation, form labels.</p>
-            <p className="mt-1 text-xs text-muted-foreground font-mono">type-label</p>
+            <p className="mt-1 type-caption text-muted-foreground font-mono">type-label</p>
           </div>
           <div>
             <p className="type-caption text-muted-foreground">Caption — timestamps, metadata, helper text.</p>
-            <p className="mt-1 text-xs text-muted-foreground font-mono">type-caption</p>
+            <p className="mt-1 type-caption text-muted-foreground font-mono">type-caption</p>
           </div>
         </div>
       </div>
