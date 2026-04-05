@@ -25,7 +25,7 @@ export function ColorSwatch({ token, value, hex, label }: ColorSwatchProps) {
     <Card className="overflow-hidden !bg-surface">
       {/* Color block */}
       <CardContent
-        className="-mx-4 -mt-4 relative h-20 w-full"
+        className="-mx-4 -mt-4 relative !flex-none h-28 w-[calc(100%+2rem)]"
         style={{
           backgroundColor: `var(${token})`,
           backgroundImage: isLight
