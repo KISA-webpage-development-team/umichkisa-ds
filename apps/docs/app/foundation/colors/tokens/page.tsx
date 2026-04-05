@@ -1,4 +1,4 @@
-import { Container } from '@umichkisa-ds/web'
+import { Alert, Container } from '@umichkisa-ds/web'
 import { ColorSwatch } from '@/components/ColorSwatch'
 import { ColorSwatchGrid } from '@/components/ColorSwatchGrid'
 import { CodeBlock } from '@/components/CodeBlock'
@@ -16,7 +16,7 @@ export default async function ColorsTokensPage() {
       </p>
 
       {/* ── Brand ───────────────────────────────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Brand</h3>
+      <h2 className="type-h2 mt-6 mb-2 text-foreground">Brand</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The Michigan brand colors. These define the visual identity of KISA across
         every surface.
@@ -80,7 +80,7 @@ export default async function ColorsTokensPage() {
       <hr className="my-8 border-0 border-t border-border" />
 
       {/* ── Understanding -subtle and -muted ────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Understanding <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-subtle</code> and <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-muted</code></h3>
+      <h2 className="type-h2 mt-6 mb-2 text-foreground">Understanding <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-subtle</code> and <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-muted</code></h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Two suffixes appear across multiple token groups —{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-subtle</code> and{' '}
@@ -119,7 +119,7 @@ export default async function ColorsTokensPage() {
       <hr className="my-8 border-0 border-t border-border" />
 
       {/* ── Surface ─────────────────────────────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Surface</h3>
+      <h2 className="type-h2 mt-6 mb-2 text-foreground">Surface</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Background colors that define the depth layers of the UI. Think of them as
         elevation — the higher you stack an element, the more tinted its background.
@@ -154,21 +154,6 @@ export default async function ColorsTokensPage() {
         </table>
       </div>
 
-      <blockquote className="border-l-[3px] border-brand-accent bg-surface-subtle pl-4 py-2 my-4 rounded-r">
-        <span className="italic text-muted-foreground type-body">
-          <strong className="font-semibold text-foreground">Note on naming:</strong>{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-muted</code>{' '}
-          maps to{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">gray-50</code>,
-          which is <em>lighter</em> than{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-subtle</code>{' '}
-          (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">gray-100</code>).
-          The name {'"'}muted{'"'} refers to reduced visual weight — not a darker value.
-          A lighter background inside a darker card reads as elevated, not subdued.
-          Do not invert this assumption.
-        </span>
-      </blockquote>
-
       <ColorSwatchGrid>
         <ColorSwatch token="--color-surface"        label="Surface" />
         <ColorSwatch token="--color-surface-subtle" label="Surface Subtle" />
@@ -176,7 +161,7 @@ export default async function ColorsTokensPage() {
       </ColorSwatchGrid>
 
       {/* ── Border ──────────────────────────────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Border</h3>
+      <h2 className="type-h2 mt-6 mb-2 text-foreground">Border</h2>
 
       <div className="my-6 overflow-x-auto">
         <table className="w-full border-collapse border border-border">
@@ -208,7 +193,7 @@ export default async function ColorsTokensPage() {
       </ColorSwatchGrid>
 
       {/* ── Text ────────────────────────────────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Text</h3>
+      <h2 className="type-h2 mt-6 mb-2 text-foreground">Text</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Text tokens cover every role in the typographic hierarchy, plus two special
         cases for colored surfaces.
@@ -262,7 +247,7 @@ export default async function ColorsTokensPage() {
       </ColorSwatchGrid>
 
       {/* ── Feedback ────────────────────────────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Feedback</h3>
+      <h2 className="type-h2 mt-6 mb-2 text-foreground">Feedback</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Feedback colors communicate system states. Each state has two tokens: a solid
         color for icons, borders, and text labels, and a subtle tint for background
@@ -334,9 +319,8 @@ export default async function ColorsTokensPage() {
         <ColorSwatch token="--color-info-subtle"    label="Info Subtle" />
       </ColorSwatchGrid>
 
-      <blockquote className="border-l-[3px] border-brand-accent bg-surface-subtle pl-4 py-2 my-4 rounded-r">
-        <span className="italic text-muted-foreground type-body">
-          <strong className="font-semibold text-foreground">On <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-info</code> and <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-link</code>:</strong>{' '}
+      <Alert variant="info" title="On --color-info and --color-link" className="my-4">
+        <p>
           Both resolve to{' '}
           <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-blue-mid</code>{' '}
           — the same rendered color. This is intentional: blue reads as both informational and
@@ -346,11 +330,11 @@ export default async function ColorsTokensPage() {
           for state indicators and alert borders,{' '}
           <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-link</code>{' '}
           for clickable inline text.
-        </span>
-      </blockquote>
+        </p>
+      </Alert>
 
       {/* ── Interactive ─────────────────────────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Interactive</h3>
+      <h2 className="type-h2 mt-6 mb-2 text-foreground">Interactive</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Tokens for the hover and pressed states of both brand colors, plus the focus
         ring shown when navigating with a keyboard.
@@ -415,7 +399,7 @@ export default async function ColorsTokensPage() {
         <strong className="font-semibold text-foreground">Focus ring implementation pattern:</strong>
       </p>
 
-      <CodeBlock code={`/* Applied to every interactive element */
+      <CodeBlock code={`/* Applied to buttons and clickable elements */
 :focus-visible {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
@@ -431,9 +415,17 @@ export default async function ColorsTokensPage() {
         Do not apply one without the other.
       </p>
 
-      <blockquote className="border-l-[3px] border-brand-accent bg-surface-subtle pl-4 py-2 my-4 rounded-r">
-        <span className="italic text-muted-foreground type-body">
-          <strong className="font-semibold text-foreground">Interim — Neutral interactive states:</strong>{' '}
+      <p className="type-body mb-4 text-foreground max-w-prose">
+        <strong className="!font-semibold text-foreground">Exception — Form controls:</strong>{' '}
+        Inputs, textareas, selects, and toggle controls use a simpler focus pattern:{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">outline: none</code>{' '}
+        +{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">border-color: var(--color-brand-primary)</code>.
+        The border color change is sufficient for elements that already have a visible border.
+      </p>
+
+      <Alert variant="info" title="Interim — Neutral interactive states" className="my-4">
+        <p>
           Interactive tokens currently cover brand-primary and brand-accent elements only.
           For neutral/gray elements (secondary buttons, ghost buttons, form inputs), use{' '}
           <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-subtle</code>{' '}
@@ -441,11 +433,11 @@ export default async function ColorsTokensPage() {
           <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-border-strong</code>{' '}
           as hover border as an interim convention. This guidance will be superseded when
           dedicated neutral interactive tokens are defined.
-        </span>
-      </blockquote>
+        </p>
+      </Alert>
 
       {/* ── Overlay ─────────────────────────────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Overlay</h3>
+      <h2 className="type-h2 mt-6 mb-2 text-foreground">Overlay</h2>
 
       <div className="my-6 overflow-x-auto">
         <table className="w-full border-collapse border border-border">
