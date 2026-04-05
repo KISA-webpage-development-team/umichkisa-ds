@@ -1,4 +1,4 @@
-import { Container } from '@umichkisa-ds/web'
+import { Alert, Container } from '@umichkisa-ds/web'
 import { CodeBlock } from '@/components/CodeBlock'
 export default async function ColorsOverviewPage() {
   return (
@@ -25,12 +25,6 @@ export default async function ColorsOverviewPage() {
         from, the tokens you use in components, and the rules that keep everything
         consistent.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
-        If you have never worked with a design system before, start at the top and read
-        through. If you already know what you are looking for, use the section links in
-        the sidebar.
-      </p>
-
       <hr className="my-8 border-0 border-t border-border" />
 
       {/* ── How the System Works ────────────────────────────── */}
@@ -40,7 +34,8 @@ export default async function ColorsOverviewPage() {
         and they only communicate in one direction — downward.
       </p>
 
-      {/* 3-tier diagram */}
+      {/* 3-tier diagram — opacity utilities used intentionally for visual hierarchy
+          in this one-off illustration. No semantic token exists for these roles. */}
       <div className="my-8 flex flex-col">
         <div className="rounded-t-xl bg-brand-primary px-6 py-5">
           <p className="type-caption font-mono tracking-widest uppercase text-brand-foreground opacity-70">Tier 1</p>
@@ -76,16 +71,13 @@ export default async function ColorsOverviewPage() {
         is to be referenced by semantic tokens.
       </p>
 
-      <blockquote className="border-l-[3px] border-brand-accent bg-surface-subtle pl-4 py-2 my-4 rounded-r">
-        <span className="italic text-muted-foreground type-body">
-          <strong className="font-semibold text-foreground">Why OKLCH?</strong> Hex values (
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">#00274c</code>)
-          are unreadable — you cannot tell anything about a color from the code alone.
-          OKLCH is perceptually uniform, meaning a 10% increase in lightness actually looks
-          10% lighter to the human eye, making the palette predictable. Reading an OKLCH value:{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(lightness% chroma hue)</code>.
-        </span>
-      </blockquote>
+      <Alert variant="info" title="Why OKLCH?">
+        Hex values (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">#00274c</code>)
+        are unreadable — you cannot tell anything about a color from the code alone.
+        OKLCH is perceptually uniform, meaning a 10% increase in lightness actually looks
+        10% lighter to the human eye, making the palette predictable. Reading an OKLCH value:{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(lightness% chroma hue)</code>.
+      </Alert>
 
       {/* ── Tier 2 — Semantic Tokens ────────────────────────── */}
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Tier 2 — Semantic Tokens</h3>
