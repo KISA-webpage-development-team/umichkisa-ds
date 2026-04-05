@@ -48,7 +48,7 @@ export default function ColorsAccessibilityPage() {
 
       {/* Legend */}
       <Card className="mt-4 hover:border-border hover:bg-surface-subtle">
-        <CardContent className="pt-4">
+        <CardContent>
           <p className="type-body-sm mb-2 text-foreground"><strong>Legend</strong></p>
           <ul className="flex flex-col gap-2 type-body-sm text-muted-foreground">
             <li className="flex items-center gap-2">

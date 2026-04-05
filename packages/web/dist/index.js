@@ -376,7 +376,7 @@ function Card({ className, ...props }) {
     "div",
     {
       className: cn(
-        "flex flex-col bg-surface-subtle border border-border rounded-md transition-colors duration-200 hover:border-border-strong hover:bg-surface-muted",
+        "flex flex-col gap-4 p-4 bg-surface-subtle border border-border rounded-md transition-colors duration-200 hover:border-border-strong hover:bg-surface-muted",
         className
       ),
       ...props
@@ -384,7 +384,7 @@ function Card({ className, ...props }) {
   );
 }
 function CardHeader({ className, ...props }) {
-  return /* @__PURE__ */ jsx7("div", { className: cn("p-4", className), ...props });
+  return /* @__PURE__ */ jsx7("div", { className: cn("flex flex-col gap-2", className), ...props });
 }
 function CardTitle({
   as: Component = "h3",
@@ -412,13 +412,13 @@ function CardDescription({
   );
 }
 function CardContent({ className, ...props }) {
-  return /* @__PURE__ */ jsx7("div", { className: cn("flex-1 px-4 pb-4", className), ...props });
+  return /* @__PURE__ */ jsx7("div", { className: cn("flex-1", className), ...props });
 }
 function CardFooter({ className, ...props }) {
   return /* @__PURE__ */ jsx7(
     "div",
     {
-      className: cn("flex items-center gap-2 px-4 pb-4", className),
+      className: cn("flex items-center gap-2", className),
       ...props
     }
   );
