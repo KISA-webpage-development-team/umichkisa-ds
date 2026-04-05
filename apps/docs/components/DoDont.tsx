@@ -1,4 +1,5 @@
 import type { ReactNode } from "react"
+import { Alert } from "@umichkisa-ds/web"
 
 export function DoDont({ children }: { children: ReactNode }) {
   return (
@@ -14,17 +15,9 @@ export function Do({
   label?: string
 }) {
   return (
-    <div className="rounded-xl border border-l-4 border-success bg-success-subtle p-4">
-      <p className="mb-2 type-caption text-foreground uppercase tracking-normal">
-        <span className="mr-1.5" aria-hidden>
-          ✓
-        </span>
-        <strong>{label}</strong>
-      </p>
-      <div className="space-y-1.5 type-body-sm text-foreground">
-        {children}
-      </div>
-    </div>
+    <Alert variant="success" title={label}>
+      {children}
+    </Alert>
   )
 }
 
@@ -36,16 +29,8 @@ export function Dont({
   label?: string
 }) {
   return (
-    <div className="rounded-xl border border-l-4 border-error bg-error-subtle p-4">
-      <p className="mb-2 type-caption text-foreground uppercase tracking-normal">
-        <span className="mr-1.5" aria-hidden>
-          ✕
-        </span>
-        <strong>{label}</strong>
-      </p>
-      <div className="space-y-1.5 type-body-sm text-foreground">
-        {children}
-      </div>
-    </div>
+    <Alert variant="error" title={label}>
+      {children}
+    </Alert>
   )
 }
