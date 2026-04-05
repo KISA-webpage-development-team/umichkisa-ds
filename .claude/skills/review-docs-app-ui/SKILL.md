@@ -10,7 +10,22 @@ Reviews one docs page across both viewports. Produces a findings entry and a fix
 ## Invocation
 
 Accepts a page path as argument: `/review-docs-app-ui /foundation/colors/overview`
-If no argument, check `docs/TODO.md` for the next unchecked review task and present available options.
+
+If no argument (including when user says "pick up the task"):
+
+1. Read `docs/TODO.md` § Docs App UI Review
+2. Find the first batch that has any unchecked items (review or fix)
+3. List all unchecked tasks in that batch and present them:
+   > **Batch N — [label]**
+   > Available tasks:
+   > 1. Review `/foundation/colors/overview`
+   > 2. Review `/foundation/colors/primitives`
+   > 3. Fix `/foundation/colors/tokens` (fix plan at `docs/plans/review-fix-colors-tokens.md`)
+   >
+   > Which page would you like to work on?
+4. **Wait for user to pick.** Do not proceed until the user chooses.
+5. If the user picks a **review** task → continue to Pre-flight below
+6. If the user picks a **fix** task → invoke `ds-constrained-execution` with the fix plan instead
 
 ## Pre-flight
 
