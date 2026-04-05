@@ -7,46 +7,31 @@ type CalloutProps = {
   children: ReactNode
 }
 
-/*
- * DS GAP: Callout uses 4 shades per feedback type (bg, border, accent, labelColor).
- * The DS currently defines only --color-*-subtle (bg) and --color-* (main/accent).
- * Mid-shade border and dark label colors have no DS token yet.
- * When the DS adds --color-*-border and --color-*-foreground tokens, migrate here.
- * Tracked: docs/specs/docs-token-alignment.md § G5
- */
 const configs: Record<
   CalloutType,
   {
-    bg: string
-    border: string
+    container: string
     accent: string
-    labelColor: string
     icon: string
     label: string
   }
 > = {
   info: {
-    bg: "oklch(96% 0.025 240)",
-    border: "oklch(88% 0.05 240)",
-    accent: "oklch(52% 0.14 240)",
-    labelColor: "oklch(35% 0.12 240)",
-    icon: "ℹ",
+    container: "bg-info-subtle border-info",
+    accent: "bg-info",
+    icon: "\u2139",
     label: "Note",
   },
   warning: {
-    bg: "oklch(97% 0.05 85)",
-    border: "oklch(88% 0.1 85)",
-    accent: "oklch(55% 0.16 55)",
-    labelColor: "oklch(40% 0.14 55)",
-    icon: "⚠",
+    container: "bg-warning-subtle border-warning",
+    accent: "bg-warning",
+    icon: "\u26A0",
     label: "Warning",
   },
   tip: {
-    bg: "oklch(97% 0.04 145)",
-    border: "oklch(88% 0.07 145)",
-    accent: "oklch(52% 0.16 145)",
-    labelColor: "oklch(35% 0.14 145)",
-    icon: "✦",
+    container: "bg-success-subtle border-success",
+    accent: "bg-success",
+    icon: "\u2726",
     label: "Tip",
   },
 }
@@ -56,28 +41,18 @@ export function Callout({ type = "info", children }: CalloutProps) {
 
   return (
     <div
-      className="my-6 rounded-r-xl p-4"
-      style={{
-        background: c.bg,
-        border: `1px solid ${c.border}`,
-        borderLeftWidth: "4px",
-        borderLeftColor: c.accent,
-      }}
+      className={`my-6 rounded-r-xl border border-l-4 p-4 ${c.container}`}
     >
-      <p
-        className="mb-2 flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest"
-        style={{ color: c.labelColor }}
-      >
+      <p className="mb-2 flex items-center gap-2 type-caption text-foreground uppercase tracking-normal">
         <span
-          className="flex h-4 w-4 items-center justify-center rounded-full text-[9px] font-bold text-white" // DS GAP: no on-accent foreground token
-          style={{ backgroundColor: c.accent }}
+          className={`flex h-4 w-4 items-center justify-center rounded-full type-caption text-surface ${c.accent}`}
           aria-hidden="true"
         >
           {c.icon}
         </span>
-        {c.label}
+        <strong>{c.label}</strong>
       </p>
-      <div className="text-sm" style={{ color: "oklch(25% 0.01 264)" }}>
+      <div className="type-body-sm text-foreground">
         {children}
       </div>
     </div>

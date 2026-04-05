@@ -114,5 +114,5 @@ Located in `apps/docs/components/`.
 - `apps/docs/components/CodeBlockClient.tsx` — `"use client"` shell with copy-to-clipboard (icon swap: clipboard-copy → clipboard-check, 2s). Used by both CodeBlock and ComponentPreview.
 - `ComponentPreview` accepts optional `highlightedCode` (pre-rendered HTML string) and `lang` props. Pages call `highlight()` at the server level and pass results down.
 
-### Token Gaps (tracked in TODO.md)
-`Callout`, `DoDont`, `ContrastTable` still use raw Tailwind color utilities instead of DS semantic tokens.
+### Token Alignment (completed)
+`Callout`, `DoDont`, `ContrastTable` migrated to DS semantic tokens (`bg-*-subtle`, `border-*`, `text-foreground`, `type-*` classes). No hardcoded OKLCH, no `text-white`, no raw Tailwind typography utilities remain.

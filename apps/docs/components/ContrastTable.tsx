@@ -11,54 +11,26 @@ type ContrastTableProps = {
   rows: ContrastRow[]
 }
 
-/*
- * DS GAP: AA and "large only" badges need success/warning mid-shades.
- * DS defines --color-success-subtle + --color-success, and --color-warning-subtle + --color-warning.
- * The border and text colors here require darker variants not yet in the DS.
- * Migrate when DS adds --color-success-foreground and --color-warning-foreground.
- * Tracked: docs/specs/docs-token-alignment.md § G5
- */
 function PassBadge({ passes }: { passes: PassResult }) {
   if (passes === "aa") {
     return (
-      <span
-        className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide"
-        style={{
-          backgroundColor: "oklch(95% 0.05 145)",
-          color: "oklch(35% 0.12 145)",
-          border: "1px solid oklch(85% 0.08 145)",
-        }}
-      >
-        <span aria-hidden>✓</span> AA
+      <span className="inline-flex items-center gap-1.5 rounded-full border border-success bg-success-subtle px-2.5 py-1 type-caption uppercase tracking-normal text-foreground">
+        <span aria-hidden>✓</span> <strong>AA</strong>
       </span>
     )
   }
 
   if (passes === "large-only") {
     return (
-      <span
-        className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide"
-        style={{
-          backgroundColor: "oklch(97% 0.05 85)",
-          color: "oklch(48% 0.14 55)",
-          border: "1px solid oklch(88% 0.1 85)",
-        }}
-      >
-        <span aria-hidden>◐</span> Large only
+      <span className="inline-flex items-center gap-1.5 rounded-full border border-warning bg-warning-subtle px-2.5 py-1 type-caption uppercase tracking-normal text-foreground">
+        <span aria-hidden>◐</span> <strong>Large only</strong>
       </span>
     )
   }
 
   return (
-    <span
-      className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide"
-      style={{
-        backgroundColor: "var(--color-surface-subtle)",
-        color: "var(--color-muted-foreground)",
-        border: "1px solid var(--color-border)",
-      }}
-    >
-      <span aria-hidden>✕</span> By design
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface-subtle px-2.5 py-1 type-caption uppercase tracking-normal text-muted-foreground">
+      <span aria-hidden>✕</span> <strong>By design</strong>
     </span>
   )
 }
@@ -73,14 +45,8 @@ function ColorDot({ token }: { token: string }) {
 
   return (
     <span
-      className="inline-block h-4 w-4 flex-shrink-0 rounded-full"
-      style={{
-        backgroundColor: `var(${token})`,
-        border: isLight
-          ? "1.5px solid var(--color-border-strong)"
-          : "1.5px solid rgba(0,0,0,0.12)",
-        boxShadow: "inset 0 1px 2px rgba(0,0,0,0.08)",
-      }}
+      className={`inline-block h-4 w-4 flex-shrink-0 rounded-full ${isLight ? "border border-border-strong" : "border border-border"}`}
+      style={{ backgroundColor: `var(${token})` }}
       aria-hidden="true"
     />
   )
@@ -88,25 +54,14 @@ function ColorDot({ token }: { token: string }) {
 
 export function ContrastTable({ rows }: ContrastTableProps) {
   return (
-    <div
-      className="my-6 overflow-x-auto rounded-xl"
-      style={{ border: "1px solid var(--color-border)" }}
-    >
-      <table className="w-full border-collapse text-sm">
+    <div className="my-6 overflow-x-auto rounded-xl border border-border">
+      <table className="w-full border-collapse">
         <thead>
-          <tr style={{ backgroundColor: "var(--color-surface-subtle)" }}>
+          <tr className="bg-surface-subtle">
             {["Foreground", "Background", "Ratio", "WCAG AA"].map((heading) => (
               <th
                 key={heading}
-                className="px-4 py-3 text-left"
-                style={{
-                  borderBottom: "1px solid var(--color-border)",
-                  color: "var(--color-muted-foreground)",
-                  fontSize: "11px",
-                  fontWeight: 600,
-                  letterSpacing: "0.07em",
-                  textTransform: "uppercase",
-                }}
+                className="border-b border-border px-4 py-3 text-left type-caption uppercase tracking-normal text-muted-foreground"
               >
                 {heading}
               </th>
@@ -117,25 +72,13 @@ export function ContrastTable({ rows }: ContrastTableProps) {
           {rows.map((row, i) => (
             <tr
               key={i}
-              style={{
-                backgroundColor:
-                  i % 2 === 0
-                    ? "var(--color-surface)"
-                    : "var(--color-surface-subtle)",
-                borderBottom:
-                  i < rows.length - 1
-                    ? "1px solid var(--color-border)"
-                    : undefined,
-              }}
+              className={`${i % 2 === 0 ? "bg-surface" : "bg-surface-subtle"} ${i < rows.length - 1 ? "border-b border-border" : ""}`}
             >
               {/* Foreground */}
               <td className="px-4 py-3">
                 <div className="flex items-center gap-2.5">
                   <ColorDot token={row.foreground} />
-                  <code
-                    className="text-xs"
-                    style={{ color: "var(--color-foreground)" }}
-                  >
+                  <code className="type-caption font-mono text-foreground">
                     {row.foreground}
                   </code>
                 </div>
@@ -145,10 +88,7 @@ export function ContrastTable({ rows }: ContrastTableProps) {
               <td className="px-4 py-3">
                 <div className="flex items-center gap-2.5">
                   <ColorDot token={row.background} />
-                  <code
-                    className="text-xs"
-                    style={{ color: "var(--color-foreground)" }}
-                  >
+                  <code className="type-caption font-mono text-foreground">
                     {row.background}
                   </code>
                 </div>
@@ -156,11 +96,8 @@ export function ContrastTable({ rows }: ContrastTableProps) {
 
               {/* Ratio */}
               <td className="px-4 py-3">
-                <span
-                  className="font-mono text-sm font-bold tabular-nums"
-                  style={{ color: "var(--color-foreground)" }}
-                >
-                  {row.ratio}
+                <span className="type-body-sm font-mono text-foreground tabular-nums">
+                  <strong>{row.ratio}</strong>
                 </span>
               </td>
 

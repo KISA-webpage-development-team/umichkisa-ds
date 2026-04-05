@@ -1,8 +1,8 @@
 # TODO
 
-## Pre-v1.0
+## Pre-v1.0 (Batch)
 
-- [ ] Docs components token gap — fix Callout, DoDont, ContrastTable to use DS semantic tokens
+- [x] Docs components token gap — fix Callout, DoDont, ContrastTable to use DS semantic tokens
 - [ ] Table component — KISA-specific design treatment (minor design task)
 - [ ] Mobile docs app view review — walk through all pages in mobile viewport, write spec first
 - [ ] Desktop docs content review — audit all pages for broken UI, wrong styling, UX improvements
