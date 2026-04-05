@@ -1,4 +1,4 @@
-import { Container, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
+import { Container, Card, CardContent, CardFooter, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
 import { CodeBlock } from '@/components/CodeBlock'
 export default async function TypographyFontsPage() {
   return (
@@ -96,16 +96,17 @@ export default async function TypographyFontsPage() {
       </p>
 
       {/* ── SejongHospital specimen ─────────────────────────── */}
-      <div className="my-8 rounded-xl border border-border overflow-hidden">
-        <div className="bg-[#00274c] px-8 py-10">
-          <p className="text-5xl font-sejong-bold text-[#ffcb05]">University of Michigan</p>
-          <p className="mt-3 text-2xl font-sejong-light text-[#e8f0f7] opacity-70">Korean International Students Association</p>
-        </div>
-        <div className="bg-surface-subtle px-8 py-4 flex gap-8">
-          <span className="text-xs text-muted-foreground font-mono">Bold 700 — font-sejong-bold</span>
-          <span className="text-xs text-muted-foreground font-mono">Light 300 — font-sejong-light</span>
-        </div>
-      </div>
+      {/* Raw utilities: specimen demonstrating font appearance, not type scale */}
+      <Card className="my-8 overflow-hidden">
+        <CardContent className="bg-brand-primary py-10">
+          <p className="text-3xl md:text-5xl font-sejong-bold text-brand-foreground">University of Michigan</p>
+          <p className="mt-3 text-xl md:text-2xl font-sejong-light text-brand-foreground opacity-50">Korean International Students Association</p>
+        </CardContent>
+        <CardFooter className="gap-8">
+          <span className="type-caption text-muted-foreground font-mono">Bold 700 — font-sejong-bold</span>
+          <span className="type-caption text-muted-foreground font-mono">Light 300 — font-sejong-light</span>
+        </CardFooter>
+      </Card>
 
       <hr className="my-8 border-0 border-t border-border" />
 
@@ -195,17 +196,19 @@ export default async function TypographyFontsPage() {
       </p>
 
       {/* ── Pretendard specimen ─────────────────────────────── */}
-      <div className="my-8 rounded-xl border border-border overflow-hidden">
-        <div className="bg-surface px-8 py-8 space-y-4">
+      {/* Raw utilities: specimen demonstrating font appearance, not type scale */}
+      <Card className="my-8 overflow-hidden">
+        <CardContent className="space-y-4 py-8">
           <p className="text-3xl font-pretendard font-semibold text-foreground">Section Heading — Semibold 600</p>
           <p className="text-base font-pretendard font-normal text-foreground leading-relaxed">Body text — Regular 400. The quick brown fox jumps over the lazy dog. Pretendard reads cleanly at every size from caption to heading.</p>
+          <p className="text-base font-pretendard font-normal text-foreground leading-relaxed">본문 텍스트 — 미시간 대학교 한인학생회. 한국어와 영어를 동일한 품질로 지원합니다.</p>
           <p className="text-sm font-pretendard font-medium text-muted-foreground">Label or navigation item — Medium 500</p>
           <p className="text-xs font-pretendard font-normal text-muted-foreground">Caption text — Regular 400</p>
-        </div>
-        <div className="bg-surface-subtle px-8 py-4">
-          <span className="text-xs text-muted-foreground font-mono">font-pretendard — weights 400 · 500 · 600</span>
-        </div>
-      </div>
+        </CardContent>
+        <CardFooter>
+          <span className="type-caption text-muted-foreground font-mono">font-pretendard — weights 400 · 500 · 600</span>
+        </CardFooter>
+      </Card>
 
       <hr className="my-8 border-0 border-t border-border" />
 
