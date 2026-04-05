@@ -96,7 +96,7 @@ export default async function TypographyFontsPage() {
 
       {/* ── SejongHospital specimen ─────────────────────────── */}
       {/* Raw utilities: specimen demonstrating font appearance, not type scale */}
-      <Card className="my-8 overflow-hidden">
+      <Card className="my-8 overflow-hidden !p-0">
         <CardContent className="bg-brand-primary">
           <p className="text-3xl md:text-5xl font-sejong-bold text-brand-foreground">University of Michigan</p>
           <p className="mt-3 text-xl md:text-2xl font-sejong-light text-brand-foreground opacity-50">Korean International Students Association</p>
@@ -196,7 +196,7 @@ export default async function TypographyFontsPage() {
 
       {/* ── Pretendard specimen ─────────────────────────────── */}
       {/* Raw utilities: specimen demonstrating font appearance, not type scale */}
-      <Card className="my-8 overflow-hidden">
+      <Card className="my-8 overflow-hidden !p-0">
         <CardContent className="space-y-4">
           <p className="text-3xl font-pretendard font-semibold text-foreground">Section Heading — Semibold 600</p>
           <p className="text-base font-pretendard font-normal text-foreground leading-relaxed">Body text — Regular 400. The quick brown fox jumps over the lazy dog. Pretendard reads cleanly at every size from caption to heading.</p>

@@ -95,7 +95,7 @@ const gridCode = `import { Card, CardHeader, CardTitle, CardDescription, CardCon
 const compositionCode = `import { Card, CardContent, CardFooter, Avatar, Button, Icon } from '@umichkisa-ds/web'
 
 <Card className="max-w-sm">
-  <CardContent className="pt-4 flex flex-col items-center gap-4">
+  <CardContent className="flex flex-col items-center gap-4">
     <Avatar src="/avatars/member.jpg" name="Jioh In" size="lg" />
     <div className="text-center">
       <p className="type-body text-foreground"><strong>Jioh In</strong></p>
@@ -137,12 +137,12 @@ export default async function CardPage() {
 
       {/* -- Anatomy -------------------------------------------------- */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Anatomy</h2>
-      <CodeBlock code={`Card              ← border + background, no padding
-  CardHeader      ← p-4
+      <CodeBlock code={`Card              ← p-4 gap-4, border + background
+  CardHeader      ← flex-col gap-2 (groups title + description)
     CardTitle     ← heading (h3 by default)
     CardDescription ← muted supporting text
-  CardContent     ← px-4 pb-4 (add pt-4 when no header)
-  CardFooter      ← flex row, px-4 pb-4`} lang="text" />
+  CardContent     ← flex-1 (stretches to fill)
+  CardFooter      ← flex row, gap-2`} lang="text" />
 
       {/* -- Examples ------------------------------------------------- */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
@@ -257,13 +257,12 @@ export default async function CardPage() {
       {/* Custom Composition */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">Custom composition</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Sub-components are fully composable. Skip CardHeader entirely, add
-        top padding to CardContent, and arrange content freely. Here, a member
-        profile card with centered layout.
+        Sub-components are fully composable. Skip CardHeader entirely and
+        arrange content freely. Here, a member profile card with centered layout.
       </p>
       <ComponentPreview code={compositionCode} highlightedCode={compositionHighlighted}>
         <Card className="max-w-sm">
-          <CardContent className="pt-4 flex flex-col items-center gap-4">
+          <CardContent className="flex flex-col items-center gap-4">
             <Avatar src="/avatars/member.jpg" name="Jioh In" size="lg" />
             <div className="text-center">
               <p className="type-body text-foreground"><strong>Jioh In</strong></p>
@@ -291,7 +290,8 @@ export default async function CardPage() {
       {/* Card */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">Card</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Outer container with surface-subtle background, border, and rounded corners.
+        Outer container with p-4 padding, gap-4 between children, surface-subtle background,
+        border, and rounded corners. Use <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">!p-0</code> for edge-to-edge bleed layouts.
       </p>
       <div className="my-6 overflow-x-auto">
         <table className="w-full border-collapse border border-border">
@@ -323,7 +323,7 @@ export default async function CardPage() {
       {/* CardHeader */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">CardHeader</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Top section with consistent padding. Typically holds CardTitle and CardDescription.
+        Groups CardTitle and CardDescription with element-tier spacing (gap-2).
       </p>
       <div className="my-6 overflow-x-auto">
         <table className="w-full border-collapse border border-border">
@@ -425,8 +425,8 @@ export default async function CardPage() {
       {/* CardContent */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">CardContent</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Main body area. Has horizontal and bottom padding — no top padding so it flows
-        naturally from CardHeader.
+        Main body area. Grows to fill available vertical space (flex-1) so
+        footers pin to the bottom in equal-height grid layouts.
       </p>
       <div className="my-6 overflow-x-auto">
         <table className="w-full border-collapse border border-border">
@@ -449,7 +449,7 @@ export default async function CardPage() {
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></td>
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
               <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Merged via cn(). Add <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">pt-4</code> when used without CardHeader.</td>
+              <td className="px-4 py-3 type-body-sm text-foreground">Merged via cn(). Use for layout utilities like <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">flex flex-col gap-4</code>.</td>
             </tr>
           </tbody>
         </table>
