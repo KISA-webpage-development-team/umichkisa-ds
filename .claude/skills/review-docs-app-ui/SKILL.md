@@ -24,9 +24,37 @@ If no argument, check `docs/TODO.md` for the next unchecked review task and pres
 1. Set browser to **1280px** width
 2. Navigate to the page via the tunnel URL
 3. Screenshot the full page — scroll top to bottom, capture each viewport
-4. Walk through findings **one by one** with the user
+4. Run three review passes on each screenshot, **one by one** with the user:
+
+### Pass A: DS Constraint Check (`ds-violation`)
+
+Compare the page against `docs/DS_CONSTRAINTS.md` (already read in pre-flight). Check:
+- Token usage (colors, spacing, typography) — no raw values
+- Component patterns — correct CVA usage, proper Radix primitives
+- Spacing grid compliance
+- Border radius, shadow, and elevation rules
+- Any rule in DS_CONSTRAINTS that applies to this page
+
+Any violation is automatically **>= major**.
+
+### Pass B: UI/UX Review (`layout`, `styling`, `ux`, `accessibility`)
+
+Invoke `ui-ux-pro-max` in **review** mode with the screenshot. Focus on:
+- Layout issues — alignment, overflow, grid problems, visual hierarchy
+- Styling issues — inconsistent colors, fonts, spacing, borders
+- UX issues — confusing interactions, poor navigation, missing affordances
+- Accessibility — contrast, alt text, keyboard nav, focus indicators
+
+### Pass C: Content Review (`content`)
+
+Read the page source and rendered text. Check:
+- Typos, grammatical errors
+- Unclear or misleading explanations
+- Missing information that a developer would need
+- Incorrect code examples or prop descriptions
+
 5. For each finding, capture:
-   - Severity: `critical`, `major`, `minor` (ds-violations are always >= major)
+   - Severity: `critical`, `major`, `minor`
    - Type: `layout`, `styling`, `ds-violation`, `content`, `ux`, `accessibility`, `responsive`
    - Viewport: `desktop`
    - Description
@@ -39,8 +67,9 @@ If no argument, check `docs/TODO.md` for the next unchecked review task and pres
 
 1. Resize browser to **375px** width
 2. Screenshot the full page at mobile
-3. Walk through findings one by one with the user
+3. Run the same three passes (A, B, C) at mobile width
 4. Tag findings as `mobile` (or update existing to `both` if same issue)
+5. Pay special attention to `responsive` type — things that work at 1280px but break at 375px
 
 > **Checkpoint:** Mobile review complete. [N total findings.]
 > Ready to record findings. Go ahead?
