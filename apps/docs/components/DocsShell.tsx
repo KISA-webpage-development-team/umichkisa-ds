@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Header } from '@/components/Header'
 import { Sidebar } from '@/components/Sidebar'
+import { Footer } from '@/components/Footer'
 
 export function DocsShell({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -21,6 +22,7 @@ export function DocsShell({ children }: { children: React.ReactNode }) {
       <main className="pt-[var(--docs-header-h)]" id="main-content">
         {children}
       </main>
+      <Footer />
     </>
   )
 }
