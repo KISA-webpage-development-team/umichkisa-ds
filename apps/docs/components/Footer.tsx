@@ -18,7 +18,7 @@ export function Footer() {
         {new Date().getFullYear()}{' '}
         <a
           href="https://github.com/retz8"
-          className="text-link underline hover:text-brand-primary"
+          className="text-link hover:text-brand-primary"
           target="_blank"
           rel="noopener noreferrer"
         >
