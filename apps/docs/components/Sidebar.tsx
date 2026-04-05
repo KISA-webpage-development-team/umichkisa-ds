@@ -219,7 +219,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
       <nav
         id="docs-sidebar"
         className={`fixed top-[var(--docs-header-h)] left-0 bottom-0
-          w-[var(--docs-sidebar-w)] bg-surface
+          w-full lg:w-[var(--docs-sidebar-w)] bg-surface
           after:absolute after:right-0 after:top-8 after:bottom-8
           after:w-px after:bg-border
           overflow-y-auto scrollbar-hidden
@@ -231,7 +231,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         aria-label="Documentation navigation"
       >
         {/* Mobile nav: section headings with current section expanded */}
-        <div className="lg:hidden pl-14 pr-8 py-8 flex flex-col gap-4">
+        <div className="lg:hidden px-8 py-8 flex flex-col gap-5">
           {([
             { label: 'Foundation', href: '/foundation', prefix: '/foundation', key: 'foundation' as SectionKey },
             { label: 'Components', href: '/components', prefix: '/components', key: 'components' as SectionKey },
@@ -243,8 +243,8 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                 <div className={`flex items-center ${i === 0 ? 'justify-between' : ''}`}>
                   <Link
                     href={s.href}
-                    className={`inline-block w-fit py-1 px-2 rounded-sm
-                      type-body !font-sejong-bold transition-colors duration-150
+                    className={`inline-block w-fit py-2 px-3 rounded-sm
+                      type-heading !font-sejong-bold transition-colors duration-150
                       ${isCurrent
                         ? 'text-brand-primary !font-semibold'
                         : 'text-foreground hover:text-brand-primary'
@@ -257,7 +257,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                     <IconButton
                       icon="x"
                       variant="tertiary"
-                      size="sm"
+                      size="md"
                       aria-label="Close navigation menu"
                       onClick={onClose}
                     />
@@ -266,26 +266,35 @@ export function Sidebar({ open, onClose }: SidebarProps) {
 
                 {/* Expand children for current section */}
                 {isCurrent && (
-                  <div className="ml-2 mt-2 flex flex-col gap-2">
-                    {SECTIONS[s.key].flatMap((cat) => cat.items).map((item) => {
-                      const isActive = pathname === item.href
-                      return (
-                        <Link
-                          key={item.href}
-                          href={item.href}
-                          className={`inline-block w-fit py-1 px-2 rounded-sm
-                            type-body
-                            transition-colors duration-150
-                            ${isActive
-                              ? 'text-brand-primary bg-brand-accent-subtle !font-semibold'
-                              : 'text-foreground hover:bg-brand-accent-subtle'
-                            }`}
-                          onClick={onClose}
-                        >
-                          {item.label}
-                        </Link>
-                      )
-                    })}
+                  <div className="ml-3 mt-3 flex flex-col gap-5">
+                    {SECTIONS[s.key].map((cat, catIdx) => (
+                      <div key={`${catIdx}-${cat.label}`}>
+                        <span className="block type-body-lg !font-sejong-bold text-foreground mb-2 px-3">
+                          {cat.label}
+                        </span>
+                        <div className="ml-2 flex flex-col gap-1">
+                          {cat.items.map((item) => {
+                            const isActive = pathname === item.href
+                            return (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                className={`inline-block w-fit py-2 px-3 rounded-sm
+                                  type-body-lg
+                                  transition-colors duration-150
+                                  ${isActive
+                                    ? 'text-brand-primary bg-brand-accent-subtle !font-semibold'
+                                    : 'text-foreground hover:bg-brand-accent-subtle'
+                                  }`}
+                                onClick={onClose}
+                              >
+                                {item.label}
+                              </Link>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>
