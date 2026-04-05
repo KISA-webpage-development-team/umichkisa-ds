@@ -14,10 +14,10 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 ### Batch 1 — Colors
 - [x] Review `/foundation/colors/overview`
 - [x] Fix `/foundation/colors/overview`
-- [ ] Review `/foundation/colors/primitives`
-- [ ] Fix `/foundation/colors/primitives`
-- [ ] Review `/foundation/colors/tokens`
-- [ ] Fix `/foundation/colors/tokens`
+- [x] Review `/foundation/colors/primitives`
+- [x] Fix `/foundation/colors/primitives`
+- [x] Review `/foundation/colors/tokens`
+- [x] Fix `/foundation/colors/tokens`
 
 ### Batch 2 — Colors + Typography
 - [ ] Review `/foundation/colors/usage`

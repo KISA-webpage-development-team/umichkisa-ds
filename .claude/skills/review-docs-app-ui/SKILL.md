@@ -70,6 +70,7 @@ Read the page source and rendered text. Check:
 - Unclear or misleading explanations
 - Missing information that a developer would need
 - Incorrect code examples or prop descriptions
+- **Redundant content** — sections, callouts, or paragraphs that repeat information already covered elsewhere on the same page. Flag for removal or consolidation.
 
 5. For each finding, capture:
    - Severity: `critical`, `major`, `minor`
