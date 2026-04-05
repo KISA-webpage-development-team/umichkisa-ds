@@ -62,8 +62,13 @@ export function Header({ onMenuClick }: HeaderProps) {
               <Link
                 key={s.href}
                 href={s.href}
+                data-label={s.label}
                 className={`px-3 py-1.5 rounded-md
-                  type-body transition-colors duration-150 ${
+                  type-body transition-colors duration-150
+                  flex flex-col items-center
+                  after:content-[attr(data-label)] after:!font-semibold
+                  after:h-0 after:invisible after:overflow-hidden after:pointer-events-none
+                  ${
                   pathname.startsWith(s.prefix)
                     ? 'text-brand-primary !font-semibold'
                     : 'text-foreground hover:text-brand-primary hover:!font-semibold'
