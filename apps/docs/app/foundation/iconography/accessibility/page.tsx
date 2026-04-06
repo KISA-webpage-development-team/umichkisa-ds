@@ -130,7 +130,7 @@ export default async function IconographyAccessibilityPage() {
       <p className="type-body mb-4 text-foreground max-w-prose">
         The{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code>{' '}
-        component renders an SVG at the specified size — 12px to 32px depending on the{' '}
+        component renders an SVG sized via the{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size</code>{' '}
         prop. None of these are large enough to serve as a touch target.
       </p>
