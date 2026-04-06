@@ -36,3 +36,4 @@ export {
   TableMobileList,
   TableMobileItem,
 } from "./Table";
+export type { TableProps } from "./Table";

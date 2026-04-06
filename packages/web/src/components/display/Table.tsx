@@ -1,20 +1,39 @@
 import * as React from "react";
 import { cn } from "@/utils/cn";
 
+/* ── Size context ─────────────────────────────────── */
+
+type TableSize = "sm" | "md";
+
+const TableSizeContext = React.createContext<TableSize>("md");
+
+function useTableSize() {
+  return React.useContext(TableSizeContext);
+}
+
 /* ── Table (root) ─────────────────────────────────── */
 
-const Table = React.forwardRef<
-  HTMLTableElement,
-  React.HTMLAttributes<HTMLTableElement>
->(({ className, ...props }, ref) => (
-  <div className="w-full overflow-x-auto">
-    <table
-      ref={ref}
-      className={cn("w-full caption-bottom type-body text-foreground", className)}
-      {...props}
-    />
-  </div>
-));
+type TableProps = React.HTMLAttributes<HTMLTableElement> & {
+  size?: TableSize;
+};
+
+const Table = React.forwardRef<HTMLTableElement, TableProps>(
+  ({ className, size = "md", ...props }, ref) => (
+    <TableSizeContext.Provider value={size}>
+      <div className="w-full overflow-x-auto">
+        <table
+          ref={ref}
+          className={cn(
+            "w-full caption-bottom text-foreground",
+            size === "sm" ? "type-body-sm" : "type-body",
+            className,
+          )}
+          {...props}
+        />
+      </div>
+    </TableSizeContext.Provider>
+  ),
+);
 Table.displayName = "Table";
 
 /* ── TableHeader ──────────────────────────────────── */
@@ -64,13 +83,22 @@ TableRow.displayName = "TableRow";
 const TableHead = React.forwardRef<
   HTMLTableCellElement,
   React.ThHTMLAttributes<HTMLTableCellElement>
->(({ className, ...props }, ref) => (
-  <th
-    ref={ref}
-    className={cn("px-4 py-3 text-left type-body !font-medium text-brand-primary", className)}
-    {...props}
-  />
-));
+>(({ className, ...props }, ref) => {
+  const size = useTableSize();
+  return (
+    <th
+      ref={ref}
+      className={cn(
+        "text-left !font-medium text-brand-primary",
+        size === "sm"
+          ? "px-3 py-2 type-body-sm"
+          : "px-4 py-3 type-body",
+        className,
+      )}
+      {...props}
+    />
+  );
+});
 TableHead.displayName = "TableHead";
 
 /* ── TableCell ────────────────────────────────────── */
@@ -78,13 +106,20 @@ TableHead.displayName = "TableHead";
 const TableCell = React.forwardRef<
   HTMLTableCellElement,
   React.TdHTMLAttributes<HTMLTableCellElement>
->(({ className, ...props }, ref) => (
-  <td
-    ref={ref}
-    className={cn("px-4 py-3 text-foreground", className)}
-    {...props}
-  />
-));
+>(({ className, ...props }, ref) => {
+  const size = useTableSize();
+  return (
+    <td
+      ref={ref}
+      className={cn(
+        "text-foreground",
+        size === "sm" ? "px-3 py-2" : "px-4 py-3",
+        className,
+      )}
+      {...props}
+    />
+  );
+});
 TableCell.displayName = "TableCell";
 
 /* ── TableCaption ─────────────────────────────────── */
@@ -106,13 +141,20 @@ TableCaption.displayName = "TableCaption";
 const TableFooter = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
->(({ className, ...props }, ref) => (
-  <tfoot
-    ref={ref}
-    className={cn("border-t border-border-strong bg-surface-subtle type-label text-foreground", className)}
-    {...props}
-  />
-));
+>(({ className, ...props }, ref) => {
+  const size = useTableSize();
+  return (
+    <tfoot
+      ref={ref}
+      className={cn(
+        "border-t border-border-strong bg-surface-subtle text-foreground",
+        size === "sm" ? "type-caption" : "type-label",
+        className,
+      )}
+      {...props}
+    />
+  );
+});
 TableFooter.displayName = "TableFooter";
 
 /* ── TableMobileList ──────────────────────────────── */
@@ -157,3 +199,5 @@ export {
   TableMobileList,
   TableMobileItem,
 };
+
+export type { TableProps };

@@ -26,7 +26,7 @@ export default async function TypographyFontsPage() {
 
       {/* Desktop */}
       <div className="hidden md:block my-6">
-        <Table>
+        <Table size="sm">
           <TableHeader>
             <TableRow>
               <TableHead>Weight</TableHead>
@@ -122,7 +122,7 @@ export default async function TypographyFontsPage() {
 
       {/* Desktop */}
       <div className="hidden md:block my-6">
-        <Table>
+        <Table size="sm">
           <TableHeader>
             <TableRow>
               <TableHead>Weight</TableHead>
@@ -221,7 +221,7 @@ export default async function TypographyFontsPage() {
 
       {/* Desktop */}
       <div className="hidden md:block my-6">
-        <Table>
+        <Table size="sm">
           <TableHeader>
             <TableRow>
               <TableHead>Weight</TableHead>

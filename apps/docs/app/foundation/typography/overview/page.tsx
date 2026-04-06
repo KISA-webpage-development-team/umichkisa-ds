@@ -27,7 +27,7 @@ export default function TypographyOverviewPage() {
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Fonts at a Glance</h2>
 
       <div className="my-6">
-        <Table>
+        <Table size="sm">
           <TableHeader>
             <TableRow>
               <TableHead>Font</TableHead>

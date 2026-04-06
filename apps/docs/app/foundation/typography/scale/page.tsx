@@ -55,7 +55,7 @@ export default function TypographyScalePage() {
       {/* ── Scale reference table ──────────────────────────── */}
       <div className="my-6">
         <div className="hidden md:block">
-          <Table>
+          <Table size="sm">
             <TableHeader>
               <TableRow>
                 <TableHead>Class</TableHead>
@@ -235,7 +235,7 @@ export default function TypographyScalePage() {
 
       <div className="my-6">
         <div className="hidden md:block">
-          <Table>
+          <Table size="sm">
             <TableHeader>
               <TableRow>
                 <TableHead>Class</TableHead>

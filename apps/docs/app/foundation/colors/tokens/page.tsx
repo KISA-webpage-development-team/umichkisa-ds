@@ -24,7 +24,7 @@ export default async function ColorsTokensPage() {
 
       <div className="my-6">
         <div className="hidden md:block">
-          <Table>
+          <Table size="sm">
             <TableHeader>
               <TableRow>
                 <TableHead>Token</TableHead>
@@ -149,7 +149,7 @@ export default async function ColorsTokensPage() {
 
       <div className="my-6">
         <div className="hidden md:block">
-          <Table>
+          <Table size="sm">
             <TableHeader>
               <TableRow>
                 <TableHead>Token</TableHead>
@@ -205,7 +205,7 @@ export default async function ColorsTokensPage() {
 
       <div className="my-6">
         <div className="hidden md:block">
-          <Table>
+          <Table size="sm">
             <TableHeader>
               <TableRow>
                 <TableHead>Token</TableHead>
@@ -255,7 +255,7 @@ export default async function ColorsTokensPage() {
 
       <div className="my-6">
         <div className="hidden md:block">
-          <Table>
+          <Table size="sm">
             <TableHeader>
               <TableRow>
                 <TableHead>Token</TableHead>
@@ -336,7 +336,7 @@ export default async function ColorsTokensPage() {
 
       <div className="my-6">
         <div className="hidden md:block">
-          <Table>
+          <Table size="sm">
             <TableHeader>
               <TableRow>
                 <TableHead>Token</TableHead>
@@ -468,7 +468,7 @@ export default async function ColorsTokensPage() {
 
       <div className="my-6">
         <div className="hidden md:block">
-          <Table>
+          <Table size="sm">
             <TableHeader>
               <TableRow>
                 <TableHead>Token</TableHead>
@@ -585,7 +585,7 @@ export default async function ColorsTokensPage() {
 
       <div className="my-6">
         <div className="hidden md:block">
-          <Table>
+          <Table size="sm">
             <TableHeader>
               <TableRow>
                 <TableHead>Token</TableHead>

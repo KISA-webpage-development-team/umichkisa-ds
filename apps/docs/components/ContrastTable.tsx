@@ -62,7 +62,7 @@ export function ContrastTable({ rows }: ContrastTableProps) {
     <div className="my-6">
       {/* Desktop table */}
       <div className="hidden md:block">
-        <Table>
+        <Table size="sm">
           <TableHeader>
             <TableRow>
               <TableHead>Foreground</TableHead>

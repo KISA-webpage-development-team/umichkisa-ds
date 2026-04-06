@@ -427,14 +427,24 @@ function CardFooter({ className, ...props }) {
 // src/components/display/Table.tsx
 import * as React from "react";
 import { jsx as jsx8 } from "react/jsx-runtime";
-var Table = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx8("div", { className: "w-full overflow-x-auto", children: /* @__PURE__ */ jsx8(
-  "table",
-  {
-    ref,
-    className: cn("w-full caption-bottom type-body text-foreground", className),
-    ...props
-  }
-) }));
+var TableSizeContext = React.createContext("md");
+function useTableSize() {
+  return React.useContext(TableSizeContext);
+}
+var Table = React.forwardRef(
+  ({ className, size = "md", ...props }, ref) => /* @__PURE__ */ jsx8(TableSizeContext.Provider, { value: size, children: /* @__PURE__ */ jsx8("div", { className: "w-full overflow-x-auto", children: /* @__PURE__ */ jsx8(
+    "table",
+    {
+      ref,
+      className: cn(
+        "w-full caption-bottom text-foreground",
+        size === "sm" ? "type-body-sm" : "type-body",
+        className
+      ),
+      ...props
+    }
+  ) }) })
+);
 Table.displayName = "Table";
 var TableHeader = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx8(
   "thead",
@@ -463,23 +473,37 @@ var TableRow = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ *
   }
 ));
 TableRow.displayName = "TableRow";
-var TableHead = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx8(
-  "th",
-  {
-    ref,
-    className: cn("px-4 py-3 text-left type-body !font-medium text-brand-primary", className),
-    ...props
-  }
-));
+var TableHead = React.forwardRef(({ className, ...props }, ref) => {
+  const size = useTableSize();
+  return /* @__PURE__ */ jsx8(
+    "th",
+    {
+      ref,
+      className: cn(
+        "text-left !font-medium text-brand-primary",
+        size === "sm" ? "px-3 py-2 type-body-sm" : "px-4 py-3 type-body",
+        className
+      ),
+      ...props
+    }
+  );
+});
 TableHead.displayName = "TableHead";
-var TableCell = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx8(
-  "td",
-  {
-    ref,
-    className: cn("px-4 py-3 text-foreground", className),
-    ...props
-  }
-));
+var TableCell = React.forwardRef(({ className, ...props }, ref) => {
+  const size = useTableSize();
+  return /* @__PURE__ */ jsx8(
+    "td",
+    {
+      ref,
+      className: cn(
+        "text-foreground",
+        size === "sm" ? "px-3 py-2" : "px-4 py-3",
+        className
+      ),
+      ...props
+    }
+  );
+});
 TableCell.displayName = "TableCell";
 var TableCaption = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx8(
   "caption",
@@ -490,14 +514,21 @@ var TableCaption = React.forwardRef(({ className, ...props }, ref) => /* @__PURE
   }
 ));
 TableCaption.displayName = "TableCaption";
-var TableFooter = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx8(
-  "tfoot",
-  {
-    ref,
-    className: cn("border-t border-border-strong bg-surface-subtle type-label text-foreground", className),
-    ...props
-  }
-));
+var TableFooter = React.forwardRef(({ className, ...props }, ref) => {
+  const size = useTableSize();
+  return /* @__PURE__ */ jsx8(
+    "tfoot",
+    {
+      ref,
+      className: cn(
+        "border-t border-border-strong bg-surface-subtle text-foreground",
+        size === "sm" ? "type-caption" : "type-label",
+        className
+      ),
+      ...props
+    }
+  );
+});
 TableFooter.displayName = "TableFooter";
 var TableMobileList = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx8(
   "ol",
@@ -1520,12 +1551,12 @@ function Divider({
 }
 
 // src/components/navigation/Tabs.tsx
-import { createContext, useContext, useRef, useState as useState2, useCallback, useEffect } from "react";
+import { createContext as createContext2, useContext as useContext2, useRef, useState as useState2, useCallback, useEffect } from "react";
 import { cva as cva6 } from "class-variance-authority";
 import { jsx as jsx32 } from "react/jsx-runtime";
-var TabsContext = createContext(null);
+var TabsContext = createContext2(null);
 function useTabsContext() {
-  const ctx = useContext(TabsContext);
+  const ctx = useContext2(TabsContext);
   if (!ctx) {
     throw new Error("Tabs compound components must be used within <Tabs>");
   }

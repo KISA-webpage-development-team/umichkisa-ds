@@ -63,6 +63,50 @@ const basicCode = `import {
   </TableBody>
 </Table>`
 
+const sizeSmCode = `<Table size="sm">
+  <TableHeader>
+    <TableRow>
+      <TableHead>Token</TableHead>
+      <TableHead>Value</TableHead>
+      <TableHead>Usage</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>--color-brand-primary</TableCell>
+      <TableCell>oklch(0.279 0.074 261.7)</TableCell>
+      <TableCell>Primary brand navy</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>--color-brand-accent</TableCell>
+      <TableCell>oklch(0.818 0.119 85.4)</TableCell>
+      <TableCell>Maize accent</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>`
+
+const sizeMdCode = `<Table size="md">
+  <TableHeader>
+    <TableRow>
+      <TableHead>Token</TableHead>
+      <TableHead>Value</TableHead>
+      <TableHead>Usage</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>--color-brand-primary</TableCell>
+      <TableCell>oklch(0.279 0.074 261.7)</TableCell>
+      <TableCell>Primary brand navy</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>--color-brand-accent</TableCell>
+      <TableCell>oklch(0.818 0.119 85.4)</TableCell>
+      <TableCell>Maize accent</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>`
+
 const bulletinCode = `import {
   Table, TableHeader, TableBody, TableRow, TableHead, TableCell,
 } from '@umichkisa-ds/web'
@@ -239,12 +283,16 @@ const responsiveCode = `import {
 export default async function TablePage() {
   const [
     basicHighlighted,
+    sizeSmHighlighted,
+    sizeMdHighlighted,
     bulletinHighlighted,
     clickableHighlighted,
     footerHighlighted,
     responsiveHighlighted,
   ] = await Promise.all([
     highlight(basicCode),
+    highlight(sizeSmCode),
+    highlight(sizeMdCode),
     highlight(bulletinCode),
     highlight(clickableCode),
     highlight(footerCode),
@@ -342,6 +390,75 @@ TableMobileList           {/* mobile alternative */}
           </Table>
         </div>
       </ComponentPreview>
+
+      {/* Size */}
+      <h3 className="type-h3 mt-8 mb-2 text-foreground">Size</h3>
+      <p className="type-body mb-2 text-foreground max-w-prose">
+        Use{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size=&quot;sm&quot;</code>{' '}
+        for tables embedded within body content (reference tables, token lists).
+        The default{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size=&quot;md&quot;</code>{' '}
+        is suited for standalone tables like bulletin boards and data views.
+      </p>
+      <div className="flex flex-col gap-6 my-4">
+        <div>
+          <p className="type-label mb-2 text-muted-foreground">sm</p>
+          <ComponentPreview code={sizeSmCode} highlightedCode={sizeSmHighlighted}>
+            <div className="w-full">
+              <Table size="sm">
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Token</TableHead>
+                    <TableHead>Value</TableHead>
+                    <TableHead>Usage</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell>--color-brand-primary</TableCell>
+                    <TableCell>oklch(0.279 0.074 261.7)</TableCell>
+                    <TableCell>Primary brand navy</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>--color-brand-accent</TableCell>
+                    <TableCell>oklch(0.818 0.119 85.4)</TableCell>
+                    <TableCell>Maize accent</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </div>
+          </ComponentPreview>
+        </div>
+        <div>
+          <p className="type-label mb-2 text-muted-foreground">md (default)</p>
+          <ComponentPreview code={sizeMdCode} highlightedCode={sizeMdHighlighted}>
+            <div className="w-full">
+              <Table size="md">
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Token</TableHead>
+                    <TableHead>Value</TableHead>
+                    <TableHead>Usage</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell>--color-brand-primary</TableCell>
+                    <TableCell>oklch(0.279 0.074 261.7)</TableCell>
+                    <TableCell>Primary brand navy</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>--color-brand-accent</TableCell>
+                    <TableCell>oklch(0.818 0.119 85.4)</TableCell>
+                    <TableCell>Maize accent</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </div>
+          </ComponentPreview>
+        </div>
+      </div>
 
       {/* Bulletin Board */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">Bulletin Board</h3>
@@ -578,6 +695,12 @@ TableMobileList           {/* mobile alternative */}
             </tr>
           </thead>
           <tbody>
+            <tr className="border-b border-border">
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></td>
+              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;sm&quot; | &quot;md&quot;</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;md&quot;</code></td>
+              <td className="px-4 py-3 type-body-sm text-foreground">Controls font size and cell padding. Propagated to child sub-components via context.</td>
+            </tr>
             <tr className="border-b border-border">
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></td>
               <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></td>

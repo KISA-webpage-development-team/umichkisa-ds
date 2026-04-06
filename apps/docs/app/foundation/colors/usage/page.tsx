@@ -194,7 +194,7 @@ export default async function ColorsUsagePage() {
       {/* ── Table 1: Brand-primary interactive states (2-col) ── */}
       <div className="my-6">
         <div className="hidden md:block">
-          <Table>
+          <Table size="sm">
             <TableHeader>
               <TableRow>
                 <TableHead>State</TableHead>
@@ -251,7 +251,7 @@ export default async function ColorsUsagePage() {
       {/* ── Table 2: Brand-accent interactive states (2-col) ── */}
       <div className="my-6">
         <div className="hidden md:block">
-          <Table>
+          <Table size="sm">
             <TableHeader>
               <TableRow>
                 <TableHead>State</TableHead>
@@ -323,7 +323,7 @@ export default async function ColorsUsagePage() {
       {/* ── Table 3: Toggle controls (4-col) ── */}
       <div className="my-6">
         <div className="hidden md:block">
-          <Table>
+          <Table size="sm">
             <TableHeader>
               <TableRow>
                 <TableHead>Control</TableHead>
@@ -474,7 +474,7 @@ export default async function ColorsUsagePage() {
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Brand</h3>
       <div className="my-6">
         <div className="hidden md:block">
-          <Table>
+          <Table size="sm">
             <TableHeader>
               <TableRow>
                 <TableHead>CSS Variable</TableHead>
@@ -532,7 +532,7 @@ export default async function ColorsUsagePage() {
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Interactive States</h3>
       <div className="my-6">
         <div className="hidden md:block">
-          <Table>
+          <Table size="sm">
             <TableHeader>
               <TableRow>
                 <TableHead>CSS Variable</TableHead>
@@ -599,7 +599,7 @@ export default async function ColorsUsagePage() {
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Surface</h3>
       <div className="my-6">
         <div className="hidden md:block">
-          <Table>
+          <Table size="sm">
             <TableHeader>
               <TableRow>
                 <TableHead>CSS Variable</TableHead>
@@ -648,7 +648,7 @@ export default async function ColorsUsagePage() {
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Border</h3>
       <div className="my-6">
         <div className="hidden md:block">
-          <Table>
+          <Table size="sm">
             <TableHeader>
               <TableRow>
                 <TableHead>CSS Variable</TableHead>
@@ -688,7 +688,7 @@ export default async function ColorsUsagePage() {
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Text</h3>
       <div className="my-6">
         <div className="hidden md:block">
-          <Table>
+          <Table size="sm">
             <TableHeader>
               <TableRow>
                 <TableHead>CSS Variable</TableHead>
@@ -755,7 +755,7 @@ export default async function ColorsUsagePage() {
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Feedback</h3>
       <div className="my-6">
         <div className="hidden md:block">
-          <Table>
+          <Table size="sm">
             <TableHeader>
               <TableRow>
                 <TableHead>CSS Variable</TableHead>
@@ -849,7 +849,7 @@ export default async function ColorsUsagePage() {
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Overlay</h3>
       <div className="my-6">
         <div className="hidden md:block">
-          <Table>
+          <Table size="sm">
             <TableHeader>
               <TableRow>
                 <TableHead>CSS Variable</TableHead>
