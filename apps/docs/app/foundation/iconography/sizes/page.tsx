@@ -139,33 +139,58 @@ export default async function IconographySizesPage() {
         were dropped in at a different scale.
       </p>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Text style</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Icon size</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Caption / label (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-xs</code>, <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-sm</code>)</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">sm</code> (16px)</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Body (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-base</code>)</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code> (20px)</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Subheading (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-lg</code>)</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code> or <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg</code> (20–24px)</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Heading (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-xl</code>+)</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg</code> (24px)</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <Table size="sm">
+          <TableHeader>
+            <TableRow>
+              <TableHead>Preview</TableHead>
+              <TableHead>Text style</TableHead>
+              <TableHead>Icon size</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell>
+                <span className="flex items-center gap-2 text-foreground">
+                  <Icon name="info" size="sm" />
+                  <span className="type-caption">Caption text</span>
+                </span>
+              </TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-caption</code> / <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-body-sm</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">sm</code> (16px)</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                <span className="flex items-center gap-2 text-foreground">
+                  <Icon name="info" size="md" />
+                  <span className="type-body">Body text</span>
+                </span>
+              </TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-body</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code> (20px)</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                <span className="flex items-center gap-2 text-foreground">
+                  <Icon name="info" size="md" />
+                  <span className="type-h3">Subheading</span>
+                </span>
+              </TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h3</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code> or <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg</code> (20–24px)</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                <span className="flex items-center gap-2 text-foreground">
+                  <Icon name="info" size="lg" />
+                  <span className="type-h2">Heading</span>
+                </span>
+              </TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h2</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg</code> (24px)</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
 
       <p className="type-body mb-4 text-foreground max-w-prose">
