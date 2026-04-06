@@ -39,10 +39,10 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 
 ### Batch 4 — Layout
 - [x] Review `/foundation/layout/spacing`
-- [ ] Fix `/foundation/layout/spacing`
+- [x] Fix `/foundation/layout/spacing`
 - [x] Review `/foundation/layout/breakpoints`
 - [x] Fix `/foundation/layout/breakpoints`
-- [ ] Review `/foundation/layout/usage`
+- [x] Review `/foundation/layout/usage`
 - [ ] Fix `/foundation/layout/usage`
 
 ### Batch 5 — Iconography
