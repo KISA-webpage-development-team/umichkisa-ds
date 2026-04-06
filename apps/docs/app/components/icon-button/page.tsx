@@ -1,4 +1,15 @@
-import { Container, IconButton } from '@umichkisa-ds/web'
+import {
+  Alert,
+  Container,
+  IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+  Tooltip,
+} from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 
@@ -26,31 +37,39 @@ const disabledCode = `import { IconButton } from '@umichkisa-ds/web'
 <IconButton icon="x" variant="tertiary" disabled aria-label="Close" />
 <IconButton icon="trash-2" variant="destructive" disabled aria-label="Delete" />`
 
+const tooltipCode = `import { IconButton, Tooltip } from '@umichkisa-ds/web'
+
+<Tooltip content="Edit profile">
+  <IconButton icon="pencil" aria-label="Edit profile" />
+</Tooltip>`
+
 export default async function IconButtonPage() {
   const [
     defaultHighlighted,
     variantsHighlighted,
     sizesHighlighted,
     disabledHighlighted,
+    tooltipHighlighted,
   ] = await Promise.all([
     highlight(defaultCode),
     highlight(variantsCode),
     highlight(sizesCode),
     highlight(disabledCode),
+    highlight(tooltipCode),
   ])
 
   return (
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">IconButton</h1>
+      <h1 className="type-h1 mb-4 text-foreground">IconButton</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
         A square, icon-only button for compact actions like toolbar controls,
-        close buttons, and menu triggers. Wraps{' '}
+        close buttons, and menu triggers. Shares{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           Button
-        </code>{' '}
-        internally, inheriting all variant styles and focus behavior. Requires{' '}
+        </code>
+        &apos;s variants, sizes, and focus behavior. Requires{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           aria-label
         </code>{' '}
@@ -63,15 +82,15 @@ export default async function IconButtonPage() {
       {/* Default */}
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Default</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        The simplest usage. Renders as{' '}
+        The simplest usage —{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          secondary
+          icon
         </code>{' '}
-        variant at{' '}
+        and{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          md
+          aria-label
         </code>{' '}
-        size by default.
+        are the only required props.
       </p>
       <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
         <IconButton icon="pencil" aria-label="Edit" />
@@ -146,6 +165,58 @@ export default async function IconButtonPage() {
         </div>
       </ComponentPreview>
 
+      {/* With Tooltip */}
+      <h3 className="type-h3 mt-8 mb-2 text-foreground">With Tooltip</h3>
+      <p className="type-body mb-2 text-foreground max-w-prose">
+        Wrap an{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          IconButton
+        </code>{' '}
+        in a{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          Tooltip
+        </code>{' '}
+        to expose its label to sighted users. The tooltip content must match{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          aria-label
+        </code>{' '}
+        exactly.
+      </p>
+      <ComponentPreview code={tooltipCode} highlightedCode={tooltipHighlighted}>
+        <Tooltip content="Edit profile">
+          <IconButton icon="pencil" aria-label="Edit profile" />
+        </Tooltip>
+      </ComponentPreview>
+
+      {/* ── Accessibility ───────────────────────────────────── */}
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Accessibility</h2>
+      <Alert variant="info" className="mb-4">
+        <ul className="list-disc pl-5 space-y-1">
+          <li>
+            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>{' '}
+            must describe the <strong>action</strong>, not the icon — use{' '}
+            <em>&ldquo;Edit profile&rdquo;</em>, not <em>&ldquo;Edit&rdquo;</em> or{' '}
+            <em>&ldquo;Pencil&rdquo;</em>.
+          </li>
+          <li>
+            When wrapped in a{' '}
+            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Tooltip</code>,
+            the tooltip text must match{' '}
+            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>{' '}
+            exactly to avoid duplicate or conflicting screen-reader announcements.
+          </li>
+        </ul>
+      </Alert>
+      <p className="type-body text-foreground max-w-prose">
+        All three sizes meet the WCAG 44×44px touch target. Even when the visible
+        button is 32px (
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size=&quot;sm&quot;</code>
+        ), an invisible{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">::after</code>{' '}
+        pseudo-element extends the hit area to 44×44 without changing the visible
+        box.
+      </p>
+
       {/* ── API Reference ────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
@@ -166,57 +237,59 @@ export default async function IconButtonPage() {
         </code>
         .
       </p>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Prop</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Type</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Default</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">icon</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">IconName</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Lucide icon name in kebab-case. Required. See the{' '}
+      <div className="my-6">
+        <Table size="sm">
+          <TableHeader>
+            <TableRow>
+              <TableHead>Prop</TableHead>
+              <TableHead>Type</TableHead>
+              <TableHead>Default</TableHead>
+              <TableHead>Description</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">icon</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">IconName</code></TableCell>
+              <TableCell>—</TableCell>
+              <TableCell>
+                Lucide icon name in kebab-case. Required. See the{' '}
                 <a href="/components/icon" className="text-link underline hover:text-brand-primary">Icon</a>{' '}
-                page for available names.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">aria-label</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Accessible label. Required — there is no visible text.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">variant</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;primary&#39; | &#39;secondary&#39; | &#39;tertiary&#39; | &#39;destructive&#39;</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;secondary&#39;</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Visual style. Passed through to Button.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;md&#39;</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Controls square dimensions (32 / 40 / 48px) and icon size.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">disabled</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Disables the button, reducing opacity and blocking pointer events.</td>
-            </tr>
-            <tr>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Merged via cn(). Use for layout utilities only — never override variant styles.</td>
-            </tr>
-          </tbody>
-        </table>
+                page for available names.
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">aria-label</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+              <TableCell>—</TableCell>
+              <TableCell>Accessible label. Required — there is no visible text.</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">variant</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;primary&#39; | &#39;secondary&#39; | &#39;tertiary&#39; | &#39;destructive&#39;</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;secondary&#39;</code></TableCell>
+              <TableCell>Visual style. Passed through to Button.</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;md&#39;</code></TableCell>
+              <TableCell>Controls square dimensions (32 / 40 / 48px) and icon size.</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">disabled</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+              <TableCell>Disables the button, reducing opacity and blocking pointer events.</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+              <TableCell>—</TableCell>
+              <TableCell>Merged via cn(). Use for layout utilities only — never override variant styles.</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
 
     </Container>

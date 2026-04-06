@@ -65,7 +65,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Review `/components/button`
 - [x] Fix `/components/button`
 - [x] Review `/components/icon-button`
-- [ ] Fix `/components/icon-button`
+- [x] Fix `/components/icon-button`
 - [ ] Review `/components/link-button`
 - [ ] Fix `/components/link-button`
 
