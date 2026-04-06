@@ -46,11 +46,11 @@ export default async function IconButtonPage() {
       <h1 className="type-h1 mb-4 text-foreground">IconButton</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
         A square, icon-only button for compact actions like toolbar controls,
-        close buttons, and menu triggers. Wraps{' '}
+        close buttons, and menu triggers. Shares{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           Button
-        </code>{' '}
-        internally, inheriting all variant styles and focus behavior. Requires{' '}
+        </code>
+        &apos;s variants, sizes, and focus behavior. Requires{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           aria-label
         </code>{' '}
