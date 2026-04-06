@@ -52,14 +52,10 @@ export default async function ButtonPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Button</h1>
+      <h1 className="type-h1 mb-4 text-foreground">Button</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
         The primary interactive element for triggering actions. Supports four
-        semantic variants, three sizes, and built-in{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          gap-2
-        </code>{' '}
-        alignment for icon + text pairings. Extends all native{' '}
+        semantic variants and three sizes. Extends all native{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           &lt;button&gt;
         </code>{' '}
@@ -92,14 +88,14 @@ export default async function ButtonPage() {
         Four semantic variants for different levels of emphasis and intent.
       </p>
       <ComponentPreview code={variantsCode} highlightedCode={variantsHighlighted}>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-4">
           <Button variant="primary">Primary</Button>
           <Button variant="secondary">Secondary</Button>
           <Button variant="tertiary">Tertiary</Button>
           <Button variant="destructive">Destructive</Button>
         </div>
       </ComponentPreview>
-      <ul className="type-body-sm max-w-prose mt-4 mb-2 flex flex-col gap-2">
+      <ul className="type-body-sm text-foreground max-w-prose mt-4 mb-2 flex flex-col gap-2">
         <li><strong className="text-foreground">Primary</strong> — the main action on the page. Usually one per screen.</li>
         <li><strong className="text-foreground">Secondary</strong> — supporting actions alongside a primary button.</li>
         <li><strong className="text-foreground">Tertiary</strong> — low-emphasis actions like "Cancel" or inline text-level actions.</li>
@@ -116,7 +112,7 @@ export default async function ButtonPage() {
         (default) for most UI.
       </p>
       <ComponentPreview code={sizesCode} highlightedCode={sizesHighlighted}>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-4">
           <Button size="sm">Small</Button>
           <Button size="md">Medium</Button>
           <Button size="lg">Large</Button>
@@ -153,7 +149,7 @@ export default async function ButtonPage() {
         to visually dim the button and block interaction. Works with all variants.
       </p>
       <ComponentPreview code={disabledCode} highlightedCode={disabledHighlighted}>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-4">
           <Button variant="primary" disabled>Primary</Button>
           <Button variant="secondary" disabled>Secondary</Button>
           <Button variant="tertiary" disabled>Tertiary</Button>
