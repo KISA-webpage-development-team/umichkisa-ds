@@ -59,7 +59,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Review `/foundation/iconography/accessibility`
 - [x] Fix `/foundation/iconography/accessibility`
 - [x] Review `/components/badge`
-- [ ] Fix `/components/badge`
+- [x] Fix `/components/badge`
 
 ### Batch 7 — Components
 - [ ] Review `/components/button`
