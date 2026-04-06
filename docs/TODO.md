@@ -180,3 +180,5 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [ ] Migrate raw `<hr>` → `Divider` component across all docs pages (14 foundation pages currently use raw `<hr>`)
 - [ ] Add prev/next page navigation to docs page footer
 - [ ] Normalize section spacing across foundation pages — drop `mt-8` from H2s following `<hr my-8>` (currently produces ~64px doubled gap; affects 13–14 foundation pages)
+- [ ] Fix CodeBlock mobile UX — language label (tsx/js/css) alignment is off on mobile, and the copy button is hover-only so touch users can never copy code (make copy button always-visible, at least on touch)
+- [ ] Add Props table to `/components/icon` (follow-up from `/foundation/iconography/usage` review — Props table was removed from Usage page and belongs on the component reference)
