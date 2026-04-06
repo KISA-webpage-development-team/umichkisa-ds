@@ -1,4 +1,4 @@
-import { Container, IconButton, Tooltip } from '@umichkisa-ds/web'
+import { Alert, Container, IconButton, Tooltip } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 
@@ -176,6 +176,35 @@ export default async function IconButtonPage() {
           <IconButton icon="pencil" aria-label="Edit profile" />
         </Tooltip>
       </ComponentPreview>
+
+      {/* ── Accessibility ───────────────────────────────────── */}
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Accessibility</h2>
+      <Alert variant="info" className="mb-4">
+        <ul className="list-disc pl-5 space-y-1">
+          <li>
+            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>{' '}
+            must describe the <strong>action</strong>, not the icon — use{' '}
+            <em>&ldquo;Edit profile&rdquo;</em>, not <em>&ldquo;Edit&rdquo;</em> or{' '}
+            <em>&ldquo;Pencil&rdquo;</em>.
+          </li>
+          <li>
+            When wrapped in a{' '}
+            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Tooltip</code>,
+            the tooltip text must match{' '}
+            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>{' '}
+            exactly to avoid duplicate or conflicting screen-reader announcements.
+          </li>
+        </ul>
+      </Alert>
+      <p className="type-body text-foreground max-w-prose">
+        All three sizes meet the WCAG 44×44px touch target. Even when the visible
+        button is 32px (
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size=&quot;sm&quot;</code>
+        ), an invisible{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">::after</code>{' '}
+        pseudo-element extends the hit area to 44×44 without changing the visible
+        box.
+      </p>
 
       {/* ── API Reference ────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
