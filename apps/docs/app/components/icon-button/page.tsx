@@ -63,15 +63,15 @@ export default async function IconButtonPage() {
       {/* Default */}
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Default</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        The simplest usage. Renders as{' '}
+        The simplest usage —{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          secondary
+          icon
         </code>{' '}
-        variant at{' '}
+        and{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          md
+          aria-label
         </code>{' '}
-        size by default.
+        are the only required props.
       </p>
       <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
         <IconButton icon="pencil" aria-label="Edit" />
