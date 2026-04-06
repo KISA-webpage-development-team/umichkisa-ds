@@ -38,8 +38,8 @@ export default async function LayoutSpacingPage() {
       <div className="my-8 flex flex-col gap-3">
         {[
           { label: "Mobile", px: "px-4", value: "16px", width: "w-2" },
-          { label: "Tablet", px: "px-10", value: "40px", width: "w-5" },
-          { label: "Desktop", px: "px-16", value: "64px", width: "w-8" },
+          { label: "Tablet", px: "px-6", value: "24px", width: "w-3" },
+          { label: "Desktop", px: "px-8", value: "32px", width: "w-4" },
         ].map(({ label, px, value, width }) => (
           <div key={label}>
             <p className="mb-1 text-xs font-mono text-gray-400">{label} — <span className="text-gray-700">{px}</span> ({value})</p>
@@ -80,11 +80,6 @@ export default async function LayoutSpacingPage() {
         </div>
         <p className="mt-2 text-center text-xs text-gray-400">viewport &rarr; constrained content area &rarr; viewport</p>
       </div>
-
-      <p className="type-body mb-4 text-foreground max-w-prose">
-        The full page shell combines max-width, centering, and the default inset
-        into one element. Everything inside it is within the layout system.
-      </p>
 
       <hr className="my-8 border-0 border-t border-border" />
 
@@ -184,45 +179,36 @@ export default async function LayoutSpacingPage() {
         The full page shell combines max-width, centering, and the default inset into one element. This is the wrapping element that all page content lives inside.
       </p>
 
-      <CodeBlock code={`<div class="mx-auto w-full max-w-screen-2xl px-4 md:px-10 lg:px-16">
-  <!-- page content -->
-</div>`} lang="tsx" />
+      <CodeBlock code={`<Container>
+  {/* page content */}
+</Container>`} lang="tsx" />
 
-      <ul className="type-body text-foreground max-w-prose flex flex-col gap-2">
-        <li className="flex gap-2">
-          <span className="text-muted-foreground">•</span>
-          <span>
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">mx-auto</code>
-            {' '}— centers the content area within the viewport
-          </span>
+      <ul className="type-body text-foreground max-w-prose list-disc pl-5 space-y-2">
+        <li>
+          Centers content with{' '}
+          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">mx-auto</code>
         </li>
-        <li className="flex gap-2">
-          <span className="text-muted-foreground">•</span>
-          <span>
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">w-full</code>
-            {' '}— ensures the element fills the viewport before hitting max-width
-          </span>
+        <li>
+          Fills viewport width before hitting max-width ({' '}
+          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">w-full</code>
+          )
         </li>
-        <li className="flex gap-2">
-          <span className="text-muted-foreground">•</span>
-          <span>
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">max-w-screen-2xl</code>
-            {' '}— caps width at 1536px
-          </span>
+        <li>
+          Caps width at 1536px ({' '}
+          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">max-w-screen-2xl</code>
+          )
         </li>
-        <li className="flex gap-2">
-          <span className="text-muted-foreground">•</span>
-          <span>
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">px-4 md:px-10 lg:px-16</code>
-            {' '}— applies the default inset per tier
-          </span>
+        <li>
+          Applies the default inset per tier ({' '}
+          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">px-4 md:px-6 lg:px-8</code>
+          )
         </li>
       </ul>
 
       <p className="type-body mb-4 text-foreground max-w-prose mt-4">
-        Everything inside this element is within the layout system. The{' '}
+        The{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Container</code>
-        {' '}component will encode this pattern once built — until then, use this class string directly.
+        {' '}component encodes this pattern. Use it instead of composing the utility classes manually.
       </p>
 
       <blockquote className="border-l-[3px] border-brand-accent bg-surface-subtle pl-4 py-2 my-4 rounded-r">
@@ -239,11 +225,11 @@ export default async function LayoutSpacingPage() {
         Some elements — navbars, hero banners, full-width section dividers — must span the full viewport width without being clipped by max-width. Use a full-width outer wrapper with the page shell pattern nested inside for content alignment:
       </p>
 
-      <CodeBlock code={`<div class="w-full bg-brand-primary">
-  <!-- full-bleed background -->
-  <div class="mx-auto w-full max-w-screen-2xl px-4 md:px-10 lg:px-16">
-    <!-- constrained content — aligns with the rest of the page -->
-  </div>
+      <CodeBlock code={`<div className="w-full bg-brand-primary">
+  {/* full-bleed background */}
+  <Container>
+    {/* constrained content — aligns with the rest of the page */}
+  </Container>
 </div>`} lang="tsx" />
 
       <p className="type-body mb-4 text-foreground max-w-prose">
