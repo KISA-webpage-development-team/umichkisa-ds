@@ -22,7 +22,7 @@ export function ColorSwatch({ token, value, hex, label }: ColorSwatchProps) {
     token.includes("overlay")
 
   return (
-    <Card className="overflow-hidden !bg-surface">
+    <Card className="overflow-hidden">
       {/* Color block */}
       <CardContent
         className="-mx-4 -mt-4 relative !flex-none h-28 w-[calc(100%+2rem)]"

@@ -29,7 +29,7 @@ Prefer: Reserving brand colors for intentional, sparse placement — navbars, he
 
 ### Surface Depth
 
-Must: Follow the three-level surface depth model: page → `--color-surface`, cards/panels → `--color-surface-subtle`, items inside cards → `--color-surface-muted`. [source:foundation/colors/usage]
+Must: Follow the two-level surface depth model: page and cards → `--color-surface` (white), elevated inner surfaces (table headers, code blocks, inset sections) → `--color-surface-subtle`, deprioritized inner surfaces → `--color-surface-muted`. Cards are distinguished from the page by their border, not by background color. [source:foundation/colors/usage]
 
 ### Text
 

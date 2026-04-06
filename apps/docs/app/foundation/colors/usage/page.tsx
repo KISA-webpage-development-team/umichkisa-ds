@@ -76,24 +76,20 @@ export default async function ColorsUsagePage() {
         surface scale.
       </p>
 
-      <CodeBlock code={`--color-surface               (white)      Page background
-  └── --color-surface-subtle  (gray-100)   Cards, panels
-        └── --color-surface-muted  (gray-50)    Items inside cards`} lang="text" />
+      <CodeBlock code={`--color-surface          (white)       Page background, cards, panels
+  └── --color-surface-subtle  (gray-100)   Elevated inner surfaces — table headers, code blocks
+  └── --color-surface-muted   (gray-50)    Deprioritized inner surfaces`} lang="text" />
 
       <p className="type-body mb-4 text-foreground max-w-prose">
-        A practical example: the page sits on{' '}
-        <InlineCode>--color-surface</InlineCode>.
-        An event card sits on{' '}
-        <InlineCode>--color-surface-subtle</InlineCode>.
-        Inside that card, individual detail rows use{' '}
+        Cards and panels share the same white background as the page — they are
+        distinguished by their border, not by a tinted fill. Inside a card,{' '}
+        <InlineCode>--color-surface-subtle</InlineCode>{' '}
+        creates visual separation for inset regions like table headers and code blocks.{' '}
         <InlineCode>--color-surface-muted</InlineCode>{' '}
-        — which is lighter than the card, lifting items visually above the card background.
+        serves deprioritized surfaces.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        Do not skip levels. A card item should not sit directly on{' '}
-        <InlineCode>--color-surface</InlineCode>{' '}
-        (the page background) — it would look uncontained. Do not invent new background
-        colors outside of these three tokens.
+        Do not invent new background colors outside of these three tokens.
       </p>
 
       {/* ── Text Hierarchy ──────────────────────────────────── */}
@@ -433,8 +429,8 @@ export default async function ColorsUsagePage() {
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Background colors</h3>
       <DoDont>
         <Do>
-          <p>Use surface tokens for card and section backgrounds. They are designed for layering and maintain the depth model.</p>
-          <pre><code>background: var(--color-surface-subtle)</code></pre>
+          <p>Use surface tokens for card and section backgrounds. Cards use the base surface token and are distinguished by their border.</p>
+          <pre><code>background: var(--color-surface)</code></pre>
         </Do>
         <Dont>
           <p>Use brand colors as mid-page backgrounds. A navy card mid-page does not feel branded — it feels heavy and breaks reading flow.</p>
@@ -616,7 +612,7 @@ export default async function ColorsUsagePage() {
               <TableRow>
                 <TableCell><InlineCode>--color-surface-subtle</InlineCode></TableCell>
                 <TableCell><InlineCode>bg-surface-subtle</InlineCode></TableCell>
-                <TableCell>Cards, panels — first depth level (gray-100)</TableCell>
+                <TableCell>Elevated inner surfaces — table headers, code blocks (gray-100)</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell><InlineCode>--color-surface-muted</InlineCode></TableCell>
@@ -634,7 +630,7 @@ export default async function ColorsUsagePage() {
             </TableMobileItem>
             <TableMobileItem>
               <InlineCode>--color-surface-subtle</InlineCode>
-              <span className="type-caption text-muted-foreground"><InlineCode>bg-surface-subtle</InlineCode> — Cards, panels — first depth level (gray-100)</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>bg-surface-subtle</InlineCode> — Elevated inner surfaces — table headers, code blocks (gray-100)</span>
             </TableMobileItem>
             <TableMobileItem>
               <InlineCode>--color-surface-muted</InlineCode>

@@ -112,7 +112,7 @@ export default async function ColorsTokensPage() {
       <p className="type-body mb-4 text-foreground max-w-prose">
         <strong className="font-semibold text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-subtle</code></strong>{' '}
         means one step softer in visual weight. It creates a tinted region without drawing attention.
-        Used for card and panel backgrounds (
+        Used for elevated inner surfaces like table headers and code blocks (
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-subtle</code>),
         alert box fills (
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-error-subtle</code>),
@@ -166,7 +166,7 @@ export default async function ColorsTokensPage() {
               <TableRow>
                 <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-subtle</code></TableCell>
                 <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-gray-100</code></TableCell>
-                <TableCell>Cards and panels. One step above the page.</TableCell>
+                <TableCell>Elevated inner surfaces — table headers, code blocks, inset sections.</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-muted</code></TableCell>
@@ -184,7 +184,7 @@ export default async function ColorsTokensPage() {
             </TableMobileItem>
             <TableMobileItem>
               <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-subtle</code>
-              <span className="type-caption text-muted-foreground">--primitive-gray-100 · Cards and panels. One step above the page.</span>
+              <span className="type-caption text-muted-foreground">--primitive-gray-100 · Elevated inner surfaces — table headers, code blocks, inset sections.</span>
             </TableMobileItem>
             <TableMobileItem>
               <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-muted</code>

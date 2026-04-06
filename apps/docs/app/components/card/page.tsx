@@ -290,7 +290,7 @@ export default async function CardPage() {
       {/* Card */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">Card</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Outer container with p-4 padding, gap-4 between children, surface-subtle background,
+        Outer container with p-4 padding, gap-4 between children, surface background,
         border, and rounded corners. For edge-to-edge bleed, use negative margins (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-mx-4 -mt-4</code>) on the child that needs to bleed.
       </p>
       <div className="my-6 overflow-x-auto">

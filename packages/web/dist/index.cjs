@@ -454,7 +454,7 @@ function Card({ className, ...props }) {
     "div",
     {
       className: cn(
-        "flex flex-col gap-4 p-4 bg-surface-subtle border border-border rounded-md transition-colors duration-200 hover:border-border-strong hover:bg-surface-muted",
+        "flex flex-col gap-4 p-4 bg-surface border border-border rounded-md min-w-0",
         className
       ),
       ...props
@@ -472,7 +472,7 @@ function CardTitle({
   return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
     Component,
     {
-      className: cn("type-h4 !font-semibold text-foreground", className),
+      className: cn("type-h4 !font-semibold text-foreground line-clamp-2", className),
       ...props
     }
   );
@@ -484,13 +484,13 @@ function CardDescription({
   return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
     "p",
     {
-      className: cn("type-body-sm text-muted-foreground", className),
+      className: cn("type-body-sm text-muted-foreground line-clamp-3", className),
       ...props
     }
   );
 }
 function CardContent({ className, ...props }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: cn("flex-1", className), ...props });
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: cn("flex-1 overflow-hidden break-words", className), ...props });
 }
 function CardFooter({ className, ...props }) {
   return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
