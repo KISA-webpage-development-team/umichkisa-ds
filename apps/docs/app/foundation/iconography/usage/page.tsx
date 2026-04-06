@@ -12,12 +12,6 @@ export default async function IconographyUsagePage() {
 
       {/* ── The <Icon> Component ─────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">The <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code> Component</h2>
-      <p className="type-body mb-4 text-foreground max-w-prose">
-        The{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code>{' '}
-        component is the only way to render an icon in the KISA design
-        system. Never import a Lucide icon directly into a component.
-      </p>
 
       <CodeBlock code={`// Default size (md = 20px), decorative
 <Icon name="arrow-right" />
@@ -28,62 +22,15 @@ export default async function IconographyUsagePage() {
 // Semantic — announced by screen readers
 <Icon name="x" label="Close" />`} lang="tsx" />
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
-        <strong className="font-semibold text-foreground">Props:</strong>
-      </p>
-
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Prop</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Type</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Default</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">name</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">required</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Lucide icon name in kebab-case</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{`'xs' | 'sm' | 'md' | 'lg' | 'xl'`}</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{`'md'`}</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Size from the 5-step scale</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">label</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Accessible label; omit for decorative icons</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">className</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Layout utilities only (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">block</code>, <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">flex-shrink-0</code>). Never use for color or sizing — those are controlled by parent color and the <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size</code> prop.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
       <hr className="my-8 border-0 border-t border-border" />
 
-      {/* ── Icons Are Never Interactive ──────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Icons Are Never Interactive</h2>
+      {/* ── Wrapping for Interaction ─────────────────────────── */}
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Wrapping for Interaction</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code>{' '}
-        component renders an SVG element. SVGs are not interactive — they
-        have no keyboard focus, no click semantics, and no accessible role that signals
-        interactivity to assistive technology.
-      </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
-        Always wrap an interactive icon in a{' '}
+        component renders an SVG. SVGs have no keyboard focus, no click semantics, and no role
+        that signals interactivity to assistive technology. Always wrap an interactive icon in a{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<button>'}</code>{' '}
         or{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<a>'}</code>.
@@ -99,10 +46,34 @@ export default async function IconographyUsagePage() {
 <Icon name="x" onClick={close} />`} lang="tsx" />
 
       <p className="type-body mb-4 text-foreground max-w-prose">
-        The wrapper also provides the touch target. Interactive elements must have a
-        minimum tap area of 44×44px. The{' '}
+        The wrapper also provides the touch target. Interactive elements must have a minimum tap
+        area of 44×44px — the{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code>{' '}
-        component itself is never 44px — the button or link around it is.
+        itself is never 44px; the button or link around it is.
+      </p>
+
+      <p className="type-body mb-4 text-foreground max-w-prose">
+        When an icon is the only content inside a button or link, provide an{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>{' '}
+        on the wrapper so screen reader users know what the control does, and wrap the button in a{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Tooltip>'}</code>{' '}
+        for sighted users who may not recognize the icon.
+      </p>
+
+      <CodeBlock code={`<Tooltip content="Close dialog">
+  <button aria-label="Close dialog">
+    <Icon name="x" />
+  </button>
+</Tooltip>`} lang="tsx" />
+
+      <p className="type-body mb-4 text-foreground max-w-prose">
+        The{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>{' '}
+        on the button and the tooltip content should be identical. Do not also pass a{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">label</code>{' '}
+        prop on{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code>{' '}
+        — that creates redundant screen-reader announcements.
       </p>
 
       <hr className="my-8 border-0 border-t border-border" />
@@ -129,38 +100,6 @@ export default async function IconographyUsagePage() {
         (4px) for compact UI like tags or badges, and{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">gap-3</code>{' '}
         (12px) for larger display contexts.
-      </p>
-
-      <hr className="my-8 border-0 border-t border-border" />
-
-      {/* ── Icon-Only Interactive Elements ───────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Icon-Only Interactive Elements</h2>
-      <p className="type-body mb-4 text-foreground max-w-prose">
-        When an icon is the only content inside a button or link, provide an{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>{' '}
-        on the wrapper so screen reader users know what the control does. Additionally,
-        wrap the button in a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Tooltip>'}</code>{' '}
-        for sighted users who may not recognize the icon.
-      </p>
-
-      <CodeBlock code={`<Tooltip content="Close dialog">
-  <button aria-label="Close dialog">
-    <Icon name="x" />
-  </button>
-</Tooltip>`} lang="tsx" />
-
-      <p className="type-body mb-4 text-foreground max-w-prose">
-        The{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>{' '}
-        on the button and the tooltip content should be identical. Do
-        not provide a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">label</code>{' '}
-        prop on{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code>{' '}
-        when the button already has{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>{' '}
-        — that creates redundant announcements.
       </p>
 
       <hr className="my-8 border-0 border-t border-border" />
@@ -264,20 +203,6 @@ export default async function IconographyUsagePage() {
         </Dont>
       </DoDont>
 
-      {/* Icon color */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Icon color</h3>
-      <DoDont>
-        <Do>
-          <p className="type-body text-foreground">Control icon color through the parent{"'"}s text color using semantic tokens. The icon inherits <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">currentColor</code>.</p>
-          <CodeBlock code={`<span className="text-error">
-  <Icon name="alert-triangle" />
-</span>`} lang="tsx" />
-        </Do>
-        <Dont>
-          <p className="type-body text-foreground">Pass raw color values inline to an icon. This bypasses the semantic token system and cannot be updated globally.</p>
-          <CodeBlock code={`<Icon name="alert-triangle" color="#ef4444" />`} lang="tsx" />
-        </Dont>
-      </DoDont>
 
     </Container>
   )
