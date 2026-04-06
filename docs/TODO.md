@@ -43,7 +43,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Review `/foundation/layout/breakpoints`
 - [x] Fix `/foundation/layout/breakpoints`
 - [x] Review `/foundation/layout/usage`
-- [ ] Fix `/foundation/layout/usage`
+- [x] Fix `/foundation/layout/usage`
 
 ### Batch 5 — Iconography
 - [ ] Review `/foundation/iconography/overview`
