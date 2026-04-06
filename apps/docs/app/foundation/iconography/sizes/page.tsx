@@ -26,43 +26,49 @@ export default async function IconographySizesPage() {
       {/* ── The Scale ───────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">The Scale</h2>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Token</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">px</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Use case</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">xs</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">12px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Inline with caption text, badge labels</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">sm</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">16px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Compact UI — tags, small inputs, secondary actions</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">20px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><strong className="font-semibold text-foreground">Default</strong> — buttons, nav items, most UI</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">24px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Prominent actions, section headers</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">xl</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">32px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Display, empty states, decorative</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <Table size="sm">
+          <TableHeader>
+            <TableRow>
+              <TableHead>Preview</TableHead>
+              <TableHead>Token</TableHead>
+              <TableHead>px</TableHead>
+              <TableHead>Use case</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell><Icon name="info" size="xs" /></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">xs</code></TableCell>
+              <TableCell>12px</TableCell>
+              <TableCell>Inline with caption text, badge labels</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell><Icon name="info" size="sm" /></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">sm</code></TableCell>
+              <TableCell>16px</TableCell>
+              <TableCell>Compact UI — tags, small inputs, secondary actions</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell><Icon name="info" size="md" /></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code></TableCell>
+              <TableCell>20px</TableCell>
+              <TableCell><strong>Default</strong> — buttons, nav items, most UI</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell><Icon name="info" size="lg" /></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg</code></TableCell>
+              <TableCell>24px</TableCell>
+              <TableCell>Prominent actions, section headers</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell><Icon name="info" size="xl" /></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">xl</code></TableCell>
+              <TableCell>32px</TableCell>
+              <TableCell>Display, empty states, decorative</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
 
       <p className="type-body mb-4 text-foreground max-w-prose">
