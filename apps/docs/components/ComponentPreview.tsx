@@ -21,7 +21,6 @@ export function ComponentPreview({
       <div className="border border-t-0 border-border rounded-b-lg bg-surface-subtle overflow-hidden">
         <CodeBlockClient
           code={code}
-          lang={lang}
           highlightedHtml={highlightedCode || undefined}
         >
           {/* Fallback when no highlighted HTML provided */}

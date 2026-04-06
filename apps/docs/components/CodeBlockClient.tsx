@@ -5,14 +5,12 @@ import { IconButton } from "@umichkisa-ds/web";
 
 interface CodeBlockClientProps {
   code: string;
-  lang?: string;
   highlightedHtml?: string;
   children?: React.ReactNode;
 }
 
 export function CodeBlockClient({
   code,
-  lang,
   highlightedHtml,
   children,
 }: CodeBlockClientProps) {
@@ -26,13 +24,8 @@ export function CodeBlockClient({
 
   return (
     <div className="group relative">
-      {/* Language label + copy button */}
-      <div className="absolute top-2 right-2 flex items-center gap-2 z-10 pointer-events-none">
-        {lang && lang !== "text" && (
-          <span className="type-caption font-mono text-muted-foreground select-none">
-            {lang}
-          </span>
-        )}
+      {/* Copy button */}
+      <div className="absolute top-2 right-2 z-10 pointer-events-none bg-surface-subtle rounded-md">
         <IconButton
           icon={copied ? "clipboard-check" : "clipboard-copy"}
           size="sm"

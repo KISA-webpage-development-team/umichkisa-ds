@@ -13,7 +13,6 @@ export async function CodeBlock({ code, lang = "tsx" }: CodeBlockProps) {
     <div className="my-6 border border-border rounded-md bg-surface-subtle overflow-hidden">
       <CodeBlockClient
         code={code}
-        lang={lang}
         highlightedHtml={highlightedHtml || undefined}
       >
         {/* Fallback for lang="text" */}
