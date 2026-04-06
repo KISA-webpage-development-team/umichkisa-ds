@@ -1,4 +1,4 @@
-import { Container, Button, Icon, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
+import { Container, Button, Icon, Grid, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 
@@ -88,12 +88,12 @@ export default async function ButtonPage() {
         Four semantic variants for different levels of emphasis and intent.
       </p>
       <ComponentPreview code={variantsCode} highlightedCode={variantsHighlighted}>
-        <div className="flex flex-wrap items-center gap-4">
-          <Button variant="primary">Primary</Button>
-          <Button variant="secondary">Secondary</Button>
-          <Button variant="tertiary">Tertiary</Button>
-          <Button variant="destructive">Destructive</Button>
-        </div>
+        <Grid columns={{ base: 2, md: 4 }} gap="component" className="w-full md:px-16">
+          <Button variant="primary" className="w-full">Primary</Button>
+          <Button variant="secondary" className="w-full">Secondary</Button>
+          <Button variant="tertiary" className="w-full">Tertiary</Button>
+          <Button variant="destructive" className="w-full">Destructive</Button>
+        </Grid>
       </ComponentPreview>
       <ul className="type-body text-foreground max-w-prose mt-4 mb-2 flex flex-col gap-2">
         <li><strong className="text-foreground">Primary</strong> — the main action on the page. Usually one per screen.</li>
@@ -112,11 +112,11 @@ export default async function ButtonPage() {
         (default) for most UI.
       </p>
       <ComponentPreview code={sizesCode} highlightedCode={sizesHighlighted}>
-        <div className="flex flex-wrap items-center gap-4">
-          <Button size="sm">Small</Button>
-          <Button size="md">Medium</Button>
-          <Button size="lg">Large</Button>
-        </div>
+        <Grid columns={{ base: 3 }} gap="component" className="w-full items-center md:px-16">
+          <Button size="sm" className="w-full">Small</Button>
+          <Button size="md" className="w-full">Medium</Button>
+          <Button size="lg" className="w-full">Large</Button>
+        </Grid>
       </ComponentPreview>
 
       {/* With icon */}
@@ -149,12 +149,12 @@ export default async function ButtonPage() {
         to visually dim the button and block interaction. Works with all variants.
       </p>
       <ComponentPreview code={disabledCode} highlightedCode={disabledHighlighted}>
-        <div className="flex flex-wrap items-center gap-4">
-          <Button variant="primary" disabled>Primary</Button>
-          <Button variant="secondary" disabled>Secondary</Button>
-          <Button variant="tertiary" disabled>Tertiary</Button>
-          <Button variant="destructive" disabled>Destructive</Button>
-        </div>
+        <Grid columns={{ base: 2, md: 4 }} gap="component" className="w-full md:px-16">
+          <Button variant="primary" disabled className="w-full">Primary</Button>
+          <Button variant="secondary" disabled className="w-full">Secondary</Button>
+          <Button variant="tertiary" disabled className="w-full">Tertiary</Button>
+          <Button variant="destructive" disabled className="w-full">Destructive</Button>
+        </Grid>
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}
