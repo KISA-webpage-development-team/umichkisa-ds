@@ -49,7 +49,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Review `/foundation/iconography/overview`
 - [x] Fix `/foundation/iconography/overview`
 - [x] Review `/foundation/iconography/sizes`
-- [ ] Fix `/foundation/iconography/sizes`
+- [x] Fix `/foundation/iconography/sizes`
 - [x] Review `/foundation/iconography/library`
 - [x] Fix `/foundation/iconography/library`
 

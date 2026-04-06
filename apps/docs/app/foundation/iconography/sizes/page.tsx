@@ -1,4 +1,13 @@
-import { Container } from '@umichkisa-ds/web'
+import {
+  Container,
+  Icon,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@umichkisa-ds/web'
 import { CodeBlock } from '@/components/CodeBlock'
 export default async function IconographySizesPage() {
   return (
@@ -17,43 +26,49 @@ export default async function IconographySizesPage() {
       {/* ── The Scale ───────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">The Scale</h2>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Token</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">px</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Use case</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">xs</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">12px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Inline with caption text, badge labels</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">sm</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">16px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Compact UI — tags, small inputs, secondary actions</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">20px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><strong className="font-semibold text-foreground">Default</strong> — buttons, nav items, most UI</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">24px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Prominent actions, section headers</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">xl</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">32px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Display, empty states, decorative</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <Table size="sm">
+          <TableHeader>
+            <TableRow>
+              <TableHead>Preview</TableHead>
+              <TableHead>Token</TableHead>
+              <TableHead>px</TableHead>
+              <TableHead>Use case</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell><Icon name="info" size="xs" /></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">xs</code></TableCell>
+              <TableCell>12px</TableCell>
+              <TableCell>Inline with caption text, badge labels</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell><Icon name="info" size="sm" /></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">sm</code></TableCell>
+              <TableCell>16px</TableCell>
+              <TableCell>Compact UI — tags, small inputs, secondary actions</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell><Icon name="info" size="md" /></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code></TableCell>
+              <TableCell>20px</TableCell>
+              <TableCell><strong>Default</strong> — buttons, nav items, most UI</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell><Icon name="info" size="lg" /></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg</code></TableCell>
+              <TableCell>24px</TableCell>
+              <TableCell>Prominent actions, section headers</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell><Icon name="info" size="xl" /></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">xl</code></TableCell>
+              <TableCell>32px</TableCell>
+              <TableCell>Display, empty states, decorative</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
 
       <p className="type-body mb-4 text-foreground max-w-prose">
@@ -64,13 +79,12 @@ export default async function IconographySizesPage() {
       <hr className="my-8 border-0 border-t border-border" />
 
       {/* ── Default is md ───────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Default is <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code></h2>
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">The Default Size</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         When in doubt, use{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code>.
-        {' '}The 20px default is sized to pair comfortably with
-        body text, sit correctly in buttons, and read clearly in navigation. It is the
-        right choice for the vast majority of UI contexts.
+        {' '}The 20px default is calibrated to pair with body text and read clearly
+        across the most common UI contexts.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Only deviate from{' '}
@@ -124,33 +138,58 @@ export default async function IconographySizesPage() {
         were dropped in at a different scale.
       </p>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Text style</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Icon size</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Caption / label (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-xs</code>, <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-sm</code>)</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">sm</code> (16px)</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Body (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-base</code>)</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code> (20px)</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Subheading (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-lg</code>)</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code> or <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg</code> (20–24px)</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Heading (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-xl</code>+)</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg</code> (24px)</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <Table size="sm">
+          <TableHeader>
+            <TableRow>
+              <TableHead>Preview</TableHead>
+              <TableHead>Text style</TableHead>
+              <TableHead>Icon size</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell>
+                <span className="flex items-center gap-2 text-foreground">
+                  <Icon name="info" size="sm" />
+                  <span className="type-caption">Caption text</span>
+                </span>
+              </TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-caption</code> / <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-body-sm</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">sm</code> (16px)</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                <span className="flex items-center gap-2 text-foreground">
+                  <Icon name="info" size="md" />
+                  <span className="type-body">Body text</span>
+                </span>
+              </TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-body</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code> (20px)</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                <span className="flex items-center gap-2 text-foreground">
+                  <Icon name="info" size="md" />
+                  <span className="type-h3">Subheading</span>
+                </span>
+              </TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h3</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code> or <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg</code> (20–24px)</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                <span className="flex items-center gap-2 text-foreground">
+                  <Icon name="info" size="lg" />
+                  <span className="type-h2">Heading</span>
+                </span>
+              </TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h2</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg</code> (24px)</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
 
       <p className="type-body mb-4 text-foreground max-w-prose">
