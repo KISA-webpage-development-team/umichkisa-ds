@@ -1,4 +1,4 @@
-import { Container, Button, Icon, Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@umichkisa-ds/web'
+import { Container, Button, Icon, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 
@@ -171,6 +171,7 @@ export default async function ButtonPage() {
         , so any native button attribute is also accepted.
       </p>
       <div className="my-6">
+        <div className="hidden md:block">
         <Table size="sm">
           <TableHeader>
             <TableRow>
@@ -225,6 +226,41 @@ export default async function ButtonPage() {
             </TableRow>
           </TableBody>
         </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>variant</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;primary&#39; | &#39;secondary&#39; | &#39;tertiary&#39; | &#39;destructive&#39;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;primary&#39;</code></span>
+              <span className="type-caption text-muted-foreground">Visual style indicating the level of emphasis or intent.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>size</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;md&#39;</code></span>
+              <span className="type-caption text-muted-foreground">Controls padding and font size. All values sit on the 4px spacing grid.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>type</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;button&#39; | &#39;submit&#39; | &#39;reset&#39;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;button&#39;</code></span>
+              <span className="type-caption text-muted-foreground">HTML button type. Defaults to <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">button</code> instead of the browser default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">submit</code> to prevent accidental form submissions.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>disabled</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground">Disables the button, reducing opacity and blocking pointer events.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>className</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground">Merged via cn() (class merge utility). Use for layout utilities only — never override variant styles.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>children</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">React.ReactNode</code></span>
+              <span className="type-caption text-muted-foreground">Button content. Can include text, icons, or both.</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
     </Container>
