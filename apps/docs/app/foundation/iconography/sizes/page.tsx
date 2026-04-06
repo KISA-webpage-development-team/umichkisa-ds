@@ -83,9 +83,8 @@ export default async function IconographySizesPage() {
       <p className="type-body mb-4 text-foreground max-w-prose">
         When in doubt, use{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code>.
-        {' '}The 20px default is sized to pair comfortably with
-        body text, sit correctly in buttons, and read clearly in navigation. It is the
-        right choice for the vast majority of UI contexts.
+        {' '}The 20px default is calibrated to pair with body text and read clearly
+        across the most common UI contexts.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Only deviate from{' '}
