@@ -12,7 +12,7 @@ export default async function IconographyAccessibilityPage() {
       <p className="type-body mb-4 text-foreground max-w-prose">
         Icons are visually obvious to sighted users but completely ambiguous to screen
         readers — unless the code explicitly describes them. A trash can icon conveys
-        {'"'}delete{'"'} to anyone looking at the screen. To a screen reader, it is just an
+        {' "'}delete{'"'} to anyone looking at the screen. To a screen reader, it is just an
         SVG element with no label. The user hears nothing, or worse, the raw SVG title
         if one happens to exist.
       </p>
