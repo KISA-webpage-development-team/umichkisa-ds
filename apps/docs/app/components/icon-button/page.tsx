@@ -1,4 +1,4 @@
-import { Container, IconButton } from '@umichkisa-ds/web'
+import { Container, IconButton, Tooltip } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 
@@ -26,17 +26,25 @@ const disabledCode = `import { IconButton } from '@umichkisa-ds/web'
 <IconButton icon="x" variant="tertiary" disabled aria-label="Close" />
 <IconButton icon="trash-2" variant="destructive" disabled aria-label="Delete" />`
 
+const tooltipCode = `import { IconButton, Tooltip } from '@umichkisa-ds/web'
+
+<Tooltip content="Edit profile">
+  <IconButton icon="pencil" aria-label="Edit profile" />
+</Tooltip>`
+
 export default async function IconButtonPage() {
   const [
     defaultHighlighted,
     variantsHighlighted,
     sizesHighlighted,
     disabledHighlighted,
+    tooltipHighlighted,
   ] = await Promise.all([
     highlight(defaultCode),
     highlight(variantsCode),
     highlight(sizesCode),
     highlight(disabledCode),
+    highlight(tooltipCode),
   ])
 
   return (
@@ -144,6 +152,29 @@ export default async function IconButtonPage() {
           <IconButton icon="x" variant="tertiary" disabled aria-label="Close" />
           <IconButton icon="trash-2" variant="destructive" disabled aria-label="Delete" />
         </div>
+      </ComponentPreview>
+
+      {/* With Tooltip */}
+      <h3 className="type-h3 mt-8 mb-2 text-foreground">With Tooltip</h3>
+      <p className="type-body mb-2 text-foreground max-w-prose">
+        Wrap an{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          IconButton
+        </code>{' '}
+        in a{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          Tooltip
+        </code>{' '}
+        to expose its label to sighted users. The tooltip content must match{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          aria-label
+        </code>{' '}
+        exactly.
+      </p>
+      <ComponentPreview code={tooltipCode} highlightedCode={tooltipHighlighted}>
+        <Tooltip content="Edit profile">
+          <IconButton icon="pencil" aria-label="Edit profile" />
+        </Tooltip>
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}
