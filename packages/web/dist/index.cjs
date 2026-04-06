@@ -1232,7 +1232,7 @@ function Alert({
   const resolvedIcon = icon === null ? null : icon ?? variantIcons[variant];
   return /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: cn(alertVariants({ variant }), className), ...props, children: [
     resolvedIcon && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: cn("shrink-0 mt-0.5", variantIconColors[variant]), children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(Icon, { name: resolvedIcon, size: "sm" }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "flex flex-col gap-1 min-w-0", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "flex flex-col gap-1 min-w-0 [&_pre]:overflow-x-auto", children: [
       title && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("p", { className: "type-body-sm text-foreground", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("strong", { children: title }) }),
       children && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "type-body-sm text-foreground", children })
     ] })
