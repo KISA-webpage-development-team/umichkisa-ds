@@ -17,7 +17,7 @@ Reading a spec is allowed. Reporting what the next task is is allowed. But writi
 4. If the task links to a spec (`docs/specs/X.md`), read it
 5. If no spec exists, dedicate this session to writing the spec — do not execute the task
 6. For any task that modifies `.tsx` files, also read `docs/DS_CONSTRAINTS.md`
-7. Read `docs/CODEBASE.md` only if the spec instructs it
+7. Always Read `docs/CODEBASE.md` to understand what DS Components are available
 
 ### Natural Breakpoints
 At every natural breakpoint (spec complete, phase complete, or context ≥ 70%), stop and present:
