@@ -54,7 +54,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Fix `/foundation/iconography/library`
 
 ### Batch 6 — Iconography + Components
-- [ ] Review `/foundation/iconography/usage`
+- [x] Review `/foundation/iconography/usage`
 - [ ] Fix `/foundation/iconography/usage`
 - [ ] Review `/foundation/iconography/accessibility`
 - [ ] Fix `/foundation/iconography/accessibility`

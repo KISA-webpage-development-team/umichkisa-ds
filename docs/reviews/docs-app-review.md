@@ -270,3 +270,19 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 - Finding #6 contradicts the current `docs/DS_CONSTRAINTS.md` rule under "Custom Icons" that says "use an inline SVG directly in the component." DS_CONSTRAINTS will need a follow-up update — flagged in the fix plan but not executed in this fix.
 - Mobile review skipped — page is text-only with no responsive surface area beyond global chrome shared across all pages.
 - Screenshot tool was unreliable this session (stale frame capture); review relied on full page source, DOM accessibility tree read, and one clean top-of-page screenshot.
+
+## /foundation/iconography/usage
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | content | both | Props table belongs on `/components/icon`, not on a foundation/usage page. Remove the table and the "Props:" label. Follow-up TODO added to populate `/components/icon` with a Props table during Batch 8. |
+| 2 | major | content | both | Three sections all repeat "wrap interactive icons in a button" (§"Icons Are Never Interactive", §"Icon-Only Interactive Elements", and the "Wrapping interactive icons" Do/Don't). Merge the two prose sections into one new §"Wrapping for Interaction" covering: SVGs aren't interactive, wrapper provides touch target, icon-only needs `aria-label` + Tooltip, don't double-up `label` prop. Keep the Do/Don't. |
+| 3 | minor | content | both | "Color" prose section and "Icon color" Do/Don't say the same thing with the same example. Drop the "Icon color" Do/Don't; keep the prose. |
+| 4 | minor | content | both | "Icons Are Never Interactive" heading is misleading (resolved by #2 — new heading is "Wrapping for Interaction"). |
+| 5 | minor | content | both | First two sentences ("`<Icon>` is the only way to render an icon… never import Lucide directly") duplicate the Overview page. Drop both. |
+| 6 | minor | ds-violation | both | Raw `<table>` instead of DS `Table` component. Resolved by #1 (table removed). |
+| 7 | minor | styling | both | `<strong className="font-semibold text-foreground">Props:</strong>` used as a section label. Resolved by #1 (label removed). |
+
+**Notes:**
+- Raw `<code className="... type-caption font-mono ...">`, raw `<hr>`, and the H2 `mt-8`-after-`hr-my-8` doubled gap are NOT flagged here — all have global migration tasks under § Docs App Enhancements.
+- Mobile review uncovered two CodeBlock component bugs (language label misalignment + hover-only copy button unreachable on touch). Filed as a separate item in § Docs App Enhancements; not part of this fix plan.
