@@ -1,5 +1,6 @@
 import { Container } from '@umichkisa-ds/web'
 import { DoDont, Do, Dont } from '@/components/DoDont'
+import { InlineCode } from '@/components/InlineCode'
 
 export default function TypographyUsagePage() {
   return (
@@ -17,20 +18,20 @@ export default function TypographyUsagePage() {
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Always use semantic classes</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Reach for{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-*</code>{' '}
+        <InlineCode>type-*</InlineCode>{' '}
         utilities instead of composing raw Tailwind classes. The semantic classes are the
         contract — if the scale changes, only the definition updates, not every component
         that uses it.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-body</code>{' '}
+        <InlineCode>type-body</InlineCode>{' '}
         instead of{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-base font-normal leading-relaxed font-pretendard</code>.
+        <InlineCode>text-base font-normal leading-relaxed font-pretendard</InlineCode>.
         Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-label</code>{' '}
+        <InlineCode>type-label</InlineCode>{' '}
         instead of{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-sm font-medium leading-normal font-pretendard</code>.
+        <InlineCode>text-sm font-medium leading-normal font-pretendard</InlineCode>.
         The class name communicates intent. The raw combination does not.
       </p>
 
@@ -38,7 +39,7 @@ export default function TypographyUsagePage() {
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Keep emphasis inline, not structural</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         For emphasis within body text, use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&lt;strong&gt;</code>.
+        <InlineCode>&lt;strong&gt;</InlineCode>.
         Applying a weight utility to the entire container changes the role of the text — it
         is no longer body copy, it is something the system has no name for. If a block of text
         needs more visual weight, reach for a higher type class instead.
@@ -47,12 +48,12 @@ export default function TypographyUsagePage() {
       {/* ── Always set color explicitly ────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Always set color explicitly</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-*</code>{' '}
+        <InlineCode>type-*</InlineCode>{' '}
         classes handle family, size, weight, and line height only — not color. Every text
         element needs a color token paired explicitly:{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-foreground</code>{' '}
+        <InlineCode>text-foreground</InlineCode>{' '}
         for readable content,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-muted-foreground</code>{' '}
+        <InlineCode>text-muted-foreground</InlineCode>{' '}
         for supporting information. Unset color falls back to the browser default, which is
         outside the design system.
       </p>
@@ -72,14 +73,14 @@ export default function TypographyUsagePage() {
       <DoDont>
         <Do>
           <div className="space-y-3 py-2">
-            <p className="text-4xl font-sejong-bold leading-tight text-foreground">Annual Gala Night</p>
-            <p className="text-2xl font-pretendard font-semibold leading-snug text-foreground">Event Schedule</p>
+            <p className="type-display tracking-tight text-foreground">Annual Gala Night</p>
+            <p className="type-h2 text-foreground">Event Schedule</p>
           </div>
         </Do>
         <Dont>
           <div className="space-y-3 py-2">
-            <p className="text-4xl font-sejong-bold leading-tight text-foreground">Annual Gala Night</p>
-            <p className="text-2xl font-sejong-bold leading-snug text-foreground">Event Schedule</p>
+            <p className="type-display tracking-tight text-foreground">Annual Gala Night</p>
+            <p className="type-h2 !font-sejong-bold text-foreground">Event Schedule</p>
           </div>
         </Dont>
       </DoDont>
@@ -88,7 +89,7 @@ export default function TypographyUsagePage() {
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Line length</h3>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Keep body text within{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">max-w-prose</code>{' '}
+        <InlineCode>max-w-prose</InlineCode>{' '}
         (~65 characters). Lines that stretch the full container width force the eye to travel
         too far, making long passages harder to follow.
       </p>
@@ -96,11 +97,11 @@ export default function TypographyUsagePage() {
       <DoDont>
         <Do>
           <article className="max-w-prose">
-            <p className="text-base font-pretendard font-normal leading-relaxed text-foreground">KISA brings together Korean international students across all schools and programs at the University of Michigan.</p>
+            <p className="type-body text-foreground">KISA brings together Korean international students across all schools and programs at the University of Michigan.</p>
           </article>
         </Do>
         <Dont>
-          <p className="text-base font-pretendard font-normal leading-relaxed text-foreground w-full">KISA brings together Korean international students across all schools and programs at the University of Michigan, fostering community through events, mentorship, and shared experience.</p>
+          <p className="type-body text-foreground w-full">KISA brings together Korean international students across all schools and programs at the University of Michigan, fostering community through events, mentorship, and shared experience.</p>
         </Dont>
       </DoDont>
 
@@ -112,36 +113,43 @@ export default function TypographyUsagePage() {
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Disabled text</h3>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Disabled text uses the same{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-*</code>{' '}
+        <InlineCode>type-*</InlineCode>{' '}
         class as its active state. Only the color changes — use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-disabled-foreground</code>{' '}
-        (gray-400). Do not reduce weight or size. The type role stays the same; the color
+        <InlineCode>text-disabled-foreground</InlineCode>. Do not reduce weight or size. The type role stays the same; the color
         signals that the element is inactive.
       </p>
 
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Error messages</h3>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-caption</code>{' '}
+        <InlineCode>type-caption</InlineCode>{' '}
         +{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-error</code>.
+        <InlineCode>text-error</InlineCode>.
         Error messages appear below form fields and are supporting information — they do not
         need body weight. Keep them concise: one sentence, no period needed for short phrases.
       </p>
+      <div className="mt-2 mb-4 rounded-md border border-border bg-surface-subtle px-4 py-3">
+        <p className="type-body text-foreground">Email address</p>
+        <p className="type-caption text-error mt-1">Please enter a valid email address</p>
+      </div>
 
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Helper text</h3>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-caption</code>{' '}
+        <InlineCode>type-caption</InlineCode>{' '}
         +{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-muted-foreground</code>.
+        <InlineCode>text-muted-foreground</InlineCode>.
         Helper text provides context before or after interaction — instructions, character
         counts, format hints. Same size as error messages; the color difference ({' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-muted-foreground</code>{' '}
+        <InlineCode>text-muted-foreground</InlineCode>{' '}
         vs{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-error</code>)
+        <InlineCode>text-error</InlineCode>)
         distinguishes the two states.
       </p>
+      <div className="mt-2 mb-4 rounded-md border border-border bg-surface-subtle px-4 py-3">
+        <p className="type-body text-foreground">Bio</p>
+        <p className="type-caption text-muted-foreground mt-1">Maximum 160 characters</p>
+      </div>
 
       <hr className="my-8 border-0 border-t border-border" />
 
@@ -149,43 +157,46 @@ export default function TypographyUsagePage() {
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Links</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Links inherit the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-*</code>{' '}
+        <InlineCode>type-*</InlineCode>{' '}
         class of their container — a link inside a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-body</code>{' '}
+        <InlineCode>type-body</InlineCode>{' '}
         paragraph uses body sizing and weight. Do not apply a separate type class to links.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Color and decoration rules:
       </p>
-      <ul className="type-body text-foreground max-w-prose flex flex-col gap-2">
-        <li className="flex gap-2">
-          <span className="text-muted-foreground">&bull;</span>
+      <ul className="type-body text-foreground max-w-prose list-disc pl-5 space-y-2">
+        <li>
           Color: always{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-link</code>
+          <InlineCode>text-link</InlineCode>
         </li>
-        <li className="flex gap-2">
-          <span className="text-muted-foreground">&bull;</span>
+        <li>
           Decoration: underline on hover ({' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">hover:underline</code>)
+          <InlineCode>hover:underline</InlineCode>)
         </li>
-        <li className="flex gap-2">
-          <span className="text-muted-foreground">&bull;</span>
+        <li>
           Hover:{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-brand-primary</code>{' '}
+          <InlineCode>text-brand-primary</InlineCode>{' '}
           (Michigan Blue)
         </li>
-        <li className="flex gap-2">
-          <span className="text-muted-foreground">&bull;</span>
+        <li>
           Visited: no separate visited style — leave at default link color
         </li>
       </ul>
       <p className="type-body mb-4 mt-4 text-foreground max-w-prose">
         Never use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-foreground</code>{' '}
+        <InlineCode>text-foreground</InlineCode>{' '}
         for links. The{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-link</code>{' '}
+        <InlineCode>text-link</InlineCode>{' '}
         token exists specifically to distinguish interactive text from static text.
       </p>
+      <div className="mt-2 mb-4 rounded-md border border-border bg-surface-subtle px-4 py-3">
+        <p className="type-body text-foreground">
+          Read the{' '}
+          <a href="#" className="text-link hover:underline hover:text-brand-primary">contribution guidelines</a>{' '}
+          before submitting.
+        </p>
+      </div>
 
       <hr className="my-8 border-0 border-t border-border" />
 
@@ -193,7 +204,7 @@ export default function TypographyUsagePage() {
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Truncation</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Truncation is for UI elements — not for long-form content. Never truncate{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-body</code>{' '}
+        <InlineCode>type-body</InlineCode>{' '}
         in article or content reading contexts.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
@@ -201,29 +212,29 @@ export default function TypographyUsagePage() {
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         <strong className="font-semibold text-foreground">Single-line truncation</strong> — use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">truncate</code>{' '}
+        <InlineCode>truncate</InlineCode>{' '}
         (applies{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">overflow: hidden</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-overflow: ellipsis</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">white-space: nowrap</code>).
+        <InlineCode>overflow: hidden</InlineCode>,{' '}
+        <InlineCode>text-overflow: ellipsis</InlineCode>,{' '}
+        <InlineCode>white-space: nowrap</InlineCode>).
         For: nav items, table cells, tags, badges, any UI element where one line is a hard
         constraint.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         <strong className="font-semibold text-foreground">Multi-line truncation</strong> — use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">line-clamp-2</code>{' '}
+        <InlineCode>line-clamp-2</InlineCode>{' '}
         or{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">line-clamp-3</code>.
+        <InlineCode>line-clamp-3</InlineCode>.
         For: card titles and descriptions where 2–3 lines are acceptable before cutting.
         Prefer{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">line-clamp-2</code>{' '}
+        <InlineCode>line-clamp-2</InlineCode>{' '}
         for titles,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">line-clamp-3</code>{' '}
+        <InlineCode>line-clamp-3</InlineCode>{' '}
         for descriptions.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         When in doubt, prefer{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">truncate</code>.
+        <InlineCode>truncate</InlineCode>.
         Multi-line clamping can produce unexpected results with certain line heights — always
         verify visually.
       </p>
