@@ -57,7 +57,7 @@ function Alert({
           <Icon name={resolvedIcon} size="sm" />
         </div>
       )}
-      <div className="flex flex-col gap-1 min-w-0">
+      <div className="flex flex-col gap-1 min-w-0 [&_pre]:overflow-x-auto">
         {title && (
           <p className="type-body-sm text-foreground"><strong>{title}</strong></p>
         )}
