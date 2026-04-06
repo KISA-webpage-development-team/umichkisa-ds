@@ -8,6 +8,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
+  TableMobileList,
+  TableMobileItem,
   Tooltip,
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
@@ -238,6 +240,7 @@ export default async function IconButtonPage() {
         .
       </p>
       <div className="my-6">
+        <div className="hidden md:block">
         <Table size="sm">
           <TableHeader>
             <TableRow>
@@ -290,6 +293,41 @@ export default async function IconButtonPage() {
             </TableRow>
           </TableBody>
         </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>icon</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">IconName</code> · required</span>
+              <span className="type-caption text-muted-foreground">Lucide icon name in kebab-case. See the <a href="/components/icon" className="text-link underline hover:text-brand-primary">Icon</a> page for available names.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>aria-label</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code> · required</span>
+              <span className="type-caption text-muted-foreground">Accessible label. Required — there is no visible text.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>variant</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;primary&#39; | &#39;secondary&#39; | &#39;tertiary&#39; | &#39;destructive&#39;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;secondary&#39;</code></span>
+              <span className="type-caption text-muted-foreground">Visual style. Passed through to Button.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>size</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;md&#39;</code></span>
+              <span className="type-caption text-muted-foreground">Controls square dimensions (32 / 40 / 48px) and icon size.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>disabled</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground">Disables the button, reducing opacity and blocking pointer events.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>className</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only — never override variant styles.</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
     </Container>
