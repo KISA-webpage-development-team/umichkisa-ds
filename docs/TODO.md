@@ -56,7 +56,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 ### Batch 6 — Iconography + Components
 - [x] Review `/foundation/iconography/usage`
 - [x] Fix `/foundation/iconography/usage`
-- [ ] Review `/foundation/iconography/accessibility`
+- [x] Review `/foundation/iconography/accessibility`
 - [ ] Fix `/foundation/iconography/accessibility`
 - [ ] Review `/components/badge`
 - [ ] Fix `/components/badge`

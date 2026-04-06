@@ -286,3 +286,31 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 **Notes:**
 - Raw `<code className="... type-caption font-mono ...">`, raw `<hr>`, and the H2 `mt-8`-after-`hr-my-8` doubled gap are NOT flagged here — all have global migration tasks under § Docs App Enhancements.
 - Mobile review uncovered two CodeBlock component bugs (language label misalignment + hover-only copy button unreachable on touch). Filed as a separate item in § Docs App Enhancements; not part of this fix plan.
+
+## /foundation/iconography/accessibility
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | content | both | Consolidate **Decision Rule** and **Quick Reference** into a single table with Scenario / Approach / Markup columns. Remove the Quick Reference section heading; keep "When in doubt, ask…" as framing prose above the unified table. Eliminates ~40 lines of duplicated content. |
+| 2 | minor | content | both | Typo (page.tsx:15): add space — `conveys "delete"` instead of `conveys"delete"`. |
+| 3 | major | ds-violation | both | Replace the (now single, post-#1) raw `<table>` with the DS `Table` component. |
+| 4 | minor | content | both | Trim Touch Targets opening sentence — drop the "12px to 32px" pixel range; the immediate next sentence already makes the 44×44 point. |
+
+**Notes:**
+- Raw `<code className="... type-caption font-mono ...">` (~20 instances) and raw `<hr>` (7 instances) are NOT flagged — both have global migration tasks under § Docs App Enhancements (TODO lines 179, 180).
+- ✅/❌ emoji markers in code-comment examples are an established convention in the iconography section (also used in `sizes` and `usage` pages and preserved in the `usage` fix plan). Not flagged.
+- Visual desktop+mobile passes were not run due to a browser screenshot capture issue (only the top-of-page desktop screenshot rendered correctly; subsequent screenshots after scroll returned blank). Review is source-based and covers DS constraints + content. Layout/responsive issues, if any, are not captured here.
+
+## /components/badge
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | content | both | "Variant Gallery" h2 section duplicates the "Variants" example above (same 7 badges, no added info). Delete the entire section. |
+| 2 | major | ds-violation | both | API Reference uses a hand-rolled `<table>` instead of the DS `Table` component. Migrate to `Table`/`TableHeader`/`TableBody`/`TableRow`/`TableHead`/`TableCell` (size="sm"). |
+| 3 | minor | content | both | "Sizes" section description ("Two sizes aligned to the spacing grid") gives no guidance on when to pick sm vs md. Rewrite with usage guidance. |
+| 4 | minor | ds-violation | both | H1 redundantly composes `font-sejong-bold tracking-tight`. `type-h1` already encodes both. Remove the dead utilities. |
+| 5 | minor | ds-violation | both | "With icon" example pairs default Badge (`md`, `type-body-sm` text) with `<Icon size="xs">` (12px). Per icon sizing rules, body-sm text should use `sm` (16px). Update the example code string and the rendered preview. |
+
+**Notes:**
+- Review was source-based plus a single 1264px desktop screenshot. The chrome MCP screenshot tool returned blank images after scroll, so visual scrolling/mobile passes were not captured.
+- Dropped during grill-me: separate "raw grid" finding for Variant Gallery (covered by #1); H3 mt-6/mt-8 inconsistency (matches existing convention used in tabs/grid pages); missing Accessibility section (not warranted for a static label component); raw inline `<code>` migration (already tracked in global TODO as `<InlineCode>` component).
