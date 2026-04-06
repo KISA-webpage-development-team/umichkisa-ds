@@ -46,9 +46,9 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Fix `/foundation/layout/usage`
 
 ### Batch 5 — Iconography
-- [ ] Review `/foundation/iconography/overview`
-- [ ] Fix `/foundation/iconography/overview`
-- [ ] Review `/foundation/iconography/sizes`
+- [x] Review `/foundation/iconography/overview`
+- [x] Fix `/foundation/iconography/overview`
+- [x] Review `/foundation/iconography/sizes`
 - [ ] Fix `/foundation/iconography/sizes`
 - [ ] Review `/foundation/iconography/library`
 - [ ] Fix `/foundation/iconography/library`
@@ -177,4 +177,6 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 
 - [ ] Add `id` attributes to all heading elements (`h2`, `h3`) across docs pages for anchor linking and TOC support
 - [ ] Create `<InlineCode>` docs component (inherits parent font size, adds `font-mono bg-surface-subtle rounded px-1 py-0.5`) and migrate all raw `<code className="...type-caption font-mono...">` across all docs pages
+- [ ] Migrate raw `<hr>` → `Divider` component across all docs pages (14 foundation pages currently use raw `<hr>`)
 - [ ] Add prev/next page navigation to docs page footer
+- [ ] Normalize section spacing across foundation pages — drop `mt-8` from H2s following `<hr my-8>` (currently produces ~64px doubled gap; affects 13–14 foundation pages)

@@ -219,3 +219,54 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 - The single rewrite finding subsumes three separate issues that surfaced in the initial review pass: raw `<blockquote>` callout (should have been `<Alert>`), raw `<code className="...">` inline-code styling repeated 3× (should have been `<InlineCode>`), and redundant body paragraphs that all said "layout rules → components." All three disappear naturally when the page is rewritten.
 - No "See also" card row at the end — sibling foundation usage pages don't have one, cross-references are inline in the prose.
 - Desktop (1280px) and mobile (375px) renders are visually identical — no responsive issues. The page is so short that it doesn't fill the viewport at either width.
+
+## /foundation/iconography/overview
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | minor | ds-violation | both | Remove `font-semibold text-foreground` from 4× `<strong>` tags (lines 17, 31, 35, 45). DS forbids weight utilities for emphasis — `<strong>` alone is the correct pattern, and `text-foreground` is inherited. |
+| 2 | minor | ds-violation | both | Remove redundant `font-sejong-bold tracking-tight` from `<h1>` (line 7). Verified `type-h1` already sets `font-family: var(--font-sejong-bold)` and `letter-spacing: -0.025em` in `packages/web/src/styles/index.css:169-174`. |
+| 3 | minor | content | both | Condense the two intro paragraphs into one — both reinforce "consistency matters / mixing libraries breaks the visual language." |
+
+**Dropped findings:**
+- "Page is a stub, lacks section orientation map" — covered by future Docs App Enhancement (prev/next nav).
+- "Three layers as `<p>` tags, not a list" — paragraphs are acceptable; semantic `<dl>` not worth the change.
+- "Raw `<hr>` instead of `Divider` component" — global issue across all 14 foundation pages, promoted to a new TODO item.
+- "`<Icon>` paragraph reproduces /usage and /library content" — with the orientation map dropped, this paragraph now serves as the de-facto orientation content.
+
+**Notes:** Mobile review skipped — Chrome window minimum width prevented resize below ~1264px. Page content is text-only with no responsive surface area beyond global navbar/sidebar shared across all pages.
+
+## /foundation/iconography/sizes
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | content | both | Page renders zero icons; readers cannot compare sizes visually. Migrate the Scale `<table>` to the DS `Table` compound component and add a leading "Preview" column rendering `<Icon>` at each row's size. |
+| 2 | major | content | both | "Pairing Icons with Text" table has no visual examples. Mirror Fix #1: migrate to DS `Table` and add a "Preview" column with real `flex items-center gap-2` icon-with-text pairings at each text level. |
+| 3 | major | content / ds-violation | both | "Pairing Icons with Text" table teaches raw Tailwind text utilities (`text-xs`, `text-sm`, `text-base`, `text-lg`, `text-xl`) instead of DS `type-*` classes. Rewrite the "Text style" column to use `type-caption`, `type-body-sm`, `type-body`, `type-h3`, `type-h2`. Combined with Fix #2 in one edit. |
+| 4 | minor | styling | both | `<code>` chip inside H2 ("Default is `md`") shrinks the word mid-heading via `type-caption` and breaks the heading line with the chip background. Rename the heading to "The Default Size" and drop the inline chip. |
+| 5 | minor | content | both | "Default is md" paragraph 1 restates the Scale table's `md` row ("buttons, nav items"). Tighten paragraph 1 to drop the restated examples; keep paragraph 2 (the rule) unchanged. |
+
+**Deferred findings (not in fix plan):**
+- 33 raw `<code>` elements with repeated chip classlist — covered by existing global `<InlineCode>` migration TODO.
+- All five `<h2>` elements lack `id` attributes — covered by existing global heading-id TODO.
+- `<hr my-8>` immediately followed by `<h2 mt-8>` produces ~64px doubled section gap. Verified site-wide pattern: 13 foundation pages use the `my-8 border-0 border-t border-border` divider and 14 use `type-h2 mt-8 mb-4`. Promoted to a new global Docs App Enhancement TODO: *"Normalize section spacing across foundation pages — drop `mt-8` from H2s following `<hr my-8>`."*
+
+**Notes:**
+- Desktop (1280px) review only. Page is text + tables wrapped in `overflow-x-auto`, no responsive components beyond global navbar/sidebar. Mobile renders are visually equivalent for finding purposes.
+- Browser scroll/screenshot was unreliable for this session (window scroll API + tab-context lag); review relied on full page-source read, JS DOM introspection (`querySelectorAll` for `h2`, `code` counts), and one clean top-of-page screenshot (`ss_17262a3om`). Findings were verified against source rather than screenshots beyond the visible top section.
+
+## /foundation/iconography/library
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | minor | ds-violation | both | `<strong className="font-semibold text-foreground">` redundantly applies weight + color utilities on top of `<strong>` (8 instances across "Why Lucide" and "What We Don't Use" sections). Drop `font-semibold text-foreground`; keep semantic `<strong>`. If bold doesn't render due to `type-body` weight override, add `!font-semibold`. |
+| 2 | minor | ds-violation | both | H1 redundantly composes `font-sejong-bold tracking-tight` on top of `type-h1` (line 8). Verify `type-h1` bakes these in (it should), then drop both. |
+| 3 | minor | ds-violation | both | `lucide.dev` link missing `hover:text-brand-primary` (line 45). DS rule requires hover color change in addition to underline. |
+| 4 | minor | styling | both | "What We Don't Use" section uses three plain paragraphs with `<strong>` lead-ins. Convert to `DoDont` "don't" list — these are forbidden patterns and deserve a visual treatment matching their semantic weight. |
+| 5 | minor | content | both | "Naming Convention" closing paragraph (lines 76-82) repeats the opening (lines 62-70). Only the "don't translate to camelCase/PascalCase" warning is new. Merge that warning into the opening paragraph or place as a single line after the CodeBlock; drop the closing paragraph. |
+| 6 | major | content | both | Rewrite "Custom Icons" section. New policy: do **not** instruct devs to inline custom SVGs themselves. Instead, when an icon isn't in Lucide, contact the design system project owner, who registers it in the `<Icon>` system the same way as the existing `github` and `linkedin` brand icons. Devs always consume custom icons via `<Icon name="..." />`. The visual-language spec list (`viewBox="0 0 24 24"`, `stroke-width="2"`, etc.) stays — but reframed as "criteria the DS owner uses when registering," not "what you write inline." |
+
+**Notes:**
+- Finding #6 contradicts the current `docs/DS_CONSTRAINTS.md` rule under "Custom Icons" that says "use an inline SVG directly in the component." DS_CONSTRAINTS will need a follow-up update — flagged in the fix plan but not executed in this fix.
+- Mobile review skipped — page is text-only with no responsive surface area beyond global chrome shared across all pages.
+- Screenshot tool was unreliable this session (stale frame capture); review relied on full page source, DOM accessibility tree read, and one clean top-of-page screenshot.
