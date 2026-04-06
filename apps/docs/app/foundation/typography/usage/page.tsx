@@ -165,8 +165,8 @@ export default function TypographyUsagePage() {
         </li>
         <li className="flex gap-2">
           <span className="text-muted-foreground">&bull;</span>
-          Decoration: underline by default ({' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">underline</code>)
+          Decoration: underline on hover ({' '}
+          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">hover:underline</code>)
         </li>
         <li className="flex gap-2">
           <span className="text-muted-foreground">&bull;</span>

@@ -100,7 +100,7 @@ Must: Use `type-caption` + `text-muted-foreground` for helper text (instructions
 ### Links
 
 Must: Use `text-link` for all link color — never `text-foreground`. [source:foundation/typography/usage]
-Must: Underline links by default (`underline`). Hover state: `text-brand-primary`. No separate visited style. [source:foundation/typography/usage]
+Must: Underline links on hover (`hover:underline`). Hover state: `hover:text-brand-primary`. No separate visited style. [source:foundation/typography/usage]
 ### Truncation
 
 Must: Use `truncate` for single-line UI element truncation (nav items, table cells, tags, badges). [source:foundation/typography/usage]

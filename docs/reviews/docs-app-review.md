@@ -124,6 +124,25 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 - Desktop scroll screenshots rendered blank due to VSCode tunnel rendering limitations. Below-fold content reviewed via source code + accessibility tree.
 - Mobile top viewport confirmed working (responsive typography scaling correctly). Table overflow (576px vs 520px viewport) handled by `overflow-x: auto` wrapper, will be replaced by DS Table mobile list view.
 
+## /foundation/typography/usage
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | DoDont examples (lines 75-76, 81-82, 99, 103) use raw Tailwind utilities (`text-4xl font-sejong-bold leading-tight`, `text-base font-pretendard font-normal leading-relaxed`) instead of `type-*` semantic classes. Contradicts the page's own first rule and DS_CONSTRAINTS. Update Do examples to use semantic classes (`type-display tracking-tight`, `type-h2`, `type-body`). |
+| 2 | minor | ds-violation | both | Links bullet list (lines 160-181) uses manual `&bull;` + flex layout instead of standard list styling (`list-disc pl-5 space-y-2`). |
+| 3 | major | ux | both | State typography (disabled, error, helper text), Links, and Truncation sections are prose-only — no visual examples. Add inline previews for error messages (`type-caption text-error`), helper text (`type-caption text-muted-foreground`), and links (rendered link with color + underline). |
+| 4 | minor | content | both | "Disabled text" section references "(gray-400)" — raw primitive name. Remove parenthetical; `text-disabled-foreground` is sufficient. |
+| B1 | minor | styling | both | (Bonus — cross-page) Alert component `<pre>` children overflow at `md:grid-cols-2` widths inside DoDont. Add `[&_pre]:overflow-x-auto` to Alert's children div (line 65 of `Alert.tsx`). |
+
+**Dropped findings:**
+- `my-8` on `<hr>` and `mt-8` on `<h2>`: established pattern across all reviewed pages, not a violation
+- Inconsistent section spacing rhythm: intentional two-tier rhythm (hr = major break, mt-8 = subsection)
+
+**Notes:**
+- Desktop scroll screenshots rendered blank due to VSCode tunnel rendering limitations. Below-fold content reviewed via source code + accessibility tree + DOM position analysis.
+- Mobile viewport could not be resized below 885px through DevTunnel. Mobile review was code-based — DoDont grid correctly stacks to single column, no overflow detected via JS measurement.
+- Colors/usage page DoDont pattern (using `<pre><code>` for CSS snippets inside Alert) was referenced as the model for how DoDont examples should look.
+
 ## /foundation/typography/fonts
 
 | # | Severity | Type | Viewport | Finding |
@@ -143,3 +162,15 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 - Specimen `px-8` fixed padding: resolved by Card migration (#2) — Card provides its own padding
 - Mobile viewport could not be visually tested (browser viewport stuck at 1920px through DevTunnel). Mobile issues identified via source code review.
 
+## /foundation/layout/overview
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | Links missing `hover:text-brand-primary` hover color — DS requires hover state to change to brand-primary |
+| 2 | major | content | both | Usage link says "coming once components are built" — Container and Grid already exist. Update description. |
+| 3 | minor | content | both | Redundant closing paragraph ("These are implementation requirements...") — restates what the section already conveys. Remove. |
+| B1 | major | ds-violation | n/a | **Bonus (cross-cutting):** DS link rule currently mandates `underline` by default. Change to `hover:underline` in DS_CONSTRAINTS.md and typography/usage page. |
+
+**Dropped findings:**
+- Link missing default `underline`: reversed — DS rule changed to `hover:underline` (see B1)
+- Code example uses `class=` instead of `className=`: intentional HTML snippet, not React-specific

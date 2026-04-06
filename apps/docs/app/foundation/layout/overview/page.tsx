@@ -33,22 +33,22 @@ export default async function LayoutOverviewPage() {
         <li className="flex gap-2">
           <span className="text-muted-foreground">•</span>
           <span>
-            <Link href="/foundation/layout/breakpoints" className="text-link underline-offset-2 hover:underline">Breakpoints</Link>
+            <Link href="/foundation/layout/breakpoints" className="text-link underline-offset-2 hover:underline hover:text-brand-primary">Breakpoints</Link>
             {' '}— the three layout tiers (mobile, tablet, desktop) and the rules for using them
           </span>
         </li>
         <li className="flex gap-2">
           <span className="text-muted-foreground">•</span>
           <span>
-            <Link href="/foundation/layout/spacing" className="text-link underline-offset-2 hover:underline">Spacing</Link>
+            <Link href="/foundation/layout/spacing" className="text-link underline-offset-2 hover:underline hover:text-brand-primary">Spacing</Link>
             {' '}— default inset, max-width, column gutter, vertical spacing tiers, page shell pattern, and full-bleed pattern
           </span>
         </li>
         <li className="flex gap-2">
           <span className="text-muted-foreground">•</span>
           <span>
-            <Link href="/foundation/layout/usage" className="text-link underline-offset-2 hover:underline">Usage</Link>
-            {' '}— ready-made layout components (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Container</code>, <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Grid</code>) — coming once components are built
+            <Link href="/foundation/layout/usage" className="text-link underline-offset-2 hover:underline hover:text-brand-primary">Usage</Link>
+            {' '}— ready-made layout components (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Container</code>, <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Grid</code>) and when to use them
           </span>
         </li>
       </ul>
@@ -109,10 +109,6 @@ export default async function LayoutOverviewPage() {
 <main id="main-content">
   <!-- page content -->
 </main>`} lang="tsx" />
-
-      <p className="type-body mb-4 text-foreground max-w-prose">
-        These are implementation requirements for the page shell, not component-level concerns. They are configured once and apply globally.
-      </p>
 
     </Container>
   )

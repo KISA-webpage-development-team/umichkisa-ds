@@ -32,10 +32,10 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Fix `/foundation/typography/scale`
 - [x] Review `/foundation/typography/fonts`
 - [x] Fix `/foundation/typography/fonts`
-- [ ] Review `/foundation/typography/usage`
+- [x] Review `/foundation/typography/usage`
 - [ ] Fix `/foundation/typography/usage`
-- [ ] Review `/foundation/layout/overview`
-- [ ] Fix `/foundation/layout/overview`
+- [x] Review `/foundation/layout/overview`
+- [x] Fix `/foundation/layout/overview`
 
 ### Batch 4 — Layout
 - [ ] Review `/foundation/layout/spacing`

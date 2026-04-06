@@ -70,7 +70,7 @@ Read the page source and rendered text. Check:
 - Unclear or misleading explanations
 - Missing information that a developer would need
 - Incorrect code examples or prop descriptions
-- **Redundant content** — sections, callouts, or paragraphs that repeat information already covered elsewhere on the same page. Flag for removal or consolidation.
+- **Redundant content (MANDATORY)** — you MUST explicitly check every section, callout, and paragraph for information that repeats content already covered elsewhere on the same page. Flag for removal or consolidation. Do NOT skip this check — report the result even if no redundancy is found.
 
 5. For each finding, capture:
    - Severity: `critical`, `major`, `minor`
@@ -108,6 +108,8 @@ _No checkpoint here — proceed directly to Step 3._
 ```
 
 If zero findings remain after discussion, skip to Step 5.
+
+**STOP. Do NOT proceed to Step 4 without explicit user confirmation.** Present the final findings table and ask: "Ready to record findings and write the fix plan. Go ahead?" Wait for the user to say yes. NEVER auto-advance past this point.
 
 ## Step 4: Write Fix Plan
 
