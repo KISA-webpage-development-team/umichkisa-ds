@@ -314,3 +314,31 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 **Notes:**
 - Review was source-based plus a single 1264px desktop screenshot. The chrome MCP screenshot tool returned blank images after scroll, so visual scrolling/mobile passes were not captured.
 - Dropped during grill-me: separate "raw grid" finding for Variant Gallery (covered by #1); H3 mt-6/mt-8 inconsistency (matches existing convention used in tabs/grid pages); missing Accessibility section (not warranted for a static label component); raw inline `<code>` migration (already tracked in global TODO as `<InlineCode>` component).
+
+## /components/button
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | `<h1>` redundantly composes `font-sejong-bold tracking-tight`. `type-h1` already includes both. Drop the redundant utilities — keep `type-h1 mb-4 text-foreground`. |
+| 2 | major | ds-violation | both | Variant description `<ul>` has `type-body-sm` without an explicit color token. Add `text-foreground` (DS rule: every `type-*` must be paired with a color token). |
+| 3 | major | responsive | mobile | Variants, Disabled, and Sizes demo rows use `flex items-center gap-4` with 3–4 buttons → overflow at 375px. Add `flex-wrap` to all three. |
+| 4 | minor | content | both | Intro paragraph mentions "built-in `gap-2` alignment for icon + text pairings" and the With-icon section repeats the same fact. Drop the mention from the intro; keep it where it's actionable. |
+
+**Notes:**
+- Review was source-based plus a single 1264px desktop screenshot. The chrome MCP screenshot tool returned blank/offset images after scroll, and the window could not be resized below ~1264px, so visual scrolling/mobile passes were not captured.
+- Dropped during grill-me: first h3 `mt-6` vs subsequent `mt-8` (established docs rhythm — saved to memory); missing focus/a11y notes (handled by component, not docs concern); raw inline `<code>` migration (cross-cutting `<InlineCode>` TODO); raw `<table>` in API Reference (cross-cutting Table migration TODO); `mt-8` on first h2 (cross-cutting section spacing TODO).
+
+## /components/icon-button
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | H1 composes raw `font-sejong-bold tracking-tight` on top of `type-h1`. `type-*` is the single source of truth for font + tracking; other component pages (badge) use only `type-h1 mb-4 text-foreground`. Strip the raw classes. |
+| 2 | major | ds-violation | both | API Reference uses a raw `<table>` with manual `border-collapse border border-border` etc. Migrate to DS `<Table size="sm">` + `TableHeader`/`TableBody`/`TableRow`/`TableHead`/`TableCell` to match the badge page. |
+| 3 | major | content | both | No Tooltip example. DS_CONSTRAINTS: "Prefer wrapping icon-only buttons in a `<Tooltip>`. The tooltip content must match the `aria-label` exactly." Add a "With Tooltip" example section (live preview + code) after Disabled. |
+| 4 | minor | content | both | Header description "Wraps `Button` internally, inheriting all variant styles and focus behavior" leaks implementation detail. Reword to "Shares Button's variants, sizes, and focus behavior." |
+| 5 | minor | content | both | Default body restates the defaults already shown in the props table. Shorten to "The simplest usage — `icon` and `aria-label` are the only required props." |
+| 6 | major | content | both | Page lacks an Accessibility section despite covering an inherently a11y-sensitive component. Add a new `<h2>` Accessibility section (after Disabled, before API Reference) consolidating: (a) `aria-label` must describe the action, not the icon ("Edit profile" not "Edit"); (b) Tooltip text must match `aria-label` exactly; (c) Touch target rationale — all sizes meet 44×44 via the `::after` pseudo-element, even when the visible button is 32px. Use a DS `Alert` (info) for the key rules + plain prose for the touch-target note. |
+
+**Notes:**
+- Review was source-based. The chrome `resize_window` tool was not applying to the actual viewport this session (innerWidth stuck at 1920), so per-viewport (1280 / 375) capture was not possible. Findings are derived from the page source, the `IconButton` and `Button` implementations, DS_CONSTRAINTS, and a comparison against the badge page.
+- Verified (not findings): Sizes 32 / 40 / 48 match `IconButton.tsx` (`p-2`/`p-2.5`/`p-3` + icon `sm`/`md`/`lg`); default `variant="secondary"` matches source; Button does not support `asChild`, so omitting it from the API table is correct; IconButton intentionally provides its own size prop instead of forwarding Button's, so omitting Button's `size` from the API table is correct.

@@ -62,9 +62,9 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Fix `/components/badge`
 
 ### Batch 7 — Components
-- [ ] Review `/components/button`
-- [ ] Fix `/components/button`
-- [ ] Review `/components/icon-button`
+- [x] Review `/components/button`
+- [x] Fix `/components/button`
+- [x] Review `/components/icon-button`
 - [ ] Fix `/components/icon-button`
 - [ ] Review `/components/link-button`
 - [ ] Fix `/components/link-button`
