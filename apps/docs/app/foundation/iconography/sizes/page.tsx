@@ -79,7 +79,7 @@ export default async function IconographySizesPage() {
       <hr className="my-8 border-0 border-t border-border" />
 
       {/* ── Default is md ───────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Default is <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code></h2>
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">The Default Size</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         When in doubt, use{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code>.
