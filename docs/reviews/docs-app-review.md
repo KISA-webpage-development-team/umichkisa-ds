@@ -174,3 +174,48 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 **Dropped findings:**
 - Link missing default `underline`: reversed — DS rule changed to `hover:underline` (see B1)
 - Code example uses `class=` instead of `className=`: intentional HTML snippet, not React-specific
+
+## /foundation/layout/spacing
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | critical | content | both | Incorrect inset values. Page documents default inset as `px-4`/`px-10`/`px-16` (16/40/64px), but the actual `Container` component uses `px-4`/`md:px-6`/`lg:px-8` (16/24/32px). Affects Default Inset diagrams (lines 40-52), Page Shell code example (line 187), and Full-Bleed code example (lines 242-247). Update docs to match Container implementation. |
+| 2 | major | content | both | Stale Container reference. Line 225 says "The Container component will encode this pattern once built — until then, use this class string directly." Container already exists (imported on line 1). Update text and replace raw utility code example with `<Container>` usage. |
+| 3 | major | ds-violation | both | Raw colors in diagrams. 12+ instances of raw Tailwind colors (`text-gray-400`, `text-gray-700`, `border-gray-200`, `bg-gray-50`, `bg-gray-100`, `bg-[#ffcb05]/40`, `bg-[#ffcb05]/20`) in Default Inset, Max-width, and Column Gutter diagrams (lines 45-49, 72-80, 108-115). Map to semantic tokens; use `bg-brand-accent/40` with code comment for illustration opacity. |
+| 4 | major | ds-violation | both | 4 raw `<blockquote>` elements with `border-l-[3px]` arbitrary value (lines 24-28, 173-177, 228-232, 253-257). Replace with `<Alert variant="info">`. |
+| 5 | major | ds-violation | both | `text-xs` below typography floor. Diagram labels (lines 45, 80, 108) use `text-xs` (10px) — below DS minimum `type-caption` (12px). Replace with `type-caption font-mono`. |
+| 6 | major | ds-violation | both | Raw HTML `<table>` for Vertical Spacing (lines 134-163). Migrate to DS `Table` compound component + `TableMobileList`/`TableMobileItem` for mobile. |
+| 7 | minor | ds-violation | both | Manual `<span>•</span>` bullet list (lines 191-220). Replace with standard `list-disc pl-5`. |
+| 8 | minor | content | both | Redundant paragraph. Max-width closing text (line 85) is nearly identical to Page Shell opener (line 183). Remove from Max-width. |
+
+**Dropped findings:**
+- `my-8` on `<hr>` and `mt-8` on `<h2>`: established pattern across all reviewed pages
+- Desktop viewport stuck at 958px CSS width through DevTunnel — unable to test at true 1280px
+
+**Notes:**
+- Desktop scroll screenshots rendered blank due to VSCode tunnel rendering limitations. Below-fold content reviewed via source code + rendered text extraction.
+- The docs page predates the Container component — it was written with planned values that were later revised during implementation. The Container is the source of truth.
+
+## /foundation/layout/breakpoints
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | content | both | Paragraph after breakpoint table says "md: and lg: are then used to ensure the layout holds at smaller sizes" — factually backwards. In Tailwind's mobile-first system, md:/lg: apply at *larger* viewports. Rewrite to distinguish design-first thinking (desktop is the priority) from mobile-first coding (default = mobile, prefixes layer on for larger screens). |
+
+**Dropped findings:**
+- No subheadings (h2/h3): page is intentionally short and opinionated — continuous prose is appropriate at this length
+
+**Notes:**
+- Page is simple (single H1, one table, 6 paragraphs). No DS constraint violations, no styling/layout/responsive issues.
+- Desktop and mobile viewports both reviewed visually via Chrome automation.
+
+## /foundation/layout/usage
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | content + ds-violation | both | Page is a stale "coming soon" stub claiming `Container`/`Grid` are unimplemented, but both are shipped — the page itself wraps content in `<Container size="md" as="article">`. Full rewrite into a thin foundation-level orientation page: (1) philosophy paragraph — layout is component-driven, never hand-roll responsive class strings; (2) decision tree linking to `/components/container`, `/components/grid`, `/foundation/layout/spacing`, with raw Tailwind grid utilities called out as the asymmetric-layout escape hatch; (3) anti-patterns inside `<Alert variant="warning">` — don't nest Containers, don't hand-roll the page shell, don't scale vertical gaps across breakpoints, don't use `sm:`/`xl:`/`2xl:` breakpoints. Use `<InlineCode>` for all inline code. Match the orientation/philosophy tone of `/foundation/colors/usage` and `/foundation/typography/usage`. |
+
+**Notes:**
+- The single rewrite finding subsumes three separate issues that surfaced in the initial review pass: raw `<blockquote>` callout (should have been `<Alert>`), raw `<code className="...">` inline-code styling repeated 3× (should have been `<InlineCode>`), and redundant body paragraphs that all said "layout rules → components." All three disappear naturally when the page is rewritten.
+- No "See also" card row at the end — sibling foundation usage pages don't have one, cross-references are inline in the prose.
+- Desktop (1280px) and mobile (375px) renders are visually identical — no responsive issues. The page is so short that it doesn't fill the viewport at either width.
