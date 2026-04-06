@@ -27,7 +27,7 @@ export function CodeBlockClient({
   return (
     <div className="group relative">
       {/* Language label + copy button */}
-      <div className="sticky top-0 right-0 float-right flex items-center gap-2 pr-3 pt-3 z-10">
+      <div className="absolute top-2 right-2 flex items-center gap-2 z-10 pointer-events-none">
         {lang && lang !== "text" && (
           <span className="type-caption font-mono text-muted-foreground select-none">
             {lang}
@@ -39,18 +39,18 @@ export function CodeBlockClient({
           variant="tertiary"
           aria-label={copied ? "Copied" : "Copy code"}
           onClick={handleCopy}
-          className="opacity-0 group-hover:opacity-100 transition-opacity"
+          className="opacity-60 group-hover:opacity-100 transition-opacity pointer-events-auto"
         />
       </div>
 
       {/* Code content */}
       {highlightedHtml ? (
         <div
-          className="overflow-x-auto [&_pre]:text-xs [&_pre]:leading-normal [&_pre]:font-mono [&_pre]:px-4 [&_pre]:py-4 [&_pre]:!bg-transparent [&_pre]:m-0 [&_code]:!bg-transparent"
+          className="overflow-x-auto pr-16 [&_pre]:text-xs [&_pre]:leading-normal [&_pre]:font-mono [&_pre]:px-4 [&_pre]:py-4 [&_pre]:!bg-transparent [&_pre]:m-0 [&_code]:!bg-transparent"
           dangerouslySetInnerHTML={{ __html: highlightedHtml }}
         />
       ) : (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto pr-16">
           {children}
         </div>
       )}
