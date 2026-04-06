@@ -54,11 +54,11 @@ export default function LayoutBreakpointsPage() {
       </div>
 
       <p className="type-body mb-4 text-foreground max-w-prose">
-        The desktop tier is where layout decisions are made first.{' '}
+        Design decisions start at the desktop tier — that is the priority
+        viewport. In code, default styles target mobile, and{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md:</code> and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg:</code> are
-        then used to ensure the layout holds at smaller sizes —
-        not the other way around.
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg:</code>{' '}
+        prefixes layer adjustments on as the viewport grows.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Tailwind provides additional breakpoints —{' '}
