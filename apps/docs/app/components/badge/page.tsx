@@ -1,4 +1,4 @@
-import { Container, Badge, Icon } from '@umichkisa-ds/web'
+import { Container, Badge, Icon, Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 
@@ -24,7 +24,7 @@ const sizesCode = `import { Badge } from '@umichkisa-ds/web'
 const withIconCode = `import { Badge, Icon } from '@umichkisa-ds/web'
 
 <Badge>
-  <Icon name="thumbs-up" size="xs" />
+  <Icon name="thumbs-up" size="sm" />
   Approved
 </Badge>`
 
@@ -53,7 +53,7 @@ export default async function BadgePage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Badge</h1>
+      <h1 className="type-h1 mb-4 text-foreground">Badge</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
         Inline label for status, categorization, and metadata display. Supports
         seven semantic variants, two sizes, and{' '}
@@ -116,7 +116,20 @@ export default async function BadgePage() {
       {/* Sizes */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">Sizes</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Two sizes aligned to the spacing grid.
+        Use{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          md
+        </code>{' '}
+        (default) for general UI — page metadata, status labels, inline tags. Use{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          sm
+        </code>{' '}
+        for compact contexts like table cells, dense lists, and sidebars where the
+        badge sits alongside{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          type-caption
+        </code>{' '}
+        text.
       </p>
       <ComponentPreview code={sizesCode} highlightedCode={sizesHighlighted}>
         <div className="flex items-center gap-4">
@@ -132,7 +145,7 @@ export default async function BadgePage() {
       </p>
       <ComponentPreview code={withIconCode} highlightedCode={withIconHighlighted}>
         <Badge>
-          <Icon name="thumbs-up" size="xs" />
+          <Icon name="thumbs-up" size="sm" />
           Approved
         </Badge>
       </ComponentPreview>
@@ -157,66 +170,54 @@ export default async function BadgePage() {
         </Badge>
       </ComponentPreview>
 
-      {/* ── Variant Gallery ──────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Variant Gallery</h2>
-      <div className="grid grid-cols-2 gap-4">
-        <Badge variant="default">Default</Badge>
-        <Badge variant="brand">Brand</Badge>
-        <Badge variant="success">Success</Badge>
-        <Badge variant="warning">Warning</Badge>
-        <Badge variant="error">Error</Badge>
-        <Badge variant="info">Info</Badge>
-        <Badge variant="outline">Outline</Badge>
-      </div>
-
       {/* ── API Reference ────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         All props are optional.
       </p>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Prop</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Type</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Default</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">variant</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;default&quot; | &quot;brand&quot; | &quot;success&quot; | &quot;warning&quot; | &quot;error&quot; | &quot;info&quot; | &quot;outline&quot;</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;default&#39;</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Visual style of the badge.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;sm&quot; | &quot;md&quot;</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;md&#39;</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Size of the badge.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">asChild</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Merge props onto the child element instead of rendering a span.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Merged via cn() (class merge utility). Use for layout utilities only — never override variant styles.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Badge content.</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <Table size="sm">
+          <TableHeader>
+            <TableRow>
+              <TableHead>Prop</TableHead>
+              <TableHead>Type</TableHead>
+              <TableHead>Default</TableHead>
+              <TableHead>Description</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">variant</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;default&quot; | &quot;brand&quot; | &quot;success&quot; | &quot;warning&quot; | &quot;error&quot; | &quot;info&quot; | &quot;outline&quot;</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;default&#39;</code></TableCell>
+              <TableCell>Visual style of the badge.</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;sm&quot; | &quot;md&quot;</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;md&#39;</code></TableCell>
+              <TableCell>Size of the badge.</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">asChild</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+              <TableCell>Merge props onto the child element instead of rendering a span.</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+              <TableCell>—</TableCell>
+              <TableCell>Merged via cn() (class merge utility). Use for layout utilities only — never override variant styles.</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+              <TableCell>—</TableCell>
+              <TableCell>Badge content.</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
 
     </Container>
