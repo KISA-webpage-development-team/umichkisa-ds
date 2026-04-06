@@ -1,4 +1,12 @@
-import { Container } from '@umichkisa-ds/web'
+import {
+  Container,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@umichkisa-ds/web'
 import { CodeBlock } from '@/components/CodeBlock'
 export default async function IconographyAccessibilityPage() {
   return (
@@ -90,38 +98,61 @@ export default async function IconographyAccessibilityPage() {
       {/* ── Decision Rule ───────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Decision Rule</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        Three scenarios cover the vast majority of icon usage:
+        Three scenarios cover the vast majority of icon usage. When in doubt, ask:{' '}
+        <em>is there text nearby that already describes this?</em> If yes, decorative. If no, semantic.
       </p>
 
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Scenario</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Correct approach</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Icon next to a visible text label</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Decorative — omit <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">label</code> prop</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Icon alone inside a <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">button</code> or <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">a</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Decorative — <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code> goes on the <strong className="font-semibold text-foreground">button</strong>, not the icon</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Icon as a standalone meaning indicator (no button, no nearby text)</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Semantic — provide <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">label</code> prop</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <Table size="sm">
+          <TableHeader>
+            <TableRow>
+              <TableHead>Scenario</TableHead>
+              <TableHead>Approach</TableHead>
+              <TableHead>Markup</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell>Icon next to a visible text label</TableCell>
+              <TableCell>
+                Decorative — omit{' '}
+                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">label</code>{' '}
+                prop
+              </TableCell>
+              <TableCell>
+                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{`<button><Icon name="save" />Save</button>`}</code>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Icon alone inside a{' '}
+                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">button</code>{' '}
+                or{' '}
+                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">a</code>
+              </TableCell>
+              <TableCell>
+                Decorative —{' '}
+                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>{' '}
+                on the wrapper, not the icon
+              </TableCell>
+              <TableCell>
+                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{`<button aria-label="Close"><Icon name="x" /></button>`}</code>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Standalone meaning indicator (no button, no nearby text)</TableCell>
+              <TableCell>
+                Semantic — provide{' '}
+                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">label</code>{' '}
+                prop
+              </TableCell>
+              <TableCell>
+                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{`<Icon name="check-circle" label="Verified" />`}</code>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
-
-      <p className="type-body mb-4 text-foreground max-w-prose">
-        When in doubt, ask: <em>is there text nearby that already describes this?</em> If yes,
-        decorative. If no, semantic.
-      </p>
 
       <hr className="my-8 border-0 border-t border-border" />
 
@@ -203,36 +234,6 @@ export default async function IconographyAccessibilityPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-error</code>{' '}
         (3.9:1) passes non-text contrast and may be used as a standalone icon color for error state indicators, though pairing with a label is still preferred.
       </p>
-
-      <hr className="my-8 border-0 border-t border-border" />
-
-      {/* ── Quick Reference ─────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Quick Reference</h2>
-
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Scenario</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Markup</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Icon + visible text label in a button</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{`<button><Icon name="save" />Save</button>`}</code> — no label prop, no aria-label on button</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Icon-only button</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{`<button aria-label="Close"><Icon name="x" /></button>`}</code> — no label prop on icon</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Standalone status icon</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{`<Icon name="check-circle" label="Verified" />`}</code> — label prop on icon</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
 
     </Container>
   )
