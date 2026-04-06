@@ -1,4 +1,13 @@
-import { Container } from '@umichkisa-ds/web'
+import {
+  Container,
+  Icon,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@umichkisa-ds/web'
 import { CodeBlock } from '@/components/CodeBlock'
 export default async function IconographySizesPage() {
   return (
