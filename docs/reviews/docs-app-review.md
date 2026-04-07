@@ -413,3 +413,41 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 **Notes:**
 - Source-based review. Browser screenshot tooling returned blank frames after scroll; findings derived from full source read + one verified desktop screenshot at scrollY=0.
 - Dropped during grill-me: Sizes example wrapper missing `w-full` (intentional grouped layout, not a full-width demo).
+
+## /components/alert
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | API Reference uses raw `<table>` instead of DS `Table` (`hidden md:block`) + `TableMobileList` (`block md:hidden`). |
+| 2 | major | layout | both | Variants / Description only / Custom icon / Without icon `ComponentPreview` children lack a `w-full` wrapper — alerts shrink horizontally inside the preview frame. Wrap each in `<div className="w-full">`. |
+| 3 | minor | a11y | both | No prose guidance on `role="alert"` / `aria-live` — only mentioned in the API table prologue. Add a short Accessibility section (`h2`) with 1–2 sentences on dynamic vs static alerts. |
+| 4 | minor | content | both | "Success confirmation" example description re-explains what a success alert *is* rather than what the example *demonstrates*. Tighten to focus on the pattern. |
+
+**Notes:**
+- Source-based review. Browser screenshot tooling returned blank frames after scroll; findings derived from full source read + one verified desktop screenshot at scrollY=0.
+- Dropped during grill-me: raw `<code>` → InlineCode (handled by global TODO); Form validation mocked input rows (kept — context is the point of the example).
+
+## /components/divider
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | API Reference uses raw `<table>` with hand-crafted classes. Migrate to DS `Table` (`hidden md:block`) + `TableMobileList` (`block md:hidden`) — same pattern as `/components/icon` and `/components/skeleton`. |
+
+**Notes:**
+- Source-based review. Browser screenshot tool returned blank frames after scroll/resize; findings derived from full source read.
+- Dropped: "Content separator" example overlaps with Default but serves a distinct purpose (in-context usage vs. isolated API demo) — kept.
+- Dropped: raw inline `<code>` utilities — covered by pending global `<InlineCode>` TODO item.
+
+## /components/status-view
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | Migrate Variant defaults + API Reference tables to DS `Table` + `TableMobileList` |
+| 2 | minor | content | both | Replace secondary lead with `<Alert variant="info">` for parent-fill / wrap-in-viewport caveat; trim the redundant restatement in the Full-screen section |
+| 3 | minor | ux | both | Add a note in the Full-screen pattern preview clarifying it is shown at fixed height (real usage = `h-screen`) |
+| 4 | minor | content | — | Slim Variant defaults table to 2 columns (Variant → Icon name); preview already covers title/description |
+| 5 | minor | content | — | Custom icon example: switch to a partial override (custom icon only) so `variant` still carries meaning |
+
+**Notes:**
+- Source-based review. Browser resize/screenshot stalled in this session; findings derived from `apps/docs/app/components/status-view/page.tsx` and `packages/web/src/components/feedback/StatusView.tsx`.
+- Dropped: raw inline `<code>` utilities (deferred to `<InlineCode>` sweep), inline-code `text-foreground` consistency (moot once swept), `h-64` wrap on `not-found` (content-driven, acceptable), 3× viewport-wrap repetition (folded into #2), Variant defaults duplication (folded into #4).
