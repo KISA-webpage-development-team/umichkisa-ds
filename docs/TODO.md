@@ -88,10 +88,10 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Fix `/components/divider` — plan: `docs/plans/review-fix-divider.md`
 
 ### Batch 10 — Components
-- [ ] Review `/components/accordion`
-- [ ] Fix `/components/accordion`
-- [ ] Review `/components/tabs`
-- [ ] Fix `/components/tabs`
+- [x] Review `/components/accordion`
+- [x] Fix `/components/accordion` — plan: `docs/plans/review-fix-components-accordion.md`
+- [x] Review `/components/tabs`
+- [ ] Fix `/components/tabs` — plan: `docs/plans/review-fix-components-tabs.md`
 - [ ] Review `/components/tooltip`
 - [ ] Fix `/components/tooltip`
 - [ ] Review `/components/popover`
