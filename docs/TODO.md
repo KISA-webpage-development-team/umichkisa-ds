@@ -91,7 +91,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Review `/components/accordion`
 - [x] Fix `/components/accordion` — plan: `docs/plans/review-fix-components-accordion.md`
 - [x] Review `/components/tabs`
-- [ ] Fix `/components/tabs` — plan: `docs/plans/review-fix-components-tabs.md`
+- [x] Fix `/components/tabs` — plan: `docs/plans/review-fix-components-tabs.md`
 - [ ] Review `/components/tooltip`
 - [ ] Fix `/components/tooltip`
 - [ ] Review `/components/popover`
