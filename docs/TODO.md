@@ -71,7 +71,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 
 ### Batch 8 — Components
 - [x] Review `/components/icon`
-- [ ] Fix `/components/icon` — plan: `docs/plans/review-fix-components-icon.md`
+- [x] Fix `/components/icon` — plan: `docs/plans/review-fix-components-icon.md`
 - [x] Review `/components/avatar`
 - [x] Fix `/components/avatar` — plan: `docs/plans/review-fix-components-avatar.md`
 - [x] Review `/components/skeleton`
@@ -181,4 +181,4 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [ ] Add prev/next page navigation to docs page footer
 - [ ] Normalize section spacing across foundation pages — drop `mt-8` from H2s following `<hr my-8>` (currently produces ~64px doubled gap; affects 13–14 foundation pages)
 - [x] Fix CodeBlock mobile UX — language label (tsx/js/css) alignment is off on mobile, and the copy button is hover-only so touch users can never copy code (make copy button always-visible, at least on touch)
-- [ ] Add Props table to `/components/icon` (follow-up from `/foundation/iconography/usage` review — Props table was removed from Usage page and belongs on the component reference)
+- [x] Add Props table to `/components/icon` (already satisfied — API Reference covers all 4 `<Icon>` props; verified during /components/icon review)
