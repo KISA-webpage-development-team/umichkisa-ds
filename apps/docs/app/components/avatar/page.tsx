@@ -1,4 +1,15 @@
-import { Container, Avatar } from '@umichkisa-ds/web'
+import {
+  Avatar,
+  Container,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableMobileItem,
+  TableMobileList,
+  TableRow,
+} from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 
@@ -168,45 +179,77 @@ export default async function AvatarPage() {
       {/* ── API Reference ────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        All props are optional.
+        All props are technically optional, but{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          name
+        </code>{' '}
+        is strongly recommended — it provides the image&apos;s alt text and
+        powers the initials fallback when the image is missing or fails to
+        load.
       </p>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Prop</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Type</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Default</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">src</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Image URL. Falls back to initials or icon on error.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">name</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">User name. Used for alt text and initials fallback.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;sm&quot; | &quot;md&quot; | &quot;lg&quot;</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;md&#39;</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Avatar size. sm = 32px, md = 40px, lg = 56px.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Merged via cn(). Use for layout utilities only.</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table size="sm">
+            <TableHeader>
+              <TableRow>
+                <TableHead>Prop</TableHead>
+                <TableHead>Type</TableHead>
+                <TableHead>Default</TableHead>
+                <TableHead>Description</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">src</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Image URL. Falls back to initials or icon on error.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">name</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>User name. Used for alt text and initials fallback. Strongly recommended.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;md&#39;</code></TableCell>
+                <TableCell>Avatar size. sm = 32px, md = 40px, lg = 56px.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>src</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground">Image URL. Falls back to initials or icon on error.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>name</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code> · strongly recommended</span>
+              <span className="type-caption text-muted-foreground">User name. Used for alt text and initials fallback.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>size</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;md&#39;</code></span>
+              <span className="type-caption text-muted-foreground">Avatar size. sm = 32px, md = 40px, lg = 56px.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>className</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
     </Container>

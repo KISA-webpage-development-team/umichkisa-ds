@@ -73,9 +73,9 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Review `/components/icon`
 - [ ] Fix `/components/icon` — plan: `docs/plans/review-fix-components-icon.md`
 - [x] Review `/components/avatar`
-- [ ] Fix `/components/avatar` — plan: `docs/plans/review-fix-components-avatar.md`
-- [ ] Review `/components/skeleton`
-- [ ] Fix `/components/skeleton`
+- [x] Fix `/components/avatar` — plan: `docs/plans/review-fix-components-avatar.md`
+- [x] Review `/components/skeleton`
+- [ ] Fix `/components/skeleton` — plan: `docs/plans/review-fix-skeleton.md`
 - [ ] Review `/components/loading-spinner`
 - [ ] Fix `/components/loading-spinner`
 

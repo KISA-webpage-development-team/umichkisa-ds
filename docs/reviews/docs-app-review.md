@@ -386,3 +386,16 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 
 **Notes:**
 - Source-based review. Per-viewport screenshot capture skipped per user instruction.
+
+## /components/skeleton
+
+| # | Severity | Type | Viewport | Finding | Screenshot |
+|---|----------|------|----------|---------|------------|
+| 1 | major | ds-violation | both | API Reference uses raw `<table>` instead of DS `Table` (`hidden md:block`) + `TableMobileList` (`block md:hidden`). Also missing `…rest` row even though intro says component extends native `<div>` attributes. | — |
+| 2 | minor | styling | both | Second intro paragraph (aria-busy guidance) is rendered as muted `type-body-sm` body copy. Convert to DS `Alert` (info variant) per recurring blockquote→Alert pattern. | — |
+| 3 | minor | styling | both | `<h1>` composes `type-h1 font-sejong-bold tracking-tight`, but `type-h1` already encodes `font-sejong-bold` and `letter-spacing: -0.025em`. Remove the redundant utilities. | — |
+
+**Notes:**
+- Source-based review. Browser screenshot/resize tooling was unstable mid-session; findings derived from full source read + one verified desktop screenshot at scrollY=0.
+- Dropped during grill-me: sidebar nav gap (sidebar already correct per user); raw `<code>` → `InlineCode` migration (handled by global TODO).
+- Redundancy check: "controls dimensions via className/utilities" appears in intro, example caption, and API table — mild but contextually justified, no action.
