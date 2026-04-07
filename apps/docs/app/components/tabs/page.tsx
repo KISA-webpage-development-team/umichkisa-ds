@@ -1,4 +1,4 @@
-import { Container, Tabs, TabsList, TabsTrigger, TabsContent, FormItem, Input, Table, TableBody, TableCell, TableHead, TableHeader, TableMobileItem, TableMobileList, TableRow } from '@umichkisa-ds/web'
+import { Alert, Container, Tabs, TabsList, TabsTrigger, TabsContent, FormItem, Input, Table, TableBody, TableCell, TableHead, TableHeader, TableMobileItem, TableMobileList, TableRow } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 import { ControlledDemo } from './_demos'
@@ -182,16 +182,14 @@ export default async function TabsPage() {
     <Container size="md" as="article">
 
       {/* -- Header -------------------------------------------------- */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Tabs</h1>
+      <h1 className="type-h1 mb-4 text-foreground">Tabs</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Organize content into multiple panels, activated one at a time.
         Tabs keep related content grouped while reducing clutter.
       </p>
-      <p className="type-body-sm mb-8 text-muted-foreground max-w-prose">
-        Use underline tabs for page-level navigation and pill tabs for
-        in-context switching. TabsTrigger accepts any children, so you can
-        compose icon + text layouts inside triggers. Tabs are horizontal only.
-      </p>
+      <Alert variant="info" className="mb-8">
+        Use underline tabs for page-level navigation and pill tabs for in-context switching. Tabs are horizontal only.
+      </Alert>
 
       {/* -- Examples ------------------------------------------------- */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
@@ -352,8 +350,7 @@ export default async function TabsPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           disabled
         </code>{' '}
-        prop on a TabsTrigger to prevent interaction. Disabled triggers are
-        skipped during keyboard navigation.
+        prop on a TabsTrigger to prevent interaction.
       </p>
       <ComponentPreview code={disabledCode} highlightedCode={disabledHighlighted}>
         <Container size="sm">
@@ -393,16 +390,6 @@ export default async function TabsPage() {
       <ComponentPreview code={controlledCode} highlightedCode={controlledHighlighted}>
         <ControlledDemo />
       </ComponentPreview>
-
-      {/* Accessibility */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Accessibility</h3>
-      <p className="type-body mb-2 text-foreground max-w-prose">
-        Tabs follow the WAI-ARIA Tabs pattern with full keyboard support.
-        Use <strong>Arrow Left</strong> and <strong>Arrow Right</strong> to
-        move between triggers, <strong>Home</strong> and <strong>End</strong> to
-        jump to the first or last trigger, and <strong>Tab</strong> to move
-        focus into the active panel.
-      </p>
 
       {/* -- API Reference -------------------------------------------- */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
@@ -682,6 +669,16 @@ export default async function TabsPage() {
           </TableMobileList>
         </div>
       </div>
+
+      {/* -- Accessibility -------------------------------------------- */}
+      <h2 className="type-h2 mt-8 mb-4 text-foreground">Accessibility</h2>
+      <p className="type-body mb-2 text-foreground max-w-prose">
+        Tabs follow the WAI-ARIA Tabs pattern with full keyboard support.
+        Use <strong>Arrow Left</strong> and <strong>Arrow Right</strong> to
+        move between triggers, <strong>Home</strong> and <strong>End</strong> to
+        jump to the first or last trigger, and <strong>Tab</strong> to move
+        focus into the active panel.
+      </p>
 
     </Container>
   )
