@@ -399,3 +399,17 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 - Source-based review. Browser screenshot/resize tooling was unstable mid-session; findings derived from full source read + one verified desktop screenshot at scrollY=0.
 - Dropped during grill-me: sidebar nav gap (sidebar already correct per user); raw `<code>` → `InlineCode` migration (handled by global TODO).
 - Redundancy check: "controls dimensions via className/utilities" appears in intro, example caption, and API table — mild but contextually justified, no action.
+
+## /components/loading-spinner
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | API Reference uses raw `<table>` instead of DS `Table` (`hidden md:block`) + `TableMobileList` (`block md:hidden`). |
+| 2 | minor | content | both | Header para 3 (LoadingSpinner-vs-Skeleton distinction) duplicates Usage Guidelines bullets 1+2. Drop the header paragraph. |
+| 3 | minor | ux | both | Full-screen overlay demo: `bg-surface` overlay sits over `bg-surface` content, so the overlay reads as a plain spinner card. Put "page content behind" wrapper on `bg-surface-subtle` so the white overlay reads as covering something. |
+| 4 | minor | styling | both | Convert the two `type-body-sm text-muted-foreground` sub-paragraphs in the header into two separate DS `Alert` (info variant) — matches recurring sub-para→Alert pattern (cf. Skeleton review #2). |
+| 5 | minor | content | both | Sizes intent (sm=inline / md=section / lg=full-page) is duplicated in the Sizes section paragraph AND Usage Guidelines bullet 3. Drop the Usage Guidelines bullet. |
+
+**Notes:**
+- Source-based review. Browser screenshot tooling returned blank frames after scroll; findings derived from full source read + one verified desktop screenshot at scrollY=0.
+- Dropped during grill-me: Sizes example wrapper missing `w-full` (intentional grouped layout, not a full-width demo).
