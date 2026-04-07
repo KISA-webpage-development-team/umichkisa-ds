@@ -1,4 +1,18 @@
-import { Container, StatusView, LinkButton, Button } from '@umichkisa-ds/web'
+import {
+  Container,
+  StatusView,
+  LinkButton,
+  Button,
+  Alert,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableMobileItem,
+  TableMobileList,
+  TableRow,
+} from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 
@@ -15,7 +29,7 @@ const withCodeCode = `import { StatusView } from '@umichkisa-ds/web'
 
 const customIconCode = `import { StatusView } from '@umichkisa-ds/web'
 
-<StatusView variant="error" icon="circle-x" title="서버 오류" description="잠시 후 다시 시도해 주세요." />`
+<StatusView variant="not-found" icon="search-x" />`
 
 const withActionCode = `import { StatusView, LinkButton, Button } from '@umichkisa-ds/web'
 
@@ -55,16 +69,23 @@ export default async function StatusViewPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">StatusView</h1>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground max-w-prose">
         Centered status message for error pages, auth gates, and empty states.
         Renders an icon, title, description, and optional action area within
-        its parent container.
+        its parent container. Each variant ships with Korean default text that
+        can be overridden via props.
       </p>
-      <p className="type-body-sm mb-8 text-muted-foreground max-w-prose">
-        StatusView fills its parent — the consumer controls the container size.
-        For full-page status screens, wrap it in a viewport-height container.
-        Each variant provides Korean default text that can be overridden via props.
-      </p>
+      <Alert variant="info" className="mb-8">
+        <p className="type-body-sm text-foreground">
+          StatusView fills its parent — the consumer controls the container
+          size. For full-page status screens, wrap it in a viewport-height
+          container (e.g.{' '}
+          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+            h-screen
+          </code>
+          ).
+        </p>
+      </Alert>
 
       {/* ── Examples ────────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
@@ -113,11 +134,12 @@ export default async function StatusViewPage() {
         <a href="/components/icon" className="text-link underline hover:text-brand-primary">Icon registry</a>{' '}
         to the{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">icon</code>{' '}
-        prop. Title and description can also be overridden.
+        prop. The variant still drives the default title and description — only
+        the icon changes.
       </p>
       <ComponentPreview code={customIconCode} highlightedCode={customIconHighlighted}>
         <div className="h-64 border border-border rounded-md w-full">
-          <StatusView variant="error" icon="circle-x" title="서버 오류" description="잠시 후 다시 시도해 주세요." />
+          <StatusView variant="not-found" icon="search-x" />
         </div>
       </ComponentPreview>
 
@@ -150,9 +172,11 @@ export default async function StatusViewPage() {
       {/* Full-screen pattern */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Full-screen pattern</h2>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        StatusView centers within its parent. For a full-page status screen,
-        wrap it in a viewport-height container. The component handles centering
-        automatically.
+        For a full-page status screen, wrap StatusView in a viewport-height
+        container.
+      </p>
+      <p className="type-caption mb-2 text-muted-foreground">
+        Preview shown at fixed height — in real usage, <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">h-screen</code> fills the viewport.
       </p>
       <ComponentPreview code={fullScreenCode} highlightedCode={fullScreenHighlighted}>
         <div className="h-80 border border-border rounded-md w-full">
@@ -167,46 +191,59 @@ export default async function StatusViewPage() {
       {/* ── Variant Defaults ────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Variant defaults</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        Each variant ships with a default icon, title, and description. All
-        can be overridden via props.
+        Default icon for each variant. Pass any of these names to the{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">icon</code>{' '}
+        prop to override across variants.
       </p>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Variant</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Icon</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Title</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">not-found</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">file-x</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">페이지를 찾을 수 없습니다</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">요청하신 페이지가 존재하지 않거나 이동되었습니다</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">not-authorized</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">shield-x</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">접근 불가</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">권한이 없습니다</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">not-logged-in</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">log-in</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">로그인 필요</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">로그인 후 이용해 주세요</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">error</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">triangle-alert</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">오류 발생</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">예기치 못한 오류가 발생했습니다</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table size="sm">
+            <TableHeader>
+              <TableRow>
+                <TableHead>Variant</TableHead>
+                <TableHead>Icon name</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">not-found</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">file-x</code></TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">not-authorized</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">shield-x</code></TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">not-logged-in</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">log-in</code></TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">error</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">triangle-alert</code></TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>not-found</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">file-x</code></span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>not-authorized</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">shield-x</code></span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>not-logged-in</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">log-in</code></span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>error</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">triangle-alert</code></span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
       {/* ── API Reference ───────────────────────────────────── */}
@@ -217,61 +254,102 @@ export default async function StatusViewPage() {
         prop is required. All other props are optional and override the
         variant defaults.
       </p>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Prop</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Type</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Default</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">variant</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;not-found&quot; | &quot;not-authorized&quot; | &quot;not-logged-in&quot; | &quot;error&quot;</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Required. Determines the default icon, title, and description.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">code</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Large display text above the icon (e.g. &quot;404&quot;, &quot;500&quot;).</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">icon</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">IconName</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">(variant default)</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Override the variant&apos;s default icon. See <a href="/components/icon" className="text-link underline hover:text-brand-primary">Icon</a> for available names.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">title</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">(variant default)</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Override the variant&apos;s default title text.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">description</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">(variant default)</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Override the variant&apos;s default description text.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">action</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Optional action area below the description (button, link, etc.).</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Merged via cn(). Use for layout utilities (width, height, margin, padding).</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table size="sm">
+            <TableHeader>
+              <TableRow>
+                <TableHead>Prop</TableHead>
+                <TableHead>Type</TableHead>
+                <TableHead>Default</TableHead>
+                <TableHead>Description</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">variant</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;not-found&quot; | &quot;not-authorized&quot; | &quot;not-logged-in&quot; | &quot;error&quot;</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Required. Determines the default icon, title, and description.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">code</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Large display text above the icon (e.g. &quot;404&quot;, &quot;500&quot;).</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">icon</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">IconName</code></TableCell>
+                <TableCell>(variant default)</TableCell>
+                <TableCell>Override the variant&apos;s default icon. See <a href="/components/icon" className="text-link underline hover:text-brand-primary">Icon</a> for available names.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">title</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell>(variant default)</TableCell>
+                <TableCell>Override the variant&apos;s default title text.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">description</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell>(variant default)</TableCell>
+                <TableCell>Override the variant&apos;s default description text.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">action</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Optional action area below the description (button, link, etc.).</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Merged via cn(). Use for layout utilities (width, height, margin, padding).</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>variant</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;not-found&quot; | &quot;not-authorized&quot; | &quot;not-logged-in&quot; | &quot;error&quot;</code></span>
+              <span className="type-caption text-muted-foreground">Required. Determines the default icon, title, and description.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>code</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground">Large display text above the icon (e.g. &quot;404&quot;, &quot;500&quot;).</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>icon</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">IconName</code> · default <em>variant default</em></span>
+              <span className="type-caption text-muted-foreground">Override the variant&apos;s default icon. See <a href="/components/icon" className="text-link underline hover:text-brand-primary">Icon</a> for available names.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>title</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code> · default <em>variant default</em></span>
+              <span className="type-caption text-muted-foreground">Override the variant&apos;s default title text.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>description</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code> · default <em>variant default</em></span>
+              <span className="type-caption text-muted-foreground">Override the variant&apos;s default description text.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>action</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground">Optional action area below the description (button, link, etc.).</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>className</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities (width, height, margin, padding).</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
     </Container>
