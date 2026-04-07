@@ -1,4 +1,18 @@
-import { Container, Icon } from '@umichkisa-ds/web'
+import {
+  Card,
+  Container,
+  Grid,
+  Icon,
+  IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+  TableMobileList,
+  TableMobileItem,
+} from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { SizesExample } from '@/components/SizesExample'
 import { highlight } from '@/lib/highlight'
@@ -30,14 +44,9 @@ const labelCode = `import { Icon } from '@umichkisa-ds/web'
 {/* Semantic — aria-label set, screen readers will announce it */}
 <Icon name="thumbs-up" label="Liked" />`
 
-const buttonCode = `import { Icon } from '@umichkisa-ds/web'
+const buttonCode = `import { IconButton } from '@umichkisa-ds/web'
 
-<button
-  aria-label="Delete"
-  className="flex items-center justify-center min-w-[44px] min-h-[44px] rounded-md hover:bg-surface-subtle"
->
-  <Icon name="trash-2" />
-</button>`
+<IconButton aria-label="Delete" icon="trash-2" />`
 
 export default async function IconPage() {
   const [defaultHighlighted, colorHighlighted, labelHighlighted, buttonHighlighted] = await Promise.all([
@@ -135,30 +144,23 @@ export default async function IconPage() {
         <Icon name="thumbs-up" label="Liked" />
       </ComponentPreview>
 
-      {/* Inside a button */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Inside a button</h3>
+      {/* Interactive icons */}
+      <h3 className="type-h3 mt-8 mb-2 text-foreground">Interactive icons</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           &lt;Icon&gt;
         </code>{' '}
-        is never interactive. Wrap in a{' '}
+        is never interactive — it has no hit target, no focus ring, and no accessible
+        role. For interactive icons (toolbar actions, close buttons, menu triggers),
+        use{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          &lt;button&gt;
-        </code>{' '}
-        or{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          &lt;a&gt;
+          &lt;IconButton&gt;
         </code>
-        . The wrapper provides the accessible label and the minimum 44×44px touch target.
+        . It provides the accessible label, focus behavior, and 44×44px touch target
+        for free.
       </p>
       <ComponentPreview code={buttonCode} highlightedCode={buttonHighlighted}>
-        <button
-          aria-label="Delete"
-          className="cursor-pointer
-          flex items-center justify-center min-w-[44px] min-h-[44px] rounded-md hover:bg-surface-subtle focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-focus-ring)] focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]"
-        >
-          <Icon name="trash-2" />
-        </button>
+        <IconButton aria-label="Delete" icon="trash-2" />
       </ComponentPreview>
 
       {/* ── Available Icons ──────────────────────────────────── */}
@@ -166,7 +168,7 @@ export default async function IconPage() {
       <p className="type-body-sm mb-4 text-muted-foreground max-w-prose">
         25 icons in the current registry (23 Lucide + 2 custom brand icons).
       </p>
-      <div className="grid grid-cols-[repeat(auto-fill,minmax(96px,1fr))] gap-4 my-6">
+      <Grid columns={{ base: 3, md: 4, lg: 6 }} gap="component" className="my-6">
         {([
           'arrow-left','arrow-right','chevron-right','chevron-down',
           'circle-minus','circle-plus','clock-9','external-link',
@@ -174,12 +176,12 @@ export default async function IconPage() {
           'minus','pencil','plus','reply','shopping-cart','thumbs-up',
           'ticket','trash-2','x','github','linkedin',
         ] as const).map((name) => (
-          <div key={name} className="flex flex-col items-center gap-2 p-3 rounded-lg bg-surface-subtle border border-border">
+          <Card key={name} className="items-center">
             <Icon name={name} size="md" />
-            <span className="type-caption font-mono text-muted-foreground text-center break-all">{name}</span>
-          </div>
+            <p className="type-caption font-mono text-muted-foreground text-center break-all">{name}</p>
+          </Card>
         ))}
-      </div>
+      </Grid>
 
       {/* ── API Reference ────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
@@ -198,54 +200,80 @@ export default async function IconPage() {
         </code>{' '}
         — TypeScript will catch invalid names at compile time.
       </p>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Prop</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Type</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Default</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">name</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">IconName</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Required. Lucide icon name in kebab-case. Must be a key in the DS registry.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;xs&#39; | &#39;sm&#39; | &#39;md&#39; | &#39;lg&#39; | &#39;xl&#39;</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;md&#39;</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Maps to a fixed pixel size (12 / 16 / 20 / 24 / 32).</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">label</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">
+      <div className="my-6">
+        <div className="hidden md:block">
+        <Table size="sm">
+          <TableHeader>
+            <TableRow>
+              <TableHead>Prop</TableHead>
+              <TableHead>Type</TableHead>
+              <TableHead>Default</TableHead>
+              <TableHead>Description</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">name</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">IconName</code></TableCell>
+              <TableCell>—</TableCell>
+              <TableCell>Required. Lucide icon name in kebab-case. Must be a key in the DS registry.</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;xs&#39; | &#39;sm&#39; | &#39;md&#39; | &#39;lg&#39; | &#39;xl&#39;</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;md&#39;</code></TableCell>
+              <TableCell>Maps to a fixed pixel size (12 / 16 / 20 / 24 / 32).</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">label</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+              <TableCell>—</TableCell>
+              <TableCell>
                 When provided: sets{' '}
                 <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>{' '}
                 on the SVG so screen readers announce it. When omitted:{' '}
                 <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-hidden=&quot;true&quot;</code>.
-              </td>
-            </tr>
-            <tr>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+              <TableCell>—</TableCell>
+              <TableCell>
                 Layout utilities only (
                 <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">block</code>
                 ,{' '}
                 <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">flex-shrink-0</code>
                 ). Never use for color or size.
-              </td>
-            </tr>
-          </tbody>
-        </table>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>name</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">IconName</code> · required</span>
+              <span className="type-caption text-muted-foreground">Lucide icon name in kebab-case. Must be a key in the DS registry.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>size</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;xs&#39; | &#39;sm&#39; | &#39;md&#39; | &#39;lg&#39; | &#39;xl&#39;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;md&#39;</code></span>
+              <span className="type-caption text-muted-foreground">Maps to a fixed pixel size (12 / 16 / 20 / 24 / 32).</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>label</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground">When provided, sets <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">aria-label</code> on the SVG. When omitted, the icon is <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">aria-hidden</code>.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>className</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground">Layout utilities only (<code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">block</code>, <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">flex-shrink-0</code>). Never use for color or size.</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
     </Container>
