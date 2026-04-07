@@ -1,4 +1,4 @@
-import { Container, LinkButton, Icon } from '@umichkisa-ds/web'
+import { Container, LinkButton, Icon, Grid, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 
@@ -118,12 +118,12 @@ export default async function LinkButtonPage() {
         Four variants for different levels of emphasis and intent.
       </p>
       <ComponentPreview code={variantsCode} highlightedCode={variantsHighlighted}>
-        <div className="flex items-center gap-4">
-          <LinkButton variant="primary" href="#">Primary</LinkButton>
-          <LinkButton variant="secondary" href="#">Secondary</LinkButton>
-          <LinkButton variant="tertiary" href="#">Tertiary</LinkButton>
-          <LinkButton variant="destructive" href="#">Destructive</LinkButton>
-        </div>
+        <Grid columns={{ base: 2, md: 4 }} gap="component" className="w-full md:px-16">
+          <LinkButton variant="primary" href="#" className="w-full">Primary</LinkButton>
+          <LinkButton variant="secondary" href="#" className="w-full">Secondary</LinkButton>
+          <LinkButton variant="tertiary" href="#" className="w-full">Tertiary</LinkButton>
+          <LinkButton variant="destructive" href="#" className="w-full">Destructive</LinkButton>
+        </Grid>
       </ComponentPreview>
 
       {/* Sizes */}
@@ -136,11 +136,11 @@ export default async function LinkButtonPage() {
         (default) for most UI.
       </p>
       <ComponentPreview code={sizesCode} highlightedCode={sizesHighlighted}>
-        <div className="flex items-center gap-4">
-          <LinkButton size="sm" href="#">Small</LinkButton>
-          <LinkButton size="md" href="#">Medium</LinkButton>
-          <LinkButton size="lg" href="#">Large</LinkButton>
-        </div>
+        <Grid columns={{ base: 3 }} gap="component" className="w-full items-center md:px-16">
+          <LinkButton size="sm" href="#" className="w-full">Small</LinkButton>
+          <LinkButton size="md" href="#" className="w-full">Medium</LinkButton>
+          <LinkButton size="lg" href="#" className="w-full">Large</LinkButton>
+        </Grid>
       </ComponentPreview>
 
       {/* With icon */}
@@ -206,12 +206,12 @@ export default async function LinkButtonPage() {
         to remove it from the tab order.
       </p>
       <ComponentPreview code={disabledCode} highlightedCode={disabledHighlighted}>
-        <div className="flex items-center gap-4">
-          <LinkButton variant="primary" disabled>Primary</LinkButton>
-          <LinkButton variant="secondary" disabled>Secondary</LinkButton>
-          <LinkButton variant="tertiary" disabled>Tertiary</LinkButton>
-          <LinkButton variant="destructive" disabled>Destructive</LinkButton>
-        </div>
+        <Grid columns={{ base: 2, md: 4 }} gap="component" className="w-full md:px-16">
+          <LinkButton variant="primary" href="#" disabled className="w-full">Primary</LinkButton>
+          <LinkButton variant="secondary" href="#" disabled className="w-full">Secondary</LinkButton>
+          <LinkButton variant="tertiary" href="#" disabled className="w-full">Tertiary</LinkButton>
+          <LinkButton variant="destructive" href="#" disabled className="w-full">Destructive</LinkButton>
+        </Grid>
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}
@@ -227,67 +227,113 @@ export default async function LinkButtonPage() {
         </code>
         , so any native anchor attribute is also accepted.
       </p>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Prop</th>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Type</th>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Default</th>
-              <th className="px-4 py-3 text-left type-caption uppercase border-b border-border text-muted-foreground">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">variant</code></td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&quot;primary&quot; | &quot;secondary&quot; | &quot;tertiary&quot; | &quot;destructive&quot;</code></td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&quot;primary&quot;</code></td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground">Visual style of the link button.</td>
-            </tr>
-            <tr>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size</code></td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&quot;sm&quot; | &quot;md&quot; | &quot;lg&quot;</code></td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&quot;md&quot;</code></td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground">Controls padding and font size. All values sit on the 4px spacing grid.</td>
-            </tr>
-            <tr>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">href</code></td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground">The URL to navigate to.</td>
-            </tr>
-            <tr>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">disabled</code></td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">boolean</code></td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">false</code></td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground">Renders as a non-interactive span when true.</td>
-            </tr>
-            <tr>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">target</code></td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground">Browsing context for the link (e.g. &quot;_blank&quot;).</td>
-            </tr>
-            <tr>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">rel</code></td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground">Link relationship (e.g. &quot;noopener noreferrer&quot;).</td>
-            </tr>
-            <tr>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">className</code></td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground">Merged via cn() (class merge utility). Use for layout utilities only — never override variant styles.</td>
-            </tr>
-            <tr>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">children</code></td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">ReactNode</code></td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 border-b border-border type-body-sm text-foreground">Label text, icons, or any content inside the link button.</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table size="sm">
+            <TableHeader>
+              <TableRow>
+                <TableHead>Prop</TableHead>
+                <TableHead>Type</TableHead>
+                <TableHead>Default</TableHead>
+                <TableHead>Description</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">variant</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;primary&#39; | &#39;secondary&#39; | &#39;tertiary&#39; | &#39;destructive&#39;</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;primary&#39;</code></TableCell>
+                <TableCell>Visual style of the link button.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;md&#39;</code></TableCell>
+                <TableCell>Controls padding and font size. All values sit on the 4px spacing grid.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">href</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>The URL to navigate to.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">disabled</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell>Renders as a non-interactive span when true.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">target</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Browsing context for the link (e.g. <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;_blank&quot;</code>).</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">rel</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Link relationship (e.g. <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;noopener noreferrer&quot;</code>).</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Merged via cn() (class merge utility). Use for layout utilities only — never override variant styles.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">React.ReactNode</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Label text, icons, or any content inside the link button.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>variant</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;primary&#39; | &#39;secondary&#39; | &#39;tertiary&#39; | &#39;destructive&#39;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;primary&#39;</code></span>
+              <span className="type-caption text-muted-foreground">Visual style of the link button.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>size</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;md&#39;</code></span>
+              <span className="type-caption text-muted-foreground">Controls padding and font size. All values sit on the 4px spacing grid.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>href</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground">The URL to navigate to.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>disabled</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground">Renders as a non-interactive span when true.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>target</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground">Browsing context for the link (e.g. <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;_blank&quot;</code>).</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>rel</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground">Link relationship (e.g. <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;noopener noreferrer&quot;</code>).</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>className</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground">Merged via cn() (class merge utility). Use for layout utilities only — never override variant styles.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>children</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">React.ReactNode</code></span>
+              <span className="type-caption text-muted-foreground">Label text, icons, or any content inside the link button.</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
     </Container>
