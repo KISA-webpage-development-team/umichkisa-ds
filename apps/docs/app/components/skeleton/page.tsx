@@ -1,4 +1,16 @@
-import { Container, Skeleton } from '@umichkisa-ds/web'
+import {
+  Alert,
+  Container,
+  Skeleton,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableMobileItem,
+  TableMobileList,
+  TableRow,
+} from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 
@@ -44,7 +56,7 @@ export default async function SkeletonPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Skeleton</h1>
+      <h1 className="type-h1 mb-4 text-foreground">Skeleton</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
         Visual placeholder for content that is loading. Renders a pulsing block
         that approximates the shape of the real content, reducing perceived wait
@@ -55,14 +67,16 @@ export default async function SkeletonPage() {
         </code>.
         The skeleton pulses automatically using a CSS opacity animation.
       </p>
-      <p className="type-body-sm mb-8 text-muted-foreground max-w-prose">
-        When grouping multiple skeletons as a loading state, wrap them in a
-        container with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          aria-busy=&quot;true&quot;
-        </code>{' '}
-        to communicate the loading state to screen readers.
-      </p>
+      <Alert variant="info" className="mb-8">
+        <p className="type-body-sm text-foreground">
+          When grouping multiple skeletons as a loading state, wrap them in a
+          container with{' '}
+          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+            aria-busy=&quot;true&quot;
+          </code>{' '}
+          to communicate the loading state to screen readers.
+        </p>
+      </Alert>
 
       {/* ── Examples ────────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
@@ -132,31 +146,58 @@ export default async function SkeletonPage() {
         </code>{' '}
         attributes.
       </p>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Prop</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Type</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Default</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">variant</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;rectangular&quot; | &quot;circular&quot;</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;rectangular&#39;</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Shape of the placeholder. Rectangular applies <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">rounded-md</code>; circular applies full rounding for avatars.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Controls dimensions and layout. Use height and width utilities to match the content being replaced.</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table size="sm">
+            <TableHeader>
+              <TableRow>
+                <TableHead>Prop</TableHead>
+                <TableHead>Type</TableHead>
+                <TableHead>Default</TableHead>
+                <TableHead>Description</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">variant</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;rectangular&#39; | &#39;circular&#39;</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;rectangular&#39;</code></TableCell>
+                <TableCell>Shape of the placeholder. Rectangular applies <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">rounded-md</code>; circular applies full rounding for avatars.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Controls dimensions and layout. Use height and width utilities to match the content being replaced.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">…rest</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">HTMLDivAttributes</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Forwarded to the underlying <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&lt;div&gt;</code> (e.g. <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">aria-hidden</code>, <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">role</code>, <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">style</code>).</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>variant</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;rectangular&#39; | &#39;circular&#39;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;rectangular&#39;</code></span>
+              <span className="type-caption text-muted-foreground">Shape of the placeholder. Rectangular applies <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">rounded-md</code>; circular applies full rounding for avatars.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>className</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground">Controls dimensions and layout. Use height and width utilities to match the content being replaced.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>…rest</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">HTMLDivAttributes</code></span>
+              <span className="type-caption text-muted-foreground">Forwarded to the underlying <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&lt;div&gt;</code> (e.g. <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">aria-hidden</code>, <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">role</code>, <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">style</code>).</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
     </Container>
