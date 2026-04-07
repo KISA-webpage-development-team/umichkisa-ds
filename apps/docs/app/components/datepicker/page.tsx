@@ -162,7 +162,7 @@ export default async function DatePickerPage() {
     <Container size="md" as="article">
 
       {/* -- Header -------------------------------------------------- */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">DatePicker</h1>
+      <h1 className="type-h1 mb-4 text-foreground">DatePicker</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         A date input that opens a Calendar in a popover. Available as a single date
         picker and a date range picker for selecting start and end dates.

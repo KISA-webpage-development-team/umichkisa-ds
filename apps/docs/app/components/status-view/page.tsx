@@ -68,7 +68,7 @@ export default async function StatusViewPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">StatusView</h1>
+      <h1 className="type-h1 mb-4 text-foreground">StatusView</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Centered status message for error pages, auth gates, and empty states.
         Renders an icon, title, description, and optional action area within

@@ -124,16 +124,16 @@ export default async function AlertPage() {
     <Container size="md" as="article">
 
       {/* -- Header -------------------------------------------------- */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Alert</h1>
+      <h1 className="type-h1 mb-4 text-foreground">Alert</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Static inline feedback message for communicating status, warnings,
         errors, and informational content to users.
       </p>
-      <p className="type-body-sm mb-8 text-muted-foreground max-w-prose">
+      <Alert variant="info" className="mb-8">
         Use Alert for persistent, contextual messages that appear inline with
         content. For transient notifications that appear temporarily and
         dismiss automatically, use Toast.
-      </p>
+      </Alert>
 
       {/* -- Examples ------------------------------------------------- */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
