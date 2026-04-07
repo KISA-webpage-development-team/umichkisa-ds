@@ -35,14 +35,13 @@ If no argument (including when user says "pick up the task"):
 1. Read `docs/DS_CONSTRAINTS.md`
 2. Read the page source file (e.g., `apps/docs/app/foundation/colors/overview/page.tsx`)
 3. Ensure `docs/reviews/docs-app-review.md` exists — create with header if not
-4. Ensure `docs/reviews/screenshots/` directory exists
 
 ## Step 1: Desktop Review (1280px)
 
 1. Set browser to **1280px** width
 2. Navigate to `https://vnw20xbg-3000.asse.devtunnels.ms<page-path>` (e.g., `https://vnw20xbg-3000.asse.devtunnels.ms/foundation/colors/overview`)
-3. Screenshot the full page — scroll top to bottom, capture each viewport
-4. Run three review passes on each screenshot, **one by one** with the user:
+3. View the full page — scroll top to bottom, examine each viewport
+4. Run three review passes, **one by one** with the user:
 
 ### Pass A: DS Constraint Check (`ds-violation`)
 
@@ -77,7 +76,6 @@ Read the page source and rendered text. Check:
    - Type: `layout`, `styling`, `ds-violation`, `content`, `ux`, `accessibility`, `responsive`
    - Viewport: `desktop`
    - Description
-   - Screenshot saved to `docs/reviews/screenshots/<page-slug>-<n>.png`
 
 _No checkpoint here — proceed directly to Step 2._
 
@@ -100,9 +98,9 @@ _No checkpoint here — proceed directly to Step 3._
 ```markdown
 ## <page-path>
 
-| # | Severity | Type | Viewport | Finding | Screenshot |
-|---|----------|------|----------|---------|------------|
-| 1 | major | ds-violation | desktop | ... | [screenshot](screenshots/<slug>-1.png) |
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | desktop | ... |
 
 **Notes:** (optional — include dropped findings and reasons)
 ```
@@ -156,5 +154,4 @@ If zero findings:
 - Spec: `docs/specs/review-docs-app-ui-skill-design.md`
 - Constraints: `docs/DS_CONSTRAINTS.md`
 - Findings: `docs/reviews/docs-app-review.md`
-- Screenshots: `docs/reviews/screenshots/`
 - Fix plans: `docs/plans/review-fix-<page-slug>.md`
