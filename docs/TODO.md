@@ -66,14 +66,14 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Fix `/components/button`
 - [x] Review `/components/icon-button`
 - [x] Fix `/components/icon-button`
-- [ ] Review `/components/link-button`
-- [ ] Fix `/components/link-button`
+- [x] Review `/components/link-button`
+- [x] Fix `/components/link-button`
 
 ### Batch 8 — Components
-- [ ] Review `/components/icon`
-- [ ] Fix `/components/icon`
-- [ ] Review `/components/avatar`
-- [ ] Fix `/components/avatar`
+- [x] Review `/components/icon`
+- [ ] Fix `/components/icon` — plan: `docs/plans/review-fix-components-icon.md`
+- [x] Review `/components/avatar`
+- [ ] Fix `/components/avatar` — plan: `docs/plans/review-fix-components-avatar.md`
 - [ ] Review `/components/skeleton`
 - [ ] Fix `/components/skeleton`
 - [ ] Review `/components/loading-spinner`

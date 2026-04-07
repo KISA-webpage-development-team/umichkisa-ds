@@ -342,3 +342,47 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 **Notes:**
 - Review was source-based. The chrome `resize_window` tool was not applying to the actual viewport this session (innerWidth stuck at 1920), so per-viewport (1280 / 375) capture was not possible. Findings are derived from the page source, the `IconButton` and `Button` implementations, DS_CONSTRAINTS, and a comparison against the badge page.
 - Verified (not findings): Sizes 32 / 40 / 48 match `IconButton.tsx` (`p-2`/`p-2.5`/`p-3` + icon `sm`/`md`/`lg`); default `variant="secondary"` matches source; Button does not support `asChild`, so omitting it from the API table is correct; IconButton intentionally provides its own size prop instead of forwarding Button's, so omitting Button's `size` from the API table is correct.
+
+## /components/link-button
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation / responsive | both | API Reference uses a raw `<table>` with hardcoded utility classes. Migrate to DS `Table` family (`hidden md:block`) + `TableMobileList` (`block md:hidden`) mirroring the button page 1:1. Mobile users currently get a horizontally-scrolling table with no mobile-list fallback, violating the "API tables need desktop + mobile list" rule. |
+| 2 | minor | styling | desktop | Variants, Sizes, and Disabled demos use raw `flex items-center gap-4` wrappers. Wrap all three demos in DS `Grid` to match the button page (commit `c9d1dc9`) for consistent demo button widths. |
+| 3 | minor | content | both | Disabled preview JSX (lines 210–213) omits `href` while the displayed `disabledCode` block shows `href="#"`. Add `href="#"` to the rendered JSX so the live preview matches the code shown to readers. |
+
+**Dropped findings:**
+- Raw `<code>` chip repetitions (~25×): deferred to the existing TODO item to introduce `<InlineCode>` and migrate all docs pages in one sweep.
+- "When to use" `<ul>`/`<li>` pattern: only link-button and container have a "When to use" section — no established alternate pattern to align with.
+
+**Notes:**
+- Review was largely source-based. Devtunnel + Chrome screenshot capture was unstable this session (Page.captureScreenshot returned blank frames after the first viewport), so per-viewport visual confirmation at 1280 / 375 was limited. Findings are derived from the page source, comparison against the recently-migrated button and icon-button pages, and `DS_CONSTRAINTS.md`.
+
+## /components/icon
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | API Reference uses raw `<table>` instead of DS `Table` component, and is missing the mobile `TableMobileList` companion. Migrate to `Table` (hidden md:block) + `TableMobileList` (block md:hidden) per `/components/button` and `/components/icon-button` precedent. |
+| 2 | major | ds-violation | both | "Inside a button" example uses an inline raw `<button>` with arbitrary values (`outline-[var(--color-focus-ring)]`, `shadow-[0_0_0_4px_var(--color-brand-primary)]`, `min-w-[44px]`, `min-h-[44px]`) and a hand-rolled focus pattern. DS_CONSTRAINTS bans arbitrary values. Replace with the DS `IconButton` component, which already encodes the dual-ring focus and 44×44 touch target. |
+| 3 | major | ds-violation | both | Available Icons grid uses a raw `<div className="grid grid-cols-...">` with raw tile `<div>`s (`rounded-lg`, `bg-surface-subtle`, hand-spaced). Replace with DS `Grid` + `Card` components, matching the `ColorSwatch` precedent. Default Card styling (`bg-surface`, `rounded-md`); only `items-center` layout override. |
+
+**Notes:**
+- Finding #4 (Props table TODO line 184) dropped after grill-me — the page's existing 4-row API Reference covers all props on `<Icon>` (`name`, `size`, `label`, `className`). TODO line 184 should be checked off as already-satisfied as part of this fix.
+- Inline `<code>` chip repetitions: deferred to TODO line 179 (`<InlineCode>` component sweep).
+- Source-only review. Pass B (visual UI/UX at 1280/375) was skipped due to Chrome session instability (rogue tabs, blank renders, frozen renderer). Recommend a visual spot-check after fixes land.
+
+## /components/avatar
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | API Reference uses a raw `<table>` with hardcoded utility classes. Migrate to DS `Table` family (`hidden md:block`) + `TableMobileList` (`block md:hidden`) mirroring the icon-button page 1:1. |
+| 2 | minor | content | both | "All props are optional." is misleading — `name` is functionally important (alt text + initials fallback). Reword to note `name` is strongly recommended. |
+
+**Dropped findings:**
+- Raw `<code>` chip repetitions: deferred to the existing TODO item for `<InlineCode>` component sweep.
+- Table body cell `type-*` inconsistency: subsumed by Finding #1 (DS Table cells handle their own typography).
+- Sizes prose vs. props table: not actually duplicate — prose describes use cases, table describes pixel values.
+- `nameKor`/`nameEng` line: KISA-internal context is appropriate for this DS; line stays.
+
+**Notes:**
+- Source-based review. Per-viewport screenshot capture skipped per user instruction.
