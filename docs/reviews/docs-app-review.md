@@ -451,3 +451,31 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 **Notes:**
 - Source-based review. Browser resize/screenshot stalled in this session; findings derived from `apps/docs/app/components/status-view/page.tsx` and `packages/web/src/components/feedback/StatusView.tsx`.
 - Dropped: raw inline `<code>` utilities (deferred to `<InlineCode>` sweep), inline-code `text-foreground` consistency (moot once swept), `h-64` wrap on `not-found` (content-driven, acceptable), 3× viewport-wrap repetition (folded into #2), Variant defaults duplication (folded into #4).
+
+## /components/accordion
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | Migrate 4 raw API Reference tables (Accordion, AccordionItem, AccordionTrigger, AccordionContent) → DS `Table` (`hidden md:block`) + `TableMobileList` (`block md:hidden`) |
+| 2 | minor | ds-violation | desktop | h1 has redundant `font-sejong-bold tracking-tight` — `type-h1` already sets these |
+| 3 | major | content/accessibility | both | Add "Keyboard interactions" section after API Reference: Space/Enter toggles, ↓/↑ moves between triggers, Home/End jumps to first/last |
+| 4 | minor | content | both | "Without chevron" prose should warn: only use when trigger content self-signals interactivity (e.g., numbered steps) |
+
+**Notes:**
+- Source-based review. Browser resize/screenshot stalled in this session; findings derived from full read of `apps/docs/app/components/accordion/page.tsx` against `docs/DS_CONSTRAINTS.md`.
+- Dropped: raw inline `<code>` utilities (deferred to global `<InlineCode>` sweep). Disabled-item DOM-tree note (too niche).
+
+## /components/tabs
+
+| # | Severity | Type | Viewport | Finding |
+|---|---|---|---|---|
+| 1 | major | ds-violation | both | API Reference uses 4 raw `<table>` blocks. Migrate each (Tabs, TabsList, TabsTrigger, TabsContent) to DS `Table` (hidden md:block) + `TableMobileList` (block md:hidden). |
+| 2 | minor | content | both | Duplicate "Disabled triggers are skipped during keyboard navigation" — present in both the Disabled example deck and the TabsTrigger `disabled` API row. Remove from the example deck; API row is canonical. |
+| 3 | minor | layout | both | `Accessibility` is rendered as an `h3` inside Examples but isn't an example. Promote to top-level `h2` and place after API Reference (matches `/components/alert`). |
+| 4 | minor | content / ds-violation | both | The `type-body-sm` muted "deck" intro paragraph mixes guidance, capability, and constraints, and duplicates the TabsTrigger `children` API row ("accepts any children"). Convert the deck into a DS `Alert` (info variant) holding the underline-vs-pill guidance only; drop the duplicated "accepts any children" sentence. |
+| 5 | minor | ds-violation | both | `<h1>` declares `font-sejong-bold tracking-tight` manually — `type-h1` already encodes both. Remove the redundant utilities. |
+
+**Notes:**
+- Source-based review. Browser viewport refused to resize/refresh reliably this session; findings derived from full read of `apps/docs/app/components/tabs/page.tsx` against `docs/DS_CONSTRAINTS.md`.
+- Dropped: raw inline `<code>` utilities (deferred to global `<InlineCode>` sweep).
+- Bonus scope folded into the fix plan: (a) apply #4 deck→Alert pattern to `/components/alert` (which uses the same deck pattern); (b) sweep #5 across all 31 component pages — every reviewed page still carries the redundant `font-sejong-bold tracking-tight` on `<h1>`, missed by prior reviews.
