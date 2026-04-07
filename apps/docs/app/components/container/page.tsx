@@ -80,7 +80,7 @@ export default async function ContainerPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Container</h1>
+      <h1 className="type-h1 mb-4 text-foreground">Container</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
         Constrains content to a maximum width with responsive horizontal padding
         ({' '}

@@ -91,7 +91,7 @@ export default function FormsPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Forms</h1>
+      <h1 className="type-h1 mb-4 text-foreground">Forms</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         How to compose form components in the KISA design system.{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">

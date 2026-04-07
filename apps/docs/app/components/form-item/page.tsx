@@ -136,7 +136,7 @@ export default async function FormItemPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">FormItem</h1>
+      <h1 className="type-h1 mb-4 text-foreground">FormItem</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
         Layout wrapper that composes a label, form control, and optional description/error text
         for consistent form field structure. FormItem is presentation-only — it does not manage

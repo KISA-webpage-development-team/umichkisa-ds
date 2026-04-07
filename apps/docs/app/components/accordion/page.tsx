@@ -120,7 +120,7 @@ export default async function AccordionPage() {
     <Container size="md" as="article">
 
       {/* -- Header -------------------------------------------------- */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Accordion</h1>
+      <h1 className="type-h1 mb-4 text-foreground">Accordion</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Vertically stacked set of collapsible sections. Each section has a
         trigger that reveals or hides its associated content panel.

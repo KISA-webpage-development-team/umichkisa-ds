@@ -59,7 +59,7 @@ export default async function AvatarPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Avatar</h1>
+      <h1 className="type-h1 mb-4 text-foreground">Avatar</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
         Displays a user profile image with automatic fallback to initials or a
         generic icon. Supports three sizes and handles image load errors

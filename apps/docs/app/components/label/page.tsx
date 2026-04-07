@@ -59,7 +59,7 @@ export default async function LabelPage() {
     <Container size="md" as="article">
 
       {/* ── Header ──────────────────────────────────────────── */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Label</h1>
+      <h1 className="type-h1 mb-4 text-foreground">Label</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
         Form label with an optional required indicator. Renders a native{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">

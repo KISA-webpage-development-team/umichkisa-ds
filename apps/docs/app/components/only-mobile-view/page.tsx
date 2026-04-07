@@ -30,7 +30,7 @@ export default async function OnlyMobileViewPage() {
     <Container size="md" as="article">
 
       {/* -- Header -------------------------------------------------- */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">OnlyMobileView</h1>
+      <h1 className="type-h1 mb-4 text-foreground">OnlyMobileView</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Gate component that renders its children on mobile screens and displays
         a full-screen overlay on desktop, indicating the page is mobile-only.

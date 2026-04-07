@@ -62,7 +62,7 @@ export default async function ToggleGroupPage() {
     <Container size="md" as="article">
 
       {/* -- Header -------------------------------------------------- */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">ToggleGroup</h1>
+      <h1 className="type-h1 mb-4 text-foreground">ToggleGroup</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         A group of small buttons for switching between a small set of
         mutually exclusive options. Use ToggleGroup for view switches,

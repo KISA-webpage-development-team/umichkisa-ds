@@ -101,7 +101,7 @@ export default async function ToastPage() {
     <Container size="md" as="article">
 
       {/* -- Header -------------------------------------------------- */}
-      <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Toast</h1>
+      <h1 className="type-h1 mb-4 text-foreground">Toast</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Ephemeral notifications that appear temporarily to provide feedback
         about an action or event without interrupting the user's workflow.
