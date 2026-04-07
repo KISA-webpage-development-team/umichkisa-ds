@@ -1,4 +1,16 @@
-import { Container, LoadingSpinner } from '@umichkisa-ds/web'
+import {
+  Alert,
+  Container,
+  LoadingSpinner,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+  TableMobileList,
+  TableMobileItem,
+} from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 
@@ -44,31 +56,37 @@ export default async function LoadingSpinnerPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">LoadingSpinner</h1>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground max-w-prose">
         Animated spinner for indicating loading state. Renders an accessible
         spinning indicator that can optionally display a visible label.
       </p>
-      <p className="type-body-sm mb-4 text-muted-foreground max-w-prose">
-        The{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          label
-        </code>{' '}
-        prop always sets an{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          aria-label
-        </code>{' '}
-        for screen readers. By default the label is invisible. Pass{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          showLabel
-        </code>{' '}
-        to also render it visually below the spinner.
-      </p>
-      <p className="type-body-sm mb-8 text-muted-foreground max-w-prose">
-        Use <strong>LoadingSpinner</strong> for indeterminate waits such as data
-        fetching or form submission. Use <strong>Skeleton</strong> for
-        layout-preserving content placeholders where the shape of the content is
-        known ahead of time.
-      </p>
+
+      <div className="my-4 max-w-prose">
+        <Alert variant="info">
+          The{' '}
+          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+            label
+          </code>{' '}
+          prop always sets an{' '}
+          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+            aria-label
+          </code>{' '}
+          for screen readers. By default the label is invisible. Pass{' '}
+          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+            showLabel
+          </code>{' '}
+          to also render it visually below the spinner.
+        </Alert>
+      </div>
+
+      <div className="my-4 mb-8 max-w-prose">
+        <Alert variant="info">
+          Use <strong>LoadingSpinner</strong> for indeterminate waits such as
+          data fetching or form submission. Use <strong>Skeleton</strong> for
+          layout-preserving content placeholders where the shape of the content
+          is known ahead of time.
+        </Alert>
+      </div>
 
       {/* ── Examples ────────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
@@ -159,12 +177,12 @@ export default async function LoadingSpinnerPage() {
         The contained preview below simulates the effect.
       </p>
       <ComponentPreview code={overlayCode} highlightedCode={overlayHighlighted}>
-        <div className="relative rounded-md border border-border w-full h-48 overflow-hidden">
-          <div className="absolute inset-0 flex items-center justify-center bg-surface z-10">
-            <LoadingSpinner size="lg" label="Loading..." showLabel />
-          </div>
+        <div className="relative rounded-md border border-border w-full h-48 overflow-hidden bg-surface-subtle">
           <div className="p-4">
             <p className="type-body text-muted-foreground">Page content behind overlay</p>
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center bg-surface z-10">
+            <LoadingSpinner size="lg" label="Loading..." showLabel />
           </div>
         </div>
       </ComponentPreview>
@@ -181,21 +199,6 @@ export default async function LoadingSpinnerPage() {
           Use <strong>Skeleton</strong> when you know the layout shape and want
           to preserve it during loading, reducing layout shift.
         </li>
-        <li className="type-body text-foreground">
-          Prefer{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-            sm
-          </code>{' '}
-          for inline contexts,{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-            md
-          </code>{' '}
-          for section loaders, and{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-            lg
-          </code>{' '}
-          for prominent or full-page loading states.
-        </li>
       </ul>
 
       {/* ── API Reference ────────────────────────────────────── */}
@@ -203,43 +206,69 @@ export default async function LoadingSpinnerPage() {
       <p className="type-body mb-4 text-foreground max-w-prose">
         All props are optional.
       </p>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Prop</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Type</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Default</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;sm&quot; | &quot;md&quot; | &quot;lg&quot;</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;md&#39;</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Spinner diameter. sm = 20px, md = 32px, lg = 48px.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">label</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;Loading&#39;</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Accessible label for screen readers. Always applied as <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">showLabel</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Render the label text visually below the spinner.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Applied to the outer wrapper div for layout and positioning.</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table size="sm">
+            <TableHeader>
+              <TableRow>
+                <TableHead>Prop</TableHead>
+                <TableHead>Type</TableHead>
+                <TableHead>Default</TableHead>
+                <TableHead>Description</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;md&#39;</code></TableCell>
+                <TableCell>Spinner diameter. sm = 20px, md = 32px, lg = 48px.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">label</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;Loading&#39;</code></TableCell>
+                <TableCell>Accessible label for screen readers. Always applied as <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">aria-label</code>.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">showLabel</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell>Render the label text visually below the spinner.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Applied to the outer wrapper div for layout and positioning.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>size</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;md&#39;</code></span>
+              <span className="type-caption text-muted-foreground">Spinner diameter. sm = 20px, md = 32px, lg = 48px.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>label</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;Loading&#39;</code></span>
+              <span className="type-caption text-muted-foreground">Accessible label for screen readers. Always applied as <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">aria-label</code>.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>showLabel</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground">Render the label text visually below the spinner.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>className</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground">Applied to the outer wrapper div for layout and positioning.</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
     </Container>
