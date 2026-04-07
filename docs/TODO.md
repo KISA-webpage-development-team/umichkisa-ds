@@ -81,7 +81,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 
 ### Batch 9 — Components
 - [x] Review `/components/alert`
-- [ ] Fix `/components/alert` — plan: `docs/plans/review-fix-components-alert.md`
+- [x] Fix `/components/alert` — plan: `docs/plans/review-fix-components-alert.md`
 - [x] Review `/components/status-view`
 - [ ] Fix `/components/status-view` — plan: `docs/plans/review-fix-status-view.md`
 - [x] Review `/components/divider`
