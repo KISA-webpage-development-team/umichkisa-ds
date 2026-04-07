@@ -83,7 +83,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Review `/components/alert`
 - [x] Fix `/components/alert` — plan: `docs/plans/review-fix-components-alert.md`
 - [x] Review `/components/status-view`
-- [ ] Fix `/components/status-view` — plan: `docs/plans/review-fix-status-view.md`
+- [x] Fix `/components/status-view` — plan: `docs/plans/review-fix-status-view.md`
 - [x] Review `/components/divider`
 - [x] Fix `/components/divider` — plan: `docs/plans/review-fix-divider.md`
 
