@@ -1,5 +1,6 @@
 import {
   Container,
+  Alert,
   Accordion,
   AccordionItem,
   AccordionTrigger,
@@ -139,11 +140,11 @@ export default async function AccordionPage() {
         Vertically stacked set of collapsible sections. Each section has a
         trigger that reveals or hides its associated content panel.
       </p>
-      <p className="type-body-sm mb-8 text-muted-foreground max-w-prose">
+      <Alert variant="info" className="mb-8">
         Use Accordion for progressive disclosure — FAQs, settings panels,
         step-by-step guides. For tabbed content that shows one panel at a
         time without collapsing, use Tabs.
-      </p>
+      </Alert>
 
       {/* -- Examples ------------------------------------------------- */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
