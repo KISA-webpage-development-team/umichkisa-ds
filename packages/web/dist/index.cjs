@@ -206,6 +206,7 @@ var registry = {
   "pencil": import_lucide_react.Pencil,
   "plus": import_lucide_react.Plus,
   "reply": import_lucide_react.Reply,
+  "search-x": import_lucide_react.SearchX,
   "shield-x": import_lucide_react.ShieldX,
   "shopping-cart": import_lucide_react.ShoppingCart,
   "smartphone": import_lucide_react.Smartphone,
