@@ -72,8 +72,8 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 ### Batch 8 — Components
 - [ ] Review `/components/icon`
 - [ ] Fix `/components/icon`
-- [ ] Review `/components/avatar`
-- [ ] Fix `/components/avatar`
+- [x] Review `/components/avatar`
+- [x] Fix `/components/avatar` — plan: `docs/plans/review-fix-components-avatar.md`
 - [ ] Review `/components/skeleton`
 - [ ] Fix `/components/skeleton`
 - [ ] Review `/components/loading-spinner`
