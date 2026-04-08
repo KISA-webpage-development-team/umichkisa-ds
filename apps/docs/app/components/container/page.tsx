@@ -1,4 +1,14 @@
-import { Container } from '@umichkisa-ds/web'
+import {
+  Container,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableMobileItem,
+  TableMobileList,
+  TableRow,
+} from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 
@@ -143,56 +153,82 @@ export default async function ContainerPage() {
             <span className="type-caption text-brand-foreground">1536px — page shell</span>
           </div>
           {/* md — 768/1536 = 50% */}
-          <div className="w-1/2 rounded-md bg-brand-primary/80 px-3 py-2 flex items-center justify-between">
+          <div className="w-1/2 rounded-md bg-brand-primary px-3 py-2 flex items-center justify-between">
             <span className="type-caption text-brand-foreground">md</span>
             <span className="type-caption text-brand-foreground">768px</span>
           </div>
-          {/* sm — 640/1536 ≈ 42% */}
-          <div className="w-[42%] rounded-md bg-brand-primary/60 px-3 py-2 flex items-center justify-between">
+          {/* sm — 640/1536 ≈ 40% */}
+          <div className="w-2/5 rounded-md bg-brand-primary px-3 py-2 flex items-center justify-between">
             <span className="type-caption text-brand-foreground">sm</span>
             <span className="type-caption text-brand-foreground">640px</span>
           </div>
-          {/* prose — ~520/1536 ≈ 34% */}
-          <div className="w-[34%] rounded-md bg-brand-primary/40 px-3 py-2 flex items-center justify-between">
-            <span className="type-caption text-foreground">prose</span>
-            <span className="type-caption text-foreground">~65ch</span>
+          {/* prose — ~520/1536 ≈ 33% */}
+          <div className="w-1/3 rounded-md bg-brand-primary px-3 py-2 flex items-center justify-between">
+            <span className="type-caption text-brand-foreground">prose</span>
+            <span className="type-caption text-brand-foreground">~65ch</span>
           </div>
         </div>
       </ComponentPreview>
 
       <h3 className="type-h3 mt-6 mb-2 text-foreground">When to use each size</h3>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Size</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Max Width</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Use Case</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">default</code></td>
-              <td className="px-4 py-3 type-body-sm text-muted-foreground">1536px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Standard page layout — most pages use this.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">md</code></td>
-              <td className="px-4 py-3 type-body-sm text-muted-foreground">768px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Settings pages, auth forms, focused workflows.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">sm</code></td>
-              <td className="px-4 py-3 type-body-sm text-muted-foreground">640px</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Login/signup forms, single-column dialogs, narrow focused UI.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">prose</code></td>
-              <td className="px-4 py-3 type-body-sm text-muted-foreground">~65ch</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Articles, blog posts, long-form text. Use for text-heavy content; use <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">sm</code> for form-heavy content.</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table size="sm">
+            <TableHeader>
+              <TableRow>
+                <TableHead>Size</TableHead>
+                <TableHead>Max Width</TableHead>
+                <TableHead>Use Case</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">default</code></TableCell>
+                <TableCell>1536px</TableCell>
+                <TableCell>Standard page layout — most pages use this.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">md</code></TableCell>
+                <TableCell>768px</TableCell>
+                <TableCell>Settings pages, auth forms, focused workflows.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">sm</code></TableCell>
+                <TableCell>640px</TableCell>
+                <TableCell>Login/signup forms, single-column dialogs, narrow focused UI.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">prose</code></TableCell>
+                <TableCell>~65ch</TableCell>
+                <TableCell>Articles, blog posts, long-form text. Use for text-heavy content; use <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">sm</code> for form-heavy content.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>default</strong></span>
+              <span className="type-caption text-muted-foreground">1536px</span>
+              <span className="type-caption text-muted-foreground">Standard page layout — most pages use this.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>md</strong></span>
+              <span className="type-caption text-muted-foreground">768px</span>
+              <span className="type-caption text-muted-foreground">Settings pages, auth forms, focused workflows.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>sm</strong></span>
+              <span className="type-caption text-muted-foreground">640px</span>
+              <span className="type-caption text-muted-foreground">Login/signup forms, single-column dialogs, narrow focused UI.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>prose</strong></span>
+              <span className="type-caption text-muted-foreground">~65ch</span>
+              <span className="type-caption text-muted-foreground">Articles, blog posts, long-form text. Use for text-heavy content; <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">sm</code> for form-heavy.</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
       {/* ── Semantic Elements ───────────────────────────────── */}
@@ -239,7 +275,7 @@ export default async function ContainerPage() {
       </p>
 
       {/* Pattern 1: Page structure */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Page-level structure (recommended)</h3>
+      <h3 className="type-h3 mt-8 mb-2 text-foreground">Page-level structure (recommended)</h3>
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
         Structure your page so banners are siblings to Containers, not children.
         Close the Container before the banner, then open a new one after.
@@ -366,51 +402,69 @@ export default async function ContainerPage() {
 
       {/* ── API Reference ────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
-      <p className="type-body mb-4 text-foreground max-w-prose">
-        All props are optional. Container extends native HTML element attributes
-        based on the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          as
-        </code>{' '}
-        prop.
-      </p>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Prop</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Type</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Default</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;default&quot; | &quot;md&quot; | &quot;sm&quot; | &quot;prose&quot;</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;default&quot;</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Maximum width constraint. default (1536px), md (768px), sm (640px), prose (~65ch).</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">as</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;div&quot; | &quot;section&quot; | &quot;main&quot; | &quot;article&quot; | &quot;header&quot; | &quot;footer&quot; | &quot;nav&quot;</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;div&quot;</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">HTML element to render. Use semantic elements for accessibility landmarks.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Merged via cn() (class merge utility). Add vertical padding, background, etc.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Content to constrain.</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table size="sm">
+            <TableHeader>
+              <TableRow>
+                <TableHead>Prop</TableHead>
+                <TableHead>Type</TableHead>
+                <TableHead>Default</TableHead>
+                <TableHead>Description</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;default&quot; | &quot;md&quot; | &quot;sm&quot; | &quot;prose&quot;</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;default&quot;</code></TableCell>
+                <TableCell>Maximum width constraint. default (1536px), md (768px), sm (640px), prose (~65ch).</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">as</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;div&quot; | &quot;section&quot; | &quot;main&quot; | &quot;article&quot; | &quot;header&quot; | &quot;footer&quot; | &quot;nav&quot;</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;div&quot;</code></TableCell>
+                <TableCell>HTML element to render. Use semantic elements for accessibility landmarks.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Merged via cn() (class merge utility). Add vertical padding, background, etc.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Content to constrain.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>size</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;default&quot; | &quot;md&quot; | &quot;sm&quot; | &quot;prose&quot;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;default&quot;</code></span>
+              <span className="type-caption text-muted-foreground">Maximum width constraint. default (1536px), md (768px), sm (640px), prose (~65ch).</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>as</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;div&quot; | &quot;section&quot; | &quot;main&quot; | &quot;article&quot; | &quot;header&quot; | &quot;footer&quot; | &quot;nav&quot;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;div&quot;</code></span>
+              <span className="type-caption text-muted-foreground">HTML element to render. Use semantic elements for accessibility landmarks.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>className</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground">Merged via cn() (class merge utility). Add vertical padding, background, etc.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>children</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground">Content to constrain.</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
     </Container>
