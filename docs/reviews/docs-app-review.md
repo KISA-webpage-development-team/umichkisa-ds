@@ -522,3 +522,32 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 - Default delay (200ms) verified accurate against `packages/web/src/components/overlay/Tooltip.tsx`.
 - Dropped: raw inline `<code>` utilities (deferred to global `<InlineCode>` sweep).
 - Touch-behavior finding merged into #3 Guidelines as a docs/guidance fix, not a component change — Tooltip stays hover/focus only per Radix and ARIA APG; `Popover` is the correct primitive for touch-reachable content.
+
+## /components/dropdown
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | critical | content | both | "Basic" example prose says `variant="secondary"` but the rendered code/preview use `variant="primary"`. Update prose to `"primary"`. |
+| 2 | major | ds-violation, responsive | both | All 5 API Reference tables (Dropdown, DropdownTrigger, DropdownContent, DropdownItem, DropdownGroup) use raw `<table>` markup. Migrate each to DS `Table` (`hidden md:block`) + `TableMobileList` (`block md:hidden`) per established pattern. |
+| 3 | minor | content | both | "With groups" prose has a forward-reference to `DropdownSeparator` before it has been introduced (next section). Drop the "For a simple visual break without labels, use `DropdownSeparator` instead." sentence. |
+| 4 | minor | content | both | API Reference intro duplicates the header's "Built on Radix DropdownMenu" sentence. Trim intro to "Each sub-component accepts the props listed below." |
+
+**Notes:**
+- Source-based review (Pass A + C). Browser tooling unstable in this session; live visual Pass B skipped per user.
+- Dropped: sidebar-missing-Dropdown finding (tooling artifact, not a real bug).
+- Dropped: raw inline `<code>` utilities (deferred to global `<InlineCode>` sweep).
+
+## /components/toast
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | Migrate three raw `<table>` blocks (Toaster props, `toast()` methods, Toast Options) to DS `Table` (`hidden md:block`) + `TableMobileList` (`block md:hidden`). |
+| 2 | minor | styling | desktop | First h3 in API Reference (`Toaster`) uses `mt-8` — should be `mt-6` per established docs rhythm. |
+| 3 | minor | styling | desktop | Setup section intro paragraph uses `mb-4`; normalize to `mb-2` to match all other section intros. |
+| 4 | minor | content | both | Drop the deck sentence "Mount `<Toaster />` once, then call `toast()` imperatively from anywhere — no React state needed" — Setup section is the canonical place. |
+| 5 | minor | content | both | Add a one-line lead under the "API Reference" h2 for consistency with other pages. |
+
+**Notes:**
+- Source-based review. Browser screenshot tooling unstable mid-session; structural inspection via JS confirmed layout.
+- Dropped: `offset` row Default cell typography inconsistency — resolved by table migration (#1).
+- Skipped per standing rule: raw inline `<code>` → `InlineCode` migration.

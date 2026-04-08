@@ -93,17 +93,17 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Review `/components/tabs`
 - [x] Fix `/components/tabs` — plan: `docs/plans/review-fix-components-tabs.md`
 - [x] Review `/components/tooltip`
-- [ ] Fix `/components/tooltip` — plan: `docs/plans/review-fix-components-tooltip.md`
+- [x] Fix `/components/tooltip` — plan: `docs/plans/review-fix-components-tooltip.md`
 - [x] Review `/components/popover`
 - [x] Fix `/components/popover` — plan: `docs/plans/review-fix-components-popover.md`
 
 ### Batch 11 — Components
-- [ ] Review `/components/dropdown`
-- [ ] Fix `/components/dropdown`
+- [x] Review `/components/dropdown` — plan: `docs/plans/review-fix-components-dropdown.md`
+- [ ] Fix `/components/dropdown` — plan: `docs/plans/review-fix-components-dropdown.md`
 - [x] Review `/components/dialog`
 - [ ] Fix `/components/dialog` — plan: `docs/plans/review-fix-components-dialog.md`
-- [ ] Review `/components/toast`
-- [ ] Fix `/components/toast`
+- [x] Review `/components/toast`
+- [ ] Fix `/components/toast` — plan: `docs/plans/review-fix-components-toast.md`
 
 ### Batch 12 — Components
 - [ ] Review `/components/container`
