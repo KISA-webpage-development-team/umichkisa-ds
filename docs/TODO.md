@@ -116,8 +116,8 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Fix `/components/table` — plan: `docs/plans/review-fix-components-table.md`
 
 ### Batch 13 — Components (Form Controls)
-- [ ] Review `/components/input`
-- [ ] Fix `/components/input`
+- [x] Review `/components/input` — plan: `docs/plans/review-fix-components-input.md`
+- [x] Fix `/components/input` — plan: `docs/plans/review-fix-components-input.md`
 - [ ] Review `/components/textarea`
 - [ ] Fix `/components/textarea`
 - [ ] Review `/components/select`

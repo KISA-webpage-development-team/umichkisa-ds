@@ -612,3 +612,11 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 - Source-based review. Live screenshots returned blank on this very tall page (tunnel/render quirk); findings are concrete and not viewport-dependent.
 - Folded into #1: original redundancy finding (10 near-identical 4-row tables) and Composition-tree overlap concern — both resolved by consolidation.
 - Composition tree (ASCII `CodeBlock`) intentionally kept: it shows nesting, complementary to the new flat sub-components index.
+
+## /components/input
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | API Reference uses raw `<table>` with manual borders/classes — migrate to DS `Table` (hidden md:block) + `TableMobileList` (block md:hidden). |
+| 2 | minor | content | both | Intro mentions composition with `FormItem` but page has no example or link — drop "and `FormItem`" from the intro paragraph; FormItem composition belongs on its own page. |
+| 3 | minor | content | both | "With Label" body redundantly instructs `gap-2` between label and input — drop the sentence; the example already demonstrates it.
