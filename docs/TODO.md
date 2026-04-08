@@ -103,7 +103,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Review `/components/dialog`
 - [x] Fix `/components/dialog` — plan: `docs/plans/review-fix-components-dialog.md`
 - [x] Review `/components/toast`
-- [ ] Fix `/components/toast` — plan: `docs/plans/review-fix-components-toast.md`
+- [x] Fix `/components/toast` — plan: `docs/plans/review-fix-components-toast.md`
 
 ### Batch 12 — Components
 - [x] Review `/components/container`
