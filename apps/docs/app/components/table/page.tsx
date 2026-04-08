@@ -336,11 +336,9 @@ export default async function TablePage() {
         Displays structured tabular data in rows and columns with optional headers,
         footers, and captions.
       </p>
-      <p className="type-body-sm mb-4 text-muted-foreground max-w-prose">
-        Use Table for data that benefits from column alignment and scanning, such as
-        member directories, bulletin boards, and budget summaries. For mobile
-        viewports, pair with TableMobileList for a stacked card layout.
-      </p>
+      <Alert variant="info" className="mb-4">
+        Use Table for data that benefits from column alignment and scanning — member directories, bulletin boards, budget summaries.
+      </Alert>
       <Alert variant="info" title="Required pair" className="mb-8">
         Table and TableMobileList are a required pair. Every Table must ship with a TableMobileList for mobile viewports — the examples below show the canonical pattern.
       </Alert>
