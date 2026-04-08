@@ -479,3 +479,46 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 - Source-based review. Browser viewport refused to resize/refresh reliably this session; findings derived from full read of `apps/docs/app/components/tabs/page.tsx` against `docs/DS_CONSTRAINTS.md`.
 - Dropped: raw inline `<code>` utilities (deferred to global `<InlineCode>` sweep).
 - Bonus scope folded into the fix plan: (a) apply #4 deck→Alert pattern to `/components/alert` (which uses the same deck pattern); (b) sweep #5 across all 31 component pages — every reviewed page still carries the redundant `font-sejong-bold tracking-tight` on `<h1>`, missed by prior reviews.
+
+## /components/popover
+
+| # | Severity | Type | Viewport | Finding |
+|---|---|---|---|---|
+| 1 | major | ds-violation | both | Three API tables (Popover, PopoverTrigger, PopoverContent) use raw `<table>` markup. Migrate each to DS `Table` (`hidden md:block`). |
+| 2 | major | responsive | mobile | Add `TableMobileList` mirror (`block md:hidden`) for each of the 3 API tables — current `overflow-x-auto` raw table gives bad mobile UX. |
+| 3 | minor | content | both | Convert the secondary deck paragraph ("Use Popover for non-modal..." with sibling-component cross-references) into an `Alert` component, matching the alert/tabs/accordion pattern. |
+
+**Notes:**
+- Source-based review. Browser screenshots stalled in this session; findings derived from full read of `apps/docs/app/components/popover/page.tsx` against `docs/DS_CONSTRAINTS.md`.
+- Dropped: raw inline `<code>` utilities (deferred to global `<InlineCode>` sweep).
+
+## /components/dialog
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | All 7 API tables (Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, DialogFooter, DialogClose) use raw `<table>` markup. Migrate to DS `Table` (`hidden md:block`) + `TableMobileList` (`block md:hidden`) per established pattern. |
+| 2 | minor | content | both | "Basic" example description says "Triggered via a secondary button" but the example uses `variant="primary"`. Drop the trailing clause. |
+| 3 | major | ux | both | "With footer" example inverts action hierarchy: `Cancel` is `variant="primary"`, `Confirm` is default. Swap so the affirming action is primary. |
+| 4 | major | ux | both | "Custom close" example has the same inversion: `Discard` is primary, `Save changes` is default. Swap so `Save changes` is primary. |
+| 5 | minor | styling | both | Convert the secondary intro paragraph (Popover/Dropdown cross-reference) into an `Alert` component, matching the accordion/alert/tabs/popover pattern. |
+
+**Notes:**
+- Source-based review. Live dialog interaction was unstable in this session; findings derived from `apps/docs/app/components/dialog/page.tsx` against `docs/DS_CONSTRAINTS.md` and prior page patterns.
+- Dropped: raw inline `<code>` utilities (deferred to global `<InlineCode>` sweep).
+
+## /components/tooltip
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation, responsive | both | API Reference uses raw `<table>` markup. Migrate to DS `Table` (`hidden md:block`) + `TableMobileList` (`block md:hidden`) per established pattern. |
+| 2 | minor | styling | desktop | API Reference "—" placeholders for `content`/`children` Default cells use `text-foreground`; should be `text-muted-foreground` to read as "no default". |
+| 3 | major | content, accessibility | both | No "When to use / When not to use" guidance. Add a Guidelines section: tooltip content must never be essential; tooltips don't fire on touch — direct devs to `Popover` for touch-reachable content; don't put long text or interactive content inside; tooltip text must match the trigger's `aria-label` exactly. Industry-standard contract per Radix, ARIA APG, Primer, Polaris, Spectrum. |
+| 4 | minor | content | both | "On truncated text" example uses arbitrary `max-w-[120px]`. Replace with `max-w-32` (Tailwind scale). |
+| 5 | minor | ux | both | Placement example uses 4 different icons (`chevron-right`, `arrow-right`, `chevron-down`, `arrow-left`) — makes the demo about the icons, not the placement. Use a single neutral icon (e.g., `info`) across all 4 sides. |
+| 6 | minor | content | both | "On truncated text" prose ("Tooltip works on any element, not just icon buttons.") echoes the intro. Tighten to focus on the truncation use case only. |
+
+**Notes:**
+- Source-based review. Browser screenshots unstable in this session; findings derived from `apps/docs/app/components/tooltip/page.tsx` against `docs/DS_CONSTRAINTS.md`.
+- Default delay (200ms) verified accurate against `packages/web/src/components/overlay/Tooltip.tsx`.
+- Dropped: raw inline `<code>` utilities (deferred to global `<InlineCode>` sweep).
+- Touch-behavior finding merged into #3 Guidelines as a docs/guidance fix, not a component change — Tooltip stays hover/focus only per Radix and ARIA APG; `Popover` is the correct primitive for touch-reachable content.
