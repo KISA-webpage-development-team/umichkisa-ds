@@ -551,3 +551,18 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 - Source-based review. Browser screenshot tooling unstable mid-session; structural inspection via JS confirmed layout.
 - Dropped: `offset` row Default cell typography inconsistency — resolved by table migration (#1).
 - Skipped per standing rule: raw inline `<code>` → `InlineCode` migration.
+
+## /components/container
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | "When to use each size" uses raw `<table>` — migrate to DS `Table` (`hidden md:block`) + `TableMobileList` (`block md:hidden`). |
+| 2 | major | ds-violation | both | "API Reference" uses raw `<table>` — same migration to DS `Table` + `TableMobileList`. |
+| 3 | minor | ds-violation | desktop | Size variant demo bars use arbitrary widths `w-[42%]` and `w-[34%]` — round to `w-2/5` and `w-1/3`. |
+| 4 | minor | styling | desktop | Size demo bars use opacity ramp + `text-foreground` on prose bar — replace with solid `bg-brand-primary` + `text-brand-foreground` on all four; width alone communicates hierarchy. |
+| 5 | minor | styling | desktop | h3 "Page-level structure (recommended)" uses `mt-6` but is not the first h3 — change to `mt-8` per established rhythm. |
+| 6 | minor | content | both | Delete redundant API Reference intro paragraph — facts already covered in page intro and Default column. |
+
+**Notes:**
+- Source-based review (Pass A + C). Visual Pass B skipped — findings driven by source + DS_CONSTRAINTS.
+- Skipped per standing rule: raw inline `<code>` → `InlineCode` migration.
