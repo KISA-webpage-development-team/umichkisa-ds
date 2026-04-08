@@ -7,45 +7,68 @@ import {
   TableRow,
   TableHead,
   TableCell,
+  TableMobileList,
+  TableMobileItem,
 } from '@umichkisa-ds/web'
+
+const posts = [
+  { id: 5, title: '겨울방학 스터디 모집합니다', author: '김민수', date: '2025-02-28', views: 89 },
+  { id: 4, title: '족발 같이 시켜먹을 사람', author: '이서연', date: '2025-02-27', views: 156 },
+  { id: 3, title: '기숙사 계약 관련 질문', author: '박지훈', date: '2025-02-26', views: 67 },
+]
 
 export function ClickableRowsDemo() {
   return (
     <div className="w-full">
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>#</TableHead>
-            <TableHead>제목</TableHead>
-            <TableHead>작성자</TableHead>
-            <TableHead>날짜</TableHead>
-            <TableHead>조회</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          <TableRow className="cursor-pointer" onClick={() => alert('Navigating to post 5')}>
-            <TableCell>5</TableCell>
-            <TableCell>겨울방학 스터디 모집합니다</TableCell>
-            <TableCell>김민수</TableCell>
-            <TableCell>2025-02-28</TableCell>
-            <TableCell>89</TableCell>
-          </TableRow>
-          <TableRow className="cursor-pointer" onClick={() => alert('Navigating to post 4')}>
-            <TableCell>4</TableCell>
-            <TableCell>족발 같이 시켜먹을 사람</TableCell>
-            <TableCell>이서연</TableCell>
-            <TableCell>2025-02-27</TableCell>
-            <TableCell>156</TableCell>
-          </TableRow>
-          <TableRow className="cursor-pointer" onClick={() => alert('Navigating to post 3')}>
-            <TableCell>3</TableCell>
-            <TableCell>기숙사 계약 관련 질문</TableCell>
-            <TableCell>박지훈</TableCell>
-            <TableCell>2025-02-26</TableCell>
-            <TableCell>67</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
+      {/* Desktop table */}
+      <div className="hidden md:block">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>#</TableHead>
+              <TableHead>제목</TableHead>
+              <TableHead>작성자</TableHead>
+              <TableHead>날짜</TableHead>
+              <TableHead>조회</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {posts.map((post) => (
+              <TableRow
+                key={post.id}
+                className="cursor-pointer"
+                onClick={() => alert(`Navigating to post ${post.id}`)}
+              >
+                <TableCell>{post.id}</TableCell>
+                <TableCell>{post.title}</TableCell>
+                <TableCell>{post.author}</TableCell>
+                <TableCell>{post.date}</TableCell>
+                <TableCell>{post.views}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
+
+      {/* Mobile list */}
+      <div className="block md:hidden">
+        <TableMobileList>
+          {posts.map((post) => (
+            <div
+              key={post.id}
+              className="cursor-pointer"
+              onClick={() => alert(`Navigating to post ${post.id}`)}
+            >
+              <TableMobileItem>
+                <span className="type-body-sm text-foreground">{post.title}</span>
+                <span className="type-caption text-muted-foreground">
+                  {post.date} · {post.author} · {post.views} views
+                </span>
+              </TableMobileItem>
+            </div>
+          ))}
+        </TableMobileList>
+      </div>
     </div>
   )
 }
