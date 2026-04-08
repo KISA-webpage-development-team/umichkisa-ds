@@ -566,3 +566,49 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 **Notes:**
 - Source-based review (Pass A + C). Visual Pass B skipped — findings driven by source + DS_CONSTRAINTS.
 - Skipped per standing rule: raw inline `<code>` → `InlineCode` migration.
+
+## /components/card
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | Migrate all 6 API reference tables (Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter) to DS `Table` + `TableMobileList`. |
+| 2 | minor | styling | both | Custom composition icon row: change `gap-4` → `gap-3` (icon spec: gap-3 for larger display contexts). |
+| 3 | minor | content | both | Drop the second intro paragraph ("Compose Card from its sub-components…") — redundant with the Anatomy section that follows immediately. |
+| 4 | minor | a11y | both | Pass `as="h4"` to all `CardTitle`s in example demos so the example titles ("Spring General Meeting", "Korean Culture Night", "Dev Team", "Media Team", "Events Team") sit below the docs section h3s in the heading outline. |
+| 5 | minor | content | both | Trim Anatomy section — keep only the structural tree (component names + nesting). Drop parenthetical styling notes (`p-4 gap-4, border + background`, etc.) — they duplicate the API reference descriptions verbatim. |
+
+**Notes:**
+- Source + DOM-based review. Pass B (visual) limited due to browser screenshot tool failing on scrolled viewports — findings driven by source + DS_CONSTRAINTS.
+- Skipped per standing rules: raw inline `<code>` → `InlineCode` migration (out of scope).
+- Finding originally flagged for table header contrast (`text-muted-foreground` on `bg-surface-subtle` = 4.2:1) dropped — DS `Table` component owns header styling, resolved by #1.
+
+## /components/grid
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | API Reference uses raw `<table>` — migrate to DS `Table` (`hidden md:block`) plus `TableMobileList` (`block md:hidden`). Replaces the current `overflow-x-auto` mobile fallback. |
+| 2 | major | ds-violation | desktop | All 8 Grid demos inside `ComponentPreview` lack a `w-full` wrapper — Grid shrinks to content width and misrepresents real layout. |
+| 3 | major | ds-violation | both | `FeatureBlock` helper uses `gap-3` — must use the 3-tier system (`gap-2`/`gap-4`/`gap-6`). |
+| 4 | minor | ds-violation | both | `<span className="type-h2">{icon}</span>` in `FeatureBlock` — `type-*` class without paired color token. |
+| 5 | minor | ds-violation | both | Demo helpers (`Placeholder`, `Card`, `FeatureBlock`) use `rounded-lg` — KISA design language is `rounded-md`. |
+| 6 | minor | content | both | Secondary "Use Grid when..." paragraph at top — replace with DS `Alert` callout (per blockquote→Alert pattern). |
+| 7 | minor | content | both | Local `Card` helper duplicates DS `Card` — replace with strict DS `Card` import in both rendered example and code string. |
+| 8 | minor | content | both | Per-tier descriptions repeat between "Gap Variants" and "Real-world Examples" — drop redundant per-h3 captions in the Real-world section. |
+
+**Notes:**
+- Source + DOM-based review. Pass B (visual) limited due to multi-window screenshot/focus mismatch — findings driven primarily by page source against DS_CONSTRAINTS, with one confirmed top-of-page screenshot.
+- Skipped per standing rules: raw inline `<code>` → `InlineCode` migration (out of scope).
+- Dropped: table-cell missing `type-*` (resolved by #1); mobile horizontal-scroll (consequence of #1).
+
+## /components/table
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | critical | ds-violation | both | API Reference uses 10 raw `<table>` blocks instead of the DS `Table` component the page documents. Consolidate into 2 DS `Table`s — (a) `Table` props, (b) sub-components index (Name / Wraps / Notes) — each paired with `TableMobileList`. |
+| 2 | major | ux | both | Demos teach `Table` in isolation; devs will forget the required `TableMobileList` pairing. Every real-data demo (Basic, Bulletin Board, Clickable rows, With Footer) must render `Table` + `TableMobileList` together, and the code snippet must show the pair as the canonical pattern. Size demo stays single-table. Delete the standalone "Responsive" section once every demo is responsive. Add a short DS `Alert` near the page top stating Table + TableMobileList are a required pair. |
+| 3 | minor | content | both | API Reference intro nudges users to override component defaults. Soften to: "...merged via `cn()`. Use `className` for layout context (margin, width), not for restyling component internals." |
+
+**Notes:**
+- Source-based review. Live screenshots returned blank on this very tall page (tunnel/render quirk); findings are concrete and not viewport-dependent.
+- Folded into #1: original redundancy finding (10 near-identical 4-row tables) and Composition-tree overlap concern — both resolved by consolidation.
+- Composition tree (ASCII `CodeBlock`) intentionally kept: it shows nesting, complementary to the new flat sub-components index.
