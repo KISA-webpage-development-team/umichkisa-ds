@@ -107,7 +107,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 
 ### Batch 12 — Components
 - [x] Review `/components/container`
-- [ ] Fix `/components/container` — plan: `docs/plans/review-fix-components-container.md`
+- [x] Fix `/components/container` — plan: `docs/plans/review-fix-components-container.md`
 - [ ] Review `/components/grid`
 - [ ] Fix `/components/grid`
 - [ ] Review `/components/card`
