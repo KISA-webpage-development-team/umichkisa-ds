@@ -1,4 +1,20 @@
-import { Container, Grid } from '@umichkisa-ds/web'
+import {
+  Container,
+  Grid,
+  Alert,
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableMobileItem,
+  TableMobileList,
+  TableRow,
+} from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 
@@ -51,12 +67,27 @@ const realWorldElementCode = `import { Grid } from '@umichkisa-ds/web'
   ...
 </Grid>`
 
-const realWorldComponentCode = `import { Grid } from '@umichkisa-ds/web'
+const realWorldComponentCode = `import { Grid, Card, CardHeader, CardTitle, CardDescription } from '@umichkisa-ds/web'
 
 <Grid columns={{ base: 1, md: 2, lg: 3 }} gap="component">
-  <Card />
-  <Card />
-  <Card />
+  <Card>
+    <CardHeader>
+      <CardTitle>Analytics</CardTitle>
+      <CardDescription>View traffic and engagement metrics across all pages.</CardDescription>
+    </CardHeader>
+  </Card>
+  <Card>
+    <CardHeader>
+      <CardTitle>Members</CardTitle>
+      <CardDescription>Manage team members, roles, and permissions.</CardDescription>
+    </CardHeader>
+  </Card>
+  <Card>
+    <CardHeader>
+      <CardTitle>Settings</CardTitle>
+      <CardDescription>Configure organization preferences and integrations.</CardDescription>
+    </CardHeader>
+  </Card>
 </Grid>`
 
 const realWorldSectionCode = `import { Grid } from '@umichkisa-ds/web'
@@ -69,7 +100,7 @@ const realWorldSectionCode = `import { Grid } from '@umichkisa-ds/web'
 
 function Placeholder({ label }: { label: string }) {
   return (
-    <div className="flex items-center justify-center rounded-lg border border-border bg-surface px-4 py-6 type-body-sm text-foreground">
+    <div className="flex items-center justify-center rounded-md border border-border bg-surface px-4 py-6 type-body-sm text-foreground">
       {label}
     </div>
   )
@@ -83,19 +114,10 @@ function Tag({ children }: { children: React.ReactNode }) {
   )
 }
 
-function Card({ title, description }: { title: string; description: string }) {
-  return (
-    <div className="rounded-lg border border-border bg-surface p-4 flex flex-col gap-2">
-      <h4 className="type-label text-foreground">{title}</h4>
-      <p className="type-body-sm text-muted-foreground">{description}</p>
-    </div>
-  )
-}
-
 function FeatureBlock({ icon, title, description }: { icon: string; title: string; description: string }) {
   return (
-    <div className="flex flex-col gap-3 p-6 rounded-lg border border-border bg-surface">
-      <span className="type-h2">{icon}</span>
+    <div className="flex flex-col gap-2 p-6 rounded-md border border-border bg-surface">
+      <span className="type-h2 text-foreground">{icon}</span>
       <h4 className="type-label text-foreground">{title}</h4>
       <p className="type-body-sm text-muted-foreground">{description}</p>
     </div>
@@ -128,7 +150,7 @@ export default async function GridPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">Grid</h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground max-w-prose">
         Responsive equal-width column layout for repeating items. Handles the
         common pattern of reflowing content from fewer columns on mobile to more
         columns on desktop. Extends all native{' '}
@@ -137,12 +159,12 @@ export default async function GridPage() {
         </code>{' '}
         attributes.
       </p>
-      <p className="type-body-sm mb-8 text-muted-foreground max-w-prose">
+      <Alert variant="info" className="mb-8">
         Use Grid when you have a list of same-type items that should reflow
         across breakpoints (card grids, image galleries, feature lists). For
         asymmetric layouts like sidebar + main content, use Tailwind grid
         utilities directly.
-      </p>
+      </Alert>
 
       {/* ── Examples ────────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
@@ -157,11 +179,13 @@ export default async function GridPage() {
         for a fixed column count across all breakpoints.
       </p>
       <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
-        <Grid columns={3}>
-          {Array.from({ length: 6 }, (_, i) => (
-            <Placeholder key={i} label={`Item ${i + 1}`} />
-          ))}
-        </Grid>
+        <div className="w-full">
+          <Grid columns={3}>
+            {Array.from({ length: 6 }, (_, i) => (
+              <Placeholder key={i} label={`Item ${i + 1}`} />
+            ))}
+          </Grid>
+        </div>
       </ComponentPreview>
 
       {/* Responsive */}
@@ -187,11 +211,13 @@ export default async function GridPage() {
         Resize your browser to see the reflow.
       </p>
       <ComponentPreview code={responsiveCode} highlightedCode={responsiveHighlighted}>
-        <Grid columns={{ base: 1, md: 2, lg: 3 }}>
-          {Array.from({ length: 6 }, (_, i) => (
-            <Placeholder key={i} label={`Item ${i + 1}`} />
-          ))}
-        </Grid>
+        <div className="w-full">
+          <Grid columns={{ base: 1, md: 2, lg: 3 }}>
+            {Array.from({ length: 6 }, (_, i) => (
+              <Placeholder key={i} label={`Item ${i + 1}`} />
+            ))}
+          </Grid>
+        </div>
       </ComponentPreview>
 
       {/* ── Gap Variants ────────────────────────────────────── */}
@@ -211,11 +237,13 @@ export default async function GridPage() {
         Tight spacing for compact grids — icon grids, tag collections.
       </p>
       <ComponentPreview code={gapElementCode} highlightedCode={gapElementHighlighted}>
-        <Grid columns={3} gap="element">
-          {Array.from({ length: 6 }, (_, i) => (
-            <Placeholder key={i} label={`${i + 1}`} />
-          ))}
-        </Grid>
+        <div className="w-full">
+          <Grid columns={3} gap="element">
+            {Array.from({ length: 6 }, (_, i) => (
+              <Placeholder key={i} label={`${i + 1}`} />
+            ))}
+          </Grid>
+        </div>
       </ComponentPreview>
 
       {/* Component */}
@@ -224,11 +252,13 @@ export default async function GridPage() {
         Default. Standard spacing for card grids and content blocks.
       </p>
       <ComponentPreview code={gapComponentCode} highlightedCode={gapComponentHighlighted}>
-        <Grid columns={3} gap="component">
-          {Array.from({ length: 6 }, (_, i) => (
-            <Placeholder key={i} label={`${i + 1}`} />
-          ))}
-        </Grid>
+        <div className="w-full">
+          <Grid columns={3} gap="component">
+            {Array.from({ length: 6 }, (_, i) => (
+              <Placeholder key={i} label={`${i + 1}`} />
+            ))}
+          </Grid>
+        </div>
       </ComponentPreview>
 
       {/* Section */}
@@ -237,11 +267,13 @@ export default async function GridPage() {
         Spacious spacing for feature grids and landing page layouts.
       </p>
       <ComponentPreview code={gapSectionCode} highlightedCode={gapSectionHighlighted}>
-        <Grid columns={3} gap="section">
-          {Array.from({ length: 6 }, (_, i) => (
-            <Placeholder key={i} label={`${i + 1}`} />
-          ))}
-        </Grid>
+        <div className="w-full">
+          <Grid columns={3} gap="section">
+            {Array.from({ length: 6 }, (_, i) => (
+              <Placeholder key={i} label={`${i + 1}`} />
+            ))}
+          </Grid>
+        </div>
       </ComponentPreview>
 
       {/* ── Real-world Examples ──────────────────────────────── */}
@@ -253,46 +285,58 @@ export default async function GridPage() {
 
       {/* Element gap tags */}
       <h3 className="type-h3 mt-6 mb-2 text-foreground">Element gap</h3>
-      <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
-        Tight spacing for small, repeating elements — tags, badges, or icon buttons.
-      </p>
       <ComponentPreview code={realWorldElementCode} highlightedCode={realWorldElementHighlighted}>
-        <Grid columns={{ base: 2, md: 3, lg: 4 }} gap="element">
-          <Tag>React</Tag>
-          <Tag>TypeScript</Tag>
-          <Tag>Tailwind CSS</Tag>
-          <Tag>Next.js</Tag>
-          <Tag>Node.js</Tag>
-          <Tag>Figma</Tag>
-          <Tag>GraphQL</Tag>
-          <Tag>PostgreSQL</Tag>
-        </Grid>
+        <div className="w-full">
+          <Grid columns={{ base: 2, md: 3, lg: 4 }} gap="element">
+            <Tag>React</Tag>
+            <Tag>TypeScript</Tag>
+            <Tag>Tailwind CSS</Tag>
+            <Tag>Next.js</Tag>
+            <Tag>Node.js</Tag>
+            <Tag>Figma</Tag>
+            <Tag>GraphQL</Tag>
+            <Tag>PostgreSQL</Tag>
+          </Grid>
+        </div>
       </ComponentPreview>
 
       {/* Component gap cards */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">Component gap</h3>
-      <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
-        Standard card grid — the default for most content layouts.
-      </p>
       <ComponentPreview code={realWorldComponentCode} highlightedCode={realWorldComponentHighlighted}>
-        <Grid columns={{ base: 1, md: 2, lg: 3 }} gap="component">
-          <Card title="Analytics" description="View traffic and engagement metrics across all pages." />
-          <Card title="Members" description="Manage team members, roles, and permissions." />
-          <Card title="Settings" description="Configure organization preferences and integrations." />
-        </Grid>
+        <div className="w-full">
+          <Grid columns={{ base: 1, md: 2, lg: 3 }} gap="component">
+            <Card>
+              <CardHeader>
+                <CardTitle>Analytics</CardTitle>
+                <CardDescription>View traffic and engagement metrics across all pages.</CardDescription>
+              </CardHeader>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>Members</CardTitle>
+                <CardDescription>Manage team members, roles, and permissions.</CardDescription>
+              </CardHeader>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>Settings</CardTitle>
+                <CardDescription>Configure organization preferences and integrations.</CardDescription>
+              </CardHeader>
+            </Card>
+          </Grid>
+        </div>
       </ComponentPreview>
 
       {/* Section gap feature blocks */}
       <h3 className="type-h3 mt-8 mb-2 text-foreground">Section gap</h3>
-      <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
-        Spacious spacing for feature showcases and landing page sections.
-      </p>
       <ComponentPreview code={realWorldSectionCode} highlightedCode={realWorldSectionHighlighted}>
-        <Grid columns={{ base: 1, md: 2, lg: 3 }} gap="section">
-          <FeatureBlock icon="📊" title="Analytics" description="Track engagement metrics, page views, and user behavior across your entire platform." />
-          <FeatureBlock icon="🔒" title="Security" description="Enterprise-grade encryption, SSO integration, and role-based access controls built in." />
-          <FeatureBlock icon="⚡" title="Performance" description="Sub-100ms response times with edge caching and automatic scaling for any traffic level." />
-        </Grid>
+        <div className="w-full">
+          <Grid columns={{ base: 1, md: 2, lg: 3 }} gap="section">
+            <FeatureBlock icon="📊" title="Analytics" description="Track engagement metrics, page views, and user behavior across your entire platform." />
+            <FeatureBlock icon="🔒" title="Security" description="Enterprise-grade encryption, SSO integration, and role-based access controls built in." />
+            <FeatureBlock icon="⚡" title="Performance" description="Sub-100ms response times with edge caching and automatic scaling for any traffic level." />
+          </Grid>
+        </div>
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}
@@ -304,43 +348,71 @@ export default async function GridPage() {
         </code>{' '}
         attributes.
       </p>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Prop</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Type</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Default</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">columns</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">number | {'{ base?, md?, lg? }'}</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">1</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Number of equal-width columns. Pass a number for fixed, or a responsive object for breakpoint control. Max 6.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">gap</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;element&quot; | &quot;component&quot; | &quot;section&quot;</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;component&quot;</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Gap between items, mapped to the DS spacing tiers: element (8px), component (16px), section (24px).</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Merged via cn(). Use for layout utilities only.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Grid items.</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table size="sm">
+            <TableHeader>
+              <TableRow>
+                <TableHead>Prop</TableHead>
+                <TableHead>Type</TableHead>
+                <TableHead>Default</TableHead>
+                <TableHead>Description</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">columns</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">number | {'{ base?, md?, lg? }'}</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">1</code></TableCell>
+                <TableCell>Number of equal-width columns. Pass a number for fixed, or a responsive object for breakpoint control. Max 6.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">gap</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;element&quot; | &quot;component&quot; | &quot;section&quot;</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;component&quot;</code></TableCell>
+                <TableCell>Gap between items, mapped to the DS spacing tiers: element (8px), component (16px), section (24px).</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Grid items.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>columns</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">number | {'{ base?, md?, lg? }'}</code></span>
+              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">1</code></span>
+              <span className="type-caption text-muted-foreground">Number of equal-width columns. Pass a number for fixed, or a responsive object for breakpoint control. Max 6.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>gap</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;element&quot; | &quot;component&quot; | &quot;section&quot;</code></span>
+              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;component&quot;</code></span>
+              <span className="type-caption text-muted-foreground">Gap between items, mapped to the DS spacing tiers: element (8px), component (16px), section (24px).</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>className</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>children</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground">Grid items.</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
     </Container>
