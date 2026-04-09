@@ -78,7 +78,7 @@ export default async function SwitchPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">Switch</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground max-w-prose">
         A toggle for settings that take effect immediately — e.g., &ldquo;Enable
         notifications&rdquo; or &ldquo;Dark mode&rdquo;. Pass the{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
@@ -97,13 +97,6 @@ export default async function SwitchPage() {
           FormItem
         </code>{' '}
         for labeled form fields.
-      </p>
-      <p className="type-body-sm mb-8 text-muted-foreground max-w-prose">
-        Renders a native{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          &lt;input type=&quot;checkbox&quot; role=&quot;switch&quot;&gt;
-        </code>{' '}
-        internally for full form and accessibility support.
       </p>
 
       {/* ── Examples ────────────────────────────────────────── */}
@@ -216,7 +209,11 @@ export default async function SwitchPage() {
       {/* ── API Reference ────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        Extends all native{' '}
+        Switch renders a native{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          &lt;input type=&quot;checkbox&quot; role=&quot;switch&quot;&gt;
+        </code>{' '}
+        internally for full form and accessibility support. Extends all native{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           &lt;input&gt;
         </code>{' '}
