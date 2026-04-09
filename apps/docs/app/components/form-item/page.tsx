@@ -7,6 +7,14 @@ import {
   RadioGroup,
   RadioItem,
   Container,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableMobileItem,
+  TableMobileList,
+  TableRow,
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
@@ -402,61 +410,103 @@ export default async function FormItemPage() {
       <p className="type-body mb-4 text-foreground max-w-prose">
         FormItem does not extend native HTML attributes. All props are listed below.
       </p>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Prop</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Type</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Default</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">htmlFor</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Connects the label to the form control via matching id.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">label</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Text rendered inside the Label component.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">required</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Shows a required asterisk on the label.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">error</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Validation error message. When set, replaces the description text.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">description</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Helper text shown below the form control. Hidden when error is set.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Additional CSS classes applied to the outer wrapper div.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">The form control (Input, Textarea, Select, etc.).</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table size="sm">
+            <TableHeader>
+              <TableRow>
+                <TableHead>Prop</TableHead>
+                <TableHead>Type</TableHead>
+                <TableHead>Default</TableHead>
+                <TableHead>Description</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">htmlFor</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Connects the label to the form control via matching id.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">label</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Text rendered inside the Label component.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">required</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell>Shows a required asterisk on the label.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">error</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Validation error message. When set, replaces the description text.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">description</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Helper text shown below the form control. Hidden when error is set.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Additional CSS classes applied to the outer wrapper div.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>The form control (Input, Textarea, Select, etc.).</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>htmlFor</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground">Connects the label to the form control via matching id.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>label</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground">Text rendered inside the Label component.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>required</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
+              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground">Shows a required asterisk on the label.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>error</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground">Validation error message. When set, replaces the description text.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>description</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground">Helper text shown below the form control. Hidden when error is set.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>className</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground">Additional CSS classes applied to the outer wrapper div.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>children</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground">The form control (Input, Textarea, Select, etc.).</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
     </Container>
