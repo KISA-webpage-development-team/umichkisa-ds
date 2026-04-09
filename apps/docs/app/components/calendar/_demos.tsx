@@ -86,24 +86,26 @@ export function ControlledMonthDemo() {
 
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="flex items-center justify-between w-[280px] mb-2">
-        <Button variant="secondary" size="sm" onClick={() => setMonth(subMonths(month, 1))}>
-          <Icon name="chevron-left" size="sm" /> Prev
-        </Button>
-        <span className="type-body-sm !font-semibold text-foreground">
-          {format(month, 'MMMM yyyy')}
-        </span>
-        <Button variant="secondary" size="sm" onClick={() => setMonth(addMonths(month, 1))}>
-          Next <Icon name="chevron-right" size="sm" />
-        </Button>
+      <div className="flex flex-col w-fit">
+        <div className="flex items-center justify-between w-full mb-2">
+          <Button variant="secondary" size="sm" onClick={() => setMonth(subMonths(month, 1))}>
+            <Icon name="chevron-left" size="sm" /> Prev
+          </Button>
+          <span className="type-body-sm !font-semibold text-foreground">
+            {format(month, 'MMMM yyyy')}
+          </span>
+          <Button variant="secondary" size="sm" onClick={() => setMonth(addMonths(month, 1))}>
+            Next <Icon name="chevron-right" size="sm" />
+          </Button>
+        </div>
+        <Calendar
+          mode="single"
+          selected={date}
+          onSelect={setDate}
+          month={month}
+          onMonthChange={setMonth}
+        />
       </div>
-      <Calendar
-        mode="single"
-        selected={date}
-        onSelect={setDate}
-        month={month}
-        onMonthChange={setMonth}
-      />
     </div>
   )
 }
