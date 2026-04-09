@@ -693,3 +693,46 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 | 2 | major | ds-violation | both | `RadioItem` API Reference uses raw `<table>` — migrate to DS `Table` + `TableMobileList` for consistency with the `RadioGroup` table on the same page. Preserve all 4 rows. |
 
 **Notes:** Source-based review (no browser pass). Inline `<code>` cells preserved per standing rule (InlineCode migration excluded). "Invalid / error state" example kept as-is — FormItem composition belongs on `/components/form-item`, not the primitive reference. Intro left at one sentence — cross-component guidance (Radio vs Checkbox) belongs on forms overview.
+
+## /components/pagination
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | API Reference uses raw `<table>` with `border-border` / `bg-surface-subtle`. Migrate to DS `Table` (hidden md:block) + `TableMobileList` (block md:hidden). Preserve all 5 rows. |
+| 2 | major | ds-violation | both | Intro subparagraph "Pagination is fully controlled…" uses `type-body-sm text-muted-foreground` as an inline callout. Replace with DS `<Alert>` per established pattern. |
+| 3 | minor | content | both | While rewriting the Alert content in #2, drop the "On mobile, sibling pages collapse automatically…" sentence — the `siblingCount` API row already covers it. |
+
+**Notes:** Inline `<code>` cells preserved per standing rule (InlineCode migration excluded). h3 `mt-6` first / `mt-8` rest kept per established rhythm.
+
+## /components/calendar
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | API Reference uses raw `<table>` with `border-border` / `bg-surface-subtle` utilities. Migrate to DS `Table` (hidden md:block) + `TableMobileList` (block md:hidden). Preserve all 10 rows. |
+| 2 | major | ds-violation | both | Intro subparagraph ("Use Calendar as a standalone visible date picker. For a form input that reveals a calendar in a popover, use DatePicker.") uses `type-body-sm text-muted-foreground` as an inline cross-reference. Replace with DS `<Alert>` per established pattern. |
+| 3 | minor | ds-violation | desktop | `ControlledMonthDemo` header row uses `w-[280px]` arbitrary value. Fix: wrap header + Calendar in a `w-fit` column and make the header row `w-full` so it auto-aligns to Calendar's natural width. |
+| 4 | minor | content | both | `disabled` prop description embeds the expression `(date) => date.getDay() === 0` as plain prose. Wrap it in the same inline `<code>` treatment (`type-caption font-mono bg-surface-subtle rounded px-1 py-0.5`) used elsewhere in the table. |
+
+**Notes:** Inline `<code>` cells preserved per standing rule (InlineCode migration excluded). Demo centering (`flex flex-col items-center`) and h3 `mt-6`/`mt-8` rhythm kept per established conventions.
+
+## /components/toggle-group
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | API Reference uses two raw `<table>` elements (ToggleGroup props, ToggleGroupItem props) wrapped in `overflow-x-auto`. Migrate both to DS `Table` (hidden md:block) + `TableMobileList` (block md:hidden). Preserve all rows. |
+| 2 | major | ds-violation | both | Intro subparagraph (page.tsx lines 72–76, `type-body-sm text-muted-foreground`) with Tabs/Radio cross-refs and keyboard note must be replaced with DS `<Alert>` per established pattern. |
+| 3 | minor | styling | desktop | "ToggleGroup" h3 (line 118, first h3 under API Reference h2) uses `mt-8`; should be `mt-6` per first-h3-mt-6 rhythm. |
+
+**Notes:** Inline `<code>` cells preserved per standing rule (InlineCode migration excluded). No content redundancy found.
+
+## /components/datepicker
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation / responsive | both | Both API Reference tables (DatePicker, DateRangePicker) use raw `<table>` wrapped in `overflow-x-auto`. Migrate both to DS `Table` (`hidden md:block`) + `TableMobileList` (`block md:hidden`). Preserve all rows. |
+| 2 | major | ds-violation / styling | both | Intro subparagraph (lines 170–173, `type-body-sm text-muted-foreground`) — "DatePicker composes Popover and Calendar internally..." — must be replaced with DS `<Alert variant="info">` per established pattern. |
+| 3 | minor | styling | desktop | First h3 under "API Reference" h2 ("DatePicker", line 329) uses `mt-8`; should be `mt-6` per first-h3-mt-6 rhythm. |
+| 4 | minor | content | both | DateRangePicker "Disabled" copy ("A disabled range picker.") is too thin. Rewrite to mirror DatePicker's disabled copy depth. |
+| 5 | minor | content | both | DateRangePicker "Invalid" copy is too thin — doesn't mention pairing with FormItem. Rewrite to mirror DatePicker's invalid copy. |
+
+**Notes:** Inline `<code>` cells preserved per standing rule (InlineCode migration excluded). API tables share 6 identical rows between DatePicker and DateRangePicker — preserved per docs convention of full per-component API tables.
