@@ -1,4 +1,16 @@
-import { Container, Textarea, Label } from '@umichkisa-ds/web'
+import {
+  Container,
+  Textarea,
+  FormItem,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableMobileItem,
+  TableMobileList,
+  TableRow,
+} from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 import { ControlledDemo } from './_demos'
@@ -18,20 +30,17 @@ const statesCode = `import { Textarea } from '@umichkisa-ds/web'
 {/* Invalid */}
 <Textarea placeholder="Invalid" invalid />`
 
-const withLabelCode = `import { Textarea, Label } from '@umichkisa-ds/web'
+const withFormItemCode = `import { Textarea, FormItem } from '@umichkisa-ds/web'
 
-<div className="flex flex-col gap-2">
-  <Label htmlFor="message">Message</Label>
+<FormItem htmlFor="message" label="Message">
   <Textarea id="message" placeholder="Write your message..." />
-</div>`
+</FormItem>`
 
-const withErrorCode = `import { Textarea, Label } from '@umichkisa-ds/web'
+const withErrorCode = `import { Textarea, FormItem } from '@umichkisa-ds/web'
 
-<div className="flex flex-col gap-2">
-  <Label htmlFor="message">Message</Label>
+<FormItem htmlFor="message" label="Message" error="Message is required.">
   <Textarea id="message" invalid placeholder="Write your message..." />
-  <p className="type-caption text-error">Message is required.</p>
-</div>`
+</FormItem>`
 
 const controlledCode = `const [value, setValue] = useState('')
 
@@ -47,13 +56,13 @@ export default async function TextareaPage() {
   const [
     defaultHighlighted,
     statesHighlighted,
-    withLabelHighlighted,
+    withFormItemHighlighted,
     withErrorHighlighted,
     controlledHighlighted,
   ] = await Promise.all([
     highlight(defaultCode),
     highlight(statesCode),
-    highlight(withLabelCode),
+    highlight(withFormItemCode),
     highlight(withErrorCode),
     highlight(controlledCode),
   ])
@@ -64,15 +73,7 @@ export default async function TextareaPage() {
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">Textarea</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
-        Multi-line text field for user input. Extends the native{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          &lt;textarea&gt;
-        </code>{' '}
-        element, with an additional{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          invalid
-        </code>{' '}
-        prop for error styling. Resizes vertically by default. Designed to compose with{' '}
+        Multi-line text field for user input. Resizes vertically by default. Designed to compose with{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           Label
         </code>{' '}
@@ -109,25 +110,16 @@ export default async function TextareaPage() {
         </div>
       </ComponentPreview>
 
-      {/* With Label */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With Label</h3>
+      {/* With FormItem */}
+      <h3 className="type-h3 mt-8 mb-2 text-foreground">With FormItem</h3>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Compose with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          Label
-        </code>{' '}
-        for accessible form fields. Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          gap-2
-        </code>{' '}
-        between label and textarea.
+        FormItem is the recommended composition — it wires the label, description, and error together and provides the vertical layout.
       </p>
-      <ComponentPreview code={withLabelCode} highlightedCode={withLabelHighlighted}>
+      <ComponentPreview code={withFormItemCode} highlightedCode={withFormItemHighlighted}>
         <div className="w-full max-w-sm">
-          <div className="flex flex-col gap-2">
-            <Label htmlFor="message-demo">Message</Label>
+          <FormItem htmlFor="message-demo" label="Message">
             <Textarea id="message-demo" placeholder="Write your message..." />
-          </div>
+          </FormItem>
         </div>
       </ComponentPreview>
 
@@ -138,19 +130,17 @@ export default async function TextareaPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           invalid
         </code>{' '}
-        with an error message below the textarea. Use{' '}
+        on the Textarea with FormItem&apos;s{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          type-caption text-error
+          error
         </code>{' '}
-        for the message.
+        prop to display an error message below the field.
       </p>
       <ComponentPreview code={withErrorCode} highlightedCode={withErrorHighlighted}>
         <div className="w-full max-w-sm">
-          <div className="flex flex-col gap-2">
-            <Label htmlFor="error-demo">Message</Label>
+          <FormItem htmlFor="error-demo" label="Message" error="Message is required.">
             <Textarea id="error-demo" invalid placeholder="Write your message..." />
-            <p className="type-caption text-error">Message is required.</p>
-          </div>
+          </FormItem>
         </div>
       </ComponentPreview>
 
@@ -173,43 +163,71 @@ export default async function TextareaPage() {
         </code>{' '}
         attributes. Only custom props are listed below.
       </p>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Prop</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Type</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Default</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">invalid</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Applies error border and sets aria-invalid.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">rows</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">number</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">3</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Number of visible text lines. Maps to native rows attribute.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Merged via cn(). Use for layout utilities only.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">...props</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">TextareaHTMLAttributes</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">All native textarea attributes (value, onChange, placeholder, disabled, name, etc.).</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table size="sm">
+            <TableHeader>
+              <TableRow>
+                <TableHead>Prop</TableHead>
+                <TableHead>Type</TableHead>
+                <TableHead>Default</TableHead>
+                <TableHead>Description</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">invalid</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell>Applies error border and sets aria-invalid.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">rows</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">number</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">3</code></TableCell>
+                <TableCell>Number of visible text lines. Maps to native rows attribute.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">...props</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">TextareaHTMLAttributes</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>All native textarea attributes (value, onChange, placeholder, disabled, name, etc.).</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>invalid</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
+              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground">Applies error border and sets aria-invalid.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>rows</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">number</code></span>
+              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">3</code></span>
+              <span className="type-caption text-muted-foreground">Number of visible text lines. Maps to native rows attribute.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>className</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>...props</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">TextareaHTMLAttributes</code></span>
+              <span className="type-caption text-muted-foreground">All native textarea attributes (value, onChange, placeholder, disabled, name, etc.).</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
     </Container>
