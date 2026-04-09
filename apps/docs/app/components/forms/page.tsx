@@ -270,7 +270,7 @@ export default function FormsPage() {
         </CardHeader>
 
         <CardContent>
-          <div className="flex flex-col gap-4 max-w-md">
+          <div className="flex flex-col gap-4 max-w-md mx-auto">
           <FormItem htmlFor="demo-name" label="Full name" required>
             <Input id="demo-name" placeholder="e.g. Kim Minjun" />
           </FormItem>
