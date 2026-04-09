@@ -15,6 +15,12 @@ import {
   RadioItem,
   Button,
   Container,
+  Alert,
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 
@@ -100,15 +106,17 @@ export default function FormsPage() {
         is the composition wrapper that pairs a label, description, and error message with any
         form control for consistent structure and spacing.
       </p>
-      <p className="type-body-sm mb-8 text-muted-foreground max-w-prose">
-        For form state management, validation, and submission handling, see the{' '}
-        <a href="/forms/overview" className="text-link underline hover:text-brand-primary">
-          Forms
-        </a>{' '}
-        section — it provides a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Form>'}</code>{' '}
-        compound component that wires these primitives to react-hook-form automatically.
-      </p>
+      <div className="mb-8 max-w-prose">
+        <Alert variant="info">
+          For form state management, validation, and submission handling, see the{' '}
+          <a href="/forms/overview" className="text-link underline hover:text-brand-primary">
+            Forms
+          </a>{' '}
+          section — it provides a{' '}
+          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Form>'}</code>{' '}
+          compound component that wires these primitives to react-hook-form automatically.
+        </Alert>
+      </div>
 
       {/* ── Section 1: Composition Patterns ─────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Composition Patterns</h2>
@@ -120,10 +128,33 @@ export default function FormsPage() {
         . Below are the supported control pairings.
       </p>
 
-      {/* FormItem + Input */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">FormItem + Input</h3>
-      <p className="type-body mb-2 text-foreground max-w-prose">
-        The most common pattern. A label and text input composed with consistent spacing.
+      {/* Text inputs */}
+      <h3 className="type-h3 mt-6 mb-2 text-foreground">Text inputs</h3>
+      <p className="type-body mb-4 text-foreground max-w-prose">
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          FormItem
+        </code>{' '}
+        composes with{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          Input
+        </code>
+        ,{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          Textarea
+        </code>
+        , and{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          Select
+        </code>{' '}
+        for single-line, multi-line, and dropdown text entry. Pass an{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          error
+        </code>{' '}
+        string to surface validation feedback, and mirror it on the control with the{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          invalid
+        </code>{' '}
+        prop.
       </p>
       <ComponentPreview code={basicCode}>
         <div className="w-full max-w-sm">
@@ -132,24 +163,6 @@ export default function FormsPage() {
           </FormItem>
         </div>
       </ComponentPreview>
-
-      {/* FormItem + Input with error */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">FormItem + Input with error</h3>
-      <p className="type-body mb-2 text-foreground max-w-prose">
-        Pass an{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          error
-        </code>{' '}
-        string to{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          FormItem
-        </code>{' '}
-        and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          invalid
-        </code>{' '}
-        to the control to display validation feedback.
-      </p>
       <ComponentPreview code={errorCode}>
         <div className="w-full max-w-sm">
           <FormItem
@@ -161,16 +174,6 @@ export default function FormsPage() {
           </FormItem>
         </div>
       </ComponentPreview>
-
-      {/* FormItem + Textarea */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">FormItem + Textarea</h3>
-      <p className="type-body mb-2 text-foreground max-w-prose">
-        Works identically with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          Textarea
-        </code>{' '}
-        for multi-line text input.
-      </p>
       <ComponentPreview code={textareaCode}>
         <div className="w-full max-w-sm">
           <FormItem htmlFor="cp-bio" label="Bio" description="Tell us about yourself.">
@@ -178,16 +181,6 @@ export default function FormsPage() {
           </FormItem>
         </div>
       </ComponentPreview>
-
-      {/* FormItem + Select */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">FormItem + Select</h3>
-      <p className="type-body mb-2 text-foreground max-w-prose">
-        Composes with the compound{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          Select
-        </code>{' '}
-        API for dropdown selection.
-      </p>
       <ComponentPreview code={selectCode}>
         <div className="w-full max-w-sm">
           <FormItem htmlFor="cp-role" label="Role" required>
@@ -203,18 +196,33 @@ export default function FormsPage() {
         </div>
       </ComponentPreview>
 
-      {/* FormItem + Checkbox */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">FormItem + Checkbox</h3>
-      <p className="type-body mb-2 text-foreground max-w-prose">
-        Toggle controls use the{' '}
+      {/* Toggle controls */}
+      <h3 className="type-h3 mt-8 mb-2 text-foreground">Toggle controls</h3>
+      <p className="type-body mb-4 text-foreground max-w-prose">
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          text
+          Checkbox
+        </code>
+        ,{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          Switch
+        </code>
+        , and{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          RadioGroup
         </code>{' '}
-        prop for their inline label within the{' '}
+        compose inside{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
           FormItem
         </code>{' '}
-        wrapper.
+        with their inline description supplied via the{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          text
+        </code>{' '}
+        prop. The FormItem provides the field heading; the toggle&apos;s{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          text
+        </code>{' '}
+        provides the inline label.
       </p>
       <ComponentPreview code={checkboxCode}>
         <div className="w-full max-w-sm">
@@ -223,16 +231,6 @@ export default function FormsPage() {
           </FormItem>
         </div>
       </ComponentPreview>
-
-      {/* FormItem + Switch */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">FormItem + Switch</h3>
-      <p className="type-body mb-2 text-foreground max-w-prose">
-        Same pattern for{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          Switch
-        </code>{' '}
-        controls.
-      </p>
       <ComponentPreview code={switchCode}>
         <div className="w-full max-w-sm">
           <FormItem htmlFor="cp-notif" label="Notifications">
@@ -240,20 +238,6 @@ export default function FormsPage() {
           </FormItem>
         </div>
       </ComponentPreview>
-
-      {/* FormItem + RadioGroup */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">FormItem + RadioGroup</h3>
-      <p className="type-body mb-2 text-foreground max-w-prose">
-        Wrap a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          RadioGroup
-        </code>{' '}
-        with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
-          RadioItem
-        </code>{' '}
-        children for single-selection groups.
-      </p>
       <ComponentPreview code={radioCode}>
         <div className="w-full max-w-sm">
           <FormItem htmlFor="cp-contact" label="Preferred contact method">
@@ -277,15 +261,16 @@ export default function FormsPage() {
         together in a production-like scenario.
       </p>
 
-      <div className="rounded-lg border border-border bg-surface p-8">
-        <div className="mb-6">
-          <h3 className="type-h2 text-foreground">Event Registration</h3>
-          <p className="type-body-sm text-muted-foreground mt-1">
+      <Card>
+        <CardHeader>
+          <CardTitle>Event Registration</CardTitle>
+          <CardDescription>
             Register for the upcoming KISA networking event. Fields marked with * are required.
-          </p>
-        </div>
+          </CardDescription>
+        </CardHeader>
 
-        <div className="flex flex-col gap-4 max-w-md">
+        <CardContent>
+          <div className="flex flex-col gap-4 max-w-md">
           <FormItem htmlFor="demo-name" label="Full name" required>
             <Input id="demo-name" placeholder="e.g. Kim Minjun" />
           </FormItem>
@@ -346,8 +331,9 @@ export default function FormsPage() {
           <div className="pt-2">
             <Button>Register</Button>
           </div>
-        </div>
-      </div>
+          </div>
+        </CardContent>
+      </Card>
 
       {/* ── Section 3: Guidelines ───────────────────────────── */}
       <h2 className="type-h2 mt-12 mb-4 text-foreground">Guidelines</h2>
