@@ -129,7 +129,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Review `/components/checkbox` — plan: `docs/plans/review-fix-components-checkbox.md`
 - [x] Fix `/components/checkbox` — plan: `docs/plans/review-fix-components-checkbox.md`
 - [x] Review `/components/radio` — plan: `docs/plans/review-fix-components-radio.md`
-- [ ] Fix `/components/radio` — plan: `docs/plans/review-fix-components-radio.md`
+- [x] Fix `/components/radio` — plan: `docs/plans/review-fix-components-radio.md`
 - [x] Review `/components/switch` — plan: `docs/plans/review-fix-components-switch.md`
 - [x] Fix `/components/switch` — plan: `docs/plans/review-fix-components-switch.md`
 - [x] Review `/components/form-item` — plan: `docs/plans/review-fix-components-form-item.md`
