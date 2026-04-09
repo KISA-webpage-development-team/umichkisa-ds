@@ -736,3 +736,14 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 | 5 | minor | content | both | DateRangePicker "Invalid" copy is too thin — doesn't mention pairing with FormItem. Rewrite to mirror DatePicker's invalid copy. |
 
 **Notes:** Inline `<code>` cells preserved per standing rule (InlineCode migration excluded). API tables share 6 identical rows between DatePicker and DateRangePicker — preserved per docs convention of full per-component API tables.
+
+## /components/only-mobile-view
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | Raw `<table>` in API Reference — migrate to DS `Table` (`hidden md:block`) + `TableMobileList` (`block md:hidden`). |
+| 2 | major | ds-violation | both | Intro sub-paragraph (muted `type-body-sm`) duplicates the primary intro and mixes usage guidance with behavior detail. Replace with `Alert variant="info"` using tightened copy. |
+| 3 | minor | content | both | Basic example prose is wordy — drop the "simulates in a contained box" caveat; tighten to minimal framing. |
+| 4 | minor | ux | both | `ComponentPreview` hand-rolls a viewport-dependent simulation (`hidden md:flex` overlay), and the inner "Resize the browser" caption is misleading (preview is a fixed 192px box, not viewport-responsive). Restructure both previews as side-by-side static panels — "Mobile (<768px)" + "Desktop (≥768px)" — always visible and clearly labeled. |
+
+**Notes:** Finding #3 from initial review (intro redundancy) folded into #2. Finding #6 (hidden overlay caption) resolved by restructure in #4.

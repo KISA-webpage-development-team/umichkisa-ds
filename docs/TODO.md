@@ -146,8 +146,8 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Fix `/components/datepicker` — plan: `docs/plans/review-fix-components-datepicker.md`
 
 ### Batch 16 — Components
-- [ ] Review `/components/only-mobile-view`
-- [ ] Fix `/components/only-mobile-view`
+- [x] Review `/components/only-mobile-view` — plan: `docs/plans/review-fix-components-only-mobile-view.md`
+- [ ] Fix `/components/only-mobile-view` — plan: `docs/plans/review-fix-components-only-mobile-view.md`
 - [ ] Review `/components/forms`
 - [ ] Fix `/components/forms`
 
@@ -172,6 +172,10 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [ ] Home page content (`/`)
 - [ ] Components index page content (`/components`)
 - [ ] Foundation index page content (`/foundation`)
+
+## Post-review sweeps
+
+- [ ] Standardize API Reference required-prop convention → asterisk. Sweep all `apps/docs/app/components/*` pages: move any `(required)` out of the Default column and append `*` to the prop name instead (both Table and TableMobileList). Default column shows the real default or `—`. Add `* Required prop.` caption under each API table. Wrap the asterisk for a11y (`aria-label="required"`) and color it `text-destructive`. Use `/components/label` as the reference pattern. Add the rule to `docs/DS_CONSTRAINTS.md` as part of the same PR.
 
 ## Docs App Enhancements
 
