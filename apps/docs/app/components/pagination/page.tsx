@@ -1,4 +1,4 @@
-import { Container } from '@umichkisa-ds/web'
+import { Alert, Container } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 import { BasicDemo, ManyPagesDemo, SiblingCountDemo, FewPagesDemo } from './_demos'
@@ -87,11 +87,10 @@ export default async function PaginationPage() {
         Navigation control for moving between pages of content. Displays page
         numbers with ellipsis for large ranges and previous/next arrows.
       </p>
-      <p className="type-body-sm mb-8 text-muted-foreground max-w-prose">
+      <Alert variant="info" className="mb-8">
         Pagination is fully controlled — the consumer owns the page state and
-        passes it via props. On mobile, sibling pages collapse automatically to
-        keep the component compact.
-      </p>
+        passes it via props.
+      </Alert>
 
       {/* -- Examples ------------------------------------------------- */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
