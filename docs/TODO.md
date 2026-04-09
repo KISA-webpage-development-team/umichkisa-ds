@@ -119,7 +119,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Review `/components/input` — plan: `docs/plans/review-fix-components-input.md`
 - [x] Fix `/components/input` — plan: `docs/plans/review-fix-components-input.md`
 - [x] Review `/components/textarea` — plan: `docs/plans/review-fix-components-textarea.md`
-- [ ] Fix `/components/textarea` — plan: `docs/plans/review-fix-components-textarea.md`
+- [x] Fix `/components/textarea` — plan: `docs/plans/review-fix-components-textarea.md`
 - [x] Review `/components/select` — plan: `docs/plans/review-fix-components-select.md`
 - [ ] Fix `/components/select` — plan: `docs/plans/review-fix-components-select.md`
 - [x] Review `/components/label` — plan: `docs/plans/review-fix-components-label.md`
