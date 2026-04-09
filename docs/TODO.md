@@ -141,9 +141,9 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Review `/components/pagination` — plan: `docs/plans/review-fix-components-pagination.md`
 - [x] Fix `/components/pagination` — plan: `docs/plans/review-fix-components-pagination.md`
 - [x] Review `/components/calendar` — plan: `docs/plans/review-fix-components-calendar.md`
-- [ ] Fix `/components/calendar` — plan: `docs/plans/review-fix-components-calendar.md`
-- [ ] Review `/components/datepicker`
-- [ ] Fix `/components/datepicker`
+- [x] Fix `/components/calendar` — plan: `docs/plans/review-fix-components-calendar.md`
+- [x] Review `/components/datepicker` — plan: `docs/plans/review-fix-components-datepicker.md`
+- [ ] Fix `/components/datepicker` — plan: `docs/plans/review-fix-components-datepicker.md`
 
 ### Batch 16 — Components
 - [ ] Review `/components/only-mobile-view`
