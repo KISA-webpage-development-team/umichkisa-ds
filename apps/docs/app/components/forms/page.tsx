@@ -1,6 +1,3 @@
-'use client'
-
-import { useState } from 'react'
 import {
   FormItem,
   Input,
@@ -23,6 +20,7 @@ import {
   CardContent,
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { highlight } from '@/lib/highlight'
 
 /* ── Code snippets ─────────────────────────────────────────── */
 
@@ -50,10 +48,8 @@ const textareaCode = `import { FormItem, Textarea } from '@umichkisa-ds/web'
 
 const selectCode = `import { FormItem, Select, SelectTrigger, SelectContent, SelectItem } from '@umichkisa-ds/web'
 
-const [value, setValue] = useState('')
-
 <FormItem htmlFor="role" label="Role" required>
-  <Select value={value} onValueChange={setValue}>
+  <Select>
     <SelectTrigger placeholder="Select a role" />
     <SelectContent>
       <SelectItem value="admin">Admin</SelectItem>
@@ -85,13 +81,103 @@ const radioCode = `import { FormItem, RadioGroup, RadioItem } from '@umichkisa-d
   </RadioGroup>
 </FormItem>`
 
+const completeFormCode = `import {
+  Card, CardHeader, CardTitle, CardDescription, CardContent,
+  FormItem, Input, Textarea,
+  Select, SelectTrigger, SelectContent, SelectItem,
+  RadioGroup, RadioItem, Switch, Checkbox, Button,
+} from '@umichkisa-ds/web'
+
+<Card>
+  <CardHeader>
+    <CardTitle>Event Registration</CardTitle>
+    <CardDescription>
+      Register for the upcoming KISA networking event. Fields marked with * are required.
+    </CardDescription>
+  </CardHeader>
+
+  <CardContent>
+    <div className="flex flex-col gap-4 max-w-md mx-auto">
+      <FormItem htmlFor="name" label="Full name" required>
+        <Input id="name" placeholder="e.g. Kim Minjun" />
+      </FormItem>
+
+      <FormItem
+        htmlFor="email"
+        label="Email"
+        required
+        description="We'll send confirmation details to this address."
+      >
+        <Input id="email" type="email" placeholder="minjun@umich.edu" />
+      </FormItem>
+
+      <FormItem htmlFor="year" label="Year" required>
+        <Select>
+          <SelectTrigger placeholder="Select your year" />
+          <SelectContent>
+            <SelectItem value="freshman">Freshman</SelectItem>
+            <SelectItem value="sophomore">Sophomore</SelectItem>
+            <SelectItem value="junior">Junior</SelectItem>
+            <SelectItem value="senior">Senior</SelectItem>
+            <SelectItem value="graduate">Graduate</SelectItem>
+          </SelectContent>
+        </Select>
+      </FormItem>
+
+      <FormItem htmlFor="dietary" label="Dietary restrictions"
+        description="Let us know so we can accommodate your needs.">
+        <Input id="dietary" placeholder="e.g. Vegetarian, gluten-free" />
+      </FormItem>
+
+      <FormItem htmlFor="notes" label="Additional notes">
+        <Textarea id="notes" placeholder="Anything else you'd like us to know..." />
+      </FormItem>
+
+      <FormItem htmlFor="contact" label="Preferred contact method">
+        <RadioGroup>
+          <RadioItem value="email" text="Email" />
+          <RadioItem value="kakaotalk" text="KakaoTalk" />
+          <RadioItem value="instagram" text="Instagram DM" />
+        </RadioGroup>
+      </FormItem>
+
+      <FormItem htmlFor="updates" label="Updates">
+        <Switch id="updates" text="Receive event reminders via email" />
+      </FormItem>
+
+      <FormItem htmlFor="terms" label="Terms" required>
+        <Checkbox id="terms" text="I agree to the event code of conduct" />
+      </FormItem>
+
+      <div className="pt-2">
+        <Button>Register</Button>
+      </div>
+    </div>
+  </CardContent>
+</Card>`
+
 /* ── Page ──────────────────────────────────────────────────── */
 
-export default function FormsPage() {
-  const [selectRole, setSelectRole] = useState('')
-
-  /* Complete form demo state */
-  const [demoYear, setDemoYear] = useState('')
+export default async function FormsPage() {
+  const [
+    basicHighlighted,
+    errorHighlighted,
+    textareaHighlighted,
+    selectHighlighted,
+    checkboxHighlighted,
+    switchHighlighted,
+    radioHighlighted,
+    completeFormHighlighted,
+  ] = await Promise.all([
+    highlight(basicCode),
+    highlight(errorCode),
+    highlight(textareaCode),
+    highlight(selectCode),
+    highlight(checkboxCode),
+    highlight(switchCode),
+    highlight(radioCode),
+    highlight(completeFormCode),
+  ])
 
   return (
     <Container size="md" as="article">
@@ -156,14 +242,14 @@ export default function FormsPage() {
         </code>{' '}
         prop.
       </p>
-      <ComponentPreview code={basicCode}>
+      <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
         <div className="w-full max-w-sm">
           <FormItem htmlFor="cp-name" label="Name">
             <Input id="cp-name" placeholder="Enter your name" />
           </FormItem>
         </div>
       </ComponentPreview>
-      <ComponentPreview code={errorCode}>
+      <ComponentPreview code={errorCode} highlightedCode={errorHighlighted}>
         <div className="w-full max-w-sm">
           <FormItem
             htmlFor="cp-email-err"
@@ -174,17 +260,17 @@ export default function FormsPage() {
           </FormItem>
         </div>
       </ComponentPreview>
-      <ComponentPreview code={textareaCode}>
+      <ComponentPreview code={textareaCode} highlightedCode={textareaHighlighted}>
         <div className="w-full max-w-sm">
           <FormItem htmlFor="cp-bio" label="Bio" description="Tell us about yourself.">
             <Textarea id="cp-bio" placeholder="Write something..." />
           </FormItem>
         </div>
       </ComponentPreview>
-      <ComponentPreview code={selectCode}>
+      <ComponentPreview code={selectCode} highlightedCode={selectHighlighted}>
         <div className="w-full max-w-sm">
           <FormItem htmlFor="cp-role" label="Role" required>
-            <Select value={selectRole} onValueChange={setSelectRole}>
+            <Select>
               <SelectTrigger placeholder="Select a role" />
               <SelectContent>
                 <SelectItem value="admin">Admin</SelectItem>
@@ -224,17 +310,17 @@ export default function FormsPage() {
         </code>{' '}
         provides the inline label.
       </p>
-      <ComponentPreview code={checkboxCode}>
+      <ComponentPreview code={checkboxCode} highlightedCode={checkboxHighlighted}>
         <FormItem htmlFor="cp-terms" label="Agreement" required>
           <Checkbox id="cp-terms" text="I agree to the terms and conditions" />
         </FormItem>
       </ComponentPreview>
-      <ComponentPreview code={switchCode}>
+      <ComponentPreview code={switchCode} highlightedCode={switchHighlighted}>
         <FormItem htmlFor="cp-notif" label="Notifications">
           <Switch id="cp-notif" text="Enable email updates" />
         </FormItem>
       </ComponentPreview>
-      <ComponentPreview code={radioCode}>
+      <ComponentPreview code={radioCode} highlightedCode={radioHighlighted}>
         <FormItem htmlFor="cp-contact" label="Preferred contact method">
           <RadioGroup>
             <RadioItem value="email" text="Email" />
@@ -255,79 +341,80 @@ export default function FormsPage() {
         together in a production-like scenario.
       </p>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Event Registration</CardTitle>
-          <CardDescription>
-            Register for the upcoming KISA networking event. Fields marked with * are required.
-          </CardDescription>
-        </CardHeader>
+      <ComponentPreview code={completeFormCode} highlightedCode={completeFormHighlighted}>
+        <div className="w-full">
+          <Card>
+            <CardHeader>
+              <CardTitle>Event Registration</CardTitle>
+              <CardDescription>
+                Register for the upcoming KISA networking event. Fields marked with * are required.
+              </CardDescription>
+            </CardHeader>
 
-        <CardContent>
-          <div className="flex flex-col gap-4 max-w-md mx-auto">
-          <FormItem htmlFor="demo-name" label="Full name" required>
-            <Input id="demo-name" placeholder="e.g. Kim Minjun" />
-          </FormItem>
+            <CardContent>
+              <div className="flex flex-col gap-4 max-w-md mx-auto">
+                <FormItem htmlFor="demo-name" label="Full name" required>
+                  <Input id="demo-name" placeholder="e.g. Kim Minjun" />
+                </FormItem>
 
-          <FormItem
-            htmlFor="demo-email"
-            label="Email"
-            required
-            description="We'll send confirmation details to this address."
-          >
-            <Input id="demo-email" type="email" placeholder="minjun@umich.edu" />
-          </FormItem>
+                <FormItem
+                  htmlFor="demo-email"
+                  label="Email"
+                  required
+                  description="We'll send confirmation details to this address."
+                >
+                  <Input id="demo-email" type="email" placeholder="minjun@umich.edu" />
+                </FormItem>
 
-          <FormItem htmlFor="demo-year" label="Year" required>
-            <Select value={demoYear} onValueChange={setDemoYear}>
-              <SelectTrigger placeholder="Select your year" />
-              <SelectContent>
-                <SelectItem value="freshman">Freshman</SelectItem>
-                <SelectItem value="sophomore">Sophomore</SelectItem>
-                <SelectItem value="junior">Junior</SelectItem>
-                <SelectItem value="senior">Senior</SelectItem>
-                <SelectItem value="graduate">Graduate</SelectItem>
-              </SelectContent>
-            </Select>
-          </FormItem>
+                <FormItem htmlFor="demo-year" label="Year" required>
+                  <Select>
+                    <SelectTrigger placeholder="Select your year" />
+                    <SelectContent>
+                      <SelectItem value="freshman">Freshman</SelectItem>
+                      <SelectItem value="sophomore">Sophomore</SelectItem>
+                      <SelectItem value="junior">Junior</SelectItem>
+                      <SelectItem value="senior">Senior</SelectItem>
+                      <SelectItem value="graduate">Graduate</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormItem>
 
-          <FormItem
-            htmlFor="demo-dietary"
-            label="Dietary restrictions"
-            description="Let us know so we can accommodate your needs."
-          >
-            <Input id="demo-dietary" placeholder="e.g. Vegetarian, gluten-free" />
-          </FormItem>
+                <FormItem
+                  htmlFor="demo-dietary"
+                  label="Dietary restrictions"
+                  description="Let us know so we can accommodate your needs."
+                >
+                  <Input id="demo-dietary" placeholder="e.g. Vegetarian, gluten-free" />
+                </FormItem>
 
-          <FormItem
-            htmlFor="demo-notes"
-            label="Additional notes"
-          >
-            <Textarea id="demo-notes" placeholder="Anything else you'd like us to know..." />
-          </FormItem>
+                <FormItem htmlFor="demo-notes" label="Additional notes">
+                  <Textarea id="demo-notes" placeholder="Anything else you'd like us to know..." />
+                </FormItem>
 
-          <FormItem htmlFor="demo-contact" label="Preferred contact method">
-            <RadioGroup>
-              <RadioItem value="email" text="Email" />
-              <RadioItem value="kakaotalk" text="KakaoTalk" />
-              <RadioItem value="instagram" text="Instagram DM" />
-            </RadioGroup>
-          </FormItem>
+                <FormItem htmlFor="demo-contact" label="Preferred contact method">
+                  <RadioGroup>
+                    <RadioItem value="email" text="Email" />
+                    <RadioItem value="kakaotalk" text="KakaoTalk" />
+                    <RadioItem value="instagram" text="Instagram DM" />
+                  </RadioGroup>
+                </FormItem>
 
-          <FormItem htmlFor="demo-updates" label="Updates">
-            <Switch id="demo-updates" text="Receive event reminders via email" />
-          </FormItem>
+                <FormItem htmlFor="demo-updates" label="Updates">
+                  <Switch id="demo-updates" text="Receive event reminders via email" />
+                </FormItem>
 
-          <FormItem htmlFor="demo-terms" label="Terms" required>
-            <Checkbox id="demo-terms" text="I agree to the event code of conduct" />
-          </FormItem>
+                <FormItem htmlFor="demo-terms" label="Terms" required>
+                  <Checkbox id="demo-terms" text="I agree to the event code of conduct" />
+                </FormItem>
 
-          <div className="pt-2">
-            <Button>Register</Button>
-          </div>
-          </div>
-        </CardContent>
-      </Card>
+                <div className="pt-2">
+                  <Button>Register</Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </ComponentPreview>
 
       {/* ── Section 3: Guidelines ───────────────────────────── */}
       <h2 className="type-h2 mt-12 mb-4 text-foreground">Guidelines</h2>
