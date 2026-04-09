@@ -225,29 +225,23 @@ export default function FormsPage() {
         provides the inline label.
       </p>
       <ComponentPreview code={checkboxCode}>
-        <div className="w-full max-w-sm">
-          <FormItem htmlFor="cp-terms" label="Agreement" required>
-            <Checkbox id="cp-terms" text="I agree to the terms and conditions" />
-          </FormItem>
-        </div>
+        <FormItem htmlFor="cp-terms" label="Agreement" required>
+          <Checkbox id="cp-terms" text="I agree to the terms and conditions" />
+        </FormItem>
       </ComponentPreview>
       <ComponentPreview code={switchCode}>
-        <div className="w-full max-w-sm">
-          <FormItem htmlFor="cp-notif" label="Notifications">
-            <Switch id="cp-notif" text="Enable email updates" />
-          </FormItem>
-        </div>
+        <FormItem htmlFor="cp-notif" label="Notifications">
+          <Switch id="cp-notif" text="Enable email updates" />
+        </FormItem>
       </ComponentPreview>
       <ComponentPreview code={radioCode}>
-        <div className="w-full max-w-sm">
-          <FormItem htmlFor="cp-contact" label="Preferred contact method">
-            <RadioGroup>
-              <RadioItem value="email" text="Email" />
-              <RadioItem value="phone" text="Phone" />
-              <RadioItem value="mail" text="Mail" />
-            </RadioGroup>
-          </FormItem>
-        </div>
+        <FormItem htmlFor="cp-contact" label="Preferred contact method">
+          <RadioGroup>
+            <RadioItem value="email" text="Email" />
+            <RadioItem value="phone" text="Phone" />
+            <RadioItem value="mail" text="Mail" />
+          </RadioGroup>
+        </FormItem>
       </ComponentPreview>
 
       {/* ── Section 2: Complete Form Example ────────────────── */}
