@@ -149,7 +149,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Review `/components/only-mobile-view` — plan: `docs/plans/review-fix-components-only-mobile-view.md`
 - [x] Fix `/components/only-mobile-view` — plan: `docs/plans/review-fix-components-only-mobile-view.md`
 - [x] Review `/components/forms` — plan: `docs/plans/review-fix-components-forms.md`
-- [ ] Fix `/components/forms` — plan: `docs/plans/review-fix-components-forms.md`
+- [x] Fix `/components/forms` — plan: `docs/plans/review-fix-components-forms.md`
 
 ### Batch 17 — Forms
 - [ ] Review `/forms/overview`
