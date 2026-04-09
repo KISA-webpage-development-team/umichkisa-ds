@@ -138,10 +138,10 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 ### Batch 15 — Components
 - [ ] Review `/components/toggle-group`
 - [ ] Fix `/components/toggle-group`
-- [ ] Review `/components/pagination`
-- [ ] Fix `/components/pagination`
-- [ ] Review `/components/calendar`
-- [ ] Fix `/components/calendar`
+- [x] Review `/components/pagination` — plan: `docs/plans/review-fix-components-pagination.md`
+- [x] Fix `/components/pagination` — plan: `docs/plans/review-fix-components-pagination.md`
+- [x] Review `/components/calendar` — plan: `docs/plans/review-fix-components-calendar.md`
+- [ ] Fix `/components/calendar` — plan: `docs/plans/review-fix-components-calendar.md`
 - [ ] Review `/components/datepicker`
 - [ ] Fix `/components/datepicker`
 
