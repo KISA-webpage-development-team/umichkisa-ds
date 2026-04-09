@@ -118,22 +118,22 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 ### Batch 13 — Components (Form Controls)
 - [x] Review `/components/input` — plan: `docs/plans/review-fix-components-input.md`
 - [x] Fix `/components/input` — plan: `docs/plans/review-fix-components-input.md`
-- [ ] Review `/components/textarea`
-- [ ] Fix `/components/textarea`
-- [ ] Review `/components/select`
-- [ ] Fix `/components/select`
-- [ ] Review `/components/label`
-- [ ] Fix `/components/label`
+- [x] Review `/components/textarea` — plan: `docs/plans/review-fix-components-textarea.md`
+- [ ] Fix `/components/textarea` — plan: `docs/plans/review-fix-components-textarea.md`
+- [x] Review `/components/select` — plan: `docs/plans/review-fix-components-select.md`
+- [ ] Fix `/components/select` — plan: `docs/plans/review-fix-components-select.md`
+- [x] Review `/components/label` — plan: `docs/plans/review-fix-components-label.md`
+- [x] Fix `/components/label` — plan: `docs/plans/review-fix-components-label.md`
 
 ### Batch 14 — Components (Form Controls)
-- [ ] Review `/components/checkbox`
-- [ ] Fix `/components/checkbox`
-- [ ] Review `/components/radio`
-- [ ] Fix `/components/radio`
-- [ ] Review `/components/switch`
-- [ ] Fix `/components/switch`
-- [ ] Review `/components/form-item`
-- [ ] Fix `/components/form-item`
+- [x] Review `/components/checkbox` — plan: `docs/plans/review-fix-components-checkbox.md`
+- [ ] Fix `/components/checkbox` — plan: `docs/plans/review-fix-components-checkbox.md`
+- [x] Review `/components/radio` — plan: `docs/plans/review-fix-components-radio.md`
+- [ ] Fix `/components/radio` — plan: `docs/plans/review-fix-components-radio.md`
+- [x] Review `/components/switch` — plan: `docs/plans/review-fix-components-switch.md`
+- [ ] Fix `/components/switch` — plan: `docs/plans/review-fix-components-switch.md`
+- [x] Review `/components/form-item` — plan: `docs/plans/review-fix-components-form-item.md`
+- [ ] Fix `/components/form-item` — plan: `docs/plans/review-fix-components-form-item.md`
 
 ### Batch 15 — Components
 - [ ] Review `/components/toggle-group`

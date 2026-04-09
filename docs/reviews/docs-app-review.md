@@ -620,3 +620,76 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 | 1 | major | ds-violation | both | API Reference uses raw `<table>` with manual borders/classes — migrate to DS `Table` (hidden md:block) + `TableMobileList` (block md:hidden). |
 | 2 | minor | content | both | Intro mentions composition with `FormItem` but page has no example or link — drop "and `FormItem`" from the intro paragraph; FormItem composition belongs on its own page. |
 | 3 | minor | content | both | "With Label" body redundantly instructs `gap-2` between label and input — drop the sentence; the example already demonstrates it.
+
+## /components/label
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation / responsive | both | API Reference uses raw `<table>` with hand-rolled borders. Migrate to DS `Table` (hidden md:block) + `TableMobileList` (block md:hidden). Desktop: 4 cols (Prop / Type / Default / Description). Mobile: 3 cols (Prop / Type / Description) — drop Default per Input fix pattern. |
+| 2 | minor | content | both | `Default` column shows literal `required` for `htmlFor` and `children`, reading like a default value. Mark required props with `*` on the prop name, put `—` in Default, and add footnote "* Required prop." |
+| 3 | minor | content | both | Intro + "Default"/"Required" example blurbs repeat prop mechanics already covered in the API table. Trim intro to "Form label with an optional required indicator. Renders a native `<label>` element."; drop the "Default" example paragraph entirely; shorten the "Required" example blurb to one sentence. |
+| 4 | minor | content | both | "With aria-labelledby" intro explains the *how* but not the *why*. Add one clause: non-native form controls like Radix Select don't render a real `<input>`, so `htmlFor` has nothing to target — use `id` on the Label and `aria-labelledby` on the trigger instead. |
+
+**Notes:** UI/UX (Pass B) pass could not run — the devtunnels Microsoft interstitial blocked the Chrome extension from regaining host access after the consent redirect. Source-based findings only; visual layout of this page closely mirrors /components/input post-fix, so no additional visual concerns anticipated.
+
+## /components/textarea
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation / responsive | both | API Reference uses raw `<table>` with hand-rolled borders and inconsistent `type-*` on cells. Migrate to DS `Table` (hidden md:block) + `TableMobileList` (block md:hidden), matching the Input fix pattern. Resolves cell typography consistency automatically. |
+| 2 | minor | content | both | Replace "With Label" section with a **With FormItem** example: `<FormItem htmlFor="..." label="Message"><Textarea id="..." /></FormItem>`. FormItem is the recommended composition path; manual Label + Textarea is mechanical and discouraged. |
+| 3 | minor | content | both | Replace "With error message" section to use FormItem's `error` prop: `<FormItem htmlFor="..." label="Message" error="Message is required."><Textarea id="..." invalid /></FormItem>`. Drops the manual `<p className="type-caption text-error">` composition. |
+| 4 | minor | content | both | Redundant "extends native `<textarea>`" statement appears in both page intro and API Reference intro. Remove from page intro; keep in API Reference. |
+| 5 | minor | content | both | "With FormItem"/"With error" body prose should not narrate mechanical details (no "use gap-2 between label and textarea"). Keep body copy focused on *why* (accessibility, recommended composition). |
+
+**Notes:** Source-based review; patterns mirror /components/input. Original findings #2/#3 (row typography inconsistency) folded into #1 since the DS Table migration resolves them automatically.
+
+## /components/select
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | Migrate 5 raw `<table>` blocks in API Reference (Select, SelectTrigger, SelectContent, SelectItem, SelectGroup) to DS `Table` (hidden md:block) + `TableMobileList` (block md:hidden), one pair per sub-component. |
+| 2 | major | content | both | "With Label" example: drop `htmlFor` from Label (dead prop for non-native triggers); use only `id` + trigger `aria-labelledby`. Reframe as lower-level pattern, ordered after the FormItem example. |
+| 3 | minor | content | both | Add short `SelectSeparator` API section — one-line description ("Visual divider between groups. Takes no props."), no table. Component takes zero props. |
+| 4 | major | content | both | Add "With FormItem" example as the **primary** composition pattern (ordered before "With Label"). Plain FormItem + Label + trigger with `aria-labelledby={htmlFor + "-label"}`. Framed as the recommended path. |
+| 5 | major | content | both | Rewrite "Invalid" example to use FormItem's `error` prop instead of raw `<Label>` + ad-hoc `<p className="type-caption text-error">`. Replaces broken aria wiring with FormItem's built-in error slot. |
+
+**Notes:** Source-based review. Dropped initial finding on SelectGroup missing `className` row (component doesn't accept `className`). FormItem is the recommended composition path for Select per user direction.
+
+## /components/switch
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | Raw `<table>` API Reference — migrate to DS `Table` (hidden md:block) + `TableMobileList` (block md:hidden), matching Input/Table/Card pattern |
+| 2 | minor | content | both | Move second intro paragraph ("Renders a native `<input type=checkbox role=switch>` internally…") into the API Reference intro, merging with the existing "Extends all native `<input>` attributes" lede |
+
+**Notes:** Source-based review (no browser pass). Dropped finding on thin "Checked" section body — keeping parallel with Checkbox for Batch 14 consistency. Dropped intro spacing finding — resolves automatically via #2.
+
+## /components/form-item
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | Raw `<table>` API Reference (7 rows) — migrate to DS `Table size="sm"` (hidden md:block) + `TableMobileList` (block md:hidden), matching Input migration pattern. Preserve all 7 rows (htmlFor, label, required, error, description, className, children); no consolidation. |
+
+**Notes:** Source-based review (no browser pass). Intro paragraph is `text-foreground` (not muted) — no Alert conversion needed, matches Input precedent. Inline `<code>` cells preserved per standing rule (InlineCode migration excluded).
+
+## /components/checkbox
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | API Reference uses raw `<table>` — migrate to DS `Table size="sm"` (hidden md:block) + `TableMobileList` (block md:hidden), matching Input's pattern. Preserve all 4 rows (text, invalid, className, ...props). |
+| 2 | major | styling | both | Convert intro `<p>` to `<Alert variant="info">` with single-line copy: "Standalone checkbox for boolean selections." Matches accordion/table intro Alert pattern. |
+| 3 | major | responsive | mobile | States example row uses `flex items-center gap-4` with 4 checkboxes — overflows at 375px. Change to `flex flex-col gap-2` (Element tier, stacked form-control presentation). |
+| 4 | minor | content | both | Drop the "Default" h3 paragraph entirely — preview is self-explanatory and the line restates the intro. |
+| 5 | minor | content | both | Trim the "Controlled" paragraph to: "Pass `checked` and `onChange` for controlled usage." — drop the "supports both controlled and uncontrolled" boilerplate. |
+
+**Notes:** Source-based review (no browser pass). Dropped finding on `cn()` wording in API table `className` row — matches Input verbatim; out of scope for a per-page review. Inline `<code>` cells preserved per standing rule (InlineCode migration excluded).
+
+## /components/radio
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | `RadioGroup` API Reference uses raw `<table>` — migrate to DS `Table` (hidden md:block) + `TableMobileList` (block md:hidden), matching Input/Switch/FormItem pattern. Preserve all 9 rows. |
+| 2 | major | ds-violation | both | `RadioItem` API Reference uses raw `<table>` — migrate to DS `Table` + `TableMobileList` for consistency with the `RadioGroup` table on the same page. Preserve all 4 rows. |
+
+**Notes:** Source-based review (no browser pass). Inline `<code>` cells preserved per standing rule (InlineCode migration excluded). "Invalid / error state" example kept as-is — FormItem composition belongs on `/components/form-item`, not the primitive reference. Intro left at one sentence — cross-component guidance (Radio vs Checkbox) belongs on forms overview.
