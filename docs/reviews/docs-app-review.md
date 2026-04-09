@@ -747,3 +747,13 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 | 4 | minor | ux | both | `ComponentPreview` hand-rolls a viewport-dependent simulation (`hidden md:flex` overlay), and the inner "Resize the browser" caption is misleading (preview is a fixed 192px box, not viewport-responsive). Restructure both previews as side-by-side static panels — "Mobile (<768px)" + "Desktop (≥768px)" — always visible and clearly labeled. |
 
 **Notes:** Finding #3 from initial review (intro redundancy) folded into #2. Finding #6 (hidden overlay caption) resolved by restructure in #4.
+
+## /components/forms
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | Muted intro sub-paragraph (L103–111, "For form state management...") must be replaced with DS `<Alert variant="info">` per established docs pattern for cross-ref/caveat paragraphs. |
+| 2 | major | ds-violation | both | Event Registration demo (L280) uses raw card markup (`rounded-lg border border-border bg-surface p-8`) with custom `p-8` padding and `type-h2` on an `<h3>`. Replace with `Card` + `CardHeader` + `CardTitle` + `CardDescription` + `CardContent` — drops the padding override and fixes heading size automatically. |
+| 3 | minor | content | both | Section 1 "Composition Patterns" shows 7 near-identical `FormItem + Control` examples with repetitive filler prose ("Works identically with X", "Same pattern for Y"). Regroup into two subsections — "Text inputs" (Input, Input-with-error, Textarea, Select) and "Toggle controls" (Checkbox, Switch, RadioGroup) — with shared per-group prose to reduce scroll fatigue while preserving copy-paste value. |
+
+**Notes:** Findings #3 (h3 uses type-h2) and #4 (p-8 tight on mobile) from the initial pass were folded into #2, since replacing the raw card with `Card`/`CardTitle` auto-resolves both. InlineCode migration skipped per standing rule. No Table on page (composition page, not API reference).
