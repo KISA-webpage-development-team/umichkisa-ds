@@ -133,7 +133,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Review `/components/switch` — plan: `docs/plans/review-fix-components-switch.md`
 - [x] Fix `/components/switch` — plan: `docs/plans/review-fix-components-switch.md`
 - [x] Review `/components/form-item` — plan: `docs/plans/review-fix-components-form-item.md`
-- [ ] Fix `/components/form-item` — plan: `docs/plans/review-fix-components-form-item.md`
+- [x] Fix `/components/form-item` — plan: `docs/plans/review-fix-components-form-item.md`
 
 ### Batch 15 — Components
 - [ ] Review `/components/toggle-group`
