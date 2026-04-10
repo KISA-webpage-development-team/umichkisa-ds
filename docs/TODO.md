@@ -157,7 +157,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Review `/forms/form-component` — plan: `docs/plans/review-fix-forms-form-component.md`
 - [x] Fix `/forms/form-component` — plan: `docs/plans/review-fix-forms-form-component.md`
 - [x] Review `/forms/use-form` — plan: `docs/plans/review-fix-forms-use-form.md`
-- [ ] Fix `/forms/use-form` — plan: `docs/plans/review-fix-forms-use-form.md`
+- [x] Fix `/forms/use-form` — plan: `docs/plans/review-fix-forms-use-form.md`
 
 ### Batch 18 — Forms
 - [x] Review `/forms/hooks`
