@@ -7,6 +7,7 @@ import {
   TableHead,
   TableCell,
 } from '@umichkisa-ds/web'
+import { InlineCode } from '@/components/InlineCode'
 export default function LayoutBreakpointsPage() {
   return (
     <Container size="md" as="article">
@@ -49,12 +50,12 @@ export default function LayoutBreakpointsPage() {
             </TableRow>
             <TableRow>
               <TableCell>Tablet</TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md:</code></TableCell>
+              <TableCell><InlineCode>md:</InlineCode></TableCell>
               <TableCell>&ge; 768px</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>Desktop</TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg:</code></TableCell>
+              <TableCell><InlineCode>lg:</InlineCode></TableCell>
               <TableCell>&ge; 1024px</TableCell>
             </TableRow>
           </TableBody>
@@ -64,15 +65,15 @@ export default function LayoutBreakpointsPage() {
       <p className="type-body mb-4 text-foreground max-w-prose">
         Design decisions start at the desktop tier — that is the priority
         viewport. In code, default styles target mobile, and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md:</code> and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg:</code>{' '}
+        <InlineCode>md:</InlineCode> and{' '}
+        <InlineCode>lg:</InlineCode>{' '}
         prefixes layer adjustments on as the viewport grows.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Tailwind provides additional breakpoints —{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">sm:</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">xl:</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">2xl:</code>.
+        <InlineCode>sm:</InlineCode>,{' '}
+        <InlineCode>xl:</InlineCode>,{' '}
+        <InlineCode>2xl:</InlineCode>.
         Never use them. The three-tier system covers all layout needs for
         this product. Introducing extra breakpoints fragments the system,
         makes responsive behavior harder to reason about, and creates

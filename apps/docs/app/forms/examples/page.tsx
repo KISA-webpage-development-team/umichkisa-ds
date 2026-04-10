@@ -1,5 +1,7 @@
 import { Container } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 import { highlight } from '@/lib/highlight'
 import { LoginDemo, ProfileDemo, FeedbackDemo, HooksLoginDemo, ToasterMount } from './_demos'
 
@@ -228,7 +230,7 @@ export default async function ExamplesPage() {
         Examples
       </h1>
       {/* ── Login Form ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Login Form</h2>
+      <Heading as="h2">Login Form</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         A simple login form with email and password validation. Try submitting
         with empty fields or a short password to see validation in action.
@@ -238,7 +240,7 @@ export default async function ExamplesPage() {
       </ComponentPreview>
 
       {/* ── Profile Edit ──────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Profile Edit</h2>
+      <Heading as="h2">Profile Edit</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         A KISA member profile editor demonstrating text inputs, textarea, number
         validation, radio groups, and a switch toggle.
@@ -248,7 +250,7 @@ export default async function ExamplesPage() {
       </ComponentPreview>
 
       {/* ── Feedback Form ─────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Feedback Form</h2>
+      <Heading as="h2">Feedback Form</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         A feedback form with a select dropdown, textarea with minimum length,
         and an optional anonymous checkbox.
@@ -258,11 +260,11 @@ export default async function ExamplesPage() {
       </ComponentPreview>
 
       {/* ── Using Hooks ───────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Using Hooks</h2>
+      <Heading as="h2">Using Hooks</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The same login form rebuilt using{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">useFormField</code> and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">useFormStatus</code> hooks. The result is
+        <InlineCode>useFormField</InlineCode> and{' '}
+        <InlineCode>useFormStatus</InlineCode> hooks. The result is
         identical but gives you full control over the field layout and submit
         button behavior.
       </p>

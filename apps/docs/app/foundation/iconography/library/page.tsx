@@ -1,6 +1,8 @@
 import { Container, Divider } from '@umichkisa-ds/web'
 import { CodeBlock } from '@/components/CodeBlock'
 import { DoDont, Dont } from '@/components/DoDont'
+import { InlineCode } from '@/components/InlineCode'
+import { Heading } from '@/components/Heading'
 export default async function IconographyLibraryPage() {
   return (
     <Container size="md" as="article">
@@ -9,7 +11,7 @@ export default async function IconographyLibraryPage() {
       <h1 className="type-h1 mb-4 text-foreground">Icon Library</h1>
 
       {/* ── Why Lucide ──────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Why Lucide</h2>
+      <Heading as="h2">Why Lucide</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Lucide is the single icon library for the KISA design system. It is not a
         default we fell into — it is a deliberate choice that every component depends on.
@@ -40,14 +42,14 @@ export default async function IconographyLibraryPage() {
       <Divider className="my-8" />
 
       {/* ── Browsing Icons ──────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Browsing Icons</h2>
+      <Heading as="h2">Browsing Icons</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The full Lucide catalogue is at{' '}
         <a href="https://lucide.dev" className="text-link underline-offset-2 hover:underline hover:text-brand-primary" target="_blank" rel="noopener noreferrer">lucide.dev</a>.
         {' '}Search by keyword to find what you need. The search understands intent — searching
         {' '}{'"'}close{'"'} returns{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">x</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">x-circle</code>,
+        <InlineCode>x</InlineCode>,{' '}
+        <InlineCode>x-circle</InlineCode>,
         {' '}and related icons.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
@@ -59,14 +61,14 @@ export default async function IconographyLibraryPage() {
       <Divider className="my-8" />
 
       {/* ── Naming Convention ───────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Naming Convention</h2>
+      <Heading as="h2">Naming Convention</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Lucide uses kebab-case names:{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">arrow-right</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">chevron-down</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">alert-triangle</code>.
+        <InlineCode>arrow-right</InlineCode>,{' '}
+        <InlineCode>chevron-down</InlineCode>,{' '}
+        <InlineCode>alert-triangle</InlineCode>.
         {' '}The{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code>{' '}
+        <InlineCode>{'<Icon>'}</InlineCode>{' '}
         component takes the same name as a string — always the exact kebab-case name shown on{' '}
         <a href="https://lucide.dev" className="text-link underline-offset-2 hover:underline hover:text-brand-primary" target="_blank" rel="noopener noreferrer">lucide.dev</a>.
         {' '}Never translate it to camelCase or PascalCase — the component resolves the string at runtime.
@@ -79,15 +81,15 @@ export default async function IconographyLibraryPage() {
       <Divider className="my-8" />
 
       {/* ── What We Don't Use ───────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">What We Don{"'"}t Use</h2>
+      <Heading as="h2">What We Don{"'"}t Use</Heading>
       <DoDont>
         <Dont label="Don't: react-icons">
           <p className="type-body-sm text-foreground">
             The previous KISA client mixed icons from{' '}
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">react-icons/md</code>,{' '}
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">react-icons/fa</code>,{' '}
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">react-icons/ai</code>, and{' '}
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">react-icons/lu</code>.
+            <InlineCode>react-icons/md</InlineCode>,{' '}
+            <InlineCode>react-icons/fa</InlineCode>,{' '}
+            <InlineCode>react-icons/ai</InlineCode>, and{' '}
+            <InlineCode>react-icons/lu</InlineCode>.
             {' '}Each sub-library has its own stroke weight and design language. Mixing them produced
             the inconsistency this system replaces.
           </p>
@@ -102,7 +104,7 @@ export default async function IconographyLibraryPage() {
           <p className="type-body-sm text-foreground">
             Raster icons cannot scale cleanly and cannot inherit color from CSS. Every icon in the
             system is an SVG so it stays sharp at every size and follows{' '}
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">currentColor</code>.
+            <InlineCode>currentColor</InlineCode>.
           </p>
         </Dont>
       </DoDont>
@@ -110,7 +112,7 @@ export default async function IconographyLibraryPage() {
       <Divider className="my-8" />
 
       {/* ── Custom Icons ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Custom Icons</h2>
+      <Heading as="h2">Custom Icons</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Before requesting a custom icon, confirm Lucide truly does not have what you need. The
         Lucide search understands intent and synonyms — try several keywords before concluding the
@@ -119,9 +121,9 @@ export default async function IconographyLibraryPage() {
       <p className="type-body mb-4 text-foreground max-w-prose">
         If Lucide genuinely does not cover the icon you need, contact the design system project
         owner. Custom icons are registered centrally in the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code>{' '}
+        <InlineCode>{'<Icon>'}</InlineCode>{' '}
         system so every consumer uses them the same way:{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon name="..." />'}</code>.
+        <InlineCode>{'<Icon name="..." />'}</InlineCode>.
         Never inline a raw SVG in a component to work around a missing icon.
       </p>
 

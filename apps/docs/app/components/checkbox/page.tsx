@@ -13,8 +13,10 @@ import {
   TableRow,
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { InlineCode } from '@/components/InlineCode'
 import { highlight } from '@/lib/highlight'
 import { ControlledDemo } from './_demos'
+import { Heading } from '@/components/Heading'
 
 const defaultCode = `import { Checkbox } from '@umichkisa-ds/web'
 
@@ -86,21 +88,21 @@ export default async function CheckboxPage() {
       </Alert>
 
       {/* ── Examples ────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Default */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Default</h3>
+      <Heading as="h3" className="mt-6">Default</Heading>
       <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
         <Checkbox text="Accept terms" />
       </ComponentPreview>
 
       {/* Checked */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Checked</h3>
+      <Heading as="h3">Checked</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         A checkbox with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           defaultChecked
-        </code>{' '}
+        </InlineCode>{' '}
         set.
       </p>
       <ComponentPreview code={checkedCode} highlightedCode={checkedHighlighted}>
@@ -108,7 +110,7 @@ export default async function CheckboxPage() {
       </ComponentPreview>
 
       {/* States */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">States</h3>
+      <Heading as="h3">States</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Default, disabled unchecked, disabled checked, and invalid states.
       </p>
@@ -122,12 +124,12 @@ export default async function CheckboxPage() {
       </ComponentPreview>
 
       {/* With FormItem */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With FormItem</h3>
+      <Heading as="h3">With FormItem</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Compose with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           FormItem
-        </code>{' '}
+        </InlineCode>{' '}
         for structured form layouts.
       </p>
       <ComponentPreview code={withFormItemCode} highlightedCode={withFormItemHighlighted}>
@@ -137,16 +139,16 @@ export default async function CheckboxPage() {
       </ComponentPreview>
 
       {/* With error message */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With error message</h3>
+      <Heading as="h3">With error message</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Pair{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           invalid
-        </code>{' '}
+        </InlineCode>{' '}
         with a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           FormItem
-        </code>{' '}
+        </InlineCode>{' '}
         error message.
       </p>
       <ComponentPreview code={withErrorCode} highlightedCode={withErrorHighlighted}>
@@ -156,16 +158,16 @@ export default async function CheckboxPage() {
       </ComponentPreview>
 
       {/* Controlled */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Controlled</h3>
+      <Heading as="h3">Controlled</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Pass{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           checked
-        </code>{' '}
+        </InlineCode>{' '}
         and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           onChange
-        </code>{' '}
+        </InlineCode>{' '}
         for controlled usage.
       </p>
       <ComponentPreview code={controlledCode} highlightedCode={controlledHighlighted}>
@@ -173,16 +175,16 @@ export default async function CheckboxPage() {
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Extends all native{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           &lt;input&gt;
-        </code>{' '}
+        </InlineCode>{' '}
         attributes (except{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           type
-        </code>
+        </InlineCode>
         ). Only custom props are listed below.
       </p>
       <div className="my-6">
@@ -198,26 +200,26 @@ export default async function CheckboxPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">text</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>text</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Inline label text rendered beside the checkbox.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">invalid</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell><InlineCode>invalid</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Applies error border and sets aria-invalid.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">...props</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">InputHTMLAttributes</code></TableCell>
+                <TableCell><InlineCode>...props</InlineCode></TableCell>
+                <TableCell><InlineCode>InputHTMLAttributes</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>All native checkbox attributes except type.</TableCell>
               </TableRow>
@@ -228,23 +230,23 @@ export default async function CheckboxPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>text</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Inline label text rendered beside the checkbox.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>invalid</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Applies error border and sets aria-invalid.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>...props</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">InputHTMLAttributes</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>InputHTMLAttributes</InlineCode></span>
               <span className="type-caption text-muted-foreground">All native checkbox attributes except type.</span>
             </TableMobileItem>
           </TableMobileList>

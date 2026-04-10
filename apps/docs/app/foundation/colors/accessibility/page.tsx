@@ -1,5 +1,7 @@
 import { Card, CardContent, Container } from '@umichkisa-ds/web'
 import { ContrastTable, PassBadge } from '@/components/ContrastTable'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 
 export default function ColorsAccessibilityPage() {
   return (
@@ -67,57 +69,57 @@ export default function ColorsAccessibilityPage() {
         </CardContent>
       </Card>
 
-      <h2 className="type-h2 text-foreground mt-8 mb-4">Rationale</h2>
+      <Heading as="h2">Rationale</Heading>
 
       <p className="type-body mb-4 text-foreground max-w-prose">
-        <strong className="font-semibold text-foreground">On <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-disabled-foreground</code>:</strong>{' '}
+        <strong className="font-semibold text-foreground">On <InlineCode>--color-disabled-foreground</InlineCode>:</strong>{' '}
         The 2.8:1 ratio is intentional. Disabled elements are not meant to be read — they communicate
         {'"'}this action is not available.{'"'} If a user needs to read it, it should not be disabled.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        <strong className="font-semibold text-foreground">On <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-muted-foreground</code> over <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-subtle</code>:</strong>{' '}
+        <strong className="font-semibold text-foreground">On <InlineCode>--color-muted-foreground</InlineCode> over <InlineCode>--color-surface-subtle</InlineCode>:</strong>{' '}
         This combination passes at 4.2:1 for large text only. Avoid using muted text at small sizes
         inside cards — use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-foreground</code>{' '}
+        <InlineCode>--color-foreground</InlineCode>{' '}
         instead if the content matters.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        <strong className="font-semibold text-foreground">On <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-muted-foreground</code> over <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-muted</code>:</strong>{' '}
+        <strong className="font-semibold text-foreground">On <InlineCode>--color-muted-foreground</InlineCode> over <InlineCode>--color-surface-muted</InlineCode>:</strong>{' '}
         This combination (3.8:1) passes for large text only. Surface-muted is used inside cards for
         detail rows — avoid muted text at small sizes in these regions. Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-foreground</code>{' '}
+        <InlineCode>--color-foreground</InlineCode>{' '}
         instead if the content needs to be readable.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        <strong className="font-semibold text-foreground">On <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-foreground</code> over <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code>:</strong>{' '}
+        <strong className="font-semibold text-foreground">On <InlineCode>--color-brand-foreground</InlineCode> over <InlineCode>--color-brand-primary</InlineCode>:</strong>{' '}
         This is the strongest verified pair in the system at 8.2:1 — maize on navy. It clears
         WCAG AA at every text size and weight. Whenever text sits on a brand-primary background,
         this is the combination to reach for. It is also the combination that defines KISA{"'"}s
         visual identity.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        <strong className="font-semibold text-foreground">On <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-foreground</code> over hover and pressed states:</strong>{' '}
+        <strong className="font-semibold text-foreground">On <InlineCode>--color-brand-foreground</InlineCode> over hover and pressed states:</strong>{' '}
         Maize remains valid on{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-hover</code>{' '}
+        <InlineCode>--color-brand-primary-hover</InlineCode>{' '}
         (7.2:1) and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-pressed</code>{' '}
+        <InlineCode>--color-brand-primary-pressed</InlineCode>{' '}
         (10.3:1). Both clear WCAG AA. There is no need for a different text token on interactive states.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        <strong className="font-semibold text-foreground">On feedback colors over <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface</code>:</strong>{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-error</code>{' '}
+        <strong className="font-semibold text-foreground">On feedback colors over <InlineCode>--color-surface</InlineCode>:</strong>{' '}
+        <InlineCode>--color-error</InlineCode>{' '}
         (3.9:1) passes for large text only — do not use it as small body text.{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-warning</code>{' '}
+        <InlineCode>--color-warning</InlineCode>{' '}
         (3.0:1) meets the non-text contrast threshold exactly — treat it as a floor, not a comfortable
         pass, and always pair it with a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-foreground</code>{' '}
+        <InlineCode>--color-foreground</InlineCode>{' '}
         label for any readable content.{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-success</code>{' '}
+        <InlineCode>--color-success</InlineCode>{' '}
         (2.2:1) fails both text and non-text contrast thresholds — never use it as standalone text or
         icon color; always pair it with a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-foreground</code>{' '}
+        <InlineCode>--color-foreground</InlineCode>{' '}
         label.{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-info</code>{' '}
+        <InlineCode>--color-info</InlineCode>{' '}
         (5.9:1) passes for all text sizes.
       </p>
 

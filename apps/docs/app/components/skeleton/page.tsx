@@ -13,6 +13,8 @@ import {
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 
 const defaultCode = `import { Skeleton } from '@umichkisa-ds/web'
 
@@ -62,27 +64,27 @@ export default async function SkeletonPage() {
         that approximates the shape of the real content, reducing perceived wait
         time and helping prevent layout shift when dimensions match the final
         content. Consumer controls dimensions via{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           className
-        </code>.
+        </InlineCode>.
         The skeleton pulses automatically using a CSS opacity animation.
       </p>
       <Alert variant="info" className="mb-8">
         <p className="type-body-sm text-foreground">
           When grouping multiple skeletons as a loading state, wrap them in a
           container with{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          <InlineCode>
             aria-busy=&quot;true&quot;
-          </code>{' '}
+          </InlineCode>{' '}
           to communicate the loading state to screen readers.
         </p>
       </Alert>
 
       {/* ── Examples ────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Default */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Default</h3>
+      <Heading as="h3" className="mt-6">Default</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         A heading placeholder with a content block below. Set dimensions with
         Tailwind height and width utilities.
@@ -95,12 +97,12 @@ export default async function SkeletonPage() {
       </ComponentPreview>
 
       {/* Circular */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Circular</h3>
+      <Heading as="h3">Circular</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           variant=&quot;circular&quot;
-        </code>{' '}
+        </InlineCode>{' '}
         for avatar or icon placeholders. Provide explicit width and height.
       </p>
       <ComponentPreview code={circularCode} highlightedCode={circularHighlighted}>
@@ -108,7 +110,7 @@ export default async function SkeletonPage() {
       </ComponentPreview>
 
       {/* Text block */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Text block</h3>
+      <Heading as="h3">Text block</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Stack multiple skeletons with varying widths to approximate a paragraph.
       </p>
@@ -121,7 +123,7 @@ export default async function SkeletonPage() {
       </ComponentPreview>
 
       {/* Card composition */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Card composition</h3>
+      <Heading as="h3">Card composition</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Combine circular and rectangular skeletons to create a realistic loading
         state for a card with an avatar and text content.
@@ -138,12 +140,12 @@ export default async function SkeletonPage() {
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         All props are optional. Extends native{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           &lt;div&gt;
-        </code>{' '}
+        </InlineCode>{' '}
         attributes.
       </p>
       <div className="my-6">
@@ -159,22 +161,22 @@ export default async function SkeletonPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">variant</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;rectangular&#39; | &#39;circular&#39;</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;rectangular&#39;</code></TableCell>
-                <TableCell>Shape of the placeholder. Rectangular applies <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">rounded-md</code>; circular applies full rounding for avatars.</TableCell>
+                <TableCell><InlineCode>variant</InlineCode></TableCell>
+                <TableCell><InlineCode>&#39;rectangular&#39; | &#39;circular&#39;</InlineCode></TableCell>
+                <TableCell><InlineCode>&#39;rectangular&#39;</InlineCode></TableCell>
+                <TableCell>Shape of the placeholder. Rectangular applies <InlineCode>rounded-md</InlineCode>; circular applies full rounding for avatars.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Controls dimensions and layout. Use height and width utilities to match the content being replaced.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">…rest</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">HTMLDivAttributes</code></TableCell>
+                <TableCell><InlineCode>…rest</InlineCode></TableCell>
+                <TableCell><InlineCode>HTMLDivAttributes</InlineCode></TableCell>
                 <TableCell>—</TableCell>
-                <TableCell>Forwarded to the underlying <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&lt;div&gt;</code> (e.g. <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">aria-hidden</code>, <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">role</code>, <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">style</code>).</TableCell>
+                <TableCell>Forwarded to the underlying <InlineCode>&lt;div&gt;</InlineCode> (e.g. <InlineCode>aria-hidden</InlineCode>, <InlineCode>role</InlineCode>, <InlineCode>style</InlineCode>).</TableCell>
               </TableRow>
             </TableBody>
           </Table>
@@ -183,18 +185,18 @@ export default async function SkeletonPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>variant</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;rectangular&#39; | &#39;circular&#39;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;rectangular&#39;</code></span>
-              <span className="type-caption text-muted-foreground">Shape of the placeholder. Rectangular applies <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">rounded-md</code>; circular applies full rounding for avatars.</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&#39;rectangular&#39; | &#39;circular&#39;</InlineCode> · default <InlineCode>&#39;rectangular&#39;</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Shape of the placeholder. Rectangular applies <InlineCode>rounded-md</InlineCode>; circular applies full rounding for avatars.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Controls dimensions and layout. Use height and width utilities to match the content being replaced.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>…rest</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">HTMLDivAttributes</code></span>
-              <span className="type-caption text-muted-foreground">Forwarded to the underlying <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&lt;div&gt;</code> (e.g. <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">aria-hidden</code>, <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">role</code>, <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">style</code>).</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>HTMLDivAttributes</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Forwarded to the underlying <InlineCode>&lt;div&gt;</InlineCode> (e.g. <InlineCode>aria-hidden</InlineCode>, <InlineCode>role</InlineCode>, <InlineCode>style</InlineCode>).</span>
             </TableMobileItem>
           </TableMobileList>
         </div>

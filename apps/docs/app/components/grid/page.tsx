@@ -17,6 +17,8 @@ import {
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 
 const basicCode = `import { Grid } from '@umichkisa-ds/web'
 
@@ -154,9 +156,9 @@ export default async function GridPage() {
         Responsive equal-width column layout for repeating items. Handles the
         common pattern of reflowing content from fewer columns on mobile to more
         columns on desktop. Extends all native{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           &lt;div&gt;
-        </code>{' '}
+        </InlineCode>{' '}
         attributes.
       </p>
       <Alert variant="info" className="mb-8">
@@ -167,15 +169,15 @@ export default async function GridPage() {
       </Alert>
 
       {/* ── Examples ────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Basic */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Basic</h3>
+      <Heading as="h3" className="mt-6">Basic</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Pass a number to{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           columns
-        </code>{' '}
+        </InlineCode>{' '}
         for a fixed column count across all breakpoints.
       </p>
       <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
@@ -189,24 +191,24 @@ export default async function GridPage() {
       </ComponentPreview>
 
       {/* Responsive */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Responsive</h3>
+      <Heading as="h3">Responsive</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Pass a responsive object to{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           columns
-        </code>{' '}
+        </InlineCode>{' '}
         to control the column count at each breakpoint. Values cascade upward —{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           {'{ base: 1, lg: 3 }'}
-        </code>{' '}
+        </InlineCode>{' '}
         means 1 column until the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           lg
-        </code>{' '}
+        </InlineCode>{' '}
         breakpoint. If you omit{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           base
-        </code>
+        </InlineCode>
         , the grid defaults to 1 column at the smallest size.
         Resize your browser to see the reflow.
       </p>
@@ -221,18 +223,18 @@ export default async function GridPage() {
       </ComponentPreview>
 
       {/* ── Gap Variants ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Gap Variants</h2>
+      <Heading as="h2">Gap Variants</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           gap
-        </code>{' '}
+        </InlineCode>{' '}
         prop controls both column and row gaps using three spacing tiers:
         element (8px), component (16px), and section (24px).
       </p>
 
       {/* Element */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Element (8px)</h3>
+      <Heading as="h3" className="mt-6">Element (8px)</Heading>
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
         Tight spacing for compact grids — icon grids, tag collections.
       </p>
@@ -247,7 +249,7 @@ export default async function GridPage() {
       </ComponentPreview>
 
       {/* Component */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Component (16px)</h3>
+      <Heading as="h3">Component (16px)</Heading>
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
         Default. Standard spacing for card grids and content blocks.
       </p>
@@ -262,7 +264,7 @@ export default async function GridPage() {
       </ComponentPreview>
 
       {/* Section */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Section (24px)</h3>
+      <Heading as="h3">Section (24px)</Heading>
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
         Spacious spacing for feature grids and landing page layouts.
       </p>
@@ -277,14 +279,14 @@ export default async function GridPage() {
       </ComponentPreview>
 
       {/* ── Real-world Examples ──────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Real-world Examples</h2>
+      <Heading as="h2">Real-world Examples</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Card grids at each gap tier, showing how spacing affects the feel
         of a realistic layout.
       </p>
 
       {/* Element gap tags */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Element gap</h3>
+      <Heading as="h3" className="mt-6">Element gap</Heading>
       <ComponentPreview code={realWorldElementCode} highlightedCode={realWorldElementHighlighted}>
         <div className="w-full">
           <Grid columns={{ base: 2, md: 3, lg: 4 }} gap="element">
@@ -301,7 +303,7 @@ export default async function GridPage() {
       </ComponentPreview>
 
       {/* Component gap cards */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Component gap</h3>
+      <Heading as="h3">Component gap</Heading>
       <ComponentPreview code={realWorldComponentCode} highlightedCode={realWorldComponentHighlighted}>
         <div className="w-full">
           <Grid columns={{ base: 1, md: 2, lg: 3 }} gap="component">
@@ -328,7 +330,7 @@ export default async function GridPage() {
       </ComponentPreview>
 
       {/* Section gap feature blocks */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Section gap</h3>
+      <Heading as="h3">Section gap</Heading>
       <ComponentPreview code={realWorldSectionCode} highlightedCode={realWorldSectionHighlighted}>
         <div className="w-full">
           <Grid columns={{ base: 1, md: 2, lg: 3 }} gap="section">
@@ -340,12 +342,12 @@ export default async function GridPage() {
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         All props are optional. Grid extends native{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           &lt;div&gt;
-        </code>{' '}
+        </InlineCode>{' '}
         attributes.
       </p>
       <div className="my-6">
@@ -361,26 +363,26 @@ export default async function GridPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">columns</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">number | {'{ base?, md?, lg? }'}</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">1</code></TableCell>
+                <TableCell><InlineCode>columns</InlineCode></TableCell>
+                <TableCell><InlineCode>number | {'{ base?, md?, lg? }'}</InlineCode></TableCell>
+                <TableCell><InlineCode>1</InlineCode></TableCell>
                 <TableCell>Number of equal-width columns. Pass a number for fixed, or a responsive object for breakpoint control. Max 6.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">gap</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;element&quot; | &quot;component&quot; | &quot;section&quot;</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;component&quot;</code></TableCell>
+                <TableCell><InlineCode>gap</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;element&quot; | &quot;component&quot; | &quot;section&quot;</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;component&quot;</InlineCode></TableCell>
                 <TableCell>Gap between items, mapped to the DS spacing tiers: element (8px), component (16px), section (24px).</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Grid items.</TableCell>
               </TableRow>
@@ -391,24 +393,24 @@ export default async function GridPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>columns</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">number | {'{ base?, md?, lg? }'}</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">1</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>number | {'{ base?, md?, lg? }'}</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>1</InlineCode></span>
               <span className="type-caption text-muted-foreground">Number of equal-width columns. Pass a number for fixed, or a responsive object for breakpoint control. Max 6.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>gap</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;element&quot; | &quot;component&quot; | &quot;section&quot;</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;component&quot;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&quot;element&quot; | &quot;component&quot; | &quot;section&quot;</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>&quot;component&quot;</InlineCode></span>
               <span className="type-caption text-muted-foreground">Gap between items, mapped to the DS spacing tiers: element (8px), component (16px), section (24px).</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">Grid items.</span>
             </TableMobileItem>
           </TableMobileList>

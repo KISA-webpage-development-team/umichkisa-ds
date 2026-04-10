@@ -11,6 +11,8 @@ import {
   TableRow,
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { InlineCode } from '@/components/InlineCode'
+import { Heading } from '@/components/Heading'
 import { highlight } from '@/lib/highlight'
 import { WithInputDemo, WithAriaDemo } from './_demos'
 
@@ -73,28 +75,28 @@ export default async function LabelPage() {
       <h1 className="type-h1 mb-4 text-foreground">Label</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
         Form label with an optional required indicator. Renders a native{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           &lt;label&gt;
-        </code>{' '}
+        </InlineCode>{' '}
         element.
       </p>
 
       {/* ── Examples ────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Default */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Default</h3>
+      <Heading as="h3" className="mt-6">Default</Heading>
       <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
         <Label htmlFor="name">Full name</Label>
       </ComponentPreview>
 
       {/* Required */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Required</h3>
+      <Heading as="h3">Required</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Set{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           required
-        </code>{' '}
+        </InlineCode>{' '}
         to append a red asterisk.
       </p>
       <ComponentPreview code={requiredCode} highlightedCode={requiredHighlighted}>
@@ -102,16 +104,16 @@ export default async function LabelPage() {
       </ComponentPreview>
 
       {/* With input */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With input</h3>
+      <Heading as="h3">With input</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Pair a Label with an Input using matching{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           htmlFor
-        </code>{' '}
+        </InlineCode>{' '}
         and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           id
-        </code>{' '}
+        </InlineCode>{' '}
         values. Clicking the label focuses the input.
       </p>
       <ComponentPreview code={withInputCode} highlightedCode={withInputHighlighted}>
@@ -119,24 +121,24 @@ export default async function LabelPage() {
       </ComponentPreview>
 
       {/* With aria-labelledby */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With aria-labelledby</h3>
+      <Heading as="h3">With aria-labelledby</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Non-native form controls like Radix Select don&apos;t render a real{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           &lt;input&gt;
-        </code>
+        </InlineCode>
         , so{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           htmlFor
-        </code>{' '}
+        </InlineCode>{' '}
         has nothing to target. Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           id
-        </code>{' '}
+        </InlineCode>{' '}
         on the Label and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           aria-labelledby
-        </code>{' '}
+        </InlineCode>{' '}
         on the trigger instead.
       </p>
       <ComponentPreview code={withAriaCode} highlightedCode={withAriaHighlighted}>
@@ -144,12 +146,12 @@ export default async function LabelPage() {
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Label accepts the following props alongside standard{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           &lt;label&gt;
-        </code>{' '}
+        </InlineCode>{' '}
         attributes.
       </p>
       <div className="my-6">
@@ -165,32 +167,32 @@ export default async function LabelPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">htmlFor*</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>htmlFor*</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>The id of the form control this label is associated with.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">id</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>id</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>HTML id attribute. Use when other elements need to reference this label via aria-labelledby.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">required</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell><InlineCode>required</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Appends a red asterisk to indicate the field is required.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children*</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children*</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Label text content.</TableCell>
               </TableRow>
@@ -202,28 +204,28 @@ export default async function LabelPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>htmlFor*</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">The id of the form control this label is associated with.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>id</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">HTML id attribute. Use when other elements need to reference this label via aria-labelledby.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>required</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Appends a red asterisk to indicate the field is required.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children*</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">Label text content.</span>
             </TableMobileItem>
           </TableMobileList>

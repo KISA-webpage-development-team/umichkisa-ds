@@ -10,7 +10,9 @@ import {
   TableRow,
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { InlineCode } from '@/components/InlineCode'
 import { highlight } from '@/lib/highlight'
+import { Heading } from '@/components/Heading'
 
 const defaultCode = `import { Container } from '@umichkisa-ds/web'
 
@@ -31,7 +33,7 @@ const polymorphicCode = `import { Container } from '@umichkisa-ds/web'
 </Container>
 
 <Container as="section">
-  <h2>Section Title</h2>
+  <h2>Section Title</Heading>
   <p>Section content.</p>
 </Container>`
 
@@ -94,32 +96,32 @@ export default async function ContainerPage() {
       <p className="type-body mb-8 text-foreground max-w-prose">
         Constrains content to a maximum width with responsive horizontal padding
         ({' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           px-4
-        </code>{' '}
+        </InlineCode>{' '}
         on mobile,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           px-6
-        </code>{' '}
+        </InlineCode>{' '}
         on tablet,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           px-8
-        </code>{' '}
+        </InlineCode>{' '}
         on desktop) and auto-centering. The primary building block for page-level
         layout. Extends all native HTML element attributes via the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           as
-        </code>{' '}
+        </InlineCode>{' '}
         prop.
       </p>
 
       {/* ── Default ─────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Default</h2>
+      <Heading as="h2">Default</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         With no props, Container constrains to{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           max-w-screen-2xl
-        </code>{' '}
+        </InlineCode>{' '}
         (1536px) with responsive padding and centering.
       </p>
       <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
@@ -131,18 +133,18 @@ export default async function ContainerPage() {
       </ComponentPreview>
 
       {/* ── Size Variants ──────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Size Variants</h2>
+      <Heading as="h2">Size Variants</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           size
-        </code>{' '}
+        </InlineCode>{' '}
         prop controls the maximum width. All sizes share the same responsive
         padding and centering. The bars below show each size relative to the
         full-width{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           default
-        </code>
+        </InlineCode>
         .
       </p>
       <ComponentPreview code={allSizesCode} highlightedCode={allSizesHighlighted}>
@@ -170,7 +172,7 @@ export default async function ContainerPage() {
         </div>
       </ComponentPreview>
 
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">When to use each size</h3>
+      <Heading as="h3" className="mt-6">When to use each size</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">
@@ -183,24 +185,24 @@ export default async function ContainerPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">default</code></TableCell>
+                <TableCell><InlineCode>default</InlineCode></TableCell>
                 <TableCell>1536px</TableCell>
                 <TableCell>Standard page layout — most pages use this.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">md</code></TableCell>
+                <TableCell><InlineCode>md</InlineCode></TableCell>
                 <TableCell>768px</TableCell>
                 <TableCell>Settings pages, auth forms, focused workflows.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">sm</code></TableCell>
+                <TableCell><InlineCode>sm</InlineCode></TableCell>
                 <TableCell>640px</TableCell>
                 <TableCell>Login/signup forms, single-column dialogs, narrow focused UI.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">prose</code></TableCell>
+                <TableCell><InlineCode>prose</InlineCode></TableCell>
                 <TableCell>~65ch</TableCell>
-                <TableCell>Articles, blog posts, long-form text. Use for text-heavy content; use <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">sm</code> for form-heavy content.</TableCell>
+                <TableCell>Articles, blog posts, long-form text. Use for text-heavy content; use <InlineCode>sm</InlineCode> for form-heavy content.</TableCell>
               </TableRow>
             </TableBody>
           </Table>
@@ -225,32 +227,32 @@ export default async function ContainerPage() {
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>prose</strong></span>
               <span className="type-caption text-muted-foreground">~65ch</span>
-              <span className="type-caption text-muted-foreground">Articles, blog posts, long-form text. Use for text-heavy content; <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">sm</code> for form-heavy.</span>
+              <span className="type-caption text-muted-foreground">Articles, blog posts, long-form text. Use for text-heavy content; <InlineCode>sm</InlineCode> for form-heavy.</span>
             </TableMobileItem>
           </TableMobileList>
         </div>
       </div>
 
       {/* ── Semantic Elements ───────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Semantic Elements</h2>
+      <Heading as="h2">Semantic Elements</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Use the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           as
-        </code>{' '}
+        </InlineCode>{' '}
         prop to render as a semantic HTML element. This is important for
         accessibility landmarks ({' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           main
-        </code>
+        </InlineCode>
         ,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           nav
-        </code>
+        </InlineCode>
         ,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           section
-        </code>
+        </InlineCode>
         ).
       </p>
       <ComponentPreview code={polymorphicCode} highlightedCode={polymorphicHighlighted}>
@@ -267,7 +269,7 @@ export default async function ContainerPage() {
       </ComponentPreview>
 
       {/* ── Full-width Backgrounds ──────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Full-width Backgrounds</h2>
+      <Heading as="h2">Full-width Backgrounds</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Banners, heroes, and navbars need to span the full viewport width while
         keeping their content constrained. There are two patterns depending on
@@ -275,7 +277,7 @@ export default async function ContainerPage() {
       </p>
 
       {/* Pattern 1: Page structure */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Page-level structure (recommended)</h3>
+      <Heading as="h3">Page-level structure (recommended)</Heading>
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
         Structure your page so banners are siblings to Containers, not children.
         Close the Container before the banner, then open a new one after.
@@ -310,7 +312,7 @@ export default async function ContainerPage() {
       </ComponentPreview>
 
       {/* Pattern 2: CSS breakout */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">CSS breakout (inside a Container)</h3>
+      <Heading as="h3">CSS breakout (inside a Container)</Heading>
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
         If you are already inside a Container and cannot restructure the page,
         use the viewport-width breakout trick. This forces an element to span
@@ -346,7 +348,7 @@ export default async function ContainerPage() {
       </ComponentPreview>
 
       {/* ── Usage Guidelines ────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Usage Guidelines</h2>
+      <Heading as="h2">Usage Guidelines</Heading>
       <ul className="type-body text-foreground max-w-prose flex flex-col gap-2 mb-8">
         <li className="flex gap-2">
           <span className="text-muted-foreground">{'•'}</span>
@@ -369,13 +371,13 @@ export default async function ContainerPage() {
           <span className="text-muted-foreground">{'•'}</span>
           <span>
             Use{' '}
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+            <InlineCode>
               as=&quot;main&quot;
-            </code>{' '}
+            </InlineCode>{' '}
             for the primary content area with{' '}
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+            <InlineCode>
               id=&quot;main-content&quot;
-            </code>{' '}
+            </InlineCode>{' '}
             for skip-link targets.
           </span>
         </li>
@@ -384,24 +386,24 @@ export default async function ContainerPage() {
           <span>
             Choose size based on content type — not visual preference. Text-heavy
             pages use{' '}
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+            <InlineCode>
               prose
-            </code>
+            </InlineCode>
             , form-heavy pages use{' '}
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+            <InlineCode>
               sm
-            </code>{' '}
+            </InlineCode>{' '}
             or{' '}
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+            <InlineCode>
               md
-            </code>
+            </InlineCode>
             .
           </span>
         </li>
       </ul>
 
       {/* ── API Reference ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">
@@ -415,26 +417,26 @@ export default async function ContainerPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;default&quot; | &quot;md&quot; | &quot;sm&quot; | &quot;prose&quot;</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;default&quot;</code></TableCell>
+                <TableCell><InlineCode>size</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;default&quot; | &quot;md&quot; | &quot;sm&quot; | &quot;prose&quot;</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;default&quot;</InlineCode></TableCell>
                 <TableCell>Maximum width constraint. default (1536px), md (768px), sm (640px), prose (~65ch).</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">as</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;div&quot; | &quot;section&quot; | &quot;main&quot; | &quot;article&quot; | &quot;header&quot; | &quot;footer&quot; | &quot;nav&quot;</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;div&quot;</code></TableCell>
+                <TableCell><InlineCode>as</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;div&quot; | &quot;section&quot; | &quot;main&quot; | &quot;article&quot; | &quot;header&quot; | &quot;footer&quot; | &quot;nav&quot;</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;div&quot;</InlineCode></TableCell>
                 <TableCell>HTML element to render. Use semantic elements for accessibility landmarks.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn() (class merge utility). Add vertical padding, background, etc.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Content to constrain.</TableCell>
               </TableRow>
@@ -445,22 +447,22 @@ export default async function ContainerPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>size</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;default&quot; | &quot;md&quot; | &quot;sm&quot; | &quot;prose&quot;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;default&quot;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&quot;default&quot; | &quot;md&quot; | &quot;sm&quot; | &quot;prose&quot;</InlineCode> · default <InlineCode>&quot;default&quot;</InlineCode></span>
               <span className="type-caption text-muted-foreground">Maximum width constraint. default (1536px), md (768px), sm (640px), prose (~65ch).</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>as</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;div&quot; | &quot;section&quot; | &quot;main&quot; | &quot;article&quot; | &quot;header&quot; | &quot;footer&quot; | &quot;nav&quot;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;div&quot;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&quot;div&quot; | &quot;section&quot; | &quot;main&quot; | &quot;article&quot; | &quot;header&quot; | &quot;footer&quot; | &quot;nav&quot;</InlineCode> · default <InlineCode>&quot;div&quot;</InlineCode></span>
               <span className="type-caption text-muted-foreground">HTML element to render. Use semantic elements for accessibility landmarks.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn() (class merge utility). Add vertical padding, background, etc.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">Content to constrain.</span>
             </TableMobileItem>
           </TableMobileList>

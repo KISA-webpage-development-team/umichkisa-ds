@@ -11,6 +11,8 @@ import {
   TableRow,
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 import { highlight } from '@/lib/highlight'
 import { BasicDemo, ManyPagesDemo, SiblingCountDemo, FewPagesDemo } from './_demos'
 
@@ -104,10 +106,10 @@ export default async function PaginationPage() {
       </Alert>
 
       {/* -- Examples ------------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Basic */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Basic</h3>
+      <Heading as="h3" className="mt-6">Basic</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         A simple paginated list with 10 pages. Click the page numbers or arrows
         to navigate.
@@ -117,7 +119,7 @@ export default async function PaginationPage() {
       </ComponentPreview>
 
       {/* Many pages */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Many pages</h3>
+      <Heading as="h3">Many pages</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         With many pages, ellipsis appears between the first/last page and the
         sibling pages (the page numbers immediately left and right of the current
@@ -128,10 +130,10 @@ export default async function PaginationPage() {
       </ComponentPreview>
 
       {/* Custom sibling count */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Custom sibling count</h3>
+      <Heading as="h3">Custom sibling count</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Set{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">siblingCount=&#123;2&#125;</code>
+        <InlineCode>siblingCount=&#123;2&#125;</InlineCode>
         {' '}to show more page numbers around the current page. Useful for search
         results or data tables where users jump between nearby pages frequently.
       </p>
@@ -140,7 +142,7 @@ export default async function PaginationPage() {
       </ComponentPreview>
 
       {/* Few pages */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Few pages</h3>
+      <Heading as="h3">Few pages</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         When the total number of pages is small, all page numbers display without
         ellipsis. The previous button is disabled on the first page.
@@ -150,9 +152,9 @@ export default async function PaginationPage() {
       </ComponentPreview>
 
       {/* -- API Reference -------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
 
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Pagination</h3>
+      <Heading as="h3">Pagination</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Controlled pagination navigation component.
       </p>
@@ -169,32 +171,32 @@ export default async function PaginationPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">page</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">number</code></TableCell>
+                <TableCell><InlineCode>page</InlineCode></TableCell>
+                <TableCell><InlineCode>number</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Current active page (1-indexed). Required.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">totalPages</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">number</code></TableCell>
+                <TableCell><InlineCode>totalPages</InlineCode></TableCell>
+                <TableCell><InlineCode>number</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Total number of pages. Required.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">onPageChange</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">{"(page: number) => void"}</code></TableCell>
+                <TableCell><InlineCode>onPageChange</InlineCode></TableCell>
+                <TableCell><InlineCode>{"(page: number) => void"}</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Callback fired when the user selects a page. Required.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">siblingCount</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">number</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">1</code></TableCell>
+                <TableCell><InlineCode>siblingCount</InlineCode></TableCell>
+                <TableCell><InlineCode>number</InlineCode></TableCell>
+                <TableCell><InlineCode>1</InlineCode></TableCell>
                 <TableCell>Number of sibling pages shown on each side of the current page. On mobile, this is overridden to 0 for compact display.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Additional class names for the nav wrapper. Use for layout utilities only.</TableCell>
               </TableRow>
@@ -205,27 +207,27 @@ export default async function PaginationPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>page</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">number</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>number</InlineCode></span>
               <span className="type-caption text-muted-foreground">Current active page (1-indexed). Required.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>totalPages</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">number</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>number</InlineCode></span>
               <span className="type-caption text-muted-foreground">Total number of pages. Required.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>onPageChange</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{"(page: number) => void"}</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>{"(page: number) => void"}</InlineCode></span>
               <span className="type-caption text-muted-foreground">Callback fired when the user selects a page. Required.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>siblingCount</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">number</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>number</InlineCode></span>
               <span className="type-caption text-muted-foreground">Number of sibling pages shown on each side of the current page. On mobile, this is overridden to 0 for compact display.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Additional class names for the nav wrapper. Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -233,26 +235,26 @@ export default async function PaginationPage() {
       </div>
 
       {/* -- Accessibility -------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Accessibility</h2>
+      <Heading as="h2">Accessibility</Heading>
       <ul className="list-disc pl-6 flex flex-col gap-2 max-w-prose">
         <li className="type-body text-foreground">
           Wraps all controls in a{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<nav aria-label="Pagination">'}</code>{' '}
+          <InlineCode>{'<nav aria-label="Pagination">'}</InlineCode>{' '}
           landmark for screen reader navigation.
         </li>
         <li className="type-body text-foreground">
           The active page button uses{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-current=&quot;page&quot;</code>{' '}
+          <InlineCode>aria-current=&quot;page&quot;</InlineCode>{' '}
           so screen readers announce which page is selected.
         </li>
         <li className="type-body text-foreground">
           Previous and next arrow buttons have descriptive{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>{' '}
+          <InlineCode>aria-label</InlineCode>{' '}
           attributes and are disabled (not hidden) at boundaries.
         </li>
         <li className="type-body text-foreground">
           Ellipsis elements are marked{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-hidden=&quot;true&quot;</code>{' '}
+          <InlineCode>aria-hidden=&quot;true&quot;</InlineCode>{' '}
           so they are skipped by assistive technology.
         </li>
       </ul>

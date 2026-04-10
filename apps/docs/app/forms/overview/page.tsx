@@ -10,6 +10,8 @@ import {
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { CodeBlock } from '@/components/CodeBlock'
 import { highlight } from '@/lib/highlight'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 import Link from 'next/link'
 import { QuickStartDemo } from './_demos'
 
@@ -64,18 +66,18 @@ export default async function FormsOverviewPage() {
         Forms
       </h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@umichkisa-ds/form</code>{' '}
+        <InlineCode>@umichkisa-ds/form</InlineCode>{' '}
         is a thin integration layer between{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">react-hook-form</code>{' '}
+        <InlineCode>react-hook-form</InlineCode>{' '}
         and the KISA Design System. It provides sensible defaults, automatic error
         wiring, and compound components that eliminate boilerplate.
       </p>
 
       {/* ── Installation ──────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Installation</h2>
+      <Heading as="h2">Installation</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         This package is distributed via GitHub git tags — not the npm registry.
-        Add the git URL to your project{"'"}s <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">package.json</code> dependencies,
+        Add the git URL to your project{"'"}s <InlineCode>package.json</InlineCode> dependencies,
         pointing to the desired release tag:
       </p>
       <CodeBlock code={installFormPkgJson} lang="json" />
@@ -84,19 +86,19 @@ export default async function FormsOverviewPage() {
       </p>
       <CodeBlock code={installFormBash} lang="bash" />
       <p className="type-body mb-4 text-foreground max-w-prose">
-        You also need <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">react-hook-form</code> as
+        You also need <InlineCode>react-hook-form</InlineCode> as
         a peer dependency:
       </p>
       <CodeBlock code={installRHFCode} lang="bash" />
       <Alert variant="info" className="mb-8">
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@umichkisa-ds/web</code> is
+        <InlineCode>@umichkisa-ds/web</InlineCode> is
         also a peer dependency — it wraps DS form primitives (Input, Textarea,
         Select, etc.) with react-hook-form controllers. Install it the same way
-        using a <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">vX.X.X</code> tag.
+        using a <InlineCode>vX.X.X</InlineCode> tag.
       </Alert>
 
       {/* ── Quick Start ───────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Quick Start</h2>
+      <Heading as="h2">Quick Start</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         A complete login form in under 30 lines:
       </p>
@@ -105,14 +107,14 @@ export default async function FormsOverviewPage() {
       </ComponentPreview>
 
       {/* ── What's Inside ─────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">{"What's Inside"}</h2>
+      <Heading as="h2">{"What's Inside"}</Heading>
       <Grid columns={{ base: 1, md: 2 }} gap="component" className="my-6">
         <Link href="/forms/use-form" className="block h-full rounded-md focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2">
           <Card className="h-full hover:bg-surface-subtle transition-colors">
             <CardHeader>
               <CardTitle>useForm</CardTitle>
               <CardDescription>
-                Wrapper hook with <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">onTouched</code> validation mode by default. Drop-in replacement for react-hook-form.
+                Wrapper hook with <InlineCode>onTouched</InlineCode> validation mode by default. Drop-in replacement for react-hook-form.
               </CardDescription>
             </CardHeader>
           </Card>

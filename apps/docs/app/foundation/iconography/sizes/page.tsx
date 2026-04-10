@@ -10,6 +10,8 @@ import {
   TableRow,
 } from '@umichkisa-ds/web'
 import { CodeBlock } from '@/components/CodeBlock'
+import { InlineCode } from '@/components/InlineCode'
+import { Heading } from '@/components/Heading'
 export default async function IconographySizesPage() {
   return (
     <Container size="md" as="article">
@@ -25,7 +27,7 @@ export default async function IconographySizesPage() {
       <Divider className="my-8" />
 
       {/* ── The Scale ───────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">The Scale</h2>
+      <Heading as="h2">The Scale</Heading>
 
       <div className="my-6">
         <Table size="sm">
@@ -40,31 +42,31 @@ export default async function IconographySizesPage() {
           <TableBody>
             <TableRow>
               <TableCell><Icon name="info" size="xs" /></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">xs</code></TableCell>
+              <TableCell><InlineCode>xs</InlineCode></TableCell>
               <TableCell>12px</TableCell>
               <TableCell>Inline with caption text, badge labels</TableCell>
             </TableRow>
             <TableRow>
               <TableCell><Icon name="info" size="sm" /></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">sm</code></TableCell>
+              <TableCell><InlineCode>sm</InlineCode></TableCell>
               <TableCell>16px</TableCell>
               <TableCell>Compact UI — tags, small inputs, secondary actions</TableCell>
             </TableRow>
             <TableRow>
               <TableCell><Icon name="info" size="md" /></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code></TableCell>
+              <TableCell><InlineCode>md</InlineCode></TableCell>
               <TableCell>20px</TableCell>
               <TableCell><strong>Default</strong> — buttons, nav items, most UI</TableCell>
             </TableRow>
             <TableRow>
               <TableCell><Icon name="info" size="lg" /></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg</code></TableCell>
+              <TableCell><InlineCode>lg</InlineCode></TableCell>
               <TableCell>24px</TableCell>
               <TableCell>Prominent actions, section headers</TableCell>
             </TableRow>
             <TableRow>
               <TableCell><Icon name="info" size="xl" /></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">xl</code></TableCell>
+              <TableCell><InlineCode>xl</InlineCode></TableCell>
               <TableCell>32px</TableCell>
               <TableCell>Display, empty states, decorative</TableCell>
             </TableRow>
@@ -80,16 +82,16 @@ export default async function IconographySizesPage() {
       <Divider className="my-8" />
 
       {/* ── Default is md ───────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">The Default Size</h2>
+      <Heading as="h2">The Default Size</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         When in doubt, use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code>.
+        <InlineCode>md</InlineCode>.
         {' '}The 20px default is calibrated to pair with body text and read clearly
         across the most common UI contexts.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Only deviate from{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code>{' '}
+        <InlineCode>md</InlineCode>{' '}
         when you have a specific reason tied to context — not
         because something {'"'}looks better{'"'} at a different size.
       </p>
@@ -97,43 +99,43 @@ export default async function IconographySizesPage() {
       <Divider className="my-8" />
 
       {/* ── Never Size with Font-Size ───────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Never Size with Font-Size</h2>
+      <Heading as="h2">Never Size with Font-Size</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Icons are SVGs. Their size is controlled by{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">width</code>{' '}
+        <InlineCode>width</InlineCode>{' '}
         and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">height</code>{' '}
+        <InlineCode>height</InlineCode>{' '}
         — not by{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-size</code>{' '}
+        <InlineCode>font-size</InlineCode>{' '}
         or{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-xl</code>{' '}
+        <InlineCode>text-xl</InlineCode>{' '}
         utility classes.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The previous approach in the KISA client applied Tailwind text size classes
-        (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-lg</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-2xl</code>)
+        (<InlineCode>text-lg</InlineCode>,{' '}
+        <InlineCode>text-2xl</InlineCode>)
         {' '}to icon components. This worked by accident in some
         cases because some icon libraries read from{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-size</code>.
+        <InlineCode>font-size</InlineCode>.
         {' '}It is not reliable, not predictable, and not how SVG sizing works.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code>{' '}
+        <InlineCode>{'<Icon>'}</InlineCode>{' '}
         component translates the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size</code>{' '}
+        <InlineCode>size</InlineCode>{' '}
         prop directly to{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">width</code>{' '}
+        <InlineCode>width</InlineCode>{' '}
         and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">height</code>{' '}
+        <InlineCode>height</InlineCode>{' '}
         attributes on the SVG. Never override icon size with font utilities.
       </p>
 
       <Divider className="my-8" />
 
       {/* ── Pairing Icons with Text ─────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Pairing Icons with Text</h2>
+      <Heading as="h2">Pairing Icons with Text</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Icons should feel like they belong with the text next to them, not like they
         were dropped in at a different scale.
@@ -156,8 +158,8 @@ export default async function IconographySizesPage() {
                   <span className="type-caption">Caption text</span>
                 </span>
               </TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-caption</code> / <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-body-sm</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">sm</code> (16px)</TableCell>
+              <TableCell><InlineCode>type-caption</InlineCode> / <InlineCode>type-body-sm</InlineCode></TableCell>
+              <TableCell><InlineCode>sm</InlineCode> (16px)</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>
@@ -166,8 +168,8 @@ export default async function IconographySizesPage() {
                   <span className="type-body">Body text</span>
                 </span>
               </TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-body</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code> (20px)</TableCell>
+              <TableCell><InlineCode>type-body</InlineCode></TableCell>
+              <TableCell><InlineCode>md</InlineCode> (20px)</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>
@@ -176,8 +178,8 @@ export default async function IconographySizesPage() {
                   <span className="type-h3">Subheading</span>
                 </span>
               </TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h3</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code> or <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg</code> (20–24px)</TableCell>
+              <TableCell><InlineCode>type-h3</InlineCode></TableCell>
+              <TableCell><InlineCode>md</InlineCode> or <InlineCode>lg</InlineCode> (20–24px)</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>
@@ -186,8 +188,8 @@ export default async function IconographySizesPage() {
                   <span className="type-h2">Heading</span>
                 </span>
               </TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">type-h2</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg</code> (24px)</TableCell>
+              <TableCell><InlineCode>type-h2</InlineCode></TableCell>
+              <TableCell><InlineCode>lg</InlineCode> (24px)</TableCell>
             </TableRow>
           </TableBody>
         </Table>
@@ -202,17 +204,17 @@ export default async function IconographySizesPage() {
       <Divider className="my-8" />
 
       {/* ── Never Apply Breakpoints to Icon Size ────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Never Apply Breakpoints to Icon Size</h2>
+      <Heading as="h2">Never Apply Breakpoints to Icon Size</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Icon size is determined by context — the component the icon lives in — not by the viewport width. Never use breakpoint prefixes on the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size</code>{' '}
+        <InlineCode>size</InlineCode>{' '}
         prop or on any class that affects icon dimensions.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         If a component changes size across breakpoints (a button that is compact on mobile and default on desktop), the icon size change is handled inside that component{"'"}s variant logic. The{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code>{' '}
+        <InlineCode>{'<Icon>'}</InlineCode>{' '}
         itself receives a fixed{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size</code>{' '}
+        <InlineCode>size</InlineCode>{' '}
         prop.
       </p>
 

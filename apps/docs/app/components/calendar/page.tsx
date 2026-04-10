@@ -11,6 +11,8 @@ import {
   TableRow,
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { InlineCode } from '@/components/InlineCode'
+import { Heading } from '@/components/Heading'
 import { highlight } from '@/lib/highlight'
 import { SingleDateDemo, RangeDemo, DisabledDatesDemo, MultiMonthDemo, ControlledMonthDemo } from './_demos'
 
@@ -155,10 +157,10 @@ export default async function CalendarPage() {
       </Alert>
 
       {/* -- Examples ------------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Pick a date */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Pick a date</h3>
+      <Heading as="h3" className="mt-6">Pick a date</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Select a single date, such as scheduling a meeting. The selected date
         is highlighted with the brand primary color.
@@ -168,7 +170,7 @@ export default async function CalendarPage() {
       </ComponentPreview>
 
       {/* Range selection */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Range selection</h3>
+      <Heading as="h3">Range selection</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Select a date range for scenarios like booking a stay. Click once to
         set the start date, then click again to set the end date.
@@ -178,7 +180,7 @@ export default async function CalendarPage() {
       </ComponentPreview>
 
       {/* Disabled dates */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Disabled dates</h3>
+      <Heading as="h3">Disabled dates</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Prevent selection of certain dates. Here, past dates are disabled to
         ensure only future dates can be selected — useful for event
@@ -189,7 +191,7 @@ export default async function CalendarPage() {
       </ComponentPreview>
 
       {/* Multiple months */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Multiple months</h3>
+      <Heading as="h3">Multiple months</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Display two months side by side for easier range selection. On mobile,
         the months stack vertically automatically.
@@ -199,7 +201,7 @@ export default async function CalendarPage() {
       </ComponentPreview>
 
       {/* Controlled month */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Controlled month navigation</h3>
+      <Heading as="h3">Controlled month navigation</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Control the visible month externally with buttons. Useful when you
         need to programmatically jump to a specific month, such as navigating
@@ -210,10 +212,10 @@ export default async function CalendarPage() {
       </ComponentPreview>
 
       {/* -- API Reference -------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Calendar wraps{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">react-day-picker</code>{' '}
+        <InlineCode>react-day-picker</InlineCode>{' '}
         and accepts all of its props. The most commonly used props are listed below.
       </p>
 
@@ -230,62 +232,62 @@ export default async function CalendarPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">mode</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;single&quot; | &quot;range&quot;</code></TableCell>
+                <TableCell><InlineCode>mode</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;single&quot; | &quot;range&quot;</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>The selection mode. Use &quot;single&quot; for one date, &quot;range&quot; for a start/end pair.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">selected</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">Date | DateRange | undefined</code></TableCell>
+                <TableCell><InlineCode>selected</InlineCode></TableCell>
+                <TableCell><InlineCode>Date | DateRange | undefined</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>The currently selected date or range. Type depends on the mode.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">onSelect</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">(value) =&gt; void</code></TableCell>
+                <TableCell><InlineCode>onSelect</InlineCode></TableCell>
+                <TableCell><InlineCode>(value) =&gt; void</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Callback when a date or range is selected.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">defaultMonth</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">Date</code></TableCell>
+                <TableCell><InlineCode>defaultMonth</InlineCode></TableCell>
+                <TableCell><InlineCode>Date</InlineCode></TableCell>
                 <TableCell>Current month</TableCell>
                 <TableCell>The initial month to display in uncontrolled mode.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">month</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">Date</code></TableCell>
+                <TableCell><InlineCode>month</InlineCode></TableCell>
+                <TableCell><InlineCode>Date</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Controlled visible month. Use with onMonthChange.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">onMonthChange</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">(month: Date) =&gt; void</code></TableCell>
+                <TableCell><InlineCode>onMonthChange</InlineCode></TableCell>
+                <TableCell><InlineCode>(month: Date) =&gt; void</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Callback when the visible month changes.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">disabled</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">Matcher | Matcher[]</code></TableCell>
+                <TableCell><InlineCode>disabled</InlineCode></TableCell>
+                <TableCell><InlineCode>Matcher | Matcher[]</InlineCode></TableCell>
                 <TableCell>—</TableCell>
-                <TableCell>Dates to disable. Accepts dates, date ranges, objects like {'{'} before: date {'}'}, or filter functions like <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">(date) =&gt; date.getDay() === 0</code>.</TableCell>
+                <TableCell>Dates to disable. Accepts dates, date ranges, objects like {'{'} before: date {'}'}, or filter functions like <InlineCode>(date) =&gt; date.getDay() === 0</InlineCode>.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">numberOfMonths</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">number</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">1</code></TableCell>
+                <TableCell><InlineCode>numberOfMonths</InlineCode></TableCell>
+                <TableCell><InlineCode>number</InlineCode></TableCell>
+                <TableCell><InlineCode>1</InlineCode></TableCell>
                 <TableCell>Number of months to display. Months stack vertically on small screens.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">showOutsideDays</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">true</code></TableCell>
+                <TableCell><InlineCode>showOutsideDays</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>true</InlineCode></TableCell>
                 <TableCell>Show days from previous/next month to fill the grid.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
@@ -296,55 +298,55 @@ export default async function CalendarPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>mode</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;single&quot; | &quot;range&quot;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&quot;single&quot; | &quot;range&quot;</InlineCode></span>
               <span className="type-caption text-muted-foreground">The selection mode. Use &quot;single&quot; for one date, &quot;range&quot; for a start/end pair.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>selected</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">Date | DateRange | undefined</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>Date | DateRange | undefined</InlineCode></span>
               <span className="type-caption text-muted-foreground">The currently selected date or range. Type depends on the mode.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>onSelect</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">(value) =&gt; void</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>(value) =&gt; void</InlineCode></span>
               <span className="type-caption text-muted-foreground">Callback when a date or range is selected.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>defaultMonth</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">Date</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>Date</InlineCode></span>
               <span className="type-caption text-muted-foreground">Default: Current month</span>
               <span className="type-caption text-muted-foreground">The initial month to display in uncontrolled mode.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>month</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">Date</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>Date</InlineCode></span>
               <span className="type-caption text-muted-foreground">Controlled visible month. Use with onMonthChange.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>onMonthChange</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">(month: Date) =&gt; void</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>(month: Date) =&gt; void</InlineCode></span>
               <span className="type-caption text-muted-foreground">Callback when the visible month changes.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>disabled</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">Matcher | Matcher[]</code></span>
-              <span className="type-caption text-muted-foreground">Dates to disable. Accepts dates, date ranges, objects like {'{'} before: date {'}'}, or filter functions like <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">(date) =&gt; date.getDay() === 0</code>.</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>Matcher | Matcher[]</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Dates to disable. Accepts dates, date ranges, objects like {'{'} before: date {'}'}, or filter functions like <InlineCode>(date) =&gt; date.getDay() === 0</InlineCode>.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>numberOfMonths</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">number</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">1</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>number</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>1</InlineCode></span>
               <span className="type-caption text-muted-foreground">Number of months to display. Months stack vertically on small screens.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>showOutsideDays</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">true</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>true</InlineCode></span>
               <span className="type-caption text-muted-foreground">Show days from previous/next month to fill the grid.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>

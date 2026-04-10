@@ -1,6 +1,8 @@
 import { Container, LinkButton, Icon, Grid, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 
 const defaultCode = `import { LinkButton } from '@umichkisa-ds/web'
 
@@ -68,18 +70,18 @@ export default async function LinkButtonPage() {
       <p className="type-body mb-8 text-foreground max-w-prose">
         A navigation element styled as a button, for links that need
         button-level visual weight. Renders as an{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           &lt;a&gt;
-        </code>{' '}
+        </InlineCode>{' '}
         tag and shares the same variant and size options as{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Button
-        </code>
+        </InlineCode>
         .
       </p>
 
       {/* ── When to use ─────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">When to use</h2>
+      <Heading as="h2">When to use</Heading>
       <ul className="type-body max-w-prose mb-8 flex flex-col gap-2">
         <li>
           <strong className="text-foreground">LinkButton</strong> — for navigation.
@@ -93,19 +95,19 @@ export default async function LinkButtonPage() {
       </ul>
 
       {/* ── Examples ────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Default */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Default</h3>
+      <Heading as="h3" className="mt-6">Default</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         The simplest usage. Renders as{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           primary
-        </code>{' '}
+        </InlineCode>{' '}
         variant at{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           md
-        </code>{' '}
+        </InlineCode>{' '}
         size by default.
       </p>
       <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
@@ -113,7 +115,7 @@ export default async function LinkButtonPage() {
       </ComponentPreview>
 
       {/* Variants */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Variants</h3>
+      <Heading as="h3">Variants</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Four variants for different levels of emphasis and intent.
       </p>
@@ -127,12 +129,12 @@ export default async function LinkButtonPage() {
       </ComponentPreview>
 
       {/* Sizes */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Sizes</h3>
+      <Heading as="h3">Sizes</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Three sizes aligned to the spacing grid. Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           md
-        </code>{' '}
+        </InlineCode>{' '}
         (default) for most UI.
       </p>
       <ComponentPreview code={sizesCode} highlightedCode={sizesHighlighted}>
@@ -144,17 +146,17 @@ export default async function LinkButtonPage() {
       </ComponentPreview>
 
       {/* With icon */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With icon</h3>
+      <Heading as="h3">With icon</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         LinkButton inherits{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           gap-2
-        </code>{' '}
+        </InlineCode>{' '}
         from the button styles so icons and text align automatically. Always use
         the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           &lt;Icon&gt;
-        </code>{' '}
+        </InlineCode>{' '}
         component — never import Lucide icons directly.
       </p>
       <ComponentPreview code={withIconCode} highlightedCode={withIconHighlighted}>
@@ -165,16 +167,16 @@ export default async function LinkButtonPage() {
       </ComponentPreview>
 
       {/* External link */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">External link</h3>
+      <Heading as="h3">External link</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         For links that open in a new tab, pass{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           target=&quot;_blank&quot;
-        </code>{' '}
+        </InlineCode>{' '}
         and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           rel=&quot;noopener noreferrer&quot;
-        </code>{' '}
+        </InlineCode>{' '}
         to prevent reverse tabnapping.
       </p>
       <ComponentPreview code={externalLinkCode} highlightedCode={externalLinkHighlighted}>
@@ -188,21 +190,21 @@ export default async function LinkButtonPage() {
       </ComponentPreview>
 
       {/* Disabled */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Disabled</h3>
+      <Heading as="h3">Disabled</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Pass{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           disabled
-        </code>{' '}
+        </InlineCode>{' '}
         to visually dim the link and block interaction. When disabled,
         LinkButton renders as a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           &lt;span&gt;
-        </code>{' '}
+        </InlineCode>{' '}
         instead of an{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           &lt;a&gt;
-        </code>{' '}
+        </InlineCode>{' '}
         to remove it from the tab order.
       </p>
       <ComponentPreview code={disabledCode} highlightedCode={disabledHighlighted}>
@@ -215,16 +217,16 @@ export default async function LinkButtonPage() {
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         All props are optional.{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           LinkButton
-        </code>{' '}
+        </InlineCode>{' '}
         extends{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           React.AnchorHTMLAttributes
-        </code>
+        </InlineCode>
         , so any native anchor attribute is also accepted.
       </p>
       <div className="my-6">
@@ -240,50 +242,50 @@ export default async function LinkButtonPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">variant</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;primary&#39; | &#39;secondary&#39; | &#39;tertiary&#39; | &#39;destructive&#39;</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;primary&#39;</code></TableCell>
+                <TableCell><InlineCode>variant</InlineCode></TableCell>
+                <TableCell><InlineCode>&#39;primary&#39; | &#39;secondary&#39; | &#39;tertiary&#39; | &#39;destructive&#39;</InlineCode></TableCell>
+                <TableCell><InlineCode>&#39;primary&#39;</InlineCode></TableCell>
                 <TableCell>Visual style of the link button.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;md&#39;</code></TableCell>
+                <TableCell><InlineCode>size</InlineCode></TableCell>
+                <TableCell><InlineCode>&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</InlineCode></TableCell>
+                <TableCell><InlineCode>&#39;md&#39;</InlineCode></TableCell>
                 <TableCell>Controls padding and font size. All values sit on the 4px spacing grid.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">href</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>href</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>The URL to navigate to.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">disabled</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell><InlineCode>disabled</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Renders as a non-interactive span when true.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">target</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>target</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
-                <TableCell>Browsing context for the link (e.g. <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;_blank&quot;</code>).</TableCell>
+                <TableCell>Browsing context for the link (e.g. <InlineCode>&quot;_blank&quot;</InlineCode>).</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">rel</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>rel</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
-                <TableCell>Link relationship (e.g. <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;noopener noreferrer&quot;</code>).</TableCell>
+                <TableCell>Link relationship (e.g. <InlineCode>&quot;noopener noreferrer&quot;</InlineCode>).</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn() (class merge utility). Use for layout utilities only — never override variant styles.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">React.ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>React.ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Label text, icons, or any content inside the link button.</TableCell>
               </TableRow>
@@ -294,42 +296,42 @@ export default async function LinkButtonPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>variant</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;primary&#39; | &#39;secondary&#39; | &#39;tertiary&#39; | &#39;destructive&#39;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;primary&#39;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&#39;primary&#39; | &#39;secondary&#39; | &#39;tertiary&#39; | &#39;destructive&#39;</InlineCode> · default <InlineCode>&#39;primary&#39;</InlineCode></span>
               <span className="type-caption text-muted-foreground">Visual style of the link button.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>size</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;md&#39;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</InlineCode> · default <InlineCode>&#39;md&#39;</InlineCode></span>
               <span className="type-caption text-muted-foreground">Controls padding and font size. All values sit on the 4px spacing grid.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>href</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">The URL to navigate to.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>disabled</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode> · default <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Renders as a non-interactive span when true.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>target</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
-              <span className="type-caption text-muted-foreground">Browsing context for the link (e.g. <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;_blank&quot;</code>).</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Browsing context for the link (e.g. <InlineCode>&quot;_blank&quot;</InlineCode>).</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>rel</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
-              <span className="type-caption text-muted-foreground">Link relationship (e.g. <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;noopener noreferrer&quot;</code>).</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Link relationship (e.g. <InlineCode>&quot;noopener noreferrer&quot;</InlineCode>).</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn() (class merge utility). Use for layout utilities only — never override variant styles.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">React.ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>React.ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">Label text, icons, or any content inside the link button.</span>
             </TableMobileItem>
           </TableMobileList>

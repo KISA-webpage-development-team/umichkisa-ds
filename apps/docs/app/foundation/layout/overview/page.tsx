@@ -1,6 +1,8 @@
 import { Container, Divider } from '@umichkisa-ds/web'
 import Link from 'next/link'
 import { CodeBlock } from '@/components/CodeBlock'
+import { InlineCode } from '@/components/InlineCode'
+import { Heading } from '@/components/Heading'
 
 export default async function LayoutOverviewPage() {
   return (
@@ -9,13 +11,13 @@ export default async function LayoutOverviewPage() {
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Layout</h1>
 
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Overview</h2>
+      <Heading as="h2">Overview</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Interfaces break when people make independent spacing decisions.
         One developer reaches for{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">px-6</code>,
+        <InlineCode>px-6</InlineCode>,
         another uses{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">px-[24px]</code>,
+        <InlineCode>px-[24px]</InlineCode>,
         a third copies from a nearby component. Each choice is defensible in isolation.
         Together, they create a page that feels assembled, not designed.
       </p>
@@ -28,7 +30,7 @@ export default async function LayoutOverviewPage() {
       <Divider className="my-8" />
 
       {/* ── In this section ─────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">In this section</h2>
+      <Heading as="h2">In this section</Heading>
       <ul className="type-body text-foreground max-w-prose flex flex-col gap-2">
         <li className="flex gap-2">
           <span className="text-muted-foreground">•</span>
@@ -48,7 +50,7 @@ export default async function LayoutOverviewPage() {
           <span className="text-muted-foreground">•</span>
           <span>
             <Link href="/foundation/layout/usage" className="text-link underline-offset-2 hover:underline hover:text-brand-primary">Usage</Link>
-            {' '}— ready-made layout components (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Container</code>, <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Grid</code>) and when to use them
+            {' '}— ready-made layout components (<InlineCode>Container</InlineCode>, <InlineCode>Grid</InlineCode>) and when to use them
           </span>
         </li>
       </ul>
@@ -56,7 +58,7 @@ export default async function LayoutOverviewPage() {
       <Divider className="my-8" />
 
       {/* ── Accessibility ───────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Accessibility</h2>
+      <Heading as="h2">Accessibility</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The page shell must use semantic landmark elements so that screen reader users can navigate by region:
       </p>
@@ -64,39 +66,39 @@ export default async function LayoutOverviewPage() {
         <li className="flex gap-2">
           <span className="text-muted-foreground">•</span>
           <span>
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<header>'}</code>
+            <InlineCode>{'<header>'}</InlineCode>
             {' '}— site header (banner region: logo, site name, global utilities)
           </span>
         </li>
         <li className="flex gap-2">
           <span className="text-muted-foreground">•</span>
           <span>
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<nav>'}</code>
+            <InlineCode>{'<nav>'}</InlineCode>
             {' '}— navigation landmarks (add{' '}
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>
+            <InlineCode>aria-label</InlineCode>
             {' '}if more than one{' '}
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<nav>'}</code>
+            <InlineCode>{'<nav>'}</InlineCode>
             {' '}exists on the page)
           </span>
         </li>
         <li className="flex gap-2">
           <span className="text-muted-foreground">•</span>
           <span>
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<main>'}</code>
+            <InlineCode>{'<main>'}</InlineCode>
             {' '}— the primary page content
           </span>
         </li>
         <li className="flex gap-2">
           <span className="text-muted-foreground">•</span>
           <span>
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<footer>'}</code>
+            <InlineCode>{'<footer>'}</InlineCode>
             {' '}— site footer
           </span>
         </li>
       </ul>
       <p className="type-body mb-4 text-foreground max-w-prose mt-4">
         Every page must include a <strong className="font-semibold text-foreground">skip link</strong> — a visually hidden anchor that becomes visible on focus and jumps to{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<main>'}</code>.
+        <InlineCode>{'<main>'}</InlineCode>.
         This allows keyboard and screen reader users to bypass repeated navigation on every page load.
       </p>
 

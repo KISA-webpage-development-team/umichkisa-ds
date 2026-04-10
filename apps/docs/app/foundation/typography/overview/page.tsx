@@ -1,4 +1,5 @@
 import { Container, Divider, Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@umichkisa-ds/web'
+import { Heading } from '@/components/Heading'
 export default function TypographyOverviewPage() {
   return (
     <Container size="md" as="article">
@@ -24,7 +25,7 @@ export default function TypographyOverviewPage() {
       <Divider className="my-8" />
 
       {/* ── Fonts at a Glance ──────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Fonts at a Glance</h2>
+      <Heading as="h2">Fonts at a Glance</Heading>
 
       <div className="my-6">
         <Table size="sm">

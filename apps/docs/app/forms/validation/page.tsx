@@ -1,5 +1,7 @@
 import { Container } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 import { CodeBlock } from '@/components/CodeBlock'
 import { highlight } from '@/lib/highlight'
 import { ValidationDemo } from './_demos'
@@ -145,14 +147,14 @@ export default async function ValidationPage() {
       </p>
 
       {/* ── onTouched Lifecycle ────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">
+      <Heading as="h2">
         The onTouched Lifecycle
-      </h2>
+      </Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         React Hook Form supports three validation modes. Our{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">useForm</code>{' '}
+        <InlineCode>useForm</InlineCode>{' '}
         wrapper defaults to{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">onTouched</code>{' '}
+        <InlineCode>onTouched</InlineCode>{' '}
         — you get this behavior for free without any configuration.
       </p>
       <ul className="list-disc pl-6 mb-4 space-y-1 max-w-prose">
@@ -180,7 +182,7 @@ export default async function ValidationPage() {
       </ol>
 
       {/* ── Live Demo ─────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Try It</h2>
+      <Heading as="h2">Try It</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         This form combines required, pattern, minLength, and custom validators.
         Tab through fields to see errors appear on blur, then type to watch them
@@ -191,28 +193,28 @@ export default async function ValidationPage() {
       </ComponentPreview>
 
       {/* ── Built-in Rules ────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Built-in Rules</h2>
+      <Heading as="h2">Built-in Rules</Heading>
 
-      <h3 className="type-body !font-semibold mt-6 mb-2 text-foreground">required</h3>
+      <Heading as="h3" className="type-body !font-semibold mt-6 mb-2">required</Heading>
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
         Pass a string message to show when the field is empty. The label will
         also display a required indicator.
       </p>
       <CodeBlock code={requiredCode} lang="tsx" />
 
-      <h3 className="type-body !font-semibold mt-6 mb-2 text-foreground">minLength / maxLength</h3>
+      <Heading as="h3" className="type-body !font-semibold mt-6 mb-2">minLength / maxLength</Heading>
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
         Enforce character count limits on text fields.
       </p>
       <CodeBlock code={minMaxLengthCode} lang="tsx" />
 
-      <h3 className="type-body !font-semibold mt-6 mb-2 text-foreground">min / max</h3>
+      <Heading as="h3" className="type-body !font-semibold mt-6 mb-2">min / max</Heading>
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
         Enforce numeric range limits on number inputs.
       </p>
       <CodeBlock code={minMaxCode} lang="tsx" />
 
-      <h3 className="type-body !font-semibold mt-6 mb-2 text-foreground">pattern</h3>
+      <Heading as="h3" className="type-body !font-semibold mt-6 mb-2">pattern</Heading>
       <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
         Validate against a regular expression. Useful for email formats,
         phone numbers, or custom patterns.
@@ -220,16 +222,16 @@ export default async function ValidationPage() {
       <CodeBlock code={patternCode} lang="tsx" />
 
       {/* ── Custom Validators ─────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Custom Validators</h2>
+      <Heading as="h2">Custom Validators</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        Use the <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">validate</code> rule for complex
-        logic. Return <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">true</code> for valid or a
+        Use the <InlineCode>validate</InlineCode> rule for complex
+        logic. Return <InlineCode>true</InlineCode> for valid or a
         string error message. You can run multiple checks in sequence.
       </p>
       <CodeBlock code={customCode} lang="tsx" />
 
       {/* ── Combining Rules ───────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Combining Rules</h2>
+      <Heading as="h2">Combining Rules</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         All rules can be used together on a single field. They are checked in
         order: required first, then minLength/maxLength, then pattern, then
@@ -238,11 +240,11 @@ export default async function ValidationPage() {
       <CodeBlock code={combineCode} lang="tsx" />
 
       {/* ── Overriding Mode ───────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Overriding Validation Mode</h2>
+      <Heading as="h2">Overriding Validation Mode</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        While <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">onTouched</code> is the recommended
+        While <InlineCode>onTouched</InlineCode> is the recommended
         default, you can override the mode per-form via{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">useForm</code>.
+        <InlineCode>useForm</InlineCode>.
       </p>
       <CodeBlock code={overrideCode} lang="tsx" />
     </Container>

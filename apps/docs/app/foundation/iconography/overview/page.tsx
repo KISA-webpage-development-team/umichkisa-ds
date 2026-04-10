@@ -1,4 +1,6 @@
 import { Container, Divider } from '@umichkisa-ds/web'
+import { InlineCode } from '@/components/InlineCode'
+import { Heading } from '@/components/Heading'
 export default function IconographyOverviewPage() {
   return (
     <Container size="md" as="article">
@@ -17,7 +19,7 @@ export default function IconographyOverviewPage() {
       <Divider className="my-8" />
 
       {/* ── How the System Works ────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">How the System Works</h2>
+      <Heading as="h2">How the System Works</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The iconography system has three layers:
       </p>
@@ -27,12 +29,12 @@ export default function IconographyOverviewPage() {
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         <strong>
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code>
+          <InlineCode>{'<Icon>'}</InlineCode>
         </strong>{' '}
         is the wrapper component that enforces size, color, and
         accessibility conventions. You never import a Lucide icon directly in a
         component. You use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code>{' '}
+        <InlineCode>{'<Icon>'}</InlineCode>{' '}
         and let it handle the rest.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">

@@ -11,7 +11,9 @@ import {
   TableRow,
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { InlineCode } from '@/components/InlineCode'
 import { highlight } from '@/lib/highlight'
+import { Heading } from '@/components/Heading'
 
 const defaultCode = `import { Avatar } from '@umichkisa-ds/web'
 
@@ -67,19 +69,19 @@ export default async function AvatarPage() {
       </p>
 
       {/* ── Examples ────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Default */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Default</h3>
+      <Heading as="h3" className="mt-6">Default</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Provide{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           src
-        </code>{' '}
+        </InlineCode>{' '}
         and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           name
-        </code>{' '}
+        </InlineCode>{' '}
         for the standard image avatar.
       </p>
       <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
@@ -87,20 +89,20 @@ export default async function AvatarPage() {
       </ComponentPreview>
 
       {/* Sizes */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Sizes</h3>
+      <Heading as="h3">Sizes</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Three sizes available. Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           sm
-        </code>{' '}
+        </InlineCode>{' '}
         for compact lists, {' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           md
-        </code>{' '}
+        </InlineCode>{' '}
         (default) for cards and nav bars, and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           lg
-        </code>{' '}
+        </InlineCode>{' '}
         for profile pages.
       </p>
       <ComponentPreview code={sizesCode} highlightedCode={sizesHighlighted}>
@@ -112,25 +114,25 @@ export default async function AvatarPage() {
       </ComponentPreview>
 
       {/* Initials fallback */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Initials fallback</h3>
+      <Heading as="h3">Initials fallback</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         When no{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           src
-        </code>{' '}
+        </InlineCode>{' '}
         is provided, the avatar displays initials from the first and last
         word of{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           name
-        </code>
+        </InlineCode>
         . KISA stores both{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           nameKor
-        </code>{' '}
+        </InlineCode>{' '}
         and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           nameEng
-        </code>{' '}
+        </InlineCode>{' '}
         in the database — pass whichever is appropriate for the context.
       </p>
       <ComponentPreview code={initialsCode} highlightedCode={initialsHighlighted}>
@@ -142,16 +144,16 @@ export default async function AvatarPage() {
       </ComponentPreview>
 
       {/* Icon fallback */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Icon fallback</h3>
+      <Heading as="h3">Icon fallback</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         When neither{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           src
-        </code>{' '}
+        </InlineCode>{' '}
         nor{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           name
-        </code>{' '}
+        </InlineCode>{' '}
         is provided, a generic user icon is shown.
       </p>
       <ComponentPreview code={iconFallbackCode} highlightedCode={iconFallbackHighlighted}>
@@ -163,13 +165,13 @@ export default async function AvatarPage() {
       </ComponentPreview>
 
       {/* Error fallback */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Error fallback</h3>
+      <Heading as="h3">Error fallback</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         If the image fails to load, the avatar automatically falls back to
         initials (when{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           name
-        </code>{' '}
+        </InlineCode>{' '}
         is provided) or the icon fallback.
       </p>
       <ComponentPreview code={errorFallbackCode} highlightedCode={errorFallbackHighlighted}>
@@ -177,12 +179,12 @@ export default async function AvatarPage() {
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         All props are technically optional, but{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           name
-        </code>{' '}
+        </InlineCode>{' '}
         is strongly recommended — it provides the image&apos;s alt text and
         powers the initials fallback when the image is missing or fails to
         load.
@@ -200,26 +202,26 @@ export default async function AvatarPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">src</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>src</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Image URL. Falls back to initials or icon on error.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">name</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>name</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>User name. Used for alt text and initials fallback. Strongly recommended.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;md&#39;</code></TableCell>
+                <TableCell><InlineCode>size</InlineCode></TableCell>
+                <TableCell><InlineCode>&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</InlineCode></TableCell>
+                <TableCell><InlineCode>&#39;md&#39;</InlineCode></TableCell>
                 <TableCell>Avatar size. sm = 32px, md = 40px, lg = 56px.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
@@ -230,22 +232,22 @@ export default async function AvatarPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>src</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Image URL. Falls back to initials or icon on error.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>name</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code> · strongly recommended</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode> · strongly recommended</span>
               <span className="type-caption text-muted-foreground">User name. Used for alt text and initials fallback.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>size</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;md&#39;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</InlineCode> · default <InlineCode>&#39;md&#39;</InlineCode></span>
               <span className="type-caption text-muted-foreground">Avatar size. sm = 32px, md = 40px, lg = 56px.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>

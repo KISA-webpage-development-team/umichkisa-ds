@@ -1,5 +1,7 @@
 import { Container, Card, CardContent, CardFooter, Alert, Divider, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
 import { CodeBlock } from '@/components/CodeBlock'
+import { InlineCode } from '@/components/InlineCode'
+import { Heading } from '@/components/Heading'
 export default async function TypographyFontsPage() {
   return (
     <Container size="md" as="article">
@@ -14,7 +16,7 @@ export default async function TypographyFontsPage() {
       <Divider className="my-8" />
 
       {/* ── SejongHospital ─────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">SejongHospital — Brand &amp; Display</h2>
+      <Heading as="h2">SejongHospital — Brand &amp; Display</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         SejongHospital is KISA&#39;s brand font. It appears only at the top of the type
         hierarchy — Display and H1 — where identity matters more than information density.
@@ -37,12 +39,12 @@ export default async function TypographyFontsPage() {
           <TableBody>
             <TableRow>
               <TableCell>Light 300</TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-sejong-light</code></TableCell>
+              <TableCell><InlineCode>font-sejong-light</InlineCode></TableCell>
               <TableCell>Decorative display, large pull quotes</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>Bold 700</TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-sejong-bold</code></TableCell>
+              <TableCell><InlineCode>font-sejong-bold</InlineCode></TableCell>
               <TableCell>Default for all Display and H1</TableCell>
             </TableRow>
           </TableBody>
@@ -55,7 +57,7 @@ export default async function TypographyFontsPage() {
             <span className="type-caption text-muted-foreground">Weight</span>
             <span className="type-body-sm text-foreground">Light 300</span>
             <span className="type-caption text-muted-foreground">Class</span>
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-sejong-light</code>
+            <InlineCode>font-sejong-light</InlineCode>
             <span className="type-caption text-muted-foreground">Use</span>
             <span className="type-body-sm text-foreground">Decorative display, large pull quotes</span>
           </TableMobileItem>
@@ -63,7 +65,7 @@ export default async function TypographyFontsPage() {
             <span className="type-caption text-muted-foreground">Weight</span>
             <span className="type-body-sm text-foreground">Bold 700</span>
             <span className="type-caption text-muted-foreground">Class</span>
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-sejong-bold</code>
+            <InlineCode>font-sejong-bold</InlineCode>
             <span className="type-caption text-muted-foreground">Use</span>
             <span className="type-body-sm text-foreground">Default for all Display and H1</span>
           </TableMobileItem>
@@ -73,14 +75,14 @@ export default async function TypographyFontsPage() {
       <p className="type-body mb-4 text-foreground max-w-prose">
         In practice, always reach for Bold. Light is permitted only in marketing and landing
         page contexts for large decorative display text — for example, a hero subtitle set at{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-4xl</code>{' '}
+        <InlineCode>text-4xl</InlineCode>{' '}
         or larger, paired alongside a Bold display line. Never use Light in app UI. Never use
         it below{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-4xl</code>.
+        <InlineCode>text-4xl</InlineCode>.
       </p>
 
       {/* ── Fallback stack ──────────────────────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Fallback stack</h3>
+      <Heading as="h3" id="sejong-fallback-stack" className="mt-6">Fallback stack</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         If SejongHospital fails to load, the browser falls back to:
       </p>
@@ -110,7 +112,7 @@ export default async function TypographyFontsPage() {
       <Divider className="my-8" />
 
       {/* ── Pretendard ─────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Pretendard — Body, UI &amp; Everything Else</h2>
+      <Heading as="h2">Pretendard — Body, UI &amp; Everything Else</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Pretendard was built for Korean design systems. It supports Korean and Latin with
         equal fidelity and ships with nine weights (100–900), giving the flexibility
@@ -133,17 +135,17 @@ export default async function TypographyFontsPage() {
           <TableBody>
             <TableRow>
               <TableCell>Regular 400</TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code></TableCell>
+              <TableCell><InlineCode>font-normal</InlineCode></TableCell>
               <TableCell>Body text, captions</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>Medium 500</TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-medium</code></TableCell>
+              <TableCell><InlineCode>font-medium</InlineCode></TableCell>
               <TableCell>Labels, navigation items</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>Semibold 600</TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-semibold</code></TableCell>
+              <TableCell><InlineCode>font-semibold</InlineCode></TableCell>
               <TableCell>H2, H3, emphasized text</TableCell>
             </TableRow>
           </TableBody>
@@ -156,7 +158,7 @@ export default async function TypographyFontsPage() {
             <span className="type-caption text-muted-foreground">Weight</span>
             <span className="type-body-sm text-foreground">Regular 400</span>
             <span className="type-caption text-muted-foreground">Tailwind class</span>
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code>
+            <InlineCode>font-normal</InlineCode>
             <span className="type-caption text-muted-foreground">Use</span>
             <span className="type-body-sm text-foreground">Body text, captions</span>
           </TableMobileItem>
@@ -164,7 +166,7 @@ export default async function TypographyFontsPage() {
             <span className="type-caption text-muted-foreground">Weight</span>
             <span className="type-body-sm text-foreground">Medium 500</span>
             <span className="type-caption text-muted-foreground">Tailwind class</span>
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-medium</code>
+            <InlineCode>font-medium</InlineCode>
             <span className="type-caption text-muted-foreground">Use</span>
             <span className="type-body-sm text-foreground">Labels, navigation items</span>
           </TableMobileItem>
@@ -172,7 +174,7 @@ export default async function TypographyFontsPage() {
             <span className="type-caption text-muted-foreground">Weight</span>
             <span className="type-body-sm text-foreground">Semibold 600</span>
             <span className="type-caption text-muted-foreground">Tailwind class</span>
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-semibold</code>
+            <InlineCode>font-semibold</InlineCode>
             <span className="type-caption text-muted-foreground">Use</span>
             <span className="type-body-sm text-foreground">H2, H3, emphasized text</span>
           </TableMobileItem>
@@ -180,7 +182,7 @@ export default async function TypographyFontsPage() {
       </div>
 
       {/* ── Pretendard fallback stack ──────────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Fallback stack</h3>
+      <Heading as="h3" id="pretendard-fallback-stack" className="mt-6">Fallback stack</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         If Pretendard fails to load, the browser falls back to:
       </p>
@@ -189,8 +191,8 @@ export default async function TypographyFontsPage() {
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         The Korean-capable fallbacks ({' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Apple SD Gothic Neo</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Noto Sans KR</code>{' '}
+        <InlineCode>Apple SD Gothic Neo</InlineCode>,{' '}
+        <InlineCode>Noto Sans KR</InlineCode>{' '}
         ) ensure Korean text remains readable on systems where Pretendard is unavailable.
       </p>
 
@@ -212,7 +214,7 @@ export default async function TypographyFontsPage() {
       <Divider className="my-8" />
 
       {/* ── Geist Mono ─────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Geist Mono — Code &amp; Documentation</h2>
+      <Heading as="h2">Geist Mono — Code &amp; Documentation</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Geist Mono is the third font in the system, but it sits outside the Rule of Two. It
         appears exclusively in this documentation site for code blocks and inline code. The
@@ -232,7 +234,7 @@ export default async function TypographyFontsPage() {
           <TableBody>
             <TableRow>
               <TableCell>Regular 400</TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code></TableCell>
+              <TableCell><InlineCode>font-normal</InlineCode></TableCell>
               <TableCell>All code contexts</TableCell>
             </TableRow>
           </TableBody>
@@ -245,7 +247,7 @@ export default async function TypographyFontsPage() {
             <span className="type-caption text-muted-foreground">Weight</span>
             <span className="type-body-sm text-foreground">Regular 400</span>
             <span className="type-caption text-muted-foreground">Tailwind class</span>
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-normal</code>
+            <InlineCode>font-normal</InlineCode>
             <span className="type-caption text-muted-foreground">Use</span>
             <span className="type-body-sm text-foreground">All code contexts</span>
           </TableMobileItem>
@@ -255,10 +257,10 @@ export default async function TypographyFontsPage() {
       <Divider className="my-8" />
 
       {/* ── Font Loading ───────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Font Loading</h2>
+      <Heading as="h2">Font Loading</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Both product fonts must use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">font-display: swap</code>.
+        <InlineCode>font-display: swap</InlineCode>.
         This ensures text remains visible during font load — the browser renders with the
         fallback stack immediately, then swaps to the product font once it arrives. Without
         it, text is invisible until the font loads (FOIT), which harms perceived performance.
@@ -280,23 +282,23 @@ export default async function TypographyFontsPage() {
       <Divider className="my-8" />
 
       {/* ── Next.js Setup ──────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Next.js Setup</h2>
+      <Heading as="h2">Next.js Setup</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Next.js apps should use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">next/font/local</code>{' '}
+        <InlineCode>next/font/local</InlineCode>{' '}
         for SejongHospital. This automatically preloads the font files, converts them
         to an optimized format, and injects CSS variables on{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&lt;html&gt;</code>{' '}
+        <InlineCode>&lt;html&gt;</InlineCode>{' '}
         that override the DS{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@font-face</code>{' '}
+        <InlineCode>@font-face</InlineCode>{' '}
         declarations. Without this, the 1.2 MB TTF files load late and cause a visible
         flash of unstyled text on first visit.
       </p>
 
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">1. Load fonts in root layout</h3>
+      <Heading as="h3" className="mt-6">1. Load fonts in root layout</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         In your{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">app/layout.tsx</code>,
+        <InlineCode>app/layout.tsx</InlineCode>,
         import the font files from the DS package and create font instances with
         matching CSS variable names:
       </p>
@@ -317,18 +319,18 @@ const sejongLight = localFont({
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         The font files live in{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">packages/web/src/fonts/</code>.
+        <InlineCode>packages/web/src/fonts/</InlineCode>.
         Adjust the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">src</code>{' '}
+        <InlineCode>src</InlineCode>{' '}
         path based on your app&#39;s location relative to the monorepo root.
       </p>
 
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">2. Apply CSS variables on html</h3>
+      <Heading as="h3" className="mt-6">2. Apply CSS variables on html</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Pass the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">.variable</code>{' '}
+        <InlineCode>.variable</InlineCode>{' '}
         classes to the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&lt;html&gt;</code>{' '}
+        <InlineCode>&lt;html&gt;</InlineCode>{' '}
         element so the CSS variables are available to all descendants:
       </p>
 
@@ -338,12 +340,12 @@ const sejongLight = localFont({
   </body>
 </html>`} lang="tsx" />
 
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">3. Load Pretendard from CDN</h3>
+      <Heading as="h3" className="mt-6">3. Load Pretendard from CDN</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Pretendard is loaded via a CDN stylesheet link in{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&lt;head&gt;</code>.
+        <InlineCode>&lt;head&gt;</InlineCode>.
         Add a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">preconnect</code>{' '}
+        <InlineCode>preconnect</InlineCode>{' '}
         hint to speed up the connection:
       </p>
 
@@ -355,27 +357,27 @@ const sejongLight = localFont({
   />
 </head>`} lang="tsx" />
 
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">How it works</h3>
+      <Heading as="h3" className="mt-6">How it works</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The DS package already declares{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@font-face</code>{' '}
+        <InlineCode>@font-face</InlineCode>{' '}
         rules and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">:root</code>{' '}
+        <InlineCode>:root</InlineCode>{' '}
         CSS variables for all fonts. When you use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">next/font/local</code>{' '}
+        <InlineCode>next/font/local</InlineCode>{' '}
         with the same{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">variable</code>{' '}
+        <InlineCode>variable</InlineCode>{' '}
         name (e.g.{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--font-sejong-bold</code>
+        <InlineCode>--font-sejong-bold</InlineCode>
         ), Next.js generates a scoped class on{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&lt;html&gt;</code>{' '}
+        <InlineCode>&lt;html&gt;</InlineCode>{' '}
         that overrides the DS variable with the preloaded font. The rest of the system
         — type utilities, component styles — picks it up automatically.
       </p>
 
       <Alert className="my-4">
         Non-Next.js consumers can skip this step entirely. The DS{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@font-face</code>{' '}
+        <InlineCode>@font-face</InlineCode>{' '}
         declarations work on their own — fonts will load via the standard CSS path. The
         trade-off is a brief flash of system font on first visit while the TTF files download.
       </Alert>

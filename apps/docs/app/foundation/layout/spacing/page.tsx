@@ -1,6 +1,7 @@
 import { Container, Divider, Alert, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
 import { CodeBlock } from '@/components/CodeBlock'
 import { InlineCode } from '@/components/InlineCode'
+import { Heading } from '@/components/Heading'
 export default async function LayoutSpacingPage() {
   return (
     <Container size="md" as="article">
@@ -27,7 +28,7 @@ export default async function LayoutSpacingPage() {
       </Alert>
 
       {/* ── Default Inset ───────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Default Inset</h2>
+      <Heading as="h2">Default Inset</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The default inset is the standard horizontal breathing room at each
         breakpoint. It applies anywhere consistent padding is needed — the
@@ -60,7 +61,7 @@ export default async function LayoutSpacingPage() {
       <Divider className="my-8" />
 
       {/* ── Max-width ───────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Max-width</h2>
+      <Heading as="h2">Max-width</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Content is constrained to a maximum width of{' '}
         <InlineCode>max-w-screen-2xl</InlineCode>
@@ -82,7 +83,7 @@ export default async function LayoutSpacingPage() {
       <Divider className="my-8" />
 
       {/* ── Column Gutter ───────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Column Gutter</h2>
+      <Heading as="h2">Column Gutter</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The default gutter between columns is{' '}
         <InlineCode>gap-2</InlineCode>
@@ -118,7 +119,7 @@ export default async function LayoutSpacingPage() {
       <Divider className="my-8" />
 
       {/* ── Vertical Spacing ────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Vertical Spacing</h2>
+      <Heading as="h2">Vertical Spacing</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Vertical spacing follows a fixed three-tier system. All tiers use Tailwind scale values and do not change across breakpoints — layout responsiveness is encoded in column reflow (fewer columns on smaller viewports), not in spacing changes.
       </p>
@@ -188,7 +189,7 @@ export default async function LayoutSpacingPage() {
       <Divider className="my-8" />
 
       {/* ── Page Shell ──────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Page Shell</h2>
+      <Heading as="h2">Page Shell</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The full page shell combines max-width, centering, and the default inset into one element. This is the wrapping element that all page content lives inside.
       </p>
@@ -232,7 +233,7 @@ export default async function LayoutSpacingPage() {
       <Divider className="my-8" />
 
       {/* ── Full-Bleed Elements ─────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Full-Bleed Elements</h2>
+      <Heading as="h2">Full-Bleed Elements</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Some elements — navbars, hero banners, full-width section dividers — must span the full viewport width without being clipped by max-width. Use a full-width outer wrapper with the page shell pattern nested inside for content alignment:
       </p>

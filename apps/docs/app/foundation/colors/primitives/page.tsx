@@ -1,6 +1,8 @@
 import { Alert, Container } from '@umichkisa-ds/web'
 import { ColorSwatch } from '@/components/ColorSwatch'
 import { ColorSwatchGrid } from '@/components/ColorSwatchGrid'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 
 export default function ColorsPrimitivesPage() {
   return (
@@ -11,12 +13,12 @@ export default function ColorsPrimitivesPage() {
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         These are the raw colors the entire system is built from. They are defined in{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">packages/web/src/tokens/primitives.css</code>.
+        <InlineCode>packages/web/src/tokens/primitives.css</InlineCode>.
         Do not use these in components — they exist only to feed into semantic tokens.
       </p>
 
       {/* ── Michigan Brand ──────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Michigan Brand</h2>
+      <Heading as="h2">Michigan Brand</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The two official University of Michigan brand colors and their tints.
       </p>
@@ -30,7 +32,7 @@ export default function ColorsPrimitivesPage() {
       </ColorSwatchGrid>
 
       {/* ── Gray Scale ──────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Gray Scale</h2>
+      <Heading as="h2">Gray Scale</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         A cool-toned neutral scale with a subtle blue-gray cast (hue 264) that keeps
         it visually harmonious with the Michigan Blue family.
@@ -50,7 +52,7 @@ export default function ColorsPrimitivesPage() {
       </ColorSwatchGrid>
 
       {/* ── Utility ─────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Utility</h2>
+      <Heading as="h2">Utility</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Base colors for feedback states and neutral anchors.
       </p>

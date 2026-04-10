@@ -2,6 +2,8 @@ import { Alert, Container, Divider, Table, TableHeader, TableBody, TableRow, Tab
 import { ColorSwatch } from '@/components/ColorSwatch'
 import { ColorSwatchGrid } from '@/components/ColorSwatchGrid'
 import { CodeBlock } from '@/components/CodeBlock'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 
 export default async function ColorsTokensPage() {
   return (
@@ -12,11 +14,11 @@ export default async function ColorsTokensPage() {
       <p className="type-body mb-4 text-foreground max-w-prose">
         Semantic tokens are what you use in components. Each token is named by its
         purpose. Find them in{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">packages/web/src/tokens/semantic.css</code>.
+        <InlineCode>packages/web/src/tokens/semantic.css</InlineCode>.
       </p>
 
       {/* ── Brand ───────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-6 mb-2 text-foreground">Brand</h2>
+      <Heading as="h2" className="mt-6 mb-2">Brand</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The Michigan brand colors. These define the visual identity of KISA across
         every surface.
@@ -34,23 +36,23 @@ export default async function ColorsTokensPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-blue</code></TableCell>
+                <TableCell><InlineCode>--color-brand-primary</InlineCode></TableCell>
+                <TableCell><InlineCode>--primitive-michigan-blue</InlineCode></TableCell>
                 <TableCell>Anchor color. Navbars, hero sections, primary button backgrounds.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-mid</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-blue-mid</code></TableCell>
+                <TableCell><InlineCode>--color-brand-primary-mid</InlineCode></TableCell>
+                <TableCell><InlineCode>--primitive-michigan-blue-mid</InlineCode></TableCell>
                 <TableCell>Softer blue. Link text, secondary UI highlights. Use cases will grow over time.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-maize</code></TableCell>
+                <TableCell><InlineCode>--color-brand-accent</InlineCode></TableCell>
+                <TableCell><InlineCode>--primitive-michigan-maize</InlineCode></TableCell>
                 <TableCell>Action color. CTAs, focus rings, text on brand backgrounds.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent-subtle</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-maize-light</code></TableCell>
+                <TableCell><InlineCode>--color-brand-accent-subtle</InlineCode></TableCell>
+                <TableCell><InlineCode>--primitive-michigan-maize-light</InlineCode></TableCell>
                 <TableCell>Light maize tint. Callout backgrounds, highlighted regions.</TableCell>
               </TableRow>
             </TableBody>
@@ -59,19 +61,19 @@ export default async function ColorsTokensPage() {
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code>
+              <InlineCode>--color-brand-primary</InlineCode>
               <span className="type-caption text-muted-foreground">--primitive-michigan-blue · Anchor color. Navbars, hero sections, primary button backgrounds.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-mid</code>
+              <InlineCode>--color-brand-primary-mid</InlineCode>
               <span className="type-caption text-muted-foreground">--primitive-michigan-blue-mid · Softer blue. Link text, secondary UI highlights. Use cases will grow over time.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent</code>
+              <InlineCode>--color-brand-accent</InlineCode>
               <span className="type-caption text-muted-foreground">--primitive-michigan-maize · Action color. CTAs, focus rings, text on brand backgrounds.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent-subtle</code>
+              <InlineCode>--color-brand-accent-subtle</InlineCode>
               <span className="type-caption text-muted-foreground">--primitive-michigan-maize-light · Light maize tint. Callout backgrounds, highlighted regions.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -87,9 +89,9 @@ export default async function ColorsTokensPage() {
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         <strong className="font-semibold text-foreground">On brand-primary vs brand-accent:</strong>{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code>{' '}
+        <InlineCode>--color-brand-primary</InlineCode>{' '}
         is the anchor — it carries weight and authority. It does not draw the eye by itself.{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent</code>{' '}
+        <InlineCode>--color-brand-accent</InlineCode>{' '}
         is the signal — it is what users notice first. When you need to say {'"'}look here,{'"'} reach
         for accent. When you need to say {'"'}this is KISA,{'"'} reach for primary.
       </p>
@@ -102,46 +104,46 @@ export default async function ColorsTokensPage() {
       <Divider className="my-8" />
 
       {/* ── Understanding -subtle and -muted ────────────────── */}
-      <h2 className="type-h2 mt-6 mb-2 text-foreground">Understanding <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-subtle</code> and <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-muted</code></h2>
+      <Heading as="h2" className="mt-6 mb-2">Understanding <InlineCode>-subtle</InlineCode> and <InlineCode>-muted</InlineCode></Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Two suffixes appear across multiple token groups —{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-subtle</code> and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-muted</code>.
+        <InlineCode>-subtle</InlineCode> and{' '}
+        <InlineCode>-muted</InlineCode>.
         They do not mean the same thing and are not interchangeable.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        <strong className="font-semibold text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-subtle</code></strong>{' '}
+        <strong className="font-semibold text-foreground"><InlineCode>-subtle</InlineCode></strong>{' '}
         means one step softer in visual weight. It creates a tinted region without drawing attention.
         Used for elevated inner surfaces like table headers and code blocks (
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-subtle</code>),
+        <InlineCode>--color-surface-subtle</InlineCode>),
         alert box fills (
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-error-subtle</code>),
+        <InlineCode>--color-error-subtle</InlineCode>),
         and similar containers.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        <strong className="font-semibold text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-muted</code></strong>{' '}
+        <strong className="font-semibold text-foreground"><InlineCode>-muted</InlineCode></strong>{' '}
         means reduced visual prominence — not necessarily darker.{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-muted</code>{' '}
+        <InlineCode>--color-surface-muted</InlineCode>{' '}
         is <em>lighter</em> than{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-subtle</code>{' '}
+        <InlineCode>--color-surface-subtle</InlineCode>{' '}
         because it is designed to sit <em>inside</em> a subtle surface and appear elevated.{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-muted-foreground</code>{' '}
+        <InlineCode>--color-muted-foreground</InlineCode>{' '}
         is lower contrast than{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-foreground</code>{' '}
+        <InlineCode>--color-foreground</InlineCode>{' '}
         because it carries supporting, not primary, information.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The key rule: a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-muted</code>{' '}
+        <InlineCode>-muted</InlineCode>{' '}
         value always serves a deprioritized role. A{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-subtle</code>{' '}
+        <InlineCode>-subtle</InlineCode>{' '}
         value always serves a container or background role.
       </p>
 
       <Divider className="my-8" />
 
       {/* ── Surface ─────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-6 mb-2 text-foreground">Surface</h2>
+      <Heading as="h2" className="mt-6 mb-2">Surface</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Background colors that define the depth layers of the UI. Think of them as
         elevation — the higher you stack an element, the more tinted its background.
@@ -159,18 +161,18 @@ export default async function ColorsTokensPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-white</code></TableCell>
+                <TableCell><InlineCode>--color-surface</InlineCode></TableCell>
+                <TableCell><InlineCode>--primitive-white</InlineCode></TableCell>
                 <TableCell>Page background. The base layer everything sits on.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-subtle</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-gray-100</code></TableCell>
+                <TableCell><InlineCode>--color-surface-subtle</InlineCode></TableCell>
+                <TableCell><InlineCode>--primitive-gray-100</InlineCode></TableCell>
                 <TableCell>Elevated inner surfaces — table headers, code blocks, inset sections.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-muted</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-gray-50</code></TableCell>
+                <TableCell><InlineCode>--color-surface-muted</InlineCode></TableCell>
+                <TableCell><InlineCode>--primitive-gray-50</InlineCode></TableCell>
                 <TableCell>Items inside cards. Sits lighter inside a darker card.</TableCell>
               </TableRow>
             </TableBody>
@@ -179,15 +181,15 @@ export default async function ColorsTokensPage() {
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface</code>
+              <InlineCode>--color-surface</InlineCode>
               <span className="type-caption text-muted-foreground">--primitive-white · Page background. The base layer everything sits on.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-subtle</code>
+              <InlineCode>--color-surface-subtle</InlineCode>
               <span className="type-caption text-muted-foreground">--primitive-gray-100 · Elevated inner surfaces — table headers, code blocks, inset sections.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-muted</code>
+              <InlineCode>--color-surface-muted</InlineCode>
               <span className="type-caption text-muted-foreground">--primitive-gray-50 · Items inside cards. Sits lighter inside a darker card.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -201,7 +203,7 @@ export default async function ColorsTokensPage() {
       </ColorSwatchGrid>
 
       {/* ── Border ──────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-6 mb-2 text-foreground">Border</h2>
+      <Heading as="h2" className="mt-6 mb-2">Border</Heading>
 
       <div className="my-6">
         <div className="hidden md:block">
@@ -215,13 +217,13 @@ export default async function ColorsTokensPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-border</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-gray-200</code></TableCell>
+                <TableCell><InlineCode>--color-border</InlineCode></TableCell>
+                <TableCell><InlineCode>--primitive-gray-200</InlineCode></TableCell>
                 <TableCell>Default dividers, input field outlines.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-border-strong</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-gray-300</code></TableCell>
+                <TableCell><InlineCode>--color-border-strong</InlineCode></TableCell>
+                <TableCell><InlineCode>--primitive-gray-300</InlineCode></TableCell>
                 <TableCell>Emphasized borders, active input states.</TableCell>
               </TableRow>
             </TableBody>
@@ -230,11 +232,11 @@ export default async function ColorsTokensPage() {
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-border</code>
+              <InlineCode>--color-border</InlineCode>
               <span className="type-caption text-muted-foreground">--primitive-gray-200 · Default dividers, input field outlines.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-border-strong</code>
+              <InlineCode>--color-border-strong</InlineCode>
               <span className="type-caption text-muted-foreground">--primitive-gray-300 · Emphasized borders, active input states.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -247,7 +249,7 @@ export default async function ColorsTokensPage() {
       </ColorSwatchGrid>
 
       {/* ── Text ────────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-6 mb-2 text-foreground">Text</h2>
+      <Heading as="h2" className="mt-6 mb-2">Text</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Text tokens cover every role in the typographic hierarchy, plus two special
         cases for colored surfaces.
@@ -265,28 +267,28 @@ export default async function ColorsTokensPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-foreground</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-gray-900</code></TableCell>
+                <TableCell><InlineCode>--color-foreground</InlineCode></TableCell>
+                <TableCell><InlineCode>--primitive-gray-900</InlineCode></TableCell>
                 <TableCell>Body text, headings. Default for all readable content.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-muted-foreground</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-gray-500</code></TableCell>
+                <TableCell><InlineCode>--color-muted-foreground</InlineCode></TableCell>
+                <TableCell><InlineCode>--primitive-gray-500</InlineCode></TableCell>
                 <TableCell>Captions, secondary labels, timestamps.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-disabled-foreground</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-gray-400</code></TableCell>
+                <TableCell><InlineCode>--color-disabled-foreground</InlineCode></TableCell>
+                <TableCell><InlineCode>--primitive-gray-400</InlineCode></TableCell>
                 <TableCell>Disabled state text. Intentionally low contrast — do not use for readable content.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-foreground</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-maize</code></TableCell>
-                <TableCell>Text sitting on <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code> backgrounds (navbars, hero sections, primary buttons).</TableCell>
+                <TableCell><InlineCode>--color-brand-foreground</InlineCode></TableCell>
+                <TableCell><InlineCode>--primitive-michigan-maize</InlineCode></TableCell>
+                <TableCell>Text sitting on <InlineCode>--color-brand-primary</InlineCode> backgrounds (navbars, hero sections, primary buttons).</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-link</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-mid</code></TableCell>
+                <TableCell><InlineCode>--color-link</InlineCode></TableCell>
+                <TableCell><InlineCode>--color-brand-primary-mid</InlineCode></TableCell>
                 <TableCell>Hyperlinks and inline clickable text.</TableCell>
               </TableRow>
             </TableBody>
@@ -295,23 +297,23 @@ export default async function ColorsTokensPage() {
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-foreground</code>
+              <InlineCode>--color-foreground</InlineCode>
               <span className="type-caption text-muted-foreground">--primitive-gray-900 · Body text, headings. Default for all readable content.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-muted-foreground</code>
+              <InlineCode>--color-muted-foreground</InlineCode>
               <span className="type-caption text-muted-foreground">--primitive-gray-500 · Captions, secondary labels, timestamps.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-disabled-foreground</code>
+              <InlineCode>--color-disabled-foreground</InlineCode>
               <span className="type-caption text-muted-foreground">--primitive-gray-400 · Disabled state text. Intentionally low contrast — do not use for readable content.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-foreground</code>
+              <InlineCode>--color-brand-foreground</InlineCode>
               <span className="type-caption text-muted-foreground">--primitive-michigan-maize · Text sitting on --color-brand-primary backgrounds (navbars, hero sections, primary buttons).</span>
             </TableMobileItem>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-link</code>
+              <InlineCode>--color-link</InlineCode>
               <span className="type-caption text-muted-foreground">--color-brand-primary-mid · Hyperlinks and inline clickable text.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -327,7 +329,7 @@ export default async function ColorsTokensPage() {
       </ColorSwatchGrid>
 
       {/* ── Feedback ────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-6 mb-2 text-foreground">Feedback</h2>
+      <Heading as="h2" className="mt-6 mb-2">Feedback</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Feedback colors communicate system states. Each state has two tokens: a solid
         color for icons, borders, and text labels, and a subtle tint for background
@@ -346,43 +348,43 @@ export default async function ColorsTokensPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-error</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-red-500</code></TableCell>
+                <TableCell><InlineCode>--color-error</InlineCode></TableCell>
+                <TableCell><InlineCode>--primitive-red-500</InlineCode></TableCell>
                 <TableCell>Error state. Form validation failures, destructive action warnings.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-error-subtle</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(97% 0.02 27)</code></TableCell>
+                <TableCell><InlineCode>--color-error-subtle</InlineCode></TableCell>
+                <TableCell><InlineCode>oklch(97% 0.02 27)</InlineCode></TableCell>
                 <TableCell>Background for error alert boxes.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-success</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-green-500</code></TableCell>
+                <TableCell><InlineCode>--color-success</InlineCode></TableCell>
+                <TableCell><InlineCode>--primitive-green-500</InlineCode></TableCell>
                 <TableCell>Success state. Confirmations, completed actions.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-success-subtle</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(97% 0.02 145)</code></TableCell>
+                <TableCell><InlineCode>--color-success-subtle</InlineCode></TableCell>
+                <TableCell><InlineCode>oklch(97% 0.02 145)</InlineCode></TableCell>
                 <TableCell>Background for success alert boxes.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-warning</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(72% 0.15 60)</code></TableCell>
+                <TableCell><InlineCode>--color-warning</InlineCode></TableCell>
+                <TableCell><InlineCode>oklch(72% 0.15 60)</InlineCode></TableCell>
                 <TableCell>Warning state. Non-blocking issues that need attention.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-warning-subtle</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(97% 0.02 60)</code></TableCell>
+                <TableCell><InlineCode>--color-warning-subtle</InlineCode></TableCell>
+                <TableCell><InlineCode>oklch(97% 0.02 60)</InlineCode></TableCell>
                 <TableCell>Background for warning alert boxes.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-info</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-blue-mid</code></TableCell>
+                <TableCell><InlineCode>--color-info</InlineCode></TableCell>
+                <TableCell><InlineCode>--primitive-michigan-blue-mid</InlineCode></TableCell>
                 <TableCell>Informational state. Neutral tips, contextual help.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-info-subtle</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-blue-light</code></TableCell>
+                <TableCell><InlineCode>--color-info-subtle</InlineCode></TableCell>
+                <TableCell><InlineCode>--primitive-michigan-blue-light</InlineCode></TableCell>
                 <TableCell>Background for info alert boxes.</TableCell>
               </TableRow>
             </TableBody>
@@ -391,35 +393,35 @@ export default async function ColorsTokensPage() {
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-error</code>
+              <InlineCode>--color-error</InlineCode>
               <span className="type-caption text-muted-foreground">--primitive-red-500 · Error state. Form validation failures, destructive action warnings.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-error-subtle</code>
+              <InlineCode>--color-error-subtle</InlineCode>
               <span className="type-caption text-muted-foreground">oklch(97% 0.02 27) · Background for error alert boxes.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-success</code>
+              <InlineCode>--color-success</InlineCode>
               <span className="type-caption text-muted-foreground">--primitive-green-500 · Success state. Confirmations, completed actions.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-success-subtle</code>
+              <InlineCode>--color-success-subtle</InlineCode>
               <span className="type-caption text-muted-foreground">oklch(97% 0.02 145) · Background for success alert boxes.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-warning</code>
+              <InlineCode>--color-warning</InlineCode>
               <span className="type-caption text-muted-foreground">oklch(72% 0.15 60) · Warning state. Non-blocking issues that need attention.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-warning-subtle</code>
+              <InlineCode>--color-warning-subtle</InlineCode>
               <span className="type-caption text-muted-foreground">oklch(97% 0.02 60) · Background for warning alert boxes.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-info</code>
+              <InlineCode>--color-info</InlineCode>
               <span className="type-caption text-muted-foreground">--primitive-michigan-blue-mid · Informational state. Neutral tips, contextual help.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-info-subtle</code>
+              <InlineCode>--color-info-subtle</InlineCode>
               <span className="type-caption text-muted-foreground">--primitive-michigan-blue-light · Background for info alert boxes.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -440,28 +442,28 @@ export default async function ColorsTokensPage() {
       <Alert variant="info" title="On --color-info and --color-link" className="my-4">
         <p>
           Both resolve to{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-blue-mid</code>{' '}
+          <InlineCode>--primitive-michigan-blue-mid</InlineCode>{' '}
           — the same rendered color. This is intentional: blue reads as both informational and
           interactive in this system. Do not use them interchangeably. Use the token that matches
           the semantic role:{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-info</code>{' '}
+          <InlineCode>--color-info</InlineCode>{' '}
           for state indicators and alert borders,{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-link</code>{' '}
+          <InlineCode>--color-link</InlineCode>{' '}
           for clickable inline text.
         </p>
       </Alert>
 
       {/* ── Interactive ─────────────────────────────────────── */}
-      <h2 className="type-h2 mt-6 mb-2 text-foreground">Interactive</h2>
+      <Heading as="h2" className="mt-6 mb-2">Interactive</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Tokens for the hover and pressed states of both brand colors, plus the focus
         ring shown when navigating with a keyboard.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         For{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code>{' '}
+        <InlineCode>--color-brand-primary</InlineCode>{' '}
         (dark navy), hover goes lighter. For{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent</code>{' '}
+        <InlineCode>--color-brand-accent</InlineCode>{' '}
         (maize), hover goes darker — because maize is already very bright, darkening it is
         the only way to show a visible state change.
       </p>
@@ -478,29 +480,29 @@ export default async function ColorsTokensPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-hover</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(25% 0.075 243)</code></TableCell>
+                <TableCell><InlineCode>--color-brand-primary-hover</InlineCode></TableCell>
+                <TableCell><InlineCode>oklch(25% 0.075 243)</InlineCode></TableCell>
                 <TableCell>Hover state on brand-primary elements. Slightly lighter than base.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-pressed</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(15% 0.05 243)</code></TableCell>
+                <TableCell><InlineCode>--color-brand-primary-pressed</InlineCode></TableCell>
+                <TableCell><InlineCode>oklch(15% 0.05 243)</InlineCode></TableCell>
                 <TableCell>Pressed state on brand-primary elements. Slightly darker than base.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent-hover</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(76% 0.185 91)</code></TableCell>
+                <TableCell><InlineCode>--color-brand-accent-hover</InlineCode></TableCell>
+                <TableCell><InlineCode>oklch(76% 0.185 91)</InlineCode></TableCell>
                 <TableCell>Hover state on brand-accent elements. Darker maize.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent-pressed</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(70% 0.185 91)</code></TableCell>
+                <TableCell><InlineCode>--color-brand-accent-pressed</InlineCode></TableCell>
+                <TableCell><InlineCode>oklch(70% 0.185 91)</InlineCode></TableCell>
                 <TableCell>Pressed state on brand-accent elements. Even darker maize.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-focus-ring</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--primitive-michigan-maize</code></TableCell>
-                <TableCell>Keyboard focus indicator. Use as a dual-ring: maize outer ring + 4px dark offset ring (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code>). The maize ring provides contrast on dark surfaces; the offset ring provides contrast on white/light surfaces.</TableCell>
+                <TableCell><InlineCode>--color-focus-ring</InlineCode></TableCell>
+                <TableCell><InlineCode>--primitive-michigan-maize</InlineCode></TableCell>
+                <TableCell>Keyboard focus indicator. Use as a dual-ring: maize outer ring + 4px dark offset ring (<InlineCode>--color-brand-primary</InlineCode>). The maize ring provides contrast on dark surfaces; the offset ring provides contrast on white/light surfaces.</TableCell>
               </TableRow>
             </TableBody>
           </Table>
@@ -508,23 +510,23 @@ export default async function ColorsTokensPage() {
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-hover</code>
+              <InlineCode>--color-brand-primary-hover</InlineCode>
               <span className="type-caption text-muted-foreground">oklch(25% 0.075 243) · Hover state on brand-primary elements. Slightly lighter than base.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary-pressed</code>
+              <InlineCode>--color-brand-primary-pressed</InlineCode>
               <span className="type-caption text-muted-foreground">oklch(15% 0.05 243) · Pressed state on brand-primary elements. Slightly darker than base.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent-hover</code>
+              <InlineCode>--color-brand-accent-hover</InlineCode>
               <span className="type-caption text-muted-foreground">oklch(76% 0.185 91) · Hover state on brand-accent elements. Darker maize.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-accent-pressed</code>
+              <InlineCode>--color-brand-accent-pressed</InlineCode>
               <span className="type-caption text-muted-foreground">oklch(70% 0.185 91) · Pressed state on brand-accent elements. Even darker maize.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-focus-ring</code>
+              <InlineCode>--color-focus-ring</InlineCode>
               <span className="type-caption text-muted-foreground">--primitive-michigan-maize · Keyboard focus indicator. Use as a dual-ring: maize outer ring + 4px dark offset ring (--color-brand-primary). The maize ring provides contrast on dark surfaces; the offset ring provides contrast on white/light surfaces.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -552,9 +554,9 @@ export default async function ColorsTokensPage() {
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         The{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">outline</code>{' '}
+        <InlineCode>outline</InlineCode>{' '}
         (maize) provides contrast against dark backgrounds. The{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">box-shadow</code>{' '}
+        <InlineCode>box-shadow</InlineCode>{' '}
         (navy) provides contrast against white/light backgrounds. Both must be present.
         Do not apply one without the other.
       </p>
@@ -562,9 +564,9 @@ export default async function ColorsTokensPage() {
       <p className="type-body mb-4 text-foreground max-w-prose">
         <strong className="!font-semibold text-foreground">Exception — Form controls:</strong>{' '}
         Inputs, textareas, selects, and toggle controls use a simpler focus pattern:{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">outline: none</code>{' '}
+        <InlineCode>outline: none</InlineCode>{' '}
         +{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">border-color: var(--color-brand-primary)</code>.
+        <InlineCode>border-color: var(--color-brand-primary)</InlineCode>.
         The border color change is sufficient for elements that already have a visible border.
       </p>
 
@@ -572,16 +574,16 @@ export default async function ColorsTokensPage() {
         <p>
           Interactive tokens currently cover brand-primary and brand-accent elements only.
           For neutral/gray elements (secondary buttons, ghost buttons, form inputs), use{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-surface-subtle</code>{' '}
+          <InlineCode>--color-surface-subtle</InlineCode>{' '}
           as hover background and{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-border-strong</code>{' '}
+          <InlineCode>--color-border-strong</InlineCode>{' '}
           as hover border as an interim convention. This guidance will be superseded when
           dedicated neutral interactive tokens are defined.
         </p>
       </Alert>
 
       {/* ── Overlay ─────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-6 mb-2 text-foreground">Overlay</h2>
+      <Heading as="h2" className="mt-6 mb-2">Overlay</Heading>
 
       <div className="my-6">
         <div className="hidden md:block">
@@ -595,8 +597,8 @@ export default async function ColorsTokensPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-overlay</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(0% 0 0 / 40%)</code></TableCell>
+                <TableCell><InlineCode>--color-overlay</InlineCode></TableCell>
+                <TableCell><InlineCode>oklch(0% 0 0 / 40%)</InlineCode></TableCell>
                 <TableCell>Scrim behind modals and drawers. Dims the page without fully obscuring it.</TableCell>
               </TableRow>
             </TableBody>
@@ -605,7 +607,7 @@ export default async function ColorsTokensPage() {
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-overlay</code>
+              <InlineCode>--color-overlay</InlineCode>
               <span className="type-caption text-muted-foreground">oklch(0% 0 0 / 40%) · Scrim behind modals and drawers. Dims the page without fully obscuring it.</span>
             </TableMobileItem>
           </TableMobileList>

@@ -17,6 +17,8 @@ import {
   TableRow,
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 import { highlight } from '@/lib/highlight'
 
 const basicCode = `import { Dropdown, DropdownTrigger, DropdownContent, DropdownItem } from '@umichkisa-ds/web'
@@ -130,23 +132,23 @@ export default async function DropdownPage() {
       </p>
 
       {/* -- Examples ------------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Basic */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Basic</h3>
+      <Heading as="h3" className="mt-6">Basic</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         A simple dropdown with three items. Use a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Button
-        </code>{' '}
+        </InlineCode>{' '}
         with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           variant=&quot;primary&quot;
-        </code>{' '}
+        </InlineCode>{' '}
         as the trigger via{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           asChild
-        </code>.
+        </InlineCode>.
       </p>
       <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
         <Dropdown>
@@ -162,16 +164,16 @@ export default async function DropdownPage() {
       </ComponentPreview>
 
       {/* With groups */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With groups</h3>
+      <Heading as="h3">With groups</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Use groups when items need a visible heading. Group related items with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           DropdownGroup
-        </code>{' '}
+        </InlineCode>{' '}
         and its{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           label
-        </code>{' '}
+        </InlineCode>{' '}
         prop.
       </p>
       <ComponentPreview code={groupsCode} highlightedCode={groupsHighlighted}>
@@ -192,12 +194,12 @@ export default async function DropdownPage() {
       </ComponentPreview>
 
       {/* With separator */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With separator</h3>
+      <Heading as="h3">With separator</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           DropdownSeparator
-        </code>{' '}
+        </InlineCode>{' '}
         to visually divide items into sections.
       </p>
       <ComponentPreview code={separatorCode} highlightedCode={separatorHighlighted}>
@@ -215,12 +217,12 @@ export default async function DropdownPage() {
       </ComponentPreview>
 
       {/* Destructive item */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Destructive item</h3>
+      <Heading as="h3">Destructive item</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Apply{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           variant=&quot;destructive&quot;
-        </code>{' '}
+        </InlineCode>{' '}
         to highlight dangerous actions like delete.
       </p>
       <ComponentPreview code={destructiveCode} highlightedCode={destructiveHighlighted}>
@@ -236,12 +238,12 @@ export default async function DropdownPage() {
       </ComponentPreview>
 
       {/* Disabled items */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Disabled items</h3>
+      <Heading as="h3">Disabled items</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Use the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           disabled
-        </code>{' '}
+        </InlineCode>{' '}
         prop to prevent interaction with a menu item.
       </p>
       <ComponentPreview code={disabledCode} highlightedCode={disabledHighlighted}>
@@ -258,22 +260,22 @@ export default async function DropdownPage() {
       </ComponentPreview>
 
       {/* Positioning */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Positioning</h3>
+      <Heading as="h3">Positioning</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           align
-        </code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        </InlineCode>,{' '}
+        <InlineCode>
           side
-        </code>, and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        </InlineCode>, and{' '}
+        <InlineCode>
           sideOffset
-        </code>{' '}
+        </InlineCode>{' '}
         on{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           DropdownContent
-        </code>{' '}
+        </InlineCode>{' '}
         to control where the menu appears.
       </p>
       <ComponentPreview code={positioningCode} highlightedCode={positioningHighlighted}>
@@ -292,13 +294,13 @@ export default async function DropdownPage() {
       </ComponentPreview>
 
       {/* -- API Reference -------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Each sub-component accepts the props listed below.
       </p>
 
       {/* Dropdown (Root) */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Dropdown</h3>
+      <Heading as="h3">Dropdown</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         The root component that manages open/closed state. Wraps all other sub-components.
       </p>
@@ -315,20 +317,20 @@ export default async function DropdownPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">open</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
+                <TableCell><InlineCode>open</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Controlled open state.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">defaultOpen</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
+                <TableCell><InlineCode>defaultOpen</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Initial open state for uncontrolled usage.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">onOpenChange</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">(open: boolean) =&gt; void</code></TableCell>
+                <TableCell><InlineCode>onOpenChange</InlineCode></TableCell>
+                <TableCell><InlineCode>(open: boolean) =&gt; void</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Callback when the open state changes.</TableCell>
               </TableRow>
@@ -339,17 +341,17 @@ export default async function DropdownPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>open</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
               <span className="type-caption text-muted-foreground">Controlled open state.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>defaultOpen</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
               <span className="type-caption text-muted-foreground">Initial open state for uncontrolled usage.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>onOpenChange</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">(open: boolean) =&gt; void</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>(open: boolean) =&gt; void</InlineCode></span>
               <span className="type-caption text-muted-foreground">Callback when the open state changes.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -357,7 +359,7 @@ export default async function DropdownPage() {
       </div>
 
       {/* DropdownTrigger */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">DropdownTrigger</h3>
+      <Heading as="h3">DropdownTrigger</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">
@@ -371,14 +373,14 @@ export default async function DropdownPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">asChild</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell><InlineCode>asChild</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Merge trigger props onto the child element instead of rendering a default button.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>The trigger element, typically a Button.</TableCell>
               </TableRow>
@@ -389,12 +391,12 @@ export default async function DropdownPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>asChild</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode> · default <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merge trigger props onto the child element instead of rendering a default button.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">The trigger element, typically a Button.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -402,7 +404,7 @@ export default async function DropdownPage() {
       </div>
 
       {/* DropdownContent */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">DropdownContent</h3>
+      <Heading as="h3">DropdownContent</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">
@@ -416,32 +418,32 @@ export default async function DropdownPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>DropdownItem, DropdownGroup, and DropdownSeparator elements.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">side</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;top&quot; | &quot;right&quot; | &quot;bottom&quot; | &quot;left&quot;</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;bottom&quot;</code></TableCell>
+                <TableCell><InlineCode>side</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;top&quot; | &quot;right&quot; | &quot;bottom&quot; | &quot;left&quot;</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;bottom&quot;</InlineCode></TableCell>
                 <TableCell>Which side of the trigger to render on.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">align</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;start&quot; | &quot;center&quot; | &quot;end&quot;</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;start&quot;</code></TableCell>
+                <TableCell><InlineCode>align</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;start&quot; | &quot;center&quot; | &quot;end&quot;</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;start&quot;</InlineCode></TableCell>
                 <TableCell>Alignment along the side axis.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">sideOffset</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">number</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">4</code></TableCell>
+                <TableCell><InlineCode>sideOffset</InlineCode></TableCell>
+                <TableCell><InlineCode>number</InlineCode></TableCell>
+                <TableCell><InlineCode>4</InlineCode></TableCell>
                 <TableCell>Offset in pixels from the trigger.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
@@ -452,27 +454,27 @@ export default async function DropdownPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">DropdownItem, DropdownGroup, and DropdownSeparator elements.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>side</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;top&quot; | &quot;right&quot; | &quot;bottom&quot; | &quot;left&quot;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;bottom&quot;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&quot;top&quot; | &quot;right&quot; | &quot;bottom&quot; | &quot;left&quot;</InlineCode> · default <InlineCode>&quot;bottom&quot;</InlineCode></span>
               <span className="type-caption text-muted-foreground">Which side of the trigger to render on.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>align</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;start&quot; | &quot;center&quot; | &quot;end&quot;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;start&quot;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&quot;start&quot; | &quot;center&quot; | &quot;end&quot;</InlineCode> · default <InlineCode>&quot;start&quot;</InlineCode></span>
               <span className="type-caption text-muted-foreground">Alignment along the side axis.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>sideOffset</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">number</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">4</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>number</InlineCode> · default <InlineCode>4</InlineCode></span>
               <span className="type-caption text-muted-foreground">Offset in pixels from the trigger.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -480,7 +482,7 @@ export default async function DropdownPage() {
       </div>
 
       {/* DropdownItem */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">DropdownItem</h3>
+      <Heading as="h3">DropdownItem</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">
@@ -494,32 +496,32 @@ export default async function DropdownPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>The item label content.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">onSelect</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">() =&gt; void</code></TableCell>
+                <TableCell><InlineCode>onSelect</InlineCode></TableCell>
+                <TableCell><InlineCode>() =&gt; void</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Callback when the item is selected.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">variant</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;default&quot; | &quot;destructive&quot;</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;default&quot;</code></TableCell>
+                <TableCell><InlineCode>variant</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;default&quot; | &quot;destructive&quot;</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;default&quot;</InlineCode></TableCell>
                 <TableCell>Visual style. Use destructive for dangerous actions.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">disabled</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell><InlineCode>disabled</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Prevents interaction with this item.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
@@ -530,27 +532,27 @@ export default async function DropdownPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">The item label content.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>onSelect</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">() =&gt; void</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>() =&gt; void</InlineCode></span>
               <span className="type-caption text-muted-foreground">Callback when the item is selected.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>variant</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;default&quot; | &quot;destructive&quot;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;default&quot;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&quot;default&quot; | &quot;destructive&quot;</InlineCode> · default <InlineCode>&quot;default&quot;</InlineCode></span>
               <span className="type-caption text-muted-foreground">Visual style. Use destructive for dangerous actions.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>disabled</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode> · default <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Prevents interaction with this item.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -558,7 +560,7 @@ export default async function DropdownPage() {
       </div>
 
       {/* DropdownGroup */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">DropdownGroup</h3>
+      <Heading as="h3">DropdownGroup</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">
@@ -572,14 +574,14 @@ export default async function DropdownPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">label</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">(required)</code></TableCell>
+                <TableCell><InlineCode>label</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
+                <TableCell><InlineCode>(required)</InlineCode></TableCell>
                 <TableCell>Group heading text.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>DropdownItem elements within the group.</TableCell>
               </TableRow>
@@ -590,12 +592,12 @@ export default async function DropdownPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>label</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code> · required</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode> · required</span>
               <span className="type-caption text-muted-foreground">Group heading text.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">DropdownItem elements within the group.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -603,7 +605,7 @@ export default async function DropdownPage() {
       </div>
 
       {/* DropdownSeparator */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">DropdownSeparator</h3>
+      <Heading as="h3">DropdownSeparator</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         A visual divider between items. Accepts no props.
       </p>

@@ -9,6 +9,8 @@ import {
   TableRow,
 } from '@umichkisa-ds/web'
 import { CodeBlock } from '@/components/CodeBlock'
+import { InlineCode } from '@/components/InlineCode'
+import { Heading } from '@/components/Heading'
 export default async function IconographyAccessibilityPage() {
   return (
     <Container size="md" as="article">
@@ -17,7 +19,7 @@ export default async function IconographyAccessibilityPage() {
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Accessibility</h1>
 
       {/* ── The Problem Icons Create ────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">The Problem Icons Create</h2>
+      <Heading as="h2">The Problem Icons Create</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Icons are visually obvious to sighted users but completely ambiguous to screen
         readers — unless the code explicitly describes them. A trash can icon conveys
@@ -27,28 +29,28 @@ export default async function IconographyAccessibilityPage() {
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The KISA icon system makes the right behavior the default. When you omit the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">label</code>{' '}
+        <InlineCode>label</InlineCode>{' '}
         prop, the icon is hidden from assistive technology. When you provide
         it, the icon becomes a labeled image. Neither option requires you to write
         accessibility attributes by hand — the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code>{' '}
+        <InlineCode>{'<Icon>'}</InlineCode>{' '}
         component handles them.
       </p>
 
       <Divider className="my-8" />
 
       {/* ── Decorative Icons ────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Decorative Icons</h2>
+      <Heading as="h2">Decorative Icons</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         When the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">label</code>{' '}
+        <InlineCode>label</InlineCode>{' '}
         prop is omitted,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code>{' '}
+        <InlineCode>{'<Icon>'}</InlineCode>{' '}
         sets{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-hidden=&quot;true&quot;</code>{' '}
+        <InlineCode>aria-hidden=&quot;true&quot;</InlineCode>{' '}
         on the SVG. The icon is invisible to screen readers. Any accessible announcement comes
         from the surrounding context — the button{"'"}s{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>,
+        <InlineCode>aria-label</InlineCode>,
         {' '}the visible text label, or the heading it sits next to.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
@@ -65,16 +67,16 @@ export default async function IconographyAccessibilityPage() {
       <Divider className="my-8" />
 
       {/* ── Semantic Icons ──────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Semantic Icons</h2>
+      <Heading as="h2">Semantic Icons</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         When{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">label</code>{' '}
+        <InlineCode>label</InlineCode>{' '}
         is provided,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code>{' '}
+        <InlineCode>{'<Icon>'}</InlineCode>{' '}
         sets{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">role=&quot;img&quot;</code>{' '}
+        <InlineCode>role=&quot;img&quot;</InlineCode>{' '}
         and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>{' '}
+        <InlineCode>aria-label</InlineCode>{' '}
         on the SVG. The icon becomes a labeled image that screen readers will announce.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
@@ -87,9 +89,9 @@ export default async function IconographyAccessibilityPage() {
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         Do not use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">label</code>{' '}
+        <InlineCode>label</InlineCode>{' '}
         when the icon is inside a button that already has{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>.
+        <InlineCode>aria-label</InlineCode>.
         {' '}That creates duplicate announcements — the screen reader reads
         both the button label and the icon label.
       </p>
@@ -97,7 +99,7 @@ export default async function IconographyAccessibilityPage() {
       <Divider className="my-8" />
 
       {/* ── Decision Rule ───────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Decision Rule</h2>
+      <Heading as="h2">Decision Rule</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Three scenarios cover the vast majority of icon usage. When in doubt, ask:{' '}
         <em>is there text nearby that already describes this?</em> If yes, decorative. If no, semantic.
@@ -117,38 +119,38 @@ export default async function IconographyAccessibilityPage() {
               <TableCell>Icon next to a visible text label</TableCell>
               <TableCell>
                 Decorative — omit{' '}
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">label</code>{' '}
+                <InlineCode>label</InlineCode>{' '}
                 prop
               </TableCell>
               <TableCell>
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{`<button><Icon name="save" />Save</button>`}</code>
+                <InlineCode>{`<button><Icon name="save" />Save</button>`}</InlineCode>
               </TableCell>
             </TableRow>
             <TableRow>
               <TableCell>
                 Icon alone inside a{' '}
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">button</code>{' '}
+                <InlineCode>button</InlineCode>{' '}
                 or{' '}
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">a</code>
+                <InlineCode>a</InlineCode>
               </TableCell>
               <TableCell>
                 Decorative —{' '}
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>{' '}
+                <InlineCode>aria-label</InlineCode>{' '}
                 on the wrapper, not the icon
               </TableCell>
               <TableCell>
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{`<button aria-label="Close"><Icon name="x" /></button>`}</code>
+                <InlineCode>{`<button aria-label="Close"><Icon name="x" /></button>`}</InlineCode>
               </TableCell>
             </TableRow>
             <TableRow>
               <TableCell>Standalone meaning indicator (no button, no nearby text)</TableCell>
               <TableCell>
                 Semantic — provide{' '}
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">label</code>{' '}
+                <InlineCode>label</InlineCode>{' '}
                 prop
               </TableCell>
               <TableCell>
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{`<Icon name="check-circle" label="Verified" />`}</code>
+                <InlineCode>{`<Icon name="check-circle" label="Verified" />`}</InlineCode>
               </TableCell>
             </TableRow>
           </TableBody>
@@ -158,19 +160,19 @@ export default async function IconographyAccessibilityPage() {
       <Divider className="my-8" />
 
       {/* ── Touch Targets ───────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Touch Targets</h2>
+      <Heading as="h2">Touch Targets</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code>{' '}
+        <InlineCode>{'<Icon>'}</InlineCode>{' '}
         component renders an SVG sized via the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size</code>{' '}
+        <InlineCode>size</InlineCode>{' '}
         prop. None of these are large enough to serve as a touch target.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Interactive wrappers around icons must be at least 44×44px. This is the minimum touch target size for mobile use per WCAG 2.5.5. Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">min-w-[44px] min-h-[44px]</code>{' '}
+        <InlineCode>min-w-[44px] min-h-[44px]</InlineCode>{' '}
         with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">flex items-center justify-center</code>{' '}
+        <InlineCode>flex items-center justify-center</InlineCode>{' '}
         on the button so the icon is centered inside regardless of its visual size:
       </p>
 
@@ -183,7 +185,7 @@ export default async function IconographyAccessibilityPage() {
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         This approach works for any icon size — the wrapper always meets 44×44px. Never rely on padding calculated from the icon{"'"}s pixel size, as changing the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size</code>{' '}
+        <InlineCode>size</InlineCode>{' '}
         prop would break the math.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
@@ -193,7 +195,7 @@ export default async function IconographyAccessibilityPage() {
       <Divider className="my-8" />
 
       {/* ── Icon Color and Contrast ─────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Icon Color and Contrast</h2>
+      <Heading as="h2">Icon Color and Contrast</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Icons are non-text UI components and must meet the 3:1 contrast ratio threshold (WCAG 1.4.11).
       </p>
@@ -204,21 +206,21 @@ export default async function IconographyAccessibilityPage() {
         <li className="flex gap-2">
           <span className="text-muted-foreground">&bull;</span>
           <span>
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-success</code>{' '}
+            <InlineCode>--color-success</InlineCode>{' '}
             — 2.2:1 on white. Fails both text and non-text contrast thresholds.
           </span>
         </li>
         <li className="flex gap-2">
           <span className="text-muted-foreground">&bull;</span>
           <span>
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-warning</code>{' '}
+            <InlineCode>--color-warning</InlineCode>{' '}
             — 3.0:1 on white. Exactly at the floor, not a comfortable pass.
           </span>
         </li>
       </ul>
       <p className="type-body mb-4 text-foreground max-w-prose">
         When using these tokens in a feedback context, always pair the icon with a visible text label using{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-foreground</code>.
+        <InlineCode>text-foreground</InlineCode>.
         {' '}The label carries the accessible meaning; the icon adds visual reinforcement.
       </p>
 
@@ -232,7 +234,7 @@ export default async function IconographyAccessibilityPage() {
 <span className="text-success"><Icon name="check-circle" label="Success" /></span>`} lang="tsx" />
 
       <p className="type-body mb-4 text-foreground max-w-prose">
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-error</code>{' '}
+        <InlineCode>--color-error</InlineCode>{' '}
         (3.9:1) passes non-text contrast and may be used as a standalone icon color for error state indicators, though pairing with a label is still preferred.
       </p>
 

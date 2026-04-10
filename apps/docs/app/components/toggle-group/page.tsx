@@ -13,6 +13,8 @@ import {
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 import { ContentViewDemo, PageSizeDemo, FullWidthDemo } from './_demos'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 
 const contentViewCode = `import { useState } from 'react'
 import { ToggleGroup, Icon } from '@umichkisa-ds/web'
@@ -87,10 +89,10 @@ export default async function ToggleGroupPage() {
       </Alert>
 
       {/* -- Examples ------------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Content view switch */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Content view switch</h3>
+      <Heading as="h3" className="mt-6">Content view switch</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         A typical use case for switching between content sections, such as a
         user profile board with Posts and Comments views. Each item includes
@@ -101,7 +103,7 @@ export default async function ToggleGroupPage() {
       </ComponentPreview>
 
       {/* Page size selector */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Page size selector</h3>
+      <Heading as="h3">Page size selector</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Text-only items for a compact inline selector, such as rows-per-page
         in a data table.
@@ -111,10 +113,10 @@ export default async function ToggleGroupPage() {
       </ComponentPreview>
 
       {/* Full width */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Full width</h3>
+      <Heading as="h3">Full width</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Set{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">fullWidth</code>{' '}
+        <InlineCode>fullWidth</InlineCode>{' '}
         to distribute items evenly across the container. Useful when the
         ToggleGroup spans the full width of a content section.
       </p>
@@ -123,10 +125,10 @@ export default async function ToggleGroupPage() {
       </ComponentPreview>
 
       {/* -- API Reference -------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
 
       {/* ToggleGroup */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">ToggleGroup</h3>
+      <Heading as="h3" className="mt-6">ToggleGroup</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">
@@ -140,32 +142,32 @@ export default async function ToggleGroupPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">value</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>value</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>The currently selected item value.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">onValueChange</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">{"(value: string) => void"}</code></TableCell>
+                <TableCell><InlineCode>onValueChange</InlineCode></TableCell>
+                <TableCell><InlineCode>{"(value: string) => void"}</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Callback fired when the selected value changes.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">items</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ToggleGroupItem[]</code></TableCell>
+                <TableCell><InlineCode>items</InlineCode></TableCell>
+                <TableCell><InlineCode>ToggleGroupItem[]</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Array of options to display. See ToggleGroupItem below.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">fullWidth</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell><InlineCode>fullWidth</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Stretch items to fill the container width evenly.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
@@ -176,27 +178,27 @@ export default async function ToggleGroupPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>value</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">The currently selected item value.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>onValueChange</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{"(value: string) => void"}</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>{"(value: string) => void"}</InlineCode></span>
               <span className="type-caption text-muted-foreground">Callback fired when the selected value changes.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>items</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ToggleGroupItem[]</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ToggleGroupItem[]</InlineCode></span>
               <span className="type-caption text-muted-foreground">Array of options to display. See ToggleGroupItem below.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>fullWidth</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
               <span className="type-caption text-muted-foreground">Stretch items to fill the container width evenly. Default: false.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -204,7 +206,7 @@ export default async function ToggleGroupPage() {
       </div>
 
       {/* ToggleGroupItem */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">ToggleGroupItem</h3>
+      <Heading as="h3">ToggleGroupItem</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Shape of each option in the items array.
       </p>
@@ -221,20 +223,20 @@ export default async function ToggleGroupPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">value</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>value</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>Yes</TableCell>
                 <TableCell>Unique identifier for this option.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">label</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>label</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>Yes</TableCell>
                 <TableCell>Display text for the option.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">icon</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell><InlineCode>icon</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>No</TableCell>
                 <TableCell>Icon displayed before the label.</TableCell>
               </TableRow>
@@ -245,17 +247,17 @@ export default async function ToggleGroupPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>value</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code> · Required</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode> · Required</span>
               <span className="type-caption text-muted-foreground">Unique identifier for this option.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>label</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code> · Required</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode> · Required</span>
               <span className="type-caption text-muted-foreground">Display text for the option.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>icon</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code> · Optional</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode> · Optional</span>
               <span className="type-caption text-muted-foreground">Icon displayed before the label.</span>
             </TableMobileItem>
           </TableMobileList>

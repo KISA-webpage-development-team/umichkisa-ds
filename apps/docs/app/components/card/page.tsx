@@ -21,8 +21,10 @@ import {
   TableRow,
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { InlineCode } from '@/components/InlineCode'
 import { CodeBlock } from '@/components/CodeBlock'
 import { highlight } from '@/lib/highlight'
+import { Heading } from '@/components/Heading'
 
 const basicCode = `import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@umichkisa-ds/web'
 
@@ -152,7 +154,7 @@ export default async function CardPage() {
       </p>
 
       {/* -- Anatomy -------------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Anatomy</h2>
+      <Heading as="h2">Anatomy</Heading>
       <CodeBlock code={`Card
   CardHeader
     CardTitle
@@ -161,10 +163,10 @@ export default async function CardPage() {
   CardFooter`} lang="text" />
 
       {/* -- Examples ------------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Basic */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Basic</h3>
+      <Heading as="h3" className="mt-6">Basic</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         A card with a header (title + description) and content section. Use this
         pattern for event announcements or informational blocks.
@@ -185,7 +187,7 @@ export default async function CardPage() {
       </ComponentPreview>
 
       {/* With Footer */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With footer</h3>
+      <Heading as="h3">With footer</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Add a CardFooter for action buttons. Combine with Badge for status
         indicators in the header.
@@ -213,7 +215,7 @@ export default async function CardPage() {
       </ComponentPreview>
 
       {/* Cards in Grid */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Cards in a grid</h3>
+      <Heading as="h3">Cards in a grid</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Place cards inside a Grid for multi-column layouts. Cards fill
         their column width — control the layout through Grid, not Card.
@@ -271,7 +273,7 @@ export default async function CardPage() {
       </ComponentPreview>
 
       {/* Custom Composition */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Custom composition</h3>
+      <Heading as="h3">Custom composition</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Sub-components are fully composable. Skip CardHeader entirely and
         arrange content freely. Here, a member profile card with centered layout.
@@ -297,17 +299,17 @@ export default async function CardPage() {
       </ComponentPreview>
 
       {/* -- API Reference -------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Card is composed from several sub-components. Each accepts the props listed below plus
-        standard HTML attributes via <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">className</code> and spread props.
+        standard HTML attributes via <InlineCode>className</InlineCode> and spread props.
       </p>
 
       {/* Card */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Card</h3>
+      <Heading as="h3">Card</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Outer container with p-4 padding, gap-4 between children, surface background,
-        border, and rounded corners. For edge-to-edge bleed, use negative margins (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-mx-4 -mt-4</code>) on the child that needs to bleed.
+        border, and rounded corners. For edge-to-edge bleed, use negative margins (<InlineCode>-mx-4 -mt-4</InlineCode>) on the child that needs to bleed.
       </p>
       <div className="my-6">
         <div className="hidden md:block">
@@ -322,14 +324,14 @@ export default async function CardPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Card sub-components (CardHeader, CardContent, CardFooter, etc.).</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for width constraints or layout utilities.</TableCell>
               </TableRow>
@@ -340,12 +342,12 @@ export default async function CardPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">Card sub-components (CardHeader, CardContent, CardFooter, etc.).</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for width constraints or layout utilities.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -353,7 +355,7 @@ export default async function CardPage() {
       </div>
 
       {/* CardHeader */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">CardHeader</h3>
+      <Heading as="h3">CardHeader</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Groups CardTitle and CardDescription with element-tier spacing (gap-2).
       </p>
@@ -370,14 +372,14 @@ export default async function CardPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Header content — typically CardTitle and CardDescription.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn().</TableCell>
               </TableRow>
@@ -388,12 +390,12 @@ export default async function CardPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">Header content — typically CardTitle and CardDescription.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn().</span>
             </TableMobileItem>
           </TableMobileList>
@@ -401,9 +403,9 @@ export default async function CardPage() {
       </div>
 
       {/* CardTitle */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">CardTitle</h3>
+      <Heading as="h3">CardTitle</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Heading for the card. Renders as an h3 by default — change with the <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">as</code> prop to match your heading hierarchy.
+        Heading for the card. Renders as an h3 by default — change with the <InlineCode>as</InlineCode> prop to match your heading hierarchy.
       </p>
       <div className="my-6">
         <div className="hidden md:block">
@@ -418,22 +420,22 @@ export default async function CardPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">as</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;h1&quot; | &quot;h2&quot; | ... | &quot;h6&quot;</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;h3&quot;</code></TableCell>
+                <TableCell><InlineCode>as</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;h1&quot; | &quot;h2&quot; | ... | &quot;h6&quot;</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;h3&quot;</InlineCode></TableCell>
                 <TableCell>HTML heading element to render.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>The title text.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
-                <TableCell>Merged via cn(). Use <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">line-clamp-2</code> for truncation.</TableCell>
+                <TableCell>Merged via cn(). Use <InlineCode>line-clamp-2</InlineCode> for truncation.</TableCell>
               </TableRow>
             </TableBody>
           </Table>
@@ -442,25 +444,25 @@ export default async function CardPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>as</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;h1&quot; | &quot;h2&quot; | ... | &quot;h6&quot;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;h3&quot;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&quot;h1&quot; | &quot;h2&quot; | ... | &quot;h6&quot;</InlineCode> · default <InlineCode>&quot;h3&quot;</InlineCode></span>
               <span className="type-caption text-muted-foreground">HTML heading element to render.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">The title text.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
-              <span className="type-caption text-muted-foreground">Merged via cn(). Use <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">line-clamp-2</code> for truncation.</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Merged via cn(). Use <InlineCode>line-clamp-2</InlineCode> for truncation.</span>
             </TableMobileItem>
           </TableMobileList>
         </div>
       </div>
 
       {/* CardDescription */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">CardDescription</h3>
+      <Heading as="h3">CardDescription</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Supporting text below the title. Rendered as a paragraph with muted color.
       </p>
@@ -477,16 +479,16 @@ export default async function CardPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>The description text.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
-                <TableCell>Merged via cn(). Use <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">line-clamp-3</code> for truncation.</TableCell>
+                <TableCell>Merged via cn(). Use <InlineCode>line-clamp-3</InlineCode> for truncation.</TableCell>
               </TableRow>
             </TableBody>
           </Table>
@@ -495,20 +497,20 @@ export default async function CardPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">The description text.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
-              <span className="type-caption text-muted-foreground">Merged via cn(). Use <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">line-clamp-3</code> for truncation.</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Merged via cn(). Use <InlineCode>line-clamp-3</InlineCode> for truncation.</span>
             </TableMobileItem>
           </TableMobileList>
         </div>
       </div>
 
       {/* CardContent */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">CardContent</h3>
+      <Heading as="h3">CardContent</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Main body area. Grows to fill available vertical space (flex-1) so
         footers pin to the bottom in equal-height grid layouts.
@@ -526,16 +528,16 @@ export default async function CardPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Body content — text, images, lists, or any custom layout.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
-                <TableCell>Merged via cn(). Use for layout utilities like <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">flex flex-col gap-4</code>.</TableCell>
+                <TableCell>Merged via cn(). Use for layout utilities like <InlineCode>flex flex-col gap-4</InlineCode>.</TableCell>
               </TableRow>
             </TableBody>
           </Table>
@@ -544,20 +546,20 @@ export default async function CardPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">Body content — text, images, lists, or any custom layout.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
-              <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities like <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">flex flex-col gap-4</code>.</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities like <InlineCode>flex flex-col gap-4</InlineCode>.</span>
             </TableMobileItem>
           </TableMobileList>
         </div>
       </div>
 
       {/* CardFooter */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">CardFooter</h3>
+      <Heading as="h3">CardFooter</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Bottom section for actions. Renders as a flex row with 8px gap.
       </p>
@@ -574,16 +576,16 @@ export default async function CardPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Action buttons or supplementary content.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
-                <TableCell>Merged via cn(). Use <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">justify-center</code> or <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">justify-end</code> to change alignment.</TableCell>
+                <TableCell>Merged via cn(). Use <InlineCode>justify-center</InlineCode> or <InlineCode>justify-end</InlineCode> to change alignment.</TableCell>
               </TableRow>
             </TableBody>
           </Table>
@@ -592,13 +594,13 @@ export default async function CardPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">Action buttons or supplementary content.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
-              <span className="type-caption text-muted-foreground">Merged via cn(). Use <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">justify-center</code> or <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">justify-end</code> to change alignment.</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Merged via cn(). Use <InlineCode>justify-center</InlineCode> or <InlineCode>justify-end</InlineCode> to change alignment.</span>
             </TableMobileItem>
           </TableMobileList>
         </div>

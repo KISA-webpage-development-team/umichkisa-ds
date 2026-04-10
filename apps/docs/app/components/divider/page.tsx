@@ -11,7 +11,9 @@ import {
   TableRow,
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { InlineCode } from '@/components/InlineCode'
 import { highlight } from '@/lib/highlight'
+import { Heading } from '@/components/Heading'
 
 const defaultCode = `import { Divider } from '@umichkisa-ds/web'
 
@@ -54,21 +56,21 @@ export default async function DividerPage() {
       <p className="type-body mb-8 text-foreground max-w-prose">
         A visual separator that divides content into distinct sections. Renders as
         a semantic{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           hr
-        </code>{' '}
+        </InlineCode>{' '}
         element with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           role=&quot;separator&quot;
-        </code>{' '}
+        </InlineCode>{' '}
         and supports both horizontal and vertical orientations.
       </p>
 
       {/* ── Examples ────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Default */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Default</h3>
+      <Heading as="h3" className="mt-6">Default</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         No props required. Renders a horizontal line spanning the full width of
         its container.
@@ -78,12 +80,12 @@ export default async function DividerPage() {
       </ComponentPreview>
 
       {/* Vertical */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Vertical</h3>
+      <Heading as="h3" className="mt-6">Vertical</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Set{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           orientation=&quot;vertical&quot;
-        </code>{' '}
+        </InlineCode>{' '}
         to render a vertical separator. Place inside a flex container so it
         stretches to match the height of its siblings.
       </p>
@@ -96,7 +98,7 @@ export default async function DividerPage() {
       </ComponentPreview>
 
       {/* Content separator */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Content separator</h3>
+      <Heading as="h3" className="mt-6">Content separator</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         A common pattern: stacked items separated by horizontal dividers.
       </p>
@@ -111,13 +113,13 @@ export default async function DividerPage() {
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         All props are optional. Any additional props are forwarded to the
         underlying{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           hr
-        </code>{' '}
+        </InlineCode>{' '}
         element.
       </p>
       <div className="my-6">
@@ -133,14 +135,14 @@ export default async function DividerPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">orientation</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&#39;horizontal&#39; | &#39;vertical&#39;</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&#39;horizontal&#39;</code></TableCell>
+                <TableCell><InlineCode>orientation</InlineCode></TableCell>
+                <TableCell><InlineCode>&#39;horizontal&#39; | &#39;vertical&#39;</InlineCode></TableCell>
+                <TableCell><InlineCode>&#39;horizontal&#39;</InlineCode></TableCell>
                 <TableCell>The axis along which the divider is rendered.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Additional CSS classes to apply to the divider.</TableCell>
               </TableRow>
@@ -151,12 +153,12 @@ export default async function DividerPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>orientation</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;horizontal&#39; | &#39;vertical&#39;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;horizontal&#39;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&#39;horizontal&#39; | &#39;vertical&#39;</InlineCode> · default <InlineCode>&#39;horizontal&#39;</InlineCode></span>
               <span className="type-caption text-muted-foreground">The axis along which the divider is rendered.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Additional CSS classes to apply to the divider.</span>
             </TableMobileItem>
           </TableMobileList>

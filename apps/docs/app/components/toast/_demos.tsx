@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Toaster, toast, Button } from '@umichkisa-ds/web'
+import { InlineCode } from '@/components/InlineCode'
 
 type Position = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right'
 
@@ -104,7 +105,7 @@ export function PositionDemo() {
           ))}
         </div>
         <p className="type-caption text-muted-foreground text-center">
-          Current: <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{position}</code>.
+          Current: <InlineCode>{position}</InlineCode>.
           On mobile, toasts automatically switch to full-width at the top of the screen.
         </p>
       </div>

@@ -21,6 +21,8 @@ import {
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 
 /* ── Code snippets ─────────────────────────────────────────── */
 
@@ -186,9 +188,9 @@ export default async function FormsPage() {
       <h1 className="type-h1 mb-4 text-foreground">Forms</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
         How to compose form components in the KISA design system.{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           FormItem
-        </code>{' '}
+        </InlineCode>{' '}
         is the composition wrapper that pairs a label, description, and error message with any
         form control for consistent structure and spacing.
       </p>
@@ -199,47 +201,47 @@ export default async function FormsPage() {
             Forms
           </a>{' '}
           section — it provides a{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Form>'}</code>{' '}
+          <InlineCode>{'<Form>'}</InlineCode>{' '}
           compound component that wires these primitives to react-hook-form automatically.
         </Alert>
       </div>
 
       {/* ── Section 1: Composition Patterns ─────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Composition Patterns</h2>
+      <Heading as="h2">Composition Patterns</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Every form field should be wrapped in a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           FormItem
-        </code>
+        </InlineCode>
         . Below are the supported control pairings.
       </p>
 
       {/* Text inputs */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Text inputs</h3>
+      <Heading as="h3" className="mt-6">Text inputs</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           FormItem
-        </code>{' '}
+        </InlineCode>{' '}
         composes with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Input
-        </code>
+        </InlineCode>
         ,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Textarea
-        </code>
+        </InlineCode>
         , and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Select
-        </code>{' '}
+        </InlineCode>{' '}
         for single-line, multi-line, and dropdown text entry. Pass an{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           error
-        </code>{' '}
+        </InlineCode>{' '}
         string to surface validation feedback, and mirror it on the control with the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           invalid
-        </code>{' '}
+        </InlineCode>{' '}
         prop.
       </p>
       <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
@@ -283,31 +285,31 @@ export default async function FormsPage() {
       </ComponentPreview>
 
       {/* Toggle controls */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Toggle controls</h3>
+      <Heading as="h3">Toggle controls</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Checkbox
-        </code>
+        </InlineCode>
         ,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Switch
-        </code>
+        </InlineCode>
         , and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           RadioGroup
-        </code>{' '}
+        </InlineCode>{' '}
         compose inside{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           FormItem
-        </code>{' '}
+        </InlineCode>{' '}
         with their inline description supplied via the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           text
-        </code>{' '}
+        </InlineCode>{' '}
         prop. The FormItem provides the field heading; the toggle&apos;s{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           text
-        </code>{' '}
+        </InlineCode>{' '}
         provides the inline label.
       </p>
       <ComponentPreview code={checkboxCode} highlightedCode={checkboxHighlighted}>
@@ -331,12 +333,12 @@ export default async function FormsPage() {
       </ComponentPreview>
 
       {/* ── Section 2: Complete Form Example ────────────────── */}
-      <h2 className="type-h2 mt-12 mb-4 text-foreground">Complete Form Example</h2>
+      <Heading as="h2" className="mt-12">Complete Form Example</Heading>
       <p className="type-body mb-6 text-foreground max-w-prose">
         A realistic event registration form composing multiple{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           FormItem
-        </code>{' '}
+        </InlineCode>{' '}
         instances into a cohesive layout. This demonstrates how the components work
         together in a production-like scenario.
       </p>
@@ -417,53 +419,53 @@ export default async function FormsPage() {
       </ComponentPreview>
 
       {/* ── Section 3: Guidelines ───────────────────────────── */}
-      <h2 className="type-h2 mt-12 mb-4 text-foreground">Guidelines</h2>
+      <Heading as="h2" className="mt-12">Guidelines</Heading>
 
       <ul className="list-disc pl-6 flex flex-col gap-3">
         <li className="type-body text-foreground max-w-prose">
           Always wrap form controls in{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          <InlineCode>
             FormItem
-          </code>{' '}
+          </InlineCode>{' '}
           for consistent spacing, labels, and helper text.
         </li>
         <li className="type-body text-foreground max-w-prose">
           Match the{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          <InlineCode>
             htmlFor
-          </code>{' '}
+          </InlineCode>{' '}
           prop on{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          <InlineCode>
             FormItem
-          </code>{' '}
+          </InlineCode>{' '}
           to the{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          <InlineCode>
             id
-          </code>{' '}
+          </InlineCode>{' '}
           on the control for accessibility. This connects the label to the input for
           screen readers and enables click-to-focus.
         </li>
         <li className="type-body text-foreground max-w-prose">
           Use the{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          <InlineCode>
             error
-          </code>{' '}
+          </InlineCode>{' '}
           prop on{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          <InlineCode>
             FormItem
-          </code>{' '}
+          </InlineCode>{' '}
           together with{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          <InlineCode>
             invalid
-          </code>{' '}
+          </InlineCode>{' '}
           on the control. The error prop displays the message; the invalid prop styles the
           control border.
         </li>
         <li className="type-body text-foreground max-w-prose">
           Prefer vertical form layouts. Stack{' '}
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+          <InlineCode>
             FormItem
-          </code>{' '}
+          </InlineCode>{' '}
           components in a column with consistent gap spacing for the most readable
           and mobile-friendly result.
         </li>

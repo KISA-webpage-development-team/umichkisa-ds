@@ -11,6 +11,8 @@ import {
   TableRow,
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 import { highlight } from '@/lib/highlight'
 import {
   BasicDemo,
@@ -184,10 +186,10 @@ export default async function DatePickerPage() {
       </Alert>
 
       {/* -- DatePicker Examples ------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">DatePicker</h2>
+      <Heading as="h2" id="datepicker-examples">DatePicker</Heading>
 
       {/* Basic */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Basic</h3>
+      <Heading as="h3" className="mt-6" id="datepicker-basic">Basic</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         A simple date picker for selecting an event date. Click the trigger to
         open the calendar, then click a date to select it.
@@ -199,7 +201,7 @@ export default async function DatePickerPage() {
       </div>
 
       {/* Default value */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With default value</h3>
+      <Heading as="h3">With default value</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Pre-populate the picker with an existing date, useful for edit forms
         like a profile birth date field.
@@ -211,10 +213,10 @@ export default async function DatePickerPage() {
       </div>
 
       {/* Date bounds */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With date bounds</h3>
+      <Heading as="h3">With date bounds</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Restrict selectable dates using{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">calendarProps.disabled</code>.
+        <InlineCode>calendarProps.disabled</InlineCode>.
         Here, past dates are disabled for a hotel check-in picker.
       </p>
       <div className="w-full">
@@ -224,7 +226,7 @@ export default async function DatePickerPage() {
       </div>
 
       {/* Disabled */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Disabled</h3>
+      <Heading as="h3" id="datepicker-disabled">Disabled</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         A disabled picker prevents interaction. Use when a prerequisite field
         hasn&apos;t been filled yet.
@@ -236,7 +238,7 @@ export default async function DatePickerPage() {
       </div>
 
       {/* Invalid */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Invalid</h3>
+      <Heading as="h3" id="datepicker-invalid">Invalid</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         The invalid state signals a validation error. Pair with FormItem for
         error messages in forms.
@@ -248,12 +250,12 @@ export default async function DatePickerPage() {
       </div>
 
       {/* Custom format */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Custom format</h3>
+      <Heading as="h3">Custom format</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Override the default{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">MM/dd/yyyy</code>{' '}
+        <InlineCode>MM/dd/yyyy</InlineCode>{' '}
         display format with a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">formatDate</code>{' '}
+        <InlineCode>formatDate</InlineCode>{' '}
         function. This example uses Korean date formatting.
       </p>
       <div className="w-full">
@@ -263,10 +265,10 @@ export default async function DatePickerPage() {
       </div>
 
       {/* -- DateRangePicker Examples -------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">DateRangePicker</h2>
+      <Heading as="h2" id="daterangepicker-examples">DateRangePicker</Heading>
 
       {/* Basic range */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Basic</h3>
+      <Heading as="h3" className="mt-6" id="daterangepicker-basic">Basic</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Select a start and end date for a trip. The popover stays open until
         both dates are picked.
@@ -278,7 +280,7 @@ export default async function DatePickerPage() {
       </div>
 
       {/* Default range */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With default range</h3>
+      <Heading as="h3">With default range</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Pre-populate with an existing date range, useful for report period filters
         or editing existing bookings.
@@ -290,7 +292,7 @@ export default async function DatePickerPage() {
       </div>
 
       {/* Disabled range */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Disabled</h3>
+      <Heading as="h3" id="daterangepicker-disabled">Disabled</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         A disabled range picker prevents interaction. Use when availability
         dates aren&apos;t yet known or a prerequisite field hasn&apos;t been filled.
@@ -302,7 +304,7 @@ export default async function DatePickerPage() {
       </div>
 
       {/* Invalid range */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Invalid</h3>
+      <Heading as="h3" id="daterangepicker-invalid">Invalid</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         The invalid state signals a validation error on the range. Pair with
         FormItem for error messages in forms.
@@ -314,14 +316,14 @@ export default async function DatePickerPage() {
       </div>
 
       {/* -- Form Integration ---------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Form Integration</h2>
+      <Heading as="h2">Form Integration</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Form.DatePicker</code>{' '}
+        <InlineCode>Form.DatePicker</InlineCode>{' '}
         and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Form.DateRangePicker</code>{' '}
+        <InlineCode>Form.DateRangePicker</InlineCode>{' '}
         from{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@umichkisa-ds/form</code>{' '}
+        <InlineCode>@umichkisa-ds/form</InlineCode>{' '}
         for react-hook-form integration. They wrap DatePicker and DateRangePicker with
         FormItem, validation, and error display.
       </p>
@@ -336,10 +338,10 @@ export default async function DatePickerPage() {
       </div>
 
       {/* -- API Reference ------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
 
       {/* DatePicker API */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">DatePicker</h3>
+      <Heading as="h3" className="mt-6" id="datepicker-api">DatePicker</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Single date picker with popover calendar.
       </p>
@@ -355,55 +357,55 @@ export default async function DatePickerPage() {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">value</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">Date</code></TableCell>
+              <TableCell><InlineCode>value</InlineCode></TableCell>
+              <TableCell><InlineCode>Date</InlineCode></TableCell>
               <TableCell>—</TableCell>
               <TableCell>The selected date.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">onChange</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">{"(date: Date | undefined) => void"}</code></TableCell>
+              <TableCell><InlineCode>onChange</InlineCode></TableCell>
+              <TableCell><InlineCode>{"(date: Date | undefined) => void"}</InlineCode></TableCell>
               <TableCell>—</TableCell>
               <TableCell>Called when the selected date changes.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">formatDate</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">{"(date: Date) => string"}</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">MM/dd/yyyy</code></TableCell>
+              <TableCell><InlineCode>formatDate</InlineCode></TableCell>
+              <TableCell><InlineCode>{"(date: Date) => string"}</InlineCode></TableCell>
+              <TableCell><InlineCode>MM/dd/yyyy</InlineCode></TableCell>
               <TableCell>Custom formatter for the displayed date string.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">placeholder</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;Select a date&quot;</code></TableCell>
+              <TableCell><InlineCode>placeholder</InlineCode></TableCell>
+              <TableCell><InlineCode>string</InlineCode></TableCell>
+              <TableCell><InlineCode>&quot;Select a date&quot;</InlineCode></TableCell>
               <TableCell>Text shown when no date is selected.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">disabled</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+              <TableCell><InlineCode>disabled</InlineCode></TableCell>
+              <TableCell><InlineCode>boolean</InlineCode></TableCell>
+              <TableCell><InlineCode>false</InlineCode></TableCell>
               <TableCell>Disables the trigger button.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">invalid</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+              <TableCell><InlineCode>invalid</InlineCode></TableCell>
+              <TableCell><InlineCode>boolean</InlineCode></TableCell>
+              <TableCell><InlineCode>false</InlineCode></TableCell>
               <TableCell>Shows error styling on the trigger.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">calendarProps</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">CalendarProps</code></TableCell>
+              <TableCell><InlineCode>calendarProps</InlineCode></TableCell>
+              <TableCell><InlineCode>CalendarProps</InlineCode></TableCell>
               <TableCell>—</TableCell>
               <TableCell>
                 {"Passed to the underlying Calendar. Common patterns: "}
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">{"disabled: { before: date }"}</code>{", "}
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">{"disabled: { after: date }"}</code>{", "}
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">{"disabled: [date1, date2]"}</code>{" for specific dates. See Calendar docs for full options."}
+                <InlineCode>{"disabled: { before: date }"}</InlineCode>{", "}
+                <InlineCode>{"disabled: { after: date }"}</InlineCode>{", "}
+                <InlineCode>{"disabled: [date1, date2]"}</InlineCode>{" for specific dates. See Calendar docs for full options."}
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+              <TableCell><InlineCode>className</InlineCode></TableCell>
+              <TableCell><InlineCode>string</InlineCode></TableCell>
               <TableCell>—</TableCell>
               <TableCell>Applied to the trigger button via cn().</TableCell>
             </TableRow>
@@ -414,58 +416,58 @@ export default async function DatePickerPage() {
         <TableMobileList>
           <TableMobileItem>
             <span className="type-body-sm text-foreground"><strong>value</strong></span>
-            <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">Date</code></span>
+            <span className="type-caption text-muted-foreground"><InlineCode>Date</InlineCode></span>
             <span className="type-caption text-muted-foreground">The selected date.</span>
           </TableMobileItem>
           <TableMobileItem>
             <span className="type-body-sm text-foreground"><strong>onChange</strong></span>
-            <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{"(date: Date | undefined) => void"}</code></span>
+            <span className="type-caption text-muted-foreground"><InlineCode>{"(date: Date | undefined) => void"}</InlineCode></span>
             <span className="type-caption text-muted-foreground">Called when the selected date changes.</span>
           </TableMobileItem>
           <TableMobileItem>
             <span className="type-body-sm text-foreground"><strong>formatDate</strong></span>
-            <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{"(date: Date) => string"}</code></span>
-            <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">MM/dd/yyyy</code></span>
+            <span className="type-caption text-muted-foreground"><InlineCode>{"(date: Date) => string"}</InlineCode></span>
+            <span className="type-caption text-muted-foreground">Default: <InlineCode>MM/dd/yyyy</InlineCode></span>
             <span className="type-caption text-muted-foreground">Custom formatter for the displayed date string.</span>
           </TableMobileItem>
           <TableMobileItem>
             <span className="type-body-sm text-foreground"><strong>placeholder</strong></span>
-            <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
-            <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;Select a date&quot;</code></span>
+            <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
+            <span className="type-caption text-muted-foreground">Default: <InlineCode>&quot;Select a date&quot;</InlineCode></span>
             <span className="type-caption text-muted-foreground">Text shown when no date is selected.</span>
           </TableMobileItem>
           <TableMobileItem>
             <span className="type-body-sm text-foreground"><strong>disabled</strong></span>
-            <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
-            <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+            <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
+            <span className="type-caption text-muted-foreground">Default: <InlineCode>false</InlineCode></span>
             <span className="type-caption text-muted-foreground">Disables the trigger button.</span>
           </TableMobileItem>
           <TableMobileItem>
             <span className="type-body-sm text-foreground"><strong>invalid</strong></span>
-            <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
-            <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+            <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
+            <span className="type-caption text-muted-foreground">Default: <InlineCode>false</InlineCode></span>
             <span className="type-caption text-muted-foreground">Shows error styling on the trigger.</span>
           </TableMobileItem>
           <TableMobileItem>
             <span className="type-body-sm text-foreground"><strong>calendarProps</strong></span>
-            <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">CalendarProps</code></span>
+            <span className="type-caption text-muted-foreground"><InlineCode>CalendarProps</InlineCode></span>
             <span className="type-caption text-muted-foreground">
               {"Passed to the underlying Calendar. Common patterns: "}
-              <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{"disabled: { before: date }"}</code>{", "}
-              <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{"disabled: { after: date }"}</code>{", "}
-              <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{"disabled: [date1, date2]"}</code>{". See Calendar docs."}
+              <InlineCode>{"disabled: { before: date }"}</InlineCode>{", "}
+              <InlineCode>{"disabled: { after: date }"}</InlineCode>{", "}
+              <InlineCode>{"disabled: [date1, date2]"}</InlineCode>{". See Calendar docs."}
             </span>
           </TableMobileItem>
           <TableMobileItem>
             <span className="type-body-sm text-foreground"><strong>className</strong></span>
-            <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+            <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
             <span className="type-caption text-muted-foreground">Applied to the trigger button via cn().</span>
           </TableMobileItem>
         </TableMobileList>
       </div>
 
       {/* DateRangePicker API */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">DateRangePicker</h3>
+      <Heading as="h3" id="daterangepicker-api">DateRangePicker</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Date range picker with popover calendar. Closes after both start and end dates are selected.
       </p>
@@ -481,59 +483,59 @@ export default async function DatePickerPage() {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">value</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">DateRange</code></TableCell>
+              <TableCell><InlineCode>value</InlineCode></TableCell>
+              <TableCell><InlineCode>DateRange</InlineCode></TableCell>
               <TableCell>—</TableCell>
               <TableCell>
                 {"The selected date range — "}
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">{"{ from?: Date; to?: Date }"}</code>
+                <InlineCode>{"{ from?: Date; to?: Date }"}</InlineCode>
                 {". Import DateRange type from @umichkisa-ds/web."}
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">onChange</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">{"(range: DateRange | undefined) => void"}</code></TableCell>
+              <TableCell><InlineCode>onChange</InlineCode></TableCell>
+              <TableCell><InlineCode>{"(range: DateRange | undefined) => void"}</InlineCode></TableCell>
               <TableCell>—</TableCell>
               <TableCell>Called when the selected range changes.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">formatDate</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">{"(date: Date) => string"}</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">MM/dd/yyyy</code></TableCell>
+              <TableCell><InlineCode>formatDate</InlineCode></TableCell>
+              <TableCell><InlineCode>{"(date: Date) => string"}</InlineCode></TableCell>
+              <TableCell><InlineCode>MM/dd/yyyy</InlineCode></TableCell>
               <TableCell>Custom formatter applied to both start and end dates.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">placeholder</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;Select a date range&quot;</code></TableCell>
+              <TableCell><InlineCode>placeholder</InlineCode></TableCell>
+              <TableCell><InlineCode>string</InlineCode></TableCell>
+              <TableCell><InlineCode>&quot;Select a date range&quot;</InlineCode></TableCell>
               <TableCell>Text shown when no range is selected.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">disabled</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+              <TableCell><InlineCode>disabled</InlineCode></TableCell>
+              <TableCell><InlineCode>boolean</InlineCode></TableCell>
+              <TableCell><InlineCode>false</InlineCode></TableCell>
               <TableCell>Disables the trigger button.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">invalid</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+              <TableCell><InlineCode>invalid</InlineCode></TableCell>
+              <TableCell><InlineCode>boolean</InlineCode></TableCell>
+              <TableCell><InlineCode>false</InlineCode></TableCell>
               <TableCell>Shows error styling on the trigger.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">calendarProps</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">CalendarProps</code></TableCell>
+              <TableCell><InlineCode>calendarProps</InlineCode></TableCell>
+              <TableCell><InlineCode>CalendarProps</InlineCode></TableCell>
               <TableCell>—</TableCell>
               <TableCell>
                 {"Passed to the underlying Calendar. Common patterns: "}
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">{"disabled: { before: date }"}</code>{", "}
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">{"disabled: { after: date }"}</code>{", "}
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">{"disabled: [date1, date2]"}</code>{" for specific dates. See Calendar docs for full options."}
+                <InlineCode>{"disabled: { before: date }"}</InlineCode>{", "}
+                <InlineCode>{"disabled: { after: date }"}</InlineCode>{", "}
+                <InlineCode>{"disabled: [date1, date2]"}</InlineCode>{" for specific dates. See Calendar docs for full options."}
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+              <TableCell><InlineCode>className</InlineCode></TableCell>
+              <TableCell><InlineCode>string</InlineCode></TableCell>
               <TableCell>—</TableCell>
               <TableCell>Applied to the trigger button via cn().</TableCell>
             </TableRow>
@@ -544,55 +546,55 @@ export default async function DatePickerPage() {
         <TableMobileList>
           <TableMobileItem>
             <span className="type-body-sm text-foreground"><strong>value</strong></span>
-            <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">DateRange</code></span>
+            <span className="type-caption text-muted-foreground"><InlineCode>DateRange</InlineCode></span>
             <span className="type-caption text-muted-foreground">
               {"The selected date range — "}
-              <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{"{ from?: Date; to?: Date }"}</code>
+              <InlineCode>{"{ from?: Date; to?: Date }"}</InlineCode>
               {". Import DateRange type from @umichkisa-ds/web."}
             </span>
           </TableMobileItem>
           <TableMobileItem>
             <span className="type-body-sm text-foreground"><strong>onChange</strong></span>
-            <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{"(range: DateRange | undefined) => void"}</code></span>
+            <span className="type-caption text-muted-foreground"><InlineCode>{"(range: DateRange | undefined) => void"}</InlineCode></span>
             <span className="type-caption text-muted-foreground">Called when the selected range changes.</span>
           </TableMobileItem>
           <TableMobileItem>
             <span className="type-body-sm text-foreground"><strong>formatDate</strong></span>
-            <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{"(date: Date) => string"}</code></span>
-            <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">MM/dd/yyyy</code></span>
+            <span className="type-caption text-muted-foreground"><InlineCode>{"(date: Date) => string"}</InlineCode></span>
+            <span className="type-caption text-muted-foreground">Default: <InlineCode>MM/dd/yyyy</InlineCode></span>
             <span className="type-caption text-muted-foreground">Custom formatter applied to both start and end dates.</span>
           </TableMobileItem>
           <TableMobileItem>
             <span className="type-body-sm text-foreground"><strong>placeholder</strong></span>
-            <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
-            <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;Select a date range&quot;</code></span>
+            <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
+            <span className="type-caption text-muted-foreground">Default: <InlineCode>&quot;Select a date range&quot;</InlineCode></span>
             <span className="type-caption text-muted-foreground">Text shown when no range is selected.</span>
           </TableMobileItem>
           <TableMobileItem>
             <span className="type-body-sm text-foreground"><strong>disabled</strong></span>
-            <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
-            <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+            <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
+            <span className="type-caption text-muted-foreground">Default: <InlineCode>false</InlineCode></span>
             <span className="type-caption text-muted-foreground">Disables the trigger button.</span>
           </TableMobileItem>
           <TableMobileItem>
             <span className="type-body-sm text-foreground"><strong>invalid</strong></span>
-            <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
-            <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+            <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
+            <span className="type-caption text-muted-foreground">Default: <InlineCode>false</InlineCode></span>
             <span className="type-caption text-muted-foreground">Shows error styling on the trigger.</span>
           </TableMobileItem>
           <TableMobileItem>
             <span className="type-body-sm text-foreground"><strong>calendarProps</strong></span>
-            <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">CalendarProps</code></span>
+            <span className="type-caption text-muted-foreground"><InlineCode>CalendarProps</InlineCode></span>
             <span className="type-caption text-muted-foreground">
               {"Passed to the underlying Calendar. Common patterns: "}
-              <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{"disabled: { before: date }"}</code>{", "}
-              <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{"disabled: { after: date }"}</code>{", "}
-              <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{"disabled: [date1, date2]"}</code>{". See Calendar docs."}
+              <InlineCode>{"disabled: { before: date }"}</InlineCode>{", "}
+              <InlineCode>{"disabled: { after: date }"}</InlineCode>{", "}
+              <InlineCode>{"disabled: [date1, date2]"}</InlineCode>{". See Calendar docs."}
             </span>
           </TableMobileItem>
           <TableMobileItem>
             <span className="type-body-sm text-foreground"><strong>className</strong></span>
-            <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+            <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
             <span className="type-caption text-muted-foreground">Applied to the trigger button via cn().</span>
           </TableMobileItem>
         </TableMobileList>

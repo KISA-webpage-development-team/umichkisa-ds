@@ -1,5 +1,6 @@
 import { Container, Alert } from '@umichkisa-ds/web'
 import { InlineCode } from '@/components/InlineCode'
+import { Heading } from '@/components/Heading'
 
 export default function LayoutUsagePage() {
   return (
@@ -15,7 +16,7 @@ export default function LayoutUsagePage() {
       </p>
 
       {/* ── Philosophy ──────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Philosophy</h2>
+      <Heading as="h2">Philosophy</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Every page in the KISA app starts with the same shell:{' '}
         <InlineCode>mx-auto w-full max-w-screen-2xl px-4 md:px-6 lg:px-8</InlineCode>.
@@ -39,7 +40,7 @@ export default function LayoutUsagePage() {
       </p>
 
       {/* ── Decision Tree ───────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">What to reach for</h2>
+      <Heading as="h2">What to reach for</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Four decisions cover almost every layout need.
       </p>
@@ -124,7 +125,7 @@ export default function LayoutUsagePage() {
       </ul>
 
       {/* ── Anti-patterns ───────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Anti-patterns</h2>
+      <Heading as="h2">Anti-patterns</Heading>
       <Alert variant="warning" title="Avoid these">
         <ul className="flex flex-col gap-2">
           <li>

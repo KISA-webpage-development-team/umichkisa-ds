@@ -1,5 +1,7 @@
 import { Container, Alert, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 import { highlight } from '@/lib/highlight'
 import { UseFormFieldDemo, UseFormStatusDemo } from './_demos'
 
@@ -89,7 +91,7 @@ export default async function HooksPage() {
       </h1>
       <Alert variant="info" title="When to use hooks" className="mb-8">
         The{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Form.*</code>{' '}
+        <InlineCode>Form.*</InlineCode>{' '}
         compound components handle most forms but enforce a label-above-field layout.
         When you need a different layout (e.g., inline labels, grouped fields) or
         custom form chrome (submit footers, dirty indicators), use these hooks —
@@ -97,9 +99,9 @@ export default async function HooksPage() {
       </Alert>
 
       {/* ── useFormField ──────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">useFormField</h2>
+      <Heading as="h2">useFormField</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        Returns <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">inputProps</code> that you spread
+        Returns <InlineCode>inputProps</InlineCode> that you spread
         onto any DS input component, plus the current error state. Use this
         when you need a custom field layout — for example, a label beside the
         input instead of above it.
@@ -108,7 +110,7 @@ export default async function HooksPage() {
         <UseFormFieldDemo />
       </ComponentPreview>
 
-      <h3 className="type-body !font-semibold mt-6 mb-2 text-foreground">API</h3>
+      <Heading as="h3" className="type-body !font-semibold mt-6 mb-2">API</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">
@@ -121,13 +123,13 @@ export default async function HooksPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">name</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>name</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>Field name matching a key in your form values type.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">rules</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">RegisterOptions</code></TableCell>
+                <TableCell><InlineCode>rules</InlineCode></TableCell>
+                <TableCell><InlineCode>RegisterOptions</InlineCode></TableCell>
                 <TableCell>Optional validation rules (same as compound components).</TableCell>
               </TableRow>
             </TableBody>
@@ -137,19 +139,19 @@ export default async function HooksPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>name</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Field name matching a key in your form values type.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>rules</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">RegisterOptions</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>RegisterOptions</InlineCode></span>
               <span className="type-caption text-muted-foreground">Optional validation rules (same as compound components).</span>
             </TableMobileItem>
           </TableMobileList>
         </div>
       </div>
 
-      <h3 className="type-body !font-semibold mt-8 mb-2 text-foreground">Return Value</h3>
+      <Heading as="h3" id="useformfield-return-value" className="type-body !font-semibold mt-8 mb-2">Return Value</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">
@@ -162,23 +164,23 @@ export default async function HooksPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">value</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">unknown</code></TableCell>
+                <TableCell><InlineCode>value</InlineCode></TableCell>
+                <TableCell><InlineCode>unknown</InlineCode></TableCell>
                 <TableCell>Current field value.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">invalid</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
+                <TableCell><InlineCode>invalid</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
                 <TableCell>Whether the field has a validation error.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">error</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string | undefined</code></TableCell>
+                <TableCell><InlineCode>error</InlineCode></TableCell>
+                <TableCell><InlineCode>string | undefined</InlineCode></TableCell>
                 <TableCell>Error message string, if any.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">inputProps</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">object</code></TableCell>
+                <TableCell><InlineCode>inputProps</InlineCode></TableCell>
+                <TableCell><InlineCode>object</InlineCode></TableCell>
                 <TableCell>Spread onto your input: name, value, onChange, onBlur, invalid, ref.</TableCell>
               </TableRow>
             </TableBody>
@@ -188,22 +190,22 @@ export default async function HooksPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>value</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">unknown</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>unknown</InlineCode></span>
               <span className="type-caption text-muted-foreground">Current field value.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>invalid</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
               <span className="type-caption text-muted-foreground">Whether the field has a validation error.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>error</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string | undefined</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string | undefined</InlineCode></span>
               <span className="type-caption text-muted-foreground">Error message string, if any.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>inputProps</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">object</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>object</InlineCode></span>
               <span className="type-caption text-muted-foreground">Spread onto your input: name, value, onChange, onBlur, invalid, ref.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -211,18 +213,18 @@ export default async function HooksPage() {
       </div>
 
       {/* ── useFormStatus ─────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">useFormStatus</h2>
+      <Heading as="h2">useFormStatus</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Returns the form&apos;s submission and validity state. Use this to build
         custom submit footers, progress indicators, or conditional UI. Must be
-        called within a <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Form>'}</code> or{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">FormProvider</code> context.
+        called within a <InlineCode>{'<Form>'}</InlineCode> or{' '}
+        <InlineCode>FormProvider</InlineCode> context.
       </p>
       <ComponentPreview code={useFormStatusCode} highlightedCode={useFormStatusHighlighted}>
         <UseFormStatusDemo />
       </ComponentPreview>
 
-      <h3 className="type-body !font-semibold mt-6 mb-2 text-foreground">Return Value</h3>
+      <Heading as="h3" id="useformstatus-return-value" className="type-body !font-semibold mt-6 mb-2">Return Value</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">
@@ -235,18 +237,18 @@ export default async function HooksPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">isSubmitting</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
+                <TableCell><InlineCode>isSubmitting</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
                 <TableCell>True while the onSubmit handler is running (including async).</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">isValid</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
+                <TableCell><InlineCode>isValid</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
                 <TableCell>True when all fields pass validation.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">isDirty</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
+                <TableCell><InlineCode>isDirty</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
                 <TableCell>True when any field value differs from defaultValues.</TableCell>
               </TableRow>
             </TableBody>
@@ -256,17 +258,17 @@ export default async function HooksPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>isSubmitting</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
               <span className="type-caption text-muted-foreground">True while the onSubmit handler is running (including async).</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>isValid</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
               <span className="type-caption text-muted-foreground">True when all fields pass validation.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>isDirty</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
               <span className="type-caption text-muted-foreground">True when any field value differs from defaultValues.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -274,7 +276,7 @@ export default async function HooksPage() {
       </div>
 
       {/* ── Decision Guide ────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">When to Use What</h2>
+      <Heading as="h2">When to Use What</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">
@@ -286,15 +288,15 @@ export default async function HooksPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">Form.*</code> compounds</TableCell>
+                <TableCell><InlineCode>Form.*</InlineCode> compounds</TableCell>
                 <TableCell>Standard forms with label-above-field layout. Handles 90% of cases with zero boilerplate.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">useFormField</code></TableCell>
+                <TableCell><InlineCode>useFormField</InlineCode></TableCell>
                 <TableCell>Custom field layouts (e.g., inline labels, grouped fields) or wrapping non-DS inputs.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">useFormStatus</code></TableCell>
+                <TableCell><InlineCode>useFormStatus</InlineCode></TableCell>
                 <TableCell>Custom submit footers, dirty indicators, or any UI that reacts to form state.</TableCell>
               </TableRow>
             </TableBody>
@@ -303,15 +305,15 @@ export default async function HooksPage() {
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">Form.*</code> compounds</strong></span>
+              <span className="type-body-sm text-foreground"><strong><InlineCode>Form.*</InlineCode> compounds</strong></span>
               <span className="type-caption text-muted-foreground">Standard forms with label-above-field layout. Handles 90% of cases with zero boilerplate.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">useFormField</code></strong></span>
+              <span className="type-body-sm text-foreground"><strong><InlineCode>useFormField</InlineCode></strong></span>
               <span className="type-caption text-muted-foreground">Custom field layouts (e.g., inline labels, grouped fields) or wrapping non-DS inputs.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">useFormStatus</code></strong></span>
+              <span className="type-body-sm text-foreground"><strong><InlineCode>useFormStatus</InlineCode></strong></span>
               <span className="type-caption text-muted-foreground">Custom submit footers, dirty indicators, or any UI that reacts to form state.</span>
             </TableMobileItem>
           </TableMobileList>

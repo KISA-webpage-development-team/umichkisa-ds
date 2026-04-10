@@ -16,6 +16,8 @@ import {
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { SizesExample } from '@/components/SizesExample'
 import { highlight } from '@/lib/highlight'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 
 const defaultCode = `import { Icon } from '@umichkisa-ds/web'
 
@@ -64,26 +66,26 @@ export default async function IconPage() {
       <p className="type-body mb-8 text-foreground max-w-prose">
         The single canonical way to render icons in the KISA design system. Wraps
         Lucide icons with consistent sizing, color inheritance via{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           currentColor
-        </code>
+        </InlineCode>
         , and built-in accessibility handling.
       </p>
 
       {/* ── Examples ────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Default */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Default</h3>
+      <Heading as="h3" className="mt-6">Default</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         No props beyond{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           name
-        </code>
+        </InlineCode>
         . Renders at{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           md
-        </code>{' '}
+        </InlineCode>{' '}
         (20px) by default. Decorative — screen readers ignore it.
       </p>
       <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
@@ -91,28 +93,28 @@ export default async function IconPage() {
       </ComponentPreview>
 
       {/* Sizes */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Sizes</h3>
+      <Heading as="h3">Sizes</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Five size tokens map to fixed pixel values on a 4px grid. Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           md
-        </code>{' '}
+        </InlineCode>{' '}
         (default) for most UI.
       </p>
       <SizesExample />
 
       {/* Color */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Color</h3>
+      <Heading as="h3">Color</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Icons inherit{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           currentColor
-        </code>
+        </InlineCode>
         . Set color on the wrapping element using semantic tokens — never pass a color
         prop directly to{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           &lt;Icon&gt;
-        </code>
+        </InlineCode>
         .
       </p>
       <ComponentPreview code={colorCode} highlightedCode={colorHighlighted}>
@@ -128,16 +130,16 @@ export default async function IconPage() {
       </ComponentPreview>
 
       {/* With a label */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With a label</h3>
+      <Heading as="h3">With a label</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Provide{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           label
-        </code>{' '}
+        </InlineCode>{' '}
         when the icon carries meaning with no visible text nearby. The component sets{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           aria-label
-        </code>{' '}
+        </InlineCode>{' '}
         on the SVG so screen readers announce it.
       </p>
       <ComponentPreview code={labelCode} highlightedCode={labelHighlighted}>
@@ -145,17 +147,17 @@ export default async function IconPage() {
       </ComponentPreview>
 
       {/* Interactive icons */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Interactive icons</h3>
+      <Heading as="h3">Interactive icons</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           &lt;Icon&gt;
-        </code>{' '}
+        </InlineCode>{' '}
         is never interactive — it has no hit target, no focus ring, and no accessible
         role. For interactive icons (toolbar actions, close buttons, menu triggers),
         use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           &lt;IconButton&gt;
-        </code>
+        </InlineCode>
         . It provides the accessible label, focus behavior, and 44×44px touch target
         for free.
       </p>
@@ -164,7 +166,7 @@ export default async function IconPage() {
       </ComponentPreview>
 
       {/* ── Available Icons ──────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Available Icons</h2>
+      <Heading as="h2">Available Icons</Heading>
       <p className="type-body-sm mb-4 text-muted-foreground max-w-prose">
         41 icons in the current registry (39 Lucide + 2 custom brand icons).
       </p>
@@ -187,20 +189,20 @@ export default async function IconPage() {
       </Grid>
 
       {/* ── API Reference ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         All props except{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           name
-        </code>{' '}
+        </InlineCode>{' '}
         are optional.{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           name
-        </code>{' '}
+        </InlineCode>{' '}
         must be a registered{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           IconName
-        </code>{' '}
+        </InlineCode>{' '}
         — TypeScript will catch invalid names at compile time.
       </p>
       <div className="my-6">
@@ -216,37 +218,37 @@ export default async function IconPage() {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">name</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">IconName</code></TableCell>
+              <TableCell><InlineCode>name</InlineCode></TableCell>
+              <TableCell><InlineCode>IconName</InlineCode></TableCell>
               <TableCell>—</TableCell>
               <TableCell>Required. Lucide icon name in kebab-case. Must be a key in the DS registry.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;xs&#39; | &#39;sm&#39; | &#39;md&#39; | &#39;lg&#39; | &#39;xl&#39;</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;md&#39;</code></TableCell>
+              <TableCell><InlineCode>size</InlineCode></TableCell>
+              <TableCell><InlineCode>&#39;xs&#39; | &#39;sm&#39; | &#39;md&#39; | &#39;lg&#39; | &#39;xl&#39;</InlineCode></TableCell>
+              <TableCell><InlineCode>&#39;md&#39;</InlineCode></TableCell>
               <TableCell>Maps to a fixed pixel size (12 / 16 / 20 / 24 / 32).</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">label</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+              <TableCell><InlineCode>label</InlineCode></TableCell>
+              <TableCell><InlineCode>string</InlineCode></TableCell>
               <TableCell>—</TableCell>
               <TableCell>
                 When provided: sets{' '}
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>{' '}
+                <InlineCode>aria-label</InlineCode>{' '}
                 on the SVG so screen readers announce it. When omitted:{' '}
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-hidden=&quot;true&quot;</code>.
+                <InlineCode>aria-hidden=&quot;true&quot;</InlineCode>.
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+              <TableCell><InlineCode>className</InlineCode></TableCell>
+              <TableCell><InlineCode>string</InlineCode></TableCell>
               <TableCell>—</TableCell>
               <TableCell>
                 Layout utilities only (
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">block</code>
+                <InlineCode>block</InlineCode>
                 ,{' '}
-                <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">flex-shrink-0</code>
+                <InlineCode>flex-shrink-0</InlineCode>
                 ). Never use for color or size.
               </TableCell>
             </TableRow>
@@ -257,23 +259,23 @@ export default async function IconPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>name</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">IconName</code> · required</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>IconName</InlineCode> · required</span>
               <span className="type-caption text-muted-foreground">Lucide icon name in kebab-case. Must be a key in the DS registry.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>size</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;xs&#39; | &#39;sm&#39; | &#39;md&#39; | &#39;lg&#39; | &#39;xl&#39;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;md&#39;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&#39;xs&#39; | &#39;sm&#39; | &#39;md&#39; | &#39;lg&#39; | &#39;xl&#39;</InlineCode> · default <InlineCode>&#39;md&#39;</InlineCode></span>
               <span className="type-caption text-muted-foreground">Maps to a fixed pixel size (12 / 16 / 20 / 24 / 32).</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>label</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
-              <span className="type-caption text-muted-foreground">When provided, sets <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">aria-label</code> on the SVG. When omitted, the icon is <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">aria-hidden</code>.</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
+              <span className="type-caption text-muted-foreground">When provided, sets <InlineCode>aria-label</InlineCode> on the SVG. When omitted, the icon is <InlineCode>aria-hidden</InlineCode>.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
-              <span className="type-caption text-muted-foreground">Layout utilities only (<code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">block</code>, <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">flex-shrink-0</code>). Never use for color or size.</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Layout utilities only (<InlineCode>block</InlineCode>, <InlineCode>flex-shrink-0</InlineCode>). Never use for color or size.</span>
             </TableMobileItem>
           </TableMobileList>
         </div>

@@ -14,6 +14,8 @@ import {
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 import { ControlledDemo } from './_demos'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 
 const basicCode = `import { RadioGroup, RadioItem } from '@umichkisa-ds/web'
 
@@ -101,21 +103,21 @@ export default async function RadioPage() {
       <h1 className="type-h1 mb-4 text-foreground">Radio</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
         Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           RadioGroup
-        </code>{' '}
+        </InlineCode>{' '}
         and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           RadioItem
-        </code>{' '}
+        </InlineCode>{' '}
         together to let users pick one option from a set.
       </p>
 
       {/* ── Examples ────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Basic */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Basic</h3>
+      <Heading as="h3" className="mt-6">Basic</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         A vertical radio group with three options.
       </p>
@@ -128,12 +130,12 @@ export default async function RadioPage() {
       </ComponentPreview>
 
       {/* Horizontal */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Horizontal orientation</h3>
+      <Heading as="h3">Horizontal orientation</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Set{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           orientation=&quot;horizontal&quot;
-        </code>{' '}
+        </InlineCode>{' '}
         to lay out items in a row.
       </p>
       <ComponentPreview code={horizontalCode} highlightedCode={horizontalHighlighted}>
@@ -145,12 +147,12 @@ export default async function RadioPage() {
       </ComponentPreview>
 
       {/* Default value */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Default value</h3>
+      <Heading as="h3">Default value</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           defaultValue
-        </code>{' '}
+        </InlineCode>{' '}
         to set the initial value without managing state.
       </p>
       <ComponentPreview code={defaultValueCode} highlightedCode={defaultValueHighlighted}>
@@ -162,12 +164,12 @@ export default async function RadioPage() {
       </ComponentPreview>
 
       {/* Disabled group */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Disabled group</h3>
+      <Heading as="h3">Disabled group</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Set{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           disabled
-        </code>{' '}
+        </InlineCode>{' '}
         on the group to disable all items.
       </p>
       <ComponentPreview code={disabledGroupCode} highlightedCode={disabledGroupHighlighted}>
@@ -179,7 +181,7 @@ export default async function RadioPage() {
       </ComponentPreview>
 
       {/* Disabled individual item */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Disabled individual item</h3>
+      <Heading as="h3">Disabled individual item</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Disable a single item while the rest remain interactive.
       </p>
@@ -192,16 +194,16 @@ export default async function RadioPage() {
       </ComponentPreview>
 
       {/* Invalid / error state */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Invalid / error state</h3>
+      <Heading as="h3">Invalid / error state</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Pair{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           invalid
-        </code>{' '}
+        </InlineCode>{' '}
         with an error message below. Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           type-caption text-error
-        </code>{' '}
+        </InlineCode>{' '}
         for the message.
       </p>
       <ComponentPreview code={invalidCode} highlightedCode={invalidHighlighted}>
@@ -216,16 +218,16 @@ export default async function RadioPage() {
       </ComponentPreview>
 
       {/* Controlled */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Controlled</h3>
+      <Heading as="h3">Controlled</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           value
-        </code>{' '}
+        </InlineCode>{' '}
         and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           onValueChange
-        </code>{' '}
+        </InlineCode>{' '}
         for controlled state.
       </p>
       <ComponentPreview code={controlledCode} highlightedCode={controlledHighlighted}>
@@ -233,10 +235,10 @@ export default async function RadioPage() {
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
 
       {/* RadioGroup table */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">RadioGroup</h3>
+      <Heading as="h3" className="mt-6">RadioGroup</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The group container. Built on Radix RadioGroup — all props below are supported.
       </p>
@@ -253,56 +255,56 @@ export default async function RadioPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">value</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>value</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Controlled selected value.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">defaultValue</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>defaultValue</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Uncontrolled default selected value.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">onValueChange</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">{"(value: string) => void"}</code></TableCell>
+                <TableCell><InlineCode>onValueChange</InlineCode></TableCell>
+                <TableCell><InlineCode>{"(value: string) => void"}</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Called when the selected value changes.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">disabled</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell><InlineCode>disabled</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Disables the entire group.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">orientation</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">{'"horizontal" | "vertical"'}</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">"vertical"</code></TableCell>
+                <TableCell><InlineCode>orientation</InlineCode></TableCell>
+                <TableCell><InlineCode>{'"horizontal" | "vertical"'}</InlineCode></TableCell>
+                <TableCell><InlineCode>"vertical"</InlineCode></TableCell>
                 <TableCell>Layout direction of the radio items.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">name</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>name</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Form field name for the group.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">required</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell><InlineCode>required</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Marks the group as required for form validation.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">invalid</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell><InlineCode>invalid</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Applies error border styling to all items.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Additional CSS classes. Use for layout utilities only.</TableCell>
               </TableRow>
@@ -313,51 +315,51 @@ export default async function RadioPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>value</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Controlled selected value.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>defaultValue</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Uncontrolled default selected value.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>onValueChange</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{"(value: string) => void"}</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>{"(value: string) => void"}</InlineCode></span>
               <span className="type-caption text-muted-foreground">Called when the selected value changes.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>disabled</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Disables the entire group.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>orientation</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{'"horizontal" | "vertical"'}</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">"vertical"</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>{'"horizontal" | "vertical"'}</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>"vertical"</InlineCode></span>
               <span className="type-caption text-muted-foreground">Layout direction of the radio items.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>name</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Form field name for the group.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>required</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Marks the group as required for form validation.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>invalid</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Applies error border styling to all items.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Additional CSS classes. Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -365,12 +367,12 @@ export default async function RadioPage() {
       </div>
 
       {/* RadioItem table */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">RadioItem</h3>
+      <Heading as="h3">RadioItem</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         A single radio option. Must be used inside{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           RadioGroup
-        </code>.
+        </InlineCode>.
       </p>
       <div className="my-6">
         <div className="hidden md:block">
@@ -385,26 +387,26 @@ export default async function RadioPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">value</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">required</code></TableCell>
+                <TableCell><InlineCode>value</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
+                <TableCell><InlineCode>required</InlineCode></TableCell>
                 <TableCell>Unique value identifying this option.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">text</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">required</code></TableCell>
+                <TableCell><InlineCode>text</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
+                <TableCell><InlineCode>required</InlineCode></TableCell>
                 <TableCell>Label text rendered beside the radio indicator.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">disabled</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell><InlineCode>disabled</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Disables this individual item.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Additional CSS classes. Use for layout utilities only.</TableCell>
               </TableRow>
@@ -415,25 +417,25 @@ export default async function RadioPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>value</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">required</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>required</InlineCode></span>
               <span className="type-caption text-muted-foreground">Unique value identifying this option.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>text</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">required</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>required</InlineCode></span>
               <span className="type-caption text-muted-foreground">Label text rendered beside the radio indicator.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>disabled</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Disables this individual item.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Additional CSS classes. Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>

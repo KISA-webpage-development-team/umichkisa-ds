@@ -14,6 +14,8 @@ import {
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 
 const defaultCode = `import { Tooltip, IconButton } from '@umichkisa-ds/web'
 
@@ -73,9 +75,9 @@ export default async function TooltipPage() {
         icon-only buttons, truncated text, or any element that benefits from a
         short textual hint. When wrapping icon-only buttons, the tooltip
         content should match the trigger&apos;s{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           aria-label
-        </code>{' '}
+        </InlineCode>{' '}
         so screen readers and sighted users receive the same information.
       </p>
       <Alert variant="warning" className="mb-8">
@@ -85,21 +87,21 @@ export default async function TooltipPage() {
       </Alert>
 
       {/* ── Guidelines ─────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Guidelines</h2>
+      <Heading as="h2">Guidelines</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Tooltip is a supplementary hint pattern. It exists to give sighted
         desktop users extra context that is already conveyed elsewhere — never
         as the sole carrier of information.
       </p>
 
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Use Tooltip for</h3>
+      <Heading as="h3" className="mt-6">Use Tooltip for</Heading>
       <ul className="type-body mb-4 text-foreground max-w-prose list-disc pl-6 space-y-1">
-        <li>Labeling icon-only buttons (match the trigger&apos;s <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code> exactly).</li>
+        <li>Labeling icon-only buttons (match the trigger&apos;s <InlineCode>aria-label</InlineCode> exactly).</li>
         <li>Revealing the full content of truncated text on hover.</li>
         <li>Short, supplementary hints that complement the visible UI.</li>
       </ul>
 
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Don&apos;t</h3>
+      <Heading as="h3">Don&apos;t</Heading>
       <ul className="type-body mb-4 text-foreground max-w-prose list-disc pl-6 space-y-1">
         <li>Put essential information inside a tooltip — touch users will never see it.</li>
         <li>Use Tooltip for content the user must read. Reach for Popover instead.</li>
@@ -108,10 +110,10 @@ export default async function TooltipPage() {
       </ul>
 
       {/* ── Examples ────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Default */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Default</h3>
+      <Heading as="h3" className="mt-6">Default</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Wrap any trigger element. The tooltip appears on hover and focus.
       </p>
@@ -122,7 +124,7 @@ export default async function TooltipPage() {
       </ComponentPreview>
 
       {/* On text */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">On truncated text</h3>
+      <Heading as="h3">On truncated text</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Wrap truncated text to reveal the full content on hover.
       </p>
@@ -135,12 +137,12 @@ export default async function TooltipPage() {
       </ComponentPreview>
 
       {/* Placement */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Placement</h3>
+      <Heading as="h3">Placement</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Use the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           side
-        </code>{' '}
+        </InlineCode>{' '}
         prop to control which side of the trigger the tooltip appears on.
         Radix automatically flips to an available side if the preferred one
         would overflow the viewport.
@@ -163,12 +165,12 @@ export default async function TooltipPage() {
       </ComponentPreview>
 
       {/* Custom delay */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Custom delay</h3>
+      <Heading as="h3">Custom delay</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Override{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           delayDuration
-        </code>{' '}
+        </InlineCode>{' '}
         to control how long (in milliseconds) the user must hover before
         the tooltip appears. Default is 200ms.
       </p>
@@ -179,7 +181,7 @@ export default async function TooltipPage() {
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">
@@ -193,27 +195,27 @@ export default async function TooltipPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">content</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>content</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell className="text-muted-foreground">—</TableCell>
                 <TableCell>Text displayed in the tooltip bubble. Required.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell className="text-muted-foreground">—</TableCell>
                 <TableCell>The trigger element. Native elements and DS components work out of the box.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">side</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;top&quot; | &quot;right&quot; | &quot;bottom&quot; | &quot;left&quot;</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;top&quot;</code></TableCell>
+                <TableCell><InlineCode>side</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;top&quot; | &quot;right&quot; | &quot;bottom&quot; | &quot;left&quot;</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;top&quot;</InlineCode></TableCell>
                 <TableCell>Preferred side of the trigger. Flips automatically on overflow.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">delayDuration</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">number</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">200</code></TableCell>
+                <TableCell><InlineCode>delayDuration</InlineCode></TableCell>
+                <TableCell><InlineCode>number</InlineCode></TableCell>
+                <TableCell><InlineCode>200</InlineCode></TableCell>
                 <TableCell>Milliseconds to wait before showing the tooltip on hover.</TableCell>
               </TableRow>
             </TableBody>
@@ -223,22 +225,22 @@ export default async function TooltipPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>content</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Text displayed in the tooltip bubble. Required.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">The trigger element. Native elements and DS components work out of the box.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>side</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;top&quot; | &quot;right&quot; | &quot;bottom&quot; | &quot;left&quot;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;top&quot;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&quot;top&quot; | &quot;right&quot; | &quot;bottom&quot; | &quot;left&quot;</InlineCode> · default <InlineCode>&quot;top&quot;</InlineCode></span>
               <span className="type-caption text-muted-foreground">Preferred side of the trigger. Flips automatically on overflow.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>delayDuration</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">number</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">200</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>number</InlineCode> · default <InlineCode>200</InlineCode></span>
               <span className="type-caption text-muted-foreground">Milliseconds to wait before showing the tooltip on hover.</span>
             </TableMobileItem>
           </TableMobileList>

@@ -15,6 +15,8 @@ import { ComponentPreview } from '@/components/ComponentPreview'
 import { CodeBlock } from '@/components/CodeBlock'
 import { highlight } from '@/lib/highlight'
 import { ClickableRowsDemo } from './_demos'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 
 const basicCode = `import {
   Table, TableHeader, TableBody, TableRow, TableHead, TableCell,
@@ -344,7 +346,7 @@ export default async function TablePage() {
       </Alert>
 
       {/* -- Composition ----------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Composition</h2>
+      <Heading as="h2">Composition</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Table is composed from 10 sub-components that mirror native HTML table
         elements. Here is how they nest together:
@@ -365,10 +367,10 @@ TableMobileList           {/* mobile alternative */}
 └── TableMobileItem`} lang="text" />
 
       {/* -- Examples ------------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Basic */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Basic</h3>
+      <Heading as="h3" className="mt-6">Basic</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         A member directory. Desktop renders the full Table; mobile swaps to a
         TableMobileList of stacked items.
@@ -450,13 +452,13 @@ TableMobileList           {/* mobile alternative */}
       </ComponentPreview>
 
       {/* Size */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Size</h3>
+      <Heading as="h3">Size</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size=&quot;sm&quot;</code>{' '}
+        <InlineCode>size=&quot;sm&quot;</InlineCode>{' '}
         for tables embedded within body content (reference tables, token lists).
         The default{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size=&quot;md&quot;</code>{' '}
+        <InlineCode>size=&quot;md&quot;</InlineCode>{' '}
         is suited for standalone tables like bulletin boards and data views.
       </p>
       <div className="flex flex-col gap-6 my-4">
@@ -519,12 +521,12 @@ TableMobileList           {/* mobile alternative */}
       </div>
 
       {/* Bulletin Board */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Bulletin Board</h3>
+      <Heading as="h3">Bulletin Board</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         A KISA-style board layout with Korean text. The announcement row uses{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           bg-surface-subtle
-        </code>{' '}
+        </InlineCode>{' '}
         to visually distinguish pinned content from regular posts.
       </p>
       <ComponentPreview code={bulletinCode} highlightedCode={bulletinHighlighted}>
@@ -599,16 +601,16 @@ TableMobileList           {/* mobile alternative */}
       </ComponentPreview>
 
       {/* Clickable Rows */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Clickable rows</h3>
+      <Heading as="h3">Clickable rows</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Add{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           cursor-pointer
-        </code>{' '}
+        </InlineCode>{' '}
         and an{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           onClick
-        </code>{' '}
+        </InlineCode>{' '}
         handler to TableRow for navigable rows — ideal for bulletin boards
         where clicking a row opens the post. On mobile, wrap each TableMobileItem
         in a clickable element with the same handler.
@@ -618,13 +620,13 @@ TableMobileList           {/* mobile alternative */}
       </ComponentPreview>
 
       {/* With Footer */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With Footer</h3>
+      <Heading as="h3">With Footer</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         An event budget table with a TableFooter for the total row. The footer
         uses{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           colSpan
-        </code>{' '}
+        </InlineCode>{' '}
         to merge cells for the summary label. On mobile, the total appears as a
         distinguished final TableMobileItem.
       </p>
@@ -691,23 +693,23 @@ TableMobileList           {/* mobile alternative */}
       </ComponentPreview>
 
       {/* -- API Reference -------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Table is composed from several sub-components you assemble together. All
         sub-components accept{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">className</code>{' '}
+        <InlineCode>className</InlineCode>{' '}
         (merged via{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">cn()</code>)
+        <InlineCode>cn()</InlineCode>)
         and native HTML attributes for the element they wrap. Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">className</code>{' '}
+        <InlineCode>className</InlineCode>{' '}
         for layout context (margin, width) — not for restyling component internals.
       </p>
 
       {/* Table props */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Table</h3>
+      <Heading as="h3">Table</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Root component. Wraps a native{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&lt;table&gt;</code>{' '}
+        <InlineCode>&lt;table&gt;</InlineCode>{' '}
         inside an overflow scroll container.
       </p>
       {/* Desktop table */}
@@ -723,20 +725,20 @@ TableMobileList           {/* mobile alternative */}
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&quot;sm&quot; | &quot;md&quot;</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&quot;md&quot;</code></TableCell>
+              <TableCell><InlineCode>size</InlineCode></TableCell>
+              <TableCell><InlineCode>&quot;sm&quot; | &quot;md&quot;</InlineCode></TableCell>
+              <TableCell><InlineCode>&quot;md&quot;</InlineCode></TableCell>
               <TableCell>Controls font size and cell padding. Propagated to children via context.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">className</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></TableCell>
+              <TableCell><InlineCode>className</InlineCode></TableCell>
+              <TableCell><InlineCode>string</InlineCode></TableCell>
               <TableCell>—</TableCell>
-              <TableCell>Merged via <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">cn()</code>.</TableCell>
+              <TableCell>Merged via <InlineCode>cn()</InlineCode>.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">children</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">ReactNode</code></TableCell>
+              <TableCell><InlineCode>children</InlineCode></TableCell>
+              <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
               <TableCell>—</TableCell>
               <TableCell>TableHeader, TableBody, TableFooter, and TableCaption children.</TableCell>
             </TableRow>
@@ -762,13 +764,13 @@ TableMobileList           {/* mobile alternative */}
       </div>
 
       {/* Sub-components */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Sub-components</h3>
+      <Heading as="h3">Sub-components</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Each sub-component wraps a native HTML element. All accept{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">className</code>{' '}
+        <InlineCode>className</InlineCode>{' '}
         (merged via{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">cn()</code>) and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">children</code>.
+        <InlineCode>cn()</InlineCode>) and{' '}
+        <InlineCode>children</InlineCode>.
       </p>
       {/* Desktop table */}
       <div className="hidden md:block">
@@ -782,48 +784,48 @@ TableMobileList           {/* mobile alternative */}
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">TableHeader</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&lt;thead&gt;</code></TableCell>
+              <TableCell><InlineCode>TableHeader</InlineCode></TableCell>
+              <TableCell><InlineCode>&lt;thead&gt;</InlineCode></TableCell>
               <TableCell>Bottom border.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">TableBody</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&lt;tbody&gt;</code></TableCell>
+              <TableCell><InlineCode>TableBody</InlineCode></TableCell>
+              <TableCell><InlineCode>&lt;tbody&gt;</InlineCode></TableCell>
               <TableCell>Divided rows.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">TableRow</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&lt;tr&gt;</code></TableCell>
-              <TableCell>Hover highlight; supports <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">onClick</code> for clickable rows.</TableCell>
+              <TableCell><InlineCode>TableRow</InlineCode></TableCell>
+              <TableCell><InlineCode>&lt;tr&gt;</InlineCode></TableCell>
+              <TableCell>Hover highlight; supports <InlineCode>onClick</InlineCode> for clickable rows.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">TableHead</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&lt;th&gt;</code></TableCell>
+              <TableCell><InlineCode>TableHead</InlineCode></TableCell>
+              <TableCell><InlineCode>&lt;th&gt;</InlineCode></TableCell>
               <TableCell>Header cell label.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">TableCell</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&lt;td&gt;</code></TableCell>
-              <TableCell>Body cell content; supports <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">colSpan</code>.</TableCell>
+              <TableCell><InlineCode>TableCell</InlineCode></TableCell>
+              <TableCell><InlineCode>&lt;td&gt;</InlineCode></TableCell>
+              <TableCell>Body cell content; supports <InlineCode>colSpan</InlineCode>.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">TableCaption</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&lt;caption&gt;</code></TableCell>
+              <TableCell><InlineCode>TableCaption</InlineCode></TableCell>
+              <TableCell><InlineCode>&lt;caption&gt;</InlineCode></TableCell>
               <TableCell>Accessible table description.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">TableFooter</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&lt;tfoot&gt;</code></TableCell>
+              <TableCell><InlineCode>TableFooter</InlineCode></TableCell>
+              <TableCell><InlineCode>&lt;tfoot&gt;</InlineCode></TableCell>
               <TableCell>Summary/totals row, subtle background.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">TableMobileList</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&lt;ol&gt;</code></TableCell>
+              <TableCell><InlineCode>TableMobileList</InlineCode></TableCell>
+              <TableCell><InlineCode>&lt;ol&gt;</InlineCode></TableCell>
               <TableCell>Mobile-only list container — required pair.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">TableMobileItem</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&lt;li&gt;</code></TableCell>
+              <TableCell><InlineCode>TableMobileItem</InlineCode></TableCell>
+              <TableCell><InlineCode>&lt;li&gt;</InlineCode></TableCell>
               <TableCell>Stacked flex item for mobile lists.</TableCell>
             </TableRow>
           </TableBody>

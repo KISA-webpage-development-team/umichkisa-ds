@@ -1,6 +1,9 @@
-import { Alert, Container, Dialog, DialogTrigger, DialogClose, DialogContent, DialogTitle, DialogDescription, DialogFooter, Button, Table, TableBody, TableCell, TableHead, TableHeader, TableMobileItem, TableMobileList, TableRow } from '@umichkisa-ds/web'
+import {
+  Alert, Container, Dialog, DialogTrigger, DialogClose, DialogContent, DialogTitle, DialogDescription, DialogFooter, Button, Table, TableBody, TableCell, TableHead, TableHeader, TableMobileItem, TableMobileList, TableRow } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { InlineCode } from '@/components/InlineCode'
 import { highlight } from '@/lib/highlight'
+import { Heading } from '@/components/Heading'
 
 const basicCode = `import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, DialogClose, Button } from '@umichkisa-ds/web'
 
@@ -118,10 +121,10 @@ export default async function DialogPage() {
       </Alert>
 
       {/* -- Examples ------------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Basic */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Basic</h3>
+      <Heading as="h3" className="mt-6">Basic</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         A dialog with a title, description, and the default close button.
       </p>
@@ -138,14 +141,14 @@ export default async function DialogPage() {
       </ComponentPreview>
 
       {/* Sizes */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Sizes</h3>
+      <Heading as="h3">Sizes</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         DialogContent supports four sizes:{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">sm</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md</code>{' '}
+        <InlineCode>sm</InlineCode>,{' '}
+        <InlineCode>md</InlineCode>{' '}
         (default),{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg</code>, and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">full</code>.
+        <InlineCode>lg</InlineCode>, and{' '}
+        <InlineCode>full</InlineCode>.
       </p>
       <ComponentPreview code={sizesCode} highlightedCode={sizesHighlighted}>
         <div className="flex flex-wrap gap-2">
@@ -189,13 +192,13 @@ export default async function DialogPage() {
       </ComponentPreview>
 
       {/* With Footer */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With footer</h3>
+      <Heading as="h3">With footer</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Confirmation pattern with a footer containing Cancel and Confirm buttons.
         Cancel uses{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           DialogClose asChild
-        </code>{' '}
+        </InlineCode>{' '}
         to dismiss the dialog without additional logic.
       </p>
       <ComponentPreview code={footerCode} highlightedCode={footerHighlighted}>
@@ -219,16 +222,16 @@ export default async function DialogPage() {
       </ComponentPreview>
 
       {/* Custom Close */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Custom close</h3>
+      <Heading as="h3">Custom close</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Set{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           showCloseButton={'{false}'}
-        </code>{' '}
+        </InlineCode>{' '}
         to hide the default X button. Use footer actions with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           DialogClose asChild
-        </code>{' '}
+        </InlineCode>{' '}
         for custom dismiss behavior.
       </p>
       <ComponentPreview code={customCloseCode} highlightedCode={customCloseHighlighted}>
@@ -252,13 +255,13 @@ export default async function DialogPage() {
       </ComponentPreview>
 
       {/* -- API Reference -------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Dialog is composed from several sub-components that you assemble together. Each accepts the props listed below.
       </p>
 
       {/* Dialog (Root) */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Dialog</h3>
+      <Heading as="h3">Dialog</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Root wrapper that manages open state.
       </p>
@@ -275,20 +278,20 @@ export default async function DialogPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">open</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">boolean</code></TableCell>
+                <TableCell><InlineCode>open</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Controlled open state.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">defaultOpen</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">boolean</code></TableCell>
+                <TableCell><InlineCode>defaultOpen</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Initial open state for uncontrolled usage.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">onOpenChange</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{`(open: boolean) => void`}</code></TableCell>
+                <TableCell><InlineCode>onOpenChange</InlineCode></TableCell>
+                <TableCell><InlineCode>{`(open: boolean) => void`}</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Callback when the open state changes.</TableCell>
               </TableRow>
@@ -299,17 +302,17 @@ export default async function DialogPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>open</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
               <span className="type-caption text-muted-foreground">Controlled open state.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>defaultOpen</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
               <span className="type-caption text-muted-foreground">Initial open state for uncontrolled usage.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>onOpenChange</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{`(open: boolean) => void`}</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>{`(open: boolean) => void`}</InlineCode></span>
               <span className="type-caption text-muted-foreground">Callback when the open state changes.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -317,7 +320,7 @@ export default async function DialogPage() {
       </div>
 
       {/* DialogTrigger */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">DialogTrigger</h3>
+      <Heading as="h3">DialogTrigger</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         The element that opens the dialog.
       </p>
@@ -334,14 +337,14 @@ export default async function DialogPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">asChild</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">false</code></TableCell>
+                <TableCell><InlineCode>asChild</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Merge trigger props onto the child element instead of rendering a default button.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>The trigger element, typically a Button.</TableCell>
               </TableRow>
@@ -352,12 +355,12 @@ export default async function DialogPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>asChild</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode> · default <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merge trigger props onto the child element instead of rendering a default button.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">The trigger element, typically a Button.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -365,7 +368,7 @@ export default async function DialogPage() {
       </div>
 
       {/* DialogContent */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">DialogContent</h3>
+      <Heading as="h3">DialogContent</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         The modal panel rendered in a portal with an overlay backdrop.
       </p>
@@ -382,26 +385,26 @@ export default async function DialogPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Content rendered inside the dialog panel.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&quot;sm&quot; | &quot;md&quot; | &quot;lg&quot; | &quot;full&quot;</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&quot;md&quot;</code></TableCell>
+                <TableCell><InlineCode>size</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;sm&quot; | &quot;md&quot; | &quot;lg&quot; | &quot;full&quot;</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;md&quot;</InlineCode></TableCell>
                 <TableCell>Width of the dialog panel. sm = 384px, md = 512px, lg = 672px, full = viewport width minus margin.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">showCloseButton</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">true</code></TableCell>
+                <TableCell><InlineCode>showCloseButton</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>true</InlineCode></TableCell>
                 <TableCell>Whether to render the default X close button in the top-right corner.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
@@ -412,22 +415,22 @@ export default async function DialogPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">Content rendered inside the dialog panel.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>size</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;sm&quot; | &quot;md&quot; | &quot;lg&quot; | &quot;full&quot;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;md&quot;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&quot;sm&quot; | &quot;md&quot; | &quot;lg&quot; | &quot;full&quot;</InlineCode> · default <InlineCode>&quot;md&quot;</InlineCode></span>
               <span className="type-caption text-muted-foreground">Width of the dialog panel. sm = 384px, md = 512px, lg = 672px, full = viewport width minus margin.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>showCloseButton</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">true</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode> · default <InlineCode>true</InlineCode></span>
               <span className="type-caption text-muted-foreground">Whether to render the default X close button in the top-right corner.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -435,7 +438,7 @@ export default async function DialogPage() {
       </div>
 
       {/* DialogTitle */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">DialogTitle</h3>
+      <Heading as="h3">DialogTitle</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Accessible heading for the dialog. Rendered as an h2.
       </p>
@@ -452,14 +455,14 @@ export default async function DialogPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>The title text.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
@@ -470,12 +473,12 @@ export default async function DialogPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">The title text.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -483,7 +486,7 @@ export default async function DialogPage() {
       </div>
 
       {/* DialogDescription */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">DialogDescription</h3>
+      <Heading as="h3">DialogDescription</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Accessible description for the dialog. Rendered as a paragraph.
       </p>
@@ -500,14 +503,14 @@ export default async function DialogPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>The description text.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
@@ -518,12 +521,12 @@ export default async function DialogPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">The description text.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -531,7 +534,7 @@ export default async function DialogPage() {
       </div>
 
       {/* DialogFooter */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">DialogFooter</h3>
+      <Heading as="h3">DialogFooter</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Footer area for action buttons. Renders children in a right-aligned flex row.
       </p>
@@ -548,14 +551,14 @@ export default async function DialogPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Action buttons, typically Button and DialogClose combinations.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
@@ -566,12 +569,12 @@ export default async function DialogPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">Action buttons, typically Button and DialogClose combinations.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -579,7 +582,7 @@ export default async function DialogPage() {
       </div>
 
       {/* DialogClose */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">DialogClose</h3>
+      <Heading as="h3">DialogClose</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Closes the dialog when activated. Typically used with asChild to wrap a Button in a footer.
       </p>
@@ -596,14 +599,14 @@ export default async function DialogPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">asChild</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">false</code></TableCell>
+                <TableCell><InlineCode>asChild</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Merge close behavior onto the child element instead of rendering a default button.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>The close element, typically a Button.</TableCell>
               </TableRow>
@@ -614,12 +617,12 @@ export default async function DialogPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>asChild</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode> · default <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merge close behavior onto the child element instead of rendering a default button.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">The close element, typically a Button.</span>
             </TableMobileItem>
           </TableMobileList>

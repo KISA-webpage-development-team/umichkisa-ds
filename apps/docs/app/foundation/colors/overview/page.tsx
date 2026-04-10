@@ -1,5 +1,7 @@
 import { Alert, Container, Divider } from '@umichkisa-ds/web'
 import { CodeBlock } from '@/components/CodeBlock'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 export default async function ColorsOverviewPage() {
   return (
     <Container size="md" as="article">
@@ -16,8 +18,8 @@ export default async function ColorsOverviewPage() {
         The KISA color system exists to solve that. It gives every developer on the team a
         shared vocabulary: instead of choosing a color by eye or copying a hex value from
         somewhere, you reach for a named token —{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-muted-foreground</code>{' '}
+        <InlineCode>--color-brand-primary</InlineCode>,{' '}
+        <InlineCode>--color-muted-foreground</InlineCode>{' '}
         — and the right color appears, consistently, everywhere.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
@@ -28,7 +30,7 @@ export default async function ColorsOverviewPage() {
       <Divider className="my-8" />
 
       {/* ── How the System Works ────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">How the System Works</h2>
+      <Heading as="h2">How the System Works</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The color system is organized in three tiers. Each tier has a specific job,
         and they only communicate in one direction — downward.
@@ -60,11 +62,11 @@ export default async function ColorsOverviewPage() {
       </div>
 
       {/* ── Tier 1 — Primitives ─────────────────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Tier 1 — Primitives</h3>
+      <Heading as="h3" className="mt-6">Tier 1 — Primitives</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Primitives are the raw material. They hold color values and nothing else —
         no meaning, no context, just the value. You will find them in{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">packages/web/src/tokens/primitives.css</code>.
+        <InlineCode>packages/web/src/tokens/primitives.css</InlineCode>.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         You will never reference a primitive directly in a component. Their only job
@@ -72,19 +74,19 @@ export default async function ColorsOverviewPage() {
       </p>
 
       <Alert variant="info" title="Why OKLCH?">
-        Hex values (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">#00274c</code>)
+        Hex values (<InlineCode>#00274c</InlineCode>)
         are unreadable — you cannot tell anything about a color from the code alone.
         OKLCH is perceptually uniform, meaning a 10% increase in lightness actually looks
         10% lighter to the human eye, making the palette predictable. Reading an OKLCH value:{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">oklch(lightness% chroma hue)</code>.
+        <InlineCode>oklch(lightness% chroma hue)</InlineCode>.
       </Alert>
 
       {/* ── Tier 2 — Semantic Tokens ────────────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Tier 2 — Semantic Tokens</h3>
+      <Heading as="h3" className="mt-6">Tier 2 — Semantic Tokens</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Semantic tokens are named by their purpose. This is the tier you interact with
         when writing component code. You will find them in{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">packages/web/src/tokens/semantic.css</code>.
+        <InlineCode>packages/web/src/tokens/semantic.css</InlineCode>.
       </p>
 
       <CodeBlock code={`--color-brand-primary: var(--primitive-michigan-blue);
@@ -101,7 +103,7 @@ export default async function ColorsOverviewPage() {
       </p>
 
       {/* ── Tier 3 — Component Layer ────────────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Tier 3 — Component Layer</h3>
+      <Heading as="h3" className="mt-6">Tier 3 — Component Layer</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The component layer is where semantic tokens get applied to actual UI elements.
       </p>
@@ -113,7 +115,7 @@ export default async function ColorsOverviewPage() {
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         The component does not know what color{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">--color-brand-primary</code>{' '}
+        <InlineCode>--color-brand-primary</InlineCode>{' '}
         is. It only knows the purpose. The actual value flows in from the semantic layer,
         which in turn pulls it from primitives. This separation is what makes the system
         maintainable.
@@ -122,11 +124,11 @@ export default async function ColorsOverviewPage() {
       <Divider className="my-8" />
 
       {/* ── Dark Mode ───────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Dark Mode</h2>
+      <Heading as="h2">Dark Mode</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         This design system does not support dark mode. There is no dark-mode token layer,
         no{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">.dark</code>{' '}
+        <InlineCode>.dark</InlineCode>{' '}
         class, and no media query variant. Components should not implement
         dark mode behavior. If this changes in a future version, it will be documented here.
       </p>

@@ -19,6 +19,8 @@ import {
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 
 const defaultCode = `import { Select, SelectTrigger, SelectContent, SelectItem } from '@umichkisa-ds/web'
 
@@ -142,17 +144,17 @@ export default async function SelectPage() {
         Custom dropdown for choosing from predefined options. Built on Radix Select for full styling
         control and accessibility. Instead of a single element, you compose multiple sub-components
         together — each handling one concern (trigger, content, items). For form fields, wrap in{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           FormItem
-        </code>{' '}
+        </InlineCode>{' '}
         — it&apos;s the recommended way to wire labels, descriptions, and errors.
       </p>
 
       {/* ── Examples ────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Default */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Default</h3>
+      <Heading as="h3" className="mt-6">Default</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         A basic select with a pre-selected value.
       </p>
@@ -170,16 +172,16 @@ export default async function SelectPage() {
       </ComponentPreview>
 
       {/* With placeholder */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With placeholder</h3>
+      <Heading as="h3">With placeholder</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Use the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           placeholder
-        </code>{' '}
+        </InlineCode>{' '}
         prop on{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           SelectTrigger
-        </code>{' '}
+        </InlineCode>{' '}
         to show a prompt when no value is selected.
       </p>
       <ComponentPreview code={placeholderCode} highlightedCode={placeholderHighlighted}>
@@ -196,16 +198,16 @@ export default async function SelectPage() {
       </ComponentPreview>
 
       {/* With groups */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With groups</h3>
+      <Heading as="h3">With groups</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Group related options with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           SelectGroup
-        </code>{' '}
+        </InlineCode>{' '}
         and separate them with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           SelectSeparator
-        </code>.
+        </InlineCode>.
       </p>
       <ComponentPreview code={groupsCode} highlightedCode={groupsHighlighted}>
         <div className="w-full max-w-sm">
@@ -227,36 +229,36 @@ export default async function SelectPage() {
       </ComponentPreview>
 
       {/* With FormItem — recommended */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With FormItem (recommended)</h3>
+      <Heading as="h3">With FormItem (recommended)</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Wrap{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Select
-        </code>{' '}
+        </InlineCode>{' '}
         in{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           FormItem
-        </code>{' '}
+        </InlineCode>{' '}
         for label + aria wiring.{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           FormItem
-        </code>{' '}
+        </InlineCode>{' '}
         auto-generates{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           {'{htmlFor}-label'}
-        </code>{' '}
+        </InlineCode>{' '}
         on its internal{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Label
-        </code>
+        </InlineCode>
         . Since Radix Select&apos;s trigger isn&apos;t a native{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           &lt;input&gt;
-        </code>
+        </InlineCode>
         , reference that id via{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           aria-labelledby
-        </code>{' '}
+        </InlineCode>{' '}
         on the trigger.
       </p>
       <ComponentPreview code={withFormItemCode} highlightedCode={withFormItemHighlighted}>
@@ -277,40 +279,40 @@ export default async function SelectPage() {
       </ComponentPreview>
 
       {/* With Label — lower-level */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With Label</h3>
+      <Heading as="h3">With Label</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         If you can&apos;t use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           FormItem
-        </code>
+        </InlineCode>
         , wire the label manually. Give{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Label
-        </code>{' '}
+        </InlineCode>{' '}
         an{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           id
-        </code>{' '}
+        </InlineCode>{' '}
         and reference it on the trigger via{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           aria-labelledby
-        </code>
+        </InlineCode>
         . The{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           htmlFor
-        </code>{' '}
+        </InlineCode>{' '}
         prop is still required by{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Label
-        </code>
+        </InlineCode>
         , but it has no effect here — the Radix trigger isn&apos;t a native form element, so the aria association happens via{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           id
-        </code>{' '}
+        </InlineCode>{' '}
         /{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           aria-labelledby
-        </code>
+        </InlineCode>
         .
       </p>
       <ComponentPreview code={withLabelCode} highlightedCode={withLabelHighlighted}>
@@ -329,20 +331,20 @@ export default async function SelectPage() {
       </ComponentPreview>
 
       {/* Invalid */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Invalid</h3>
+      <Heading as="h3">Invalid</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Pair{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           invalid
-        </code>{' '}
+        </InlineCode>{' '}
         with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           FormItem
-        </code>
+        </InlineCode>
         &apos;s{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           error
-        </code>{' '}
+        </InlineCode>{' '}
         prop to show an error message below the field.
       </p>
       <ComponentPreview code={invalidCode} highlightedCode={invalidHighlighted}>
@@ -364,7 +366,7 @@ export default async function SelectPage() {
       </ComponentPreview>
 
       {/* Disabled */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Disabled</h3>
+      <Heading as="h3">Disabled</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         The disabled state prevents interaction.
       </p>
@@ -382,13 +384,13 @@ export default async function SelectPage() {
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Select is a compound component built on Radix Select. Each sub-component accepts the props listed below.
       </p>
 
       {/* Select (Root) */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Select</h3>
+      <Heading as="h3">Select</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         The root component that manages state. Wraps all other sub-components.
       </p>
@@ -405,32 +407,32 @@ export default async function SelectPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">defaultValue</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>defaultValue</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Initial value for uncontrolled usage.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">value</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>value</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Controlled value. Use with onValueChange.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">onValueChange</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">(value: string) =&gt; void</code></TableCell>
+                <TableCell><InlineCode>onValueChange</InlineCode></TableCell>
+                <TableCell><InlineCode>(value: string) =&gt; void</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Callback when the selected value changes.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">disabled</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell><InlineCode>disabled</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Disables the entire select.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">name</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>name</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Name for native form submission.</TableCell>
               </TableRow>
@@ -441,28 +443,28 @@ export default async function SelectPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>defaultValue</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Initial value for uncontrolled usage.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>value</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Controlled value. Use with onValueChange.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>onValueChange</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">(value: string) =&gt; void</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>(value: string) =&gt; void</InlineCode></span>
               <span className="type-caption text-muted-foreground">Callback when the selected value changes.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>disabled</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Disables the entire select.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>name</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Name for native form submission.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -470,7 +472,7 @@ export default async function SelectPage() {
       </div>
 
       {/* SelectTrigger */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">SelectTrigger</h3>
+      <Heading as="h3">SelectTrigger</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">
@@ -484,20 +486,20 @@ export default async function SelectPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">placeholder</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>placeholder</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Text shown when no value is selected.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">invalid</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell><InlineCode>invalid</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Applies error border and sets aria-invalid.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
@@ -508,18 +510,18 @@ export default async function SelectPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>placeholder</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Text shown when no value is selected.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>invalid</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Applies error border and sets aria-invalid.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -527,7 +529,7 @@ export default async function SelectPage() {
       </div>
 
       {/* SelectContent */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">SelectContent</h3>
+      <Heading as="h3">SelectContent</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">
@@ -541,20 +543,20 @@ export default async function SelectPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>SelectItem and SelectGroup elements.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">position</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;popper&quot; | &quot;item-aligned&quot;</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;popper&quot;</code></TableCell>
+                <TableCell><InlineCode>position</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;popper&quot; | &quot;item-aligned&quot;</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;popper&quot;</InlineCode></TableCell>
                 <TableCell>Dropdown positioning strategy.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
@@ -565,18 +567,18 @@ export default async function SelectPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">SelectItem and SelectGroup elements.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>position</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;popper&quot; | &quot;item-aligned&quot;</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;popper&quot;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&quot;popper&quot; | &quot;item-aligned&quot;</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>&quot;popper&quot;</InlineCode></span>
               <span className="type-caption text-muted-foreground">Dropdown positioning strategy.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -584,7 +586,7 @@ export default async function SelectPage() {
       </div>
 
       {/* SelectItem */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">SelectItem</h3>
+      <Heading as="h3">SelectItem</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">
@@ -598,26 +600,26 @@ export default async function SelectPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">value</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">(required)</code></TableCell>
+                <TableCell><InlineCode>value</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
+                <TableCell><InlineCode>(required)</InlineCode></TableCell>
                 <TableCell>The value submitted when selected.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Display label for the option.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">disabled</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell><InlineCode>disabled</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Prevents selection of this item.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
@@ -628,24 +630,24 @@ export default async function SelectPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>value</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Required</span>
               <span className="type-caption text-muted-foreground">The value submitted when selected.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">Display label for the option.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>disabled</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Prevents selection of this item.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -653,7 +655,7 @@ export default async function SelectPage() {
       </div>
 
       {/* SelectGroup */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">SelectGroup</h3>
+      <Heading as="h3">SelectGroup</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">
@@ -667,14 +669,14 @@ export default async function SelectPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">label</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">(required)</code></TableCell>
+                <TableCell><InlineCode>label</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
+                <TableCell><InlineCode>(required)</InlineCode></TableCell>
                 <TableCell>Group heading text.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>SelectItem elements within the group.</TableCell>
               </TableRow>
@@ -685,13 +687,13 @@ export default async function SelectPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>label</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Required</span>
               <span className="type-caption text-muted-foreground">Group heading text.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">SelectItem elements within the group.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -699,7 +701,7 @@ export default async function SelectPage() {
       </div>
 
       {/* SelectSeparator */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">SelectSeparator</h3>
+      <Heading as="h3">SelectSeparator</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Visual divider between groups. Takes no props.
       </p>

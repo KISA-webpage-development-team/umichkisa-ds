@@ -3,6 +3,7 @@ import { DoDont } from '@/components/DoDont'
 import { Do, Dont } from '@/components/DoDont'
 import { CodeBlock } from '@/components/CodeBlock'
 import { InlineCode } from '@/components/InlineCode'
+import { Heading } from '@/components/Heading'
 
 export default async function ColorsUsagePage() {
   return (
@@ -16,7 +17,7 @@ export default async function ColorsUsagePage() {
       </p>
 
       {/* ── Brand Colors ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Brand Colors</h2>
+      <Heading as="h2">Brand Colors</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         <strong className="font-semibold text-foreground">
           <InlineCode>--color-brand-primary</InlineCode> is the anchor.{' '}
@@ -69,7 +70,7 @@ export default async function ColorsUsagePage() {
       </p>
 
       {/* ── Surface Depth ───────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Surface Depth</h2>
+      <Heading as="h2">Surface Depth</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Surfaces create the sense of depth and layering in the UI. The rule is simple:
         as elements stack on top of each other, their background steps through the
@@ -93,7 +94,7 @@ export default async function ColorsUsagePage() {
       </p>
 
       {/* ── Text Hierarchy ──────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Text Hierarchy</h2>
+      <Heading as="h2">Text Hierarchy</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Use the text tokens to communicate information priority.
       </p>
@@ -141,7 +142,7 @@ export default async function ColorsUsagePage() {
       </p>
 
       {/* ── Feedback Colors ─────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Feedback Colors</h2>
+      <Heading as="h2">Feedback Colors</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Each feedback state has a solid token and a subtle token. Use them as a pair.
       </p>
@@ -176,7 +177,7 @@ export default async function ColorsUsagePage() {
       </ul>
 
       {/* ── Interactive States ───────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Interactive States</h2>
+      <Heading as="h2" id="interactive-states-usage">Interactive States</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Every interactive element that uses brand colors should cycle through these
         states: default → hover → pressed → (focus).
@@ -306,7 +307,7 @@ export default async function ColorsUsagePage() {
       </p>
 
       {/* ── Toggle Controls ─────────────────────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Toggle Controls (Checked State)</h3>
+      <Heading as="h3" className="mt-6">Toggle Controls (Checked State)</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Toggle controls (Checkbox, Radio, Switch) use{' '}
         <InlineCode>--color-brand-primary</InlineCode>{' '}
@@ -376,7 +377,7 @@ export default async function ColorsUsagePage() {
       </p>
 
       {/* ── Interactive Lists ───────────────────────────────── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Interactive Lists</h3>
+      <Heading as="h3" className="mt-6">Interactive Lists</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Select items, Dropdown items, and Popover menu items use{' '}
         <InlineCode>--color-brand-accent-subtle</InlineCode>{' '}
@@ -388,9 +389,9 @@ export default async function ColorsUsagePage() {
       <Divider className="my-8" />
 
       {/* ── Do's and Don'ts ─────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">{"Do's and Don'ts"}</h2>
+      <Heading as="h2">{"Do's and Don'ts"}</Heading>
 
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Link color</h3>
+      <Heading as="h3" className="mt-6">Link color</Heading>
       <DoDont>
         <Do>
           <p>Use <code>--color-link</code> for hyperlinks. It is a readable blue that signals clickability.</p>
@@ -402,7 +403,7 @@ export default async function ColorsUsagePage() {
         </Dont>
       </DoDont>
 
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Text on brand backgrounds</h3>
+      <Heading as="h3" className="mt-6">Text on brand backgrounds</Heading>
       <DoDont>
         <Do>
           <p>Use <code>--color-brand-foreground</code> when the background is <code>--color-brand-primary</code>. Maize on navy gives 8.2:1 contrast and is the KISA identity pair.</p>
@@ -426,7 +427,7 @@ export default async function ColorsUsagePage() {
           (maize) because strokes are narrow enough for the accent to read correctly.
       </Alert>
 
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Background colors</h3>
+      <Heading as="h3" className="mt-6">Background colors</Heading>
       <DoDont>
         <Do>
           <p>Use surface tokens for card and section backgrounds. Cards use the base surface token and are distinguished by their border.</p>
@@ -438,7 +439,7 @@ export default async function ColorsUsagePage() {
         </Dont>
       </DoDont>
 
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Token usage in components</h3>
+      <Heading as="h3" className="mt-6">Token usage in components</Heading>
       <DoDont>
         <Do>
           <p>Reference semantic tokens in all component CSS and inline styles. One token change updates the entire system.</p>
@@ -453,7 +454,7 @@ export default async function ColorsUsagePage() {
       <Divider className="my-8" />
 
       {/* ── Token → Utility Reference ───────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">{"Token → Utility Reference"}</h2>
+      <Heading as="h2">{"Token \u2192 Utility Reference"}</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Every{' '}
         <InlineCode>--color-*</InlineCode>{' '}
@@ -467,7 +468,7 @@ export default async function ColorsUsagePage() {
       </p>
 
       {/* ── Table 4: Brand utilities (3-col) ── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Brand</h3>
+      <Heading as="h3" className="mt-6">Brand</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">
@@ -525,7 +526,7 @@ export default async function ColorsUsagePage() {
       </div>
 
       {/* ── Table 5: Interactive States utilities (3-col) ── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Interactive States</h3>
+      <Heading as="h3" id="interactive-states-reference" className="mt-6">Interactive States</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">
@@ -592,7 +593,7 @@ export default async function ColorsUsagePage() {
       </div>
 
       {/* ── Table 6: Surface utilities (3-col) ── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Surface</h3>
+      <Heading as="h3" className="mt-6">Surface</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">
@@ -641,7 +642,7 @@ export default async function ColorsUsagePage() {
       </div>
 
       {/* ── Table 7: Border utilities (3-col) ── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Border</h3>
+      <Heading as="h3" className="mt-6">Border</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">
@@ -681,7 +682,7 @@ export default async function ColorsUsagePage() {
       </div>
 
       {/* ── Table 8: Text utilities (3-col) ── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Text</h3>
+      <Heading as="h3" className="mt-6">Text</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">
@@ -748,7 +749,7 @@ export default async function ColorsUsagePage() {
       </div>
 
       {/* ── Table 9: Feedback utilities (3-col) ── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Feedback</h3>
+      <Heading as="h3" className="mt-6">Feedback</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">
@@ -842,7 +843,7 @@ export default async function ColorsUsagePage() {
       </div>
 
       {/* ── Table 10: Overlay utilities (3-col) ── */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Overlay</h3>
+      <Heading as="h3" className="mt-6">Overlay</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table size="sm">

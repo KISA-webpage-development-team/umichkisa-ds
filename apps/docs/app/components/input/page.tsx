@@ -14,6 +14,8 @@ import {
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 import { ControlledDemo } from './_demos'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 
 const defaultCode = `import { Input } from '@umichkisa-ds/web'
 
@@ -86,24 +88,24 @@ export default async function InputPage() {
       <h1 className="type-h1 mb-4 text-foreground">Input</h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
         Single-line text field for user input. Supports all native{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           &lt;input&gt;
-        </code>{' '}
+        </InlineCode>{' '}
         attributes, with an additional{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           invalid
-        </code>{' '}
+        </InlineCode>{' '}
         prop for error styling. Designed to compose with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Label
-        </code>.
+        </InlineCode>.
       </p>
 
       {/* ── Examples ────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Default */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Default</h3>
+      <Heading as="h3" className="mt-6">Default</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         The simplest usage. Renders a full-width text input.
       </p>
@@ -114,7 +116,7 @@ export default async function InputPage() {
       </ComponentPreview>
 
       {/* States */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">States</h3>
+      <Heading as="h3">States</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Default, disabled, and invalid states. Focus the input to see the focus styling.
       </p>
@@ -127,16 +129,16 @@ export default async function InputPage() {
       </ComponentPreview>
 
       {/* Input types */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Input types</h3>
+      <Heading as="h3">Input types</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Pass any native{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           type
-        </code>{' '}
+        </InlineCode>{' '}
         attribute. Defaults to{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           text
-        </code>.
+        </InlineCode>.
       </p>
       <ComponentPreview code={typesCode} highlightedCode={typesHighlighted}>
         <div className="flex flex-col gap-4 w-full max-w-sm">
@@ -148,12 +150,12 @@ export default async function InputPage() {
       </ComponentPreview>
 
       {/* With Label */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With Label</h3>
+      <Heading as="h3">With Label</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Compose with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Label
-        </code>{' '}
+        </InlineCode>{' '}
         for accessible form fields.
       </p>
       <ComponentPreview code={withLabelCode} highlightedCode={withLabelHighlighted}>
@@ -166,16 +168,16 @@ export default async function InputPage() {
       </ComponentPreview>
 
       {/* With error message */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With error message</h3>
+      <Heading as="h3">With error message</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Pair{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           invalid
-        </code>{' '}
+        </InlineCode>{' '}
         with an error message below the input. Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           type-caption text-error
-        </code>{' '}
+        </InlineCode>{' '}
         for the message.
       </p>
       <ComponentPreview code={withErrorCode} highlightedCode={withErrorHighlighted}>
@@ -189,7 +191,7 @@ export default async function InputPage() {
       </ComponentPreview>
 
       {/* Controlled */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Controlled</h3>
+      <Heading as="h3">Controlled</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Input supports both controlled and uncontrolled usage.
         Below is a controlled example with live character count.
@@ -199,12 +201,12 @@ export default async function InputPage() {
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Extends all native{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           &lt;input&gt;
-        </code>{' '}
+        </InlineCode>{' '}
         attributes. Only custom props are listed below.
       </p>
       <div className="my-6">
@@ -220,26 +222,26 @@ export default async function InputPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">invalid</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell><InlineCode>invalid</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Applies error border and sets aria-invalid.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">type</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;text&quot;</code></TableCell>
+                <TableCell><InlineCode>type</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;text&quot;</InlineCode></TableCell>
                 <TableCell>Native input type. Defaults to &quot;text&quot;.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">...props</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">InputHTMLAttributes</code></TableCell>
+                <TableCell><InlineCode>...props</InlineCode></TableCell>
+                <TableCell><InlineCode>InputHTMLAttributes</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>All native input attributes (value, onChange, placeholder, disabled, name, etc.).</TableCell>
               </TableRow>
@@ -250,24 +252,24 @@ export default async function InputPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>invalid</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Applies error border and sets aria-invalid.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>type</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;text&quot;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>&quot;text&quot;</InlineCode></span>
               <span className="type-caption text-muted-foreground">Native input type. Defaults to &quot;text&quot;.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>...props</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">InputHTMLAttributes</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>InputHTMLAttributes</InlineCode></span>
               <span className="type-caption text-muted-foreground">All native input attributes (value, onChange, placeholder, disabled, name, etc.).</span>
             </TableMobileItem>
           </TableMobileList>

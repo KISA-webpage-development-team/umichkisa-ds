@@ -2,6 +2,8 @@ import { Container, Table, TableBody, TableCell, TableHead, TableHeader, TableMo
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 import { BasicDemo, VariantsDemo, DescriptionDemo, ActionDemo, PromiseDemo, PositionDemo } from './_demos'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 
 const setupCode = `// app/layout.tsx (or your root layout)
 import { Toaster } from '@umichkisa-ds/web'
@@ -115,11 +117,11 @@ export default async function ToastPage() {
       </p>
 
       {/* -- Setup --------------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Setup</h2>
+      <Heading as="h2">Setup</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Mount the <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Toaster />'}</code> component
+        Mount the <InlineCode>{'<Toaster />'}</InlineCode> component
         once in your application's root layout. This renders the toast container
-        that all <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">toast()</code> calls
+        that all <InlineCode>toast()</InlineCode> calls
         target.
       </p>
       <ComponentPreview code={setupCode} highlightedCode={setupHighlighted}>
@@ -130,9 +132,9 @@ export default async function ToastPage() {
       </ComponentPreview>
 
       {/* -- Basic Usage --------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Basic Usage</h2>
+      <Heading as="h2">Basic Usage</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Call <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">toast()</code> from
+        Call <InlineCode>toast()</InlineCode> from
         anywhere in your app. Pass a string message as the first argument.
       </p>
       <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
@@ -140,13 +142,13 @@ export default async function ToastPage() {
       </ComponentPreview>
 
       {/* -- Variants ------------------------------------------------ */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Variants</h2>
+      <Heading as="h2">Variants</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Five variants map to feedback states. The default variant uses a neutral
-        style. The four feedback variants (<code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">info</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">success</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">warning</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">error</code>)
+        style. The four feedback variants (<InlineCode>info</InlineCode>,{' '}
+        <InlineCode>success</InlineCode>,{' '}
+        <InlineCode>warning</InlineCode>,{' '}
+        <InlineCode>error</InlineCode>)
         add a colored left border, tinted background, and matching icon —
         consistent with the Alert component.
       </p>
@@ -155,9 +157,9 @@ export default async function ToastPage() {
       </ComponentPreview>
 
       {/* -- With Description ---------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">With Description</h2>
+      <Heading as="h2">With Description</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Pass a <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">description</code> option
+        Pass a <InlineCode>description</InlineCode> option
         to add secondary text below the title.
       </p>
       <ComponentPreview code={descriptionCode} highlightedCode={descriptionHighlighted}>
@@ -165,20 +167,20 @@ export default async function ToastPage() {
       </ComponentPreview>
 
       {/* -- With Action --------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">With Action</h2>
+      <Heading as="h2">With Action</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Add an action button to the toast with the <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">action</code> option.
-        Provide a <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">label</code> and
-        an <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">onClick</code> handler.
+        Add an action button to the toast with the <InlineCode>action</InlineCode> option.
+        Provide a <InlineCode>label</InlineCode> and
+        an <InlineCode>onClick</InlineCode> handler.
       </p>
       <ComponentPreview code={actionCode} highlightedCode={actionHighlighted}>
         <ActionDemo />
       </ComponentPreview>
 
       {/* -- Promise ------------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Promise</h2>
+      <Heading as="h2">Promise</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Use <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">toast.promise()</code> to
+        Use <InlineCode>toast.promise()</InlineCode> to
         show loading, success, and error states for async operations. The toast
         updates automatically as the promise resolves or rejects.
       </p>
@@ -187,10 +189,10 @@ export default async function ToastPage() {
       </ComponentPreview>
 
       {/* -- Positioning --------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Positioning</h2>
+      <Heading as="h2">Positioning</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        The <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">position</code> prop
-        on <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Toaster />'}</code> controls
+        The <InlineCode>position</InlineCode> prop
+        on <InlineCode>{'<Toaster />'}</InlineCode> controls
         where toasts appear. Click a position below to try it out.
       </p>
       <ComponentPreview code={positionCode} highlightedCode={positionHighlighted}>
@@ -198,15 +200,15 @@ export default async function ToastPage() {
       </ComponentPreview>
 
       {/* -- API Reference ------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Reference for the <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Toaster />'}</code> provider,
-        the imperative <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">toast()</code> API,
+        Reference for the <InlineCode>{'<Toaster />'}</InlineCode> provider,
+        the imperative <InlineCode>toast()</InlineCode> API,
         and per-toast options.
       </p>
 
       {/* Toaster */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Toaster</h3>
+      <Heading as="h3" className="mt-6">Toaster</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Provider component mounted once at the app root. Renders the toast
         container and applies DS styling.
@@ -224,39 +226,39 @@ export default async function ToastPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">position</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'"top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right"'}</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">"top-center"</code></TableCell>
+                <TableCell><InlineCode>position</InlineCode></TableCell>
+                <TableCell><InlineCode>{'"top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right"'}</InlineCode></TableCell>
+                <TableCell><InlineCode>"top-center"</InlineCode></TableCell>
                 <TableCell>Where toasts appear on screen.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">duration</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">number</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">4000</code></TableCell>
+                <TableCell><InlineCode>duration</InlineCode></TableCell>
+                <TableCell><InlineCode>number</InlineCode></TableCell>
+                <TableCell><InlineCode>4000</InlineCode></TableCell>
                 <TableCell>Default auto-dismiss time in milliseconds.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">expand</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">false</code></TableCell>
+                <TableCell><InlineCode>expand</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Expand all toasts by default instead of stacking.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">visibleToasts</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">number</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">3</code></TableCell>
+                <TableCell><InlineCode>visibleToasts</InlineCode></TableCell>
+                <TableCell><InlineCode>number</InlineCode></TableCell>
+                <TableCell><InlineCode>3</InlineCode></TableCell>
                 <TableCell>Maximum number of visible toasts at once.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">offset</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string | number</code></TableCell>
+                <TableCell><InlineCode>offset</InlineCode></TableCell>
+                <TableCell><InlineCode>string | number</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Distance from the edge of the viewport.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">gap</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">number</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">14</code></TableCell>
+                <TableCell><InlineCode>gap</InlineCode></TableCell>
+                <TableCell><InlineCode>number</InlineCode></TableCell>
+                <TableCell><InlineCode>14</InlineCode></TableCell>
                 <TableCell>Gap between stacked toasts in pixels.</TableCell>
               </TableRow>
             </TableBody>
@@ -266,44 +268,44 @@ export default async function ToastPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>position</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{'"top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right"'}</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">"top-center"</code> — Where toasts appear on screen.</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>{'"top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right"'}</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>"top-center"</InlineCode> — Where toasts appear on screen.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>duration</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">number</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">4000</code> — Default auto-dismiss time in milliseconds.</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>number</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>4000</InlineCode> — Default auto-dismiss time in milliseconds.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>expand</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code> — Expand all toasts by default instead of stacking.</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>false</InlineCode> — Expand all toasts by default instead of stacking.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>visibleToasts</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">number</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">3</code> — Maximum number of visible toasts at once.</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>number</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>3</InlineCode> — Maximum number of visible toasts at once.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>offset</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string | number</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string | number</InlineCode></span>
               <span className="type-caption text-muted-foreground">Distance from the edge of the viewport.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>gap</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">number</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">14</code> — Gap between stacked toasts in pixels.</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>number</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>14</InlineCode> — Gap between stacked toasts in pixels.</span>
             </TableMobileItem>
           </TableMobileList>
         </div>
       </div>
 
       {/* toast() */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">toast()</h3>
+      <Heading as="h3">toast()</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Imperative function to trigger toasts from anywhere in your app.
-        Every <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">toast()</code> call
-        returns an ID you can pass to <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">toast.dismiss(id)</code> to
+        Every <InlineCode>toast()</InlineCode> call
+        returns an ID you can pass to <InlineCode>toast.dismiss(id)</InlineCode> to
         close it programmatically.
       </p>
       <div className="my-6">
@@ -317,31 +319,31 @@ export default async function ToastPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">toast(message, options?)</code></TableCell>
+                <TableCell><InlineCode>toast(message, options?)</InlineCode></TableCell>
                 <TableCell>Show a default toast.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">toast.info(message, options?)</code></TableCell>
+                <TableCell><InlineCode>toast.info(message, options?)</InlineCode></TableCell>
                 <TableCell>Show an info toast with info icon and blue tint.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">toast.success(message, options?)</code></TableCell>
+                <TableCell><InlineCode>toast.success(message, options?)</InlineCode></TableCell>
                 <TableCell>Show a success toast with check icon and green tint.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">toast.warning(message, options?)</code></TableCell>
+                <TableCell><InlineCode>toast.warning(message, options?)</InlineCode></TableCell>
                 <TableCell>Show a warning toast with alert icon and yellow tint.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">toast.error(message, options?)</code></TableCell>
+                <TableCell><InlineCode>toast.error(message, options?)</InlineCode></TableCell>
                 <TableCell>Show an error toast with error icon and red tint.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">toast.promise(promise, options)</code></TableCell>
+                <TableCell><InlineCode>toast.promise(promise, options)</InlineCode></TableCell>
                 <TableCell>Show loading/success/error states for an async operation.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">toast.dismiss(id?)</code></TableCell>
+                <TableCell><InlineCode>toast.dismiss(id?)</InlineCode></TableCell>
                 <TableCell>Dismiss a specific toast by ID, or all toasts if no ID given.</TableCell>
               </TableRow>
             </TableBody>
@@ -350,31 +352,31 @@ export default async function ToastPage() {
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">toast(message, options?)</code></span>
+              <span className="type-body-sm text-foreground"><InlineCode>toast(message, options?)</InlineCode></span>
               <span className="type-caption text-muted-foreground">Show a default toast.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">toast.info(message, options?)</code></span>
+              <span className="type-body-sm text-foreground"><InlineCode>toast.info(message, options?)</InlineCode></span>
               <span className="type-caption text-muted-foreground">Show an info toast with info icon and blue tint.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">toast.success(message, options?)</code></span>
+              <span className="type-body-sm text-foreground"><InlineCode>toast.success(message, options?)</InlineCode></span>
               <span className="type-caption text-muted-foreground">Show a success toast with check icon and green tint.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">toast.warning(message, options?)</code></span>
+              <span className="type-body-sm text-foreground"><InlineCode>toast.warning(message, options?)</InlineCode></span>
               <span className="type-caption text-muted-foreground">Show a warning toast with alert icon and yellow tint.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">toast.error(message, options?)</code></span>
+              <span className="type-body-sm text-foreground"><InlineCode>toast.error(message, options?)</InlineCode></span>
               <span className="type-caption text-muted-foreground">Show an error toast with error icon and red tint.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">toast.promise(promise, options)</code></span>
+              <span className="type-body-sm text-foreground"><InlineCode>toast.promise(promise, options)</InlineCode></span>
               <span className="type-caption text-muted-foreground">Show loading/success/error states for an async operation.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">toast.dismiss(id?)</code></span>
+              <span className="type-body-sm text-foreground"><InlineCode>toast.dismiss(id?)</InlineCode></span>
               <span className="type-caption text-muted-foreground">Dismiss a specific toast by ID, or all toasts if no ID given.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -382,9 +384,9 @@ export default async function ToastPage() {
       </div>
 
       {/* toast options */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Toast Options</h3>
+      <Heading as="h3">Toast Options</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Options passed as the second argument to any <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">toast()</code> call.
+        Options passed as the second argument to any <InlineCode>toast()</InlineCode> call.
       </p>
       <div className="my-6">
         <div className="hidden md:block">
@@ -398,33 +400,33 @@ export default async function ToastPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">description</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">ReactNode</code></TableCell>
+                <TableCell><InlineCode>description</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>Secondary text displayed below the title.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">duration</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">number</code></TableCell>
-                <TableCell>Override the default auto-dismiss time for this toast. Use <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Infinity</code> for a persistent toast that must be dismissed manually.</TableCell>
+                <TableCell><InlineCode>duration</InlineCode></TableCell>
+                <TableCell><InlineCode>number</InlineCode></TableCell>
+                <TableCell>Override the default auto-dismiss time for this toast. Use <InlineCode>Infinity</InlineCode> for a persistent toast that must be dismissed manually.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">action</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'{ label: ReactNode; onClick: () => void }'}</code></TableCell>
+                <TableCell><InlineCode>action</InlineCode></TableCell>
+                <TableCell><InlineCode>{'{ label: ReactNode; onClick: () => void }'}</InlineCode></TableCell>
                 <TableCell>Render an action button (e.g., "Undo") inside the toast.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">icon</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">ReactNode</code></TableCell>
+                <TableCell><InlineCode>icon</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>Custom icon to display. Overrides the variant default.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">onDismiss</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'(toast) => void'}</code></TableCell>
+                <TableCell><InlineCode>onDismiss</InlineCode></TableCell>
+                <TableCell><InlineCode>{'(toast) => void'}</InlineCode></TableCell>
                 <TableCell>Callback fired when the toast is dismissed.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">onAutoClose</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'(toast) => void'}</code></TableCell>
+                <TableCell><InlineCode>onAutoClose</InlineCode></TableCell>
+                <TableCell><InlineCode>{'(toast) => void'}</InlineCode></TableCell>
                 <TableCell>Callback fired when the toast auto-closes after its duration.</TableCell>
               </TableRow>
             </TableBody>
@@ -434,32 +436,32 @@ export default async function ToastPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>description</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">Secondary text displayed below the title.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>duration</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">number</code></span>
-              <span className="type-caption text-muted-foreground">Override the default auto-dismiss time. Use <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">Infinity</code> for a persistent toast.</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>number</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Override the default auto-dismiss time. Use <InlineCode>Infinity</InlineCode> for a persistent toast.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>action</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{'{ label: ReactNode; onClick: () => void }'}</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>{'{ label: ReactNode; onClick: () => void }'}</InlineCode></span>
               <span className="type-caption text-muted-foreground">Render an action button (e.g., "Undo") inside the toast.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>icon</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">Custom icon to display. Overrides the variant default.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>onDismiss</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{'(toast) => void'}</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>{'(toast) => void'}</InlineCode></span>
               <span className="type-caption text-muted-foreground">Callback fired when the toast is dismissed.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>onAutoClose</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{'(toast) => void'}</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>{'(toast) => void'}</InlineCode></span>
               <span className="type-caption text-muted-foreground">Callback fired when the toast auto-closes after its duration.</span>
             </TableMobileItem>
           </TableMobileList>

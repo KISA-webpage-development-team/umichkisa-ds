@@ -2,6 +2,8 @@ import { Container, Divider } from '@umichkisa-ds/web'
 import { DoDont } from '@/components/DoDont'
 import { Do, Dont } from '@/components/DoDont'
 import { CodeBlock } from '@/components/CodeBlock'
+import { InlineCode } from '@/components/InlineCode'
+import { Heading } from '@/components/Heading'
 
 export default async function IconographyUsagePage() {
   return (
@@ -11,7 +13,7 @@ export default async function IconographyUsagePage() {
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Usage</h1>
 
       {/* ── The <Icon> Component ─────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">The <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code> Component</h2>
+      <Heading as="h2">The <InlineCode>{'<Icon>'}</InlineCode> Component</Heading>
 
       <CodeBlock code={`// Default size (md = 20px), decorative
 <Icon name="arrow-right" />
@@ -25,15 +27,15 @@ export default async function IconographyUsagePage() {
       <Divider className="my-8" />
 
       {/* ── Wrapping for Interaction ─────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Wrapping for Interaction</h2>
+      <Heading as="h2">Wrapping for Interaction</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code>{' '}
+        <InlineCode>{'<Icon>'}</InlineCode>{' '}
         component renders an SVG. SVGs have no keyboard focus, no click semantics, and no role
         that signals interactivity to assistive technology. Always wrap an interactive icon in a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<button>'}</code>{' '}
+        <InlineCode>{'<button>'}</InlineCode>{' '}
         or{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<a>'}</code>.
+        <InlineCode>{'<a>'}</InlineCode>.
         {' '}The wrapper provides the interaction model, the keyboard target, and the accessible label.
       </p>
 
@@ -48,15 +50,15 @@ export default async function IconographyUsagePage() {
       <p className="type-body mb-4 text-foreground max-w-prose">
         The wrapper also provides the touch target. Interactive elements must have a minimum tap
         area of 44×44px — the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code>{' '}
+        <InlineCode>{'<Icon>'}</InlineCode>{' '}
         itself is never 44px; the button or link around it is.
       </p>
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         When an icon is the only content inside a button or link, provide an{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>{' '}
+        <InlineCode>aria-label</InlineCode>{' '}
         on the wrapper so screen reader users know what the control does, and wrap the button in a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Tooltip>'}</code>{' '}
+        <InlineCode>{'<Tooltip>'}</InlineCode>{' '}
         for sighted users who may not recognize the icon.
       </p>
 
@@ -68,21 +70,21 @@ export default async function IconographyUsagePage() {
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         The{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>{' '}
+        <InlineCode>aria-label</InlineCode>{' '}
         on the button and the tooltip content should be identical. Do not also pass a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">label</code>{' '}
+        <InlineCode>label</InlineCode>{' '}
         prop on{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code>{' '}
+        <InlineCode>{'<Icon>'}</InlineCode>{' '}
         — that creates redundant screen-reader announcements.
       </p>
 
       <Divider className="my-8" />
 
       {/* ── Icon + Text ─────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Icon + Text</h2>
+      <Heading as="h2">Icon + Text</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         When an icon appears next to a text label, use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">flex items-center gap-2</code>{' '}
+        <InlineCode>flex items-center gap-2</InlineCode>{' '}
         as the layout pattern. This aligns the icon optically with the text cap height and
         provides consistent spacing.
       </p>
@@ -94,21 +96,21 @@ export default async function IconographyUsagePage() {
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         The{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">gap-2</code>{' '}
+        <InlineCode>gap-2</InlineCode>{' '}
         (8px) spacing works for most pairings. Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">gap-1</code>{' '}
+        <InlineCode>gap-1</InlineCode>{' '}
         (4px) for compact UI like tags or badges, and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">gap-3</code>{' '}
+        <InlineCode>gap-3</InlineCode>{' '}
         (12px) for larger display contexts.
       </p>
 
       <Divider className="my-8" />
 
       {/* ── Color ───────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Color</h2>
+      <Heading as="h2">Color</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Icons inherit{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">currentColor</code>.
+        <InlineCode>currentColor</InlineCode>.
         {' '}To change an icon{"'"}s color, change the text color of its container using semantic tokens.
       </p>
 
@@ -124,11 +126,11 @@ export default async function IconographyUsagePage() {
 
       <p className="type-body mb-4 text-foreground max-w-prose">
         Never pass a color prop to{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code>.
+        <InlineCode>{'<Icon>'}</InlineCode>.
         {' '}Never set{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">color</code>{' '}
+        <InlineCode>color</InlineCode>{' '}
         or{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">fill</code>{' '}
+        <InlineCode>fill</InlineCode>{' '}
         inline on the icon. If you find yourself wanting to pass a color directly, the color you want
         already exists as a semantic token — reach for that instead.
       </p>
@@ -136,10 +138,10 @@ export default async function IconographyUsagePage() {
       <Divider className="my-8" />
 
       {/* ── Disabled Icons ──────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Disabled Icons</h2>
+      <Heading as="h2">Disabled Icons</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Disabled icons use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">text-disabled-foreground</code>{' '}
+        <InlineCode>text-disabled-foreground</InlineCode>{' '}
         — the same token as disabled text. Never reduce size or weight to communicate disabled state. Only color changes.
       </p>
 
@@ -150,15 +152,15 @@ export default async function IconographyUsagePage() {
       <Divider className="my-8" />
 
       {/* ── Responsive Sizing ───────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Responsive Sizing</h2>
+      <Heading as="h2">Responsive Sizing</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Never apply breakpoint prefixes directly to icon size. Icon size is determined by component context — the component the icon lives in — not by the viewport width.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         If a component changes size across breakpoints, the icon size change is encapsulated inside that component{"'"}s variant logic. The{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Icon>'}</code>{' '}
+        <InlineCode>{'<Icon>'}</InlineCode>{' '}
         itself receives a fixed{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size</code>{' '}
+        <InlineCode>size</InlineCode>{' '}
         prop.
       </p>
 
@@ -173,28 +175,28 @@ export default async function IconographyUsagePage() {
       <Divider className="my-8" />
 
       {/* ── Do's and Don'ts ─────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Do{"'"}s and Don{"'"}ts</h2>
+      <Heading as="h2">Do{"'"}s and Don{"'"}ts</Heading>
 
       {/* Wrapping interactive icons */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Wrapping interactive icons</h3>
+      <Heading as="h3" className="mt-6">Wrapping interactive icons</Heading>
       <DoDont>
         <Do>
-          <p className="type-body text-foreground">Wrap interactive icons in a <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">button</code> or <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">a</code>. The wrapper carries the interaction semantics and accessible label.</p>
+          <p className="type-body text-foreground">Wrap interactive icons in a <InlineCode>button</InlineCode> or <InlineCode>a</InlineCode>. The wrapper carries the interaction semantics and accessible label.</p>
           <CodeBlock code={`<button aria-label="Delete">
   <Icon name="trash-2" />
 </button>`} lang="tsx" />
         </Do>
         <Dont>
-          <p className="type-body text-foreground">Attach event handlers directly to <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Icon</code>. The SVG element has no button role and is not keyboard-reachable by default.</p>
+          <p className="type-body text-foreground">Attach event handlers directly to <InlineCode>Icon</InlineCode>. The SVG element has no button role and is not keyboard-reachable by default.</p>
           <CodeBlock code={`<Icon name="trash-2" onClick={handleDelete} />`} lang="tsx" />
         </Dont>
       </DoDont>
 
       {/* Sizing icons */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Sizing icons</h3>
+      <Heading as="h3" className="mt-6">Sizing icons</Heading>
       <DoDont>
         <Do>
-          <p className="type-body text-foreground">Use the <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size</code> prop from the defined scale. Every size maps to a predictable pixel value and 4px grid step.</p>
+          <p className="type-body text-foreground">Use the <InlineCode>size</InlineCode> prop from the defined scale. Every size maps to a predictable pixel value and 4px grid step.</p>
           <CodeBlock code={`<Icon name="search" size="sm" />`} lang="tsx" />
         </Do>
         <Dont>

@@ -2,6 +2,8 @@ import { Alert, Container, Tabs, TabsList, TabsTrigger, TabsContent, FormItem, I
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 import { ControlledDemo } from './_demos'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 
 const basicCode = `import { Container, Tabs, TabsList, TabsTrigger, TabsContent, FormItem, Input } from '@umichkisa-ds/web'
 
@@ -192,10 +194,10 @@ export default async function TabsPage() {
       </Alert>
 
       {/* -- Examples ------------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Basic */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Basic</h3>
+      <Heading as="h3" className="mt-6">Basic</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Underline variant (default) with three tab panels.
       </p>
@@ -224,12 +226,12 @@ export default async function TabsPage() {
       </ComponentPreview>
 
       {/* Pill variant */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Pill variant</h3>
+      <Heading as="h3">Pill variant</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           variant=&quot;pill&quot;
-        </code>{' '}
+        </InlineCode>{' '}
         on TabsList for a contained, rounded style.
       </p>
       <ComponentPreview code={pillCode} highlightedCode={pillHighlighted}>
@@ -257,12 +259,12 @@ export default async function TabsPage() {
       </ComponentPreview>
 
       {/* Sizes */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Sizes</h3>
+      <Heading as="h3">Sizes</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Available in small and medium (default) sizes via the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           size
-        </code>{' '}
+        </InlineCode>{' '}
         prop on TabsList.
       </p>
       <ComponentPreview code={sizeCode} highlightedCode={sizeHighlighted}>
@@ -311,12 +313,12 @@ export default async function TabsPage() {
       </ComponentPreview>
 
       {/* Full width */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Full width</h3>
+      <Heading as="h3">Full width</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           fullWidth
-        </code>{' '}
+        </InlineCode>{' '}
         to stretch triggers to fill the container.
       </p>
       <ComponentPreview code={fullWidthCode} highlightedCode={fullWidthHighlighted}>
@@ -344,12 +346,12 @@ export default async function TabsPage() {
       </ComponentPreview>
 
       {/* Disabled tab */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Disabled tab</h3>
+      <Heading as="h3">Disabled tab</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Use the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           disabled
-        </code>{' '}
+        </InlineCode>{' '}
         prop on a TabsTrigger to prevent interaction.
       </p>
       <ComponentPreview code={disabledCode} highlightedCode={disabledHighlighted}>
@@ -374,16 +376,16 @@ export default async function TabsPage() {
       </ComponentPreview>
 
       {/* Controlled */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Controlled</h3>
+      <Heading as="h3">Controlled</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           value
-        </code>{' '}
+        </InlineCode>{' '}
         and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           onValueChange
-        </code>{' '}
+        </InlineCode>{' '}
         for controlled state. Useful when syncing tab selection with URL
         parameters or external state.
       </p>
@@ -392,18 +394,18 @@ export default async function TabsPage() {
       </ComponentPreview>
 
       {/* -- API Reference -------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Tabs is composed from several sub-components that you assemble together. Each accepts the props listed below.
       </p>
 
       {/* Tabs (Root) */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Tabs</h3>
+      <Heading as="h3">Tabs</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Root wrapper that manages tab state. If neither{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">value</code>{' '}
+        <InlineCode>value</InlineCode>{' '}
         nor{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">defaultValue</code>{' '}
+        <InlineCode>defaultValue</InlineCode>{' '}
         is provided, the first tab is auto-selected.
       </p>
       <div className="my-6">
@@ -419,26 +421,26 @@ export default async function TabsPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">value</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></TableCell>
+                <TableCell><InlineCode>value</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Controlled active tab value.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">defaultValue</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></TableCell>
+                <TableCell><InlineCode>defaultValue</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Initial active tab for uncontrolled usage.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">onValueChange</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{`(value: string) => void`}</code></TableCell>
+                <TableCell><InlineCode>onValueChange</InlineCode></TableCell>
+                <TableCell><InlineCode>{`(value: string) => void`}</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Callback when the active tab changes.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
@@ -449,22 +451,22 @@ export default async function TabsPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>value</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Controlled active tab value.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>defaultValue</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Initial active tab for uncontrolled usage.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>onValueChange</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{`(value: string) => void`}</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>{`(value: string) => void`}</InlineCode></span>
               <span className="type-caption text-muted-foreground">Callback when the active tab changes.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -472,7 +474,7 @@ export default async function TabsPage() {
       </div>
 
       {/* TabsList */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">TabsList</h3>
+      <Heading as="h3">TabsList</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Container for tab triggers. Controls variant, size, and width.
       </p>
@@ -489,26 +491,26 @@ export default async function TabsPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">variant</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&quot;underline&quot; | &quot;pill&quot;</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&quot;underline&quot;</code></TableCell>
+                <TableCell><InlineCode>variant</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;underline&quot; | &quot;pill&quot;</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;underline&quot;</InlineCode></TableCell>
                 <TableCell>Visual style of the tab triggers.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&quot;sm&quot; | &quot;md&quot;</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">&quot;md&quot;</code></TableCell>
+                <TableCell><InlineCode>size</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;sm&quot; | &quot;md&quot;</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;md&quot;</InlineCode></TableCell>
                 <TableCell>Size of the tab triggers.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">fullWidth</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">false</code></TableCell>
+                <TableCell><InlineCode>fullWidth</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Whether triggers stretch to fill the container.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
@@ -519,22 +521,22 @@ export default async function TabsPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>variant</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;underline&quot; | &quot;pill&quot;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;underline&quot;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&quot;underline&quot; | &quot;pill&quot;</InlineCode> · default <InlineCode>&quot;underline&quot;</InlineCode></span>
               <span className="type-caption text-muted-foreground">Visual style of the tab triggers.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>size</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;sm&quot; | &quot;md&quot;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;md&quot;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&quot;sm&quot; | &quot;md&quot;</InlineCode> · default <InlineCode>&quot;md&quot;</InlineCode></span>
               <span className="type-caption text-muted-foreground">Size of the tab triggers.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>fullWidth</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode> · default <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Whether triggers stretch to fill the container.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -542,7 +544,7 @@ export default async function TabsPage() {
       </div>
 
       {/* TabsTrigger */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">TabsTrigger</h3>
+      <Heading as="h3">TabsTrigger</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         An individual tab button. Activates the matching TabsContent panel.
       </p>
@@ -559,26 +561,26 @@ export default async function TabsPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">value</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></TableCell>
+                <TableCell><InlineCode>value</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Required. Unique identifier linking this trigger to its content panel.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">disabled</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">false</code></TableCell>
+                <TableCell><InlineCode>disabled</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Whether the trigger is disabled. Disabled triggers are skipped during keyboard navigation.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>The trigger label. Accepts text or composed elements (e.g. icon + text).</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
@@ -589,22 +591,22 @@ export default async function TabsPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>value</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Required. Unique identifier linking this trigger to its content panel.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>disabled</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode> · default <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Whether the trigger is disabled. Disabled triggers are skipped during keyboard navigation.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">The trigger label. Accepts text or composed elements (e.g. icon + text).</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -612,7 +614,7 @@ export default async function TabsPage() {
       </div>
 
       {/* TabsContent */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">TabsContent</h3>
+      <Heading as="h3">TabsContent</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         The panel rendered when its matching trigger is active. Unmounted when inactive.
       </p>
@@ -629,20 +631,20 @@ export default async function TabsPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">value</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></TableCell>
+                <TableCell><InlineCode>value</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Required. Must match a TabsTrigger value.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Content rendered inside the panel.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
@@ -653,17 +655,17 @@ export default async function TabsPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>value</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Required. Must match a TabsTrigger value.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">Content rendered inside the panel.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -671,7 +673,7 @@ export default async function TabsPage() {
       </div>
 
       {/* -- Accessibility -------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Accessibility</h2>
+      <Heading as="h2">Accessibility</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Tabs follow the WAI-ARIA Tabs pattern with full keyboard support.
         Use <strong>Arrow Left</strong> and <strong>Arrow Right</strong> to

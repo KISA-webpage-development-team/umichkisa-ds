@@ -11,6 +11,8 @@ import {
   TableRow,
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 import { CodeBlock } from '@/components/CodeBlock'
 import { highlight } from '@/lib/highlight'
 import { BasicDemo } from './_demos'
@@ -72,26 +74,26 @@ export default async function UseFormPage() {
       </h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
         A thin wrapper around react-hook-form&apos;s{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">useForm</code> that sets{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">mode: &quot;onTouched&quot;</code> by default.
-        Returns the same <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">UseFormReturn</code> object
+        <InlineCode>useForm</InlineCode> that sets{' '}
+        <InlineCode>mode: &quot;onTouched&quot;</InlineCode> by default.
+        Returns the same <InlineCode>UseFormReturn</InlineCode> object
         — all react-hook-form methods are available.
       </p>
       <Alert variant="info" title="Why use this over raw react-hook-form?">
-        This wrapper pre-configures <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">mode: &quot;onTouched&quot;</code> so
+        This wrapper pre-configures <InlineCode>mode: &quot;onTouched&quot;</InlineCode> so
         every form validates consistently — errors appear after blur and clear as the user
         types. Use it whenever you build a form with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@umichkisa-ds/form</code>.
+        <InlineCode>@umichkisa-ds/form</InlineCode>.
         The returned object is the standard react-hook-form instance — no new API to learn.
       </Alert>
 
       {/* ── Basic Usage ───────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Basic Usage</h2>
+      <Heading as="h2">Basic Usage</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        Pass a type generic and <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">defaultValues</code> to
+        Pass a type generic and <InlineCode>defaultValues</InlineCode> to
         get a fully typed form instance. The returned object is passed to
         the <a href="/forms/form-component" className="text-link hover:text-brand-primary hover:underline">
-          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Form>'}</code> component
+          <InlineCode>{'<Form>'}</InlineCode> component
         </a>.
       </p>
       <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
@@ -99,9 +101,9 @@ export default async function UseFormPage() {
       </ComponentPreview>
 
       {/* ── Validation Mode ───────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Validation Mode</h2>
+      <Heading as="h2">Validation Mode</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        The default <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">onTouched</code> mode provides
+        The default <InlineCode>onTouched</InlineCode> mode provides
         the best user experience: errors appear after a field loses focus (blur),
         then clear immediately as the user corrects the input. You can override
         this per-form.
@@ -109,22 +111,22 @@ export default async function UseFormPage() {
       <CodeBlock code={modeCode} lang="tsx" />
 
       {/* ── Form Methods ──────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Accessing Form Methods</h2>
+      <Heading as="h2">Accessing Form Methods</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The returned form instance exposes all react-hook-form methods.
-        Common ones include <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">reset()</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">setError()</code>, and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">watch()</code>.
+        Common ones include <InlineCode>reset()</InlineCode>,{' '}
+        <InlineCode>setError()</InlineCode>, and{' '}
+        <InlineCode>watch()</InlineCode>.
       </p>
       <CodeBlock code={methodsCode} lang="tsx" />
 
       {/* ── API Reference ─────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">useForm</code> accepts all{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">UseFormProps</code> options from
+        <InlineCode>useForm</InlineCode> accepts all{' '}
+        <InlineCode>UseFormProps</InlineCode> options from
         react-hook-form. The only change is the default value of{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">mode</code>.
+        <InlineCode>mode</InlineCode>.
       </p>
       <div className="my-6">
         <div className="hidden md:block">
@@ -139,20 +141,20 @@ export default async function UseFormPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">mode</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{`'onTouched' | 'onChange' | 'onBlur' | 'onSubmit' | 'all'`}</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{`'onTouched'`}</code></TableCell>
+                <TableCell><InlineCode>mode</InlineCode></TableCell>
+                <TableCell><InlineCode>{`'onTouched' | 'onChange' | 'onBlur' | 'onSubmit' | 'all'`}</InlineCode></TableCell>
+                <TableCell><InlineCode>{`'onTouched'`}</InlineCode></TableCell>
                 <TableCell>When validation triggers.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">defaultValues</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'Partial<T>'}</code></TableCell>
+                <TableCell><InlineCode>defaultValues</InlineCode></TableCell>
+                <TableCell><InlineCode>{'Partial<T>'}</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Initial values for all fields. Strongly recommended for type safety.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">resolver</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Resolver</code></TableCell>
+                <TableCell><InlineCode>resolver</InlineCode></TableCell>
+                <TableCell><InlineCode>Resolver</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>External validation resolver (e.g., Zod, Yup). See <a href="/forms/validation" className="text-link hover:text-brand-primary hover:underline">Validation</a> for details.</TableCell>
               </TableRow>
@@ -163,28 +165,28 @@ export default async function UseFormPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>mode</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{`'onTouched' | 'onChange' | 'onBlur' | 'onSubmit' | 'all'`}</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{`'onTouched'`}</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>{`'onTouched' | 'onChange' | 'onBlur' | 'onSubmit' | 'all'`}</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>{`'onTouched'`}</InlineCode></span>
               <span className="type-caption text-muted-foreground">When validation triggers.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>defaultValues</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{'Partial<T>'}</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>{'Partial<T>'}</InlineCode></span>
               <span className="type-caption text-muted-foreground">Initial values for all fields. Strongly recommended for type safety.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>resolver</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">Resolver</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>Resolver</InlineCode></span>
               <span className="type-caption text-muted-foreground">External validation resolver (e.g., Zod, Yup). See <a href="/forms/validation" className="text-link hover:text-brand-primary hover:underline">Validation</a> for details.</span>
             </TableMobileItem>
           </TableMobileList>
         </div>
       </div>
 
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Return Value</h2>
+      <Heading as="h2">Return Value</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Returns the standard react-hook-form{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">UseFormReturn{'<T>'}</code> object. Key
+        <InlineCode>UseFormReturn{'<T>'}</InlineCode> object. Key
         properties:
       </p>
       <div className="my-6">
@@ -198,23 +200,23 @@ export default async function UseFormPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">handleSubmit</code></TableCell>
+                <TableCell><InlineCode>handleSubmit</InlineCode></TableCell>
                 <TableCell>Validates and calls your onSubmit handler. Used internally by the Form component.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">reset()</code></TableCell>
+                <TableCell><InlineCode>reset()</InlineCode></TableCell>
                 <TableCell>Resets the form to defaultValues (or provided values).</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">setError()</code></TableCell>
+                <TableCell><InlineCode>setError()</InlineCode></TableCell>
                 <TableCell>Manually set an error on a field (e.g., server-side validation).</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">watch()</code></TableCell>
+                <TableCell><InlineCode>watch()</InlineCode></TableCell>
                 <TableCell>Subscribe to field value changes reactively.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">formState</code></TableCell>
+                <TableCell><InlineCode>formState</InlineCode></TableCell>
                 <TableCell>Object containing isSubmitting, isValid, isDirty, errors, and more.</TableCell>
               </TableRow>
             </TableBody>

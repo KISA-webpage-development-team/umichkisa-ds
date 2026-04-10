@@ -12,6 +12,8 @@ import {
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 import {
   FormRootDemo,
   InputDemo,
@@ -153,78 +155,78 @@ export default async function FormComponentPage() {
         Form Component
       </h1>
       <Alert variant="info" className="mb-8">
-        The <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Form>'}</code> compound component provides context, submission handling, and field sub-components that automatically wire up labels, errors, and validation. For setup, see{' '}
+        The <InlineCode>{'<Form>'}</InlineCode> compound component provides context, submission handling, and field sub-components that automatically wire up labels, errors, and validation. For setup, see{' '}
         <a href="/forms/overview" className="text-link underline hover:text-brand-primary">Overview</a> and{' '}
         <a href="/forms/use-form" className="text-link underline hover:text-brand-primary">useForm</a>.
       </Alert>
 
       {/* ── Form Root ─────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">{'<Form>'}</h2>
+      <Heading as="h2">{'<Form>'}</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         The root component wraps your fields in a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">FormProvider</code> and a native{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<form>'}</code> element. Pass the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">form</code> instance from{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">useForm</code> and an{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">onSubmit</code> handler.
+        <InlineCode>FormProvider</InlineCode> and a native{' '}
+        <InlineCode>{'<form>'}</InlineCode> element. Pass the{' '}
+        <InlineCode>form</InlineCode> instance from{' '}
+        <InlineCode>useForm</InlineCode> and an{' '}
+        <InlineCode>onSubmit</InlineCode> handler.
       </p>
       <ComponentPreview code={formRootCode} highlightedCode={formRootHighlighted}>
         <FormRootDemo />
       </ComponentPreview>
 
       {/* ── Form.Input ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.Input</h2>
+      <Heading as="h2">Form.Input</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Wraps{' '}
         <a href="/components/input" className="text-link underline hover:text-brand-primary">Input</a> +{' '}
         <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>{' '}
         with automatic error display. Accepts all
         native input attributes plus{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">rules</code> for validation and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">description</code> for helper text.
+        <InlineCode>rules</InlineCode> for validation and{' '}
+        <InlineCode>description</InlineCode> for helper text.
       </p>
       <ComponentPreview code={inputCode} highlightedCode={inputHighlighted}>
         <InputDemo />
       </ComponentPreview>
 
       {/* ── Form.Textarea ─────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.Textarea</h2>
+      <Heading as="h2">Form.Textarea</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Wraps{' '}
         <a href="/components/textarea" className="text-link underline hover:text-brand-primary">Textarea</a> +{' '}
         <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>.{' '}
         Same pattern as Form.Input but for multi-line text. Supports{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">minLength</code> and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">maxLength</code> validation.
+        <InlineCode>minLength</InlineCode> and{' '}
+        <InlineCode>maxLength</InlineCode> validation.
       </p>
       <ComponentPreview code={textareaCode} highlightedCode={textareaHighlighted}>
         <TextareaDemo />
       </ComponentPreview>
 
       {/* ── Form.Select ───────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.Select</h2>
+      <Heading as="h2">Form.Select</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Wraps the DS{' '}
         <a href="/components/select" className="text-link underline hover:text-brand-primary">Select</a> +{' '}
         <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>.{' '}
         Pass{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">SelectTrigger</code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">SelectContent</code>, and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">SelectItem</code> as children — these are
-        imported from <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@umichkisa-ds/web</code>.
+        <InlineCode>SelectTrigger</InlineCode>,{' '}
+        <InlineCode>SelectContent</InlineCode>, and{' '}
+        <InlineCode>SelectItem</InlineCode> as children — these are
+        imported from <InlineCode>@umichkisa-ds/web</InlineCode>.
       </p>
       <ComponentPreview code={selectCode} highlightedCode={selectHighlighted}>
         <SelectDemo />
       </ComponentPreview>
 
       {/* ── Form.Checkbox ─────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.Checkbox</h2>
+      <Heading as="h2">Form.Checkbox</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Wraps{' '}
         <a href="/components/checkbox" className="text-link underline hover:text-brand-primary">Checkbox</a> +{' '}
         <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>.{' '}
         A single checkbox with label and optional description. The value is a
-        boolean. Use <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">required</code> to enforce
+        boolean. Use <InlineCode>required</InlineCode> to enforce
         agreement flows.
       </p>
       <ComponentPreview code={checkboxCode} highlightedCode={checkboxHighlighted}>
@@ -232,21 +234,21 @@ export default async function FormComponentPage() {
       </ComponentPreview>
 
       {/* ── Form.Radio ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.Radio</h2>
+      <Heading as="h2">Form.Radio</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Wraps{' '}
         <a href="/components/radio" className="text-link underline hover:text-brand-primary">RadioGroup</a> +{' '}
         <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>.{' '}
         Pass{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">RadioItem</code> components as children,
-        imported from <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@umichkisa-ds/web</code>.
+        <InlineCode>RadioItem</InlineCode> components as children,
+        imported from <InlineCode>@umichkisa-ds/web</InlineCode>.
       </p>
       <ComponentPreview code={radioCode} highlightedCode={radioHighlighted}>
         <RadioDemo />
       </ComponentPreview>
 
       {/* ── Form.Switch ───────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.Switch</h2>
+      <Heading as="h2">Form.Switch</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Wraps{' '}
         <a href="/components/switch" className="text-link underline hover:text-brand-primary">Switch</a> +{' '}
@@ -259,42 +261,42 @@ export default async function FormComponentPage() {
       </ComponentPreview>
 
       {/* ── Form.DatePicker ──────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.DatePicker</h2>
+      <Heading as="h2">Form.DatePicker</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Wraps{' '}
         <a href="/components/datepicker" className="text-link underline hover:text-brand-primary">DatePicker</a> +{' '}
         <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>.{' '}
         A single date picker for selecting dates like event dates, birth dates,
         or deadlines. Supports{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">placeholder</code> and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">formatDate</code> props.
+        <InlineCode>placeholder</InlineCode> and{' '}
+        <InlineCode>formatDate</InlineCode> props.
       </p>
       <ComponentPreview code={datePickerCode} highlightedCode={datePickerHighlighted}>
         <DatePickerDemo />
       </ComponentPreview>
 
       {/* ── Form.DateRangePicker ─────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.DateRangePicker</h2>
+      <Heading as="h2">Form.DateRangePicker</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Wraps{' '}
         <a href="/components/datepicker" className="text-link underline hover:text-brand-primary">DateRangePicker</a> +{' '}
         <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>.{' '}
         A date range picker for selecting start and end dates, useful for trip
         booking, report periods, or availability windows. Supports{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">placeholder</code> and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">formatDate</code> props.
+        <InlineCode>placeholder</InlineCode> and{' '}
+        <InlineCode>formatDate</InlineCode> props.
       </p>
       <ComponentPreview code={dateRangePickerCode} highlightedCode={dateRangePickerHighlighted}>
         <DateRangePickerDemo />
       </ComponentPreview>
 
       {/* ── Form.Button ───────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Form.Button</h2>
+      <Heading as="h2">Form.Button</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Wraps{' '}
         <a href="/components/button" className="text-link underline hover:text-brand-primary">Button</a>{' '}
         as a submit button that auto-disables while the form is submitting. Add{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">disableWhenInvalid</code> to also disable
+        <InlineCode>disableWhenInvalid</InlineCode> to also disable
         when validation errors exist.
       </p>
       <ComponentPreview code={buttonCode} highlightedCode={buttonHighlighted}>
@@ -302,7 +304,7 @@ export default async function FormComponentPage() {
       </ComponentPreview>
 
       {/* ── Shared Props ──────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Shared Field Props</h2>
+      <Heading as="h2">Shared Field Props</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         All field sub-components (Input, Textarea, Select, Checkbox, Radio,
         Switch, DatePicker, DateRangePicker) share these props:
@@ -320,32 +322,32 @@ export default async function FormComponentPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">name*</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>name*</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Field name matching a key in your form values type.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">label*</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>label*</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Visible label text. Also used for accessibility.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">rules</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">RegisterOptions</code></TableCell>
+                <TableCell><InlineCode>rules</InlineCode></TableCell>
+                <TableCell><InlineCode>RegisterOptions</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Validation rules (required, minLength, pattern, validate, etc.).</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">description</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>description</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Helper text shown below the field.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Applied to the FormItem wrapper for layout spacing.</TableCell>
               </TableRow>
@@ -357,27 +359,27 @@ export default async function FormComponentPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>name*</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Field name matching a key in your form values type.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>label*</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Visible label text. Also used for accessibility.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>rules</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">RegisterOptions</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>RegisterOptions</InlineCode></span>
               <span className="type-caption text-muted-foreground">Validation rules (required, minLength, pattern, validate, etc.).</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>description</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Helper text shown below the field.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Applied to the FormItem wrapper for layout spacing.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -386,7 +388,7 @@ export default async function FormComponentPage() {
       </div>
 
       {/* ── Component-Specific Props ────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Component-Specific Props</h2>
+      <Heading as="h2">Component-Specific Props</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         These props are unique to specific sub-components, in addition to the
         shared props above.
@@ -405,37 +407,37 @@ export default async function FormComponentPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">Form.Button</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">disableWhenInvalid</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell><InlineCode>Form.Button</InlineCode></TableCell>
+                <TableCell><InlineCode>disableWhenInvalid</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Also disable the button when the form has validation errors.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">Form.DatePicker</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">placeholder</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>Form.DatePicker</InlineCode></TableCell>
+                <TableCell><InlineCode>placeholder</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Placeholder text shown when no date is selected.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">Form.DatePicker</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">formatDate</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">{'(date: Date) => string'}</code></TableCell>
+                <TableCell><InlineCode>Form.DatePicker</InlineCode></TableCell>
+                <TableCell><InlineCode>formatDate</InlineCode></TableCell>
+                <TableCell><InlineCode>{'(date: Date) => string'}</InlineCode></TableCell>
                 <TableCell>MM/dd/yyyy</TableCell>
                 <TableCell>Custom date formatting function for the trigger display.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">Form.DateRangePicker</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">placeholder</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>Form.DateRangePicker</InlineCode></TableCell>
+                <TableCell><InlineCode>placeholder</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Placeholder text shown when no range is selected.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">Form.DateRangePicker</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">formatDate</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">{'(date: Date) => string'}</code></TableCell>
+                <TableCell><InlineCode>Form.DateRangePicker</InlineCode></TableCell>
+                <TableCell><InlineCode>formatDate</InlineCode></TableCell>
+                <TableCell><InlineCode>{'(date: Date) => string'}</InlineCode></TableCell>
                 <TableCell>MM/dd/yyyy</TableCell>
                 <TableCell>Custom date formatting function for the trigger display.</TableCell>
               </TableRow>
@@ -446,29 +448,29 @@ export default async function FormComponentPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>Form.Button</strong> — disableWhenInvalid</span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Also disable the button when the form has validation errors.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>Form.DatePicker</strong> — placeholder</span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Placeholder text shown when no date is selected.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>Form.DatePicker</strong> — formatDate</span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{'(date: Date) => string'}</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>{'(date: Date) => string'}</InlineCode></span>
               <span className="type-caption text-muted-foreground">Default: MM/dd/yyyy</span>
               <span className="type-caption text-muted-foreground">Custom date formatting function for the trigger display.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>Form.DateRangePicker</strong> — placeholder</span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Placeholder text shown when no range is selected.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>Form.DateRangePicker</strong> — formatDate</span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{'(date: Date) => string'}</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>{'(date: Date) => string'}</InlineCode></span>
               <span className="type-caption text-muted-foreground">Default: MM/dd/yyyy</span>
               <span className="type-caption text-muted-foreground">Custom date formatting function for the trigger display.</span>
             </TableMobileItem>

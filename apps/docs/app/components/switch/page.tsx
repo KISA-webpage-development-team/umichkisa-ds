@@ -2,6 +2,8 @@ import { Container, Switch, FormItem, Table, TableBody, TableCell, TableHead, Ta
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 import { ControlledDemo } from './_demos'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 
 const defaultCode = `import { Switch } from '@umichkisa-ds/web'
 
@@ -81,29 +83,29 @@ export default async function SwitchPage() {
       <p className="type-body mb-8 text-foreground max-w-prose">
         A toggle for settings that take effect immediately — e.g., &ldquo;Enable
         notifications&rdquo; or &ldquo;Dark mode&rdquo;. Pass the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           text
-        </code>{' '}
+        </InlineCode>{' '}
         prop for an inline label that automatically wraps in a native{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           label
-        </code>
+        </InlineCode>
         . For selections submitted with a form, use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Checkbox
-        </code>{' '}
+        </InlineCode>{' '}
         instead. Compose with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           FormItem
-        </code>{' '}
+        </InlineCode>{' '}
         for labeled form fields.
       </p>
 
       {/* ── Examples ────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Default */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Default</h3>
+      <Heading as="h3" className="mt-6">Default</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         A switch with inline label text in the off state.
       </p>
@@ -112,12 +114,12 @@ export default async function SwitchPage() {
       </ComponentPreview>
 
       {/* Checked */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Checked</h3>
+      <Heading as="h3">Checked</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         A switch with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           defaultChecked
-        </code>{' '}
+        </InlineCode>{' '}
         set.
       </p>
       <ComponentPreview code={checkedCode} highlightedCode={checkedHighlighted}>
@@ -125,16 +127,16 @@ export default async function SwitchPage() {
       </ComponentPreview>
 
       {/* Sizes */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Sizes</h3>
+      <Heading as="h3">Sizes</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Default and small sizes. The{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           sm
-        </code>{' '}
+        </InlineCode>{' '}
         size uses smaller label text (
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           type-caption
-        </code>
+        </InlineCode>
         ) for dense UI like table rows or settings panels.
       </p>
       <ComponentPreview code={sizesCode} highlightedCode={sizesHighlighted}>
@@ -145,7 +147,7 @@ export default async function SwitchPage() {
       </ComponentPreview>
 
       {/* States */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">States</h3>
+      <Heading as="h3">States</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Default, disabled off, disabled on, and invalid states.
       </p>
@@ -159,16 +161,16 @@ export default async function SwitchPage() {
       </ComponentPreview>
 
       {/* With FormItem */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With FormItem</h3>
+      <Heading as="h3">With FormItem</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Compose with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           FormItem
-        </code>{' '}
+        </InlineCode>{' '}
         for labeled form fields. The{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           text
-        </code>{' '}
+        </InlineCode>{' '}
         prop provides a secondary inline label next to the control.
       </p>
       <ComponentPreview code={withFormItemCode} highlightedCode={withFormItemHighlighted}>
@@ -178,16 +180,16 @@ export default async function SwitchPage() {
       </ComponentPreview>
 
       {/* With error message */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With error message</h3>
+      <Heading as="h3">With error message</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Pair{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           invalid
-        </code>{' '}
+        </InlineCode>{' '}
         with a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           FormItem
-        </code>{' '}
+        </InlineCode>{' '}
         error message.
       </p>
       <ComponentPreview code={withErrorCode} highlightedCode={withErrorHighlighted}>
@@ -197,7 +199,7 @@ export default async function SwitchPage() {
       </ComponentPreview>
 
       {/* Controlled */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Controlled</h3>
+      <Heading as="h3">Controlled</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Switch supports both controlled and uncontrolled usage.
         Below is a controlled example with live state feedback.
@@ -207,28 +209,28 @@ export default async function SwitchPage() {
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Switch renders a native{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           &lt;input type=&quot;checkbox&quot; role=&quot;switch&quot;&gt;
-        </code>{' '}
+        </InlineCode>{' '}
         internally for full form and accessibility support. Extends all native{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           &lt;input&gt;
-        </code>{' '}
+        </InlineCode>{' '}
         attributes (except{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           type
-        </code>
+        </InlineCode>
         ,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           role
-        </code>
+        </InlineCode>
         , and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           size
-        </code>
+        </InlineCode>
         , which are set internally). Only custom props are listed below.
       </p>
       <div className="my-6">
@@ -244,32 +246,32 @@ export default async function SwitchPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">text</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>text</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Inline label text. Uses type-body-sm for default size, type-caption for sm.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;default&quot; | &quot;sm&quot;</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;default&quot;</code></TableCell>
+                <TableCell><InlineCode>size</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;default&quot; | &quot;sm&quot;</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;default&quot;</InlineCode></TableCell>
                 <TableCell>Switch size. Use sm for dense layouts.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">invalid</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell><InlineCode>invalid</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Applies error border and sets aria-invalid.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">...props</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">InputHTMLAttributes</code></TableCell>
+                <TableCell><InlineCode>...props</InlineCode></TableCell>
+                <TableCell><InlineCode>InputHTMLAttributes</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>All native input attributes except type and role.</TableCell>
               </TableRow>
@@ -280,29 +282,29 @@ export default async function SwitchPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>text</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Inline label text. Uses type-body-sm for default size, type-caption for sm.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>size</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;default&quot; | &quot;sm&quot;</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;default&quot;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&quot;default&quot; | &quot;sm&quot;</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>&quot;default&quot;</InlineCode></span>
               <span className="type-caption text-muted-foreground">Switch size. Use sm for dense layouts.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>invalid</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Applies error border and sets aria-invalid.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>...props</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">InputHTMLAttributes</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>InputHTMLAttributes</InlineCode></span>
               <span className="type-caption text-muted-foreground">All native input attributes except type and role.</span>
             </TableMobileItem>
           </TableMobileList>

@@ -14,6 +14,8 @@ import {
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 
 const defaultCode = `import { IconButton } from '@umichkisa-ds/web'
 
@@ -68,30 +70,30 @@ export default async function IconButtonPage() {
       <p className="type-body mb-8 text-foreground max-w-prose">
         A square, icon-only button for compact actions like toolbar controls,
         close buttons, and menu triggers. Shares{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Button
-        </code>
+        </InlineCode>
         &apos;s variants, sizes, and focus behavior. Requires{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           aria-label
-        </code>{' '}
+        </InlineCode>{' '}
         for accessibility since there is no visible text.
       </p>
 
       {/* ── Examples ────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Default */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Default</h3>
+      <Heading as="h3" className="mt-6">Default</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         The simplest usage —{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           icon
-        </code>{' '}
+        </InlineCode>{' '}
         and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           aria-label
-        </code>{' '}
+        </InlineCode>{' '}
         are the only required props.
       </p>
       <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
@@ -99,16 +101,16 @@ export default async function IconButtonPage() {
       </ComponentPreview>
 
       {/* Variants */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Variants</h3>
+      <Heading as="h3">Variants</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Four semantic variants matching{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Button
-        </code>
+        </InlineCode>
         . Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           primary
-        </code>{' '}
+        </InlineCode>{' '}
         sparingly — most icon buttons are utility actions.
       </p>
       <ComponentPreview code={variantsCode} highlightedCode={variantsHighlighted}>
@@ -121,24 +123,24 @@ export default async function IconButtonPage() {
       </ComponentPreview>
 
       {/* Sizes */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Sizes</h3>
+      <Heading as="h3">Sizes</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Three sizes producing square dimensions:{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           sm
-        </code>{' '}
+        </InlineCode>{' '}
         (32px),{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           md
-        </code>{' '}
+        </InlineCode>{' '}
         (40px),{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           lg
-        </code>{' '}
+        </InlineCode>{' '}
         (48px). All sizes meet the 44px minimum touch target via an invisible{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           ::after
-        </code>{' '}
+        </InlineCode>{' '}
         pseudo-element.
       </p>
       <ComponentPreview code={sizesCode} highlightedCode={sizesHighlighted}>
@@ -150,12 +152,12 @@ export default async function IconButtonPage() {
       </ComponentPreview>
 
       {/* Disabled */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Disabled</h3>
+      <Heading as="h3">Disabled</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Pass{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           disabled
-        </code>{' '}
+        </InlineCode>{' '}
         to visually dim the button and block interaction. Works with all variants.
       </p>
       <ComponentPreview code={disabledCode} highlightedCode={disabledHighlighted}>
@@ -168,20 +170,20 @@ export default async function IconButtonPage() {
       </ComponentPreview>
 
       {/* With Tooltip */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With Tooltip</h3>
+      <Heading as="h3">With Tooltip</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Wrap an{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           IconButton
-        </code>{' '}
+        </InlineCode>{' '}
         in a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Tooltip
-        </code>{' '}
+        </InlineCode>{' '}
         to expose its label to sighted users. The tooltip content must match{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           aria-label
-        </code>{' '}
+        </InlineCode>{' '}
         exactly.
       </p>
       <ComponentPreview code={tooltipCode} highlightedCode={tooltipHighlighted}>
@@ -191,20 +193,20 @@ export default async function IconButtonPage() {
       </ComponentPreview>
 
       {/* ── Accessibility ───────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Accessibility</h2>
+      <Heading as="h2">Accessibility</Heading>
       <Alert variant="info" className="mb-4">
         <ul className="list-disc pl-5 space-y-1">
           <li>
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>{' '}
+            <InlineCode>aria-label</InlineCode>{' '}
             must describe the <strong>action</strong>, not the icon — use{' '}
             <em>&ldquo;Edit profile&rdquo;</em>, not <em>&ldquo;Edit&rdquo;</em> or{' '}
             <em>&ldquo;Pencil&rdquo;</em>.
           </li>
           <li>
             When wrapped in a{' '}
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Tooltip</code>,
+            <InlineCode>Tooltip</InlineCode>,
             the tooltip text must match{' '}
-            <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">aria-label</code>{' '}
+            <InlineCode>aria-label</InlineCode>{' '}
             exactly to avoid duplicate or conflicting screen-reader announcements.
           </li>
         </ul>
@@ -212,31 +214,31 @@ export default async function IconButtonPage() {
       <p className="type-body text-foreground max-w-prose">
         All three sizes meet the WCAG 44×44px touch target. Even when the visible
         button is 32px (
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">size=&quot;sm&quot;</code>
+        <InlineCode>size=&quot;sm&quot;</InlineCode>
         ), an invisible{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">::after</code>{' '}
+        <InlineCode>::after</InlineCode>{' '}
         pseudo-element extends the hit area to 44×44 without changing the visible
         box.
       </p>
 
       {/* ── API Reference ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           icon
-        </code>{' '}
+        </InlineCode>{' '}
         and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           aria-label
-        </code>{' '}
+        </InlineCode>{' '}
         are required. All other native{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           &lt;button&gt;
-        </code>{' '}
+        </InlineCode>{' '}
         attributes are forwarded to the underlying{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Button
-        </code>
+        </InlineCode>
         .
       </p>
       <div className="my-6">
@@ -252,8 +254,8 @@ export default async function IconButtonPage() {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">icon</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">IconName</code></TableCell>
+              <TableCell><InlineCode>icon</InlineCode></TableCell>
+              <TableCell><InlineCode>IconName</InlineCode></TableCell>
               <TableCell>—</TableCell>
               <TableCell>
                 Lucide icon name in kebab-case. Required. See the{' '}
@@ -262,32 +264,32 @@ export default async function IconButtonPage() {
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">aria-label</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+              <TableCell><InlineCode>aria-label</InlineCode></TableCell>
+              <TableCell><InlineCode>string</InlineCode></TableCell>
               <TableCell>—</TableCell>
               <TableCell>Accessible label. Required — there is no visible text.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">variant</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;primary&#39; | &#39;secondary&#39; | &#39;tertiary&#39; | &#39;destructive&#39;</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;secondary&#39;</code></TableCell>
+              <TableCell><InlineCode>variant</InlineCode></TableCell>
+              <TableCell><InlineCode>&#39;primary&#39; | &#39;secondary&#39; | &#39;tertiary&#39; | &#39;destructive&#39;</InlineCode></TableCell>
+              <TableCell><InlineCode>&#39;secondary&#39;</InlineCode></TableCell>
               <TableCell>Visual style. Passed through to Button.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">size</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&#39;md&#39;</code></TableCell>
+              <TableCell><InlineCode>size</InlineCode></TableCell>
+              <TableCell><InlineCode>&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</InlineCode></TableCell>
+              <TableCell><InlineCode>&#39;md&#39;</InlineCode></TableCell>
               <TableCell>Controls square dimensions (32 / 40 / 48px) and icon size.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">disabled</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+              <TableCell><InlineCode>disabled</InlineCode></TableCell>
+              <TableCell><InlineCode>boolean</InlineCode></TableCell>
+              <TableCell><InlineCode>false</InlineCode></TableCell>
               <TableCell>Disables the button, reducing opacity and blocking pointer events.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+              <TableCell><InlineCode>className</InlineCode></TableCell>
+              <TableCell><InlineCode>string</InlineCode></TableCell>
               <TableCell>—</TableCell>
               <TableCell>Merged via cn(). Use for layout utilities only — never override variant styles.</TableCell>
             </TableRow>
@@ -298,32 +300,32 @@ export default async function IconButtonPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>icon</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">IconName</code> · required</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>IconName</InlineCode> · required</span>
               <span className="type-caption text-muted-foreground">Lucide icon name in kebab-case. See the <a href="/components/icon" className="text-link underline hover:text-brand-primary">Icon</a> page for available names.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>aria-label</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code> · required</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode> · required</span>
               <span className="type-caption text-muted-foreground">Accessible label. Required — there is no visible text.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>variant</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;primary&#39; | &#39;secondary&#39; | &#39;tertiary&#39; | &#39;destructive&#39;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;secondary&#39;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&#39;primary&#39; | &#39;secondary&#39; | &#39;tertiary&#39; | &#39;destructive&#39;</InlineCode> · default <InlineCode>&#39;secondary&#39;</InlineCode></span>
               <span className="type-caption text-muted-foreground">Visual style. Passed through to Button.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>size</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&#39;md&#39;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&#39;sm&#39; | &#39;md&#39; | &#39;lg&#39;</InlineCode> · default <InlineCode>&#39;md&#39;</InlineCode></span>
               <span className="type-caption text-muted-foreground">Controls square dimensions (32 / 40 / 48px) and icon size.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>disabled</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode> · default <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Disables the button, reducing opacity and blocking pointer events.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only — never override variant styles.</span>
             </TableMobileItem>
           </TableMobileList>

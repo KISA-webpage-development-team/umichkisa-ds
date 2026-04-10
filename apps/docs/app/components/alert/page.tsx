@@ -11,7 +11,9 @@ import {
   TableRow,
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { InlineCode } from '@/components/InlineCode'
 import { highlight } from '@/lib/highlight'
+import { Heading } from '@/components/Heading'
 
 const variantsCode = `import { Alert } from '@umichkisa-ds/web'
 
@@ -136,10 +138,10 @@ export default async function AlertPage() {
       </Alert>
 
       {/* -- Examples ------------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Variants */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Variants</h3>
+      <Heading as="h3" className="mt-6">Variants</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Four semantic variants communicate different levels of feedback. Each
         variant applies a distinct border color, background, and default icon.
@@ -162,10 +164,10 @@ export default async function AlertPage() {
       </ComponentPreview>
 
       {/* Description only */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Description only</h3>
+      <Heading as="h3">Description only</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Omit the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">title</code>{' '}
+        <InlineCode>title</InlineCode>{' '}
         prop to render a compact alert with only description content.
       </p>
       <ComponentPreview code={descriptionOnlyCode} highlightedCode={descriptionOnlyHighlighted}>
@@ -177,10 +179,10 @@ export default async function AlertPage() {
       </ComponentPreview>
 
       {/* Custom icon */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Custom icon</h3>
+      <Heading as="h3">Custom icon</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Override the default variant icon by passing a Lucide icon name to the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">icon</code>{' '}
+        <InlineCode>icon</InlineCode>{' '}
         prop. The icon must be registered in the{' '}
         <a href="/components/icon" className="text-link underline hover:text-brand-primary">Icon</a>{' '}
         registry.
@@ -194,12 +196,12 @@ export default async function AlertPage() {
       </ComponentPreview>
 
       {/* Without icon */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Without icon</h3>
+      <Heading as="h3">Without icon</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Pass{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           icon={'{null}'}
-        </code>{' '}
+        </InlineCode>{' '}
         to hide the icon entirely for a text-only alert.
       </p>
       <ComponentPreview code={withoutIconCode} highlightedCode={withoutIconHighlighted}>
@@ -211,7 +213,7 @@ export default async function AlertPage() {
       </ComponentPreview>
 
       {/* Form validation error */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Form validation error</h3>
+      <Heading as="h3">Form validation error</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         A common pattern for displaying validation errors above a form. The
         alert summarizes what needs attention while the form fields below
@@ -240,7 +242,7 @@ export default async function AlertPage() {
       </ComponentPreview>
 
       {/* Success confirmation */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Success confirmation</h3>
+      <Heading as="h3">Success confirmation</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         A confirmation banner placed directly above the form the user just edited.
       </p>
@@ -267,7 +269,7 @@ export default async function AlertPage() {
       </ComponentPreview>
 
       {/* Info callout in content */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Info callout in content</h3>
+      <Heading as="h3">Info callout in content</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         An informational alert used as an aside within body content, drawing
         attention to a prerequisite or important note.
@@ -290,16 +292,16 @@ export default async function AlertPage() {
       </ComponentPreview>
 
       {/* -- API Reference -------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         All props are optional. Extends native{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           &lt;div&gt;
-        </code>{' '}
+        </InlineCode>{' '}
         attributes — pass{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           role=&quot;alert&quot;
-        </code>{' '}
+        </InlineCode>{' '}
         for dynamic alerts that should be announced by screen readers.
       </p>
       <div className="hidden md:block my-6">
@@ -314,32 +316,32 @@ export default async function AlertPage() {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">variant</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;info&quot; | &quot;success&quot; | &quot;warning&quot; | &quot;error&quot;</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;info&quot;</code></TableCell>
+              <TableCell><InlineCode>variant</InlineCode></TableCell>
+              <TableCell><InlineCode>&quot;info&quot; | &quot;success&quot; | &quot;warning&quot; | &quot;error&quot;</InlineCode></TableCell>
+              <TableCell><InlineCode>&quot;info&quot;</InlineCode></TableCell>
               <TableCell>The visual style and default icon of the alert.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">title</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+              <TableCell><InlineCode>title</InlineCode></TableCell>
+              <TableCell><InlineCode>string</InlineCode></TableCell>
               <TableCell>—</TableCell>
               <TableCell>Optional bold heading displayed above the description.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">icon</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">IconName | null</code></TableCell>
+              <TableCell><InlineCode>icon</InlineCode></TableCell>
+              <TableCell><InlineCode>IconName | null</InlineCode></TableCell>
               <TableCell>(variant default)</TableCell>
               <TableCell>Override the default icon. Pass a Lucide icon name or null to hide.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+              <TableCell><InlineCode>children</InlineCode></TableCell>
+              <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
               <TableCell>—</TableCell>
               <TableCell>Description content displayed in the alert body.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+              <TableCell><InlineCode>className</InlineCode></TableCell>
+              <TableCell><InlineCode>string</InlineCode></TableCell>
               <TableCell>—</TableCell>
               <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
             </TableRow>
@@ -350,49 +352,49 @@ export default async function AlertPage() {
         <TableMobileList>
           <TableMobileItem>
             <span className="type-body-sm text-foreground"><strong>variant</strong></span>
-            <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;info&quot; | &quot;success&quot; | &quot;warning&quot; | &quot;error&quot;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;info&quot;</code></span>
+            <span className="type-caption text-muted-foreground"><InlineCode>&quot;info&quot; | &quot;success&quot; | &quot;warning&quot; | &quot;error&quot;</InlineCode> · default <InlineCode>&quot;info&quot;</InlineCode></span>
             <span className="type-caption text-muted-foreground">The visual style and default icon of the alert.</span>
           </TableMobileItem>
           <TableMobileItem>
             <span className="type-body-sm text-foreground"><strong>title</strong></span>
-            <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+            <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
             <span className="type-caption text-muted-foreground">Optional bold heading displayed above the description.</span>
           </TableMobileItem>
           <TableMobileItem>
             <span className="type-body-sm text-foreground"><strong>icon</strong></span>
-            <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">IconName | null</code> · default (variant default)</span>
+            <span className="type-caption text-muted-foreground"><InlineCode>IconName | null</InlineCode> · default (variant default)</span>
             <span className="type-caption text-muted-foreground">Override the default icon. Pass a Lucide icon name or null to hide.</span>
           </TableMobileItem>
           <TableMobileItem>
             <span className="type-body-sm text-foreground"><strong>children</strong></span>
-            <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+            <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
             <span className="type-caption text-muted-foreground">Description content displayed in the alert body.</span>
           </TableMobileItem>
           <TableMobileItem>
             <span className="type-body-sm text-foreground"><strong>className</strong></span>
-            <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+            <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
             <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
           </TableMobileItem>
         </TableMobileList>
       </div>
 
       {/* -- Accessibility --------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Accessibility</h2>
+      <Heading as="h2">Accessibility</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Static alerts present on initial render do not need an explicit ARIA
         role — the visible icon and color convey meaning. For alerts that
         appear dynamically in response to user action (e.g., after form
         submission), pass{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           role=&quot;alert&quot;
-        </code>{' '}
+        </InlineCode>{' '}
         so screen readers announce the message immediately.
       </p>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           role=&quot;status&quot;
-        </code>{' '}
+        </InlineCode>{' '}
         instead for non-critical updates that should not interrupt the user.
       </p>
 

@@ -13,6 +13,8 @@ import {
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 
 const basicCode = `import { OnlyMobileView } from '@umichkisa-ds/web'
 
@@ -48,16 +50,16 @@ export default async function OnlyMobileViewPage() {
         a full-screen overlay on desktop, indicating the page is mobile-only.
       </p>
       <Alert variant="info" className="mb-8 max-w-prose">
-        Place <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">OnlyMobileView</code> as the outermost wrapper of your page. At <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">≥768px</code>, children are hidden and a fixed overlay covers the viewport, including navigation.
+        Place <InlineCode>OnlyMobileView</InlineCode> as the outermost wrapper of your page. At <InlineCode>≥768px</InlineCode>, children are hidden and a fixed overlay covers the viewport, including navigation.
       </Alert>
 
       {/* -- Examples ------------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Basic */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Basic</h3>
+      <Heading as="h3" className="mt-6">Basic</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
-        Wrap page content in <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">OnlyMobileView</code>. Below 768px the children render; at or above 768px the overlay replaces them.
+        Wrap page content in <InlineCode>OnlyMobileView</InlineCode>. Below 768px the children render; at or above 768px the overlay replaces them.
       </p>
       <p className="type-body-sm mb-4 text-muted-foreground max-w-prose">
         The panels below are illustrative — the real component covers the full viewport, so both states are shown side by side here.
@@ -90,10 +92,10 @@ export default async function OnlyMobileViewPage() {
       </ComponentPreview>
 
       {/* Custom message */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Custom message</h3>
+      <Heading as="h3">Custom message</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Pass a custom string via the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">message</code>{' '}
+        <InlineCode>message</InlineCode>{' '}
         prop to override the default overlay text.
       </p>
       <ComponentPreview code={customMessageCode} highlightedCode={customMessageHighlighted}>
@@ -122,7 +124,7 @@ export default async function OnlyMobileViewPage() {
       </ComponentPreview>
 
       {/* -- API Reference -------------------------------------------- */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <div className="my-6">
         <div className="hidden md:block">
           <Table>
@@ -136,20 +138,20 @@ export default async function OnlyMobileViewPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Content rendered on mobile screens (below 768px).</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">message</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;Only Mobile View is supported.&quot;</code></TableCell>
+                <TableCell><InlineCode>message</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;Only Mobile View is supported.&quot;</InlineCode></TableCell>
                 <TableCell>Text displayed on the desktop overlay.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Additional Tailwind classes applied to the outer wrapper div.</TableCell>
               </TableRow>
@@ -160,17 +162,17 @@ export default async function OnlyMobileViewPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">Content rendered on mobile screens (below 768px).</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>message</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;Only Mobile View is supported.&quot;</code>. Text displayed on the desktop overlay.</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>&quot;Only Mobile View is supported.&quot;</InlineCode>. Text displayed on the desktop overlay.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Additional Tailwind classes applied to the outer wrapper div.</span>
             </TableMobileItem>
           </TableMobileList>

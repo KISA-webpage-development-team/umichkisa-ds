@@ -18,6 +18,8 @@ import {
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 
 const basicCode = `import { Popover, PopoverTrigger, PopoverContent, Button } from '@umichkisa-ds/web'
 
@@ -110,10 +112,10 @@ export default async function PopoverPage() {
       </Alert>
 
       {/* ── Examples ────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Basic */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Basic</h3>
+      <Heading as="h3" className="mt-6">Basic</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         A trigger button that opens a popover with simple text content.
       </p>
@@ -129,7 +131,7 @@ export default async function PopoverPage() {
       </ComponentPreview>
 
       {/* With form content */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With form content</h3>
+      <Heading as="h3">With form content</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Popovers can contain rich content such as forms with labels, inputs, and buttons.
       </p>
@@ -150,16 +152,16 @@ export default async function PopoverPage() {
       </ComponentPreview>
 
       {/* Placement */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Placement</h3>
+      <Heading as="h3">Placement</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Use the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           side
-        </code>{' '}
+        </InlineCode>{' '}
         prop on{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           PopoverContent
-        </code>{' '}
+        </InlineCode>{' '}
         to control which side the popover appears on.
       </p>
       <ComponentPreview code={placementCode} highlightedCode={placementHighlighted}>
@@ -200,10 +202,10 @@ export default async function PopoverPage() {
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
 
       {/* Popover (Root) */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Popover</h3>
+      <Heading as="h3" className="mt-6">Popover</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Root wrapper that manages open state.
       </p>
@@ -220,21 +222,21 @@ export default async function PopoverPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">open</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
+                <TableCell><InlineCode>open</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Controlled open state.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">onOpenChange</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">(open: boolean) =&gt; void</code></TableCell>
+                <TableCell><InlineCode>onOpenChange</InlineCode></TableCell>
+                <TableCell><InlineCode>(open: boolean) =&gt; void</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Callback when the open state changes.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">defaultOpen</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell><InlineCode>defaultOpen</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Uncontrolled default open state.</TableCell>
               </TableRow>
             </TableBody>
@@ -244,17 +246,17 @@ export default async function PopoverPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>open</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
               <span className="type-caption text-muted-foreground">Controlled open state.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>onOpenChange</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">(open: boolean) =&gt; void</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>(open: boolean) =&gt; void</InlineCode></span>
               <span className="type-caption text-muted-foreground">Callback when the open state changes.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>defaultOpen</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode> · default <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Uncontrolled default open state.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -262,7 +264,7 @@ export default async function PopoverPage() {
       </div>
 
       {/* PopoverTrigger */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">PopoverTrigger</h3>
+      <Heading as="h3">PopoverTrigger</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         The element that toggles the popover.
       </p>
@@ -279,9 +281,9 @@ export default async function PopoverPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">asChild</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell><InlineCode>asChild</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Merge trigger props onto the child element. Without this, PopoverTrigger renders its own button — use asChild when you already have a Button component.</TableCell>
               </TableRow>
             </TableBody>
@@ -291,7 +293,7 @@ export default async function PopoverPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>asChild</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode> · default <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merge trigger props onto the child element. Without this, PopoverTrigger renders its own button — use asChild when you already have a Button component.</span>
             </TableMobileItem>
           </TableMobileList>
@@ -299,7 +301,7 @@ export default async function PopoverPage() {
       </div>
 
       {/* PopoverContent */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">PopoverContent</h3>
+      <Heading as="h3">PopoverContent</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         The floating panel that appears when the popover is open.
       </p>
@@ -316,38 +318,38 @@ export default async function PopoverPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">side</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;top&quot; | &quot;right&quot; | &quot;bottom&quot; | &quot;left&quot;</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;bottom&quot;</code></TableCell>
+                <TableCell><InlineCode>side</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;top&quot; | &quot;right&quot; | &quot;bottom&quot; | &quot;left&quot;</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;bottom&quot;</InlineCode></TableCell>
                 <TableCell>Which side of the trigger the popover appears on.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">sideOffset</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">number</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">4</code></TableCell>
+                <TableCell><InlineCode>sideOffset</InlineCode></TableCell>
+                <TableCell><InlineCode>number</InlineCode></TableCell>
+                <TableCell><InlineCode>4</InlineCode></TableCell>
                 <TableCell>Distance in pixels from the trigger.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">align</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;start&quot; | &quot;center&quot; | &quot;end&quot;</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">&quot;center&quot;</code></TableCell>
+                <TableCell><InlineCode>align</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;start&quot; | &quot;center&quot; | &quot;end&quot;</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;center&quot;</InlineCode></TableCell>
                 <TableCell>Alignment along the trigger edge.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">alignOffset</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">number</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">0</code></TableCell>
+                <TableCell><InlineCode>alignOffset</InlineCode></TableCell>
+                <TableCell><InlineCode>number</InlineCode></TableCell>
+                <TableCell><InlineCode>0</InlineCode></TableCell>
                 <TableCell>Offset in pixels from the aligned edge.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Content rendered inside the popover panel.</TableCell>
               </TableRow>
@@ -358,32 +360,32 @@ export default async function PopoverPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>side</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;top&quot; | &quot;right&quot; | &quot;bottom&quot; | &quot;left&quot;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;bottom&quot;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&quot;top&quot; | &quot;right&quot; | &quot;bottom&quot; | &quot;left&quot;</InlineCode> · default <InlineCode>&quot;bottom&quot;</InlineCode></span>
               <span className="type-caption text-muted-foreground">Which side of the trigger the popover appears on.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>sideOffset</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">number</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">4</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>number</InlineCode> · default <InlineCode>4</InlineCode></span>
               <span className="type-caption text-muted-foreground">Distance in pixels from the trigger.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>align</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;start&quot; | &quot;center&quot; | &quot;end&quot;</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">&quot;center&quot;</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&quot;start&quot; | &quot;center&quot; | &quot;end&quot;</InlineCode> · default <InlineCode>&quot;center&quot;</InlineCode></span>
               <span className="type-caption text-muted-foreground">Alignment along the trigger edge.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>alignOffset</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">number</code> · default <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">0</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>number</InlineCode> · default <InlineCode>0</InlineCode></span>
               <span className="type-caption text-muted-foreground">Offset in pixels from the aligned edge.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">Content rendered inside the popover panel.</span>
             </TableMobileItem>
           </TableMobileList>

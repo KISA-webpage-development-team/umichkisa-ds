@@ -1,6 +1,7 @@
 import { Container, Divider } from '@umichkisa-ds/web'
 import { DoDont, Do, Dont } from '@/components/DoDont'
 import { InlineCode } from '@/components/InlineCode'
+import { Heading } from '@/components/Heading'
 
 export default function TypographyUsagePage() {
   return (
@@ -15,7 +16,7 @@ export default function TypographyUsagePage() {
       <Divider className="my-8" />
 
       {/* ── Always use semantic classes ─────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Always use semantic classes</h2>
+      <Heading as="h2">Always use semantic classes</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Reach for{' '}
         <InlineCode>type-*</InlineCode>{' '}
@@ -36,7 +37,7 @@ export default function TypographyUsagePage() {
       </p>
 
       {/* ── Keep emphasis inline ────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Keep emphasis inline, not structural</h2>
+      <Heading as="h2">Keep emphasis inline, not structural</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         For emphasis within body text, use{' '}
         <InlineCode>&lt;strong&gt;</InlineCode>.
@@ -46,7 +47,7 @@ export default function TypographyUsagePage() {
       </p>
 
       {/* ── Always set color explicitly ────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Always set color explicitly</h2>
+      <Heading as="h2">Always set color explicitly</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         <InlineCode>type-*</InlineCode>{' '}
         classes handle family, size, weight, and line height only — not color. Every text
@@ -61,10 +62,10 @@ export default function TypographyUsagePage() {
       <Divider className="my-8" />
 
       {/* ── Do's and Don'ts ────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Do&#39;s and Don&#39;ts</h2>
+      <Heading as="h2">Do&#39;s and Don&#39;ts</Heading>
 
       {/* Font boundary */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Font boundary</h3>
+      <Heading as="h3" className="mt-6">Font boundary</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         SejongHospital is for Display and H1 only. Do not use it below H1 — hand off to
         Pretendard for every heading level after the first.
@@ -86,7 +87,7 @@ export default function TypographyUsagePage() {
       </DoDont>
 
       {/* Line length */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Line length</h3>
+      <Heading as="h3" className="mt-6">Line length</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Keep body text within{' '}
         <InlineCode>max-w-prose</InlineCode>{' '}
@@ -108,9 +109,9 @@ export default function TypographyUsagePage() {
       <Divider className="my-8" />
 
       {/* ── State typography ────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">State typography</h2>
+      <Heading as="h2">State typography</Heading>
 
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Disabled text</h3>
+      <Heading as="h3" className="mt-6">Disabled text</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Disabled text uses the same{' '}
         <InlineCode>type-*</InlineCode>{' '}
@@ -119,7 +120,7 @@ export default function TypographyUsagePage() {
         signals that the element is inactive.
       </p>
 
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Error messages</h3>
+      <Heading as="h3" className="mt-6">Error messages</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Use{' '}
         <InlineCode>type-caption</InlineCode>{' '}
@@ -133,7 +134,7 @@ export default function TypographyUsagePage() {
         <p className="type-caption text-error mt-1">Please enter a valid email address</p>
       </div>
 
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Helper text</h3>
+      <Heading as="h3" className="mt-6">Helper text</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Use{' '}
         <InlineCode>type-caption</InlineCode>{' '}
@@ -154,7 +155,7 @@ export default function TypographyUsagePage() {
       <Divider className="my-8" />
 
       {/* ── Links ──────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Links</h2>
+      <Heading as="h2">Links</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Links inherit the{' '}
         <InlineCode>type-*</InlineCode>{' '}
@@ -201,7 +202,7 @@ export default function TypographyUsagePage() {
       <Divider className="my-8" />
 
       {/* ── Truncation ─────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Truncation</h2>
+      <Heading as="h2">Truncation</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Truncation is for UI elements — not for long-form content. Never truncate{' '}
         <InlineCode>type-body</InlineCode>{' '}

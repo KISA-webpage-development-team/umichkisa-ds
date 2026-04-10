@@ -19,6 +19,8 @@ import {
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 import { WithSelectDemo, WithA11ySelectDemo } from './_demos'
+import { Heading } from '@/components/Heading'
+import { InlineCode } from '@/components/InlineCode'
 
 const basicCode = `import { FormItem, Input } from '@umichkisa-ds/web'
 
@@ -150,32 +152,32 @@ export default async function FormItemPage() {
         for consistent form field structure. FormItem is presentation-only — it does not manage
         state or validate input. Pass an error string when validation fails, and FormItem renders it.
         Designed to work with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Input
-        </code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        </InlineCode>,{' '}
+        <InlineCode>
           Textarea
-        </code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        </InlineCode>,{' '}
+        <InlineCode>
           Select
-        </code>, and any other form control.
+        </InlineCode>, and any other form control.
       </p>
 
       {/* ── Examples ────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Basic */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Basic</h3>
+      <Heading as="h3" className="mt-6">Basic</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         The simplest usage. A label and input composed together with consistent spacing.
         The{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           htmlFor
-        </code>{' '}
+        </InlineCode>{' '}
         prop must match the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           id
-        </code>{' '}
+        </InlineCode>{' '}
         on the form control so the label is accessible.
       </p>
       <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
@@ -187,12 +189,12 @@ export default async function FormItemPage() {
       </ComponentPreview>
 
       {/* With description */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With description</h3>
+      <Heading as="h3">With description</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Pass a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           description
-        </code>{' '}
+        </InlineCode>{' '}
         prop to render helper text below the form control.
       </p>
       <ComponentPreview code={withDescriptionCode} highlightedCode={withDescriptionHighlighted}>
@@ -208,20 +210,20 @@ export default async function FormItemPage() {
       </ComponentPreview>
 
       {/* With error */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With error</h3>
+      <Heading as="h3">With error</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Pass an{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           error
-        </code>{' '}
+        </InlineCode>{' '}
         string to show a validation message. When{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           error
-        </code>{' '}
+        </InlineCode>{' '}
         is set, the description is hidden. Remember to also pass{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           invalid
-        </code>{' '}
+        </InlineCode>{' '}
         to the input for error border styling.
       </p>
       <ComponentPreview code={withErrorCode} highlightedCode={withErrorHighlighted}>
@@ -237,12 +239,12 @@ export default async function FormItemPage() {
       </ComponentPreview>
 
       {/* Required */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Required</h3>
+      <Heading as="h3">Required</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Set{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           required
-        </code>{' '}
+        </InlineCode>{' '}
         to show an asterisk on the label.
       </p>
       <ComponentPreview code={requiredCode} highlightedCode={requiredHighlighted}>
@@ -254,12 +256,12 @@ export default async function FormItemPage() {
       </ComponentPreview>
 
       {/* With Textarea */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With Textarea</h3>
+      <Heading as="h3">With Textarea</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         FormItem composes with any form control. Here it wraps a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Textarea
-        </code>.
+        </InlineCode>.
       </p>
       <ComponentPreview code={withTextareaCode} highlightedCode={withTextareaHighlighted}>
         <div className="w-full max-w-sm">
@@ -270,12 +272,12 @@ export default async function FormItemPage() {
       </ComponentPreview>
 
       {/* With Select */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With Select</h3>
+      <Heading as="h3">With Select</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Works with the compound{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Select
-        </code>{' '}
+        </InlineCode>{' '}
         API as well.
       </p>
       <ComponentPreview code={withSelectCode} highlightedCode={withSelectHighlighted}>
@@ -283,16 +285,16 @@ export default async function FormItemPage() {
       </ComponentPreview>
 
       {/* With Checkbox */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With Checkbox</h3>
+      <Heading as="h3">With Checkbox</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         FormItem composes with toggle controls too. Here it wraps a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Checkbox
-        </code>{' '}
+        </InlineCode>{' '}
         that uses the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           text
-        </code>{' '}
+        </InlineCode>{' '}
         prop for its inline label.
       </p>
       <ComponentPreview code={withCheckboxCode} highlightedCode={withCheckboxHighlighted}>
@@ -304,16 +306,16 @@ export default async function FormItemPage() {
       </ComponentPreview>
 
       {/* With Switch */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With Switch</h3>
+      <Heading as="h3">With Switch</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Works with{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           Switch
-        </code>{' '}
+        </InlineCode>{' '}
         as well. The{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           text
-        </code>{' '}
+        </InlineCode>{' '}
         prop renders the inline label next to the toggle.
       </p>
       <ComponentPreview code={withSwitchCode} highlightedCode={withSwitchHighlighted}>
@@ -325,20 +327,20 @@ export default async function FormItemPage() {
       </ComponentPreview>
 
       {/* With RadioGroup */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With RadioGroup</h3>
+      <Heading as="h3">With RadioGroup</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         For radio buttons, wrap a{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           RadioGroup
-        </code>{' '}
+        </InlineCode>{' '}
         containing{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           RadioItem
-        </code>{' '}
+        </InlineCode>{' '}
         children. Each item uses the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           text
-        </code>{' '}
+        </InlineCode>{' '}
         prop for its label.
       </p>
       <ComponentPreview code={withRadioCode} highlightedCode={withRadioHighlighted}>
@@ -354,26 +356,26 @@ export default async function FormItemPage() {
       </ComponentPreview>
 
       {/* ── Accessibility ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Accessibility</h2>
+      <Heading as="h2">Accessibility</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         FormItem generates predictable IDs on its internal elements:{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           {'{htmlFor}-label'}
-        </code>,{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        </InlineCode>,{' '}
+        <InlineCode>
           {'{htmlFor}-description'}
-        </code>, and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        </InlineCode>, and{' '}
+        <InlineCode>
           {'{htmlFor}-error'}
-        </code>
+        </InlineCode>
         . Wire{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           aria-describedby
-        </code>{' '}
+        </InlineCode>{' '}
         on the form control to associate helper text, and{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           aria-labelledby
-        </code>{' '}
+        </InlineCode>{' '}
         for non-native triggers (e.g. Select).
       </p>
       <ComponentPreview code={a11yCode} highlightedCode={a11yHighlighted}>
@@ -390,13 +392,13 @@ export default async function FormItemPage() {
 
       <p className="type-body mt-4 mb-2 text-foreground max-w-prose">
         For non-native triggers like Select, use{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           aria-labelledby
-        </code>{' '}
+        </InlineCode>{' '}
         with the auto-generated{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
+        <InlineCode>
           {'{htmlFor}-label'}
-        </code>{' '}
+        </InlineCode>{' '}
         ID.
       </p>
       <ComponentPreview code={a11ySelectCode} highlightedCode={a11ySelectHighlighted}>
@@ -406,7 +408,7 @@ export default async function FormItemPage() {
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         FormItem does not extend native HTML attributes. All props are listed below.
       </p>
@@ -423,44 +425,44 @@ export default async function FormItemPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">htmlFor</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>htmlFor</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Connects the label to the form control via matching id.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">label</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>label</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Text rendered inside the Label component.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">required</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">boolean</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">false</code></TableCell>
+                <TableCell><InlineCode>required</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
                 <TableCell>Shows a required asterisk on the label.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">error</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>error</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Validation error message. When set, replaces the description text.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">description</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>description</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Helper text shown below the form control. Hidden when error is set.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">className</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">string</code></TableCell>
+                <TableCell><InlineCode>className</InlineCode></TableCell>
+                <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Additional CSS classes applied to the outer wrapper div.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">children</code></TableCell>
-                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle">ReactNode</code></TableCell>
+                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>The form control (Input, Textarea, Select, etc.).</TableCell>
               </TableRow>
@@ -471,38 +473,38 @@ export default async function FormItemPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>htmlFor</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Connects the label to the form control via matching id.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>label</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Text rendered inside the Label component.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>required</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">boolean</code></span>
-              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">false</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Default: <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Shows a required asterisk on the label.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>error</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Validation error message. When set, replaces the description text.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>description</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Helper text shown below the form control. Hidden when error is set.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">string</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Additional CSS classes applied to the outer wrapper div.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
-              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">ReactNode</code></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">The form control (Input, Textarea, Select, etc.).</span>
             </TableMobileItem>
           </TableMobileList>
