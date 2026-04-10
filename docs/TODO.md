@@ -155,7 +155,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Review `/forms/overview` — plan: `docs/plans/review-fix-forms-overview.md`
 - [x] Fix `/forms/overview` — plan: `docs/plans/review-fix-forms-overview.md`
 - [x] Review `/forms/form-component` — plan: `docs/plans/review-fix-forms-form-component.md`
-- [ ] Fix `/forms/form-component`
+- [x] Fix `/forms/form-component` — plan: `docs/plans/review-fix-forms-form-component.md`
 - [x] Review `/forms/use-form` — plan: `docs/plans/review-fix-forms-use-form.md`
 - [ ] Fix `/forms/use-form` — plan: `docs/plans/review-fix-forms-use-form.md`
 
@@ -165,7 +165,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 - [x] Review `/forms/validation` — plan: `docs/plans/review-fix-forms-validation.md`
 - [ ] Fix `/forms/validation` — plan: `docs/plans/review-fix-forms-validation.md`
 - [x] Review `/forms/examples` — plan: `docs/plans/review-fix-forms-examples.md`
-- [ ] Fix `/forms/examples` — plan: `docs/plans/review-fix-forms-examples.md`
+- [x] Fix `/forms/examples` — plan: `docs/plans/review-fix-forms-examples.md`
 
 ## Index Pages (after all reviews complete)
 
