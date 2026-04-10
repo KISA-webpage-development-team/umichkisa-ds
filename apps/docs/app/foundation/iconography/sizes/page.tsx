@@ -1,5 +1,6 @@
 import {
   Container,
+  Divider,
   Icon,
   Table,
   TableBody,
@@ -21,7 +22,7 @@ export default async function IconographySizesPage() {
         you never have to pick a size by eye — you pick a size by context.
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── The Scale ───────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">The Scale</h2>
@@ -76,7 +77,7 @@ export default async function IconographySizesPage() {
         not an arbitrary intermediate value.
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Default is md ───────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">The Default Size</h2>
@@ -93,7 +94,7 @@ export default async function IconographySizesPage() {
         because something {'"'}looks better{'"'} at a different size.
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Never Size with Font-Size ───────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Never Size with Font-Size</h2>
@@ -129,7 +130,7 @@ export default async function IconographySizesPage() {
         attributes on the SVG. Never override icon size with font utilities.
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Pairing Icons with Text ─────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Pairing Icons with Text</h2>
@@ -198,7 +199,7 @@ export default async function IconographySizesPage() {
         slightly too large. Trust the scale — it is calibrated for this.
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Never Apply Breakpoints to Icon Size ────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Never Apply Breakpoints to Icon Size</h2>

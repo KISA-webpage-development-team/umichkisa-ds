@@ -1,4 +1,4 @@
-import { Container } from '@umichkisa-ds/web'
+import { Container, Divider } from '@umichkisa-ds/web'
 export default function IconographyOverviewPage() {
   return (
     <Container size="md" as="article">
@@ -14,7 +14,7 @@ export default function IconographyOverviewPage() {
         but they feel it.
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── How the System Works ────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">How the System Works</h2>

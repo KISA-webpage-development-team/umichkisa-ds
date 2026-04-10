@@ -1,4 +1,4 @@
-import { Alert, Container, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
+import { Alert, Container, Divider, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
 import { DoDont } from '@/components/DoDont'
 import { Do, Dont } from '@/components/DoDont'
 import { CodeBlock } from '@/components/CodeBlock'
@@ -385,7 +385,7 @@ export default async function ColorsUsagePage() {
         (navy) for selected-item indicators (check icons).
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Do's and Don'ts ─────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">{"Do's and Don'ts"}</h2>
@@ -450,7 +450,7 @@ export default async function ColorsUsagePage() {
         </Dont>
       </DoDont>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Token → Utility Reference ───────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">{"Token → Utility Reference"}</h2>

@@ -1,4 +1,4 @@
-import { Container } from '@umichkisa-ds/web'
+import { Container, Divider } from '@umichkisa-ds/web'
 import { CodeBlock } from '@/components/CodeBlock'
 import { DoDont, Dont } from '@/components/DoDont'
 export default async function IconographyLibraryPage() {
@@ -37,7 +37,7 @@ export default async function IconographyLibraryPage() {
         </li>
       </ul>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Browsing Icons ──────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Browsing Icons</h2>
@@ -56,7 +56,7 @@ export default async function IconographyLibraryPage() {
         recognize from common applications.
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Naming Convention ───────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Naming Convention</h2>
@@ -76,7 +76,7 @@ export default async function IconographyLibraryPage() {
 <Icon name="chevron-down" />
 <Icon name="alert-triangle" />`} lang="tsx" />
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── What We Don't Use ───────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">What We Don{"'"}t Use</h2>
@@ -107,7 +107,7 @@ export default async function IconographyLibraryPage() {
         </Dont>
       </DoDont>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Custom Icons ────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Custom Icons</h2>

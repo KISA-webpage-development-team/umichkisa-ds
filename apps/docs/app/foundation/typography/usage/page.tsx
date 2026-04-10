@@ -1,4 +1,4 @@
-import { Container } from '@umichkisa-ds/web'
+import { Container, Divider } from '@umichkisa-ds/web'
 import { DoDont, Do, Dont } from '@/components/DoDont'
 import { InlineCode } from '@/components/InlineCode'
 
@@ -12,7 +12,7 @@ export default function TypographyUsagePage() {
         Rules and patterns for applying the type system consistently across the product.
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Always use semantic classes ─────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Always use semantic classes</h2>
@@ -58,7 +58,7 @@ export default function TypographyUsagePage() {
         outside the design system.
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Do's and Don'ts ────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Do&#39;s and Don&#39;ts</h2>
@@ -105,7 +105,7 @@ export default function TypographyUsagePage() {
         </Dont>
       </DoDont>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── State typography ────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">State typography</h2>
@@ -151,7 +151,7 @@ export default function TypographyUsagePage() {
         <p className="type-caption text-muted-foreground mt-1">Maximum 160 characters</p>
       </div>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Links ──────────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Links</h2>
@@ -198,7 +198,7 @@ export default function TypographyUsagePage() {
         </p>
       </div>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Truncation ─────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Truncation</h2>

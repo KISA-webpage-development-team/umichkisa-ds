@@ -1,4 +1,4 @@
-import { Container } from '@umichkisa-ds/web'
+import { Container, Divider } from '@umichkisa-ds/web'
 import { DoDont } from '@/components/DoDont'
 import { Do, Dont } from '@/components/DoDont'
 import { CodeBlock } from '@/components/CodeBlock'
@@ -22,7 +22,7 @@ export default async function IconographyUsagePage() {
 // Semantic — announced by screen readers
 <Icon name="x" label="Close" />`} lang="tsx" />
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Wrapping for Interaction ─────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Wrapping for Interaction</h2>
@@ -76,7 +76,7 @@ export default async function IconographyUsagePage() {
         — that creates redundant screen-reader announcements.
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Icon + Text ─────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Icon + Text</h2>
@@ -102,7 +102,7 @@ export default async function IconographyUsagePage() {
         (12px) for larger display contexts.
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Color ───────────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Color</h2>
@@ -133,7 +133,7 @@ export default async function IconographyUsagePage() {
         already exists as a semantic token — reach for that instead.
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Disabled Icons ──────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Disabled Icons</h2>
@@ -147,7 +147,7 @@ export default async function IconographyUsagePage() {
   <Icon name="lock" />
 </span>`} lang="tsx" />
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Responsive Sizing ───────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Responsive Sizing</h2>
@@ -170,7 +170,7 @@ export default async function IconographyUsagePage() {
 // ❌ wrong — breakpoint prefix on the icon directly
 <Icon name="plus" size="sm" className="md:w-5 md:h-5" />`} lang="tsx" />
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Do's and Don'ts ─────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Do{"'"}s and Don{"'"}ts</h2>

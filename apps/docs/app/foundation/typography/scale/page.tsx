@@ -1,4 +1,4 @@
-import { Alert, Container, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
+import { Alert, Container, Divider, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
 export default function TypographyScalePage() {
   return (
     <Container size="md" as="article">
@@ -211,7 +211,7 @@ export default function TypographyScalePage() {
         </p>
       </Alert>
 
-      <hr className="my-6 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Responsive Behavior ────────────────────────────── */}
       <h2 className="type-h2 mt-6 mb-4 text-foreground">Responsive Behavior</h2>

@@ -1,4 +1,4 @@
-import { Container } from '@umichkisa-ds/web'
+import { Container, Divider } from '@umichkisa-ds/web'
 import Link from 'next/link'
 import { CodeBlock } from '@/components/CodeBlock'
 
@@ -25,7 +25,7 @@ export default async function LayoutOverviewPage() {
         once. You apply them.
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── In this section ─────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">In this section</h2>
@@ -53,7 +53,7 @@ export default async function LayoutOverviewPage() {
         </li>
       </ul>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Accessibility ───────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Accessibility</h2>

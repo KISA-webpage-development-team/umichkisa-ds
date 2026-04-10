@@ -1,4 +1,4 @@
-import { Alert, Container, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
+import { Alert, Container, Divider, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
 import { ColorSwatch } from '@/components/ColorSwatch'
 import { ColorSwatchGrid } from '@/components/ColorSwatchGrid'
 import { CodeBlock } from '@/components/CodeBlock'
@@ -99,7 +99,7 @@ export default async function ColorsTokensPage() {
         today is link text. Additional use cases will be documented here as they are established.
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Understanding -subtle and -muted ────────────────── */}
       <h2 className="type-h2 mt-6 mb-2 text-foreground">Understanding <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-subtle</code> and <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">-muted</code></h2>
@@ -138,7 +138,7 @@ export default async function ColorsTokensPage() {
         value always serves a container or background role.
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Surface ─────────────────────────────────────────── */}
       <h2 className="type-h2 mt-6 mb-2 text-foreground">Surface</h2>

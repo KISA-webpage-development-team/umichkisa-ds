@@ -1,4 +1,4 @@
-import { Container, Card, CardContent, CardFooter, Alert, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
+import { Container, Card, CardContent, CardFooter, Alert, Divider, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
 import { CodeBlock } from '@/components/CodeBlock'
 export default async function TypographyFontsPage() {
   return (
@@ -11,7 +11,7 @@ export default async function TypographyFontsPage() {
         Pretendard for everything else — plus Geist Mono for code in this documentation site.
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── SejongHospital ─────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">SejongHospital — Brand &amp; Display</h2>
@@ -107,7 +107,7 @@ export default async function TypographyFontsPage() {
         </CardFooter>
       </Card>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Pretendard ─────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Pretendard — Body, UI &amp; Everything Else</h2>
@@ -209,7 +209,7 @@ export default async function TypographyFontsPage() {
         </CardFooter>
       </Card>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Geist Mono ─────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Geist Mono — Code &amp; Documentation</h2>
@@ -252,7 +252,7 @@ export default async function TypographyFontsPage() {
         </TableMobileList>
       </div>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Font Loading ───────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Font Loading</h2>
@@ -277,7 +277,7 @@ export default async function TypographyFontsPage() {
         configured once at the font loading layer and apply globally.
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Next.js Setup ──────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Next.js Setup</h2>

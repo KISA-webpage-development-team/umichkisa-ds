@@ -1,5 +1,6 @@
 import {
   Container,
+  Divider,
   Table,
   TableBody,
   TableCell,
@@ -34,7 +35,7 @@ export default async function IconographyAccessibilityPage() {
         component handles them.
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Decorative Icons ────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Decorative Icons</h2>
@@ -61,7 +62,7 @@ export default async function IconographyAccessibilityPage() {
   Save changes
 </button>`} lang="tsx" />
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Semantic Icons ──────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Semantic Icons</h2>
@@ -93,7 +94,7 @@ export default async function IconographyAccessibilityPage() {
         both the button label and the icon label.
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Decision Rule ───────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Decision Rule</h2>
@@ -154,7 +155,7 @@ export default async function IconographyAccessibilityPage() {
         </Table>
       </div>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Touch Targets ───────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Touch Targets</h2>
@@ -189,7 +190,7 @@ export default async function IconographyAccessibilityPage() {
         Never reduce the button dimensions below 44×44px to make an icon-only button feel smaller.
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Icon Color and Contrast ─────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Icon Color and Contrast</h2>

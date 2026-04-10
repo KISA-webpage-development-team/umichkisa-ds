@@ -1,4 +1,4 @@
-import { Container, Alert, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
+import { Container, Divider, Alert, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
 import { CodeBlock } from '@/components/CodeBlock'
 import { InlineCode } from '@/components/InlineCode'
 export default async function LayoutSpacingPage() {
@@ -57,7 +57,7 @@ export default async function LayoutSpacingPage() {
         the default inset is the answer.
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Max-width ───────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Max-width</h2>
@@ -79,7 +79,7 @@ export default async function LayoutSpacingPage() {
         <p className="mt-2 text-center type-caption text-muted-foreground">viewport &rarr; constrained content area &rarr; viewport</p>
       </div>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Column Gutter ───────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Column Gutter</h2>
@@ -115,7 +115,7 @@ export default async function LayoutSpacingPage() {
         {' '}prop provides tier-based control for content grids.
       </p>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Vertical Spacing ────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Vertical Spacing</h2>
@@ -185,7 +185,7 @@ export default async function LayoutSpacingPage() {
         Do not scale vertical spacing with breakpoints. If a layout feels too dense at a smaller viewport, the fix is fewer columns — not larger gaps.
       </Alert>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Page Shell ──────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Page Shell</h2>
@@ -229,7 +229,7 @@ export default async function LayoutSpacingPage() {
         Never apply only part of the page shell. All four concerns (centering, full-width, max-width, inset) must be present together.
       </Alert>
 
-      <hr className="my-8 border-0 border-t border-border" />
+      <Divider className="my-8" />
 
       {/* ── Full-Bleed Elements ─────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Full-Bleed Elements</h2>
