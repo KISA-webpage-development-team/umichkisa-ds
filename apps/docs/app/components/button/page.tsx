@@ -1,5 +1,6 @@
 import { Container, Button, Icon, Grid, Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableMobileList, TableMobileItem } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
+import { Heading } from '@/components/Heading'
 import { highlight } from '@/lib/highlight'
 
 const defaultCode = `import { Button } from '@umichkisa-ds/web'
@@ -63,10 +64,10 @@ export default async function ButtonPage() {
       </p>
 
       {/* ── Examples ────────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">Examples</h2>
+      <Heading as="h2">Examples</Heading>
 
       {/* Default */}
-      <h3 className="type-h3 mt-6 mb-2 text-foreground">Default</h3>
+      <Heading as="h3" className="mt-6">Default</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         The simplest usage. Renders as{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
@@ -83,7 +84,7 @@ export default async function ButtonPage() {
       </ComponentPreview>
 
       {/* Variants */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Variants</h3>
+      <Heading as="h3">Variants</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Four semantic variants for different levels of emphasis and intent.
       </p>
@@ -103,7 +104,7 @@ export default async function ButtonPage() {
       </ul>
 
       {/* Sizes */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Sizes</h3>
+      <Heading as="h3">Sizes</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Three sizes aligned to the spacing grid. Use{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
@@ -120,7 +121,7 @@ export default async function ButtonPage() {
       </ComponentPreview>
 
       {/* With icon */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">With icon</h3>
+      <Heading as="h3">With icon</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Button has built-in{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
@@ -140,7 +141,7 @@ export default async function ButtonPage() {
       </ComponentPreview>
 
       {/* Disabled */}
-      <h3 className="type-h3 mt-8 mb-2 text-foreground">Disabled</h3>
+      <Heading as="h3">Disabled</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
         Pass{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">
@@ -158,7 +159,7 @@ export default async function ButtonPage() {
       </ComponentPreview>
 
       {/* ── API Reference ────────────────────────────────────── */}
-      <h2 className="type-h2 mt-8 mb-4 text-foreground">API Reference</h2>
+      <Heading as="h2">API Reference</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
         All props are optional.{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">

@@ -4,12 +4,14 @@ import { useState } from 'react'
 import { Header } from '@/components/Header'
 import { Sidebar } from '@/components/Sidebar'
 import { Footer } from '@/components/Footer'
+import { AnchorClickHandler } from '@/components/AnchorClickHandler'
 
 export function DocsShell({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
     <div className="flex flex-col min-h-screen">
+      <AnchorClickHandler />
       {/* Skip link: off-screen by default, jumps into view on focus */}
       <a
         href="#main-content"
