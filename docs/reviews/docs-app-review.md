@@ -757,3 +757,79 @@ _Findings from per-page UI reviews. Each section corresponds to one page._
 | 3 | minor | content | both | Section 1 "Composition Patterns" shows 7 near-identical `FormItem + Control` examples with repetitive filler prose ("Works identically with X", "Same pattern for Y"). Regroup into two subsections — "Text inputs" (Input, Input-with-error, Textarea, Select) and "Toggle controls" (Checkbox, Switch, RadioGroup) — with shared per-group prose to reduce scroll fatigue while preserving copy-paste value. |
 
 **Notes:** Findings #3 (h3 uses type-h2) and #4 (p-8 tight on mobile) from the initial pass were folded into #2, since replacing the raw card with `Card`/`CardTitle` auto-resolves both. InlineCode migration skipped per standing rule. No Table on page (composition page, not API reference).
+
+## /forms/overview
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | `sm:grid-cols-2` and `sm:col-span-2` — only default/md:/lg: breakpoints allowed |
+| 2 | minor | ds-violation | both | `rounded-lg` on link cards — DS uses `rounded-md` (resolved by #3) |
+| 3 | major | ds-violation | both | "What's Inside" section uses raw markup — should use DS Grid + Card components (CardTitle provides vivid heading, Card provides `rounded-md`, resolves #2) |
+| 4 | major | ds-violation | both | Peer dependency note (lines 64–69) should be DS `Alert variant="info"`, not muted `<p>` |
+| 5 | major | ds-violation | both | Intro sub-paragraph (lines 55–59) should be DS `Alert variant="info"`, not muted `<p>` |
+| 6 | minor | content | both | Quick Start description repeats "compound component" and "automatic error" concepts from intro — trim to one sentence |
+| 7 | major | content | both | Installation section shows `npm install @umichkisa-ds/form react-hook-form` as if public npm package — must show git URL + tag pattern with detailed instructions, plus separate `npm install react-hook-form` for the public peer dep |
+
+**Notes:** Finding #2 is auto-resolved by #3 (Card component uses `rounded-md` by default). InlineCode migration skipped per standing rule. No API Table on this page.
+
+## /forms/hooks
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | 4 raw `<table>` elements with hand-rolled styling — migrate to DS Table (hidden md:block) + TableMobileList (block md:hidden) |
+| 2 | major | ds-violation | both | Intro sub-paragraph (`text-muted-foreground`, "For cases where...") → DS `<Alert variant="info">` explaining the escape-hatch philosophy: `Form.*` compounds enforce label-above-field layout; hooks provide the same RHF wiring without layout opinions |
+| 3 | minor | ds-violation | both | Second h3 "Return Value" under useFormField section uses `mt-6` — should be `mt-8` per established page rhythm (first h3 `mt-6`, rest `mt-8`) |
+| 4 | major | content | both | `useFormStatusCode` displayed code string uses raw `text-sm` instead of `type-body-sm` — teaches non-DS patterns. Live demo already correct. |
+| 5 | major | content | both | `useFormFieldCode` displayed code string uses raw `<button type="submit">Save</button>` instead of DS `Button` — teaches non-DS patterns. Live demo already correct. |
+| 6 | major | content | both | `useFormField` code example recreates label-above-field layout (same as `Form.Input`) — should demonstrate a layout compounds can't express (e.g., inline horizontal label-input) to justify using the hook |
+
+**Dropped:** Demo `alert()` usage — cross-cutting pattern across all forms demos, not page-specific.
+
+## /forms/form-component
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | Raw HTML `<table>` for Shared Field Props → migrate to DS Table + TableMobileList |
+| 2 | minor | content | both | Add "Component-Specific Props" table for Form.Button (`disableWhenInvalid`), Form.DatePicker and Form.DateRangePicker (`placeholder`, `formatDate`) — also DS Table + TableMobileList |
+| 3 | minor | content | both | Replace intro `text-muted-foreground` paragraph with DS `<Alert variant="info">` cross-referencing `/forms/overview` and `/forms/use-form` |
+
+**Dropped:** `alert()` in FormRootDemo/ButtonDemo — acceptable. Per-component API tables — unique props are thin, consolidated into a single Component-Specific Props table instead. Missing `type-*` on table cells — subsumed by Table migration (#1).
+
+## /forms/use-form
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | ds-violation | both | Raw `<table>` HTML for both API tables (Options + Return Value) — migrate to DS `Table` component |
+| 2 | major | responsive | mobile | No `TableMobileList` for either API table |
+| 3 | minor | content | both | API table `mode` description re-explains the onTouched default — trim to just mechanics |
+| 4 | minor | content | both | No cross-link to `/forms/form-component` from Basic Usage or `/forms/validation` from resolver row |
+| 5 | minor | content | both | `basicCode` snippet uses `console.log` but live demo uses `alert()` — align demo to `console.log` |
+| 6 | major | content | both | Missing "Why / When" framing — page never explains why devs need this wrapper over raw RHF, or when to use it |
+
+**Dropped:** Missing bottom border on last Return Value table row — subsumed by Table migration (#1).
+
+## /forms/validation
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | major | content | both | `tryItCode` is a comment placeholder (`// See the rules used in each field below`). Replace with the full `ValidationDemo` source so the ComponentPreview code tab shows copyable working code. |
+| 2 | major | ds-violation | both | Intro sub-paragraph ("How form validation works with the onTouched default...") is a secondary muted `<p>` — replace with DS `<Alert>` component. |
+| 3 | major | content | both | onTouched Lifecycle section: (a) code block is prose comments, not code — replace with regular text, (b) rewrite to contrast onChange/onTouched/onSubmit with tradeoffs, (c) state onTouched is the default, (d) walk through lifecycle as a numbered `<ol>`. |
+
+**Dropped findings:**
+- `alert()` in demo onSubmit: cross-cutting pattern across all 6 forms demo files, not page-specific
+- h3 `type-body !font-semibold` pattern: accepted DS workaround (no `type-h3` exists)
+- No Table migration: page has no API reference table
+
+## /forms/examples
+
+| # | Severity | Type | Viewport | Finding |
+|---|----------|------|----------|---------|
+| 1 | minor | content | both | Remove intro sub-paragraph — H1 "Examples" is self-explanatory |
+| 2 | major | ux | both | Replace `alert()` with `toast()` in all four demos and their code strings; add `Toaster` provider to the page |
+
+**Dropped findings:**
+- Intro paragraph as Alert: this is the primary intro, not a secondary cross-ref/caveat — removed entirely instead
+- Code/demo mismatch (profileCode/feedbackCode show `console.log` but demos use `alert`): absorbed into #2, toast migration resolves both
+- Cross-reference links to related forms pages: sidebar handles navigation, page is intentionally lean
+- Section dividers between examples: `mt-8` matches established docs rhythm
