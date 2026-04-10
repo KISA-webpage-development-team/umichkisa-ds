@@ -13,7 +13,7 @@ export function BasicDemo() {
   })
 
   const onSubmit = (data: SignupValues) => {
-    alert(`Welcome, ${data.name}!`)
+    console.log(data)
   }
 
   return (
