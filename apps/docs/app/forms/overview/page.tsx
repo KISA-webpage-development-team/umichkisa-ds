@@ -13,11 +13,9 @@ import { highlight } from '@/lib/highlight'
 import Link from 'next/link'
 import { QuickStartDemo } from './_demos'
 
-const installFormCode = `// In your project's package.json, add under "dependencies":
-"@umichkisa-ds/form": "github:KISA-webpage-development-team/umichkisa-ds#form-vX.X.X"
+const installFormPkgJson = `"@umichkisa-ds/form": "github:KISA-webpage-development-team/umichkisa-ds#form-vX.X.X"`
 
-// Then run:
-npm install`
+const installFormBash = `npm install`
 
 const installRHFCode = `npm install react-hook-form`
 
@@ -65,12 +63,13 @@ export default async function FormsOverviewPage() {
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">
         Forms
       </h1>
-      <Alert variant="info" className="mb-8">
-        A thin integration layer between{' '}
+      <p className="type-body mb-8 text-muted-foreground max-w-prose">
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@umichkisa-ds/form</code>{' '}
+        is a thin integration layer between{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">react-hook-form</code>{' '}
         and the KISA Design System. It provides sensible defaults, automatic error
         wiring, and compound components that eliminate boilerplate.
-      </Alert>
+      </p>
 
       {/* ── Installation ──────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Installation</h2>
@@ -79,7 +78,11 @@ export default async function FormsOverviewPage() {
         Add the git URL to your project{"'"}s <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">package.json</code> dependencies,
         pointing to the desired release tag:
       </p>
-      <CodeBlock code={installFormCode} lang="bash" />
+      <CodeBlock code={installFormPkgJson} lang="json" />
+      <p className="type-body mb-4 text-foreground max-w-prose">
+        Then install dependencies:
+      </p>
+      <CodeBlock code={installFormBash} lang="bash" />
       <p className="type-body mb-4 text-foreground max-w-prose">
         You also need <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">react-hook-form</code> as
         a peer dependency:
@@ -104,8 +107,8 @@ export default async function FormsOverviewPage() {
       {/* ── What's Inside ─────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">{"What's Inside"}</h2>
       <Grid columns={{ base: 1, md: 2 }} gap="component" className="my-6">
-        <Link href="/forms/use-form" className="block hover:bg-surface-subtle transition-colors rounded-md focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2">
-          <Card>
+        <Link href="/forms/use-form" className="block h-full rounded-md focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2">
+          <Card className="h-full hover:bg-surface-subtle transition-colors">
             <CardHeader>
               <CardTitle>useForm</CardTitle>
               <CardDescription>
@@ -115,8 +118,8 @@ export default async function FormsOverviewPage() {
           </Card>
         </Link>
 
-        <Link href="/forms/form-component" className="block hover:bg-surface-subtle transition-colors rounded-md focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2">
-          <Card>
+        <Link href="/forms/form-component" className="block h-full rounded-md focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2">
+          <Card className="h-full hover:bg-surface-subtle transition-colors">
             <CardHeader>
               <CardTitle>Form Component</CardTitle>
               <CardDescription>
@@ -126,8 +129,8 @@ export default async function FormsOverviewPage() {
           </Card>
         </Link>
 
-        <Link href="/forms/validation" className="block hover:bg-surface-subtle transition-colors rounded-md focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2">
-          <Card>
+        <Link href="/forms/validation" className="block h-full rounded-md focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2">
+          <Card className="h-full hover:bg-surface-subtle transition-colors">
             <CardHeader>
               <CardTitle>Validation</CardTitle>
               <CardDescription>
@@ -137,8 +140,8 @@ export default async function FormsOverviewPage() {
           </Card>
         </Link>
 
-        <Link href="/forms/hooks" className="block hover:bg-surface-subtle transition-colors rounded-md focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2">
-          <Card>
+        <Link href="/forms/hooks" className="block h-full rounded-md focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2">
+          <Card className="h-full hover:bg-surface-subtle transition-colors">
             <CardHeader>
               <CardTitle>Hooks</CardTitle>
               <CardDescription>
@@ -148,8 +151,8 @@ export default async function FormsOverviewPage() {
           </Card>
         </Link>
 
-        <Link href="/forms/examples" className="block md:col-span-2 hover:bg-surface-subtle transition-colors rounded-md focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2">
-          <Card>
+        <Link href="/forms/examples" className="block md:col-span-2 h-full rounded-md focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2">
+          <Card className="h-full hover:bg-surface-subtle transition-colors">
             <CardHeader>
               <CardTitle>Examples</CardTitle>
               <CardDescription>
