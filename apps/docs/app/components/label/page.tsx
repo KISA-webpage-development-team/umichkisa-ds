@@ -167,7 +167,7 @@ export default async function LabelPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><InlineCode>htmlFor*</InlineCode></TableCell>
+                <TableCell><InlineCode>htmlFor<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>The id of the form control this label is associated with.</TableCell>
@@ -191,7 +191,7 @@ export default async function LabelPage() {
                 <TableCell>Merged via cn(). Use for layout utilities only.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><InlineCode>children*</InlineCode></TableCell>
+                <TableCell><InlineCode>children<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Label text content.</TableCell>
@@ -203,7 +203,7 @@ export default async function LabelPage() {
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>htmlFor*</strong></span>
+              <span className="type-body-sm text-foreground"><strong>htmlFor<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">The id of the form control this label is associated with.</span>
             </TableMobileItem>
@@ -224,7 +224,7 @@ export default async function LabelPage() {
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>children*</strong></span>
+              <span className="type-body-sm text-foreground"><strong>children<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">Label text content.</span>
             </TableMobileItem>

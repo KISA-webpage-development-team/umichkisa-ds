@@ -322,13 +322,13 @@ export default async function FormComponentPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><InlineCode>name*</InlineCode></TableCell>
+                <TableCell><InlineCode>name<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Field name matching a key in your form values type.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><InlineCode>label*</InlineCode></TableCell>
+                <TableCell><InlineCode>label<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Visible label text. Also used for accessibility.</TableCell>
@@ -358,12 +358,12 @@ export default async function FormComponentPage() {
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>name*</strong></span>
+              <span className="type-body-sm text-foreground"><strong>name<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Field name matching a key in your form values type.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>label*</strong></span>
+              <span className="type-body-sm text-foreground"><strong>label<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Visible label text. Also used for accessibility.</span>
             </TableMobileItem>
