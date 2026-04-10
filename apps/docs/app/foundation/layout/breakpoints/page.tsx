@@ -6,8 +6,6 @@ import {
   TableRow,
   TableHead,
   TableCell,
-  TableMobileList,
-  TableMobileItem,
 } from '@umichkisa-ds/web'
 export default function LayoutBreakpointsPage() {
   return (
@@ -34,7 +32,7 @@ export default function LayoutBreakpointsPage() {
       </p>
 
       {/* ── Breakpoint Table ────────────────────────────────── */}
-      <div className="my-6 hidden md:block">
+      <div className="my-6">
         <Table>
           <TableHeader>
             <TableRow>
@@ -61,26 +59,6 @@ export default function LayoutBreakpointsPage() {
             </TableRow>
           </TableBody>
         </Table>
-      </div>
-
-      <div className="my-6 block md:hidden">
-        <TableMobileList>
-          <TableMobileItem>
-            <span className="type-body-sm text-foreground"><strong>Mobile</strong></span>
-            <span className="type-caption text-muted-foreground">Prefix: <em>(default)</em></span>
-            <span className="type-caption text-muted-foreground">Viewport: &lt; 768px</span>
-          </TableMobileItem>
-          <TableMobileItem>
-            <span className="type-body-sm text-foreground"><strong>Tablet</strong></span>
-            <span className="type-caption text-muted-foreground">Prefix: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">md:</code></span>
-            <span className="type-caption text-muted-foreground">Viewport: ≥ 768px</span>
-          </TableMobileItem>
-          <TableMobileItem>
-            <span className="type-body-sm text-foreground"><strong>Desktop</strong></span>
-            <span className="type-caption text-muted-foreground">Prefix: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">lg:</code></span>
-            <span className="type-caption text-muted-foreground">Viewport: ≥ 1024px</span>
-          </TableMobileItem>
-        </TableMobileList>
       </div>
 
       <p className="type-body mb-4 text-foreground max-w-prose">
