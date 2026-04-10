@@ -1,4 +1,4 @@
-import { Container, Alert } from '@umichkisa-ds/web'
+import { Container } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { CodeBlock } from '@/components/CodeBlock'
 import { highlight } from '@/lib/highlight'
@@ -139,9 +139,10 @@ export default async function ValidationPage() {
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">
         Validation
       </h1>
-      <Alert variant="info" title="What this page covers" className="mb-8">
-        How form validation works with the onTouched default, built-in rules, and custom validators.
-      </Alert>
+      <p className="type-body mb-8 text-foreground max-w-prose">
+        How form validation works with the onTouched default, built-in rules,
+        and custom validators.
+      </p>
 
       {/* ── onTouched Lifecycle ────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">
@@ -155,27 +156,27 @@ export default async function ValidationPage() {
         — you get this behavior for free without any configuration.
       </p>
       <ul className="list-disc pl-6 mb-4 space-y-1 max-w-prose">
-        <li className="type-body-sm text-foreground">
+        <li className="type-body text-foreground">
           <strong>onChange</strong>{' '}
           <span className="text-muted-foreground">— validates on every keystroke. Too aggressive for most forms — users see errors before they finish typing.</span>
         </li>
-        <li className="type-body-sm text-foreground">
+        <li className="type-body text-foreground">
           <strong>onTouched</strong>{' '}
           <span className="text-muted-foreground">— validates when a field loses focus (blur), then re-validates on each change. The sweet spot: errors appear after the user is done with a field, and clear immediately as they correct it.</span>
         </li>
-        <li className="type-body-sm text-foreground">
+        <li className="type-body text-foreground">
           <strong>onSubmit</strong>{' '}
           <span className="text-muted-foreground">— validates only on form submission. Users get no feedback until they hit submit, which can feel unresponsive.</span>
         </li>
       </ul>
-      <p className="type-body-sm mb-4 text-muted-foreground max-w-prose">
+      <p className="type-body mb-4 text-muted-foreground max-w-prose">
         Here is what onTouched looks like in practice:
       </p>
       <ol className="list-decimal pl-6 mb-4 space-y-1 max-w-prose">
-        <li className="type-body-sm text-foreground">User focuses the email field and types &quot;abc&quot;</li>
-        <li className="type-body-sm text-foreground">User clicks away (blur) — validation runs, &quot;Invalid email&quot; error appears</li>
-        <li className="type-body-sm text-foreground">User clicks back and types &quot;abc@umich.edu&quot; — error clears immediately</li>
-        <li className="type-body-sm text-foreground">Result: errors never interrupt typing, but always appear before submission</li>
+        <li className="type-body text-foreground">User focuses the email field and types &quot;abc&quot;</li>
+        <li className="type-body text-foreground">User clicks away (blur) — validation runs, &quot;Invalid email&quot; error appears</li>
+        <li className="type-body text-foreground">User clicks back and types &quot;abc@umich.edu&quot; — error clears immediately</li>
+        <li className="type-body text-foreground">Result: errors never interrupt typing, but always appear before submission</li>
       </ol>
 
       {/* ── Live Demo ─────────────────────────────────────── */}
