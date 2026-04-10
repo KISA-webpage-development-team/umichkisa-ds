@@ -8,6 +8,8 @@ import {
   SelectContent,
   SelectItem,
   RadioItem,
+  Toaster,
+  toast,
 } from '@umichkisa-ds/web'
 import { useForm, Form, useFormField, useFormStatus } from '@umichkisa-ds/form'
 import { FormProvider } from 'react-hook-form'
@@ -26,7 +28,7 @@ export function LoginDemo() {
   return (
     <Form
       form={form}
-      onSubmit={(data) => alert(`Logged in as ${data.email}`)}
+      onSubmit={(data) => toast(`Logged in as ${data.email}`)}
       className="w-full max-w-sm"
     >
       <Form.Input
@@ -76,7 +78,7 @@ export function ProfileDemo() {
   return (
     <Form
       form={form}
-      onSubmit={(data) => alert(`Saved profile for ${data.name} (${data.gradYear})`)}
+      onSubmit={(data) => toast(`Saved profile for ${data.name} (${data.gradYear})`)}
       className="w-full max-w-sm"
     >
       <Form.Input
@@ -133,7 +135,7 @@ export function FeedbackDemo() {
   return (
     <Form
       form={form}
-      onSubmit={(data) => alert(`Feedback sent about "${data.subject}"`)}
+      onSubmit={(data) => toast(`Feedback sent about "${data.subject}"`)}
       className="w-full max-w-sm"
     >
       <Form.Select
@@ -216,7 +218,7 @@ export function HooksLoginDemo() {
   return (
     <FormProvider {...form}>
       <form
-        onSubmit={form.handleSubmit((data) => alert(`Logged in as ${data.email}`))}
+        onSubmit={form.handleSubmit((data) => toast(`Logged in as ${data.email}`))}
         className="flex flex-col gap-4 w-full max-w-sm"
       >
         <HooksEmailField />
@@ -225,4 +227,12 @@ export function HooksLoginDemo() {
       </form>
     </FormProvider>
   )
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Toaster mount (rendered once on the page)
+   ══════════════════════════════════════════════════════════════ */
+
+export function ToasterMount() {
+  return <Toaster />
 }

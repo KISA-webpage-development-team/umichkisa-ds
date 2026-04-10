@@ -1,11 +1,12 @@
 import { Container } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
-import { LoginDemo, ProfileDemo, FeedbackDemo, HooksLoginDemo } from './_demos'
+import { LoginDemo, ProfileDemo, FeedbackDemo, HooksLoginDemo, ToasterMount } from './_demos'
 
 /* ── Code strings ─────────────────────────────────────────── */
 
 const loginCode = `import { useForm, Form } from '@umichkisa-ds/form'
+import { toast } from '@umichkisa-ds/web'
 
 type LoginValues = {
   email: string
@@ -18,7 +19,7 @@ function LoginForm() {
   })
 
   const onSubmit = (data: LoginValues) => {
-    alert(\`Logged in as \${data.email}\`)
+    toast(\`Logged in as \${data.email}\`)
   }
 
   return (
@@ -45,7 +46,7 @@ function LoginForm() {
 }`
 
 const profileCode = `import { useForm, Form } from '@umichkisa-ds/form'
-import { RadioItem } from '@umichkisa-ds/web'
+import { RadioItem, toast } from '@umichkisa-ds/web'
 
 type ProfileValues = {
   name: string
@@ -67,7 +68,7 @@ function ProfileForm() {
   })
 
   return (
-    <Form form={form} onSubmit={(data) => console.log(data)}>
+    <Form form={form} onSubmit={(data) => toast(\`Saved profile for \${data.name} (\${data.gradYear})\`)}>
       <Form.Input
         name="name"
         label="Full Name"
@@ -105,7 +106,7 @@ function ProfileForm() {
 }`
 
 const feedbackCode = `import { useForm, Form } from '@umichkisa-ds/form'
-import { SelectTrigger, SelectContent, SelectItem } from '@umichkisa-ds/web'
+import { SelectTrigger, SelectContent, SelectItem, toast } from '@umichkisa-ds/web'
 
 type FeedbackValues = {
   subject: string
@@ -119,7 +120,7 @@ function FeedbackForm() {
   })
 
   return (
-    <Form form={form} onSubmit={(data) => console.log(data)}>
+    <Form form={form} onSubmit={(data) => toast(\`Feedback sent about "\${data.subject}"\`)}>
       <Form.Select
         name="subject"
         label="Subject"
@@ -153,7 +154,7 @@ function FeedbackForm() {
 }`
 
 const hooksCode = `import { useForm, useFormField, useFormStatus } from '@umichkisa-ds/form'
-import { Input, Button, FormItem } from '@umichkisa-ds/web'
+import { Input, Button, FormItem, toast } from '@umichkisa-ds/web'
 import { FormProvider } from 'react-hook-form'
 
 type LoginValues = { email: string; password: string }
@@ -198,7 +199,7 @@ function HooksLoginForm() {
   return (
     <FormProvider {...form}>
       <form
-        onSubmit={form.handleSubmit((data) => alert(\`Logged in as \${data.email}\`))}
+        onSubmit={form.handleSubmit((data) => toast(\`Logged in as \${data.email}\`))}
         className="flex flex-col gap-4"
       >
         <EmailField />
@@ -222,15 +223,10 @@ export default async function ExamplesPage() {
 
   return (
     <Container size="md" as="article">
+      <ToasterMount />
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">
         Examples
       </h1>
-      <p className="type-body mb-8 text-muted-foreground max-w-prose">
-        Live interactive forms you can try right here. Each example is a
-        complete, working form using{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@umichkisa-ds/form</code>.
-      </p>
-
       {/* ── Login Form ────────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Login Form</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
