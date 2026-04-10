@@ -233,3 +233,12 @@ Must: Toggle inline label text uses `type-body-sm text-foreground`. Exception: S
 Must: FormItem is for vertical label-above-control layout only. Toggle controls compose with FormItem as children — FormItem provides the field heading, the toggle's `text` prop provides the inline description. [source:form-ui-review/2026-03-31]
 Must: Wire `aria-describedby` manually on the form control to associate FormItem's description/error text. IDs follow the pattern `{htmlFor}-description` and `{htmlFor}-error`. [source:form-ui-review/2026-03-31]
 Must: Use `htmlFor` for native form elements (input, textarea). Use `aria-labelledby` with the Label's `id` for non-native triggers (Select, RadioGroup). FormItem auto-generates `{htmlFor}-label` on its Label — reference it on the control when needed. [source:label-id/2026-04-04]
+
+---
+
+## Documentation
+
+### API Reference Tables
+
+Must: Required props (no `?` in TypeScript type, no default value) use an asterisk appended to the prop name — never `(required)` in the Default column. Pattern: `<InlineCode>propName<span aria-label="required">*</span></InlineCode>` (desktop) and `<strong>propName<span aria-label="required">*</span></strong>` (mobile). Default column shows `—` for required props. [source:required-prop-sweep/2026-04-11]
+Must: Tables containing required props must have a `<p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>` caption after both the desktop Table and mobile TableMobileList. Omit when no props are required. [source:required-prop-sweep/2026-04-11]
