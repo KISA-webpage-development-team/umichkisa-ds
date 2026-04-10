@@ -158,18 +158,18 @@ export default async function ValidationPage() {
       <ul className="list-disc pl-6 mb-4 space-y-1 max-w-prose">
         <li className="type-body text-foreground">
           <strong>onChange</strong>{' '}
-          <span className="text-muted-foreground">— validates on every keystroke. Too aggressive for most forms — users see errors before they finish typing.</span>
+          — validates on every keystroke. Too aggressive for most forms — users see errors before they finish typing.
         </li>
         <li className="type-body text-foreground">
           <strong>onTouched</strong>{' '}
-          <span className="text-muted-foreground">— validates when a field loses focus (blur), then re-validates on each change. The sweet spot: errors appear after the user is done with a field, and clear immediately as they correct it.</span>
+          — validates when a field loses focus (blur), then re-validates on each change. The sweet spot: errors appear after the user is done with a field, and clear immediately as they correct it.
         </li>
         <li className="type-body text-foreground">
           <strong>onSubmit</strong>{' '}
-          <span className="text-muted-foreground">— validates only on form submission. Users get no feedback until they hit submit, which can feel unresponsive.</span>
+          — validates only on form submission. Users get no feedback until they hit submit, which can feel unresponsive.
         </li>
       </ul>
-      <p className="type-body mb-4 text-muted-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground max-w-prose">
         Here is what onTouched looks like in practice:
       </p>
       <ol className="list-decimal pl-6 mb-4 space-y-1 max-w-prose">
