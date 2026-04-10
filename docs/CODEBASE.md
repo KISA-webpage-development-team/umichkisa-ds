@@ -105,8 +105,14 @@ No `dist/styles.css` import. Font injection handled separately (unchanged). Toke
 ## Docs UI Components (not part of the library)
 
 Already built for the docs site itself:
-`ColorSwatch`, `ColorSwatchGrid`, `ContrastTable`, `DoDont`, `Callout`, `Sidebar`, `Header`, `Footer`, `ComponentPreview`, `SizesExample`, `CodeBlock`, `CodeBlockClient`
+`ColorSwatch`, `ColorSwatchGrid`, `ContrastTable`, `DoDont`, `Callout`, `Sidebar`, `Header`, `Footer`, `ComponentPreview`, `SizesExample`, `CodeBlock`, `CodeBlockClient`, `InlineCode`, `Heading`, `AnchorClickHandler`
 Located in `apps/docs/components/`.
+
+### Heading Infrastructure
+- `apps/docs/lib/slug.ts` — `slugify(text)` utility for auto-generating anchor IDs from heading text.
+- `apps/docs/lib/cn.ts` — local `cn()` utility (clsx + tailwind-merge) for server components (the DS `cn` from `@umichkisa-ds/web` has a `"use client"` banner).
+- `apps/docs/components/Heading.tsx` — server component. Props: `as` (h2/h3), optional `id` override, optional `className`. Renders heading with auto-slug `id`, `scroll-mt-20` for fixed header offset, and hover-visible `#` anchor link.
+- `apps/docs/components/AnchorClickHandler.tsx` — `"use client"`, mounted once in `DocsShell.tsx`. Event delegation: intercepts clicks on `a[data-heading-anchor]` and copies full URL to clipboard.
 
 ### CodeBlock Infrastructure
 - `apps/docs/lib/highlight.ts` — singleton Shiki highlighter (server-only), exports `highlight(code, lang)` returning HTML string. Languages: tsx, css, bash, json, text.
