@@ -1,4 +1,14 @@
-import { Container } from '@umichkisa-ds/web'
+import {
+  Container,
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableHead,
+  TableCell,
+  TableMobileList,
+  TableMobileItem,
+} from '@umichkisa-ds/web'
 export default function LayoutBreakpointsPage() {
   return (
     <Container size="md" as="article">
@@ -24,33 +34,59 @@ export default function LayoutBreakpointsPage() {
       </p>
 
       {/* ── Breakpoint Table ────────────────────────────────── */}
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Name</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Prefix</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Viewport</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Mobile</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><em>(default)</em></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">&lt; 768px</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Tablet</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md:</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">&ge; 768px</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 type-body-sm text-foreground">Desktop</td>
-              <td className="px-4 py-3 type-body-sm text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg:</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">&ge; 1024px</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6 hidden md:block">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Name</TableHead>
+              <TableHead>Prefix</TableHead>
+              <TableHead>Viewport</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell>Mobile</TableCell>
+              <TableCell><em>(default)</em></TableCell>
+              <TableCell>&lt; 768px</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Tablet</TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">md:</code></TableCell>
+              <TableCell>&ge; 768px</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Desktop</TableCell>
+              <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">lg:</code></TableCell>
+              <TableCell>&ge; 1024px</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
+
+      <div className="my-6 block md:hidden">
+        <TableMobileList>
+          <TableMobileItem
+            label="Mobile"
+            items={[
+              { label: 'Prefix', value: '(default)' },
+              { label: 'Viewport', value: '< 768px' },
+            ]}
+          />
+          <TableMobileItem
+            label="Tablet"
+            items={[
+              { label: 'Prefix', value: 'md:' },
+              { label: 'Viewport', value: '≥ 768px' },
+            ]}
+          />
+          <TableMobileItem
+            label="Desktop"
+            items={[
+              { label: 'Prefix', value: 'lg:' },
+              { label: 'Viewport', value: '≥ 1024px' },
+            ]}
+          />
+        </TableMobileList>
       </div>
 
       <p className="type-body mb-4 text-foreground max-w-prose">
