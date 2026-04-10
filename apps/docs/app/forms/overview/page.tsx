@@ -63,7 +63,7 @@ export default async function FormsOverviewPage() {
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">
         Forms
       </h1>
-      <p className="type-body mb-8 text-muted-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground max-w-prose">
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@umichkisa-ds/form</code>{' '}
         is a thin integration layer between{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">react-hook-form</code>{' '}
