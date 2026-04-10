@@ -1,35 +1,28 @@
 'use client'
 
-import { Input, Button, FormItem } from '@umichkisa-ds/web'
+import { Input, Button, Label } from '@umichkisa-ds/web'
 import { useForm, Form, useFormField, useFormStatus } from '@umichkisa-ds/form'
 
 /* ── Demo: useFormField ───────────────────────────────────── */
 
 type ProfileValues = { name: string; email: string }
 
-function NameField() {
-  const { inputProps, error } = useFormField<ProfileValues>('name', {
-    required: 'Name is required',
-  })
+function InlineField({ name, label, rules }: {
+  name: keyof ProfileValues
+  label: string
+  rules?: Record<string, string>
+}) {
+  const { inputProps, error } = useFormField<ProfileValues>(name, rules)
   const { value, ...rest } = inputProps
 
   return (
-    <FormItem htmlFor="name" label="Name" error={error} required>
-      <Input id="name" value={value as string} {...rest} />
-    </FormItem>
-  )
-}
-
-function EmailField() {
-  const { inputProps, error } = useFormField<ProfileValues>('email', {
-    required: 'Email is required',
-  })
-  const { value, ...rest } = inputProps
-
-  return (
-    <FormItem htmlFor="email" label="Email" error={error} required>
-      <Input id="email" type="email" value={value as string} {...rest} />
-    </FormItem>
+    <div className="flex items-start gap-2">
+      <Label htmlFor={name} className="w-20 shrink-0 mt-2">{label}</Label>
+      <div className="flex-1">
+        <Input id={name} value={value as string} {...rest} />
+        {error && <p className="type-caption text-error mt-1">{error}</p>}
+      </div>
+    </div>
   )
 }
 
@@ -40,9 +33,12 @@ export function UseFormFieldDemo() {
 
   return (
     <Form form={form} onSubmit={(data) => alert(`${data.name} / ${data.email}`)} className="w-full max-w-sm">
-      <NameField />
-      <EmailField />
-      <Button type="submit">Save</Button>
+      <InlineField name="name" label="Name" rules={{ required: 'Name is required' }} />
+      <InlineField name="email" label="Email" rules={{ required: 'Email is required' }} />
+      <div className="flex items-start gap-2">
+        <div className="w-20 shrink-0" />
+        <Button type="submit">Save</Button>
+      </div>
     </Form>
   )
 }
