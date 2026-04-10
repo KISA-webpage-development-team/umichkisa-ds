@@ -1,4 +1,15 @@
-import { Container } from '@umichkisa-ds/web'
+import {
+  Container,
+  Alert,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableMobileItem,
+  TableMobileList,
+  TableRow,
+} from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { CodeBlock } from '@/components/CodeBlock'
 import { highlight } from '@/lib/highlight'
@@ -66,13 +77,22 @@ export default async function UseFormPage() {
         Returns the same <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">UseFormReturn</code> object
         — all react-hook-form methods are available.
       </p>
+      <Alert variant="info" title="Why use this over raw react-hook-form?">
+        This wrapper pre-configures <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">mode: &quot;onTouched&quot;</code> so
+        every form validates consistently — errors appear after blur and clear as the user
+        types. Use it whenever you build a form with{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">@umichkisa-ds/form</code>.
+        The returned object is the standard react-hook-form instance — no new API to learn.
+      </Alert>
 
       {/* ── Basic Usage ───────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Basic Usage</h2>
       <p className="type-body mb-4 text-foreground max-w-prose">
         Pass a type generic and <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">defaultValues</code> to
-        get a fully typed form instance. The returned object is passed to the{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Form>'}</code> component.
+        get a fully typed form instance. The returned object is passed to
+        the <a href="/forms/form-component" className="text-link hover:text-brand-primary hover:underline">
+          <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Form>'}</code> component
+        </a>.
       </p>
       <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
         <BasicDemo />
@@ -106,37 +126,59 @@ export default async function UseFormPage() {
         react-hook-form. The only change is the default value of{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">mode</code>.
       </p>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Option</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Type</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Default</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">mode</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{`'onTouched' | 'onChange' | 'onBlur' | 'onSubmit' | 'all'`}</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{`'onTouched'`}</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">When validation triggers. Our default shows errors after blur and clears on change.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">defaultValues</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'Partial<T>'}</code></td>
-              <td className="px-4 py-3 text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Initial values for all fields. Strongly recommended for type safety.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">resolver</code></td>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Resolver</code></td>
-              <td className="px-4 py-3 text-foreground">—</td>
-              <td className="px-4 py-3 type-body-sm text-foreground">External validation resolver (e.g., Zod, Yup). Use for complex schemas.</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table size="sm">
+            <TableHeader>
+              <TableRow>
+                <TableHead>Prop</TableHead>
+                <TableHead>Type</TableHead>
+                <TableHead>Default</TableHead>
+                <TableHead>Description</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">mode</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{`'onTouched' | 'onChange' | 'onBlur' | 'onSubmit' | 'all'`}</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{`'onTouched'`}</code></TableCell>
+                <TableCell>When validation triggers.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">defaultValues</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'Partial<T>'}</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Initial values for all fields. Strongly recommended for type safety.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">resolver</code></TableCell>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Resolver</code></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>External validation resolver (e.g., Zod, Yup). See <a href="/forms/validation" className="text-link hover:text-brand-primary hover:underline">Validation</a> for details.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>mode</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{`'onTouched' | 'onChange' | 'onBlur' | 'onSubmit' | 'all'`}</code></span>
+              <span className="type-caption text-muted-foreground">Default: <code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{`'onTouched'`}</code></span>
+              <span className="type-caption text-muted-foreground">When validation triggers.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>defaultValues</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">{'Partial<T>'}</code></span>
+              <span className="type-caption text-muted-foreground">Initial values for all fields. Strongly recommended for type safety.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>resolver</strong></span>
+              <span className="type-caption text-muted-foreground"><code className="rounded px-1 py-0.5 font-mono bg-surface-subtle">Resolver</code></span>
+              <span className="type-caption text-muted-foreground">External validation resolver (e.g., Zod, Yup). See <a href="/forms/validation" className="text-link hover:text-brand-primary hover:underline">Validation</a> for details.</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
 
       <h2 className="type-h2 mt-8 mb-4 text-foreground">Return Value</h2>
@@ -145,37 +187,63 @@ export default async function UseFormPage() {
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">UseFormReturn{'<T>'}</code> object. Key
         properties:
       </p>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border">
-          <thead className="bg-surface-subtle">
-            <tr>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Property</th>
-              <th className="px-4 py-3 text-left type-caption border-b border-border text-muted-foreground">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">handleSubmit</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Validates and calls your onSubmit handler. Used internally by the Form component.</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">reset()</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Resets the form to defaultValues (or provided values).</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">setError()</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Manually set an error on a field (e.g., server-side validation).</td>
-            </tr>
-            <tr className="border-b border-border">
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">watch()</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Subscribe to field value changes reactively.</td>
-            </tr>
-            <tr>
-              <td className="px-4 py-3 text-foreground"><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">formState</code></td>
-              <td className="px-4 py-3 type-body-sm text-foreground">Object containing isSubmitting, isValid, isDirty, errors, and more.</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="my-6">
+        <div className="hidden md:block">
+          <Table size="sm">
+            <TableHeader>
+              <TableRow>
+                <TableHead>Property</TableHead>
+                <TableHead>Description</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">handleSubmit</code></TableCell>
+                <TableCell>Validates and calls your onSubmit handler. Used internally by the Form component.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">reset()</code></TableCell>
+                <TableCell>Resets the form to defaultValues (or provided values).</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">setError()</code></TableCell>
+                <TableCell>Manually set an error on a field (e.g., server-side validation).</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">watch()</code></TableCell>
+                <TableCell>Subscribe to field value changes reactively.</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">formState</code></TableCell>
+                <TableCell>Object containing isSubmitting, isValid, isDirty, errors, and more.</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+        <div className="block md:hidden">
+          <TableMobileList>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>handleSubmit</strong></span>
+              <span className="type-caption text-muted-foreground">Validates and calls your onSubmit handler. Used internally by the Form component.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>reset()</strong></span>
+              <span className="type-caption text-muted-foreground">Resets the form to defaultValues (or provided values).</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>setError()</strong></span>
+              <span className="type-caption text-muted-foreground">Manually set an error on a field (e.g., server-side validation).</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>watch()</strong></span>
+              <span className="type-caption text-muted-foreground">Subscribe to field value changes reactively.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>formState</strong></span>
+              <span className="type-caption text-muted-foreground">Object containing isSubmitting, isValid, isDirty, errors, and more.</span>
+            </TableMobileItem>
+          </TableMobileList>
+        </div>
       </div>
     </Container>
   )
