@@ -70,7 +70,7 @@ export default async function UseFormPage() {
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">
         useForm
       </h1>
-      <p className="type-body mb-8 text-muted-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground max-w-prose">
         A thin wrapper around react-hook-form&apos;s{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">useForm</code> that sets{' '}
         <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">mode: &quot;onTouched&quot;</code> by default.
