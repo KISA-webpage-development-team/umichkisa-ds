@@ -1,4 +1,4 @@
-import { Container } from '@umichkisa-ds/web'
+import { Container, Alert } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
 import { UseFormFieldDemo, UseFormStatusDemo } from './_demos'
@@ -6,19 +6,25 @@ import { UseFormFieldDemo, UseFormStatusDemo } from './_demos'
 /* ── Code strings ──────────────────────────────────────────── */
 
 const useFormFieldCode = `import { useForm, Form, useFormField } from '@umichkisa-ds/form'
-import { Input, FormItem } from '@umichkisa-ds/web'
+import { Input, Label, Button } from '@umichkisa-ds/web'
 
 type ProfileValues = { name: string; email: string }
 
-function NameField() {
-  const { inputProps, error } = useFormField<ProfileValues>('name', {
-    required: 'Name is required',
-  })
+function InlineField({ name, label, rules }: {
+  name: keyof ProfileValues
+  label: string
+  rules?: Record<string, string>
+}) {
+  const { inputProps, error } = useFormField<ProfileValues>(name, rules)
 
   return (
-    <FormItem htmlFor="name" label="Name" error={error} required>
-      <Input id="name" {...inputProps} />
-    </FormItem>
+    <div className="flex items-start gap-2">
+      <Label htmlFor={name} className="w-20 shrink-0 mt-2">{label}</Label>
+      <div className="flex-1">
+        <Input id={name} {...inputProps} />
+        {error && <p className="type-caption text-error mt-1">{error}</p>}
+      </div>
+    </div>
   )
 }
 
@@ -29,8 +35,12 @@ function ProfileForm() {
 
   return (
     <Form form={form} onSubmit={console.log}>
-      <NameField />
-      <button type="submit">Save</button>
+      <InlineField name="name" label="Name" rules={{ required: 'Name is required' }} />
+      <InlineField name="email" label="Email" rules={{ required: 'Email is required' }} />
+      <div className="flex items-start gap-2">
+        <div className="w-20 shrink-0" />
+        <Button type="submit">Save</Button>
+      </div>
     </Form>
   )
 }`
@@ -43,7 +53,7 @@ function SubmitFooter() {
 
   return (
     <div className="flex items-center justify-between">
-      <span className="text-sm text-muted-foreground">
+      <span className="type-body-sm text-muted-foreground">
         {isDirty ? 'Unsaved changes' : 'No changes'}
       </span>
       <Button type="submit" disabled={isSubmitting || !isValid}>
@@ -77,12 +87,14 @@ export default async function HooksPage() {
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">
         Hooks
       </h1>
-      <p className="type-body mb-8 text-muted-foreground max-w-prose">
-        For cases where the compound{' '}
-        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">{'<Form>'}</code> components don&apos;t fit
-        your layout, use these hooks to build custom field layouts and
-        status-aware UI.
-      </p>
+      <Alert variant="info" title="When to use hooks" className="mb-8">
+        The{' '}
+        <code className="rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground">Form.*</code>{' '}
+        compound components handle most forms but enforce a label-above-field layout.
+        When you need a different layout (e.g., inline labels, grouped fields) or
+        custom form chrome (submit footers, dirty indicators), use these hooks —
+        they give you the same react-hook-form wiring without the layout opinion.
+      </Alert>
 
       {/* ── useFormField ──────────────────────────────────── */}
       <h2 className="type-h2 mt-8 mb-4 text-foreground">useFormField</h2>
@@ -121,7 +133,7 @@ export default async function HooksPage() {
         </table>
       </div>
 
-      <h3 className="type-body !font-semibold mt-6 mb-2 text-foreground">Return Value</h3>
+      <h3 className="type-body !font-semibold mt-8 mb-2 text-foreground">Return Value</h3>
       <div className="my-6 overflow-x-auto">
         <table className="w-full border-collapse border border-border">
           <thead className="bg-surface-subtle">
