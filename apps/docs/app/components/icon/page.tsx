@@ -168,7 +168,7 @@ export default async function IconPage() {
       {/* ── Available Icons ──────────────────────────────────── */}
       <Heading as="h2">Available Icons</Heading>
       <p className="type-body-sm mb-4 text-muted-foreground max-w-prose">
-        41 icons in the current registry (39 Lucide + 2 custom brand icons).
+        45 icons in the current registry (43 Lucide + 2 custom brand icons).
       </p>
       <Grid columns={{ base: 3, md: 4, lg: 6 }} gap="component" className="my-6">
         {([
@@ -176,10 +176,10 @@ export default async function IconPage() {
           'chevron-right','chevron-down','circle-check','circle-minus',
           'circle-plus','circle-x','clipboard-check','clipboard-copy',
           'clock-9','external-link','eye','file-x','graduation-cap',
-          'info','list','lock','log-in','mail','menu','message-square',
-          'minus','pencil','plus','reply','search-x','shield-x',
+          'image','info','layout-grid','list','lock','log-in','mail','menu','message-square',
+          'minus','palette','pencil','plus','reply','search-x','shield-x',
           'shopping-cart','smartphone','thumbs-up','ticket','trash-2',
-          'triangle-alert','user-round','x','github','linkedin',
+          'triangle-alert','type','user-round','x','github','linkedin',
         ] as const).map((name) => (
           <Card key={name} className="items-center">
             <Icon name={name} size="md" />
