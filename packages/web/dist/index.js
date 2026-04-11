@@ -15,6 +15,7 @@ import { cva } from "class-variance-authority";
 import {
   ArrowLeft,
   ArrowRight,
+  Blocks,
   Calendar,
   Check,
   ChevronLeft,
@@ -50,6 +51,7 @@ import {
   ShoppingCart,
   Smartphone,
   ThumbsUp,
+  TextCursorInput,
   Ticket,
   Trash2,
   TriangleAlert,
@@ -106,6 +108,7 @@ function LinkedinIcon({
 var registry = {
   "arrow-left": ArrowLeft,
   "arrow-right": ArrowRight,
+  "blocks": Blocks,
   "calendar": Calendar,
   "check": Check,
   "chevron-left": ChevronLeft,
@@ -141,6 +144,7 @@ var registry = {
   "shopping-cart": ShoppingCart,
   "smartphone": Smartphone,
   "thumbs-up": ThumbsUp,
+  "text-cursor-input": TextCursorInput,
   "ticket": Ticket,
   "trash-2": Trash2,
   "triangle-alert": TriangleAlert,

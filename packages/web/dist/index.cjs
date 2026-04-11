@@ -179,6 +179,7 @@ function LinkedinIcon({
 var registry = {
   "arrow-left": import_lucide_react.ArrowLeft,
   "arrow-right": import_lucide_react.ArrowRight,
+  "blocks": import_lucide_react.Blocks,
   "calendar": import_lucide_react.Calendar,
   "check": import_lucide_react.Check,
   "chevron-left": import_lucide_react.ChevronLeft,
@@ -214,6 +215,7 @@ var registry = {
   "shopping-cart": import_lucide_react.ShoppingCart,
   "smartphone": import_lucide_react.Smartphone,
   "thumbs-up": import_lucide_react.ThumbsUp,
+  "text-cursor-input": import_lucide_react.TextCursorInput,
   "ticket": import_lucide_react.Ticket,
   "trash-2": import_lucide_react.Trash2,
   "triangle-alert": import_lucide_react.TriangleAlert,
