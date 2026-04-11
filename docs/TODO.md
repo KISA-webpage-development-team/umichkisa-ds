@@ -175,7 +175,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 
 ## Post-review sweeps
 
-- [ ] Standardize API Reference required-prop convention → asterisk. Sweep all `apps/docs/app/components/*` pages: move any `(required)` out of the Default column and append `*` to the prop name instead (both Table and TableMobileList). Default column shows the real default or `—`. Add `* Required prop.` caption under each API table. Wrap the asterisk for a11y (`aria-label="required"`) and color it `text-destructive`. Use `/components/label` as the reference pattern. Add the rule to `docs/DS_CONSTRAINTS.md` as part of the same PR.
+- [x] Standardize API Reference required-prop convention → asterisk. Sweep all `apps/docs/app/components/*` pages: move any `(required)` out of the Default column and append `*` to the prop name instead (both Table and TableMobileList). Default column shows the real default or `—`. Add `* Required prop.` caption under each API table. Wrap the asterisk for a11y (`aria-label="required"`) and color it `text-destructive`. Use `/components/label` as the reference pattern. Add the rule to `docs/DS_CONSTRAINTS.md` as part of the same PR.
 
 ## Docs App Enhancements
 
