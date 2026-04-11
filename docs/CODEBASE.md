@@ -105,8 +105,12 @@ No `dist/styles.css` import. Font injection handled separately (unchanged). Toke
 ## Docs UI Components (not part of the library)
 
 Already built for the docs site itself:
-`ColorSwatch`, `ColorSwatchGrid`, `ContrastTable`, `DoDont`, `Callout`, `Sidebar`, `Header`, `Footer`, `ComponentPreview`, `SizesExample`, `CodeBlock`, `CodeBlockClient`, `InlineCode`, `Heading`, `AnchorClickHandler`
+`ColorSwatch`, `ColorSwatchGrid`, `ContrastTable`, `DoDont`, `Callout`, `Sidebar`, `Header`, `Footer`, `ComponentPreview`, `SizesExample`, `CodeBlock`, `CodeBlockClient`, `InlineCode`, `Heading`, `AnchorClickHandler`, `PrevNext`
 Located in `apps/docs/components/`.
+
+### Page Navigation Infrastructure
+- `apps/docs/lib/nav.ts` — single source of truth for docs nav ordering. Exports `FOUNDATION_CATEGORIES`, `COMPONENT_CATEGORIES`, `FORMS_CATEGORIES` (consumed by `Sidebar.tsx`), plus `FLAT_NAV` (module-scoped flat sequence including `/foundation` and `/components` index pages) and `getPrevNext(pathname)` helper.
+- `apps/docs/components/PrevNext.tsx` — `"use client"`. Reads `usePathname()`, looks up prev/next from `FLAT_NAV`, renders two `text-link` styled labels in a `<nav aria-label="Pagination navigation">` landmark. Auto-rendered below every section page via `DocsLayout`. Returns `null` on the homepage or any pathname not in `FLAT_NAV`.
 
 ### Heading Infrastructure
 - `apps/docs/lib/slug.ts` — `slugify(text)` utility for auto-generating anchor IDs from heading text.
