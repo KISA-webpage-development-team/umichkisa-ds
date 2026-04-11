@@ -45,11 +45,9 @@ export default async function HomePage() {
           <h1 className="type-display font-sejong-bold tracking-tight mb-4 text-brand-foreground">
             KISA Design System
           </h1>
-          <p className="type-h3 text-brand-foreground mb-4">
-            University of Michigan Korean International Student Association
-          </p>
           <p className="type-body text-brand-foreground max-w-prose">
-            React components, design tokens, and form utilities for the KISA
+            React components, design tokens, and form utilities for the
+            University of Michigan Korean International Student Association
             website. Built with accessibility, consistency, and composability in
             mind.
           </p>
