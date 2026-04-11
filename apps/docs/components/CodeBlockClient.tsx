@@ -2,16 +2,27 @@
 
 import { useState, useCallback } from "react";
 import { IconButton } from "@umichkisa-ds/web";
+import type { CodeBlockSize } from "./CodeBlock";
 
 interface CodeBlockClientProps {
   code: string;
   highlightedHtml?: string;
+  size?: CodeBlockSize;
   children?: React.ReactNode;
 }
+
+// Map size variant to type-* override on the shiki <pre> element.
+// type-* classes include font-size, so we use ! to override shiki defaults.
+const sizeClassMap: Record<CodeBlockSize, string> = {
+  default: "[&_pre]:!type-caption",
+  md: "[&_pre]:!type-body-sm",
+  lg: "[&_pre]:!type-body",
+};
 
 export function CodeBlockClient({
   code,
   highlightedHtml,
+  size = "default",
   children,
 }: CodeBlockClientProps) {
   const [copied, setCopied] = useState(false);
@@ -39,7 +50,7 @@ export function CodeBlockClient({
       {/* Code content */}
       {highlightedHtml ? (
         <div
-          className="overflow-x-auto pr-16 [&_pre]:text-xs [&_pre]:leading-normal [&_pre]:font-mono [&_pre]:px-4 [&_pre]:py-4 [&_pre]:!bg-transparent [&_pre]:m-0 [&_code]:!bg-transparent"
+          className={`overflow-x-auto pr-16 ${sizeClassMap[size]} [&_pre]:font-mono [&_pre]:px-4 [&_pre]:py-4 [&_pre]:!bg-transparent [&_pre]:m-0 [&_code]:!bg-transparent`}
           dangerouslySetInnerHTML={{ __html: highlightedHtml }}
         />
       ) : (

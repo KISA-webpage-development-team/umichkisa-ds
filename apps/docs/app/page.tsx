@@ -57,7 +57,7 @@ export default async function HomePage() {
       </p>
 
       <Heading as="h2">Quick Install</Heading>
-      <CodeBlock code={installCode} lang="bash" />
+      <CodeBlock code={installCode} lang="bash" size="lg" />
 
       <Grid columns={{ base: 1, md: 3 }} gap="component" className="mt-8">
         {sections.map((section) => (
