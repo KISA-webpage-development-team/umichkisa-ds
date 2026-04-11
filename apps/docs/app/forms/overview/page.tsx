@@ -15,9 +15,7 @@ import { InlineCode } from '@/components/InlineCode'
 import Link from 'next/link'
 import { QuickStartDemo } from './_demos'
 
-const installFormPkgJson = `"@umichkisa-ds/form": "github:KISA-webpage-development-team/umichkisa-ds#form-vX.X.X"`
-
-const installFormBash = `npm install`
+const installCode = `npm install @umichkisa-ds/form`
 
 const installRHFCode = `npm install react-hook-form`
 
@@ -76,25 +74,18 @@ export default async function FormsOverviewPage() {
       {/* ── Installation ──────────────────────────────────── */}
       <Heading as="h2">Installation</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        This package is distributed via GitHub git tags — not the npm registry.
-        Add the git URL to your project{"'"}s <InlineCode>package.json</InlineCode> dependencies,
-        pointing to the desired release tag:
+        Install the form package via the GitHub Packages registry:
       </p>
-      <CodeBlock code={installFormPkgJson} lang="json" />
-      <p className="type-body mb-4 text-foreground max-w-prose">
-        Then install dependencies:
-      </p>
-      <CodeBlock code={installFormBash} lang="bash" />
+      <CodeBlock code={installCode} lang="bash" />
       <p className="type-body mb-4 text-foreground max-w-prose">
         You also need <InlineCode>react-hook-form</InlineCode> as
         a peer dependency:
       </p>
       <CodeBlock code={installRHFCode} lang="bash" />
       <Alert variant="info" className="mb-8">
-        <InlineCode>@umichkisa-ds/web</InlineCode> is
-        also a peer dependency — it wraps DS form primitives (Input, Textarea,
-        Select, etc.) with react-hook-form controllers. Install it the same way
-        using a <InlineCode>vX.X.X</InlineCode> tag.
+        <InlineCode>@umichkisa-ds/web</InlineCode> is also a peer dependency.
+        Install it with{' '}
+        <InlineCode>npm install @umichkisa-ds/web</InlineCode>.
       </Alert>
 
       {/* ── Quick Start ───────────────────────────────────── */}
