@@ -30,7 +30,7 @@ const sections: { title: string; href: string; icon: IconName; description: stri
   },
   {
     title: 'Forms',
-    href: '/forms/overview',
+    href: '/forms',
     icon: 'text-cursor-input',
     description: 'Form DX layer integrating react-hook-form with DS components.',
   },

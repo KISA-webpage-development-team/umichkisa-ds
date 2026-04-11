@@ -154,7 +154,6 @@ const FORMS_CATEGORIES: SidebarCategory[] = [
   {
     label: 'Forms',
     items: [
-      { label: 'Overview',       href: '/forms/overview' },
       { label: 'useForm',        href: '/forms/use-form' },
       { label: 'Form Component', href: '/forms/form-component' },
       { label: 'Validation',     href: '/forms/validation' },
@@ -235,7 +234,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           {([
             { label: 'Foundation', href: '/foundation', prefix: '/foundation', key: 'foundation' as SectionKey },
             { label: 'Components', href: '/components', prefix: '/components', key: 'components' as SectionKey },
-            { label: 'Forms', href: '/forms/overview', prefix: '/forms', key: 'forms' as SectionKey },
+            { label: 'Forms', href: '/forms', prefix: '/forms', key: 'forms' as SectionKey },
           ]).map((s, i) => {
             const isCurrent = pathname.startsWith(s.prefix)
             return (

@@ -55,7 +55,7 @@ function LoginForm() {
   )
 }`
 
-export default async function FormsOverviewPage() {
+export default async function FormsPage() {
   const quickStartHighlighted = await highlight(quickStartCode, 'tsx')
 
   return (

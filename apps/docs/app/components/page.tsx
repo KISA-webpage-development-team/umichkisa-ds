@@ -77,7 +77,7 @@ export default async function ComponentsPage() {
         <InlineCode>react-dom</InlineCode> as peer dependencies. For form state
         management and validation, see the{' '}
         <a
-          href="/forms/overview"
+          href="/forms"
           className="text-link underline hover:text-brand-primary"
         >
           Forms

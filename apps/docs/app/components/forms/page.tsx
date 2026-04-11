@@ -188,7 +188,7 @@ export default async function FormsPage() {
       <h1 className="type-h1 mb-4 text-foreground">Forms</h1>
       <Alert variant="info" className="mb-4 max-w-prose">
         For form state management, validation, and submission handling, see the{' '}
-        <a href="/forms/overview" className="text-link underline hover:text-brand-primary">
+        <a href="/forms" className="text-link underline hover:text-brand-primary">
           Forms
         </a>{' '}
         section — it provides a{' '}

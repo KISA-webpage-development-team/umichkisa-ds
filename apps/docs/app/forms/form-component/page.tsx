@@ -156,7 +156,7 @@ export default async function FormComponentPage() {
       </h1>
       <Alert variant="info" className="mb-8">
         The <InlineCode>{'<Form>'}</InlineCode> compound component provides context, submission handling, and field sub-components that automatically wire up labels, errors, and validation. For setup, see{' '}
-        <a href="/forms/overview" className="text-link underline hover:text-brand-primary">Overview</a> and{' '}
+        <a href="/forms" className="text-link underline hover:text-brand-primary">Forms</a> and{' '}
         <a href="/forms/use-form" className="text-link underline hover:text-brand-primary">useForm</a>.
       </Alert>
 
