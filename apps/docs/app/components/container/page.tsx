@@ -21,6 +21,7 @@ const defaultCode = `import { Container } from '@umichkisa-ds/web'
 </Container>`
 
 const allSizesCode = `<Container size="default">  {/* 1536px — page shell */}
+<Container size="lg">       {/* 1024px — wide landing/dashboard */}
 <Container size="md">       {/* 768px  — settings, auth */}
 <Container size="sm">       {/* 640px  — login forms */}
 <Container size="prose">    {/* ~65ch  — articles */}`
@@ -154,6 +155,11 @@ export default async function ContainerPage() {
             <span className="type-caption text-brand-foreground">default</span>
             <span className="type-caption text-brand-foreground">1536px — page shell</span>
           </div>
+          {/* lg — 1024/1536 ≈ 67% */}
+          <div className="w-2/3 rounded-md bg-brand-primary px-3 py-2 flex items-center justify-between">
+            <span className="type-caption text-brand-foreground">lg</span>
+            <span className="type-caption text-brand-foreground">1024px</span>
+          </div>
           {/* md — 768/1536 = 50% */}
           <div className="w-1/2 rounded-md bg-brand-primary px-3 py-2 flex items-center justify-between">
             <span className="type-caption text-brand-foreground">md</span>
@@ -190,6 +196,11 @@ export default async function ContainerPage() {
                 <TableCell>Standard page layout — most pages use this.</TableCell>
               </TableRow>
               <TableRow>
+                <TableCell><InlineCode>lg</InlineCode></TableCell>
+                <TableCell>1024px</TableCell>
+                <TableCell>Landing pages, dashboards, and content-rich pages that feel too narrow at <InlineCode>md</InlineCode> but don&apos;t need the full page shell.</TableCell>
+              </TableRow>
+              <TableRow>
                 <TableCell><InlineCode>md</InlineCode></TableCell>
                 <TableCell>768px</TableCell>
                 <TableCell>Settings pages, auth forms, focused workflows.</TableCell>
@@ -213,6 +224,11 @@ export default async function ContainerPage() {
               <span className="type-body-sm text-foreground"><strong>default</strong></span>
               <span className="type-caption text-muted-foreground">1536px</span>
               <span className="type-caption text-muted-foreground">Standard page layout — most pages use this.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>lg</strong></span>
+              <span className="type-caption text-muted-foreground">1024px</span>
+              <span className="type-caption text-muted-foreground">Landing pages, dashboards, and content-rich pages.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>md</strong></span>
@@ -418,9 +434,9 @@ export default async function ContainerPage() {
             <TableBody>
               <TableRow>
                 <TableCell><InlineCode>size</InlineCode></TableCell>
-                <TableCell><InlineCode>&quot;default&quot; | &quot;md&quot; | &quot;sm&quot; | &quot;prose&quot;</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;default&quot; | &quot;lg&quot; | &quot;md&quot; | &quot;sm&quot; | &quot;prose&quot;</InlineCode></TableCell>
                 <TableCell><InlineCode>&quot;default&quot;</InlineCode></TableCell>
-                <TableCell>Maximum width constraint. default (1536px), md (768px), sm (640px), prose (~65ch).</TableCell>
+                <TableCell>Maximum width constraint. default (1536px), lg (1024px), md (768px), sm (640px), prose (~65ch).</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell><InlineCode>as</InlineCode></TableCell>
@@ -447,8 +463,8 @@ export default async function ContainerPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>size</strong></span>
-              <span className="type-caption text-muted-foreground"><InlineCode>&quot;default&quot; | &quot;md&quot; | &quot;sm&quot; | &quot;prose&quot;</InlineCode> · default <InlineCode>&quot;default&quot;</InlineCode></span>
-              <span className="type-caption text-muted-foreground">Maximum width constraint. default (1536px), md (768px), sm (640px), prose (~65ch).</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&quot;default&quot; | &quot;lg&quot; | &quot;md&quot; | &quot;sm&quot; | &quot;prose&quot;</InlineCode> · default <InlineCode>&quot;default&quot;</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Maximum width constraint. default (1536px), lg (1024px), md (768px), sm (640px), prose (~65ch).</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>as</strong></span>

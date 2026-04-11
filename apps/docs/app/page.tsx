@@ -38,7 +38,7 @@ const sections: { title: string; href: string; icon: IconName; description: stri
 
 export default async function HomePage() {
   return (
-    <Container size="md" as="article" className="py-12">
+    <Container size="lg" as="article" className="py-12">
       <h1 className="type-display font-sejong-bold tracking-tight mb-4 text-foreground">
         KISA Design System
       </h1>
