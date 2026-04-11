@@ -5,7 +5,6 @@ import {
   CardHeader,
   CardTitle,
   CardDescription,
-  CardContent,
   Icon,
 } from '@umichkisa-ds/web'
 import type { IconName } from '@umichkisa-ds/web'
@@ -16,33 +15,24 @@ import Link from 'next/link'
 const installCode = `npm install @umichkisa-ds/web
 npm install @umichkisa-ds/form react-hook-form`
 
-const sections: {
-  title: string
-  href: string
-  icon: IconName
-  description: string
-  highlights: string[]
-}[] = [
+const sections: { title: string; href: string; icon: IconName; description: string }[] = [
   {
     title: 'Foundation',
     href: '/foundation',
     icon: 'palette',
-    description: 'The visual language underpinning every component.',
-    highlights: ['Color tokens', 'Typography scale', 'Spacing system', 'Iconography'],
+    description: 'Color tokens, typography scale, spacing system, and iconography standards.',
   },
   {
     title: 'Components',
     href: '/components',
     icon: 'blocks',
-    description: 'Production-ready UI primitives.',
-    highlights: ['35+ components', 'Buttons & forms', 'Overlays & navigation', 'Layout & display'],
+    description: '35+ production-ready UI primitives — buttons, form controls, overlays, layout, and more.',
   },
   {
     title: 'Forms',
     href: '/forms/overview',
     icon: 'text-cursor-input',
-    description: 'DX layer for react-hook-form.',
-    highlights: ['Compound components', 'Auto error wiring', 'Validation patterns', 'Hooks API'],
+    description: 'Form DX layer integrating react-hook-form with DS components.',
   },
 ]
 
@@ -64,12 +54,11 @@ export default async function HomePage() {
       </section>
 
       {/* ── Content below hero ──────────────────────── */}
-      <Container size="md" as="article" className="py-12">
+      <Container as="article" className="py-8">
         <Heading as="h2">Quick Install</Heading>
         <CodeBlock code={installCode} lang="bash" />
 
-        <Heading as="h2" className="mt-8">Explore</Heading>
-        <Grid columns={{ base: 1, md: 3 }} gap="component" className="mt-6">
+        <Grid columns={{ base: 1, md: 3 }} gap="component" className="mt-8">
           {sections.map((section) => (
             <Link
               key={section.title}
@@ -84,15 +73,6 @@ export default async function HomePage() {
                   <CardTitle>{section.title}</CardTitle>
                   <CardDescription>{section.description}</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <ul className="space-y-1">
-                    {section.highlights.map((h) => (
-                      <li key={h} className="type-body-sm text-muted-foreground">
-                        {h}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
               </Card>
             </Link>
           ))}
