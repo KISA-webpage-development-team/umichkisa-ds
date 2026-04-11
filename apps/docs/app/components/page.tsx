@@ -103,7 +103,7 @@ export default async function ComponentsPage() {
             href={component.href}
             className="block h-full rounded-md focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2"
           >
-            <Card className="h-full hover:bg-surface-subtle transition-colors">
+            <Card hoverable className="h-full">
               <CardHeader>
                 <CardTitle>{component.name}</CardTitle>
                 <CardDescription>{component.description}</CardDescription>
