@@ -1,0 +1,38 @@
+name: Publish @umichkisa-ds/form
+
+on:
+  push:
+    tags:
+      - "form-v*"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build all (form depends on web)
+        run: pnpm build
+
+      - name: Typecheck
+        run: pnpm --filter @umichkisa-ds/form typecheck
+
+      - name: Publish
+        run: npm publish --access public
+        working-directory: packages/form
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
