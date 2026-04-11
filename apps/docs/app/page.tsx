@@ -68,10 +68,12 @@ export default async function HomePage() {
           >
             <Card hoverable className="h-full">
               <CardHeader>
-                <span className="text-brand-primary">
-                  <Icon name={section.icon} size="lg" />
-                </span>
-                <CardTitle className="!type-h2">{section.title}</CardTitle>
+                <div className="flex items-center gap-2">
+                  <span className="text-brand-primary">
+                    <Icon name={section.icon} size="lg" />
+                  </span>
+                  <CardTitle className="!type-h2">{section.title}</CardTitle>
+                </div>
                 <CardDescription>{section.description}</CardDescription>
               </CardHeader>
             </Card>
