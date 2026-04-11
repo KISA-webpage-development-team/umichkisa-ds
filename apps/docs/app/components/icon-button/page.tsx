@@ -254,7 +254,7 @@ export default async function IconButtonPage() {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell><InlineCode>icon</InlineCode></TableCell>
+              <TableCell><InlineCode>icon<span aria-label="required">*</span></InlineCode></TableCell>
               <TableCell><InlineCode>IconName</InlineCode></TableCell>
               <TableCell>—</TableCell>
               <TableCell>
@@ -264,7 +264,7 @@ export default async function IconButtonPage() {
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell><InlineCode>aria-label</InlineCode></TableCell>
+              <TableCell><InlineCode>aria-label<span aria-label="required">*</span></InlineCode></TableCell>
               <TableCell><InlineCode>string</InlineCode></TableCell>
               <TableCell>—</TableCell>
               <TableCell>Accessible label. Required — there is no visible text.</TableCell>
@@ -295,16 +295,17 @@ export default async function IconButtonPage() {
             </TableRow>
           </TableBody>
         </Table>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>icon</strong></span>
+              <span className="type-body-sm text-foreground"><strong>icon<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>IconName</InlineCode> · required</span>
               <span className="type-caption text-muted-foreground">Lucide icon name in kebab-case. See the <a href="/components/icon" className="text-link underline hover:text-brand-primary">Icon</a> page for available names.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>aria-label</strong></span>
+              <span className="type-body-sm text-foreground"><strong>aria-label<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode> · required</span>
               <span className="type-caption text-muted-foreground">Accessible label. Required — there is no visible text.</span>
             </TableMobileItem>
@@ -329,6 +330,7 @@ export default async function IconButtonPage() {
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only — never override variant styles.</span>
             </TableMobileItem>
           </TableMobileList>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
       </div>
 

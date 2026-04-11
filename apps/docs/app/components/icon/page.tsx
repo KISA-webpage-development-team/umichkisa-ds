@@ -218,7 +218,7 @@ export default async function IconPage() {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell><InlineCode>name</InlineCode></TableCell>
+              <TableCell><InlineCode>name<span aria-label="required">*</span></InlineCode></TableCell>
               <TableCell><InlineCode>IconName</InlineCode></TableCell>
               <TableCell>—</TableCell>
               <TableCell>Required. Lucide icon name in kebab-case. Must be a key in the DS registry.</TableCell>
@@ -254,11 +254,12 @@ export default async function IconPage() {
             </TableRow>
           </TableBody>
         </Table>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>name</strong></span>
+              <span className="type-body-sm text-foreground"><strong>name<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>IconName</InlineCode> · required</span>
               <span className="type-caption text-muted-foreground">Lucide icon name in kebab-case. Must be a key in the DS registry.</span>
             </TableMobileItem>
@@ -278,6 +279,7 @@ export default async function IconPage() {
               <span className="type-caption text-muted-foreground">Layout utilities only (<InlineCode>block</InlineCode>, <InlineCode>flex-shrink-0</InlineCode>). Never use for color or size.</span>
             </TableMobileItem>
           </TableMobileList>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
       </div>
 

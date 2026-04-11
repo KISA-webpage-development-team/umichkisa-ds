@@ -412,7 +412,7 @@ export default async function AccordionPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><InlineCode>value</InlineCode></TableCell>
+                <TableCell><InlineCode>value<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Unique identifier for this item. Required.</TableCell>
@@ -437,11 +437,12 @@ export default async function AccordionPage() {
               </TableRow>
             </TableBody>
           </Table>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>value</strong></span>
+              <span className="type-body-sm text-foreground"><strong>value<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Unique identifier for this item. Required.</span>
             </TableMobileItem>
@@ -461,6 +462,7 @@ export default async function AccordionPage() {
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
       </div>
 

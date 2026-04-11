@@ -425,13 +425,13 @@ export default async function FormItemPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><InlineCode>htmlFor</InlineCode></TableCell>
+                <TableCell><InlineCode>htmlFor<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Connects the label to the form control via matching id.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><InlineCode>label</InlineCode></TableCell>
+                <TableCell><InlineCode>label<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Text rendered inside the Label component.</TableCell>
@@ -468,16 +468,17 @@ export default async function FormItemPage() {
               </TableRow>
             </TableBody>
           </Table>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>htmlFor</strong></span>
+              <span className="type-body-sm text-foreground"><strong>htmlFor<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Connects the label to the form control via matching id.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>label</strong></span>
+              <span className="type-body-sm text-foreground"><strong>label<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Text rendered inside the Label component.</span>
             </TableMobileItem>
@@ -508,6 +509,7 @@ export default async function FormItemPage() {
               <span className="type-caption text-muted-foreground">The form control (Input, Textarea, Select, etc.).</span>
             </TableMobileItem>
           </TableMobileList>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
       </div>
 
