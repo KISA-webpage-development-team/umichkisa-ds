@@ -186,7 +186,16 @@ export default async function FormsPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">Forms</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <Alert variant="info" className="mb-4 max-w-prose">
+        For form state management, validation, and submission handling, see the{' '}
+        <a href="/forms/overview" className="text-link underline hover:text-brand-primary">
+          Forms
+        </a>{' '}
+        section — it provides a{' '}
+        <InlineCode>{'<Form>'}</InlineCode>{' '}
+        compound component that wires these primitives to react-hook-form automatically.
+      </Alert>
+      <p className="type-body mb-8 text-foreground max-w-prose">
         How to compose form components in the KISA design system.{' '}
         <InlineCode>
           FormItem
@@ -194,17 +203,6 @@ export default async function FormsPage() {
         is the composition wrapper that pairs a label, description, and error message with any
         form control for consistent structure and spacing.
       </p>
-      <div className="mb-8 max-w-prose">
-        <Alert variant="info">
-          For form state management, validation, and submission handling, see the{' '}
-          <a href="/forms/overview" className="text-link underline hover:text-brand-primary">
-            Forms
-          </a>{' '}
-          section — it provides a{' '}
-          <InlineCode>{'<Form>'}</InlineCode>{' '}
-          compound component that wires these primitives to react-hook-form automatically.
-        </Alert>
-      </div>
 
       {/* ── Section 1: Composition Patterns ─────────────────── */}
       <Heading as="h2">Composition Patterns</Heading>
