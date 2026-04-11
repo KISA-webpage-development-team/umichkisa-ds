@@ -110,7 +110,7 @@ export default async function FormsOverviewPage() {
       <Heading as="h2">{"What's Inside"}</Heading>
       <Grid columns={{ base: 1, md: 2 }} gap="component" className="my-6">
         <Link href="/forms/use-form" className="block h-full rounded-md focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2">
-          <Card className="h-full hover:bg-surface-subtle transition-colors">
+          <Card hoverable className="h-full">
             <CardHeader>
               <CardTitle>useForm</CardTitle>
               <CardDescription>
@@ -121,7 +121,7 @@ export default async function FormsOverviewPage() {
         </Link>
 
         <Link href="/forms/form-component" className="block h-full rounded-md focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2">
-          <Card className="h-full hover:bg-surface-subtle transition-colors">
+          <Card hoverable className="h-full">
             <CardHeader>
               <CardTitle>Form Component</CardTitle>
               <CardDescription>
@@ -132,7 +132,7 @@ export default async function FormsOverviewPage() {
         </Link>
 
         <Link href="/forms/validation" className="block h-full rounded-md focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2">
-          <Card className="h-full hover:bg-surface-subtle transition-colors">
+          <Card hoverable className="h-full">
             <CardHeader>
               <CardTitle>Validation</CardTitle>
               <CardDescription>
@@ -143,7 +143,7 @@ export default async function FormsOverviewPage() {
         </Link>
 
         <Link href="/forms/hooks" className="block h-full rounded-md focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2">
-          <Card className="h-full hover:bg-surface-subtle transition-colors">
+          <Card hoverable className="h-full">
             <CardHeader>
               <CardTitle>Hooks</CardTitle>
               <CardDescription>
@@ -154,7 +154,7 @@ export default async function FormsOverviewPage() {
         </Link>
 
         <Link href="/forms/examples" className="block md:col-span-2 h-full rounded-md focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2">
-          <Card className="h-full hover:bg-surface-subtle transition-colors">
+          <Card hoverable className="h-full">
             <CardHeader>
               <CardTitle>Examples</CardTitle>
               <CardDescription>
