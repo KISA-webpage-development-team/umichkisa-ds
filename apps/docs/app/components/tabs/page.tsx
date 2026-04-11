@@ -561,7 +561,7 @@ export default async function TabsPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><InlineCode>value</InlineCode></TableCell>
+                <TableCell><InlineCode>value<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Required. Unique identifier linking this trigger to its content panel.</TableCell>
@@ -586,11 +586,12 @@ export default async function TabsPage() {
               </TableRow>
             </TableBody>
           </Table>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>value</strong></span>
+              <span className="type-body-sm text-foreground"><strong>value<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Required. Unique identifier linking this trigger to its content panel.</span>
             </TableMobileItem>
@@ -610,6 +611,7 @@ export default async function TabsPage() {
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
       </div>
 
@@ -631,7 +633,7 @@ export default async function TabsPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><InlineCode>value</InlineCode></TableCell>
+                <TableCell><InlineCode>value<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Required. Must match a TabsTrigger value.</TableCell>
@@ -650,11 +652,12 @@ export default async function TabsPage() {
               </TableRow>
             </TableBody>
           </Table>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>value</strong></span>
+              <span className="type-body-sm text-foreground"><strong>value<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Required. Must match a TabsTrigger value.</span>
             </TableMobileItem>
@@ -669,6 +672,7 @@ export default async function TabsPage() {
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
       </div>
 

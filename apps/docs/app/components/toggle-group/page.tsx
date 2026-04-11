@@ -142,19 +142,19 @@ export default async function ToggleGroupPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><InlineCode>value</InlineCode></TableCell>
+                <TableCell><InlineCode>value<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>The currently selected item value.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><InlineCode>onValueChange</InlineCode></TableCell>
+                <TableCell><InlineCode>onValueChange<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>{"(value: string) => void"}</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Callback fired when the selected value changes.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><InlineCode>items</InlineCode></TableCell>
+                <TableCell><InlineCode>items<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>ToggleGroupItem[]</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Array of options to display. See ToggleGroupItem below.</TableCell>
@@ -173,21 +173,22 @@ export default async function ToggleGroupPage() {
               </TableRow>
             </TableBody>
           </Table>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>value</strong></span>
+              <span className="type-body-sm text-foreground"><strong>value<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">The currently selected item value.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>onValueChange</strong></span>
+              <span className="type-body-sm text-foreground"><strong>onValueChange<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>{"(value: string) => void"}</InlineCode></span>
               <span className="type-caption text-muted-foreground">Callback fired when the selected value changes.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>items</strong></span>
+              <span className="type-body-sm text-foreground"><strong>items<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>ToggleGroupItem[]</InlineCode></span>
               <span className="type-caption text-muted-foreground">Array of options to display. See ToggleGroupItem below.</span>
             </TableMobileItem>
@@ -202,6 +203,7 @@ export default async function ToggleGroupPage() {
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
       </div>
 

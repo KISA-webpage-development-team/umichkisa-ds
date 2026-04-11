@@ -195,13 +195,13 @@ export default async function TooltipPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><InlineCode>content</InlineCode></TableCell>
+                <TableCell><InlineCode>content<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell className="text-muted-foreground">—</TableCell>
                 <TableCell>Text displayed in the tooltip bubble. Required.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>children<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell className="text-muted-foreground">—</TableCell>
                 <TableCell>The trigger element. Native elements and DS components work out of the box.</TableCell>
@@ -220,16 +220,17 @@ export default async function TooltipPage() {
               </TableRow>
             </TableBody>
           </Table>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>content</strong></span>
+              <span className="type-body-sm text-foreground"><strong>content<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Text displayed in the tooltip bubble. Required.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>children</strong></span>
+              <span className="type-body-sm text-foreground"><strong>children<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">The trigger element. Native elements and DS components work out of the box.</span>
             </TableMobileItem>
@@ -244,6 +245,7 @@ export default async function TooltipPage() {
               <span className="type-caption text-muted-foreground">Milliseconds to wait before showing the tooltip on hover.</span>
             </TableMobileItem>
           </TableMobileList>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
       </div>
 
