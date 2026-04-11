@@ -181,6 +181,10 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 
 - [ ] Set up GitHub Packages for `@umichkisa-ds/web` and `@umichkisa-ds/form` — publish to GitHub npm registry on tag push, add `.npmrc` scope config to client repo
 
+## Post-Migration
+
+- [ ] Add consumer app example section to home page (`/`) — showcase the client app using DS components (after client app migration to `@umichkisa-ds/web`)
+
 ## Docs App Enhancements
 
 - [x] Add `id` attributes to all heading elements (`h2`, `h3`) across docs pages for anchor linking and TOC support
