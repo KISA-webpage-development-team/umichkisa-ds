@@ -134,6 +134,7 @@ export default async function HooksPage() {
               </TableRow>
             </TableBody>
           </Table>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
         <div className="block md:hidden">
           <TableMobileList>
@@ -148,8 +149,8 @@ export default async function HooksPage() {
               <span className="type-caption text-muted-foreground">Optional validation rules (same as compound components).</span>
             </TableMobileItem>
           </TableMobileList>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
-        <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
       </div>
 
       <Heading as="h3" id="useformfield-return-value" className="type-body !font-semibold mt-8 mb-2">Return Value</Heading>
