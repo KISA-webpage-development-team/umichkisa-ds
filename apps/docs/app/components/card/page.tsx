@@ -115,6 +115,20 @@ const gridCode = `import { Card, CardHeader, CardTitle, CardDescription, CardCon
   </Card>
 </Grid>`
 
+const hoverableCode = `import { Card, CardHeader, CardTitle, CardDescription } from '@umichkisa-ds/web'
+import Link from 'next/link'
+
+<Link href="/foundation/colors/overview">
+  <Card hoverable>
+    <CardHeader>
+      <CardTitle as="h4">Colors</CardTitle>
+      <CardDescription>
+        Color primitives, semantic tokens, and accessibility guidelines.
+      </CardDescription>
+    </CardHeader>
+  </Card>
+</Link>`
+
 const compositionCode = `import { Card, CardContent, CardFooter, Avatar, Button, Icon } from '@umichkisa-ds/web'
 
 <Card className="max-w-sm">
@@ -136,10 +150,11 @@ const compositionCode = `import { Card, CardContent, CardFooter, Avatar, Button,
 </Card>`
 
 export default async function CardPage() {
-  const [basicHighlighted, withFooterHighlighted, gridHighlighted, compositionHighlighted] = await Promise.all([
+  const [basicHighlighted, withFooterHighlighted, gridHighlighted, hoverableHighlighted, compositionHighlighted] = await Promise.all([
     highlight(basicCode),
     highlight(withFooterCode),
     highlight(gridCode),
+    highlight(hoverableCode),
     highlight(compositionCode),
   ]);
 
@@ -272,6 +287,23 @@ export default async function CardPage() {
         </Grid>
       </ComponentPreview>
 
+      {/* Hoverable */}
+      <Heading as="h3">Hoverable</Heading>
+      <p className="type-body mb-2 text-foreground max-w-prose">
+        Cards used as navigation links should use the <InlineCode>hoverable</InlineCode> prop
+        for branded hover feedback — maize background, navy border, and navy title on hover.
+      </p>
+      <ComponentPreview code={hoverableCode} highlightedCode={hoverableHighlighted}>
+        <Card hoverable className="max-w-md">
+          <CardHeader>
+            <CardTitle as="h4">Colors</CardTitle>
+            <CardDescription>
+              Color primitives, semantic tokens, and accessibility guidelines.
+            </CardDescription>
+          </CardHeader>
+        </Card>
+      </ComponentPreview>
+
       {/* Custom Composition */}
       <Heading as="h3">Custom composition</Heading>
       <p className="type-body mb-2 text-foreground max-w-prose">
@@ -324,6 +356,12 @@ export default async function CardPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
+                <TableCell><InlineCode>hoverable</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
+                <TableCell>Enables branded hover effect (maize background, navy border, navy title) for navigational cards.</TableCell>
+              </TableRow>
+              <TableRow>
                 <TableCell><InlineCode>children</InlineCode></TableCell>
                 <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
@@ -340,6 +378,11 @@ export default async function CardPage() {
         </div>
         <div className="block md:hidden">
           <TableMobileList>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>hoverable</strong></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode> · default <InlineCode>false</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Enables branded hover effect (maize background, navy border, navy title) for navigational cards.</span>
+            </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>children</strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
