@@ -11,12 +11,10 @@ interface CodeBlockClientProps {
   children?: React.ReactNode;
 }
 
-// Map size variant to type-* override on the shiki <pre> element.
-// type-* classes include font-size, so we use ! to override shiki defaults.
 const sizeClassMap: Record<CodeBlockSize, string> = {
-  default: "[&_pre]:!type-caption",
-  md: "[&_pre]:!type-body-sm",
-  lg: "[&_pre]:!type-body",
+  default: "type-caption",
+  md: "type-body-sm",
+  lg: "type-body",
 };
 
 export function CodeBlockClient({
