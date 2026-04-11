@@ -23,7 +23,10 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'KISA Design System',
+  title: {
+    default: 'KISA Design System',
+    template: '%s · KISA Design System',
+  },
   description: 'Component and token library for umichkisa.com',
 }
 
