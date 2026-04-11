@@ -12,3 +12,7 @@ apps/docs/out/
 apps/docs/tsconfig.tsbuildinfo
 *.tsbuildinfo
 .turbo/cache
+
+# Package build output — built in CI, not committed
+packages/web/dist/
+packages/form/dist/
