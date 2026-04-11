@@ -71,7 +71,7 @@ export default async function HomePage() {
                 <span className="text-brand-primary">
                   <Icon name={section.icon} size="lg" />
                 </span>
-                <CardTitle className="!type-h3">{section.title}</CardTitle>
+                <CardTitle className="!type-h2">{section.title}</CardTitle>
                 <CardDescription>{section.description}</CardDescription>
               </CardHeader>
             </Card>
