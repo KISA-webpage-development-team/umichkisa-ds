@@ -6,7 +6,7 @@ import { Container } from '@umichkisa-ds/web'
 import { getPrevNext } from '@/lib/nav'
 
 const LINK_CLASS =
-  'type-body text-link hover:text-brand-primary hover:underline ' +
+  'type-body !font-semibold text-link hover:text-brand-primary hover:underline ' +
   'focus-visible:outline focus-visible:outline-2 ' +
   'focus-visible:outline-brand-primary focus-visible:outline-offset-2 ' +
   'rounded-sm'
