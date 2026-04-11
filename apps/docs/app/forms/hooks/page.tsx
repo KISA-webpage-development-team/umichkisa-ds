@@ -123,7 +123,7 @@ export default async function HooksPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><InlineCode>name</InlineCode></TableCell>
+                <TableCell><InlineCode>name<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>Field name matching a key in your form values type.</TableCell>
               </TableRow>
@@ -138,7 +138,7 @@ export default async function HooksPage() {
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>name</strong></span>
+              <span className="type-body-sm text-foreground"><strong>name<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Field name matching a key in your form values type.</span>
             </TableMobileItem>
@@ -149,6 +149,7 @@ export default async function HooksPage() {
             </TableMobileItem>
           </TableMobileList>
         </div>
+        <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
       </div>
 
       <Heading as="h3" id="useformfield-return-value" className="type-body !font-semibold mt-8 mb-2">Return Value</Heading>
