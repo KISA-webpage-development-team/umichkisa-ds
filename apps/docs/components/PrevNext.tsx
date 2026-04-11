@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { Container } from '@umichkisa-ds/web'
 import { getPrevNext } from '@/lib/nav'
 
 const LINK_CLASS =
@@ -20,7 +21,9 @@ export function PrevNext() {
     prev && next ? 'justify-between' : next ? 'justify-end' : 'justify-start'
 
   return (
-    <nav
+    <Container
+      as="nav"
+      size="md"
       aria-label="Pagination navigation"
       className={`mt-16 flex ${justify} gap-4`}
     >
@@ -34,6 +37,6 @@ export function PrevNext() {
           {next.label}
         </Link>
       )}
-    </nav>
+    </Container>
   )
 }
