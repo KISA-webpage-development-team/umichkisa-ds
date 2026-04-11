@@ -171,19 +171,19 @@ export default async function PaginationPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><InlineCode>page</InlineCode></TableCell>
+                <TableCell><InlineCode>page<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>number</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Current active page (1-indexed). Required.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><InlineCode>totalPages</InlineCode></TableCell>
+                <TableCell><InlineCode>totalPages<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>number</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Total number of pages. Required.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><InlineCode>onPageChange</InlineCode></TableCell>
+                <TableCell><InlineCode>onPageChange<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>{"(page: number) => void"}</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Callback fired when the user selects a page. Required.</TableCell>
@@ -202,21 +202,22 @@ export default async function PaginationPage() {
               </TableRow>
             </TableBody>
           </Table>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>page</strong></span>
+              <span className="type-body-sm text-foreground"><strong>page<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>number</InlineCode></span>
               <span className="type-caption text-muted-foreground">Current active page (1-indexed). Required.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>totalPages</strong></span>
+              <span className="type-body-sm text-foreground"><strong>totalPages<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>number</InlineCode></span>
               <span className="type-caption text-muted-foreground">Total number of pages. Required.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>onPageChange</strong></span>
+              <span className="type-body-sm text-foreground"><strong>onPageChange<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>{"(page: number) => void"}</InlineCode></span>
               <span className="type-caption text-muted-foreground">Callback fired when the user selects a page. Required.</span>
             </TableMobileItem>
@@ -231,6 +232,7 @@ export default async function PaginationPage() {
               <span className="type-caption text-muted-foreground">Additional class names for the nav wrapper. Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
       </div>
 

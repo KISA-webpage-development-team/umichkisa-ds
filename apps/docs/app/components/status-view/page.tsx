@@ -269,7 +269,7 @@ export default async function StatusViewPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><InlineCode>variant</InlineCode></TableCell>
+                <TableCell><InlineCode>variant<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>&quot;not-found&quot; | &quot;not-authorized&quot; | &quot;not-logged-in&quot; | &quot;error&quot;</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Required. Determines the default icon, title, and description.</TableCell>
@@ -312,11 +312,12 @@ export default async function StatusViewPage() {
               </TableRow>
             </TableBody>
           </Table>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>variant</strong></span>
+              <span className="type-body-sm text-foreground"><strong>variant<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>&quot;not-found&quot; | &quot;not-authorized&quot; | &quot;not-logged-in&quot; | &quot;error&quot;</InlineCode></span>
               <span className="type-caption text-muted-foreground">Required. Determines the default icon, title, and description.</span>
             </TableMobileItem>
@@ -351,6 +352,7 @@ export default async function StatusViewPage() {
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities (width, height, margin, padding).</span>
             </TableMobileItem>
           </TableMobileList>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
       </div>
 

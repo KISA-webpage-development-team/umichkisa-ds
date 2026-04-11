@@ -387,13 +387,13 @@ export default async function RadioPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><InlineCode>value</InlineCode></TableCell>
+                <TableCell><InlineCode>value<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell><InlineCode>required</InlineCode></TableCell>
                 <TableCell>Unique value identifying this option.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><InlineCode>text</InlineCode></TableCell>
+                <TableCell><InlineCode>text<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell><InlineCode>required</InlineCode></TableCell>
                 <TableCell>Label text rendered beside the radio indicator.</TableCell>
@@ -412,17 +412,18 @@ export default async function RadioPage() {
               </TableRow>
             </TableBody>
           </Table>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>value</strong></span>
+              <span className="type-body-sm text-foreground"><strong>value<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Default: <InlineCode>required</InlineCode></span>
               <span className="type-caption text-muted-foreground">Unique value identifying this option.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>text</strong></span>
+              <span className="type-body-sm text-foreground"><strong>text<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Default: <InlineCode>required</InlineCode></span>
               <span className="type-caption text-muted-foreground">Label text rendered beside the radio indicator.</span>
@@ -439,6 +440,7 @@ export default async function RadioPage() {
               <span className="type-caption text-muted-foreground">Additional CSS classes. Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
       </div>
 
