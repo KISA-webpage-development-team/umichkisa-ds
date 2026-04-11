@@ -51,9 +51,7 @@ const components: { name: string; href: string; description: string }[] = [
   { name: 'Tooltip', href: '/components/tooltip', description: 'Hover-triggered text bubble for supplementary context.' },
 ]
 
-const installPkgJson = `"@umichkisa-ds/web": "github:KISA-webpage-development-team/umichkisa-ds#vX.X.X"`
-
-const installBash = `npm install`
+const installCode = `npm install @umichkisa-ds/web`
 
 export default async function ComponentsPage() {
   return (
@@ -71,16 +69,9 @@ export default async function ComponentsPage() {
       {/* ── Installation ──────────────────────────────────── */}
       <Heading as="h2">Installation</Heading>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        This package is distributed via GitHub git tags — not the npm registry.
-        Add the git URL to your project{"'"}s{' '}
-        <InlineCode>package.json</InlineCode> dependencies, pointing to the
-        desired release tag:
+        Install the component library via the GitHub Packages registry:
       </p>
-      <CodeBlock code={installPkgJson} lang="json" />
-      <p className="type-body mb-4 text-foreground max-w-prose">
-        Then install dependencies:
-      </p>
-      <CodeBlock code={installBash} lang="bash" />
+      <CodeBlock code={installCode} lang="bash" />
       <Alert variant="info" className="mb-8">
         You also need <InlineCode>react</InlineCode> and{' '}
         <InlineCode>react-dom</InlineCode> as peer dependencies. For form state
