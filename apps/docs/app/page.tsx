@@ -45,6 +45,9 @@ export default async function HomePage() {
           <h1 className="type-display font-sejong-bold tracking-tight mb-4 text-brand-foreground">
             KISA Design System
           </h1>
+          <p className="type-h3 text-brand-foreground mb-4">
+            University of Michigan Korean International Student Association
+          </p>
           <p className="type-body text-brand-foreground max-w-prose">
             React components, design tokens, and form utilities for the KISA
             website. Built with accessibility, consistency, and composability in
@@ -54,7 +57,7 @@ export default async function HomePage() {
       </section>
 
       {/* ── Content below hero ──────────────────────── */}
-      <Container as="article" className="py-8">
+      <Container size="md" as="article" className="py-8">
         <Heading as="h2">Quick Install</Heading>
         <CodeBlock code={installCode} lang="bash" />
 
@@ -70,7 +73,7 @@ export default async function HomePage() {
                   <span className="text-brand-primary">
                     <Icon name={section.icon} size="lg" />
                   </span>
-                  <CardTitle>{section.title}</CardTitle>
+                  <CardTitle className="!type-h3">{section.title}</CardTitle>
                   <CardDescription>{section.description}</CardDescription>
                 </CardHeader>
               </Card>
