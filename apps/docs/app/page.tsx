@@ -38,47 +38,39 @@ const sections: { title: string; href: string; icon: IconName; description: stri
 
 export default async function HomePage() {
   return (
-    <>
-      {/* ── Full-bleed hero ─────────────────────────── */}
-      <section className="w-full bg-brand-primary py-12">
-        <Container size="md">
-          <h1 className="type-display font-sejong-bold tracking-tight mb-4 text-brand-foreground">
-            KISA Design System
-          </h1>
-          <p className="type-body text-brand-foreground max-w-prose">
-            React components, design tokens, and form utilities for the
-            University of Michigan Korean International Student Association
-            website. Built with accessibility, consistency, and composability in
-            mind.
-          </p>
-        </Container>
-      </section>
+    <Container size="md" as="article" className="py-12">
+      <h1 className="type-display font-sejong-bold tracking-tight mb-4 text-foreground">
+        KISA Design System
+      </h1>
+      <p className="type-body mb-8 text-foreground max-w-prose">
+        React components, design tokens, and form utilities for the
+        University of Michigan Korean International Student Association
+        website. Built with accessibility, consistency, and composability in
+        mind.
+      </p>
 
-      {/* ── Content below hero ──────────────────────── */}
-      <Container size="md" as="article" className="py-8">
-        <Heading as="h2">Quick Install</Heading>
-        <CodeBlock code={installCode} lang="bash" />
+      <Heading as="h2">Quick Install</Heading>
+      <CodeBlock code={installCode} lang="bash" />
 
-        <Grid columns={{ base: 1, md: 3 }} gap="component" className="mt-8">
-          {sections.map((section) => (
-            <Link
-              key={section.title}
-              href={section.href}
-              className="block h-full rounded-md focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2"
-            >
-              <Card hoverable className="h-full">
-                <CardHeader>
-                  <span className="text-brand-primary">
-                    <Icon name={section.icon} size="lg" />
-                  </span>
-                  <CardTitle className="!type-h3">{section.title}</CardTitle>
-                  <CardDescription>{section.description}</CardDescription>
-                </CardHeader>
-              </Card>
-            </Link>
-          ))}
-        </Grid>
-      </Container>
-    </>
+      <Grid columns={{ base: 1, md: 3 }} gap="component" className="mt-8">
+        {sections.map((section) => (
+          <Link
+            key={section.title}
+            href={section.href}
+            className="block h-full rounded-md focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2"
+          >
+            <Card hoverable className="h-full">
+              <CardHeader>
+                <span className="text-brand-primary">
+                  <Icon name={section.icon} size="lg" />
+                </span>
+                <CardTitle className="!type-h3">{section.title}</CardTitle>
+                <CardDescription>{section.description}</CardDescription>
+              </CardHeader>
+            </Card>
+          </Link>
+        ))}
+      </Grid>
+    </Container>
   )
 }
