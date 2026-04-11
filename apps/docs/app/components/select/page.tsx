@@ -600,13 +600,13 @@ export default async function SelectPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><InlineCode>value</InlineCode></TableCell>
+                <TableCell><InlineCode>value<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>string</InlineCode></TableCell>
-                <TableCell><InlineCode>(required)</InlineCode></TableCell>
+                <TableCell>—</TableCell>
                 <TableCell>The value submitted when selected.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>children<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>Display label for the option.</TableCell>
@@ -625,17 +625,17 @@ export default async function SelectPage() {
               </TableRow>
             </TableBody>
           </Table>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>value</strong></span>
+              <span className="type-body-sm text-foreground"><strong>value<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
-              <span className="type-caption text-muted-foreground">Required</span>
               <span className="type-caption text-muted-foreground">The value submitted when selected.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>children</strong></span>
+              <span className="type-body-sm text-foreground"><strong>children<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">Display label for the option.</span>
             </TableMobileItem>
@@ -651,6 +651,7 @@ export default async function SelectPage() {
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
       </div>
 
@@ -669,34 +670,35 @@ export default async function SelectPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><InlineCode>label</InlineCode></TableCell>
+                <TableCell><InlineCode>label<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>string</InlineCode></TableCell>
-                <TableCell><InlineCode>(required)</InlineCode></TableCell>
+                <TableCell>—</TableCell>
                 <TableCell>Group heading text.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>children<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>SelectItem elements within the group.</TableCell>
               </TableRow>
             </TableBody>
           </Table>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>label</strong></span>
+              <span className="type-body-sm text-foreground"><strong>label<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
-              <span className="type-caption text-muted-foreground">Required</span>
               <span className="type-caption text-muted-foreground">Group heading text.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>children</strong></span>
+              <span className="type-body-sm text-foreground"><strong>children<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">SelectItem elements within the group.</span>
             </TableMobileItem>
           </TableMobileList>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
       </div>
 

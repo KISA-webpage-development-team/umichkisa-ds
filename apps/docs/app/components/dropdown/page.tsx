@@ -496,7 +496,7 @@ export default async function DropdownPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>children<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>The item label content.</TableCell>
@@ -527,11 +527,12 @@ export default async function DropdownPage() {
               </TableRow>
             </TableBody>
           </Table>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>children</strong></span>
+              <span className="type-body-sm text-foreground"><strong>children<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">The item label content.</span>
             </TableMobileItem>
@@ -556,6 +557,7 @@ export default async function DropdownPage() {
               <span className="type-caption text-muted-foreground">Merged via cn(). Use for layout utilities only.</span>
             </TableMobileItem>
           </TableMobileList>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
       </div>
 
@@ -574,33 +576,35 @@ export default async function DropdownPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell><InlineCode>label</InlineCode></TableCell>
+                <TableCell><InlineCode>label<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>string</InlineCode></TableCell>
-                <TableCell><InlineCode>(required)</InlineCode></TableCell>
+                <TableCell>—</TableCell>
                 <TableCell>Group heading text.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><InlineCode>children</InlineCode></TableCell>
+                <TableCell><InlineCode>children<span aria-label="required">*</span></InlineCode></TableCell>
                 <TableCell><InlineCode>ReactNode</InlineCode></TableCell>
                 <TableCell>—</TableCell>
                 <TableCell>DropdownItem elements within the group.</TableCell>
               </TableRow>
             </TableBody>
           </Table>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>label</strong></span>
-              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode> · required</span>
+              <span className="type-body-sm text-foreground"><strong>label<span aria-label="required">*</span></strong></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
               <span className="type-caption text-muted-foreground">Group heading text.</span>
             </TableMobileItem>
             <TableMobileItem>
-              <span className="type-body-sm text-foreground"><strong>children</strong></span>
+              <span className="type-body-sm text-foreground"><strong>children<span aria-label="required">*</span></strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">DropdownItem elements within the group.</span>
             </TableMobileItem>
           </TableMobileList>
+          <p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>
         </div>
       </div>
 
