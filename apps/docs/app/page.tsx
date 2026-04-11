@@ -42,7 +42,7 @@ export default async function HomePage() {
       <h1 className="type-display font-sejong-bold tracking-tight mb-4 text-foreground">
         KISA Design System
       </h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         React components, design tokens, and form utilities for the{' '}
         <a
           href="https://umich.edu"
