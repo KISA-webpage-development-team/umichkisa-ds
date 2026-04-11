@@ -68,7 +68,7 @@ The `apps/docs/app/layout.tsx` also uses `next/font/local` with `variable` to lo
 | `Calendar` | date | ✅ | Wraps react-day-picker v9 with DS styling via `classNames`. Single + range modes. Brand colors (navy selected, maize text, light maize range band). `showOutsideDays` default true. Custom `<Icon>` chevrons. Multi-month responsive stacking. 44px touch targets via `::after`. Re-exports `DateRange` type. `cn()` only, no CVA. |
 | `DatePicker` | date | ✅ | Composes Popover + Calendar + input-style `<button>` trigger. Exports `DatePicker` (single) and `DateRangePicker` (range) from one file. Props: `value`/`onChange`, `formatDate` (default MM/dd/yyyy), `placeholder`, `disabled`, `invalid`, `calendarProps` passthrough. Auto-closes on selection (single: immediate, range: after end date). `cn()` only, no CVA. Form wrappers: `FormDatePicker` + `FormDateRangePicker` in `@umichkisa-ds/form`. |
 | `Container` | layout | ✅ | Page shell wrapper. CVA `size` variant (default 1536px / md 768px / sm 640px / prose ~65ch). Polymorphic `as` prop for semantic HTML elements. Responsive padding `px-4 md:px-6 lg:px-8`. |
-| `Icon` | icon | ✅ | Single `<Icon name="..." />` component with static Lucide registry (45 icons: 43 Lucide + 2 custom SVG brand icons). Replaced 19 named `react-icons` components. |
+| `Icon` | icon | ✅ | Single `<Icon name="..." />` component with static Lucide registry (47 icons: 45 Lucide + 2 custom SVG brand icons). Replaced 19 named `react-icons` components. |
 
 ### Form DX Package (`packages/form`)
 | Export | Type | Notes |

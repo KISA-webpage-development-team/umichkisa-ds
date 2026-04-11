@@ -169,13 +169,17 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 
 ## Index Pages (after all reviews complete)
 
-- [ ] Home page content (`/`)
+- [x] Home page content (`/`)
 - [ ] Components index page content (`/components`)
 - [x] Foundation index page content (`/foundation`)
 
 ## Post-review sweeps
 
 - [x] Standardize API Reference required-prop convention → asterisk. Sweep all `apps/docs/app/components/*` pages: move any `(required)` out of the Default column and append `*` to the prop name instead (both Table and TableMobileList). Default column shows the real default or `—`. Add `* Required prop.` caption under each API table. Wrap the asterisk for a11y (`aria-label="required"`) and color it `text-destructive`. Use `/components/label` as the reference pattern. Add the rule to `docs/DS_CONSTRAINTS.md` as part of the same PR.
+
+## Infrastructure
+
+- [ ] Set up GitHub Packages for `@umichkisa-ds/web` and `@umichkisa-ds/form` — publish to GitHub npm registry on tag push, add `.npmrc` scope config to client repo
 
 ## Docs App Enhancements
 
