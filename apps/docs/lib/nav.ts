@@ -167,15 +167,13 @@ function flattenCategories(categories: SidebarCategory[]): SidebarLink[] {
   return categories.flatMap((c) => c.items)
 }
 
-export function flattenNav(): SidebarLink[] {
-  return [
-    FOUNDATION_INDEX,
-    ...flattenCategories(FOUNDATION_CATEGORIES),
-    COMPONENTS_INDEX,
-    ...flattenCategories(COMPONENT_CATEGORIES),
-    ...flattenCategories(FORMS_CATEGORIES),
-  ]
-}
+export const FLAT_NAV: SidebarLink[] = [
+  FOUNDATION_INDEX,
+  ...flattenCategories(FOUNDATION_CATEGORIES),
+  COMPONENTS_INDEX,
+  ...flattenCategories(COMPONENT_CATEGORIES),
+  ...flattenCategories(FORMS_CATEGORIES),
+]
 
 /* ── Prev/next lookup ─────────────────────────────────────────────── */
 
@@ -185,11 +183,10 @@ export interface PrevNextResult {
 }
 
 export function getPrevNext(pathname: string): PrevNextResult {
-  const flat = flattenNav()
-  const idx = flat.findIndex((link) => link.href === pathname)
+  const idx = FLAT_NAV.findIndex((link) => link.href === pathname)
   if (idx === -1) return { prev: null, next: null }
   return {
-    prev: idx > 0 ? flat[idx - 1] : null,
-    next: idx < flat.length - 1 ? flat[idx + 1] : null,
+    prev: idx > 0 ? FLAT_NAV[idx - 1] : null,
+    next: idx < FLAT_NAV.length - 1 ? FLAT_NAV[idx + 1] : null,
   }
 }
