@@ -64,19 +64,29 @@ pnpm --filter @umichkisa-ds/form build
 
 ## Release
 
+Both packages publish to npm public registry via GitHub Actions on tag push.
+
 ### `packages/web`
-1. `pnpm --filter @umichkisa-ds/web build`
-2. `git add packages/web/dist/`
-3. `git tag vX.X.X`
-4. `git push && git push --tags`
-5. In client: bump tag in package.json, run `npm install`
+1. Bump `version` in `packages/web/package.json`
+2. `git add packages/web/package.json`
+3. `git commit -m "chore(web): bump to vX.X.X"`
+4. `git tag web-vX.X.X`
+5. `git push && git push --tags`
+6. CI builds, typechecks, and publishes to npm
 
 ### `packages/form`
-1. `pnpm --filter @umichkisa-ds/form build`
-2. `git add packages/form/dist/`
-3. `git tag form-vX.X.X`
-4. `git push && git push --tags`
-5. In client: bump tag in package.json, run `npm install`
+1. Bump `version` in `packages/form/package.json`
+2. `git add packages/form/package.json`
+3. `git commit -m "chore(form): bump to vX.X.X"`
+4. `git tag form-vX.X.X`
+5. `git push && git push --tags`
+6. CI builds, typechecks, and publishes to npm
+
+### In consuming repos
+```bash
+npm install @umichkisa-ds/web@latest
+npm install @umichkisa-ds/form@latest
+```
 
 ## Architecture
 
