@@ -179,7 +179,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 
 ## Infrastructure
 
-- [ ] Set up GitHub Packages for `@umichkisa-ds/web` and `@umichkisa-ds/form` — publish to GitHub npm registry on tag push, add `.npmrc` scope config to client repo
+- [x] Set up npm publishing for `@umichkisa-ds/web` and `@umichkisa-ds/form` — publish to npm public registry on tag push via GitHub Actions
 
 ## Post-Migration
 
