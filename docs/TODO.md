@@ -170,7 +170,7 @@ _Each page has a review pass then a fix pass. Use `review-docs-app-ui` for revie
 ## Index Pages (after all reviews complete)
 
 - [x] Home page content (`/`)
-- [ ] Components index page content (`/components`)
+- [x] Components index page content (`/components`)
 - [x] Foundation index page content (`/foundation`)
 
 ## Post-review sweeps
