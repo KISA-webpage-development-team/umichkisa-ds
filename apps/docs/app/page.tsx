@@ -43,10 +43,17 @@ export default async function HomePage() {
         KISA Design System
       </h1>
       <p className="type-body mb-8 text-foreground max-w-prose">
-        React components, design tokens, and form utilities for the
-        University of Michigan Korean International Student Association
-        website. Built with accessibility, consistency, and composability in
-        mind.
+        React components, design tokens, and form utilities for the{' '}
+        <a
+          href="https://umich.edu"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-link hover:underline hover:text-brand-primary"
+        >
+          University of Michigan
+        </a>{' '}
+        Korean International Student Association website. Built with
+        accessibility, consistency, and composability in mind.
       </p>
 
       <Heading as="h2">Quick Install</Heading>
