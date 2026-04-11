@@ -1,6 +1,7 @@
 import {
   ArrowLeft,
   ArrowRight,
+  Blocks,
   Calendar,
   Check,
   ChevronLeft,
@@ -36,6 +37,7 @@ import {
   ShoppingCart,
   Smartphone,
   ThumbsUp,
+  TextCursorInput,
   Ticket,
   Trash2,
   TriangleAlert,
@@ -49,6 +51,7 @@ import { LinkedinIcon } from "./custom/LinkedinIcon";
 export const registry = {
   "arrow-left": ArrowLeft,
   "arrow-right": ArrowRight,
+  "blocks": Blocks,
   "calendar": Calendar,
   "check": Check,
   "chevron-left": ChevronLeft,
@@ -84,6 +87,7 @@ export const registry = {
   "shopping-cart": ShoppingCart,
   "smartphone": Smartphone,
   "thumbs-up": ThumbsUp,
+  "text-cursor-input": TextCursorInput,
   "ticket": Ticket,
   "trash-2": Trash2,
   "triangle-alert": TriangleAlert,
