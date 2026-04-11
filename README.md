@@ -63,13 +63,25 @@ npm install @umichkisa-ds/form react-hook-form
 
 Peer dependencies: `react`, `react-dom`, `react-hook-form`, `@umichkisa-ds/web`
 
-## Release (`packages/web`)
+## Release
 
-1. `pnpm --filter @umichkisa-ds/web build`
-2. `git add packages/web/dist/`
-3. `git tag vX.X.X`
-4. `git push && git push --tags`
-5. In client: bump tag in `package.json`, run `npm install`
+Both packages publish to the npm public registry via GitHub Actions on tag push.
+
+### `@umichkisa-ds/web`
+
+1. Bump `version` in `packages/web/package.json`
+2. Commit: `git commit -m "chore(web): bump to vX.X.X"`
+3. Tag: `git tag web-vX.X.X`
+4. Push: `git push && git push --tags`
+5. CI builds, typechecks, and publishes to npm
+
+### `@umichkisa-ds/form`
+
+1. Bump `version` in `packages/form/package.json`
+2. Commit: `git commit -m "chore(form): bump to vX.X.X"`
+3. Tag: `git tag form-vX.X.X`
+4. Push: `git push && git push --tags`
+5. CI builds, typechecks, and publishes to npm
 
 ## Docs Site (`apps/docs`)
 
