@@ -381,12 +381,13 @@ function AccordionContent({
 
 // src/components/display/Card.tsx
 import { jsx as jsx7 } from "react/jsx-runtime";
-function Card({ className, ...props }) {
+function Card({ className, hoverable, ...props }) {
   return /* @__PURE__ */ jsx7(
     "div",
     {
       className: cn(
         "flex flex-col gap-4 p-4 bg-surface border border-border rounded-md min-w-0",
+        hoverable && "group hover:bg-brand-accent-subtle hover:border-brand-primary transition-colors",
         className
       ),
       ...props
@@ -404,7 +405,7 @@ function CardTitle({
   return /* @__PURE__ */ jsx7(
     Component,
     {
-      className: cn("type-h4 !font-semibold text-foreground line-clamp-2", className),
+      className: cn("type-h4 !font-semibold text-foreground line-clamp-2 group-hover:text-brand-primary transition-colors", className),
       ...props
     }
   );

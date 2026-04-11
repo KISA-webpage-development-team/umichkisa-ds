@@ -2,13 +2,18 @@ import { cn } from "@/utils/cn";
 
 /* ---------------------------------- Card ---------------------------------- */
 
-export type CardProps = React.HTMLAttributes<HTMLDivElement>;
+export type CardProps = React.HTMLAttributes<HTMLDivElement> & {
+  /** Enable branded hover effect for navigational/interactive cards. */
+  hoverable?: boolean;
+};
 
-export function Card({ className, ...props }: CardProps) {
+export function Card({ className, hoverable, ...props }: CardProps) {
   return (
     <div
       className={cn(
         "flex flex-col gap-4 p-4 bg-surface border border-border rounded-md min-w-0",
+        hoverable &&
+          "group hover:bg-brand-accent-subtle hover:border-brand-primary transition-colors",
         className
       )}
       {...props}
@@ -40,7 +45,7 @@ export function CardTitle({
 }: CardTitleProps) {
   return (
     <Component
-      className={cn("type-h4 !font-semibold text-foreground line-clamp-2", className)}
+      className={cn("type-h4 !font-semibold text-foreground line-clamp-2 group-hover:text-brand-primary transition-colors", className)}
       {...props}
     />
   );

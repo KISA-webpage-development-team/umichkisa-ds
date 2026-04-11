@@ -73,8 +73,11 @@ type AccordionContentProps = {
 };
 declare function AccordionContent({ children, className, }: AccordionContentProps): react_jsx_runtime.JSX.Element;
 
-type CardProps = React.HTMLAttributes<HTMLDivElement>;
-declare function Card({ className, ...props }: CardProps): react_jsx_runtime.JSX.Element;
+type CardProps = React.HTMLAttributes<HTMLDivElement> & {
+    /** Enable branded hover effect for navigational/interactive cards. */
+    hoverable?: boolean;
+};
+declare function Card({ className, hoverable, ...props }: CardProps): react_jsx_runtime.JSX.Element;
 type CardHeaderProps = React.HTMLAttributes<HTMLDivElement>;
 declare function CardHeader({ className, ...props }: CardHeaderProps): react_jsx_runtime.JSX.Element;
 type HeadingElement = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
