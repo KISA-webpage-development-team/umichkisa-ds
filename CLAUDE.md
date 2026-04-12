@@ -25,10 +25,10 @@ Override the generic startup with this protocol:
 
 1. Read `docs/TODO.md` → find first unchecked entry under "## Client Migration"
 2. Read `docs/plans/client-migration/HARNESS_DESIGN.md` → full harness context
-3. Derive path from the TODO entry → open `plan.md` → find first unchecked task
-4. Read sibling `notes.md` → skim blockers, open DS bugs, decisions
-5. If confused about scope → read sibling `audit.md` and/or the phase `overview.md`
-6. Read `docs/DS_CODEBASE.md` → know what DS components are available for the implementer
+3. Derive the expected path for that entry's artifacts (e.g., `docs/plans/client-migration/phase-N-<name>/`)
+4. **If `plan.md` exists** → this subphase is in progress. Open `plan.md` → find first unchecked task. Read sibling `notes.md` → skim blockers/decisions. If confused → read `audit.md` and/or the phase `overview.md`.
+5. **If `plan.md` does not exist** → this subphase is starting fresh. Follow the per-phase internal flow from HARNESS_DESIGN.md: audit first, then plan, then execute. Present the subphase scope to the user and wait for go-ahead.
+6. Read `docs/DS_CODEBASE.md` → know what DS components are available
 7. Proceed — but do NOT execute without explicit user permission (see Critical Rule)
 
 ### Natural Breakpoints
