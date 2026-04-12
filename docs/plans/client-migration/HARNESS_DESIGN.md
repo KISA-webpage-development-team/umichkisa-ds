@@ -65,6 +65,24 @@ Simplified: plan → execute → build smoke test → merge. No audit/redesign/v
 
 ---
 
+## Grill-Me as Default
+
+**Invoke `grill-me` proactively — do not wait for the user to ask.** Any of the following triggers should start a grill session automatically:
+
+- Writing a plan (audit → plan transition)
+- Phase kickoff (enumerating subphases, deciding order)
+- Encountering a design decision with multiple viable options
+- Starting a `[REDESIGN]`-marked feature
+- Hitting a blocker or ambiguity not covered by existing docs
+- Proposing a change to the harness itself (new skill, new constraint, process tweak)
+- Any moment where "I'll just pick one and go" would be faster but riskier than discussing
+
+The grill should be short and focused — one decision tree at a time, not a 30-minute design review. If the decision is small (< 2 options, obvious tradeoffs), resolve it inline. If it branches (3+ options, cascading consequences), open a grill.
+
+The user prefers to be challenged on assumptions rather than presented with a pre-baked answer. When in doubt, grill.
+
+---
+
 ## Tooling Decisions
 
 ### Branch model
