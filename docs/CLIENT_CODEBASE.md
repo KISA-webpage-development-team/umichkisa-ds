@@ -1,11 +1,11 @@
 # Client Codebase Notes
 
-Structured reference for the `../KISA-website/client` repo, captured for the upcoming DS migration. Mirrors `CODEBASE.md` (which documents this DS repo) but from the **consumer** side.
+Structured reference for the `../KISA-website/client` repo, captured for the upcoming DS migration. Mirrors `DS_CODEBASE.md` (which documents this DS repo) but from the **consumer** side.
 
 Read this at the start of any client-migration session so you know the target's shape before touching it. Update when the client changes or when new blind spots are discovered.
 
 Related:
-- `CODEBASE.md` — DS component inventory (the source side)
+- `DS_CODEBASE.md` — DS component inventory (the source side)
 - `DS_CONSTRAINTS.md` — DS usage rules to enforce in client code
 - `_client_migration_notes.md` — append-only log of DS API breaking changes relevant to the client swap
 
@@ -221,7 +221,7 @@ These shape *how* the migration runs, independent of *what* it changes.
 
 5. **Vercel auto-deploys `main`.** Any push to `main` goes live. Migration must land in feature branches and merge only after visual verification. The `finishing-a-development-branch` skill applies.
 
-6. **Claude session opens at `umichkisa-ds/` as primary working directory** (not at `client/`). Why: DS-specific skills (`ds-constrained-execution`, `ds-review`, `new-component-workflow`), DS memory, DS CLAUDE.md, and DS `CODEBASE.md` + `DS_CONSTRAINTS.md` are all scoped to this repo. `client/` is added as an additional working directory, so Claude can Read/Edit client files by absolute path without a separate session.
+6. **Claude session opens at `umichkisa-ds/` as primary working directory** (not at `client/`). Why: DS-specific skills (`ds-constrained-execution`, `ds-review`, `new-component-workflow`), DS memory, DS CLAUDE.md, and DS `DS_CODEBASE.md` + `DS_CONSTRAINTS.md` are all scoped to this repo. `client/` is added as an additional working directory, so Claude can Read/Edit client files by absolute path without a separate session.
 
 ---
 

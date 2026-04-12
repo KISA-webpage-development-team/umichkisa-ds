@@ -170,20 +170,22 @@ One `project_client_migration.md` entry, rewritten on subphase transitions:
 
 | Subphase | Deliverable | Depends on |
 |---|---|---|
-| -1.1 | Write `docs/DS_CLIENT_USAGE.md` | — |
-| -1.2 | Create `ds-client-review` agent + `ds-client-constrained-execution` skill (TDD mode modeled after `superpowers/skills/test-driven-development`) | -1.1 |
-| -1.3 | Create `ds-fix-during-migration` skill | — |
-| -1.4 | Create `client/scripts/link-ds.sh` + `unlink-ds.sh` | — |
-| -1.5 | Scaffold `docs/plans/client-migration/` + update TODO.md + update CLAUDE.md cold-session protocol + create MEMORY entry | — |
-| -1.6 | Lock deferred decisions (dev→main cadence, VSCode tunnel settings) + draft Phase 0 audit/plan | all above |
+| -1.0 | Add cold-session protocol to CLAUDE.md + rename CODEBASE.md → DS_CODEBASE.md | — |
+| -1.1 | Update DS_CODEBASE.md with consumer quick-reference section (import paths, per-component usage patterns, token utility classes) | -1.0 |
+| -1.2 | Write `docs/DS_CLIENT_USAGE.md` (consumer-side constraint doc) | -1.1 |
+| -1.3 | Create `ds-client-review` agent + `ds-client-constrained-execution` skill (TDD mode modeled after `superpowers/skills/test-driven-development`) | -1.2 |
+| -1.4 | Create `ds-fix-during-migration` skill | — |
+| -1.5 | Create `client/scripts/link-ds.sh` + `unlink-ds.sh` | — |
+| -1.6 | Scaffold `docs/plans/client-migration/` + TODO/MEMORY updates | — |
+| -1.7 | Lock deferred decisions (dev→main cadence, VSCode tunnel settings) + draft Phase 0 audit/plan | all above |
 
 ---
 
-## Deferred Decisions (resolve in Phase -1.6)
+## Deferred Decisions (resolve in Phase -1.7)
 
 1. `dev → main` merge cadence
 2. VSCode tunnel personal settings specifics
-3. Exact `DS_CLIENT_USAGE.md` content (outline in -1.1, grows during migration)
+3. Exact `DS_CLIENT_USAGE.md` content (outline in -1.2, grows during migration)
 4. Form validation strategy (zod + RHF resolver vs. RHF-native rules)
 5. Carousel consolidation (pick one of two carousel libs)
 6. Pocha icon audit (which upstream to DS, which stay local)

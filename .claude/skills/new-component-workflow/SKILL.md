@@ -144,7 +144,7 @@ After user confirmation:
 On main after merge:
 
 1. **`docs/TODO.md`** — check off the component's line item
-2. **`docs/CODEBASE.md`** — add/update the component in the status table (name, category, token-connected: ✅)
+2. **`docs/DS_CODEBASE.md`** — add/update the component in the status table (name, category, token-connected: ✅)
 3. **`docs/_client_migration_notes.md`** — append a section only if API changed from the existing implementation (identified during grill-me). Format:
    ```markdown
    ## <ComponentName>

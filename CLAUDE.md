@@ -17,7 +17,19 @@ Reading a spec is allowed. Reporting what the next task is is allowed. But writi
 4. If the task links to a spec (`docs/specs/X.md`), read it
 5. If no spec exists, dedicate this session to writing the spec — do not execute the task
 6. For any task that modifies `.tsx` files, also read `docs/DS_CONSTRAINTS.md`
-7. Always Read `docs/CODEBASE.md` to understand what DS Components are available
+7. Always Read `docs/DS_CODEBASE.md` to understand what DS Components are available
+
+### Client Migration Startup (when TODO.md points at a Client Migration entry)
+
+Override the generic startup with this protocol:
+
+1. Read `docs/TODO.md` → find first unchecked entry under "## Client Migration"
+2. Read `docs/plans/client-migration/HARNESS_DESIGN.md` → full harness context
+3. Derive path from the TODO entry → open `plan.md` → find first unchecked task
+4. Read sibling `notes.md` → skim blockers, open DS bugs, decisions
+5. If confused about scope → read sibling `audit.md` and/or the phase `overview.md`
+6. Read `docs/DS_CODEBASE.md` → know what DS components are available for the implementer
+7. Proceed — but do NOT execute without explicit user permission (see Critical Rule)
 
 ### Natural Breakpoints
 At every natural breakpoint (spec complete, phase complete, or context ≥ 70%), stop and present:
@@ -31,7 +43,7 @@ Wait for the user's choice. Do not proceed automatically.
 ### Session End
 Before marking any task done in `docs/TODO.md`:
 1. Run `pnpm build` and `pnpm typecheck` — both must pass
-2. Update `docs/CODEBASE.md` status tables to reflect completed work
+2. Update `docs/DS_CODEBASE.md` status tables to reflect completed work
 3. Check off the item in `docs/TODO.md`
 
 ---
