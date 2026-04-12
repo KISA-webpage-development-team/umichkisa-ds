@@ -11,7 +11,7 @@
 - [x] Phase -1.2: Write `docs/DS_CLIENT_USAGE.md`
 - [x] Phase -1.3: Create `ds-client-review` agent + `ds-client-constrained-execution` skill
 - [ ] Phase -1.4: Create `ds-fix-during-migration` skill
-- [ ] Phase -1.5: Create client linking script (`link-ds.sh` + `unlink-ds.sh`)
+- [x] Phase -1.5: Create client linking script (`link-ds.sh` + `unlink-ds.sh`)
 - [ ] Phase -1.6: Scaffold client-migration folder + TODO/MEMORY updates
 - [ ] Phase -1.7: Lock deferred decisions + draft Phase 0 audit/plan
 - [ ] Phase 0: Globals (Tailwind v4 + DS install + MSW + test framework + tunnel settings)
