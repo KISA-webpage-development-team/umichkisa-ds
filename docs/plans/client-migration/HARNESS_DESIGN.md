@@ -212,15 +212,9 @@ Flat list of leaves under "## Client Migration".
 One `project_client_migration.md` entry, rewritten on subphase transitions:
 > "Phase 2 (pocha-manage), subphase 2.2 (pocha info) in progress, 4/7 tasks"
 
-### Cold-session startup protocol (added to DS CLAUDE.md)
+### Cold-session startup protocol
 
-1. Read `docs/TODO.md` → find first unchecked Client Migration entry
-2. **If it's a phase-level kickoff entry** (e.g., "Phase 1: jobs-curator (subphases added at kickoff)") → do the phase kickoff flow above. Do NOT start executing features.
-3. **If it's a subphase entry** → derive the folder path. Check if `plan.md` exists:
-   - **`plan.md` exists** → subphase is in progress. Open it, find first unchecked task. Read `notes.md` for context.
-   - **`plan.md` does not exist** → subphase is starting fresh. Begin with audit, then plan, then wait for go-ahead.
-4. Read `docs/DS_CODEBASE.md` → know what DS components are available
-5. Proceed — but do NOT execute without explicit user permission (see Critical Rule)
+Lives in `CLAUDE.md` (the authoritative version, loaded into every session automatically). See the "Client Migration Startup" section there.
 
 ---
 
