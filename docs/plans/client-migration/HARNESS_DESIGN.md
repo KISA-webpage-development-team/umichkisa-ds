@@ -103,6 +103,11 @@ The user prefers to be challenged on assumptions rather than presented with a pr
 - Client linking script at `client/scripts/link-ds.sh` + `unlink-ds.sh`
 - DS fixes batched per phase, bump once at phase end (except blocking fixes)
 
+### Form validation
+- `@umichkisa-ds/form` with RHF-native `register` rules only
+- No zod, no `@hookform/resolvers` — forms in this app are simple enough
+- DS form package is resolver-agnostic (wraps RHF `useForm` with `mode: "onTouched"`)
+
 ### Missing DS components
 - Local workaround in client, add to DS later (not blocking)
 - No carousel, rich text editor, or event calendar in DS scope
@@ -233,12 +238,14 @@ Lives in `CLAUDE.md` (the authoritative version, loaded into every session autom
 
 ---
 
-## Deferred Decisions (resolve in Phase -1.7)
+## Locked Decisions (resolved Phase -1.7)
 
-1. `dev → main` merge cadence
-2. VSCode tunnel personal settings specifics
-3. Exact `DS_CLIENT_USAGE.md` content (outline in -1.2, grows during migration)
-4. Form validation strategy (zod + RHF resolver vs. RHF-native rules)
-5. Carousel consolidation (pick one of two carousel libs)
-6. Pocha icon audit (which upstream to DS, which stay local)
-7. Long-term repo split (separate apps into repos with shared core)
+| # | Decision | Resolution |
+|---|---|---|
+| 1 | `dev → main` merge cadence | Per-phase. Merge after each phase completes. Enables production feedback loop from users and dev team. |
+| 2 | VSCode tunnel settings | No special config needed. MSW eliminates backend dependency — only Next.js dev server + port 3000 tunnel required. |
+| 3 | Form validation strategy | `@umichkisa-ds/form` + RHF-native register rules only. No zod, no `@hookform/resolvers`. |
+| 4 | Carousel consolidation | Keep `react-multi-carousel` (used in QuickLinks). Drop `embla-carousel-react` + `deprecated-components/ui/carousel.tsx`. |
+| 5 | Pocha icon audit | Replace all `Pocha*` icons with DS icon registry entries (lucide equivalents). Audit exact mappings during each pocha phase (2–4). |
+| 6 | Long-term repo split | Deferred to post-migration. Not in scope. |
+| 7 | `DS_CLIENT_USAGE.md` growth | Already resolved — append-as-you-go during migration. No formal cadence. |

@@ -40,6 +40,9 @@ At every natural breakpoint (spec complete, phase complete, or context >= 70%), 
 
 Wait for the user's choice. Do not proceed automatically.
 
+### Phase End (Phases 0+ only)
+If `docs/plans/client-migration/ds-fixes-log.md` has entries for the completing phase, invoke `ds-phase-end-bump` before marking the phase done.
+
 ### Session End
 Before marking any task done in `docs/TODO.md`:
 1. Run `pnpm build` and `pnpm typecheck` — both must pass

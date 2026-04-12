@@ -177,6 +177,7 @@ When violations remain after 2 revision rounds:
    > (a) Clarify or relax the constraint in DS_CLIENT_USAGE.md
    > (b) Adjust the spec / approach for this task
    > (c) Attempt one more round with new direction from you
+   > (d) This is a DS bug — invoke `ds-fix-during-migration` to fix the DS first, then resume
 
 Wait for explicit instruction before continuing.
 
