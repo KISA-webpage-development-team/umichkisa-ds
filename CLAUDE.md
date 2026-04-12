@@ -25,11 +25,26 @@ Override the generic startup with this protocol:
 
 1. Read `docs/TODO.md` → find first unchecked entry under "## Client Migration"
 2. Read `docs/plans/client-migration/HARNESS_DESIGN.md` → full harness context
-3. Derive the expected path for that entry's artifacts (e.g., `docs/plans/client-migration/phase-N-<name>/`)
-4. **If `plan.md` exists** → this subphase is in progress. Open `plan.md` → find first unchecked task. Read sibling `notes.md` → skim blockers/decisions. If confused → read `audit.md` and/or the phase `overview.md`.
-5. **If `plan.md` does not exist** → this subphase is starting fresh. Follow the per-phase internal flow from HARNESS_DESIGN.md: audit first, then plan, then execute. Present the subphase scope to the user and wait for go-ahead.
-6. Read `docs/DS_CODEBASE.md` → know what DS components are available
-7. Proceed — but do NOT execute without explicit user permission (see Critical Rule)
+3. Branch based on entry type:
+
+**Phase -1 entry** (e.g., "Phase -1.1: Update DS_CODEBASE.md..."):
+- These are self-contained deliverables (one doc or one skill per subphase). No `audit.md`/`plan.md`/`notes.md` trio.
+- Read `docs/DS_CODEBASE.md` for component context if relevant.
+- Present the deliverable scope to the user and wait for go-ahead.
+
+**Phase kickoff entry** (e.g., "Phase 1: jobs-curator (subphases added at kickoff)"):
+- This phase needs its subphases enumerated first. Follow the phase kickoff flow in HARNESS_DESIGN.md: audit the app → enumerate subphases → write `overview.md` → expand TODO.md → check off the kickoff entry.
+
+**Subphase entry** (e.g., "Phase 1.1: jobs-curator / jobs list"):
+- Derive the folder path (e.g., `docs/plans/client-migration/phase-1-jobs-curator/phase-1.1-jobs-list/`).
+- **If `plan.md` exists** → subphase is in progress. Open it → find first unchecked task. Read sibling `notes.md` for context.
+- **If `plan.md` does not exist** → subphase is starting fresh. Begin with audit, then plan. Present scope and wait for go-ahead.
+
+**Singleton phase entry** (Phase 0 or Phase 0.5):
+- Same as subphase logic above but the folder is at the phase root (e.g., `phase-0-globals/`).
+
+4. Read `docs/DS_CODEBASE.md` → know what DS components are available
+5. Proceed — but do NOT execute without explicit user permission (see Critical Rule)
 
 ### Natural Breakpoints
 At every natural breakpoint (spec complete, phase complete, or context ≥ 70%), stop and present:
