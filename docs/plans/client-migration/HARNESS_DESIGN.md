@@ -120,7 +120,40 @@ Simplified: plan → execute → build smoke test → merge. No audit/redesign/v
 
 ## Session Continuity
 
-### Per unit of work: 3 files
+### Two levels of work: phases and subphases
+
+**Phases** are the top-level groupings (Phase 0, Phase 1, etc.). **Subphases** are the individual units of work within a multi-feature phase.
+
+- **Phases 0 and 0.5** are singletons — no subphases. They have their own `audit.md`/`plan.md`/`notes.md` directly.
+- **Phases 1–5** are multi-subphase. They require a **kickoff session** before any subphase work begins.
+- **Phase -1** is pre-enumerated — subphases are already listed in TODO.md. Each is a self-contained deliverable (one doc or one skill), so they do NOT use the formal `audit.md`/`plan.md`/`notes.md` trio. The full trio starts at Phase 0.
+
+### Phase kickoff (Phases 1–5 only)
+
+When a cold session reaches a phase-level TODO entry like `Phase 1: jobs-curator (subphases added at kickoff)`:
+
+1. **Audit the whole app** at a high level — read all features, routes, components
+2. **Enumerate subphases** — each subphase = one feature or page URL to migrate
+3. **Write `overview.md`** at the phase root — subphase list, ordering rationale, phase-wide risks/DS gaps
+4. **Add subphase entries to TODO.md** — flat list, appended below the phase entry
+5. **Check off the phase-level entry** as "kickoff done"
+
+After kickoff, TODO.md transforms from:
+```
+- [ ] Phase 1: jobs-curator (subphases added at kickoff)
+```
+to:
+```
+- [x] Phase 1: jobs-curator — kickoff done
+- [ ] Phase 1.1: jobs-curator / jobs list
+- [ ] Phase 1.2: jobs-curator / job detail
+```
+
+The `overview.md` is an index and rationale doc, NOT a plan. It is written once and lightly revised if the subphase list changes.
+
+### Per subphase: 3 files (Phases 0+ only)
+
+Each subphase (or singleton phase) gets these artifacts inside its folder:
 
 | File | Mutability | Purpose |
 |---|---|---|
@@ -128,7 +161,7 @@ Simplified: plan → execute → build smoke test → merge. No audit/redesign/v
 | `plan.md` | Checkboxes ticked during execution | Task list, source of truth for "where are we" |
 | `notes.md` | **Strict append-only** | Breadcrumbs: DS bugs, decision changes, blockers, user feedback |
 
-Multi-subphase phases also get an `overview.md` at the phase root (subphase list + ordering rationale + phase-wide risks).
+These are produced by the per-phase internal flow (audit → plan → execute). They do NOT exist at subphase start — they are created during that subphase's first session.
 
 ### Artifact layout
 
@@ -136,12 +169,14 @@ Multi-subphase phases also get an `overview.md` at the phase root (subphase list
 docs/plans/client-migration/
 ├── HARNESS_DESIGN.md                          ← this file
 ├── phase-0-globals/
-│   ├── audit.md, plan.md, notes.md
+│   ├── audit.md, plan.md, notes.md            ← singleton, no overview
 ├── phase-0.5-layout/
-│   ├── audit.md, plan.md, notes.md
+│   ├── audit.md, plan.md, notes.md            ← singleton, no overview
 ├── phase-1-jobs-curator/
-│   ├── overview.md
-│   ├── phase-1.1-<feature>/
+│   ├── overview.md                            ← produced at phase kickoff
+│   ├── phase-1.1-jobs-list/
+│   │   ├── audit.md, plan.md, notes.md        ← produced when subphase starts
+│   ├── phase-1.2-job-detail/
 │   │   ├── audit.md, plan.md, notes.md
 │   └── ...
 └── ...
@@ -149,7 +184,10 @@ docs/plans/client-migration/
 
 ### TODO.md
 
-Flat list of leaves under "## Client Migration". Subphases appended at phase kickoff.
+Flat list of leaves under "## Client Migration".
+- Phase -1 subphases: pre-enumerated (already in TODO.md).
+- Phases 0 and 0.5: singleton entries (already in TODO.md).
+- Phases 1–5: start as a single kickoff entry. Subphases appended at phase kickoff, replacing the placeholder.
 
 ### MEMORY.md
 
@@ -159,10 +197,12 @@ One `project_client_migration.md` entry, rewritten on subphase transitions:
 ### Cold-session startup protocol (added to DS CLAUDE.md)
 
 1. Read `docs/TODO.md` → find first unchecked Client Migration entry
-2. Derive path → open `plan.md` → find first unchecked task
-3. Read sibling `notes.md` → skim blockers/decisions
-4. If confused → read `audit.md` and/or phase `overview.md`
-5. Proceed
+2. **If it's a phase-level kickoff entry** (e.g., "Phase 1: jobs-curator (subphases added at kickoff)") → do the phase kickoff flow above. Do NOT start executing features.
+3. **If it's a subphase entry** → derive the folder path. Check if `plan.md` exists:
+   - **`plan.md` exists** → subphase is in progress. Open it, find first unchecked task. Read `notes.md` for context.
+   - **`plan.md` does not exist** → subphase is starting fresh. Begin with audit, then plan, then wait for go-ahead.
+4. Read `docs/DS_CODEBASE.md` → know what DS components are available
+5. Proceed — but do NOT execute without explicit user permission (see Critical Rule)
 
 ---
 
