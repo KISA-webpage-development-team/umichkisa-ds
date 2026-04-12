@@ -9,7 +9,7 @@
 - [x] Phase -1.0: Add cold-session protocol to CLAUDE.md + rename CODEBASE.md → DS_CODEBASE.md
 - [x] Phase -1.1: Update DS_CODEBASE.md with consumer quick-reference section
 - [x] Phase -1.2: Write `docs/DS_CLIENT_USAGE.md`
-- [ ] Phase -1.3: Create `ds-client-review` agent + `ds-client-constrained-execution` skill
+- [x] Phase -1.3: Create `ds-client-review` agent + `ds-client-constrained-execution` skill
 - [ ] Phase -1.4: Create `ds-fix-during-migration` skill
 - [ ] Phase -1.5: Create client linking script (`link-ds.sh` + `unlink-ds.sh`)
 - [ ] Phase -1.6: Scaffold client-migration folder + TODO/MEMORY updates
