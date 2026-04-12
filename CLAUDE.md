@@ -11,17 +11,6 @@ Reading a spec is allowed. Reporting what the next task is is allowed. But writi
 ## Session Protocol
 
 ### Startup
-1. Read `docs/TODO.md` — find the first unchecked `- [ ]` item
-2. If the user specifies a task in their first message, work on that instead
-3. If the next work is a **batch** (multiple tasks grouped together), present **all tasks in the batch** and let the user choose which to work on. Do NOT auto-select the first one.
-4. If the task links to a spec (`docs/specs/X.md`), read it
-5. If no spec exists, dedicate this session to writing the spec — do not execute the task
-6. For any task that modifies `.tsx` files, also read `docs/DS_CONSTRAINTS.md`
-7. Always Read `docs/DS_CODEBASE.md` to understand what DS Components are available
-
-### Client Migration Startup (when TODO.md points at a Client Migration entry)
-
-Override the generic startup with this protocol:
 
 1. Read `docs/TODO.md` → find first unchecked entry under "## Client Migration"
 2. Read `docs/plans/client-migration/HARNESS_DESIGN.md` → full harness context
@@ -58,8 +47,7 @@ Wait for the user's choice. Do not proceed automatically.
 ### Session End
 Before marking any task done in `docs/TODO.md`:
 1. Run `pnpm build` and `pnpm typecheck` — both must pass
-2. Update `docs/DS_CODEBASE.md` status tables to reflect completed work
-3. Check off the item in `docs/TODO.md`
+2. Check off the item in `docs/TODO.md`
 
 ---
 
