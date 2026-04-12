@@ -1,5 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/utils/cn";
+import { LoadingSpinner } from "@/components/feedback/LoadingSpinner";
 
 const buttonVariants = cva(
   [
@@ -46,15 +47,23 @@ const buttonVariants = cva(
 );
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
-  VariantProps<typeof buttonVariants>;
+  VariantProps<typeof buttonVariants> & {
+    /** Show a loading spinner and disable the button. */
+    loading?: boolean;
+  };
 
-function Button({ variant, size, className, type = "button", ...props }: ButtonProps) {
+function Button({ variant, size, className, type = "button", loading = false, disabled, children, ...props }: ButtonProps) {
   return (
     <button
       type={type}
       className={cn(buttonVariants({ variant, size }), className)}
+      disabled={disabled || loading}
+      aria-busy={loading || undefined}
       {...props}
-    />
+    >
+      {loading && <LoadingSpinner size="sm" className="shrink-0" />}
+      {children}
+    </button>
   );
 }
 
