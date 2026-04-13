@@ -14,7 +14,7 @@
 - [x] Phase -1.5: Create client linking script (`link-ds.sh` + `unlink-ds.sh`)
 - [x] Phase -1.6: Scaffold client-migration folder + TODO/MEMORY updates
 - [x] Phase -1.7: Lock deferred decisions + draft Phase 0 audit/plan
-- [ ] Phase 0: Globals (Tailwind v4 + DS install + MSW + test framework + tunnel settings)
+- [x] Phase 0: Globals (Tailwind v4 + DS install + MSW + test framework + tunnel settings)
 - [ ] Phase 0.5: Shared layout (Header/Footer/MobileMenu)
 - [ ] Phase 1: jobs-curator (subphases added at kickoff)
 - [ ] Phase 2: pocha-manage (subphases added at kickoff)
