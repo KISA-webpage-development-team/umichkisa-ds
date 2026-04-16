@@ -29,7 +29,11 @@
 - Same as subphase logic above but the folder is at the phase root (e.g., `phase-0-globals/`).
 
 4. Read `docs/DS_CODEBASE.md` → know what DS components are available
-5. Proceed — but do NOT execute without explicit user permission
+5. **DS symlink check** (Phases 0+ only, before touching any client code):
+   Run `ls -la ../KISA-website/client/node_modules/@umichkisa-ds/web 2>/dev/null | head -1`.
+   - Output contains `->` (symlink) → links active, proceed.
+   - Output is a directory (no `->`) OR path missing → run `bash ../KISA-website/client/scripts/link-ds.sh` to relink. Requires DS `dist/` — run `pnpm build` in DS repo first if missing.
+6. Proceed — but do NOT execute without explicit user permission
 
 ### Natural Breakpoints
 At every natural breakpoint (spec complete, phase complete, or context >= 70%), stop and present:
