@@ -1,7 +1,5 @@
 import {
-  Card,
   Container,
-  Grid,
   Icon,
   IconButton,
   Table,
@@ -15,6 +13,7 @@ import {
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { SizesExample } from '@/components/SizesExample'
+import { IconRegistryGrid } from '@/components/IconRegistryGrid'
 import { highlight } from '@/lib/highlight'
 import { Heading } from '@/components/Heading'
 import { InlineCode } from '@/components/InlineCode'
@@ -167,26 +166,7 @@ export default async function IconPage() {
 
       {/* ── Available Icons ──────────────────────────────────── */}
       <Heading as="h2">Available Icons</Heading>
-      <p className="type-body-sm mb-4 text-muted-foreground max-w-prose">
-        47 icons in the current registry (45 Lucide + 2 custom brand icons).
-      </p>
-      <Grid columns={{ base: 3, md: 4, lg: 6 }} gap="component" className="my-6">
-        {([
-          'arrow-left','arrow-right','blocks','calendar','check','chevron-left',
-          'chevron-right','chevron-down','circle-check','circle-minus',
-          'circle-plus','circle-x','clipboard-check','clipboard-copy',
-          'clock-9','external-link','eye','file-x','graduation-cap',
-          'image','info','layout-grid','list','lock','log-in','mail','menu','message-square',
-          'minus','palette','pencil','plus','reply','search-x','shield-x',
-          'shopping-cart','smartphone','text-cursor-input','thumbs-up','ticket','trash-2',
-          'triangle-alert','type','user-round','x','github','linkedin',
-        ] as const).map((name) => (
-          <Card key={name} className="items-center">
-            <Icon name={name} size="md" />
-            <p className="type-caption font-mono text-muted-foreground text-center break-all">{name}</p>
-          </Card>
-        ))}
-      </Grid>
+      <IconRegistryGrid />
 
       {/* ── API Reference ────────────────────────────────────── */}
       <Heading as="h2">API Reference</Heading>
