@@ -103,3 +103,5 @@ export const registry = {
 } as const;
 
 export type IconName = keyof typeof registry;
+
+export const iconNames = Object.keys(registry) as IconName[];
