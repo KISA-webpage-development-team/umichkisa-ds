@@ -48,6 +48,8 @@ All migration-related issues and PRs use this label set. Labels are the primary 
 
 **Mutual exclusions:** `autonomous-ready` vs `needs-interactive` (one or the other, never both). `ready-for-review` vs `needs-decision` vs `routine-errored` (one of three on any open autonomous PR).
 
+**End-state labels are removed post-merge.** The labels `ready-for-review`, `needs-decision`, `routine-errored`, and `needs-revision` are only meaningful while the PR is open — once merged, the PR's closed state replaces them. Strip them as part of the merge step (see §8).
+
 ---
 
 ## 3. Issue Template
@@ -346,10 +348,18 @@ When you say:
 
 Claude:
 1. `gh pr merge 42 --squash --delete-branch`
-2. Identifies the linked issue via PR body
-3. `gh issue list --label blocked-by:<issue-#>` — finds dependents
-4. For each dependent: `gh issue edit <N> --remove-label blocked-by:<issue-#>`
-5. Reports which dependents are now eligible
+2. **Strip end-state labels** from the merged PR — `ready-for-review`, `needs-revision`, `needs-decision`, `routine-errored` (only the ones actually present; safe to call with absent ones). Closed state is the new source of truth.
+3. Identifies the linked issue via PR body
+4. `gh issue list --label blocked-by:<issue-#>` — finds dependents
+5. For each dependent: `gh issue edit <N> --remove-label blocked-by:<issue-#>`
+6. Reports which dependents are now eligible
+
+This applies to **every merge path**, not just the natural-language flow above:
+- Manual `gh pr merge` from the terminal
+- The autonomous routine's revision flow (§13) when a `needs-revision` PR re-opens as `ready-for-review`
+- PR-queue skim-and-merge in Mode C (§11)
+
+In all cases: merge → strip end-state labels → unblock dependents.
 
 ---
 
@@ -680,3 +690,4 @@ Each lever trades complexity for speed or quality. Pick when the complexity stop
 | Date | Change | Reason |
 |---|---|---|
 | 2026-04-17 | Initial draft (13 AP questions + 3 follow-ups) | Phase 0.5 kickoff |
+| 2026-04-17 | Add post-merge label cleanup rule (§2, §8) — strip `ready-for-review` / `needs-revision` / `needs-decision` / `routine-errored` from PRs at merge time, since closed state replaces them | Surfaced during lane 0.5.2 review (PR #2 was merged with stale `ready-for-review` label) |
