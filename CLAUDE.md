@@ -12,20 +12,10 @@
 
 1. Read `docs/TODO.md` → find first unchecked entry under "## Client Migration"
 2. Read `docs/plans/client-migration/HARNESS_DESIGN.md` → full harness context
-3. **DS symlink check** (Phases 0+ only, before any client code):
-   Run `ls -la ../KISA-website/client/node_modules/@umichkisa-ds/web 2>/dev/null | head -1`.
-   - Output contains `->` (symlink) → links active, proceed.
-   - Output is a directory (no `->`) OR path missing → run `bash ../KISA-website/client/scripts/link-ds.sh` to relink. Requires DS `dist/` — run `pnpm build` in DS repo first if missing.
+3. **DS symlink check** (Phase 0+): `ls -la ../KISA-website/client/node_modules/@umichkisa-ds/web` — if not `->` symlink, run `bash ../KISA-website/client/scripts/link-ds.sh` (requires DS `dist/`; run `pnpm build` first if missing).
 4. Read `docs/DS_CODEBASE.md` → know what DS components are available
 
 **Branch on TODO entry type:**
-
-#### Phase -1 entry (e.g., "Phase -1.1: Update DS_CODEBASE.md...")
-
-Self-contained deliverables (one doc or one skill per subphase). No `audit.md`/`plan.md`/`notes.md` trio.
-
-- Read `docs/DS_CODEBASE.md` for component context if relevant
-- Present the deliverable scope to the user and wait for go-ahead
 
 #### Phase kickoff entry (e.g., "Phase 1: jobs-curator (subphases added at kickoff)")
 
@@ -58,15 +48,7 @@ Derive the folder path (e.g., `docs/plans/client-migration/phase-0.5-layout/` or
 | **D. Interactive execution** | `plan.md` exists, open `needs-interactive` issues without linked PRs (or user overrides to execute live) | Present wave lane menu annotated with issue state per `AUTONOMOUS_PROTOCOL.md` §12; user picks; worktree + `ds-client-constrained-execution` |
 | **E. Phase close-out** | All lanes merged, phase ready to close | Check `ds-fixes-log.md`; run `ds-phase-end-bump` if DS fixes accumulated; tick phase in TODO.md |
 
-**Protocol:** Claude detects state, proposes the most likely mode, and says something like:
-
-> "I see `audit.md` exists, 3 sitting PRs, 0 unresolved decision PRs. Likely **Mode C (PR review)**. Proceed, or switch to a different mode?"
-
-User confirms or redirects. Claude proceeds per the confirmed mode.
-
-**Cross-reference:** `docs/plans/client-migration/AUTONOMOUS_PROTOCOL.md` is the authoritative protocol for autonomous execution, labels, bailout, branch conventions, permission scope, and PR review revision flow. Read it at Mode detection time for Phase 0+ entries.
-
-**Never execute without explicit user permission.** This applies to every mode.
+Claude detects state, proposes the most likely mode, and waits for user confirmation or redirect.
 
 ### Natural Breakpoints
 At every natural breakpoint (spec complete, phase complete, or context >= 70%), stop and present:
@@ -79,24 +61,18 @@ Wait for the user's choice. Do not proceed automatically.
 
 ### Post-Merge Sync (after every PR merge)
 
-Immediately after merging any PR (client or DS), sync the local repo that the PR merged into. This is non-optional — the user leaves these repos open in dev servers and stale local state causes confusing "unstaged changes" after the next pull.
+Non-optional — dev servers stay open and stale state causes confusing "unstaged changes" on next pull. For every repo with a merged PR in the session:
 
-1. `cd` into the repo the PR was merged in (client = `../KISA-website/client/`, DS = this repo).
-2. Check current branch with `git branch --show-current`. If not the PR's base branch (`dev` for client, `main` for DS), switch: `git checkout <base>`.
-3. Run `git pull --ff-only`.
-   - If it succeeds → report "✅ `<repo>` `<branch>` up-to-date with origin (fast-forward)".
-   - If it fails due to divergence (local commits not on remote) → **stop**, show `git status` + `git log --oneline origin/<branch>..HEAD`, and ask the user how to reconcile. Do NOT auto-merge or reset.
-4. If the OTHER repo also had landed changes in the same session (e.g. DS fixes merged while on a client lane), sync it too.
+1. `cd` into the repo (client = `../KISA-website/client/`, DS = this repo); `git checkout <base>` if not already (`dev` for client, `main` for DS).
+2. `git pull --ff-only`. On divergence, stop and show `git status` + `git log --oneline origin/<branch>..HEAD`; ask how to reconcile. Do NOT auto-merge or reset.
+3. Report one line per repo: "✅ `<repo>` `<branch>` up-to-date".
 
-Report back with one line per repo so the user knows both local clones are current.
+### Closing a task or phase
 
-### Phase End (Phases 0+ only)
-If `docs/plans/client-migration/ds-fixes-log.md` has entries for the completing phase, invoke `ds-phase-end-bump` before marking the phase done.
-
-### Session End
-Before marking any task done in `docs/TODO.md`:
-1. Run `pnpm build` and `pnpm typecheck` — both must pass
-2. Check off the item in `docs/TODO.md`
+Before ticking any entry in `docs/TODO.md`:
+1. `pnpm build` + `pnpm typecheck` — both must pass
+2. If closing a Phase 0+ entry with `ds-fixes-log.md` entries, invoke `ds-phase-end-bump` first
+3. Check off the item
 
 ---
 
@@ -105,15 +81,7 @@ Before marking any task done in `docs/TODO.md`:
 - Client repo: `../KISA-website/client/`
 - Client UI components: `../KISA-website/client/src/components/ui/`
 
-## Build
+## Build & Release
 
-- `pnpm build` — build all packages
-- `pnpm dev` — watch mode
-- `pnpm test` — run tests
-- `pnpm typecheck` — TypeScript check
-
-Target a package: `pnpm --filter @umichkisa-ds/web build` or `pnpm --filter @umichkisa-ds/form build`
-
-## Release
-
-Both packages publish to npm via GitHub Actions on tag push: `git tag web-vX.X.X && git push --tags` (or `form-vX.X.X`). Bump `version` in the package's `package.json` first.
+- `pnpm build` / `pnpm typecheck` — both packages (filter: `pnpm --filter @umichkisa-ds/web <cmd>`)
+- Publish: bump `version` in package's `package.json`, then `git tag web-vX.X.X && git push --tags` (or `form-vX.X.X`) — GitHub Actions publishes on tag.
