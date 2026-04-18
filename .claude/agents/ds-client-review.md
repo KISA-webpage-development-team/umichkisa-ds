@@ -46,11 +46,19 @@ Check every line of each `.tsx` file against all constraint categories:
 - Native `<input>`, `<textarea>`, `<select>` instead of `Form.*` compound fields from `@umichkisa-ds/form`
 - `useForm` imported from `react-hook-form` directly instead of from `@umichkisa-ds/form`
 
-**Layout**
+**Layout & Spacing Tier**
 - `sm:`, `xl:`, or `2xl:` breakpoint prefixes (only default, `md:`, and `lg:` are allowed)
 - Arbitrary spacing values (`px-[24px]`, `mt-[13px]`, `gap-[10px]`)
 - Manual page shell pattern (`mx-auto w-full max-w-screen-2xl px-4 md:px-6 lg:px-8`) instead of `Container` from `@umichkisa-ds/web`
 - Nested `Container` components
+- **Spacing tier mismatch**: every `gap-*` / `space-x-*` / `space-y-*` / `row-gap-*` / `col-gap-*` value on a layout container must match its DS tier for the role:
+  - `gap-2` (8px) — inline layouts (icon+text, horizontal button groups, tag clusters, form field columns), compact stacks
+  - `gap-4` (16px) — **Component tier**: nav items, list items, stacked form fields, stacked cards
+  - `gap-6` (24px) — **Section tier**: gaps between major page sections only
+  - Any other on-scale value (`gap-3`, `space-x-5`, `space-x-8`, `space-y-10`, etc.) on a layout container is a violation unless it's inside a single component's internal padding (e.g. `p-4` on a card is fine; `gap-5` between list items is not)
+- **Vertical spacing scales with breakpoints** (e.g. `space-y-4 md:space-y-6`) — layout responsiveness is column reflow, not gap scaling
+- **Icon + text gap off-spec**: not `gap-2` default; not `gap-1` for compact tags/badges; not `gap-3` for larger display contexts
+- **Radius off-tier**: rounded values must come from DS — `rounded-sm`/`rounded-md` (buttons, inputs, cards), `rounded-lg` (modals, larger surfaces), `rounded-full` (avatars, pills). `rounded-xl` / `rounded-2xl` on a card is a violation unless justified by a specific DS surface role.
 
 **Component wrapping**
 - Re-exporting or wrapping a DS component to add default props or rename it (e.g., `MyButton` that re-exports `Button`)
@@ -110,3 +118,5 @@ Result: PASS — no violations found
 - Warnings (Prefer / Avoid) do not block — report them but do not count them as blockers
 - Violations (Must / Never) are blockers — the task cannot pass until all are resolved
 - **Spec overrides do not apply:** If the spec or plan prescribed a value that violates DS_CLIENT_USAGE.md, still report it as a violation. DS client constraints always win over the spec. The implementer will fix it.
+- **On-scale but wrong-tier is still a violation.** A value like `gap-6` exists in Tailwind's scale, but if it's used between nav items (which are Component tier = `gap-4`), that's a tier mismatch — report it, quoting the tier rule from DS_CLIENT_USAGE.md.
+- **Role context matters.** Determine the role of each container (page section / component / inline / nav strip / list / form) before judging spacing. Report the role in the violation body so the implementer knows why the tier is wrong.

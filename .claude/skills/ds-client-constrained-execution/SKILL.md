@@ -14,6 +14,21 @@ Drives task-by-task execution of client migration plans. Two modes based on each
 
 The main session only orchestrates, reviews, typechecks, and commits. Implementation and test-writing are dispatched to subagents.
 
+## Redesign over Preserve
+
+Client migration is **redesign + migration**, not mechanical retokenization. When the original UI conflicts with `DS_CLIENT_USAGE.md`, the executor **must pick the DS-canonical choice**, not preserve the original value.
+
+Examples:
+- Original `md:space-x-8` on a nav strip → DS Component tier is `space-x-4` (16px); ship `space-x-4`, not a mechanical demotion to the nearest-feeling scale value.
+- Original `rounded-lg` on a button → DS buttons use `rounded-md`; ship `rounded-md`.
+- Original `text-gray-600` subtitle → DS uses `text-muted-foreground`; ship the token.
+
+Implementer must record every such choice in the PR body under a `## Deviations from original` bullet list, so the reviewer can verify the DS reasoning (not just the rename).
+
+Only brand identity is preserved unconditionally: navy + maize colors, Korean + English type pairing, page structure, signature moves. Everything else defers to DS.
+
+**This applies at write time, not review time.** The implementer shouldn't ship off-tier values expecting the reviewer to catch them — every spacing, color, radius, and typography value should be tier-justified before the file is written.
+
 ## Mode Detection
 
 Read the task's tag from `plan.md`. Every task is marked `[TDD]` or `[NO-TDD]` at audit time. This is not agent discretion — follow the tag.
@@ -128,6 +143,7 @@ Use the template in `implementer-template.md` (same directory as this skill). Ke
 - In `[TDD]` mode: the implementer writes **minimal code to pass the tests** — nothing more
 - For revisions: include the full ds-client-review violation report in the prompt
 - If implementer returns BLOCKED or NEEDS_CONTEXT → hard stop, surface to user
+- Record **Deviations from original** in PR body — every value changed from the source (not just renamed) needs a one-line DS justification (e.g. "gap-8 → gap-4: nav items = Component tier per DS_CONSTRAINTS.md:129")
 
 ## Test-Writer Subagent (`[TDD]` mode only)
 
