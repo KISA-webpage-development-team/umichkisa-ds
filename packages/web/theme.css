@@ -11,3 +11,4 @@
  *   @import "@umichkisa-ds/web/theme.css";
  */
 @import "./src/styles/index.css";
+@source "./src/components/**/*.{ts,tsx}";
