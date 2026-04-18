@@ -3,6 +3,7 @@
 ## Post-Migration
 
 - [ ] Add consumer app example section to home page (`/`) — showcase the client app using DS components (after client app migration to `@umichkisa-ds/web`)
+- [ ] Refactor custom icons to import from `packages/web/src/components/icon/svg/` instead of duplicating SVG path data inline. Affects `GithubIcon`, `LinkedinIcon`, `InstagramIcon`, `InstagramBrandIcon`. Options: SVGR build plugin, tsup `text` loader + `dangerouslySetInnerHTML`, or extract path data to shared `.ts` constants. Pick based on React prop ergonomics vs. build infra cost.
 
 ## Client Migration
 

@@ -46,6 +46,8 @@ import {
   X,
 } from "lucide-react";
 import { GithubIcon } from "./custom/GithubIcon";
+import { InstagramIcon } from "./custom/InstagramIcon";
+import { InstagramBrandIcon } from "./custom/InstagramBrandIcon";
 import { LinkedinIcon } from "./custom/LinkedinIcon";
 
 export const registry = {
@@ -95,7 +97,11 @@ export const registry = {
   "user-round": UserRound,
   "x": X,
   "github": GithubIcon,
+  "instagram": InstagramIcon,
+  "instagram-brand": InstagramBrandIcon,
   "linkedin": LinkedinIcon,
 } as const;
 
 export type IconName = keyof typeof registry;
+
+export const iconNames = Object.keys(registry) as IconName[];
