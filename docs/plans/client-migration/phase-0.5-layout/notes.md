@@ -20,3 +20,20 @@ Strict append-only. Breadcrumbs for decisions, blockers, and DS fixes discovered
 - Lane 0.5.4d (#51, client PR #62 — draft): bailout, `needs-decision`. Two compounding blockers: (A) Vitest 4 + rolldown can't parse JSX in `.tsx` test files without `@vitejs/plugin-react`, which §9 forbids installing autonomously — first `.tsx` test in repo, Phase 0 infra gap. (B) New prop API `{ isAuthenticated, size? }` breaks 3 consumers typecheck-wise (`(pocha)/pocha/history/page.tsx`, `ui/feedback/NotLogin.tsx`, `features/pocha/components/manage/PochaManagePageHeader.tsx`) — all pass `session={...}` or `handleGoogleSignIn={...}` to the old API; sweeping them is scope drift per §6. Committed: LoginButton.jsx → .tsx with DS `Button variant="secondary"`, `useMockAuth()` wired, `React.memo`, spec-clean tests (3 runnable + 2 `.skip`'d real-mode) that can't yet parse. PR body has option matrix for both blockers.
 - Lane 0.5.4f (#53, client PR #63): clean completion, `ready-for-review`. `MobileMenuButton.jsx → .tsx`, dropped `framer-motion` (motion.button + iconVariants), swapped deprecated `BurgerMenuIcon`/`CancelIcon` for DS `<Icon name="menu"/"x" size="md">`. Animation: two stacked absolute-positioned icon `<span>`s cross-fading via `transition-opacity duration-300` on `isMobileMenuOpen` — chose cross-fade over single-icon rotate for cleaner state semantics. Added `aria-label` + `aria-expanded` on the button. `ds-client-review` PASS first round (no violations). `npx tsc --noEmit` green; `npm run build` skipped (same env reason).
 - Not eligible this run: 0.5.4c (needs-interactive — REDESIGN + auth hook consumption), 0.5.4e (needs-interactive — REDESIGN), 0.5.6 (needs-interactive — publish step).
+
+## Decision amendment — 2026-04-18 (audit locked decision #9)
+
+Audit locked decision #9 was "Drop framer-motion from header layer entirely; CSS-only animations". Revised during PR #61 review to **"Drop framer where it costs nothing; keep framer where it provides real visual value"**.
+
+Rationale: `framer-motion ^12.23.6` is still imported by `src/features/home-sponsor/HomeCarousel.jsx` and `src/features/home-sponsor/SchoolCalendar.jsx`, and Phase 0.5 isn't touching those. So framer is installed in the bundle regardless of what the header layer does — the "drop framer" rule in the header bought zero bundle-size savings, zero maintenance savings, and cost the polish of the original spring entrances on the desktop submenu.
+
+Applied scope of the amendment:
+- **Desktop submenu entrance** (`MenuItem` in `NavMenu.tsx`) — **keep framer spring** (mass 0.5, damping 11.5, stiffness 100) + `layoutId="active"` for hover-transitions between items. Matches original exactly. Retokenization to DS brand-primary/brand-accent still applies.
+- **Mobile accordion** (`MobileMenuItem`) — **stay CSS-only**. Simple height/opacity transitions didn't benefit from spring physics; original used framer only because the rest of the file did.
+- **Mobile nav wrapper** (`MobileMenu` + `Menu`) — **stay CSS-only**. Same reason.
+- **MobileMenuButton** (lane 0.5.4f, PR #63) — **stay CSS-only** (cross-fade of stacked icons). Two-state toggle doesn't need a physics engine; framer there was dead weight.
+- **Header.jsx mobile right-side fade-in** (lane 0.5.4c, pending) — reassess in that lane. Likely stay CSS-only (simple opacity transition).
+
+Policy going forward: when considering dropping a runtime lib from a file, first check whether the lib is imported elsewhere in the app. If yes, the drop doesn't save anything, so only drop when CSS-only is strictly better (simpler, more consistent with peer components). When framer provides a visible polish win (springs, layoutId, shared-layout transitions), keep it — the cost is already paid.
+
+Surfaced by PR #61 review comments on 2026-04-18 (maintainer: "dropping framer-motion is cool? I don't see any benefits here"). Applied in client PR #61 commit 8471249.
