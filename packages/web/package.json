@@ -1,6 +1,6 @@
 {
   "name": "@umichkisa-ds/web",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "KISA Design System — tokens and components for umichkisa.com",
   "type": "module",
   "main": "./dist/index.cjs",
