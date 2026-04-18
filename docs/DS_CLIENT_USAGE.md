@@ -10,7 +10,8 @@ _For author-side rules (building DS components), see `DS_CONSTRAINTS.md`._
 
 ### CSS Entry Point
 
-Must: Import `@umichkisa-ds/web/dist/styles.css` in the app root layout — this provides all component styles, semantic tokens, and baseline `@font-face` declarations. [source:DS_CODEBASE.md/packages]
+Must: For Tailwind v4 consumers (the standard case — all current KISA apps), import `@umichkisa-ds/web/theme.css` in the app's Tailwind-processed CSS entry (e.g. `globals.css`). This re-exports the DS source so the consumer's own Tailwind build emits DS tokens + utilities + component classes against actual client usage. [source:phase-0-gap/2026-04-18]
+Never: Import `@umichkisa-ds/web/dist/styles.css` in a Tailwind v4 consumer. The precompiled bundle is tree-shaken against DS source only, so utilities like `bg-brand-primary`, `text-foreground`, `border-border-strong` used in the client's JSX resolve to nothing at runtime — silent visual breakage. Use `dist/styles.css` only from non-Tailwind consumers that can't compile the source. [source:phase-0-gap/2026-04-18]
 
 ### Font Loading (Next.js)
 
