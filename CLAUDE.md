@@ -77,6 +77,19 @@ At every natural breakpoint (spec complete, phase complete, or context >= 70%), 
 
 Wait for the user's choice. Do not proceed automatically.
 
+### Post-Merge Sync (after every PR merge)
+
+Immediately after merging any PR (client or DS), sync the local repo that the PR merged into. This is non-optional — the user leaves these repos open in dev servers and stale local state causes confusing "unstaged changes" after the next pull.
+
+1. `cd` into the repo the PR was merged in (client = `../KISA-website/client/`, DS = this repo).
+2. Check current branch with `git branch --show-current`. If not the PR's base branch (`dev` for client, `main` for DS), switch: `git checkout <base>`.
+3. Run `git pull --ff-only`.
+   - If it succeeds → report "✅ `<repo>` `<branch>` up-to-date with origin (fast-forward)".
+   - If it fails due to divergence (local commits not on remote) → **stop**, show `git status` + `git log --oneline origin/<branch>..HEAD`, and ask the user how to reconcile. Do NOT auto-merge or reset.
+4. If the OTHER repo also had landed changes in the same session (e.g. DS fixes merged while on a client lane), sync it too.
+
+Report back with one line per repo so the user knows both local clones are current.
+
 ### Phase End (Phases 0+ only)
 If `docs/plans/client-migration/ds-fixes-log.md` has entries for the completing phase, invoke `ds-phase-end-bump` before marking the phase done.
 
