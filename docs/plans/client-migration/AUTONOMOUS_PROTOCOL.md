@@ -609,6 +609,32 @@ Flow:
 6. `npm install` in client
 7. Commit client version bump
 
+### Mid-phase pre-consume bump
+
+Invoked interactively when a client lane in the current phase **consumes** a DS addition (new component, new icon, new token) that was added by an earlier lane in the same phase. Without a bump between the producing DS lane and the consuming client lane, the client's lockfile-pinned DS version predates the addition, so the consuming lane's typecheck fails in CI even though DS `main` has the API.
+
+The bump is structurally identical to §14b (phase-end); it just fires earlier.
+
+Skill: `ds-phase-end-bump` (same skill, invoked mid-phase).
+
+Flow:
+1. Confirm the producing DS lane is merged to DS `main` and the addition is present in `packages/web/src/components/icon/registry.ts` (or the relevant source)
+2. Bump `@umichkisa-ds/web` **patch** version in `packages/web/package.json` (mid-phase bumps are always patch; minor/major bumps wait for phase end)
+3. Append to `docs/plans/client-migration/ds-fixes-log.md` with the "mid-phase" marker
+4. Commit + tag `web-vX.Y.Z`
+5. Push tag → GitHub Actions publishes to npm
+6. Update `KISA-website/client/package.json` to pinned new version
+7. `npm install` in client → lockfile syncs to new version
+8. Commit client version bump on a short-lived branch; open PR titled `chore(deps): bump @umichkisa-ds/web to X.Y.Z (mid-phase pre-consume for lane <id>)`
+
+When to schedule at plan-writing time:
+
+- If any lane's acceptance criteria reference a DS API added by an earlier lane in the same phase, insert a "Mid-phase bump" step in `plan.md` **immediately after** the producing DS lane and **before** the consuming client lane.
+- The consuming client lane then depends on the bump lane via `blocked-by:<issue-#>` (treat the mid-phase bump as a real lane with its own issue).
+- All bump lanes are `needs-interactive` — publish is hard-denied for autonomous per §9.
+
+Omission recovery: if plan-writing missed the mid-phase bump and the autonomous routine hits the gap (as happened for lane 0.5.5 on 2026-04-18), the consuming lane bails out with `needs-decision` per §6, you run the mid-phase bump interactively, then relabel the draft PR `needs-revision` so the next routine run finishes it.
+
 ---
 
 ## 15. Skills Referenced
@@ -691,3 +717,4 @@ Each lever trades complexity for speed or quality. Pick when the complexity stop
 |---|---|---|
 | 2026-04-17 | Initial draft (13 AP questions + 3 follow-ups) | Phase 0.5 kickoff |
 | 2026-04-17 | Add post-merge label cleanup rule (§2, §8) — strip `ready-for-review` / `needs-revision` / `needs-decision` / `routine-errored` from PRs at merge time, since closed state replaces them | Surfaced during lane 0.5.2 review (PR #2 was merged with stale `ready-for-review` label) |
+| 2026-04-18 | Add §14c "Mid-phase pre-consume bump" — when a client lane consumes a DS addition produced by an earlier lane in the same phase, schedule an interactive patch-bump lane between them so the consuming lane's CI can install the new DS version | Surfaced during lane 0.5.5 autonomous run (PR #59): `instagram-brand` was on DS `main` after lane 0.5.2 merged, but the client pin was still `1.0.0` so the Icon name literal-type check failed in CI; §14b handles only phase-end bumps, leaving no legal path to unblock mid-phase |

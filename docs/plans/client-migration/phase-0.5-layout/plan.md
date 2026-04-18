@@ -14,6 +14,8 @@ Wave 1:  0.5.1  (route groups — blocks everything visual)
 Wave 2:  0.5.2   ‖   0.5.3   ‖   0.5.4a
          DS icon     auth infra   cleanup/renames
          │
+Wave 2.5: 0.5.2.bump  (mid-phase pre-consume bump for Footer's instagram-brand; needs-interactive per AUTONOMOUS_PROTOCOL.md §14c)
+         │
 Wave 3:  0.5.4b  ‖  0.5.4d  ‖  0.5.4e  ‖  0.5.4f  ‖  0.5.5
          NavMenu    LoginBtn    UserInfo    MobileBtn   Footer
          │
@@ -28,7 +30,7 @@ Wave 5:  0.5.6  (verify + phase end-bump + merge to dev)
 - `0.5.4a → 0.5.4b, 0.5.4c, 0.5.4d, 0.5.4e, 0.5.4f` (rename targets must exist)
 - `0.5.3 → 0.5.4c, 0.5.4d` (auth context consumed)
 - `0.5.4b → 0.5.4c` (Header imports retokenized NavMenu)
-- `0.5.2 → 0.5.5` (Footer uses `instagram-brand` icon)
+- `0.5.2 → 0.5.2.bump → 0.5.5` (Footer uses `instagram-brand` icon; mid-phase bump publishes DS so client CI can install the new icon before lane 0.5.5 lands — per `AUTONOMOUS_PROTOCOL.md` §14c)
 - `all → 0.5.6`
 
 ---
@@ -41,6 +43,7 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §4. Drives `autonomous-ready` vs `needs-in
 |---|---|---|---|
 | 0.5.1 | [POLISH][NO-TDD] | `autonomous-ready` | Directory moves + pathname-check drop; scope concrete, no auth logic |
 | 0.5.2 | [MECHANICAL][NO-TDD] | `autonomous-ready` | DS icon additions; isolated to DS repo |
+| 0.5.2.bump | [MECHANICAL][NO-TDD] | `needs-interactive` | Touches publish (`ds-phase-end-bump` skill, mid-phase invocation); hard-denied for autonomous per §9 |
 | 0.5.3 | [REDESIGN][NO-TDD] | `needs-interactive` | Rule 1 fails (REDESIGN); new auth pipeline |
 | 0.5.4a | [MECHANICAL][NO-TDD] | `autonomous-ready` | File ops + import rewrites |
 | 0.5.4b | [POLISH][NO-TDD] | `autonomous-ready` | Pure retokenize; framer drop |
@@ -127,6 +130,50 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §4. Drives `autonomous-ready` vs `needs-in
 - [ ] Registry entries follow existing custom-icon pattern (no divergence)
 - [ ] `pnpm build` passes
 - [ ] `ds-fixes-log.md` has both entries
+
+---
+
+## Lane 0.5.2.bump — Mid-phase DS publish (pre-consume for Footer)
+
+**Repo:** `umichkisa-ds` (+ `KISA-website-client` for repin)
+
+Invoked per `AUTONOMOUS_PROTOCOL.md` §14c. Runs interactively after lane 0.5.2 merges and before lane 0.5.5 runs, so the Footer's `<Icon name="instagram-brand" />` reference resolves against an installed DS version that actually has the icon.
+
+### Files
+
+- Modify: `packages/web/package.json` — bump `version` patch (e.g., `1.0.0 → 1.0.1`)
+- Append: `docs/plans/client-migration/ds-fixes-log.md` — mid-phase bump entry with lane reference
+- Modify (client repo): `KISA-website-client/package.json` — pin `"@umichkisa-ds/web"` to the new version
+- Modify (client repo): `KISA-website-client/package-lock.json` — lockfile sync via `npm install`
+
+### Tasks
+
+- [ ] Confirm lane 0.5.2 is merged to DS `main` and `packages/web/src/components/icon/registry.ts` has both `"instagram"` and `"instagram-brand"` entries
+- [ ] Bump `packages/web/package.json` version → next patch (no minor/major — mid-phase bumps are patch-only)
+- [ ] Append entry to `docs/plans/client-migration/ds-fixes-log.md` marked `mid-phase` with lane reference
+- [ ] Commit DS changes: `chore(web): bump to <version> for phase 0.5 mid-phase pre-consume (lane 0.5.5)`
+- [ ] `git tag web-v<version>`
+- [ ] `git push` + `git push --tags` → GitHub Actions publishes to npm
+- [ ] Wait for the publish workflow to succeed (verify on npm / GitHub Actions)
+- [ ] In `KISA-website-client`: update `package.json` `"@umichkisa-ds/web"` pin to `<version>`
+- [ ] Run `npm install` (no-arg, lockfile sync only) → verify only `@umichkisa-ds/web` entries changed
+- [ ] Commit client on a short-lived branch: `chore(deps): bump @umichkisa-ds/web to <version> (mid-phase pre-consume for lane 0.5.5)`
+- [ ] Open PR against client `dev`; merge once CI is green
+
+### Acceptance criteria
+
+- [ ] DS `packages/web/package.json` version is the new patch
+- [ ] `web-v<version>` tag exists on DS `main` and has been published to npm
+- [ ] `ds-fixes-log.md` has a `mid-phase` entry for this bump
+- [ ] Client `package.json` pins `"@umichkisa-ds/web": "<version>"` (exact, no caret)
+- [ ] Client `package-lock.json` diff is limited to `@umichkisa-ds/web` (and any peer deps it pulled in); no unrelated churn
+- [ ] Any open client PR that consumes the new icon (e.g., lane 0.5.5) turns CI green after rebasing onto the bumped `dev`
+
+### Non-goals
+
+- Minor / major DS version bumps (reserve for phase end)
+- Bundling other DS fixes into this bump (those land at phase end; mid-phase bumps are pre-consume only)
+- Modifying DS component APIs
 
 ---
 
