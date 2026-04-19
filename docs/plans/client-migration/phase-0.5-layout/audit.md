@@ -227,8 +227,18 @@ Pathname check already removed in 0.5.1.
 ---
 
 ### 0.5.6 — Shell → DS Container (site-wide)
-**Tag:** `[MECHANICAL]` `[NO-TDD]` (pending grill — may flip to `[REDESIGN]` if DS `Container` needs a wider variant)
-**Scope:** Swap the manually composed page shell (`mx-auto max-w-screen-2xl px-4 md:px-24 lg:px-32`) for DS `Container` across the client. Surfaced as violation V3 by `ds-client-review` during lane 0.5.4c (PR #66), deferred out of that lane. See [client#67](https://github.com/KISA-webpage-development-team/KISA-website-client/issues/67) for the open spec. **Full spec TBD — will be written at Lane 0.5.6 kickoff via grill-me** (DS-side decision needed first: wider `Container` variant vs. widened default).
+**Tag:** `[REDESIGN]` `[NO-TDD]`
+**Scope:** Swap manually composed page shells for DS `Container` in 2 files: `Header.tsx` + `(main)/layout.tsx`. Delete the `headerContentWidth` / `mainContentsWidth` consts.
+
+Surfaced as violation V3 by `ds-client-review` on lane 0.5.4c (PR #66, 2026-04-19); deferred out of that lane. See [client#67](https://github.com/KISA-webpage-development-team/KISA-website-client/issues/67).
+
+**Decision (2026-04-19 grill):** use DS Container defaults (`px-4 md:px-6 lg:px-8`). Deliberately drop the current brand-wide padding (`md:px-24 lg:px-32`) — matches how the DS docs app consumes Container today. If md+ content looks too stretched in visual review, fall back to adding a DS `padding` variant in a follow-up; do NOT re-introduce custom padding locally.
+
+**DS-side:** no changes needed. `Container` already exported via `packages/web/src/components/layout/index.ts` and shipped in `@umichkisa-ds/web 1.0.2` (client's current pin).
+
+**Out of scope:** `(pocha)/pocha/history/page.tsx` — separate shell (`px-2 max-w-screen-2xl mx-auto`) inside the `(pocha)` route group which does not render Header/Footer. Stays a known ds-client-review violation, addressed in Phase 2 (pocha).
+
+**Visual delta:** significant at md+. Horizontal gutters shrink by ~72px (md) / ~96px (lg) per side; content area widens. Mobile unchanged (`px-4` on both sides).
 
 ---
 

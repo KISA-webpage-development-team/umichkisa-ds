@@ -449,19 +449,68 @@ Invoked per `AUTONOMOUS_PROTOCOL.md` §14c. Runs interactively after lane 0.5.2 
 
 ## Lane 0.5.6 — Shell → DS Container (site-wide)
 
-**Repo:** `KISA-website-client` (+ `umichkisa-ds` if Container variant / default update is decided)
+**Repo:** `KISA-website-client`
 
-**Status:** Spec TBD — written at Lane 0.5.6 kickoff via `grill-me`. Open spec at [client#67](https://github.com/KISA-webpage-development-team/KISA-website-client/issues/67).
+**Tag:** `[REDESIGN]` `[NO-TDD]`
 
-**Background:** Surfaced as violation V3 by `ds-client-review` during lane 0.5.4c (PR #66, 2026-04-19). Both `Header.tsx` (`headerContentWidth`) and `app/(main)/layout.tsx` (`mainContentsWidth`) manually compose `mx-auto max-w-screen-2xl px-4 md:px-24 lg:px-32`, violating `DS_CLIENT_USAGE.md#Layout`. DS `Container` defaults to `md:px-6 lg:px-8`, so a mechanical swap would shrink horizontal padding by ~80–96px each side on md+.
+**Tracking:** [client#67](https://github.com/KISA-webpage-development-team/KISA-website-client/issues/67)
 
-**Open DS-side decision (grill this first):**
+### Files
 
-- (a) DS ships a wider `Container` variant (e.g. `size="wide"`); KISA consumes it, default stays tight.
-- (b) DS default `Container` widens to match KISA brand layout; re-evaluate for future consumers.
-- (c) Client keeps manual shell with a documented `DS_CLIENT_USAGE.md` exception (weakest — defeats the rule).
+- Modify: `src/components/layout/header/Header.tsx` — outer `<div>` → `<Container>`; delete `headerContentWidth` const
+- Modify: `src/app/(main)/layout.tsx` — `<main>` → `<Container as="main">`; delete `mainContentsWidth` const
 
-**Likely file scope (client):** `Header.tsx`, `app/(main)/layout.tsx`, `Footer.tsx` (audit), any page-level re-compositions of the shell (grep at kickoff). Delete `headerContentWidth` / `mainContentsWidth` consts.
+### Scope decision (2026-04-19 grill)
+
+Swap manually composed shells for DS `Container` with **default padding** (`px-4 md:px-6 lg:px-8`). Deliberately drop the current brand-wide padding (`md:px-24 lg:px-32`) — matches DS docs-app usage. If md+ content looks too stretched in Vercel preview, fall back to adding a `padding` variant to DS Container in a follow-up; do NOT re-introduce custom padding locally.
+
+### Mapping
+
+**`Header.tsx` — inner root `<div>`:**
+
+    <Container className="relative inset-x-0 z-50 flex justify-between items-center py-3 md:py-4">
+
+Container already supplies `mx-auto w-full px-4 md:px-6 lg:px-8 max-w-screen-2xl`. Leftover classes are layout/positioning — compliant with `DS_CLIENT_USAGE.md` className passthrough rule.
+
+**`(main)/layout.tsx` — `<main>`:**
+
+    <Container as="main" className="relative h-full pt-3 md:pt-6 flex-1">
+
+### Tasks
+
+- [ ] Grep audit: `mx-auto max-w-` + `mx-auto.*px-` patterns across `src/app/(main)/**` and `src/components/layout/**`. Any new hits in `(main)` scope → add to this lane; `(pocha)` / `(auth)` hits → log as phase-2 followups.
+- [ ] Replace `Header.tsx` outer `<div>` with `<Container className="...">`; delete `headerContentWidth`.
+- [ ] Replace `(main)/layout.tsx` `<main>` with `<Container as="main" className="...">`; delete `mainContentsWidth`.
+- [ ] `npx tsc --noEmit` — passes.
+- [ ] `ds-client-review` on both files — 0 violations (V3 fully cleared).
+- [ ] Vercel preview visual smoke test (side-by-side vs `dev`):
+  - [ ] `/` (home) — lg / md / mobile
+  - [ ] `/jobs` — lg / md / mobile
+  - [ ] `/boards` — lg / md / mobile
+  - [ ] `/posts` — lg / md / mobile
+  - [ ] `/about` — lg / md / mobile
+  - [ ] `/signin` — lg / md / mobile
+  - [ ] `/signup` — lg / md / mobile
+- [ ] If any md+ route looks too stretched → STOP; open DS follow-up for a Container padding variant; do not re-introduce brand-wide padding locally.
+- [ ] Open PR; request review; no auto-merge.
+
+### Acceptance criteria
+
+- [ ] `Header.tsx` and `(main)/layout.tsx` both consume `Container` from `@umichkisa-ds/web`.
+- [ ] `headerContentWidth` and `mainContentsWidth` consts removed.
+- [ ] `ds-client-review` PASS (V3 cleared).
+- [ ] `npx tsc --noEmit` passes.
+- [ ] Visual smoke passes on all 7 routes × 3 breakpoints.
+- [ ] No regressions in header layout (logo placement, nav dropdown anchoring, mobile menu positioning).
+
+### Rollback
+
+If visual review fails on any route:
+
+1. Do NOT revert to brand-wide padding locally.
+2. Open a DS issue: add `padding: "default" | "wide"` prop to `Container` (decouple from `size`).
+3. Patch-bump DS (`ds-phase-end-bump` or standalone).
+4. Re-run this lane consuming `<Container padding="wide">`.
 
 ---
 
