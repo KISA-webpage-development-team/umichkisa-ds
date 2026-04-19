@@ -5,6 +5,7 @@ const containerVariants = cva("mx-auto w-full px-4 md:px-6 lg:px-8", {
   variants: {
     size: {
       default: "max-w-screen-2xl",
+      xl: "max-w-screen-xl",
       lg: "max-w-screen-lg",
       md: "max-w-screen-md",
       sm: "max-w-screen-sm",
