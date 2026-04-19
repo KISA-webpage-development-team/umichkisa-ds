@@ -226,7 +226,13 @@ Pathname check already removed in 0.5.1.
 
 ---
 
-### 0.5.6 — Verification + merge
+### 0.5.6 — Shell → DS Container (site-wide)
+**Tag:** `[MECHANICAL]` `[NO-TDD]` (pending grill — may flip to `[REDESIGN]` if DS `Container` needs a wider variant)
+**Scope:** Swap the manually composed page shell (`mx-auto max-w-screen-2xl px-4 md:px-24 lg:px-32`) for DS `Container` across the client. Surfaced as violation V3 by `ds-client-review` during lane 0.5.4c (PR #66), deferred out of that lane. See [client#67](https://github.com/KISA-webpage-development-team/KISA-website-client/issues/67) for the open spec. **Full spec TBD — will be written at Lane 0.5.6 kickoff via grill-me** (DS-side decision needed first: wider `Container` variant vs. widened default).
+
+---
+
+### 0.5.7 — Verification + merge
 **Tag:** `[MECHANICAL]` `[NO-TDD]`
 **Scope:** No code changes. Checks:
 
@@ -255,7 +261,9 @@ Wave 3:  0.5.4b  ‖  0.5.4d  ‖  0.5.4e  ‖  0.5.4f  ‖  0.5.5
          │
 Wave 4:  0.5.4c  (Header.tsx — needs 0.5.3 + 0.5.4b done)
          │
-Wave 5:  0.5.6  (verify + merge)
+Wave 5:  0.5.6  (shell → DS Container, site-wide)
+         │
+Wave 6:  0.5.7  (verify + merge)
 ```
 
 **Parallel-execution notes:**

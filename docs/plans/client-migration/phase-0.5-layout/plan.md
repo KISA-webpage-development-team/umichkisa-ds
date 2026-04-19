@@ -21,7 +21,9 @@ Wave 3:  0.5.4b  ‖  0.5.4d  ‖  0.5.4e  ‖  0.5.4f  ‖  0.5.5
          │
 Wave 4:  0.5.4c  (Header.tsx — needs 0.5.3 + 0.5.4b merged)
          │
-Wave 5:  0.5.6  (verify + phase end-bump + merge to dev)
+Wave 5:  0.5.6  (shell → DS Container, site-wide)
+         │
+Wave 6:  0.5.7  (verify + phase end-bump + merge to dev)
 ```
 
 **Dependency edges** (→ means "must merge before"):
@@ -31,7 +33,7 @@ Wave 5:  0.5.6  (verify + phase end-bump + merge to dev)
 - `0.5.3 → 0.5.4c, 0.5.4d` (auth context consumed)
 - `0.5.4b → 0.5.4c` (Header imports retokenized NavMenu)
 - `0.5.2 → 0.5.2.bump → 0.5.5` (Footer uses `instagram-brand` icon; mid-phase bump publishes DS so client CI can install the new icon before lane 0.5.5 lands — per `AUTONOMOUS_PROTOCOL.md` §14c)
-- `all → 0.5.6`
+- `all → 0.5.6 → 0.5.7` (shell swap runs after all other lanes merge; verify+bump runs last)
 
 ---
 
@@ -52,7 +54,8 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §4. Drives `autonomous-ready` vs `needs-in
 | 0.5.4e | [REDESIGN][NO-TDD] | `needs-interactive` | Rule 1 fails (REDESIGN) |
 | 0.5.4f | [MECHANICAL][NO-TDD] | `autonomous-ready` | CSS-only animation swap |
 | 0.5.5 | [POLISH][NO-TDD] | `autonomous-ready` | Retokenize + copy swap |
-| 0.5.6 | [MECHANICAL][NO-TDD] | `needs-interactive` | Touches publish (ds-phase-end-bump); final merge |
+| 0.5.6 | [MECHANICAL][NO-TDD] (tentative) | `needs-interactive` | Shell → DS Container swap (added 2026-04-19, tracks client#67); DS decision grilled at kickoff |
+| 0.5.7 | [MECHANICAL][NO-TDD] | `needs-interactive` | Touches publish (ds-phase-end-bump); final merge |
 
 ---
 
@@ -444,7 +447,25 @@ Invoked per `AUTONOMOUS_PROTOCOL.md` §14c. Runs interactively after lane 0.5.2 
 
 ---
 
-## Lane 0.5.6 — Verification + phase end-bump + merge
+## Lane 0.5.6 — Shell → DS Container (site-wide)
+
+**Repo:** `KISA-website-client` (+ `umichkisa-ds` if Container variant / default update is decided)
+
+**Status:** Spec TBD — written at Lane 0.5.6 kickoff via `grill-me`. Open spec at [client#67](https://github.com/KISA-webpage-development-team/KISA-website-client/issues/67).
+
+**Background:** Surfaced as violation V3 by `ds-client-review` during lane 0.5.4c (PR #66, 2026-04-19). Both `Header.tsx` (`headerContentWidth`) and `app/(main)/layout.tsx` (`mainContentsWidth`) manually compose `mx-auto max-w-screen-2xl px-4 md:px-24 lg:px-32`, violating `DS_CLIENT_USAGE.md#Layout`. DS `Container` defaults to `md:px-6 lg:px-8`, so a mechanical swap would shrink horizontal padding by ~80–96px each side on md+.
+
+**Open DS-side decision (grill this first):**
+
+- (a) DS ships a wider `Container` variant (e.g. `size="wide"`); KISA consumes it, default stays tight.
+- (b) DS default `Container` widens to match KISA brand layout; re-evaluate for future consumers.
+- (c) Client keeps manual shell with a documented `DS_CLIENT_USAGE.md` exception (weakest — defeats the rule).
+
+**Likely file scope (client):** `Header.tsx`, `app/(main)/layout.tsx`, `Footer.tsx` (audit), any page-level re-compositions of the shell (grep at kickoff). Delete `headerContentWidth` / `mainContentsWidth` consts.
+
+---
+
+## Lane 0.5.7 — Verification + phase end-bump + merge
 
 **Repo:** `KISA-website-client` (+ `umichkisa-ds` for bump)
 
