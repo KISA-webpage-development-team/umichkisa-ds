@@ -21,7 +21,7 @@
 - [x] Phase 1.1: MSW handlers for jobs API
 - [ ] Phase 1.2: JobApplicationInfoContents
 - [ ] Phase 1.3: JobCategoryDropdown
-- [ ] Phase 1.4: TagList redesign (inline segmented + DateRangePicker)
+- [x] Phase 1.4: TagList redesign (inline segmented + DateRangePicker)
 - [ ] Phase 1.5: JobPostingGrid + JobPostingCard + InfiniteScroll + NotificationText
 - [ ] Phase 1.6: USAFallbackContent extract + migrate
 - [ ] Phase 1.7: CountryToggle (new component)
