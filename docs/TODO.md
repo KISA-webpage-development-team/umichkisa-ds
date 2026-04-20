@@ -17,7 +17,18 @@
 - [x] Phase -1.7: Lock deferred decisions + draft Phase 0 audit/plan
 - [x] Phase 0: Globals (Tailwind v4 + DS install + MSW + test framework + tunnel settings)
 - [x] Phase 0.5: Shared layout (Header/Footer/MobileMenu)
-- [ ] Phase 1: jobs-curator (subphases added at kickoff)
+- [x] Phase 1: jobs-curator — kickoff done
+- [ ] Phase 1.1: MSW handlers for jobs API
+- [ ] Phase 1.2: JobApplicationInfoContents
+- [ ] Phase 1.3: JobCategoryDropdown
+- [ ] Phase 1.4: TagList redesign (inline segmented + DateRangePicker)
+- [ ] Phase 1.5: JobPostingGrid + JobPostingCard + InfiniteScroll + NotificationText
+- [ ] Phase 1.6: USAFallbackContent extract + migrate
+- [ ] Phase 1.7: CountryToggle (new component)
+- [ ] Phase 1.8: Hooks/context cleanup
+- [ ] Phase 1.9: Legacy ui swap (jobs scope)
+- [ ] Phase 1.10: Page shell
+- [ ] Phase 1.11: Verify + end-bump
 - [ ] Phase 2: pocha-manage (subphases added at kickoff)
 - [ ] Phase 3: pocha-dashboard (subphases added at kickoff)
 - [ ] Phase 4: pocha-userfacing (subphases added at kickoff)
