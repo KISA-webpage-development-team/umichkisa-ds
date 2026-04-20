@@ -19,17 +19,19 @@
 
 #### Phase kickoff entry (e.g., "Phase 1: jobs-curator (subphases added at kickoff)")
 
-This phase needs its subphases enumerated first. Follow the phase kickoff flow in `HARNESS_DESIGN.md`:
+A phase kickoff is just Mode A (audit) applied at the phase level — no separate kickoff artifact. Per `HARNESS_DESIGN.md`:
 
-- Audit the app at a high level
-- Enumerate subphases
-- Write `overview.md`
-- Expand TODO.md
-- Check off the kickoff entry
+- Derive folder path: `docs/plans/client-migration/phase-<N>-<slug>/`
+- Audit the target app/feature; identify subphases (one per feature/page/lane)
+- Write phase-level `audit.md` with subphase list + scope/TDD marks + phase-wide risks
+- Expand TODO.md — replace the kickoff entry with one `Phase N.M: <title>` entry per subphase
+- Tick the kickoff entry
 
-#### Phase 0+ singleton or subphase entry (e.g., "Phase 0.5: Shared layout" or "Phase 1.1: jobs list")
+Next session picks up in Mode B (write `plan.md` with one `## Lane N.M` section per subphase, generate issues).
 
-Derive the folder path (e.g., `docs/plans/client-migration/phase-0.5-layout/` or `docs/plans/client-migration/phase-1-jobs-curator/phase-1.1-jobs-list/`).
+#### Phase entry or subphase entry (e.g., "Phase 0.5: Shared layout" or "Phase 1.1: jobs list")
+
+Derive the phase folder path (e.g., `docs/plans/client-migration/phase-0.5-layout/` or `docs/plans/client-migration/phase-1-jobs-curator/`). All subphases of a phase share the same `audit.md`/`plan.md`/`notes.md` at the phase root — no per-subphase subfolders.
 
 **Detect mode by repo state:**
 

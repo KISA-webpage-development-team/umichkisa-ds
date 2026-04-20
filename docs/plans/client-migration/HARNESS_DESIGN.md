@@ -145,63 +145,76 @@ The user prefers to be challenged on assumptions rather than presented with a pr
 
 ### Two levels of work: phases and subphases
 
-**Phases** are the top-level groupings (Phase 0, Phase 1, etc.). **Subphases** are the individual units of work within a multi-feature phase.
+**Phases** are the top-level groupings (Phase 0, Phase 1, etc.). **Subphases** are the individual units of work within a phase — one subphase = one feature, page, or lane.
 
-- **Phases 0 and 0.5** are singletons — no subphases. They have their own `audit.md`/`plan.md`/`notes.md` directly.
-- **Phases 1–5** are multi-subphase. They require a **kickoff session** before any subphase work begins.
 - **Phase -1** is pre-enumerated — subphases are already listed in TODO.md. Each is a self-contained deliverable (one doc or one skill), so they do NOT use the formal `audit.md`/`plan.md`/`notes.md` trio. The full trio starts at Phase 0.
+- **Phase 0** is a singleton — no subphases. One audit, one plan, one notes file directly in its folder.
+- **Phases 0.5, 1, 2, 3, 4, 5** all use the same flow: one phase-level `audit.md`/`plan.md`/`notes.md` trio at the phase root, with per-subphase sections **inside** `plan.md`. Each section in `plan.md` becomes one GitHub issue in Mode B.
 
-### Phase kickoff (Phases 1–5 only)
+### Phase flow (default for Phases 0.5+)
 
-When a cold session reaches a phase-level TODO entry like `Phase 1: jobs-curator (subphases added at kickoff)`:
+This is the flow proven during Phase 0.5 and the default for all multi-subphase phases.
 
-1. **Audit the whole app** at a high level — read all features, routes, components
-2. **Enumerate subphases** — each subphase = one feature or page URL to migrate
-3. **Write `overview.md`** at the phase root — subphase list, ordering rationale, phase-wide risks/DS gaps
-4. **Add subphase entries to TODO.md** — flat list, appended below the phase entry
-5. **Check off the phase-level entry** as "kickoff done"
+Cold session lands on a phase-level TODO entry like `Phase 1: jobs-curator (subphases added at kickoff)`:
 
-After kickoff, TODO.md transforms from:
+**Mode A — Audit**
+1. Read the target app/feature at a high level — routes, components, data flow, auth/role touchpoints, DS gaps
+2. Identify subphases (one per feature/page/lane)
+3. Write phase-level `audit.md` — scope, subphase list with `[MECHANICAL]`/`[POLISH]`/`[REDESIGN]` + `[TDD]`/`[NO-TDD]` marks, phase-wide risks/DS gaps
+4. Expand TODO.md — replace the single kickoff entry with a flat list of subphases
+5. Tick the kickoff entry
+
+**Mode B — Plan + issues**
+1. Write phase-level `plan.md` with one `## Lane N.M — <title>` section per subphase (files, tasks, acceptance criteria, dependencies, bailout triggers, budget)
+2. Generate one GitHub issue per lane section per `AUTONOMOUS_PROTOCOL.md` §3; apply labels per §2
+
+**Subphase execution** (Mode C/D, per `AUTONOMOUS_PROTOCOL.md`)
+- Autonomous lanes → PR via routine
+- Interactive lanes → branch in-place, `ds-client-constrained-execution`
+- Tick subphase entries in TODO.md as lanes merge
+
+**Mode E — Phase close-out**
+- Verify, `ds-phase-end-bump` if DS fixes accumulated, tick phase entry.
+
+After kickoff (end of Mode A), TODO.md transforms from:
 ```
 - [ ] Phase 1: jobs-curator (subphases added at kickoff)
 ```
 to:
 ```
 - [x] Phase 1: jobs-curator — kickoff done
-- [ ] Phase 1.1: jobs-curator / jobs list
-- [ ] Phase 1.2: jobs-curator / job detail
+- [ ] Phase 1.1: jobs list
+- [ ] Phase 1.2: job detail
+- [ ] Phase 1.N: ...
 ```
 
-The `overview.md` is an index and rationale doc, NOT a plan. It is written once and lightly revised if the subphase list changes.
+### Per phase: 3 files (Phase 0+)
 
-### Per subphase: 3 files (Phases 0+ only)
-
-Each subphase (or singleton phase) gets these artifacts inside its folder:
+Each phase folder contains the same trio:
 
 | File | Mutability | Purpose |
 |---|---|---|
-| `audit.md` | Read-only after creation | Snapshot of scope, `[MECHANICAL]`/`[POLISH]`/`[REDESIGN]` + `[TDD]`/`[NO-TDD]` marks |
-| `plan.md` | Checkboxes ticked during execution | Task list, source of truth for "where are we" |
+| `audit.md` | Read-only after creation | Snapshot of scope, subphase list with scope/TDD marks, phase-wide risks/DS gaps |
+| `plan.md` | Checkboxes ticked during execution | One `## Lane N.M` section per subphase — source of truth for "where are we" |
 | `notes.md` | **Strict append-only** | Breadcrumbs: DS bugs, decision changes, blockers, user feedback |
 
-These are produced by the per-phase internal flow (audit → plan → execute). They do NOT exist at subphase start — they are created during that subphase's first session.
+No per-subphase subfolders. Subphases live as sections inside the phase-level `plan.md`.
 
 ### Artifact layout
 
 ```
 docs/plans/client-migration/
 ├── HARNESS_DESIGN.md                          ← this file
+├── AUTONOMOUS_PROTOCOL.md
+├── ds-fixes-log.md
 ├── phase-0-globals/
-│   ├── audit.md, plan.md, notes.md            ← singleton, no overview
+│   ├── audit.md, plan.md, notes.md            ← singleton
 ├── phase-0.5-layout/
-│   ├── audit.md, plan.md, notes.md            ← singleton, no overview
+│   ├── audit.md, plan.md, notes.md            ← plan.md has Lane 0.5.1..0.5.7 sections
 ├── phase-1-jobs-curator/
-│   ├── overview.md                            ← produced at phase kickoff
-│   ├── phase-1.1-jobs-list/
-│   │   ├── audit.md, plan.md, notes.md        ← produced when subphase starts
-│   ├── phase-1.2-job-detail/
-│   │   ├── audit.md, plan.md, notes.md
-│   └── ...
+│   ├── audit.md, plan.md, notes.md            ← plan.md has Lane 1.1..1.N sections
+├── phase-2-pocha-manage/
+│   ├── audit.md, plan.md, notes.md
 └── ...
 ```
 
@@ -209,8 +222,8 @@ docs/plans/client-migration/
 
 Flat list of leaves under "## Client Migration".
 - Phase -1 subphases: pre-enumerated (already in TODO.md).
-- Phases 0 and 0.5: singleton entries (already in TODO.md).
-- Phases 1–5: start as a single kickoff entry. Subphases appended at phase kickoff, replacing the placeholder.
+- Phase 0: singleton entry.
+- Phases 0.5, 1–5: start as a single kickoff entry. Subphases appended at end of Mode A (audit), replacing the placeholder.
 
 ### MEMORY.md
 
