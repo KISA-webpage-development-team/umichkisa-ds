@@ -156,9 +156,9 @@ Phase 1 formalizes this:
 - **TDD:** `[NO-TDD]`
 - **Interactive:** autonomous
 - **Wave:** 1
-- **Swap:** current dropdown impl → DS `Select` (preferred) or `Dropdown` depending on option count (~20 categories).
+- **Swap:** current dropdown impl → DS `Dropdown`. (DS `Select` is form-oriented; `Dropdown` is the right primitive for this UI menu. If `Dropdown` reads ugly at ~20 options, fall back to `Select`.)
 - **Files:** `features/jobs-curator/components/JobCategoryDropdown.tsx`
-- **Risk:** verify DS Select handles ~20 options cleanly; switch to Dropdown if not.
+- **Risk:** ~20 options may stress dropdown menu height — verify scroll behavior; fall back to `Select` only if visual polish fails.
 
 ### 1.4 — TagList redesign
 
@@ -198,10 +198,10 @@ Phase 1 formalizes this:
 - **Scope:** `[REDESIGN]` (new component, small)
 - **TDD:** `[NO-TDD]`
 - **Interactive:** autonomous
-- **Wave:** 1
+- **Wave:** 2 (after 1.8 ships `country` to context)
 - **Create:** `features/jobs-curator/components/CountryToggle.tsx`
 - **Behavior:** segmented KR/US switcher (DS `ToggleGroup`), writes to `JobsCuratorContext.country`. Default KR.
-- **Depends on:** `JobsCuratorContext` gaining `country` state — coordinated with lane 1.8.
+- **Depends on:** lane 1.8 must merge first — `JobsCuratorContext.country` + `setCountry` must exist before this lane consumes them. Strict `blocked-by:1.8` edge.
 
 ### 1.8 — Hooks/context cleanup
 
@@ -265,10 +265,10 @@ Wave 1 (parallel):         1.2  JobApplicationInfoContents        (autonomous)
                            1.4  TagList redesign                  (interactive, user drives)
                            1.5  JobPostingGrid + Card + scroll    (autonomous)
                            1.6  USAFallbackContent migrate        (autonomous)
-                           1.7  CountryToggle new                 (autonomous)
                            1.8  Hooks/context cleanup             (autonomous)
 
-Wave 2:                    1.9  Legacy ui swap                    (autonomous)
+Wave 2:                    1.7  CountryToggle new                 (autonomous, blocked-by:1.8)
+                           1.9  Legacy ui swap                    (autonomous)
 
 Wave 3 (interactive):      1.10 Page shell                        (interactive)
 
