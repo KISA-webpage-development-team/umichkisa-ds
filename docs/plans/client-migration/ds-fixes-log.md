@@ -13,6 +13,7 @@ Accumulator for DS fixes made during client migration. Grouped by package, entri
 - **[Phase 0.5.6]** Add `xl` size variant to `Container` (`max-w-screen-xl`, 1280px) — sits between `lg` (1024px) and `default` (1536px); surfaced during lane 0.5.6 visual review for the KISA shell width (commit d9c671b)
 - **[Phase 1.1]** Bundle `@radix-ui/*` transitive deps into `dist/index.js` via tsup `noExternal` — resolves client `next build` `Module not found` for `@radix-ui/number`, `react-presence`, `react-use-previous`, etc. pnpm's symlinked transitives aren't npm-client-resolvable (commit 92e3a48)
 - **[Phase 1.1.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.3 → 1.0.4` (patch) — ships the radix-bundle fix so Lane 1.1 + all downstream Phase 1 lanes can deploy from registry — 2026-04-20 — per `AUTONOMOUS_PROTOCOL.md` §14c
+- **[Phase 1.4]** ToggleGroup: added `'multiple'` variant via discriminated union on `type` prop (`value: string[]`, `onValueChange: (string[]) => void`, `role="group"` + `aria-pressed`, roving tabindex, arrow-key focus-only). Additive — default `'single'` mode byte-for-byte unchanged. Unblocks Lane 1.4 TagList internshipTypes (commit 102d7a5) — 2026-04-20
 
 ## @umichkisa-ds/form
 
