@@ -9,6 +9,7 @@ export default defineConfig({
   sourcemap: true,
   clean: true,
   external: ["react", "react-dom"],
+  noExternal: [/^@radix-ui\//],
   injectStyle: false,
   esbuildOptions(options) {
     options.banner = {
