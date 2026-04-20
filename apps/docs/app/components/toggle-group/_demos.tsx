@@ -38,6 +38,25 @@ export function PageSizeDemo() {
   )
 }
 
+export function MultipleDemo() {
+  const [tags, setTags] = useState<string[]>(['typescript'])
+
+  return (
+    <div className="w-full">
+      <ToggleGroup
+        type="multiple"
+        value={tags}
+        onValueChange={setTags}
+        items={[
+          { value: 'typescript', label: 'TypeScript' },
+          { value: 'react', label: 'React' },
+          { value: 'tailwind', label: 'Tailwind' },
+        ]}
+      />
+    </div>
+  )
+}
+
 export function FullWidthDemo() {
   const [view, setView] = useState('posts')
 

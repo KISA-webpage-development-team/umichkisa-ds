@@ -12,7 +12,7 @@ import {
 } from '@umichkisa-ds/web'
 import { ComponentPreview } from '@/components/ComponentPreview'
 import { highlight } from '@/lib/highlight'
-import { ContentViewDemo, PageSizeDemo, FullWidthDemo } from './_demos'
+import { ContentViewDemo, PageSizeDemo, FullWidthDemo, MultipleDemo } from './_demos'
 import { Heading } from '@/components/Heading'
 import { InlineCode } from '@/components/InlineCode'
 
@@ -60,15 +60,33 @@ const [view, setView] = useState('posts')
   ]}
 />`
 
+const multipleCode = `import { useState } from 'react'
+import { ToggleGroup } from '@umichkisa-ds/web'
+
+const [tags, setTags] = useState<string[]>(['typescript'])
+
+<ToggleGroup
+  type="multiple"
+  value={tags}
+  onValueChange={setTags}
+  items={[
+    { value: 'typescript', label: 'TypeScript' },
+    { value: 'react', label: 'React' },
+    { value: 'tailwind', label: 'Tailwind' },
+  ]}
+/>`
+
 export default async function ToggleGroupPage() {
   const [
     contentViewHighlighted,
     pageSizeHighlighted,
     fullWidthHighlighted,
+    multipleHighlighted,
   ] = await Promise.all([
     highlight(contentViewCode),
     highlight(pageSizeCode),
     highlight(fullWidthCode),
+    highlight(multipleCode),
   ])
 
   return (
@@ -124,6 +142,25 @@ export default async function ToggleGroupPage() {
         <FullWidthDemo />
       </ComponentPreview>
 
+      {/* Multiple selection */}
+      <Heading as="h3">Multiple selection</Heading>
+      <p className="type-body mb-2 text-foreground max-w-prose">
+        Set{' '}
+        <InlineCode>type=&quot;multiple&quot;</InlineCode>{' '}
+        to allow more than one item to be selected at once. The{' '}
+        <InlineCode>value</InlineCode>{' '}
+        becomes a{' '}
+        <InlineCode>string[]</InlineCode>{' '}
+        and{' '}
+        <InlineCode>onValueChange</InlineCode>{' '}
+        receives the new array on every toggle. Use for tag-style filters or
+        any multi-select within a compact inline layout. Arrow keys move
+        focus; Space or Enter toggles the focused item.
+      </p>
+      <ComponentPreview code={multipleCode} highlightedCode={multipleHighlighted}>
+        <MultipleDemo />
+      </ComponentPreview>
+
       {/* -- API Reference -------------------------------------------- */}
       <Heading as="h2">API Reference</Heading>
 
@@ -142,16 +179,22 @@ export default async function ToggleGroupPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
+                <TableCell><InlineCode>type</InlineCode></TableCell>
+                <TableCell><InlineCode>{"'single' | 'multiple'"}</InlineCode></TableCell>
+                <TableCell><InlineCode>{"'single'"}</InlineCode></TableCell>
+                <TableCell>Selection mode. <InlineCode>{"'single'"}</InlineCode> renders a radiogroup; <InlineCode>{"'multiple'"}</InlineCode> renders a toggle-button group where multiple items can be pressed.</TableCell>
+              </TableRow>
+              <TableRow>
                 <TableCell><InlineCode>value<span aria-label="required">*</span></InlineCode></TableCell>
-                <TableCell><InlineCode>string</InlineCode></TableCell>
+                <TableCell><InlineCode>{"string | string[]"}</InlineCode></TableCell>
                 <TableCell>—</TableCell>
-                <TableCell>The currently selected item value.</TableCell>
+                <TableCell>Selected value(s). <InlineCode>string</InlineCode> when <InlineCode>type=&quot;single&quot;</InlineCode>; <InlineCode>string[]</InlineCode> when <InlineCode>type=&quot;multiple&quot;</InlineCode>.</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell><InlineCode>onValueChange<span aria-label="required">*</span></InlineCode></TableCell>
-                <TableCell><InlineCode>{"(value: string) => void"}</InlineCode></TableCell>
+                <TableCell><InlineCode>{"(value: string) => void | (value: string[]) => void"}</InlineCode></TableCell>
                 <TableCell>—</TableCell>
-                <TableCell>Callback fired when the selected value changes.</TableCell>
+                <TableCell>Callback fired when the selection changes. Signature depends on <InlineCode>type</InlineCode>.</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell><InlineCode>items<span aria-label="required">*</span></InlineCode></TableCell>
@@ -178,14 +221,19 @@ export default async function ToggleGroupPage() {
         <div className="block md:hidden">
           <TableMobileList>
             <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>type</strong></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>{"'single' | 'multiple'"}</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Selection mode. Default: <InlineCode>{"'single'"}</InlineCode>. <InlineCode>{"'multiple'"}</InlineCode> renders a toggle-button group where multiple items can be pressed.</span>
+            </TableMobileItem>
+            <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>value<span aria-label="required">*</span></strong></span>
-              <span className="type-caption text-muted-foreground"><InlineCode>string</InlineCode></span>
-              <span className="type-caption text-muted-foreground">The currently selected item value.</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>{"string | string[]"}</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Selected value(s). <InlineCode>string</InlineCode> when single; <InlineCode>string[]</InlineCode> when multiple.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>onValueChange<span aria-label="required">*</span></strong></span>
-              <span className="type-caption text-muted-foreground"><InlineCode>{"(value: string) => void"}</InlineCode></span>
-              <span className="type-caption text-muted-foreground">Callback fired when the selected value changes.</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>{"(value: string) => void | (value: string[]) => void"}</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Callback fired when the selection changes. Signature depends on <InlineCode>type</InlineCode>.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>items<span aria-label="required">*</span></strong></span>
