@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useCallback, type ReactNode, type KeyboardEvent } from "react";
+import { useRef, useCallback, type ReactNode, type KeyboardEvent, type HTMLAttributes } from "react";
 import { cn } from "@/utils/cn";
 
 export type ToggleGroupItem = {
@@ -9,7 +9,7 @@ export type ToggleGroupItem = {
   icon?: ReactNode;
 };
 
-type CommonProps = {
+type CommonProps = Omit<HTMLAttributes<HTMLDivElement>, "role" | "onChange"> & {
   items: ToggleGroupItem[];
   fullWidth?: boolean;
   className?: string;
@@ -40,7 +40,8 @@ const itemClasses = (isSelected: boolean, fullWidth: boolean) =>
   );
 
 export function ToggleGroup(props: ToggleGroupProps) {
-  const { items, fullWidth = false, className } = props;
+  const { items, fullWidth = false, className, type: _type, value: _value, onValueChange: _onValueChange, ...rest } = props as ToggleGroupProps & { type?: string; value: unknown; onValueChange: unknown };
+  void _type; void _value; void _onValueChange;
   const isMultiple = props.type === "multiple";
   const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
@@ -134,6 +135,7 @@ export function ToggleGroup(props: ToggleGroupProps) {
 
   return (
     <div
+      {...rest}
       role={isMultiple ? "group" : "radiogroup"}
       className={cn(
         "inline-flex items-center gap-1",

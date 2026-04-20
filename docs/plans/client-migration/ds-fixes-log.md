@@ -14,6 +14,8 @@ Accumulator for DS fixes made during client migration. Grouped by package, entri
 - **[Phase 1.1]** Bundle `@radix-ui/*` transitive deps into `dist/index.js` via tsup `noExternal` — resolves client `next build` `Module not found` for `@radix-ui/number`, `react-presence`, `react-use-previous`, etc. pnpm's symlinked transitives aren't npm-client-resolvable (commit 92e3a48)
 - **[Phase 1.1.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.3 → 1.0.4` (patch) — ships the radix-bundle fix so Lane 1.1 + all downstream Phase 1 lanes can deploy from registry — 2026-04-20 — per `AUTONOMOUS_PROTOCOL.md` §14c
 - **[Phase 1.4]** ToggleGroup: added `'multiple'` variant via discriminated union on `type` prop (`value: string[]`, `onValueChange: (string[]) => void`, `role="group"` + `aria-pressed`, roving tabindex, arrow-key focus-only). Additive — default `'single'` mode byte-for-byte unchanged. Unblocks Lane 1.4 TagList internshipTypes (commit 102d7a5) — 2026-04-20
+- **[Phase 1.4]** ToggleGroup: spread `HTMLAttributes<HTMLDivElement>` (minus `role`/`onChange`) onto outer `<div>` so consumers can pass `aria-label`/`aria-labelledby`/`id`. Needed for TagList to wire DS `Label` via `htmlFor` + `aria-labelledby`. Additive — no API break. — 2026-04-20
+- **[Phase 1.4.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.5 → 1.0.6` (patch) — ships the ToggleGroup HTMLAttributes passthrough so Lane 1.4 can deploy from registry — 2026-04-20 — per `AUTONOMOUS_PROTOCOL.md` §14c
 
 ## @umichkisa-ds/form
 
