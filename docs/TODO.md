@@ -22,7 +22,7 @@
 - [x] Phase 1.2: JobApplicationInfoContents
 - [x] Phase 1.3: JobCategoryDropdown
 - [x] Phase 1.4: TagList redesign (inline segmented + DateRangePicker)
-- [ ] Phase 1.5: JobPostingGrid + JobPostingCard + InfiniteScroll + NotificationText
+- [x] Phase 1.5: JobPostingGrid + JobPostingCard + InfiniteScroll + NotificationText
 - [ ] Phase 1.6: USAFallbackContent extract + migrate
 - [ ] Phase 1.7: CountryToggle (new component)
 - [ ] Phase 1.8: Hooks/context cleanup
