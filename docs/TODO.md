@@ -17,7 +17,7 @@
 - [x] Phase -1.7: Lock deferred decisions + draft Phase 0 audit/plan
 - [x] Phase 0: Globals (Tailwind v4 + DS install + MSW + test framework + tunnel settings)
 - [x] Phase 0.5: Shared layout (Header/Footer/MobileMenu)
-- [x] Phase 1: jobs-curator — kickoff done
+- [x] Phase 1: jobs-curator — complete (all subphases merged to dev; DS @ 1.0.8)
 - [x] Phase 1.1: MSW handlers for jobs API
 - [x] Phase 1.2: JobApplicationInfoContents
 - [x] Phase 1.3: JobCategoryDropdown
@@ -28,7 +28,7 @@
 - [x] Phase 1.8: Hooks/context cleanup (client#84 merged)
 - [x] Phase 1.9: Legacy ui swap (jobs scope — dev f666745)
 - [x] Phase 1.10: Page shell (error.tsx StatusView swap — dev e9aa87d; composition already correct after 1.7)
-- [ ] Phase 1.11: Verify + end-bump
+- [x] Phase 1.11: Verify + end-bump (no end-bump needed — all DS fixes mid-phase-shipped; DS @ 1.0.8, client pinned)
 - [ ] Phase 2: pocha-manage (subphases added at kickoff)
 - [ ] Phase 3: pocha-dashboard (subphases added at kickoff)
 - [ ] Phase 4: pocha-userfacing (subphases added at kickoff)
