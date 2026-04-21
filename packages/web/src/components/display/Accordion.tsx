@@ -74,7 +74,7 @@ function AccordionTrigger({
       <div>
         <RadixAccordion.Trigger
           className={cn(
-            "flex w-full items-center justify-between py-4 type-body !font-semibold text-foreground",
+            "flex w-full items-center justify-between py-4 type-h3 text-foreground",
             "underline decoration-transparent decoration-2 underline-offset-4 transition-[text-decoration-color] duration-150",
             "hover:decoration-brand-accent",
             "data-[state=open]:text-brand-primary",
