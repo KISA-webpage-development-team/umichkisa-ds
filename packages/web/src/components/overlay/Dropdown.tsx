@@ -39,7 +39,7 @@ function DropdownContent({
         sideOffset={sideOffset}
         className={cn(
           "z-50 min-w-32 overflow-hidden rounded-md border border-border bg-surface shadow-md",
-          "max-h-[var(--radix-dropdown-menu-content-available-height)] overflow-y-auto",
+          "max-h-[var(--radix-dropdown-menu-content-available-height)] overflow-y-auto overscroll-contain",
           "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
           "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
           "p-1",
