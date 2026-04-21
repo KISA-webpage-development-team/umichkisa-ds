@@ -347,19 +347,23 @@ When you say:
 > "merge PR #42 and unblock dependents"
 
 Claude:
-1. `gh pr merge 42 --squash --delete-branch`
+1. `gh pr merge <N> --squash --delete-branch`
 2. **Strip end-state labels** from the merged PR — `ready-for-review`, `needs-revision`, `needs-decision`, `routine-errored` (only the ones actually present; safe to call with absent ones). Closed state is the new source of truth.
-3. Identifies the linked issue via PR body
-4. `gh issue list --label blocked-by:<issue-#>` — finds dependents
-5. For each dependent: `gh issue edit <N> --remove-label blocked-by:<issue-#>`
-6. Reports which dependents are now eligible
+3. **Identify the linked issue** via PR body (`Closes #M` / `Fixes #M`). Note: our PRs merge into `dev`, not the repo's default branch, so GitHub's auto-close-on-merge does **not** fire — the issue must be closed explicitly.
+4. **Close the linked issue** with a short comment referencing the merging PR:
+   `gh issue close <M> --comment "Closed via #<N> (merged to dev)."`
+5. **Strip stale eligibility labels** from the now-closed issue — `autonomous-ready`, `needs-interactive` (these only describe pickup eligibility for open work; they're misleading on a closed issue).
+6. `gh issue list --label blocked-by:<M>` — find dependents
+7. For each dependent: `gh issue edit <dep> --remove-label blocked-by:<M>`
+8. Report which dependents are now eligible, and confirm: "issue #<M> closed, labels stripped, dependents unblocked: [...]"
 
 This applies to **every merge path**, not just the natural-language flow above:
 - Manual `gh pr merge` from the terminal
+- Superseding PRs created after the original was auto-closed (e.g. stacked-branch base deleted); close the ORIGINAL issue against the superseding PR number
 - The autonomous routine's revision flow (§13) when a `needs-revision` PR re-opens as `ready-for-review`
 - PR-queue skim-and-merge in Mode C (§11)
 
-In all cases: merge → strip end-state labels → unblock dependents.
+In all cases: merge → strip PR end-state labels → **close linked issue + strip issue eligibility labels** → unblock dependents. No step optional.
 
 ---
 
