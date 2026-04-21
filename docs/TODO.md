@@ -25,7 +25,7 @@
 - [x] Phase 1.5: JobPostingGrid + JobPostingCard + InfiniteScroll + NotificationText
 - [ ] Phase 1.6: USAFallbackContent extract + migrate
 - [ ] Phase 1.7: CountryToggle (new component)
-- [ ] Phase 1.8: Hooks/context cleanup
+- [x] Phase 1.8: Hooks/context cleanup (client#84 merged)
 - [ ] Phase 1.9: Legacy ui swap (jobs scope)
 - [ ] Phase 1.10: Page shell
 - [ ] Phase 1.11: Verify + end-bump
