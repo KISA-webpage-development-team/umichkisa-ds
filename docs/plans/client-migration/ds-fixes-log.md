@@ -16,6 +16,7 @@ Accumulator for DS fixes made during client migration. Grouped by package, entri
 - **[Phase 1.4]** ToggleGroup: added `'multiple'` variant via discriminated union on `type` prop (`value: string[]`, `onValueChange: (string[]) => void`, `role="group"` + `aria-pressed`, roving tabindex, arrow-key focus-only). Additive — default `'single'` mode byte-for-byte unchanged. Unblocks Lane 1.4 TagList internshipTypes (commit 102d7a5) — 2026-04-20
 - **[Phase 1.4]** ToggleGroup: spread `HTMLAttributes<HTMLDivElement>` (minus `role`/`onChange`) onto outer `<div>` so consumers can pass `aria-label`/`aria-labelledby`/`id`. Needed for TagList to wire DS `Label` via `htmlFor` + `aria-labelledby`. Additive — no API break. — 2026-04-20
 - **[Phase 1.4.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.5 → 1.0.6` (patch) — ships the ToggleGroup HTMLAttributes passthrough so Lane 1.4 can deploy from registry — 2026-04-20 — per `AUTONOMOUS_PROTOCOL.md` §14c
+- **[Phase 1.2]** Accordion: bump AccordionTrigger default typography from `type-body !font-semibold` (16px) to `type-h3` (18px mobile / 20px desktop, Pretendard 600). Restores trigger-as-heading hierarchy — triggers were reading smaller than Sejong Hospital Bold content sub-headings due to font-metric mismatch. Dropped the `!important` weight override. Surfaced during client#80 review (commit a3e547e) — 2026-04-21
 
 ## @umichkisa-ds/form
 

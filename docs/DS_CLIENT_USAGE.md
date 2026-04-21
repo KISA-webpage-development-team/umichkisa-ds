@@ -37,6 +37,7 @@ Never: Wrap or re-export a DS component to add default props or rename it (e.g.,
 Must: Use DS semantic color tokens for all color values — `text-foreground`, `bg-surface`, `border-brand-primary`, etc. Never use raw hex values, raw OKLCH, or Tailwind's default color palette (`text-gray-500`). [source:DS_CONSTRAINTS.md/colors]
 Must: Use `type-*` semantic utility classes for all typography — never compose raw Tailwind utilities (`text-base font-normal leading-relaxed`). [source:DS_CONSTRAINTS.md/typography]
 Must: Pair an explicit color token with every `type-*` class — `type-*` classes do not set color. [source:DS_CONSTRAINTS.md/typography]
+Never: Import font loaders directly from the client (e.g. `@/utils/fonts/textFonts` — `sejongHospitalBold`, `sejongHospitalLight`, `arial`, `heebo`, `montserrat`) and apply `.className` to elements. Font families are owned by the DS: `@font-face` + `--font-sejong-*` / `--font-pretendard` CSS variables are declared in `dist/styles.css`'s `@theme` block and consumed exclusively via `type-*` tokens (`type-h1`/`type-display` → Sejong Bold; `type-h2`/`type-h3`/`type-body*`/`type-label`/`type-caption` → Pretendard). The only legitimate direct use of `next/font/local` is at the app root for preloading/optimization (see "Font Loading (Next.js)" above) — not inline on component elements. During migration, strip any `sejongHospital*.className` / `heebo.className` / `montserrat.className` imports from lane files as you touch them. [source:client#80 Phase 1.2 review, 2026-04-21]
 
 ### Class Utilities
 
