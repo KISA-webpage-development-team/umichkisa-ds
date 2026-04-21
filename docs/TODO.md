@@ -19,7 +19,7 @@
 - [x] Phase 0.5: Shared layout (Header/Footer/MobileMenu)
 - [x] Phase 1: jobs-curator — kickoff done
 - [x] Phase 1.1: MSW handlers for jobs API
-- [ ] Phase 1.2: JobApplicationInfoContents
+- [x] Phase 1.2: JobApplicationInfoContents
 - [ ] Phase 1.3: JobCategoryDropdown
 - [x] Phase 1.4: TagList redesign (inline segmented + DateRangePicker)
 - [ ] Phase 1.5: JobPostingGrid + JobPostingCard + InfiniteScroll + NotificationText
