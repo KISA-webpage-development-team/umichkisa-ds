@@ -23,8 +23,8 @@
 - [x] Phase 1.3: JobCategoryDropdown
 - [x] Phase 1.4: TagList redesign (inline segmented + DateRangePicker)
 - [x] Phase 1.5: JobPostingGrid + JobPostingCard + InfiniteScroll + NotificationText
-- [ ] Phase 1.6: USAFallbackContent extract + migrate
-- [ ] Phase 1.7: CountryToggle (new component)
+- [x] Phase 1.6: USAFallbackContent extract + migrate (client#85 merged)
+- [x] Phase 1.7: CountryToggle — folded into TagList (client#85 merged)
 - [x] Phase 1.8: Hooks/context cleanup (client#84 merged)
 - [ ] Phase 1.9: Legacy ui swap (jobs scope)
 - [ ] Phase 1.10: Page shell
