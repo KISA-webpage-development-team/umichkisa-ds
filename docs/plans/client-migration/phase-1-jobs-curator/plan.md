@@ -328,19 +328,22 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §4. Drives `autonomous-ready` vs `needs-in
 
 **Repo:** `KISA-website-client`
 
+> **Patched 2026-04-21** per client#84 `needs-decision` resolution (`1-A, 2-A, 3-C`). See decision log below.
+
 ### Files
 
 - Modify: `src/features/jobs-curator/contexts/JobsCuratorContext.tsx`
 - Modify: `src/features/jobs-curator/hooks/useInfiniteJobs.ts`
-- Modify: `src/features/jobs-curator/hooks/useJobsQueryParams.ts`
+- Modify: `src/features/jobs-curator/hooks/useJobsQueryParams.ts` — remove private `toAPIDateString`; import from `utils/date.ts`
 - Modify: `src/features/jobs-curator/hooks/useKisaJobs.ts`
 - Modify: `src/features/jobs-curator/hooks/useFormattedJobs.ts`
-- Modify: `src/features/jobs-curator/utils/date.ts`
+- Modify: `src/features/jobs-curator/utils/date.ts` — add exports `toApiDateString`, `parseFromApi`
 - Modify: `src/features/jobs-curator/utils/getDefaultDateRange.ts`
+- Modify: `src/features/jobs-curator/types/jobs.ts` — widen `SupportedCountry` to `"KR" | "US"`
+- Modify: `src/features/jobs-curator/components/JobPostingGrid/index.tsx` — update to new `SupportedCountry` literals (existing consumer)
+- Modify: `src/features/jobs-curator/components/TagList/__tests__/TagList.test.tsx` — update to new `SupportedCountry` literals (existing consumer)
 - Test: `src/features/jobs-curator/__tests__/utils-date.test.ts`
-- Test: `src/features/jobs-curator/__tests__/utils-getDefaultDateRange.test.ts`
 - Test: `src/features/jobs-curator/__tests__/useJobsQueryParams.test.ts`
-- Test: `src/features/jobs-curator/__tests__/useKisaJobs.test.ts`
 
 ### Tasks (TDD)
 
@@ -348,24 +351,33 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §4. Drives `autonomous-ready` vs `needs-in
 
 #### Pre-specified test cases (per AUTONOMOUS_PROTOCOL §4 rule 4)
 
-- [ ] `utils/date.ts`:
+- [ ] `utils/date.ts` (after promoting `toApiDateString` + adding `parseFromApi`):
   - Round-trip: `toApiDateString(parseFromApi(s)) === s` for `"2026-04-20"`, `"2026-12-31"`, `"2027-01-01"`
   - Year-boundary: parsing `"2026-12-31"` then formatting back yields the same string (no off-by-one TZ drift)
-- [ ] `utils/getDefaultDateRange.ts`:
-  - Returns `[today, today + N days]` per current contract — assert exact `N` matches the existing implementation (if N is configured by constant, snapshot it; if hardcoded, hardcode in test)
 - [ ] `useJobsQueryParams` (or wherever the cascade lives):
   - Selecting `employment="intern"` causes the assembled `tags` array to include the active internshipTypes
   - Selecting `employment="fulltime"` empties internshipTypes from the assembled `tags` array
   - Switching from `intern` → `fulltime` clears any previously-set internshipTypes
-- [ ] `useKisaJobs`:
-  - Filters `data/kisaJobs.ts` by category match (case-sensitive against constant)
-  - Filters by date range overlap (job's `applicationStartDate ≤ endDate` AND `applicationDeadline ≥ startDate`)
-  - Returns empty array when no KISA jobs match
+
+> **Dropped (per 3-C):** tests for `utils/getDefaultDateRange.ts` and `hooks/useKisaJobs.ts`. Date-range filter is deferred — `wanted` API has no range support and `DateRangePicker` is commented out in `TagList/index.tsx`. Revisit when BE ships range support.
+
+#### `utils/date.ts` promotion (2-A, scoped minimally)
+
+- [ ] Move `toAPIDateString` out of `useJobsQueryParams.ts` into `utils/date.ts` as `toApiDateString` (lowercase-api match plan literal)
+- [ ] Add `parseFromApi(s: string): Date` inverse (must be year-boundary safe — prefer explicit Y/M/D construction over `new Date(s)` to avoid TZ drift)
+- [ ] Update `useJobsQueryParams.ts` to import from `utils/date.ts`
+
+#### `SupportedCountry` widening (1-A)
+
+- [ ] `types/jobs.ts`: change `SupportedCountry = "한국" | "미국"` → `SupportedCountry = "KR" | "US"`
+- [ ] `JobPostingGrid/index.tsx`: update any `"한국"` / `"미국"` literal checks to `"KR"` / `"US"`
+- [ ] `TagList/__tests__/TagList.test.tsx`: same literal swap
+- [ ] `JobsCuratorContext.tsx`: retype `selectedCountry` initial value from `"한국"` → `"KR"`
 
 #### Context change
 
 - [ ] Add `country: SupportedCountry` (default `"KR"`) and `setCountry` to `JobsCuratorContext`
-- [ ] Type from `features/jobs-curator/types/jobs.ts` (`SupportedCountry`)
+- [ ] Type from `features/jobs-curator/types/jobs.ts` (`SupportedCountry`, now `"KR" | "US"`)
 - [ ] No consumers wired here — lanes 1.7 (read+write) and 1.10 (page-level conditional) consume
 
 #### Retokenize
@@ -376,13 +388,22 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §4. Drives `autonomous-ready` vs `needs-in
 
 - [ ] All listed tests pass
 - [ ] `JobsCuratorContext` exports updated TypeScript surface (`country`, `setCountry`)
+- [ ] `SupportedCountry` is `"KR" | "US"`; all existing consumers updated
+- [ ] `toApiDateString` + `parseFromApi` exported from `utils/date.ts`; hook imports them
 - [ ] `npm run typecheck` passes
 - [ ] No regression in existing filter behavior (manual smoke against MSW)
 
 ### Bailout triggers
 
 - An existing util/hook signature differs materially from what tests expect → `needs-decision` (test spec needs updating, not the impl)
-- `SupportedCountry` type missing in `types/jobs.ts` → `needs-decision`
+- `SupportedCountry` consumers found outside the enumerated files (beyond `JobPostingGrid/index.tsx` + `TagList` test) → `needs-decision`
+
+### Decision log
+
+- **2026-04-21** — resolved client#84 `needs-decision`:
+  - **Q1 → A**: widen `SupportedCountry` to `"KR" | "US"`. Scope expansion into `types/jobs.ts` + existing consumers acknowledged (better to align keys with plan literals now than have lanes 1.7/1.10 hardcode against Korean strings).
+  - **Q2 → A (scoped minimally)**: promote `toAPIDateString` → `utils/date.ts`; add inverse `parseFromApi`. Protects the real round-trip + year-boundary risk.
+  - **Q3 → C**: drop `getDefaultDateRange` + `useKisaJobs` tests. Date-range filter is deferred (API doesn't support it; picker is commented out). Testing dead paths creates drag; revisit when BE ships range.
 
 ---
 
