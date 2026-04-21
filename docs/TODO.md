@@ -27,7 +27,7 @@
 - [x] Phase 1.7: CountryToggle — folded into TagList (client#85 merged)
 - [x] Phase 1.8: Hooks/context cleanup (client#84 merged)
 - [x] Phase 1.9: Legacy ui swap (jobs scope — dev f666745)
-- [ ] Phase 1.10: Page shell
+- [x] Phase 1.10: Page shell (error.tsx StatusView swap — dev e9aa87d; composition already correct after 1.7)
 - [ ] Phase 1.11: Verify + end-bump
 - [ ] Phase 2: pocha-manage (subphases added at kickoff)
 - [ ] Phase 3: pocha-dashboard (subphases added at kickoff)
