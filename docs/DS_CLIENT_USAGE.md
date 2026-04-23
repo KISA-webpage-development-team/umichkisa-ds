@@ -28,6 +28,20 @@ Must: Check `DS_CODEBASE.md` before building any local UI component — if a DS 
 Must: Use DS components directly by importing from `@umichkisa-ds/web` or `@umichkisa-ds/form`. [source:DS_CODEBASE.md/packages]
 Never: Wrap or re-export a DS component to add default props or rename it (e.g., no `MyButton` that re-exports `Button`). This creates a shadow component layer that drifts from the DS over time. [source:grill-session/2026-04-12]
 
+### Feedback & Status Components
+
+Must: Replace legacy `@/components/ui/feedback` imports with DS equivalents when touching a file during migration. The legacy module is a shadow of DS feedback primitives and must be emptied over the course of the migration. [source:phase-2/lane-2.0 review, 2026-04-23]
+
+Mapping:
+- `NotAuthorized` → `<StatusView variant="not-authorized" />` from `@umichkisa-ds/web`
+- `NotFound` → `<StatusView variant="not-found" />` from `@umichkisa-ds/web`
+- `NotLogin` → `<StatusView variant="not-logged-in" />` from `@umichkisa-ds/web`
+- `UnexpectedError` → `<StatusView variant="error" />` from `@umichkisa-ds/web`
+- `LoadingSpinner` → `LoadingSpinner` from `@umichkisa-ds/web` (re-import, don't re-implement)
+- `UnderConstruction` / `OnlyMobileView` → no current DS equivalent; collect via `ds-fix-during-migration` if needed, otherwise keep local
+
+Never: Leave a legacy `@/components/ui/feedback` import in any file being migrated in the current lane — swap it in-lane even if the lane's primary scope is different. The only exception is when the lane's issue explicitly lists the swap as a non-goal (e.g., a page-shell lane defers feedback migration to a later legacy-ui-swap lane). [source:phase-2/lane-2.0 review, 2026-04-23]
+
 ---
 
 ## Styling

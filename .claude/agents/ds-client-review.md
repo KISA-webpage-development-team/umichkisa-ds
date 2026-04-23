@@ -70,6 +70,16 @@ Check every line of each `.tsx` file against all constraint categories:
 - Direct `@radix-ui/*` imports for UI that DS already provides
 - `NextUI` or `HeroUI` imports
 
+**Feedback & Status**
+- Any import from `@/components/ui/feedback` — this is a legacy shadow module that must be swapped for DS equivalents in every file touched by a migration lane:
+  - `NotAuthorized` → `<StatusView variant="not-authorized" />` from `@umichkisa-ds/web`
+  - `NotFound` → `<StatusView variant="not-found" />` from `@umichkisa-ds/web`
+  - `NotLogin` → `<StatusView variant="not-logged-in" />` from `@umichkisa-ds/web`
+  - `UnexpectedError` → `<StatusView variant="error" />` from `@umichkisa-ds/web`
+  - `LoadingSpinner` → `LoadingSpinner` from `@umichkisa-ds/web`
+  - `UnderConstruction` / `OnlyMobileView` → no DS equivalent yet; flag as a WARNING (needs `ds-fix-during-migration`), not a blocking violation
+- Flag the legacy import even if the lane's primary scope is different. The only exception is when the main-session prompt explicitly tells you the lane issue lists the swap as a non-goal (e.g., "NotAuthorized stays legacy until lane 2.17") — in that case, do not flag it.
+
 **Migration hygiene**
 - Old and new implementations coexisting in the same component (must complete replacement before moving on)
 
