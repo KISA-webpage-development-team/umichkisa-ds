@@ -34,6 +34,7 @@
 - [x] Phase 2.1: MSW pocha CRUD handlers (TDD, autonomous) — dev ed6e147
 - [x] Phase 2.2: MSW menu CRUD handlers (TDD, autonomous) — dev 7ac2843
 - [x] Phase 2.3: MSW admin handler + authContext toggle extension (TDD, interactive) — dev e32a59a
+- [x] Phase 2.3b: useAdmin mock-mode short-circuit + middleware bypass + pocha provider wrap (hotfix) — dev 68f72f1
 - [ ] Phase 2.4: DS FileUpload component (TDD, interactive, mid-phase patch bump)
 - [ ] Phase 2.5: PreviousPochaList → SWR (autonomous)
 - [ ] Phase 2.6: PreviousPochaSummary — fix N+1 + redesign (interactive)
