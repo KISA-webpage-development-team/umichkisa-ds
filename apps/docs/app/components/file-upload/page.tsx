@@ -136,11 +136,26 @@ export default async function FileUploadPage() {
       {/* -- Header -------------------------------------------------- */}
       <h1 className="type-h1 mb-4 text-foreground">File Upload</h1>
       <p className="type-body mb-4 text-foreground max-w-prose">
-        Storage-agnostic single-image upload primitive with client-side validation, optimistic preview, and consumer-owned upload/remove callbacks.
+        Storage-agnostic, low-level single-image upload component with client-side validation, optimistic preview, and consumer-owned upload/remove callbacks. &ldquo;Optimistic preview&rdquo; here means the selected image renders immediately (via a local object URL) alongside a spinner; it&apos;s replaced by the uploaded URL on success or cleared on failure.
       </p>
       <Alert variant="info" className="mb-8">
         Consumer owns the <InlineCode>onUpload</InlineCode> / <InlineCode>onRemove</InlineCode> contract — FileUpload is storage-agnostic. Any backend (Cloudinary, S3, direct-to-server) works so long as the callbacks return the expected shape.
       </Alert>
+
+      <div className="mb-8">
+        <p className="type-body-sm mb-2 text-foreground max-w-prose">
+          <strong>Value shape:</strong>
+        </p>
+        <pre className="type-caption font-mono text-foreground bg-surface-subtle border border-border rounded-md px-3 py-2 whitespace-pre overflow-x-auto">
+          <code>{`type FileUploadValue = { url: string; publicId: string };`}</code>
+        </pre>
+        <p className="type-caption mt-2 text-muted-foreground max-w-prose">
+          <InlineCode>publicId</InlineCode> is your storage backend&apos;s identifier for the uploaded file (Cloudinary <InlineCode>public_id</InlineCode>, S3 object key, etc.) — the component passes it back to <InlineCode>onRemove</InlineCode> so you can delete the file later. If your backend doesn&apos;t have a separate id, you can pass the URL itself as both values.
+        </p>
+        <p className="type-caption mt-2 text-muted-foreground max-w-prose">
+          The component manages <InlineCode>isUploading</InlineCode> internally — you don&apos;t need to disable your form or show your own spinner while an upload is in flight.
+        </p>
+      </div>
 
       {/* -- Examples ------------------------------------------------- */}
       <Heading as="h2">Examples</Heading>
