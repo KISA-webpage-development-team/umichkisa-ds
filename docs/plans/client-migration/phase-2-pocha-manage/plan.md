@@ -27,8 +27,8 @@ Wave A' — DS FileUpload detour (DS repo)
 
 Wave B — presentation (parallel, post-MSW)
   2.5   PreviousPochaList → SWR                      (autonomous)
-  2.6   PreviousPochaSummary fix N+1 + redesign      (interactive)
-  2.7   PreviousPochaList redesign       (blocked-by 2.6)
+  2.6   [FOLDED into 2.7 per grill 2026-04-24]
+  2.7   PreviousPochaList + Summary redesign + menu-detail Dialog + page reorder (autonomous)
   2.8   PochaManagePageHeader redesign              (autonomous)
   2.9   PochaSummary redesign                        (autonomous)
   2.10  PochaInfoFields → @umichkisa-ds/form         (autonomous)
@@ -62,7 +62,6 @@ Wave D — close-out
 - `2.1, 2.2 → all Wave B lanes` (presentation lanes need MSW to smoke-test)
 - `2.3 → 2.5 onward` (any lane that wants to see the admin-gated view behind the toggle)
 - `2.4 → 2.4b → 2.15, 2.16` (consuming lanes need published DS version with `FileUpload`)
-- `2.6 → 2.7` (`PreviousPochaList` redesign composes the redesigned summary card)
 - `2.10 → 2.11` (PochaForm orchestration rewires fields migrated in 2.10)
 - `2.13 → 2.14` (MenuItemForm modal shell replaces the bespoke overlay used by the list's edit flow)
 - `2.14 → 2.15 → 2.16` (serial within MenuItemForm — modal shell, then fields, then FileUpload)
@@ -84,8 +83,8 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §4. Drives `autonomous-ready` vs `needs-in
 | 2.4 | [REDESIGN][TDD] | `needs-interactive` | Rule 1 fails (REDESIGN — new DS component); needs grill on behavior axes |
 | 2.4b | n/a | `needs-interactive` | Publishes to npm (rule 5 denies `npm publish` for autonomous); interactive always |
 | 2.5 | [MECHANICAL][NO-TDD] | `autonomous-ready` | Behavior-preserving: `useEffect`+state → `useSWR`; no UI change |
-| 2.6 | [REDESIGN][NO-TDD] | `needs-interactive` | Rule 1 fails (REDESIGN); N+1 fix decision (drop menu-preview line) + tokens |
-| 2.7 | [POLISH][NO-TDD] | `autonomous-ready` | Section header + list container retokenize; concrete |
+| 2.6 | — | `FOLDED` | Absorbed into lane 2.7 per grill 2026-04-24 (row redesign + N+1 fix now part of 2.7) |
+| 2.7 | [REDESIGN][NO-TDD] | `autonomous-ready` | Expanded: row redesign + list + menu-detail Dialog + page reorder. Spec fully locked (see Lane 2.7 section) — concrete enough for autonomous despite REDESIGN tag |
 | 2.8 | [POLISH][NO-TDD] | `autonomous-ready` | `sejongHospitalBold` → `type-h1`; tokens; single file |
 | 2.9 | [POLISH][NO-TDD] | `autonomous-ready` | DS `Card` + tokens + typography; toggle button swap |
 | 2.10 | [POLISH][NO-TDD] | `autonomous-ready` | `CustomField` → `@umichkisa-ds/form` primitives; concrete per-field mapping below |
@@ -99,7 +98,7 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §4. Drives `autonomous-ready` vs `needs-in
 | 2.19 | n/a | `needs-interactive` | Review pass; full-phase visual/UX diff |
 | 2.18 | n/a | `needs-interactive` | Touches publish (`ds-phase-end-bump` if any DS fixes); final verify |
 
-**Totals:** 10 autonomous-ready, 10 needs-interactive (including 2.4b).
+**Totals:** 10 autonomous-ready, 9 needs-interactive (including 2.4b). Lane 2.6 folded into 2.7 (2026-04-24).
 
 ---
 
@@ -406,80 +405,141 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §4. Drives `autonomous-ready` vs `needs-in
 
 ---
 
-## Lane 2.6 — `PreviousPochaSummary` — fix N+1 + redesign
+## Lane 2.6 — [FOLDED into 2.7]
 
-**Repo:** `KISA-website-client`
-**Mode:** `needs-interactive` (REDESIGN)
+Folded into Lane 2.7 per grill session 2026-04-24. Row redesign + N+1 fix (drop `getPochaMenu` per-row fetch) are now part of Lane 2.7's scope. See Lane 2.7 below.
 
-### Files
-
-- Modify: `src/features/pocha/components/manage/PreviosPochaSummary.tsx` (note typo in filename — do NOT rename in this lane)
-
-### Tasks (interactive)
-
-- [ ] **Drop the "메뉴: X, Y, Z" line** — remove the per-card `getPochaMenu` fetch entirely (lines 21–40). N+1 is eliminated at the source.
-- [ ] Replace with a menu-count pill: `메뉴 {count}개` — count comes from `pochaInfo.menuCount` if BE provides it; else hardcode "메뉴" label without count, or drop entirely (decide live)
-- [ ] Redesign card: DS `Card` + `CardHeader` + `CardContent`; tokenize all spacing/colors
-- [ ] Typography: `sejongHospital*` → DS `type-*` tokens; `sejongHospitalBold` title → `type-h3` (+ `font-semibold` via `!font-semibold` if needed per `feedback_type_weight_override`)
-- [ ] Date formatting: `toLocaleString('ko-KR')` OK, but move to tokenized typography (`type-body-sm text-muted-foreground`)
-- [ ] Selection highlight (`isSelected`): use bg highlight + border tone change (no left-border accent per `feedback_no_left_border`)
-- [ ] Remove `useState<any[]>` and its `useEffect`
-- [ ] `npm run build` + `npm run typecheck` pass
-- [ ] `ds-client-review` passes
-
-### Acceptance criteria
-
-- [ ] Zero references to `getPochaMenu` in the file
-- [ ] Card renders cleanly for all fixtures without triggering N+1 network fan-out
-- [ ] Selection state visually distinct without a left-border accent
-- [ ] Live visual review passes on Vercel `dev` preview
-
-### Non-goals
-
-- Renaming the file (`PreviosPochaSummary` → `PreviousPochaSummary`) — deferred; renames ship separately to avoid import-churn conflicts with other lanes
-- `PreviousPochaList` container (lane 2.7)
-
-### Bailout triggers
-
-- `PochaInfoWithoutStatus` doesn't include `menuCount` and adding it requires BE work → drop the count, keep a static "메뉴 보기" chip that's not wired (decide live); do not bail
+GitHub issue #92 (client repo) closed as `not planned`.
 
 ---
 
-## Lane 2.7 — `PreviousPochaList` redesign
+## Lane 2.7 — `PreviousPochaList` + row redesign + menu-detail Dialog + page reorder
 
 **Repo:** `KISA-website-client`
+**Mode:** `autonomous-ready` — spec fully locked via grill 2026-04-24, no open decisions
+
+### Scope (expanded vs original plan)
+
+1. **List container redesign** (original 2.7 scope): h2 + count chip, gap-3 row stacking, Skeleton loading / Alert error / Alert empty.
+2. **Row redesign + N+1 fix** (absorbed from 2.6): `PreviosPochaSummary.tsx` rebuilt as a clickable DS Card, drops per-row `getPochaMenu` fetch.
+3. **New feature — menu-detail Dialog**: list owns a co-located `PreviousPochaDetailDialog.tsx`. Row click on `/pocha/manage` opens it with the pocha's menu detail (lazy fetch via `useMenu`, so N+1 is truly solved — only opened pocha fetches).
+4. **Page reorder on `/pocha/manage`**: active `PochaSummary` (or new-pocha button) renders **first**, `<PreviousPochaList />` renders **below**.
 
 ### Files
 
 - Modify: `src/features/pocha/components/manage/PreviousPochaList.tsx`
+- Modify: `src/features/pocha/components/manage/PreviosPochaSummary.tsx` (typo preserved — do NOT rename)
+- Create: `src/features/pocha/components/manage/PreviousPochaDetailDialog.tsx`
+- Modify: `src/app/(pocha)/pocha/manage/page.tsx` (reorder only — do NOT touch legacy `ui/` imports; those are lane 2.17)
+
+### Locked spec
+
+#### `PreviousPochaList.tsx`
+
+- Section header: `<h2 className="type-h2 !font-semibold">이전 포차 목록</h2>` + `{length}개` count chip (`type-caption text-muted-foreground`) when loaded. No count during loading.
+- Inter-row gap: `gap-3`. No inter-row Dividers. Drop trailing `<HorizontalDivider />`.
+- Keep existing SWR fetch (already migrated in lane 2.5): `useSWR<PochaInfoWithoutStatus[]>('/pocha/previous/?date=${dateIso}', fetcher)`.
+- Loading: render 3 `<Card hoverable={false}>` shells each containing `<Skeleton className="h-5 w-2/3" />`, `h-4 w-full`, `h-4 w-3/4`, `h-4 w-1/2 mt-1`.
+- Error: `<Alert variant="error" title="이전 포차 정보를 불러오지 못했습니다.">{error.message ?? '잠시 후 다시 시도해주세요.'}</Alert>`.
+- Empty: `<Alert variant="info">아직 진행된 포차가 없습니다.</Alert>` (NOT StatusView — section is inline, not full-page).
+- Dialog ownership: list holds `const [detailPocha, setDetailPocha] = useState<PochaInfoWithoutStatus | null>(null)`. If `onSelectPocha` prop passed, forward it (history path); else use `setDetailPocha` (manage path). Render `<PreviousPochaDetailDialog pocha={detailPocha} onClose={() => setDetailPocha(null)} />` only when `!onSelectPocha`.
+
+#### `PreviosPochaSummary.tsx` (row)
+
+- Delete: `useState<any[]>`, `useEffect` fetching `getPochaMenu`, all `sejongHospital*` imports, `text-gray-*`, `text-red-*`, raw hover/border styling.
+- Shell: `<Card hoverable onClick={onClick} role="button" tabIndex={0} onKeyDown={handleKeyDown}>` — `handleKeyDown` triggers `onClick()` on `Enter`/`Space` with `e.preventDefault()`.
+- Selection: `className={cn('cursor-pointer', isSelected && 'bg-brand-accent-subtle border-brand-primary')}`. No left-border accent.
+- Content (in order, Card's default `gap-4 p-4` wraps):
+  - `<CardTitle as="h3">{pochaInfo.title}</CardTitle>`
+  - `{pochaInfo.description && <CardDescription className="line-clamp-2">{pochaInfo.description}</CardDescription>}` (no empty-fallback)
+  - Date-line: `<div className="flex items-center gap-2 text-muted-foreground"><Icon name="calendar" size="sm" /><span className="type-body-sm">{dateLine}</span></div>`
+- Date formatting via `@/utils/formats/timezone`:
+  ```ts
+  const sameDay = formatDateInTz(start) === formatDateInTz(end);
+  const tz = tzAbbreviation(start);
+  const dateLine = sameDay
+    ? `${formatDateInTz(start)} · ${formatTimeInTz(start)} → ${formatTimeInTz(end)} (${tz})`
+    : `${formatDateInTz(start)} ${formatTimeInTz(start)} → ${formatDateInTz(end)} ${formatTimeInTz(end)} (${tz})`;
+  ```
+
+#### `PreviousPochaDetailDialog.tsx` (new)
+
+- Props: `{ pocha: PochaInfoWithoutStatus | null; onClose: () => void }`. `open = pocha !== null`.
+- `<Dialog open={open} onOpenChange={(o) => !o && onClose()}><DialogContent size="md">…</DialogContent></Dialog>`.
+- Header: `DialogTitle` (type-h3 !font-semibold) = `pocha.title`; `DialogDescription` = `pocha.description` if present.
+- Body structure (mirrors `PochaSummary.tsx` tone):
+  - `<Divider />`
+  - 2-col grid: `DateBlock` for 시작 / 종료 — Icon calendar sm + `type-body-sm` label, `type-h4 !font-semibold` date, `type-body-sm text-muted-foreground` time + tz. Use `formatDateInTz` / `formatTimeInTz` / `tzAbbreviation`.
+  - `<Divider />`
+  - Menu section: header `<p className="type-body-sm text-muted-foreground">메뉴</p>` then branch on `useMenu(pocha?.pochaID ?? 0, token ?? '').status`:
+    - `loading` → `<div className="flex justify-center py-6"><LoadingSpinner /></div>`
+    - `error` → `<Alert variant="error">메뉴를 불러오지 못했습니다.</Alert>`
+    - `success` + empty → `<Alert variant="info">등록된 메뉴가 없습니다.</Alert>`
+    - `success` + items → two `MenuGroup`s (`즉시 제공` / `조리 필요`), each rendering `<Badge variant="outline" size="md">{menu.nameKor}</Badge>` chips inside `flex flex-wrap gap-2`.
+- Data: `useAdmin()` for token; `useMenu(pochaID, token)` for `MenuByCategory[]`; flatten with `convertMenuByCategoryToRawList` (existing util); split by `isImmediatePrep`.
+- Guard: when `pochaID === 0`, `useMenu` should not fetch. If guard inside hook doesn't cover this cleanly, pass `pocha?.pochaID` directly with hook-level conditional (verify at execution; bailout trigger below).
+
+#### `src/app/(pocha)/pocha/manage/page.tsx` (reorder)
+
+- Inside `PochaManagePageContent`'s return JSX, swap order: active branch (new-pocha button or `PochaSummary` + edit form) renders **first**; `<PreviousPochaList />` renders **last**, wrapped in `<div className="mt-10">` for separation.
+- Do NOT touch any legacy `ui/` imports (`CustomButton`, `LoadingSpinner`, `NotAuthorized`) in this file — lane 2.17 owns that swap.
 
 ### Tasks
 
-- [ ] Section header: `이전 포차 목록` → `type-h2` tokens (or `type-h3` if sibling sections use h3 — match surrounding hierarchy)
-- [ ] List container: tokenized gap/padding; no raw `text-red-500` / `text-gray-500`
-- [ ] Error branch: replace raw `<p className="text-red-500">…</p>` + `<p className="text-sm text-gray-500">…</p>` with DS `Alert variant="error"` (per `feedback_blockquote_to_alert`)
-- [ ] Empty branch: replace `<p className="text-gray-500">이전 포차가 없습니다.</p>` with DS `Alert variant="info"` or `StatusView variant="empty"` — pick whichever matches Phase 1 precedent
-- [ ] Keep `HorizontalDivider` usage OR swap to DS `Divider` if available — check at execution
+- [ ] Implement `PreviousPochaDetailDialog.tsx` per locked spec
+- [ ] Rewrite `PreviosPochaSummary.tsx` per locked spec (delete N+1 fetch + sejong imports; build new Card-based row)
+- [ ] Rewrite `PreviousPochaList.tsx` per locked spec (h2 + count chip; skeleton/error/empty branches; Dialog state + conditional render)
+- [ ] Reorder `src/app/(pocha)/pocha/manage/page.tsx` active block before list; wrap list in `<div className="mt-10">`
 - [ ] `npm run build` + `npm run typecheck` pass
-- [ ] `ds-client-review` passes
+- [ ] `ds-client-review` passes (no raw `text-red-*`, `text-gray-*`, `bg-gray-*`, `hover:bg-*`, `sejongHospital*`; no `left-border accent`; Card defaults not overridden)
 
 ### Acceptance criteria
 
-- [ ] No raw `text-red-*`, `text-gray-*`, or `sejongHospital*` classes in file
-- [ ] Error/empty states render via DS components
-- [ ] Manual smoke: happy + empty + error paths (force error by MSW failure)
+- [ ] Zero `sejongHospital*`, `text-red-*`, `text-gray-*`, `bg-gray-*`, `hover:bg-*` in any touched file
+- [ ] Zero references to `getPochaMenu` in `PreviosPochaSummary.tsx`
+- [ ] List loading → 3 skeleton Cards; error → Alert variant="error"; empty → Alert variant="info"; success → list of clickable Cards
+- [ ] Row click on manage surface opens `PreviousPochaDetailDialog`; menu fetches lazily via `useMenu`
+- [ ] Row click on `/pocha/history` still calls `onSelectPocha`; Dialog does NOT open (prop-override path)
+- [ ] Active `PochaSummary` renders above `<PreviousPochaList />` on `/pocha/manage`
+- [ ] Keyboard: row focusable via Tab; `Enter` / `Space` triggers click
+- [ ] Row `isSelected` uses `bg-brand-accent-subtle border-brand-primary` (no left-border accent)
+- [ ] 375px render: rows wrap gracefully, Dialog fits within viewport
+- [ ] `npm run build` + `npm run typecheck` pass
+- [ ] `ds-client-review` passes
 
 ### Non-goals
 
-- `PreviousPochaSummary` internals (lane 2.6)
-
-### Depends on
-
-- **Lane 2.6 must merge first** — this lane's list composes the redesigned summary card. Strict `blocked-by:<2.6 issue #>` edge.
+- Renaming `PreviosPochaSummary.tsx` → `PreviousPochaSummary.tsx` (file rename deferred)
+- Legacy `ui/` imports on `/pocha/manage/page.tsx` (lane 2.17)
+- `/pocha/history` right-pane bespoke detail card (Phase 3)
+- Adding a `menuCount` field to `PochaInfoWithoutStatus` (BE work, not in scope)
+- Any menu pre-fetching or batch menu endpoint (N+1 solved via on-demand lazy fetch only)
 
 ### Bailout triggers
 
-- Sibling sections' header hierarchy unclear → `needs-decision`
+- `useMenu(0, '')` triggers an unwanted SWR fetch → guard the hook call with explicit condition or memoized null key; if DS-side `useMenu` signature blocks, `needs-decision`
+- DS `Dialog` `onOpenChange` doesn't reliably propagate async state → `needs-decision`
+- `DialogHeader` / `DialogTitle` / `DialogDescription` reject `className` override for type-h3 sizing → drop override, use defaults (acceptable, note in PR)
+- Any file outside `### Files` list about to be edited → stop, `needs-decision`
+
+### Depends on
+
+None. Lane 2.5 (SWR migration) already shipped. Lane 2.6 folded in.
+
+### Budget
+
+~60 minutes (was 30 for 2.7 + 45 for 2.6 = 75; concrete spec + single-session execution reduces overhead).
+
+### Expected diff summary
+
+- 1 new file (`PreviousPochaDetailDialog.tsx`, ~80 LoC)
+- 1 full rewrite (`PreviosPochaSummary.tsx`, ~50 LoC net, drops ~40)
+- 1 substantial rewrite (`PreviousPochaList.tsx`, ~90 LoC net, drops ~20)
+- 1 surgical edit (`page.tsx`, ~5 LoC reorder)
+
+### Execution skill
+
+`ds-client-constrained-execution` — NO-TDD mode
 
 ---
 
