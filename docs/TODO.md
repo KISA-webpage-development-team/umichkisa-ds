@@ -35,17 +35,17 @@
 - [x] Phase 2.2: MSW menu CRUD handlers (TDD, autonomous) — dev 7ac2843
 - [x] Phase 2.3: MSW admin handler + authContext toggle extension (TDD, interactive) — dev e32a59a
 - [x] Phase 2.3b: useAdmin mock-mode short-circuit + middleware bypass + pocha provider wrap (hotfix) — dev 68f72f1
-- [ ] Phase 2.4: DS FileUpload component (TDD, interactive, mid-phase patch bump)
-- [ ] Phase 2.5: PreviousPochaList → SWR (autonomous)
+- [x] Phase 2.4: DS FileUpload component (TDD, interactive, mid-phase patch bump) — DS #9, #10 merged; client pinned 20f71ad
+- [x] Phase 2.5: PreviousPochaList → SWR (autonomous) — dev 625819e (#106)
 - [x] Phase 2.6: PreviousPochaSummary — folded into 2.7 per grill 2026-04-24
-- [ ] Phase 2.7: PreviousPochaList + Summary redesign + menu-detail Dialog + page reorder (autonomous)
-- [ ] Phase 2.8: PochaManagePageHeader redesign (autonomous)
-- [ ] Phase 2.9: PochaSummary redesign (autonomous)
-- [ ] Phase 2.10: PochaInfoFields → @umichkisa-ds/form (autonomous)
+- [x] Phase 2.7: PreviousPochaList + Summary redesign + menu-detail Dialog + page reorder (autonomous) — dev 2739a2b (#112)
+- [x] Phase 2.8: PochaManagePageHeader redesign (autonomous) — dev 4a94ba6 (#107) + hotfix 7f15153
+- [x] Phase 2.9: PochaSummary redesign (autonomous) — dev fce777f (#108) + hotfix 986480c
+- [x] Phase 2.10: PochaInfoFields → @umichkisa-ds/form (autonomous) — dev e75366e (#109)
 - [ ] Phase 2.11: PochaForm orchestration — toast + SWR mutate (interactive)
-- [ ] Phase 2.12: PochaMenuFields redesign (autonomous)
-- [ ] Phase 2.13: PochaMenuItemList redesign — delete Dialog (autonomous)
-- [ ] Phase 2.14: PochaMenuItemForm modal shell → DS Dialog (autonomous)
+- [x] Phase 2.12: PochaMenuFields redesign (autonomous) — dev 576aefd (#110)
+- [x] Phase 2.13: PochaMenuItemList redesign — delete Dialog (autonomous) — dev 94c9c9a (#111)
+- [x] Phase 2.14: PochaMenuItemForm modal shell → DS Dialog (autonomous) — dev b659629 (#113)
 - [ ] Phase 2.15: PochaMenuItemForm fields → @umichkisa-ds/form (autonomous)
 - [ ] Phase 2.16: PochaMenuItemForm FileUpload integration (interactive)
 - [ ] Phase 2.17: Page shell + legacy ui swap (autonomous)
