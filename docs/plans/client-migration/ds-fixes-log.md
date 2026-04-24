@@ -21,7 +21,7 @@ Accumulator for DS fixes made during client migration. Grouped by package, entri
 - **[Phase 1.3.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.7 → 1.0.8` (patch) — ships the Dropdown overscroll-contain fix so Lane 1.3 can deploy from registry — 2026-04-21 — per `AUTONOMOUS_PROTOCOL.md` §14c
 - **[Phase 2.4]** FileUpload: new form primitive (`packages/web/src/components/form/FileUpload/`) — hybrid-controlled, storage-agnostic, i18n-ready. Exports `FileUpload`, `FileUploadValue`, `FileUploadProps`, `FileUploadMessages`, `AcceptedMimeType`, `FILE_UPLOAD_MAX_BYTES_DEFAULT`. 27 tests passing. Unblocks Lane 2.16 (PochaMenuItemForm FileUpload integration) (commit 148782a) — 2026-04-24
 - **[Phase 2.4]** Add `upload` icon (lucide `Upload`) to icon registry — needed by FileUpload empty-state trigger (commit 0c12cae) — 2026-04-24
-- **[Phase 2.4.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.8 → 1.1.0` (minor) — ships new FileUpload component + `upload` icon so Lane 2.16 can deploy from registry — 2026-04-24 — per `AUTONOMOUS_PROTOCOL.md` §14c
+- **[Phase 2.4.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.8 → 1.0.9` (patch) — ships new FileUpload component + `upload` icon so Lane 2.16 can deploy from registry — 2026-04-24 — per `AUTONOMOUS_PROTOCOL.md` §14c
 
 ## @umichkisa-ds/form
 
