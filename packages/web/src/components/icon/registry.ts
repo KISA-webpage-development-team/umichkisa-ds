@@ -42,6 +42,7 @@ import {
   Trash2,
   TriangleAlert,
   Type,
+  Upload,
   UserRound,
   X,
 } from "lucide-react";
@@ -94,6 +95,7 @@ export const registry = {
   "trash-2": Trash2,
   "triangle-alert": TriangleAlert,
   "type": Type,
+  "upload": Upload,
   "user-round": UserRound,
   "x": X,
   "github": GithubIcon,
