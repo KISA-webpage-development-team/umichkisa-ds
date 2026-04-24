@@ -60,6 +60,7 @@ All source paths are relative to `packages/web/src/components/`.
 | Switch | Toggle a setting or preference on/off — feels lighter than a checkbox for binary configs | `form/Switch.tsx` |
 | Label | Accessible text label for a form control — always pair with an input | `form/Label.tsx` |
 | FormItem | Layout wrapper that composes label + control + description + error message into a consistent form row | `form/FormItem.tsx` |
+| FileUpload | Single-image upload with client-side validation, optimistic preview, and consumer-owned upload/remove callbacks — storage-agnostic, i18n-ready | `form/FileUpload/FileUpload.tsx` |
 | DatePicker / DateRangePicker | Pick a single date or date range via a calendar popover attached to an input-style trigger | `date/DatePicker.tsx` |
 
 ### Triggering actions
