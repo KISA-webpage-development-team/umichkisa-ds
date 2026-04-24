@@ -81,6 +81,7 @@ export const COMPONENT_CATEGORIES: SidebarCategory[] = [
     items: [
       { label: 'Forms Overview', href: '/components/forms' },
       { label: 'Checkbox',       href: '/components/checkbox' },
+      { label: 'File Upload',    href: '/components/file-upload' },
       { label: 'FormItem',       href: '/components/form-item' },
       { label: 'Input',          href: '/components/input' },
       { label: 'Label',          href: '/components/label' },
