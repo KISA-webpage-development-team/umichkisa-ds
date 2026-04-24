@@ -26,6 +26,7 @@ const components: { name: string; href: string; description: string }[] = [
   { name: 'Dialog', href: '/components/dialog', description: 'Modal overlay for confirmations, forms, and focused tasks.' },
   { name: 'Divider', href: '/components/divider', description: 'Horizontal or vertical rule for separating content sections.' },
   { name: 'Dropdown', href: '/components/dropdown', description: 'Action menu overlay triggered by a button.' },
+  { name: 'FileUpload', href: '/components/file-upload', description: 'Single-image upload with client-side validation, optimistic preview, and consumer-owned upload/remove callbacks.' },
   { name: 'FormItem', href: '/components/form-item', description: 'Layout wrapper that pairs a label, description, and error with any form control.' },
   { name: 'Forms', href: '/components/forms', description: 'Composition guide for assembling form controls with FormItem.' },
   { name: 'Grid', href: '/components/grid', description: 'Responsive equal-width column layout with DS spacing tiers.' },
