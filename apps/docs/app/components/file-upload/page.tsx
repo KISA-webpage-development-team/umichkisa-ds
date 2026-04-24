@@ -149,10 +149,10 @@ export default async function FileUploadPage() {
         <pre className="type-caption font-mono text-foreground bg-surface-subtle border border-border rounded-md px-3 py-2 whitespace-pre overflow-x-auto">
           <code>{`type FileUploadValue = { url: string; publicId: string };`}</code>
         </pre>
-        <p className="type-body-sm mt-2 text-muted-foreground max-w-prose">
+        <p className="type-body-sm mt-2 text-muted-foreground">
           <InlineCode>publicId</InlineCode> is your storage backend&apos;s identifier for the uploaded file (Cloudinary <InlineCode>public_id</InlineCode>, S3 object key, etc.) — the component passes it back to <InlineCode>onRemove</InlineCode> so you can delete the file later. If your backend doesn&apos;t have a separate id, you can pass the URL itself as both values.
         </p>
-        <p className="type-body-sm mt-2 text-muted-foreground max-w-prose">
+        <p className="type-body-sm mt-2 text-muted-foreground">
           The component manages <InlineCode>isUploading</InlineCode> internally — you don&apos;t need to disable your form or show your own spinner while an upload is in flight.
         </p>
       </div>
