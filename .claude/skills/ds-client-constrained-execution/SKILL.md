@@ -21,7 +21,9 @@ Client migration is **redesign + migration**, not mechanical retokenization. Whe
 Examples:
 - Original `md:space-x-8` on a nav strip → DS Component tier is `space-x-4` (16px); ship `space-x-4`, not a mechanical demotion to the nearest-feeling scale value.
 - Original `rounded-lg` on a button → DS buttons use `rounded-md`; ship `rounded-md`.
-- Original `text-gray-600` subtitle → DS uses `text-muted-foreground`; ship the token.
+- Original `text-gray-600` helper caption under an input → DS uses `text-muted-foreground`; ship the token.
+
+**Visibility rule — `text-muted-foreground` is NOT a default body color.** It is reserved for *genuinely secondary* content: captions, helper text, metadata, placeholder hints, timestamps. Anything the user **needs to read** — card values, list item labels, body paragraphs, form labels, descriptions users actually parse — stays `text-foreground`. Ask: "if this text went to 40% opacity, would the screen still be usable?" If no, it is primary content; keep `text-foreground`. Reflexively mapping every gray → `text-muted-foreground` produces unreadable card content. (Precedent: `feedback_intro_foreground.md` — intro paragraphs are primary content, never muted.)
 
 Implementer must record every such choice in the PR body under a `## Deviations from original` bullet list, so the reviewer can verify the DS reasoning (not just the rename).
 

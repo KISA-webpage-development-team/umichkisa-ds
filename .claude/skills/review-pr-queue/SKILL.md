@@ -116,11 +116,19 @@ User says `#46` or "let's do UserInfo" → match to PR → route:
 
 Always pass `--repo <owner/name>` to `gh pr view`, `gh pr merge`, `gh pr diff`, `gh run view` etc. — the cwd-based default will hit the wrong repo for cross-repo PRs. Use `KISA-webpage-development-team/KISA-website-client` for `client#N` and `KISA-webpage-development-team/umichkisa-ds` for `ds#N`.
 
-For "skim and merge the ready ones" batch command:
+For "skim and merge the ready ones" batch command — or ANY merge path including single-PR merges — follow the full `AUTONOMOUS_PROTOCOL.md` §8 flow, no step optional:
+
 1. List the skim-and-merge bucket (both repos)
 2. Confirm once ("Merge 4 PRs: client#43, client#44, client#45, ds#112?")
-3. On yes, for each: `gh pr merge <N> --repo <owner/name> --squash --delete-branch`
-4. After all merges, unblock dependents: find each merged PR's linked issue, then `gh issue list --repo <same-repo> --label blocked-by:<issue-#>` and remove the label from each dependent
+3. On yes, for each PR:
+   a. `gh pr merge <N> --repo <owner/name> --squash --delete-branch` (add `--admin` if base branch policy blocks; user pre-authorized for migration PRs)
+   b. **Strip end-state labels from the PR:** `ready-for-review`, `needs-revision`, `needs-decision`, `routine-errored` (whichever are present) — `gh pr edit <N> --repo <owner/name> --remove-label <label>`
+   c. **Close the linked issue** (PRs merge to `dev`, so GitHub auto-close does NOT fire — must close explicitly). Parse `Closes #M` / `Fixes #M` from PR body, then `gh issue close <M> --repo <owner/name> --reason completed --comment "Closed via #<N> (merged to dev)."`
+   d. **Strip issue eligibility labels:** `autonomous-ready`, `needs-interactive` (only meaningful for open work)
+4. After all merges, unblock dependents: `gh issue list --repo <same-repo> --label blocked-by:<merged-issue-#>` then remove that label from each dependent
+5. Report: "merged #<N>, closed #<M>, dependents unblocked: [...]" per PR
+
+**CRITICAL:** Steps 3b–3d are mandatory, not optional. Skipping them leaves stale labels and OPEN issues for merged work, breaking the Mode D pickup menu and dependent-unblock queries.
 
 ## Common Patterns
 
