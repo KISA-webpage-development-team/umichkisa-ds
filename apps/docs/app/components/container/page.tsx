@@ -94,7 +94,7 @@ export default async function ContainerPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">Container</h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         Constrains content to a maximum width with responsive horizontal padding
         ({' '}
         <InlineCode>
@@ -118,7 +118,7 @@ export default async function ContainerPage() {
 
       {/* ── Default ─────────────────────────────────────────── */}
       <Heading as="h2">Default</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         With no props, Container constrains to{' '}
         <InlineCode>
           max-w-screen-2xl
@@ -135,7 +135,7 @@ export default async function ContainerPage() {
 
       {/* ── Size Variants ──────────────────────────────────── */}
       <Heading as="h2">Size Variants</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The{' '}
         <InlineCode>
           size
@@ -251,7 +251,7 @@ export default async function ContainerPage() {
 
       {/* ── Semantic Elements ───────────────────────────────── */}
       <Heading as="h2">Semantic Elements</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Use the{' '}
         <InlineCode>
           as
@@ -286,7 +286,7 @@ export default async function ContainerPage() {
 
       {/* ── Full-width Backgrounds ──────────────────────────── */}
       <Heading as="h2">Full-width Backgrounds</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Banners, heroes, and navbars need to span the full viewport width while
         keeping their content constrained. There are two patterns depending on
         your page structure.
@@ -294,7 +294,7 @@ export default async function ContainerPage() {
 
       {/* Pattern 1: Page structure */}
       <Heading as="h3">Page-level structure (recommended)</Heading>
-      <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
+      <p className="type-body-sm mb-2 text-muted-foreground">
         Structure your page so banners are siblings to Containers, not children.
         Close the Container before the banner, then open a new one after.
       </p>
@@ -329,7 +329,7 @@ export default async function ContainerPage() {
 
       {/* Pattern 2: CSS breakout */}
       <Heading as="h3">CSS breakout (inside a Container)</Heading>
-      <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
+      <p className="type-body-sm mb-2 text-muted-foreground">
         If you are already inside a Container and cannot restructure the page,
         use the viewport-width breakout trick. This forces an element to span
         the full screen regardless of any parent constraints.
@@ -365,7 +365,7 @@ export default async function ContainerPage() {
 
       {/* ── Usage Guidelines ────────────────────────────────── */}
       <Heading as="h2">Usage Guidelines</Heading>
-      <ul className="type-body text-foreground max-w-prose flex flex-col gap-2 mb-8">
+      <ul className="type-body text-foreground flex flex-col gap-2 mb-8">
         <li className="flex gap-2">
           <span className="text-muted-foreground">{'•'}</span>
           <span>Use Container as the outermost content wrapper on every page.</span>

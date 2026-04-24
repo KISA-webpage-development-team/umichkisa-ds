@@ -185,7 +185,7 @@ export default async function TabsPage() {
 
       {/* -- Header -------------------------------------------------- */}
       <h1 className="type-h1 mb-4 text-foreground">Tabs</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Organize content into multiple panels, activated one at a time.
         Tabs keep related content grouped while reducing clutter.
       </p>
@@ -198,7 +198,7 @@ export default async function TabsPage() {
 
       {/* Basic */}
       <Heading as="h3" className="mt-6">Basic</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Underline variant (default) with three tab panels.
       </p>
       <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
@@ -227,7 +227,7 @@ export default async function TabsPage() {
 
       {/* Pill variant */}
       <Heading as="h3">Pill variant</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Use{' '}
         <InlineCode>
           variant=&quot;pill&quot;
@@ -260,7 +260,7 @@ export default async function TabsPage() {
 
       {/* Sizes */}
       <Heading as="h3">Sizes</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Available in small and medium (default) sizes via the{' '}
         <InlineCode>
           size
@@ -314,7 +314,7 @@ export default async function TabsPage() {
 
       {/* Full width */}
       <Heading as="h3">Full width</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Use{' '}
         <InlineCode>
           fullWidth
@@ -347,7 +347,7 @@ export default async function TabsPage() {
 
       {/* Disabled tab */}
       <Heading as="h3">Disabled tab</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Use the{' '}
         <InlineCode>
           disabled
@@ -377,7 +377,7 @@ export default async function TabsPage() {
 
       {/* Controlled */}
       <Heading as="h3">Controlled</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Use{' '}
         <InlineCode>
           value
@@ -395,13 +395,13 @@ export default async function TabsPage() {
 
       {/* -- API Reference -------------------------------------------- */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Tabs is composed from several sub-components that you assemble together. Each accepts the props listed below.
       </p>
 
       {/* Tabs (Root) */}
       <Heading as="h3">Tabs</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Root wrapper that manages tab state. If neither{' '}
         <InlineCode>value</InlineCode>{' '}
         nor{' '}
@@ -475,7 +475,7 @@ export default async function TabsPage() {
 
       {/* TabsList */}
       <Heading as="h3">TabsList</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Container for tab triggers. Controls variant, size, and width.
       </p>
       <div className="my-6">
@@ -545,7 +545,7 @@ export default async function TabsPage() {
 
       {/* TabsTrigger */}
       <Heading as="h3">TabsTrigger</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         An individual tab button. Activates the matching TabsContent panel.
       </p>
       <div className="my-6">
@@ -617,7 +617,7 @@ export default async function TabsPage() {
 
       {/* TabsContent */}
       <Heading as="h3">TabsContent</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         The panel rendered when its matching trigger is active. Unmounted when inactive.
       </p>
       <div className="my-6">
@@ -678,7 +678,7 @@ export default async function TabsPage() {
 
       {/* -- Accessibility -------------------------------------------- */}
       <Heading as="h2">Accessibility</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Tabs follow the WAI-ARIA Tabs pattern with full keyboard support.
         Use <strong>Arrow Left</strong> and <strong>Arrow Right</strong> to
         move between triggers, <strong>Home</strong> and <strong>End</strong> to

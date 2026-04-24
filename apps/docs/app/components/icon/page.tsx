@@ -62,7 +62,7 @@ export default async function IconPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">Icon</h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         The single canonical way to render icons in the KISA design system. Wraps
         Lucide icons with consistent sizing, color inheritance via{' '}
         <InlineCode>
@@ -76,7 +76,7 @@ export default async function IconPage() {
 
       {/* Default */}
       <Heading as="h3" className="mt-6">Default</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         No props beyond{' '}
         <InlineCode>
           name
@@ -93,7 +93,7 @@ export default async function IconPage() {
 
       {/* Sizes */}
       <Heading as="h3">Sizes</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Five size tokens map to fixed pixel values on a 4px grid. Use{' '}
         <InlineCode>
           md
@@ -104,7 +104,7 @@ export default async function IconPage() {
 
       {/* Color */}
       <Heading as="h3">Color</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Icons inherit{' '}
         <InlineCode>
           currentColor
@@ -130,7 +130,7 @@ export default async function IconPage() {
 
       {/* With a label */}
       <Heading as="h3">With a label</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Provide{' '}
         <InlineCode>
           label
@@ -147,7 +147,7 @@ export default async function IconPage() {
 
       {/* Interactive icons */}
       <Heading as="h3">Interactive icons</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         <InlineCode>
           &lt;Icon&gt;
         </InlineCode>{' '}
@@ -170,7 +170,7 @@ export default async function IconPage() {
 
       {/* ── API Reference ────────────────────────────────────── */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         All props except{' '}
         <InlineCode>
           name

@@ -70,7 +70,7 @@ export default async function TooltipPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">Tooltip</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Informational text label that appears on hover or focus. Use for
         icon-only buttons, truncated text, or any element that benefits from a
         short textual hint. When wrapping icon-only buttons, the tooltip
@@ -88,21 +88,21 @@ export default async function TooltipPage() {
 
       {/* ── Guidelines ─────────────────────────────────────── */}
       <Heading as="h2">Guidelines</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Tooltip is a supplementary hint pattern. It exists to give sighted
         desktop users extra context that is already conveyed elsewhere — never
         as the sole carrier of information.
       </p>
 
       <Heading as="h3" className="mt-6">Use Tooltip for</Heading>
-      <ul className="type-body mb-4 text-foreground max-w-prose list-disc pl-6 space-y-1">
+      <ul className="type-body mb-4 text-foreground list-disc pl-6 space-y-1">
         <li>Labeling icon-only buttons (match the trigger&apos;s <InlineCode>aria-label</InlineCode> exactly).</li>
         <li>Revealing the full content of truncated text on hover.</li>
         <li>Short, supplementary hints that complement the visible UI.</li>
       </ul>
 
       <Heading as="h3">Don&apos;t</Heading>
-      <ul className="type-body mb-4 text-foreground max-w-prose list-disc pl-6 space-y-1">
+      <ul className="type-body mb-4 text-foreground list-disc pl-6 space-y-1">
         <li>Put essential information inside a tooltip — touch users will never see it.</li>
         <li>Use Tooltip for content the user must read. Reach for Popover instead.</li>
         <li>Place long text, paragraphs, or multi-line copy inside a tooltip.</li>
@@ -114,7 +114,7 @@ export default async function TooltipPage() {
 
       {/* Default */}
       <Heading as="h3" className="mt-6">Default</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Wrap any trigger element. The tooltip appears on hover and focus.
       </p>
       <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
@@ -125,7 +125,7 @@ export default async function TooltipPage() {
 
       {/* On text */}
       <Heading as="h3">On truncated text</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Wrap truncated text to reveal the full content on hover.
       </p>
       <ComponentPreview code={truncatedCode} highlightedCode={truncatedHighlighted}>
@@ -138,7 +138,7 @@ export default async function TooltipPage() {
 
       {/* Placement */}
       <Heading as="h3">Placement</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Use the{' '}
         <InlineCode>
           side
@@ -166,7 +166,7 @@ export default async function TooltipPage() {
 
       {/* Custom delay */}
       <Heading as="h3">Custom delay</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Override{' '}
         <InlineCode>
           delayDuration

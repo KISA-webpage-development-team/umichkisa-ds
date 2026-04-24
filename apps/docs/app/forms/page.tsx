@@ -63,7 +63,7 @@ export default async function FormsPage() {
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">
         Forms
       </h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         <InlineCode>@umichkisa-ds/form</InlineCode>{' '}
         is a thin integration layer between{' '}
         <InlineCode>react-hook-form</InlineCode>{' '}
@@ -73,11 +73,11 @@ export default async function FormsPage() {
 
       {/* ── Installation ──────────────────────────────────── */}
       <Heading as="h2">Installation</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Install the form package via the GitHub Packages registry:
       </p>
       <CodeBlock code={installCode} lang="bash" />
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         You also need <InlineCode>react-hook-form</InlineCode> as
         a peer dependency:
       </p>
@@ -90,7 +90,7 @@ export default async function FormsPage() {
 
       {/* ── Quick Start ───────────────────────────────────── */}
       <Heading as="h2">Quick Start</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         A complete login form in under 30 lines:
       </p>
       <ComponentPreview code={quickStartCode} highlightedCode={quickStartHighlighted}>

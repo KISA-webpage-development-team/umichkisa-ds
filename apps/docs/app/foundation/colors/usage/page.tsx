@@ -11,59 +11,59 @@ export default async function ColorsUsagePage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Usage Guidelines</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         This section explains when to reach for each token. The token reference tells
         you what each token is. This section tells you how to use it.
       </p>
 
       {/* ── Brand Colors ────────────────────────────────────── */}
       <Heading as="h2">Brand Colors</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         <strong className="font-semibold text-foreground">
           <InlineCode>--color-brand-primary</InlineCode> is the anchor.{' '}
           <InlineCode>--color-brand-accent</InlineCode> is the signal.
         </strong>
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Think of navy as the container and maize as the content inside it. Navy says
         {' "'}this is KISA.{'"'} Maize says {'"'}look at this.{'"'}
       </p>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Use{' '}
         <InlineCode>--color-brand-primary</InlineCode>{' '}
         for:
       </p>
-      <ul className="type-body text-foreground max-w-prose flex flex-col gap-2 mb-4">
+      <ul className="type-body text-foreground flex flex-col gap-2 mb-4">
         <li className="flex gap-2"><span className="text-muted-foreground">&bull;</span>Navigation bar background</li>
         <li className="flex gap-2"><span className="text-muted-foreground">&bull;</span>Hero section backgrounds</li>
         <li className="flex gap-2"><span className="text-muted-foreground">&bull;</span>Primary button backgrounds</li>
         <li className="flex gap-2"><span className="text-muted-foreground">&bull;</span>Any large surface that needs to feel institutional and grounded</li>
       </ul>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Use{' '}
         <InlineCode>--color-brand-accent</InlineCode>{' '}
         for:
       </p>
-      <ul className="type-body text-foreground max-w-prose flex flex-col gap-2 mb-4">
+      <ul className="type-body text-foreground flex flex-col gap-2 mb-4">
         <li className="flex gap-2"><span className="text-muted-foreground">&bull;</span>Text labels on top of <InlineCode>--color-brand-primary</InlineCode> backgrounds</li>
         <li className="flex gap-2"><span className="text-muted-foreground">&bull;</span>Focus ring on interactive elements</li>
         <li className="flex gap-2"><span className="text-muted-foreground">&bull;</span>Badges, tags, and highlights that need to draw attention</li>
         <li className="flex gap-2"><span className="text-muted-foreground">&bull;</span>The most important CTA on a page when you want maximum visibility</li>
       </ul>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Use{' '}
         <InlineCode>--color-brand-primary-mid</InlineCode>{' '}
         for:
       </p>
-      <ul className="type-body text-foreground max-w-prose flex flex-col gap-2 mb-4">
+      <ul className="type-body text-foreground flex flex-col gap-2 mb-4">
         <li className="flex gap-2"><span className="text-muted-foreground">&bull;</span>Secondary navigation highlights</li>
         <li className="flex gap-2"><span className="text-muted-foreground">&bull;</span>Any context where full navy would feel too heavy but you still need blue</li>
       </ul>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Do not scatter brand colors across every element. A page that is half navy and
         half maize is not more branded — it is just loud. Brand colors work because they
         are used deliberately and sparingly.
@@ -71,7 +71,7 @@ export default async function ColorsUsagePage() {
 
       {/* ── Surface Depth ───────────────────────────────────── */}
       <Heading as="h2">Surface Depth</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Surfaces create the sense of depth and layering in the UI. The rule is simple:
         as elements stack on top of each other, their background steps through the
         surface scale.
@@ -81,7 +81,7 @@ export default async function ColorsUsagePage() {
   └── --color-surface-subtle  (gray-100)   Elevated inner surfaces — table headers, code blocks
   └── --color-surface-muted   (gray-50)    Deprioritized inner surfaces`} lang="text" />
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Cards and panels share the same white background as the page — they are
         distinguished by their border, not by a tinted fill. Inside a card,{' '}
         <InlineCode>--color-surface-subtle</InlineCode>{' '}
@@ -89,31 +89,31 @@ export default async function ColorsUsagePage() {
         <InlineCode>--color-surface-muted</InlineCode>{' '}
         serves deprioritized surfaces.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Do not invent new background colors outside of these three tokens.
       </p>
 
       {/* ── Text Hierarchy ──────────────────────────────────── */}
       <Heading as="h2">Text Hierarchy</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Use the text tokens to communicate information priority.
       </p>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         <strong className="font-semibold text-foreground">
           <InlineCode>--color-foreground</InlineCode>
         </strong>{' '}
         — everything users need to read. Headings, body paragraphs, button labels, form values.
         If it carries meaning, it gets primary.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         <strong className="font-semibold text-foreground">
           <InlineCode>--color-muted-foreground</InlineCode>
         </strong>{' '}
         — supporting information. Timestamps, captions, helper text below form fields,
         secondary metadata on cards. It is readable but visually recedes behind primary text.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         <strong className="font-semibold text-foreground">
           <InlineCode>--color-disabled-foreground</InlineCode>
         </strong>{' '}
@@ -121,7 +121,7 @@ export default async function ColorsUsagePage() {
         because disabled elements are meant to signal {'"'}this is not available right now.{'"'} Never use
         this token for content you actually want someone to read.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         <strong className="font-semibold text-foreground">
           <InlineCode>--color-brand-foreground</InlineCode>
         </strong>{' '}
@@ -130,7 +130,7 @@ export default async function ColorsUsagePage() {
         On a dark navy surface, gray-900 text is nearly invisible. Maize text is what belongs there.
         Do not use white — it is not a KISA brand color and it disrupts the visual identity.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         <strong className="font-semibold text-foreground">
           <InlineCode>--color-link</InlineCode>
         </strong>{' '}
@@ -143,24 +143,24 @@ export default async function ColorsUsagePage() {
 
       {/* ── Feedback Colors ─────────────────────────────────── */}
       <Heading as="h2">Feedback Colors</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Each feedback state has a solid token and a subtle token. Use them as a pair.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The <strong className="font-semibold text-foreground">solid token</strong> (
         <InlineCode>--color-error</InlineCode>,{' '}
         <InlineCode>--color-success</InlineCode>,
         etc.) goes on text, icons, and borders — small, precise uses where the color itself
         carries the message.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The <strong className="font-semibold text-foreground">subtle token</strong> (
         <InlineCode>--color-error-subtle</InlineCode>,{' '}
         <InlineCode>--color-success-subtle</InlineCode>,
         etc.) goes on the background of the entire alert or callout box. It creates a tinted
         region around the message without overwhelming the page.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         A typical error alert uses both:{' '}
         <InlineCode>--color-error-subtle</InlineCode>{' '}
         as the box background,{' '}
@@ -168,8 +168,8 @@ export default async function ColorsUsagePage() {
         as the icon color and border.
       </p>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">When to use each state:</p>
-      <ul className="type-body text-foreground max-w-prose flex flex-col gap-2 mb-4">
+      <p className="type-body mb-4 text-foreground">When to use each state:</p>
+      <ul className="type-body text-foreground flex flex-col gap-2 mb-4">
         <li className="flex gap-2"><span className="text-muted-foreground">&bull;</span><strong className="font-semibold text-foreground">Error</strong> — something went wrong and the user must act. Form validation failures, failed submissions, destructive warnings.</li>
         <li className="flex gap-2"><span className="text-muted-foreground">&bull;</span><strong className="font-semibold text-foreground">Success</strong> — an action completed as expected. A form saved, a file uploaded, a password changed.</li>
         <li className="flex gap-2"><span className="text-muted-foreground">&bull;</span><strong className="font-semibold text-foreground">Warning</strong> — something needs attention but has not failed yet. A session about to expire, a form field with a recommendation, a soft limit approaching.</li>
@@ -178,12 +178,12 @@ export default async function ColorsUsagePage() {
 
       {/* ── Interactive States ───────────────────────────────── */}
       <Heading as="h2" id="interactive-states-usage">Interactive States</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Every interactive element that uses brand colors should cycle through these
         states: default → hover → pressed → (focus).
       </p>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         For elements built on{' '}
         <InlineCode>--color-brand-primary</InlineCode>:
       </p>
@@ -240,7 +240,7 @@ export default async function ColorsUsagePage() {
         </div>
       </div>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         For elements built on{' '}
         <InlineCode>--color-brand-accent</InlineCode>:
       </p>
@@ -297,7 +297,7 @@ export default async function ColorsUsagePage() {
         </div>
       </div>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The focus ring (
         <InlineCode>--color-focus-ring</InlineCode>)
         is always maize regardless of which brand color the element uses. It appears when a user
@@ -308,12 +308,12 @@ export default async function ColorsUsagePage() {
 
       {/* ── Toggle Controls ─────────────────────────────────── */}
       <Heading as="h3" className="mt-6">Toggle Controls (Checked State)</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Toggle controls (Checkbox, Radio, Switch) use{' '}
         <InlineCode>--color-brand-primary</InlineCode>{' '}
         as the checked background — navy signals {'"'}selected{'"'} and carries the brand identity.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Indicators follow the <strong className="font-semibold text-foreground">stroke vs fill</strong> rule:
       </p>
 
@@ -369,7 +369,7 @@ export default async function ColorsUsagePage() {
         </div>
       </div>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Form controls use a simplified focus pattern:{' '}
         <InlineCode>border-color: var(--color-brand-primary)</InlineCode>{' '}
         instead of the dual-ring. The border color change is sufficient for elements that
@@ -378,7 +378,7 @@ export default async function ColorsUsagePage() {
 
       {/* ── Interactive Lists ───────────────────────────────── */}
       <Heading as="h3" className="mt-6">Interactive Lists</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Select items, Dropdown items, and Popover menu items use{' '}
         <InlineCode>--color-brand-accent-subtle</InlineCode>{' '}
         (light maize) as the hover/focus background, and{' '}
@@ -455,7 +455,7 @@ export default async function ColorsUsagePage() {
 
       {/* ── Token → Utility Reference ───────────────────────── */}
       <Heading as="h2">{"Token \u2192 Utility Reference"}</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Every{' '}
         <InlineCode>--color-*</InlineCode>{' '}
         token registered in{' '}

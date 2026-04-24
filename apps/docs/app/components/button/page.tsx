@@ -56,7 +56,7 @@ export default async function ButtonPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">Button</h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         The primary interactive element for triggering actions. Supports four
         semantic variants and three sizes. Extends all native{' '}
         <InlineCode>
@@ -70,7 +70,7 @@ export default async function ButtonPage() {
 
       {/* Default */}
       <Heading as="h3" className="mt-6">Default</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         The simplest usage. Renders as{' '}
         <InlineCode>
           primary
@@ -87,7 +87,7 @@ export default async function ButtonPage() {
 
       {/* Variants */}
       <Heading as="h3">Variants</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Four semantic variants for different levels of emphasis and intent.
       </p>
       <ComponentPreview code={variantsCode} highlightedCode={variantsHighlighted}>
@@ -98,7 +98,7 @@ export default async function ButtonPage() {
           <Button variant="destructive" className="w-full">Destructive</Button>
         </Grid>
       </ComponentPreview>
-      <ul className="type-body text-foreground max-w-prose mt-4 mb-2 flex flex-col gap-2">
+      <ul className="type-body text-foreground mt-4 mb-2 flex flex-col gap-2">
         <li><strong className="text-foreground">Primary</strong> — the main action on the page. Usually one per screen.</li>
         <li><strong className="text-foreground">Secondary</strong> — supporting actions alongside a primary button.</li>
         <li><strong className="text-foreground">Tertiary</strong> — low-emphasis actions like "Cancel" or inline text-level actions.</li>
@@ -107,7 +107,7 @@ export default async function ButtonPage() {
 
       {/* Sizes */}
       <Heading as="h3">Sizes</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Three sizes aligned to the spacing grid. Use{' '}
         <InlineCode>
           md
@@ -124,7 +124,7 @@ export default async function ButtonPage() {
 
       {/* With icon */}
       <Heading as="h3">With icon</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Button has built-in{' '}
         <InlineCode>
           gap-2
@@ -144,7 +144,7 @@ export default async function ButtonPage() {
 
       {/* Disabled */}
       <Heading as="h3">Disabled</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pass{' '}
         <InlineCode>
           disabled
@@ -162,7 +162,7 @@ export default async function ButtonPage() {
 
       {/* ── API Reference ────────────────────────────────────── */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         All props are optional.{' '}
         <InlineCode>
           Button

@@ -9,7 +9,7 @@ export default async function LayoutSpacingPage() {
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Spacing</h1>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         All spacing values must come from Tailwind&#39;s built-in scale.
         Arbitrary values like{' '}
         <InlineCode>px-[24px]</InlineCode>
@@ -17,7 +17,7 @@ export default async function LayoutSpacingPage() {
         <InlineCode>mt-[13px]</InlineCode>
         {' '}are not allowed.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The Tailwind spacing scale is built on a 4px base unit. Every step
         is a multiple of 4 — predictable, consistent, and visually harmonious
         with the rest of the system.
@@ -29,7 +29,7 @@ export default async function LayoutSpacingPage() {
 
       {/* ── Default Inset ───────────────────────────────────── */}
       <Heading as="h2">Default Inset</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The default inset is the standard horizontal breathing room at each
         breakpoint. It applies anywhere consistent padding is needed — the
         page shell, cards, panels, sections.
@@ -53,7 +53,7 @@ export default async function LayoutSpacingPage() {
         ))}
       </div>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         When in doubt about how much horizontal space to give an element,
         the default inset is the answer.
       </p>
@@ -62,7 +62,7 @@ export default async function LayoutSpacingPage() {
 
       {/* ── Max-width ───────────────────────────────────────── */}
       <Heading as="h2">Max-width</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Content is constrained to a maximum width of{' '}
         <InlineCode>max-w-screen-2xl</InlineCode>
         {' '}(1536px). This prevents lines from stretching uncomfortably wide on large monitors
@@ -84,7 +84,7 @@ export default async function LayoutSpacingPage() {
 
       {/* ── Column Gutter ───────────────────────────────────── */}
       <Heading as="h2">Column Gutter</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The default gutter between columns is{' '}
         <InlineCode>gap-2</InlineCode>
         {' '}(8px), consistent across all breakpoints. For inline and form layouts, this gutter is a structural
@@ -109,7 +109,7 @@ export default async function LayoutSpacingPage() {
         ))}
       </div>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         For inline layouts, the gutter is a structural constant.
         The Grid component&#39;s{' '}
         <InlineCode>gap</InlineCode>
@@ -120,7 +120,7 @@ export default async function LayoutSpacingPage() {
 
       {/* ── Vertical Spacing ────────────────────────────────── */}
       <Heading as="h2">Vertical Spacing</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Vertical spacing follows a fixed three-tier system. All tiers use Tailwind scale values and do not change across breakpoints — layout responsiveness is encoded in column reflow (fewer columns on smaller viewports), not in spacing changes.
       </p>
 
@@ -175,10 +175,10 @@ export default async function LayoutSpacingPage() {
         </div>
       </div>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The element tier matches the column gutter — the smallest structural unit is consistent across both horizontal and vertical arrangements.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The component tier matches the mobile horizontal inset — component stacks breathe at the same scale as the tightest layout edge.
       </p>
 
@@ -190,7 +190,7 @@ export default async function LayoutSpacingPage() {
 
       {/* ── Page Shell ──────────────────────────────────────── */}
       <Heading as="h2">Page Shell</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The full page shell combines max-width, centering, and the default inset into one element. This is the wrapping element that all page content lives inside.
       </p>
 
@@ -198,7 +198,7 @@ export default async function LayoutSpacingPage() {
   {/* page content */}
 </Container>`} lang="tsx" />
 
-      <ul className="type-body text-foreground max-w-prose list-disc pl-5 space-y-2">
+      <ul className="type-body text-foreground list-disc pl-5 space-y-2">
         <li>
           Centers content with{' '}
           <InlineCode>mx-auto</InlineCode>
@@ -220,7 +220,7 @@ export default async function LayoutSpacingPage() {
         </li>
       </ul>
 
-      <p className="type-body mb-4 text-foreground max-w-prose mt-4">
+      <p className="type-body mb-4 text-foreground mt-4">
         The{' '}
         <InlineCode>Container</InlineCode>
         {' '}component encodes this pattern. Use it instead of composing the utility classes manually.
@@ -234,7 +234,7 @@ export default async function LayoutSpacingPage() {
 
       {/* ── Full-Bleed Elements ─────────────────────────────── */}
       <Heading as="h2">Full-Bleed Elements</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Some elements — navbars, hero banners, full-width section dividers — must span the full viewport width without being clipped by max-width. Use a full-width outer wrapper with the page shell pattern nested inside for content alignment:
       </p>
 
@@ -245,7 +245,7 @@ export default async function LayoutSpacingPage() {
   </Container>
 </div>`} lang="tsx" />
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The outer element carries the background color or image and spans the full viewport. The inner element applies max-width and inset so that content aligns with the rest of the page layout.
       </p>
 

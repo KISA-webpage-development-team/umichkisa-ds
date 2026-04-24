@@ -8,13 +8,13 @@ export default async function ColorsOverviewPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Colors</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Color is one of the most visible decisions in any interface. Done inconsistently,
         it creates visual noise — a button is one shade of blue here, another shade there,
         a heading feels slightly off, and the page looks like it was assembled by different
         people who never talked to each other. Because it was.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The KISA color system exists to solve that. It gives every developer on the team a
         shared vocabulary: instead of choosing a color by eye or copying a hex value from
         somewhere, you reach for a named token —{' '}
@@ -22,7 +22,7 @@ export default async function ColorsOverviewPage() {
         <InlineCode>--color-muted-foreground</InlineCode>{' '}
         — and the right color appears, consistently, everywhere.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         This guide covers how the color system is structured, the full palette we build
         from, the tokens you use in components, and the rules that keep everything
         consistent.
@@ -31,7 +31,7 @@ export default async function ColorsOverviewPage() {
 
       {/* ── How the System Works ────────────────────────────── */}
       <Heading as="h2">How the System Works</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The color system is organized in three tiers. Each tier has a specific job,
         and they only communicate in one direction — downward.
       </p>
@@ -63,12 +63,12 @@ export default async function ColorsOverviewPage() {
 
       {/* ── Tier 1 — Primitives ─────────────────────────────── */}
       <Heading as="h3" className="mt-6">Tier 1 — Primitives</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Primitives are the raw material. They hold color values and nothing else —
         no meaning, no context, just the value. You will find them in{' '}
         <InlineCode>packages/web/src/tokens/primitives.css</InlineCode>.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         You will never reference a primitive directly in a component. Their only job
         is to be referenced by semantic tokens.
       </p>
@@ -83,7 +83,7 @@ export default async function ColorsOverviewPage() {
 
       {/* ── Tier 2 — Semantic Tokens ────────────────────────── */}
       <Heading as="h3" className="mt-6">Tier 2 — Semantic Tokens</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Semantic tokens are named by their purpose. This is the tier you interact with
         when writing component code. You will find them in{' '}
         <InlineCode>packages/web/src/tokens/semantic.css</InlineCode>.
@@ -92,19 +92,19 @@ export default async function ColorsOverviewPage() {
       <CodeBlock code={`--color-brand-primary: var(--primitive-michigan-blue);
 --color-foreground:    var(--primitive-gray-900);`} lang="css" />
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The name tells you what the color is <em>for</em>, not what it looks like. This matters
         for maintainability: if KISA ever updates its brand colors, only the primitive
         value changes. Every component that references the semantic token updates
         automatically — without touching a single component file.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         <strong className="font-semibold text-foreground">Rule: always use semantic tokens in components. Never reference primitives directly.</strong>
       </p>
 
       {/* ── Tier 3 — Component Layer ────────────────────────── */}
       <Heading as="h3" className="mt-6">Tier 3 — Component Layer</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The component layer is where semantic tokens get applied to actual UI elements.
       </p>
 
@@ -113,7 +113,7 @@ export default async function ColorsOverviewPage() {
   color:            var(--color-brand-foreground);
 }`} lang="css" />
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The component does not know what color{' '}
         <InlineCode>--color-brand-primary</InlineCode>{' '}
         is. It only knows the purpose. The actual value flows in from the semantic layer,
@@ -125,7 +125,7 @@ export default async function ColorsOverviewPage() {
 
       {/* ── Dark Mode ───────────────────────────────────────── */}
       <Heading as="h2">Dark Mode</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         This design system does not support dark mode. There is no dark-mode token layer,
         no{' '}
         <InlineCode>.dark</InlineCode>{' '}

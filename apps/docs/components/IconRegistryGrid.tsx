@@ -5,7 +5,7 @@ import { Card, Grid, Icon, iconNames } from '@umichkisa-ds/web'
 export function IconRegistryGrid() {
   return (
     <>
-      <p className="type-body-sm mb-4 text-muted-foreground max-w-prose">
+      <p className="type-body-sm mb-4 text-muted-foreground">
         {iconNames.length} icons in the current registry.
       </p>
       <Grid columns={{ base: 3, md: 4, lg: 6 }} gap="component" className="my-6">

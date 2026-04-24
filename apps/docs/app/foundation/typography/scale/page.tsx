@@ -7,7 +7,7 @@ export default function TypographyScalePage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Type Scale</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Each role in the hierarchy is defined as a single semantic utility class. Rather than
         composing raw Tailwind utilities every time, you apply one class —{' '}
         <InlineCode>type-body</InlineCode>,{' '}
@@ -217,7 +217,7 @@ export default function TypographyScalePage() {
 
       {/* ── Responsive Behavior ────────────────────────────── */}
       <Heading as="h2" className="mt-6">Responsive Behavior</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         <InlineCode>type-body</InlineCode>,{' '}
         <InlineCode>type-body-sm</InlineCode>,{' '}
         <InlineCode>type-label</InlineCode>,
@@ -225,7 +225,7 @@ export default function TypographyScalePage() {
         <InlineCode>type-caption</InlineCode>{' '}
         are fixed — they are already readable at all viewport sizes.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Display-level and heading classes scale across the three layout tiers defined in the
         layout system ({' '}
         <InlineCode>default</InlineCode>{' '}
@@ -296,7 +296,7 @@ export default function TypographyScalePage() {
         </div>
       </div>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Responsive scaling is baked into the{' '}
         <InlineCode>type-*</InlineCode>{' '}
         class definitions. Components do not need to apply breakpoint overrides — reaching for{' '}

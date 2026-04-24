@@ -86,7 +86,7 @@ export default async function InputPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">Input</h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         Single-line text field for user input. Supports all native{' '}
         <InlineCode>
           &lt;input&gt;
@@ -106,7 +106,7 @@ export default async function InputPage() {
 
       {/* Default */}
       <Heading as="h3" className="mt-6">Default</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         The simplest usage. Renders a full-width text input.
       </p>
       <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
@@ -117,7 +117,7 @@ export default async function InputPage() {
 
       {/* States */}
       <Heading as="h3">States</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Default, disabled, and invalid states. Focus the input to see the focus styling.
       </p>
       <ComponentPreview code={statesCode} highlightedCode={statesHighlighted}>
@@ -130,7 +130,7 @@ export default async function InputPage() {
 
       {/* Input types */}
       <Heading as="h3">Input types</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pass any native{' '}
         <InlineCode>
           type
@@ -151,7 +151,7 @@ export default async function InputPage() {
 
       {/* With Label */}
       <Heading as="h3">With Label</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Compose with{' '}
         <InlineCode>
           Label
@@ -169,7 +169,7 @@ export default async function InputPage() {
 
       {/* With error message */}
       <Heading as="h3">With error message</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pair{' '}
         <InlineCode>
           invalid
@@ -192,7 +192,7 @@ export default async function InputPage() {
 
       {/* Controlled */}
       <Heading as="h3">Controlled</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Input supports both controlled and uncontrolled usage.
         Below is a controlled example with live character count.
       </p>
@@ -202,7 +202,7 @@ export default async function InputPage() {
 
       {/* ── API Reference ────────────────────────────────────── */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Extends all native{' '}
         <InlineCode>
           &lt;input&gt;

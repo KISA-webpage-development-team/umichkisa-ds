@@ -9,7 +9,7 @@ export default function TypographyUsagePage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Usage</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Rules and patterns for applying the type system consistently across the product.
       </p>
 
@@ -17,14 +17,14 @@ export default function TypographyUsagePage() {
 
       {/* ── Always use semantic classes ─────────────────────── */}
       <Heading as="h2">Always use semantic classes</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Reach for{' '}
         <InlineCode>type-*</InlineCode>{' '}
         utilities instead of composing raw Tailwind classes. The semantic classes are the
         contract — if the scale changes, only the definition updates, not every component
         that uses it.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Use{' '}
         <InlineCode>type-body</InlineCode>{' '}
         instead of{' '}
@@ -38,7 +38,7 @@ export default function TypographyUsagePage() {
 
       {/* ── Keep emphasis inline ────────────────────────────── */}
       <Heading as="h2">Keep emphasis inline, not structural</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         For emphasis within body text, use{' '}
         <InlineCode>&lt;strong&gt;</InlineCode>.
         Applying a weight utility to the entire container changes the role of the text — it
@@ -48,7 +48,7 @@ export default function TypographyUsagePage() {
 
       {/* ── Always set color explicitly ────────────────────── */}
       <Heading as="h2">Always set color explicitly</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         <InlineCode>type-*</InlineCode>{' '}
         classes handle family, size, weight, and line height only — not color. Every text
         element needs a color token paired explicitly:{' '}
@@ -66,7 +66,7 @@ export default function TypographyUsagePage() {
 
       {/* Font boundary */}
       <Heading as="h3" className="mt-6">Font boundary</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         SejongHospital is for Display and H1 only. Do not use it below H1 — hand off to
         Pretendard for every heading level after the first.
       </p>
@@ -86,33 +86,13 @@ export default function TypographyUsagePage() {
         </Dont>
       </DoDont>
 
-      {/* Line length */}
-      <Heading as="h3" className="mt-6">Line length</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
-        Keep body text within{' '}
-        <InlineCode>max-w-prose</InlineCode>{' '}
-        (~65 characters). Lines that stretch the full container width force the eye to travel
-        too far, making long passages harder to follow.
-      </p>
-
-      <DoDont>
-        <Do>
-          <article className="max-w-prose">
-            <p className="type-body text-foreground">KISA brings together Korean international students across all schools and programs at the University of Michigan.</p>
-          </article>
-        </Do>
-        <Dont>
-          <p className="type-body text-foreground w-full">KISA brings together Korean international students across all schools and programs at the University of Michigan, fostering community through events, mentorship, and shared experience.</p>
-        </Dont>
-      </DoDont>
-
       <Divider className="my-8" />
 
       {/* ── State typography ────────────────────────────────── */}
       <Heading as="h2">State typography</Heading>
 
       <Heading as="h3" className="mt-6">Disabled text</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Disabled text uses the same{' '}
         <InlineCode>type-*</InlineCode>{' '}
         class as its active state. Only the color changes — use{' '}
@@ -121,7 +101,7 @@ export default function TypographyUsagePage() {
       </p>
 
       <Heading as="h3" className="mt-6">Error messages</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Use{' '}
         <InlineCode>type-caption</InlineCode>{' '}
         +{' '}
@@ -135,7 +115,7 @@ export default function TypographyUsagePage() {
       </div>
 
       <Heading as="h3" className="mt-6">Helper text</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Use{' '}
         <InlineCode>type-caption</InlineCode>{' '}
         +{' '}
@@ -156,17 +136,17 @@ export default function TypographyUsagePage() {
 
       {/* ── Links ──────────────────────────────────────────── */}
       <Heading as="h2">Links</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Links inherit the{' '}
         <InlineCode>type-*</InlineCode>{' '}
         class of their container — a link inside a{' '}
         <InlineCode>type-body</InlineCode>{' '}
         paragraph uses body sizing and weight. Do not apply a separate type class to links.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Color and decoration rules:
       </p>
-      <ul className="type-body text-foreground max-w-prose list-disc pl-5 space-y-2">
+      <ul className="type-body text-foreground list-disc pl-5 space-y-2">
         <li>
           Color: always{' '}
           <InlineCode>text-link</InlineCode>
@@ -184,7 +164,7 @@ export default function TypographyUsagePage() {
           Visited: no separate visited style — leave at default link color
         </li>
       </ul>
-      <p className="type-body mb-4 mt-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 mt-4 text-foreground">
         Never use{' '}
         <InlineCode>text-foreground</InlineCode>{' '}
         for links. The{' '}
@@ -203,15 +183,15 @@ export default function TypographyUsagePage() {
 
       {/* ── Truncation ─────────────────────────────────────── */}
       <Heading as="h2">Truncation</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Truncation is for UI elements — not for long-form content. Never truncate{' '}
         <InlineCode>type-body</InlineCode>{' '}
         in article or content reading contexts.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Two patterns:
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         <strong className="font-semibold text-foreground">Single-line truncation</strong> — use{' '}
         <InlineCode>truncate</InlineCode>{' '}
         (applies{' '}
@@ -221,7 +201,7 @@ export default function TypographyUsagePage() {
         For: nav items, table cells, tags, badges, any UI element where one line is a hard
         constraint.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         <strong className="font-semibold text-foreground">Multi-line truncation</strong> — use{' '}
         <InlineCode>line-clamp-2</InlineCode>{' '}
         or{' '}
@@ -233,7 +213,7 @@ export default function TypographyUsagePage() {
         <InlineCode>line-clamp-3</InlineCode>{' '}
         for descriptions.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         When in doubt, prefer{' '}
         <InlineCode>truncate</InlineCode>.
         Multi-line clamping can produce unexpected results with certain line heights — always

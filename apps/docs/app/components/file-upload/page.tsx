@@ -135,7 +135,7 @@ export default async function FileUploadPage() {
 
       {/* -- Header -------------------------------------------------- */}
       <h1 className="type-h1 mb-4 text-foreground">File Upload</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Storage-agnostic, low-level single-image upload component with client-side validation, optimistic preview, and consumer-owned upload/remove callbacks. &ldquo;Optimistic preview&rdquo; here means the selected image renders immediately (via a local object URL) alongside a spinner; it&apos;s replaced by the uploaded URL on success or cleared on failure.
       </p>
       <Alert variant="info" className="mb-8">
@@ -143,7 +143,7 @@ export default async function FileUploadPage() {
       </Alert>
 
       <div className="mb-8">
-        <p className="type-body-sm mb-2 text-foreground max-w-prose">
+        <p className="type-body-sm mb-2 text-foreground">
           <strong>Value shape:</strong>
         </p>
         <pre className="type-caption font-mono text-foreground bg-surface-subtle border border-border rounded-md px-3 py-2 whitespace-pre overflow-x-auto">
@@ -162,7 +162,7 @@ export default async function FileUploadPage() {
 
       {/* Basic */}
       <Heading as="h3" className="mt-6">Basic</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         The default configuration accepts PNG, JPG, and WEBP images up to 5MB. Wire up{' '}
         <InlineCode>onUpload</InlineCode> and <InlineCode>onRemove</InlineCode> to your storage backend.
       </p>
@@ -172,7 +172,7 @@ export default async function FileUploadPage() {
 
       {/* Disabled */}
       <Heading as="h3">Disabled</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pass <InlineCode>disabled</InlineCode> to block all interaction — the trigger and the remove button both become unclickable.
       </p>
       <ComponentPreview code={disabledCode} highlightedCode={disabledHighlighted}>
@@ -181,7 +181,7 @@ export default async function FileUploadPage() {
 
       {/* Korean localization */}
       <Heading as="h3">Korean localization</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Override every user-facing string via the <InlineCode>messages</InlineCode> prop. Static strings are plain values; size and MIME errors are functions that receive the current limit so the message can reflect it.
       </p>
       <ComponentPreview code={koreanCode} highlightedCode={koreanHighlighted}>
@@ -190,7 +190,7 @@ export default async function FileUploadPage() {
 
       {/* Custom accept + max size */}
       <Heading as="h3">Custom accept + max size</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Narrow the accepted MIME types via <InlineCode>accept</InlineCode> and tighten the upper bound via <InlineCode>maxSize</InlineCode> (in bytes). Rejected files surface the corresponding localized error from <InlineCode>messages</InlineCode>.
       </p>
       <ComponentPreview code={restrictedCode} highlightedCode={restrictedHighlighted}>
@@ -199,7 +199,7 @@ export default async function FileUploadPage() {
 
       {/* -- API Reference -------------------------------------------- */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         FileUpload is a single component with a controlled value. The four required props fully specify the upload contract; the rest tune validation, state, and copy.
       </p>
 
@@ -327,7 +327,7 @@ export default async function FileUploadPage() {
 
       {/* FileUploadMessages */}
       <Heading as="h3">FileUploadMessages</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Every key is optional. Unset keys fall back to the English defaults shown below.
       </p>
       <div className="my-6">
@@ -432,22 +432,22 @@ export default async function FileUploadPage() {
       <Heading as="h2">Behavior</Heading>
 
       <Heading as="h3" className="mt-6">Lifecycle</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Empty → client-side validation (MIME + size) → optimistic preview with a spinner while <InlineCode>onUpload</InlineCode> is in flight → populated on resolution, or the preview reverts and an error surfaces on rejection. <InlineCode>onChange</InlineCode> fires exactly once per successful transition.
       </p>
 
       <Heading as="h3">Replace flow</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         To swap the current file, the user must first remove it — the trigger is not interactive while a value is present. Block semantics were chosen deliberately for orphan safety: a replace-in-place operation would risk uploading a new file before the old one is deleted from storage.
       </p>
 
       <Heading as="h3">Error surfacing</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Size and MIME validation errors render from <InlineCode>messages.sizeExceeded</InlineCode> / <InlineCode>messages.invalidType</InlineCode>. When <InlineCode>onUpload</InlineCode> or <InlineCode>onRemove</InlineCode> reject, the component prefers <InlineCode>err.message</InlineCode> when present and falls back to <InlineCode>messages.uploadFailed</InlineCode> / <InlineCode>messages.removeFailed</InlineCode>.
       </p>
 
       <Heading as="h3">Orphan cleanup responsibility</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         FileUpload only <em>calls</em> <InlineCode>onRemove</InlineCode> with the current <InlineCode>publicId</InlineCode>. The consumer&apos;s handler must actually delete the file from storage. Treat the contract as: &ldquo;if <InlineCode>onRemove</InlineCode> resolves, the stored file is gone.&rdquo;
       </p>
 

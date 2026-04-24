@@ -152,7 +152,7 @@ export default async function GridPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">Grid</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Responsive equal-width column layout for repeating items. Handles the
         common pattern of reflowing content from fewer columns on mobile to more
         columns on desktop. Extends all native{' '}
@@ -173,7 +173,7 @@ export default async function GridPage() {
 
       {/* Basic */}
       <Heading as="h3" className="mt-6">Basic</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pass a number to{' '}
         <InlineCode>
           columns
@@ -192,7 +192,7 @@ export default async function GridPage() {
 
       {/* Responsive */}
       <Heading as="h3">Responsive</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pass a responsive object to{' '}
         <InlineCode>
           columns
@@ -224,7 +224,7 @@ export default async function GridPage() {
 
       {/* ── Gap Variants ────────────────────────────────────── */}
       <Heading as="h2">Gap Variants</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The{' '}
         <InlineCode>
           gap
@@ -235,7 +235,7 @@ export default async function GridPage() {
 
       {/* Element */}
       <Heading as="h3" className="mt-6">Element (8px)</Heading>
-      <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
+      <p className="type-body-sm mb-2 text-muted-foreground">
         Tight spacing for compact grids — icon grids, tag collections.
       </p>
       <ComponentPreview code={gapElementCode} highlightedCode={gapElementHighlighted}>
@@ -250,7 +250,7 @@ export default async function GridPage() {
 
       {/* Component */}
       <Heading as="h3">Component (16px)</Heading>
-      <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
+      <p className="type-body-sm mb-2 text-muted-foreground">
         Default. Standard spacing for card grids and content blocks.
       </p>
       <ComponentPreview code={gapComponentCode} highlightedCode={gapComponentHighlighted}>
@@ -265,7 +265,7 @@ export default async function GridPage() {
 
       {/* Section */}
       <Heading as="h3">Section (24px)</Heading>
-      <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
+      <p className="type-body-sm mb-2 text-muted-foreground">
         Spacious spacing for feature grids and landing page layouts.
       </p>
       <ComponentPreview code={gapSectionCode} highlightedCode={gapSectionHighlighted}>
@@ -280,7 +280,7 @@ export default async function GridPage() {
 
       {/* ── Real-world Examples ──────────────────────────────── */}
       <Heading as="h2">Real-world Examples</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Card grids at each gap tier, showing how spacing affects the feel
         of a realistic layout.
       </p>
@@ -343,7 +343,7 @@ export default async function GridPage() {
 
       {/* ── API Reference ────────────────────────────────────── */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         All props are optional. Grid extends native{' '}
         <InlineCode>
           &lt;div&gt;

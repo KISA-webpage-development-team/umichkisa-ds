@@ -57,7 +57,7 @@ export default async function BadgePage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">Badge</h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         Inline label for status, categorization, and metadata display. Supports
         seven semantic variants, two sizes, and{' '}
         <InlineCode>
@@ -75,7 +75,7 @@ export default async function BadgePage() {
 
       {/* Default */}
       <Heading as="h3" className="mt-6">Default</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         The simplest usage. Renders as{' '}
         <InlineCode>
           default
@@ -92,7 +92,7 @@ export default async function BadgePage() {
 
       {/* Variants */}
       <Heading as="h3">Variants</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Seven semantic variants for different levels of emphasis and intent.
       </p>
       <ComponentPreview code={variantsCode} highlightedCode={variantsHighlighted}>
@@ -106,7 +106,7 @@ export default async function BadgePage() {
           <Badge variant="outline">Outline</Badge>
         </div>
       </ComponentPreview>
-      <ul className="type-body-sm text-foreground max-w-prose mt-4 mb-2 flex flex-col gap-2">
+      <ul className="type-body-sm text-foreground mt-4 mb-2 flex flex-col gap-2">
         <li><strong className="text-foreground">Default</strong> — neutral label for general metadata.</li>
         <li><strong className="text-foreground">Brand</strong> — branded or primary emphasis.</li>
         <li><strong className="text-foreground">Success</strong> — positive status or completion.</li>
@@ -118,7 +118,7 @@ export default async function BadgePage() {
 
       {/* Sizes */}
       <Heading as="h3">Sizes</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Use{' '}
         <InlineCode>
           md
@@ -143,7 +143,7 @@ export default async function BadgePage() {
 
       {/* With icon */}
       <Heading as="h3">With icon</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Badge has built-in gap-1 so icons and text align automatically.
       </p>
       <ComponentPreview code={withIconCode} highlightedCode={withIconHighlighted}>
@@ -155,7 +155,7 @@ export default async function BadgePage() {
 
       {/* As link */}
       <Heading as="h3">As link</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Use{' '}
         <InlineCode>
           asChild
@@ -175,7 +175,7 @@ export default async function BadgePage() {
 
       {/* ── API Reference ────────────────────────────────────── */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         All props are optional.
       </p>
       <div className="my-6">

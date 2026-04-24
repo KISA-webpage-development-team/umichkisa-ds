@@ -71,7 +71,7 @@ export default async function StatusViewPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">StatusView</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Centered status message for error pages, auth gates, and empty states.
         Renders an icon, title, description, and optional action area within
         its parent container. Each variant ships with Korean default text that
@@ -94,7 +94,7 @@ export default async function StatusViewPage() {
 
       {/* All variants */}
       <Heading as="h3" className="mt-6">All variants</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Four variants cover common status scenarios. Each provides a default
         icon, title, and description in Korean.
       </p>
@@ -117,7 +117,7 @@ export default async function StatusViewPage() {
 
       {/* With status code */}
       <Heading as="h3">With status code</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pass a{' '}
         <InlineCode>code</InlineCode>{' '}
         prop to display a large status code above the icon. Useful for HTTP
@@ -131,7 +131,7 @@ export default async function StatusViewPage() {
 
       {/* Custom icon */}
       <Heading as="h3">Custom icon</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Override the default variant icon by passing any icon name from the{' '}
         <a href="/components/icon" className="text-link underline hover:text-brand-primary">Icon registry</a>{' '}
         to the{' '}
@@ -147,7 +147,7 @@ export default async function StatusViewPage() {
 
       {/* With action */}
       <Heading as="h3">With action</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         The{' '}
         <InlineCode>action</InlineCode>{' '}
         prop accepts any React node — typically a button or link that helps the
@@ -173,7 +173,7 @@ export default async function StatusViewPage() {
 
       {/* Full-screen pattern */}
       <Heading as="h2">Full-screen pattern</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         For a full-page status screen, wrap StatusView in a viewport-height
         container.
       </p>
@@ -192,7 +192,7 @@ export default async function StatusViewPage() {
 
       {/* ── Variant Defaults ────────────────────────────────── */}
       <Heading as="h2">Variant defaults</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Default icon for each variant. Pass any of these names to the{' '}
         <InlineCode>icon</InlineCode>{' '}
         prop to override across variants.
@@ -250,7 +250,7 @@ export default async function StatusViewPage() {
 
       {/* ── API Reference ───────────────────────────────────── */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The{' '}
         <InlineCode>variant</InlineCode>{' '}
         prop is required. All other props are optional and override the

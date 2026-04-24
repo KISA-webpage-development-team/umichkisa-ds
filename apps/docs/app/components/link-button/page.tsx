@@ -67,7 +67,7 @@ export default async function LinkButtonPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">LinkButton</h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         A navigation element styled as a button, for links that need
         button-level visual weight. Renders as an{' '}
         <InlineCode>
@@ -82,7 +82,7 @@ export default async function LinkButtonPage() {
 
       {/* ── When to use ─────────────────────────────────────── */}
       <Heading as="h2">When to use</Heading>
-      <ul className="type-body max-w-prose mb-8 flex flex-col gap-2">
+      <ul className="type-body mb-8 flex flex-col gap-2">
         <li>
           <strong className="text-foreground">LinkButton</strong> — for navigation.
           If it opens a URL or navigates to a route, use LinkButton.
@@ -99,7 +99,7 @@ export default async function LinkButtonPage() {
 
       {/* Default */}
       <Heading as="h3" className="mt-6">Default</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         The simplest usage. Renders as{' '}
         <InlineCode>
           primary
@@ -116,7 +116,7 @@ export default async function LinkButtonPage() {
 
       {/* Variants */}
       <Heading as="h3">Variants</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Four variants for different levels of emphasis and intent.
       </p>
       <ComponentPreview code={variantsCode} highlightedCode={variantsHighlighted}>
@@ -130,7 +130,7 @@ export default async function LinkButtonPage() {
 
       {/* Sizes */}
       <Heading as="h3">Sizes</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Three sizes aligned to the spacing grid. Use{' '}
         <InlineCode>
           md
@@ -147,7 +147,7 @@ export default async function LinkButtonPage() {
 
       {/* With icon */}
       <Heading as="h3">With icon</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         LinkButton inherits{' '}
         <InlineCode>
           gap-2
@@ -168,7 +168,7 @@ export default async function LinkButtonPage() {
 
       {/* External link */}
       <Heading as="h3">External link</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         For links that open in a new tab, pass{' '}
         <InlineCode>
           target=&quot;_blank&quot;
@@ -191,7 +191,7 @@ export default async function LinkButtonPage() {
 
       {/* Disabled */}
       <Heading as="h3">Disabled</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pass{' '}
         <InlineCode>
           disabled
@@ -218,7 +218,7 @@ export default async function LinkButtonPage() {
 
       {/* ── API Reference ────────────────────────────────────── */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         All props are optional.{' '}
         <InlineCode>
           LinkButton

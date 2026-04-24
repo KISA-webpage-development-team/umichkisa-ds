@@ -62,7 +62,7 @@ export default async function AvatarPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">Avatar</h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         Displays a user profile image with automatic fallback to initials or a
         generic icon. Supports three sizes and handles image load errors
         gracefully.
@@ -73,7 +73,7 @@ export default async function AvatarPage() {
 
       {/* Default */}
       <Heading as="h3" className="mt-6">Default</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Provide{' '}
         <InlineCode>
           src
@@ -90,7 +90,7 @@ export default async function AvatarPage() {
 
       {/* Sizes */}
       <Heading as="h3">Sizes</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Three sizes available. Use{' '}
         <InlineCode>
           sm
@@ -115,7 +115,7 @@ export default async function AvatarPage() {
 
       {/* Initials fallback */}
       <Heading as="h3">Initials fallback</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         When no{' '}
         <InlineCode>
           src
@@ -145,7 +145,7 @@ export default async function AvatarPage() {
 
       {/* Icon fallback */}
       <Heading as="h3">Icon fallback</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         When neither{' '}
         <InlineCode>
           src
@@ -166,7 +166,7 @@ export default async function AvatarPage() {
 
       {/* Error fallback */}
       <Heading as="h3">Error fallback</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         If the image fails to load, the avatar automatically falls back to
         initials (when{' '}
         <InlineCode>
@@ -180,7 +180,7 @@ export default async function AvatarPage() {
 
       {/* ── API Reference ────────────────────────────────────── */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         All props are technically optional, but{' '}
         <InlineCode>
           name

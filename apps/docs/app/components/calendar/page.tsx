@@ -148,10 +148,10 @@ export default async function CalendarPage() {
 
       {/* -- Header -------------------------------------------------- */}
       <h1 className="type-h1 mb-4 text-foreground">Calendar</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         A date calendar for selecting single dates or date ranges.
       </p>
-      <Alert variant="info" className="mb-8 max-w-prose">
+      <Alert variant="info" className="mb-8">
         Use Calendar as a standalone visible date picker. For a form input
         that reveals a calendar in a popover, use DatePicker.
       </Alert>
@@ -161,7 +161,7 @@ export default async function CalendarPage() {
 
       {/* Pick a date */}
       <Heading as="h3" className="mt-6">Pick a date</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Select a single date, such as scheduling a meeting. The selected date
         is highlighted with the brand primary color.
       </p>
@@ -171,7 +171,7 @@ export default async function CalendarPage() {
 
       {/* Range selection */}
       <Heading as="h3">Range selection</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Select a date range for scenarios like booking a stay. Click once to
         set the start date, then click again to set the end date.
       </p>
@@ -181,7 +181,7 @@ export default async function CalendarPage() {
 
       {/* Disabled dates */}
       <Heading as="h3">Disabled dates</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Prevent selection of certain dates. Here, past dates are disabled to
         ensure only future dates can be selected — useful for event
         registration or appointment booking.
@@ -192,7 +192,7 @@ export default async function CalendarPage() {
 
       {/* Multiple months */}
       <Heading as="h3">Multiple months</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Display two months side by side for easier range selection. On mobile,
         the months stack vertically automatically.
       </p>
@@ -202,7 +202,7 @@ export default async function CalendarPage() {
 
       {/* Controlled month */}
       <Heading as="h3">Controlled month navigation</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Control the visible month externally with buttons. Useful when you
         need to programmatically jump to a specific month, such as navigating
         to an event date.
@@ -213,7 +213,7 @@ export default async function CalendarPage() {
 
       {/* -- API Reference -------------------------------------------- */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Calendar wraps{' '}
         <InlineCode>react-day-picker</InlineCode>{' '}
         and accepts all of its props. The most commonly used props are listed below.

@@ -163,7 +163,7 @@ export default async function CardPage() {
 
       {/* -- Header -------------------------------------------------- */}
       <h1 className="type-h1 mb-4 text-foreground">Card</h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         A container for grouping related content and actions into a single visual
         unit with a subtle background and border.
       </p>
@@ -182,7 +182,7 @@ export default async function CardPage() {
 
       {/* Basic */}
       <Heading as="h3" className="mt-6">Basic</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A card with a header (title + description) and content section. Use this
         pattern for event announcements or informational blocks.
       </p>
@@ -203,7 +203,7 @@ export default async function CardPage() {
 
       {/* With Footer */}
       <Heading as="h3">With footer</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Add a CardFooter for action buttons. Combine with Badge for status
         indicators in the header.
       </p>
@@ -231,7 +231,7 @@ export default async function CardPage() {
 
       {/* Cards in Grid */}
       <Heading as="h3">Cards in a grid</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Place cards inside a Grid for multi-column layouts. Cards fill
         their column width — control the layout through Grid, not Card.
       </p>
@@ -289,7 +289,7 @@ export default async function CardPage() {
 
       {/* Hoverable */}
       <Heading as="h3">Hoverable</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Cards used as navigation links should use the <InlineCode>hoverable</InlineCode> prop
         for branded hover feedback — maize background, navy border, and navy title on hover.
       </p>
@@ -306,7 +306,7 @@ export default async function CardPage() {
 
       {/* Custom Composition */}
       <Heading as="h3">Custom composition</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Sub-components are fully composable. Skip CardHeader entirely and
         arrange content freely. Here, a member profile card with centered layout.
       </p>
@@ -332,14 +332,14 @@ export default async function CardPage() {
 
       {/* -- API Reference -------------------------------------------- */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Card is composed from several sub-components. Each accepts the props listed below plus
         standard HTML attributes via <InlineCode>className</InlineCode> and spread props.
       </p>
 
       {/* Card */}
       <Heading as="h3">Card</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Outer container with p-4 padding, gap-4 between children, surface background,
         border, and rounded corners. For edge-to-edge bleed, use negative margins (<InlineCode>-mx-4 -mt-4</InlineCode>) on the child that needs to bleed.
       </p>
@@ -399,7 +399,7 @@ export default async function CardPage() {
 
       {/* CardHeader */}
       <Heading as="h3">CardHeader</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Groups CardTitle and CardDescription with element-tier spacing (gap-2).
       </p>
       <div className="my-6">
@@ -447,7 +447,7 @@ export default async function CardPage() {
 
       {/* CardTitle */}
       <Heading as="h3">CardTitle</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Heading for the card. Renders as an h3 by default — change with the <InlineCode>as</InlineCode> prop to match your heading hierarchy.
       </p>
       <div className="my-6">
@@ -506,7 +506,7 @@ export default async function CardPage() {
 
       {/* CardDescription */}
       <Heading as="h3">CardDescription</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Supporting text below the title. Rendered as a paragraph with muted color.
       </p>
       <div className="my-6">
@@ -554,7 +554,7 @@ export default async function CardPage() {
 
       {/* CardContent */}
       <Heading as="h3">CardContent</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Main body area. Grows to fill available vertical space (flex-1) so
         footers pin to the bottom in equal-height grid layouts.
       </p>
@@ -603,7 +603,7 @@ export default async function CardPage() {
 
       {/* CardFooter */}
       <Heading as="h3">CardFooter</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Bottom section for actions. Renders as a flex row with 8px gap.
       </p>
       <div className="my-6">

@@ -100,7 +100,7 @@ export default async function HooksPage() {
 
       {/* ── useFormField ──────────────────────────────────── */}
       <Heading as="h2">useFormField</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Returns <InlineCode>inputProps</InlineCode> that you spread
         onto any DS input component, plus the current error state. Use this
         when you need a custom field layout — for example, a label beside the
@@ -216,7 +216,7 @@ export default async function HooksPage() {
 
       {/* ── useFormStatus ─────────────────────────────────── */}
       <Heading as="h2">useFormStatus</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Returns the form&apos;s submission and validity state. Use this to build
         custom submit footers, progress indicators, or conditional UI. Must be
         called within a <InlineCode>{'<Form>'}</InlineCode> or{' '}

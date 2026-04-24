@@ -18,7 +18,7 @@ export default async function IconographySizesPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Icon Sizes</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Icons do not have one right size. A navigation icon and a display illustration
         serve different purposes and live in different contexts. The size scale exists so
         you never have to pick a size by eye — you pick a size by context.
@@ -74,7 +74,7 @@ export default async function IconographySizesPage() {
         </Table>
       </div>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The scale is built on the 4px grid. Every step is a clean, intentional jump —
         not an arbitrary intermediate value.
       </p>
@@ -83,13 +83,13 @@ export default async function IconographySizesPage() {
 
       {/* ── Default is md ───────────────────────────────────── */}
       <Heading as="h2">The Default Size</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         When in doubt, use{' '}
         <InlineCode>md</InlineCode>.
         {' '}The 20px default is calibrated to pair with body text and read clearly
         across the most common UI contexts.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Only deviate from{' '}
         <InlineCode>md</InlineCode>{' '}
         when you have a specific reason tied to context — not
@@ -100,7 +100,7 @@ export default async function IconographySizesPage() {
 
       {/* ── Never Size with Font-Size ───────────────────────── */}
       <Heading as="h2">Never Size with Font-Size</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Icons are SVGs. Their size is controlled by{' '}
         <InlineCode>width</InlineCode>{' '}
         and{' '}
@@ -111,7 +111,7 @@ export default async function IconographySizesPage() {
         <InlineCode>text-xl</InlineCode>{' '}
         utility classes.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The previous approach in the KISA client applied Tailwind text size classes
         (<InlineCode>text-lg</InlineCode>,{' '}
         <InlineCode>text-2xl</InlineCode>)
@@ -120,7 +120,7 @@ export default async function IconographySizesPage() {
         <InlineCode>font-size</InlineCode>.
         {' '}It is not reliable, not predictable, and not how SVG sizing works.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The{' '}
         <InlineCode>{'<Icon>'}</InlineCode>{' '}
         component translates the{' '}
@@ -136,7 +136,7 @@ export default async function IconographySizesPage() {
 
       {/* ── Pairing Icons with Text ─────────────────────────── */}
       <Heading as="h2">Pairing Icons with Text</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Icons should feel like they belong with the text next to them, not like they
         were dropped in at a different scale.
       </p>
@@ -195,7 +195,7 @@ export default async function IconographySizesPage() {
         </Table>
       </div>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The icon should be slightly smaller than the text{"'"}s cap height, not matched to
         it. An icon at the exact same pixel height as the text usually reads as
         slightly too large. Trust the scale — it is calibrated for this.
@@ -205,12 +205,12 @@ export default async function IconographySizesPage() {
 
       {/* ── Never Apply Breakpoints to Icon Size ────────────── */}
       <Heading as="h2">Never Apply Breakpoints to Icon Size</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Icon size is determined by context — the component the icon lives in — not by the viewport width. Never use breakpoint prefixes on the{' '}
         <InlineCode>size</InlineCode>{' '}
         prop or on any class that affects icon dimensions.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         If a component changes size across breakpoints (a button that is compact on mobile and default on desktop), the icon size change is handled inside that component{"'"}s variant logic. The{' '}
         <InlineCode>{'<Icon>'}</InlineCode>{' '}
         itself receives a fixed{' '}

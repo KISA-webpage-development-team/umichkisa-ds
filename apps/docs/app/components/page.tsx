@@ -60,7 +60,7 @@ export default async function ComponentsPage() {
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">
         Components
       </h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         <InlineCode>@umichkisa-ds/web</InlineCode> is the KISA Design System
         component library. It provides production-ready UI primitives — buttons,
         form controls, overlays, layout, and more — built with consistent tokens,
@@ -69,7 +69,7 @@ export default async function ComponentsPage() {
 
       {/* ── Installation ──────────────────────────────────── */}
       <Heading as="h2">Installation</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Install the component library via the GitHub Packages registry:
       </p>
       <CodeBlock code={installCode} lang="bash" />

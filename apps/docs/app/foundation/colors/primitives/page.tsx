@@ -11,7 +11,7 @@ export default function ColorsPrimitivesPage() {
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Primitive Palette</h1>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         These are the raw colors the entire system is built from. They are defined in{' '}
         <InlineCode>packages/web/src/tokens/primitives.css</InlineCode>.
         Do not use these in components — they exist only to feed into semantic tokens.
@@ -19,7 +19,7 @@ export default function ColorsPrimitivesPage() {
 
       {/* ── Michigan Brand ──────────────────────────────────── */}
       <Heading as="h2">Michigan Brand</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The two official University of Michigan brand colors and their tints.
       </p>
 
@@ -33,7 +33,7 @@ export default function ColorsPrimitivesPage() {
 
       {/* ── Gray Scale ──────────────────────────────────────── */}
       <Heading as="h2">Gray Scale</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         A cool-toned neutral scale with a subtle blue-gray cast (hue 264) that keeps
         it visually harmonious with the Michigan Blue family.
       </p>
@@ -53,7 +53,7 @@ export default function ColorsPrimitivesPage() {
 
       {/* ── Utility ─────────────────────────────────────────── */}
       <Heading as="h2">Utility</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Base colors for feedback states and neutral anchors.
       </p>
 

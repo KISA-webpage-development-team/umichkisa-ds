@@ -73,7 +73,7 @@ export default async function LabelPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">Label</h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         Form label with an optional required indicator. Renders a native{' '}
         <InlineCode>
           &lt;label&gt;
@@ -92,7 +92,7 @@ export default async function LabelPage() {
 
       {/* Required */}
       <Heading as="h3">Required</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Set{' '}
         <InlineCode>
           required
@@ -105,7 +105,7 @@ export default async function LabelPage() {
 
       {/* With input */}
       <Heading as="h3">With input</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pair a Label with an Input using matching{' '}
         <InlineCode>
           htmlFor
@@ -122,7 +122,7 @@ export default async function LabelPage() {
 
       {/* With aria-labelledby */}
       <Heading as="h3">With aria-labelledby</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Non-native form controls like Radix Select don&apos;t render a real{' '}
         <InlineCode>
           &lt;input&gt;
@@ -147,7 +147,7 @@ export default async function LabelPage() {
 
       {/* ── API Reference ────────────────────────────────────── */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Label accepts the following props alongside standard{' '}
         <InlineCode>
           &lt;label&gt;

@@ -11,7 +11,7 @@ export default async function ColorsTokensPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Semantic Token Reference</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Semantic tokens are what you use in components. Each token is named by its
         purpose. Find them in{' '}
         <InlineCode>packages/web/src/tokens/semantic.css</InlineCode>.
@@ -19,7 +19,7 @@ export default async function ColorsTokensPage() {
 
       {/* ── Brand ───────────────────────────────────────────── */}
       <Heading as="h2" className="mt-6 mb-2">Brand</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The Michigan brand colors. These define the visual identity of KISA across
         every surface.
       </p>
@@ -87,7 +87,7 @@ export default async function ColorsTokensPage() {
         <ColorSwatch token="--color-brand-accent-subtle" hex="#ffe98a" label="Brand Accent Subtle" />
       </ColorSwatchGrid>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         <strong className="font-semibold text-foreground">On brand-primary vs brand-accent:</strong>{' '}
         <InlineCode>--color-brand-primary</InlineCode>{' '}
         is the anchor — it carries weight and authority. It does not draw the eye by itself.{' '}
@@ -95,7 +95,7 @@ export default async function ColorsTokensPage() {
         is the signal — it is what users notice first. When you need to say {'"'}look here,{'"'} reach
         for accent. When you need to say {'"'}this is KISA,{'"'} reach for primary.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         <strong className="font-semibold text-foreground">On brand-primary-mid:</strong> This is a softer,
         more readable blue designed for contexts where full navy would be too heavy. Its primary use
         today is link text. Additional use cases will be documented here as they are established.
@@ -105,13 +105,13 @@ export default async function ColorsTokensPage() {
 
       {/* ── Understanding -subtle and -muted ────────────────── */}
       <Heading as="h2" className="mt-6 mb-2">Understanding <InlineCode>-subtle</InlineCode> and <InlineCode>-muted</InlineCode></Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Two suffixes appear across multiple token groups —{' '}
         <InlineCode>-subtle</InlineCode> and{' '}
         <InlineCode>-muted</InlineCode>.
         They do not mean the same thing and are not interchangeable.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         <strong className="font-semibold text-foreground"><InlineCode>-subtle</InlineCode></strong>{' '}
         means one step softer in visual weight. It creates a tinted region without drawing attention.
         Used for elevated inner surfaces like table headers and code blocks (
@@ -120,7 +120,7 @@ export default async function ColorsTokensPage() {
         <InlineCode>--color-error-subtle</InlineCode>),
         and similar containers.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         <strong className="font-semibold text-foreground"><InlineCode>-muted</InlineCode></strong>{' '}
         means reduced visual prominence — not necessarily darker.{' '}
         <InlineCode>--color-surface-muted</InlineCode>{' '}
@@ -132,7 +132,7 @@ export default async function ColorsTokensPage() {
         <InlineCode>--color-foreground</InlineCode>{' '}
         because it carries supporting, not primary, information.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The key rule: a{' '}
         <InlineCode>-muted</InlineCode>{' '}
         value always serves a deprioritized role. A{' '}
@@ -144,7 +144,7 @@ export default async function ColorsTokensPage() {
 
       {/* ── Surface ─────────────────────────────────────────── */}
       <Heading as="h2" className="mt-6 mb-2">Surface</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Background colors that define the depth layers of the UI. Think of them as
         elevation — the higher you stack an element, the more tinted its background.
       </p>
@@ -250,7 +250,7 @@ export default async function ColorsTokensPage() {
 
       {/* ── Text ────────────────────────────────────────────── */}
       <Heading as="h2" className="mt-6 mb-2">Text</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Text tokens cover every role in the typographic hierarchy, plus two special
         cases for colored surfaces.
       </p>
@@ -330,7 +330,7 @@ export default async function ColorsTokensPage() {
 
       {/* ── Feedback ────────────────────────────────────────── */}
       <Heading as="h2" className="mt-6 mb-2">Feedback</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Feedback colors communicate system states. Each state has two tokens: a solid
         color for icons, borders, and text labels, and a subtle tint for background
         surfaces like alert boxes.
@@ -455,11 +455,11 @@ export default async function ColorsTokensPage() {
 
       {/* ── Interactive ─────────────────────────────────────── */}
       <Heading as="h2" className="mt-6 mb-2">Interactive</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Tokens for the hover and pressed states of both brand colors, plus the focus
         ring shown when navigating with a keyboard.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         For{' '}
         <InlineCode>--color-brand-primary</InlineCode>{' '}
         (dark navy), hover goes lighter. For{' '}
@@ -541,7 +541,7 @@ export default async function ColorsTokensPage() {
         <ColorSwatch token="--color-focus-ring"            label="Focus Ring" />
       </ColorSwatchGrid>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         <strong className="font-semibold text-foreground">Focus ring implementation pattern:</strong>
       </p>
 
@@ -552,7 +552,7 @@ export default async function ColorsTokensPage() {
   box-shadow: 0 0 0 4px var(--color-brand-primary);
 }`} lang="css" />
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The{' '}
         <InlineCode>outline</InlineCode>{' '}
         (maize) provides contrast against dark backgrounds. The{' '}
@@ -561,7 +561,7 @@ export default async function ColorsTokensPage() {
         Do not apply one without the other.
       </p>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         <strong className="!font-semibold text-foreground">Exception — Form controls:</strong>{' '}
         Inputs, textareas, selects, and toggle controls use a simpler focus pattern:{' '}
         <InlineCode>outline: none</InlineCode>{' '}

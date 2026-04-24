@@ -45,11 +45,11 @@ export default async function OnlyMobileViewPage() {
 
       {/* -- Header -------------------------------------------------- */}
       <h1 className="type-h1 mb-4 text-foreground">OnlyMobileView</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Gate component that renders its children on mobile screens and displays
         a full-screen overlay on desktop, indicating the page is mobile-only.
       </p>
-      <Alert variant="info" className="mb-8 max-w-prose">
+      <Alert variant="info" className="mb-8">
         Place <InlineCode>OnlyMobileView</InlineCode> as the outermost wrapper of your page. At <InlineCode>≥768px</InlineCode>, children are hidden and a fixed overlay covers the viewport, including navigation.
       </Alert>
 
@@ -58,10 +58,10 @@ export default async function OnlyMobileViewPage() {
 
       {/* Basic */}
       <Heading as="h3" className="mt-6">Basic</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Wrap page content in <InlineCode>OnlyMobileView</InlineCode>. Below 768px the children render; at or above 768px the overlay replaces them.
       </p>
-      <p className="type-body-sm mb-4 text-muted-foreground max-w-prose">
+      <p className="type-body-sm mb-4 text-muted-foreground">
         The panels below are illustrative — the real component covers the full viewport, so both states are shown side by side here.
       </p>
       <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
@@ -93,7 +93,7 @@ export default async function OnlyMobileViewPage() {
 
       {/* Custom message */}
       <Heading as="h3">Custom message</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pass a custom string via the{' '}
         <InlineCode>message</InlineCode>{' '}
         prop to override the default overlay text.

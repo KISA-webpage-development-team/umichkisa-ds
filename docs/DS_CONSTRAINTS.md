@@ -89,7 +89,6 @@ Must: Rely on `type-*` class definitions for responsive behavior — do not add 
 Must: Always pair an explicit color token with every `type-*` class — `type-*` classes do not set color. [source:foundation/typography/usage]
 Must: Use `text-foreground` for readable content; `text-muted-foreground` for supporting or secondary text. [source:foundation/typography/usage]
 Never: Apply weight utilities (`font-semibold`, `font-bold`) to entire text containers for emphasis — use `<strong>` for inline emphasis within body text; use a higher `type-*` class for block-level weight changes. [source:foundation/typography/usage]
-Must: Keep body text within `max-w-prose` (~65 characters) in article and long-form reading contexts. [source:foundation/typography/usage]
 
 ### State Typography
 

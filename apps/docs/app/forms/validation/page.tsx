@@ -141,7 +141,7 @@ export default async function ValidationPage() {
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">
         Validation
       </h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         How form validation works with the onTouched default, built-in rules,
         and custom validators.
       </p>
@@ -150,14 +150,14 @@ export default async function ValidationPage() {
       <Heading as="h2">
         The onTouched Lifecycle
       </Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         React Hook Form supports three validation modes. Our{' '}
         <InlineCode>useForm</InlineCode>{' '}
         wrapper defaults to{' '}
         <InlineCode>onTouched</InlineCode>{' '}
         — you get this behavior for free without any configuration.
       </p>
-      <ul className="list-disc pl-6 mb-4 space-y-1 max-w-prose">
+      <ul className="list-disc pl-6 mb-4 space-y-1">
         <li className="type-body text-foreground">
           <strong>onChange</strong>{' '}
           — validates on every keystroke. Too aggressive for most forms — users see errors before they finish typing.
@@ -171,10 +171,10 @@ export default async function ValidationPage() {
           — validates only on form submission. Users get no feedback until they hit submit, which can feel unresponsive.
         </li>
       </ul>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Here is what onTouched looks like in practice:
       </p>
-      <ol className="list-decimal pl-6 mb-4 space-y-1 max-w-prose">
+      <ol className="list-decimal pl-6 mb-4 space-y-1">
         <li className="type-body text-foreground">User focuses the email field and types &quot;abc&quot;</li>
         <li className="type-body text-foreground">User clicks away (blur) — validation runs, &quot;Invalid email&quot; error appears</li>
         <li className="type-body text-foreground">User clicks back and types &quot;abc@umich.edu&quot; — error clears immediately</li>
@@ -183,7 +183,7 @@ export default async function ValidationPage() {
 
       {/* ── Live Demo ─────────────────────────────────────── */}
       <Heading as="h2">Try It</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         This form combines required, pattern, minLength, and custom validators.
         Tab through fields to see errors appear on blur, then type to watch them
         clear.
@@ -196,26 +196,26 @@ export default async function ValidationPage() {
       <Heading as="h2">Built-in Rules</Heading>
 
       <Heading as="h3" className="type-body !font-semibold mt-6 mb-2">required</Heading>
-      <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
+      <p className="type-body-sm mb-2 text-muted-foreground">
         Pass a string message to show when the field is empty. The label will
         also display a required indicator.
       </p>
       <CodeBlock code={requiredCode} lang="tsx" />
 
       <Heading as="h3" className="type-body !font-semibold mt-6 mb-2">minLength / maxLength</Heading>
-      <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
+      <p className="type-body-sm mb-2 text-muted-foreground">
         Enforce character count limits on text fields.
       </p>
       <CodeBlock code={minMaxLengthCode} lang="tsx" />
 
       <Heading as="h3" className="type-body !font-semibold mt-6 mb-2">min / max</Heading>
-      <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
+      <p className="type-body-sm mb-2 text-muted-foreground">
         Enforce numeric range limits on number inputs.
       </p>
       <CodeBlock code={minMaxCode} lang="tsx" />
 
       <Heading as="h3" className="type-body !font-semibold mt-6 mb-2">pattern</Heading>
-      <p className="type-body-sm mb-2 text-muted-foreground max-w-prose">
+      <p className="type-body-sm mb-2 text-muted-foreground">
         Validate against a regular expression. Useful for email formats,
         phone numbers, or custom patterns.
       </p>
@@ -223,7 +223,7 @@ export default async function ValidationPage() {
 
       {/* ── Custom Validators ─────────────────────────────── */}
       <Heading as="h2">Custom Validators</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Use the <InlineCode>validate</InlineCode> rule for complex
         logic. Return <InlineCode>true</InlineCode> for valid or a
         string error message. You can run multiple checks in sequence.
@@ -232,7 +232,7 @@ export default async function ValidationPage() {
 
       {/* ── Combining Rules ───────────────────────────────── */}
       <Heading as="h2">Combining Rules</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         All rules can be used together on a single field. They are checked in
         order: required first, then minLength/maxLength, then pattern, then
         validate.
@@ -241,7 +241,7 @@ export default async function ValidationPage() {
 
       {/* ── Overriding Mode ───────────────────────────────── */}
       <Heading as="h2">Overriding Validation Mode</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         While <InlineCode>onTouched</InlineCode> is the recommended
         default, you can override the mode per-form via{' '}
         <InlineCode>useForm</InlineCode>.

@@ -8,7 +8,7 @@ export default async function TypographyFontsPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">The Two Fonts</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The KISA type system is built on two product fonts — SejongHospital for brand presence,
         Pretendard for everything else — plus Geist Mono for code in this documentation site.
       </p>
@@ -17,12 +17,12 @@ export default async function TypographyFontsPage() {
 
       {/* ── SejongHospital ─────────────────────────────────── */}
       <Heading as="h2">SejongHospital — Brand &amp; Display</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         SejongHospital is KISA&#39;s brand font. It appears only at the top of the type
         hierarchy — Display and H1 — where identity matters more than information density.
         Below H1, it hands off to Pretendard.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         It ships with two weights only:
       </p>
 
@@ -72,7 +72,7 @@ export default async function TypographyFontsPage() {
         </TableMobileList>
       </div>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         In practice, always reach for Bold. Light is permitted only in marketing and landing
         page contexts for large decorative display text — for example, a hero subtitle set at{' '}
         <InlineCode>text-4xl</InlineCode>{' '}
@@ -83,13 +83,13 @@ export default async function TypographyFontsPage() {
 
       {/* ── Fallback stack ──────────────────────────────────── */}
       <Heading as="h3" id="sejong-fallback-stack" className="mt-6">Fallback stack</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         If SejongHospital fails to load, the browser falls back to:
       </p>
 
       <CodeBlock code={`'SejongHospital', system-ui, -apple-system, sans-serif`} lang="css" />
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         There is no equivalent decorative fallback — the heading degrades gracefully to a
         system sans-serif. This is acceptable because SejongHospital appears only at the top
         of the hierarchy where brand presence matters, and the layout is designed to hold at
@@ -113,12 +113,12 @@ export default async function TypographyFontsPage() {
 
       {/* ── Pretendard ─────────────────────────────────────── */}
       <Heading as="h2">Pretendard — Body, UI &amp; Everything Else</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Pretendard was built for Korean design systems. It supports Korean and Latin with
         equal fidelity and ships with nine weights (100–900), giving the flexibility
         SejongHospital cannot. Everything from H2 down uses Pretendard.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The three weights used in the type scale:
       </p>
 
@@ -183,13 +183,13 @@ export default async function TypographyFontsPage() {
 
       {/* ── Pretendard fallback stack ──────────────────────── */}
       <Heading as="h3" id="pretendard-fallback-stack" className="mt-6">Fallback stack</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         If Pretendard fails to load, the browser falls back to:
       </p>
 
       <CodeBlock code={`'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, -apple-system, sans-serif`} lang="css" />
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The Korean-capable fallbacks ({' '}
         <InlineCode>Apple SD Gothic Neo</InlineCode>,{' '}
         <InlineCode>Noto Sans KR</InlineCode>{' '}
@@ -215,7 +215,7 @@ export default async function TypographyFontsPage() {
 
       {/* ── Geist Mono ─────────────────────────────────────── */}
       <Heading as="h2">Geist Mono — Code &amp; Documentation</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Geist Mono is the third font in the system, but it sits outside the Rule of Two. It
         appears exclusively in this documentation site for code blocks and inline code. The
         client application does not use it.
@@ -258,23 +258,23 @@ export default async function TypographyFontsPage() {
 
       {/* ── Font Loading ───────────────────────────────────── */}
       <Heading as="h2">Font Loading</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Both product fonts must use{' '}
         <InlineCode>font-display: swap</InlineCode>.
         This ensures text remains visible during font load — the browser renders with the
         fallback stack immediately, then swaps to the product font once it arrives. Without
         it, text is invisible until the font loads (FOIT), which harms perceived performance.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         SejongHospital must be preloaded. It appears in Display and H1 — above-the-fold
         content on most pages — so it should be fetched at the highest priority before the
         browser discovers it in CSS.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Pretendard does not require explicit preloading. It is used throughout the page, and
         the browser will prioritize it naturally once the stylesheet is parsed.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         These are implementation requirements, not component-level concerns. They are
         configured once at the font loading layer and apply globally.
       </p>
@@ -283,7 +283,7 @@ export default async function TypographyFontsPage() {
 
       {/* ── Next.js Setup ──────────────────────────────────── */}
       <Heading as="h2">Next.js Setup</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Next.js apps should use{' '}
         <InlineCode>next/font/local</InlineCode>{' '}
         for SejongHospital. This automatically preloads the font files, converts them
@@ -296,7 +296,7 @@ export default async function TypographyFontsPage() {
       </p>
 
       <Heading as="h3" className="mt-6">1. Load fonts in root layout</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         In your{' '}
         <InlineCode>app/layout.tsx</InlineCode>,
         import the font files from the DS package and create font instances with
@@ -317,7 +317,7 @@ const sejongLight = localFont({
   display: 'swap',
 })`} lang="tsx" />
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The font files live in{' '}
         <InlineCode>packages/web/src/fonts/</InlineCode>.
         Adjust the{' '}
@@ -326,7 +326,7 @@ const sejongLight = localFont({
       </p>
 
       <Heading as="h3" className="mt-6">2. Apply CSS variables on html</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Pass the{' '}
         <InlineCode>.variable</InlineCode>{' '}
         classes to the{' '}
@@ -341,7 +341,7 @@ const sejongLight = localFont({
 </html>`} lang="tsx" />
 
       <Heading as="h3" className="mt-6">3. Load Pretendard from CDN</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Pretendard is loaded via a CDN stylesheet link in{' '}
         <InlineCode>&lt;head&gt;</InlineCode>.
         Add a{' '}
@@ -358,7 +358,7 @@ const sejongLight = localFont({
 </head>`} lang="tsx" />
 
       <Heading as="h3" className="mt-6">How it works</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The DS package already declares{' '}
         <InlineCode>@font-face</InlineCode>{' '}
         rules and{' '}

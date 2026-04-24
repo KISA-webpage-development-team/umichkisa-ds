@@ -147,7 +147,7 @@ export default async function FormItemPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">FormItem</h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         Layout wrapper that composes a label, form control, and optional description/error text
         for consistent form field structure. FormItem is presentation-only — it does not manage
         state or validate input. Pass an error string when validation fails, and FormItem renders it.
@@ -168,7 +168,7 @@ export default async function FormItemPage() {
 
       {/* Basic */}
       <Heading as="h3" className="mt-6">Basic</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         The simplest usage. A label and input composed together with consistent spacing.
         The{' '}
         <InlineCode>
@@ -190,7 +190,7 @@ export default async function FormItemPage() {
 
       {/* With description */}
       <Heading as="h3">With description</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pass a{' '}
         <InlineCode>
           description
@@ -211,7 +211,7 @@ export default async function FormItemPage() {
 
       {/* With error */}
       <Heading as="h3">With error</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pass an{' '}
         <InlineCode>
           error
@@ -240,7 +240,7 @@ export default async function FormItemPage() {
 
       {/* Required */}
       <Heading as="h3">Required</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Set{' '}
         <InlineCode>
           required
@@ -257,7 +257,7 @@ export default async function FormItemPage() {
 
       {/* With Textarea */}
       <Heading as="h3">With Textarea</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         FormItem composes with any form control. Here it wraps a{' '}
         <InlineCode>
           Textarea
@@ -273,7 +273,7 @@ export default async function FormItemPage() {
 
       {/* With Select */}
       <Heading as="h3">With Select</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Works with the compound{' '}
         <InlineCode>
           Select
@@ -286,7 +286,7 @@ export default async function FormItemPage() {
 
       {/* With Checkbox */}
       <Heading as="h3">With Checkbox</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         FormItem composes with toggle controls too. Here it wraps a{' '}
         <InlineCode>
           Checkbox
@@ -307,7 +307,7 @@ export default async function FormItemPage() {
 
       {/* With Switch */}
       <Heading as="h3">With Switch</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Works with{' '}
         <InlineCode>
           Switch
@@ -328,7 +328,7 @@ export default async function FormItemPage() {
 
       {/* With RadioGroup */}
       <Heading as="h3">With RadioGroup</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         For radio buttons, wrap a{' '}
         <InlineCode>
           RadioGroup
@@ -357,7 +357,7 @@ export default async function FormItemPage() {
 
       {/* ── Accessibility ────────────────────────────────────── */}
       <Heading as="h2">Accessibility</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         FormItem generates predictable IDs on its internal elements:{' '}
         <InlineCode>
           {'{htmlFor}-label'}
@@ -390,7 +390,7 @@ export default async function FormItemPage() {
         </div>
       </ComponentPreview>
 
-      <p className="type-body mt-4 mb-2 text-foreground max-w-prose">
+      <p className="type-body mt-4 mb-2 text-foreground">
         For non-native triggers like Select, use{' '}
         <InlineCode>
           aria-labelledby
@@ -409,7 +409,7 @@ export default async function FormItemPage() {
 
       {/* ── API Reference ────────────────────────────────────── */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         FormItem does not extend native HTML attributes. All props are listed below.
       </p>
       <div className="my-6">

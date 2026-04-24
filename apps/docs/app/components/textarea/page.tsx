@@ -74,7 +74,7 @@ export default async function TextareaPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">Textarea</h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         Multi-line text field for user input. Resizes vertically by default. Designed to compose with{' '}
         <InlineCode>
           Label
@@ -90,7 +90,7 @@ export default async function TextareaPage() {
 
       {/* Default */}
       <Heading as="h3" className="mt-6">Default</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         The simplest usage. Renders a full-width multi-line text area.
       </p>
       <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
@@ -101,7 +101,7 @@ export default async function TextareaPage() {
 
       {/* States */}
       <Heading as="h3">States</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Default, disabled, and invalid states. Focus the textarea to see the focus styling.
       </p>
       <ComponentPreview code={statesCode} highlightedCode={statesHighlighted}>
@@ -114,7 +114,7 @@ export default async function TextareaPage() {
 
       {/* With FormItem */}
       <Heading as="h3">With FormItem</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         FormItem is the recommended composition — it wires the label, description, and error together and provides the vertical layout.
       </p>
       <ComponentPreview code={withFormItemCode} highlightedCode={withFormItemHighlighted}>
@@ -127,7 +127,7 @@ export default async function TextareaPage() {
 
       {/* With error message */}
       <Heading as="h3">With error message</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pair{' '}
         <InlineCode>
           invalid
@@ -148,7 +148,7 @@ export default async function TextareaPage() {
 
       {/* Controlled */}
       <Heading as="h3">Controlled</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Textarea supports both controlled and uncontrolled usage.
         Below is a controlled example with live character count.
       </p>
@@ -158,7 +158,7 @@ export default async function TextareaPage() {
 
       {/* ── API Reference ────────────────────────────────────── */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Extends all native{' '}
         <InlineCode>
           &lt;textarea&gt;

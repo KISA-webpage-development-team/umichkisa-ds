@@ -28,7 +28,7 @@ export default async function IconographyUsagePage() {
 
       {/* ── Wrapping for Interaction ─────────────────────────── */}
       <Heading as="h2">Wrapping for Interaction</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The{' '}
         <InlineCode>{'<Icon>'}</InlineCode>{' '}
         component renders an SVG. SVGs have no keyboard focus, no click semantics, and no role
@@ -47,14 +47,14 @@ export default async function IconographyUsagePage() {
 // ❌ wrong — icon has no interaction semantics
 <Icon name="x" onClick={close} />`} lang="tsx" />
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The wrapper also provides the touch target. Interactive elements must have a minimum tap
         area of 44×44px — the{' '}
         <InlineCode>{'<Icon>'}</InlineCode>{' '}
         itself is never 44px; the button or link around it is.
       </p>
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         When an icon is the only content inside a button or link, provide an{' '}
         <InlineCode>aria-label</InlineCode>{' '}
         on the wrapper so screen reader users know what the control does, and wrap the button in a{' '}
@@ -68,7 +68,7 @@ export default async function IconographyUsagePage() {
   </button>
 </Tooltip>`} lang="tsx" />
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The{' '}
         <InlineCode>aria-label</InlineCode>{' '}
         on the button and the tooltip content should be identical. Do not also pass a{' '}
@@ -82,7 +82,7 @@ export default async function IconographyUsagePage() {
 
       {/* ── Icon + Text ─────────────────────────────────────── */}
       <Heading as="h2">Icon + Text</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         When an icon appears next to a text label, use{' '}
         <InlineCode>flex items-center gap-2</InlineCode>{' '}
         as the layout pattern. This aligns the icon optically with the text cap height and
@@ -94,7 +94,7 @@ export default async function IconographyUsagePage() {
   <span>Add member</span>
 </button>`} lang="tsx" />
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The{' '}
         <InlineCode>gap-2</InlineCode>{' '}
         (8px) spacing works for most pairings. Use{' '}
@@ -108,7 +108,7 @@ export default async function IconographyUsagePage() {
 
       {/* ── Color ───────────────────────────────────────────── */}
       <Heading as="h2">Color</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Icons inherit{' '}
         <InlineCode>currentColor</InlineCode>.
         {' '}To change an icon{"'"}s color, change the text color of its container using semantic tokens.
@@ -124,7 +124,7 @@ export default async function IconographyUsagePage() {
   <Icon name="alert-triangle" />
 </span>`} lang="tsx" />
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Never pass a color prop to{' '}
         <InlineCode>{'<Icon>'}</InlineCode>.
         {' '}Never set{' '}
@@ -139,7 +139,7 @@ export default async function IconographyUsagePage() {
 
       {/* ── Disabled Icons ──────────────────────────────────── */}
       <Heading as="h2">Disabled Icons</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Disabled icons use{' '}
         <InlineCode>text-disabled-foreground</InlineCode>{' '}
         — the same token as disabled text. Never reduce size or weight to communicate disabled state. Only color changes.
@@ -153,10 +153,10 @@ export default async function IconographyUsagePage() {
 
       {/* ── Responsive Sizing ───────────────────────────────── */}
       <Heading as="h2">Responsive Sizing</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Never apply breakpoint prefixes directly to icon size. Icon size is determined by component context — the component the icon lives in — not by the viewport width.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         If a component changes size across breakpoints, the icon size change is encapsulated inside that component{"'"}s variant logic. The{' '}
         <InlineCode>{'<Icon>'}</InlineCode>{' '}
         itself receives a fixed{' '}

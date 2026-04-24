@@ -72,7 +72,7 @@ export default async function UseFormPage() {
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">
         useForm
       </h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         A thin wrapper around react-hook-form&apos;s{' '}
         <InlineCode>useForm</InlineCode> that sets{' '}
         <InlineCode>mode: &quot;onTouched&quot;</InlineCode> by default.
@@ -89,7 +89,7 @@ export default async function UseFormPage() {
 
       {/* ── Basic Usage ───────────────────────────────────── */}
       <Heading as="h2">Basic Usage</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Pass a type generic and <InlineCode>defaultValues</InlineCode> to
         get a fully typed form instance. The returned object is passed to
         the <a href="/forms/form-component" className="text-link hover:text-brand-primary hover:underline">
@@ -102,7 +102,7 @@ export default async function UseFormPage() {
 
       {/* ── Validation Mode ───────────────────────────────── */}
       <Heading as="h2">Validation Mode</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The default <InlineCode>onTouched</InlineCode> mode provides
         the best user experience: errors appear after a field loses focus (blur),
         then clear immediately as the user corrects the input. You can override
@@ -112,7 +112,7 @@ export default async function UseFormPage() {
 
       {/* ── Form Methods ──────────────────────────────────── */}
       <Heading as="h2">Accessing Form Methods</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The returned form instance exposes all react-hook-form methods.
         Common ones include <InlineCode>reset()</InlineCode>,{' '}
         <InlineCode>setError()</InlineCode>, and{' '}
@@ -122,7 +122,7 @@ export default async function UseFormPage() {
 
       {/* ── API Reference ─────────────────────────────────── */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         <InlineCode>useForm</InlineCode> accepts all{' '}
         <InlineCode>UseFormProps</InlineCode> options from
         react-hook-form. The only change is the default value of{' '}
@@ -184,7 +184,7 @@ export default async function UseFormPage() {
       </div>
 
       <Heading as="h2">Return Value</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Returns the standard react-hook-form{' '}
         <InlineCode>UseFormReturn{'<T>'}</InlineCode> object. Key
         properties:

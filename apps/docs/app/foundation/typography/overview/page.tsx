@@ -6,18 +6,18 @@ export default function TypographyOverviewPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Typography</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Typography is the most read part of any interface. Users may not notice a well-chosen
         font — but they will notice when something feels off. Inconsistency in type is one of
         the fastest ways a product signals it was not built with intention.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The KISA type system follows the{' '}
         <strong className="font-semibold text-foreground">Rule of Two</strong>: one font for
         brand presence, one for readability. SejongHospital owns the top of the hierarchy —
         headings and display text where identity matters. Pretendard handles everything else.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Use the sidebar to explore the fonts, the type scale, and the rules that keep the
         system consistent.
       </p>

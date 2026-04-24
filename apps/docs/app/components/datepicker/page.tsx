@@ -176,7 +176,7 @@ export default async function DatePickerPage() {
 
       {/* -- Header -------------------------------------------------- */}
       <h1 className="type-h1 mb-4 text-foreground">DatePicker</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         A date input that opens a Calendar in a popover. Available as a single date
         picker and a date range picker for selecting start and end dates.
       </p>
@@ -190,7 +190,7 @@ export default async function DatePickerPage() {
 
       {/* Basic */}
       <Heading as="h3" className="mt-6" id="datepicker-basic">Basic</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A simple date picker for selecting an event date. Click the trigger to
         open the calendar, then click a date to select it.
       </p>
@@ -202,7 +202,7 @@ export default async function DatePickerPage() {
 
       {/* Default value */}
       <Heading as="h3">With default value</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pre-populate the picker with an existing date, useful for edit forms
         like a profile birth date field.
       </p>
@@ -214,7 +214,7 @@ export default async function DatePickerPage() {
 
       {/* Date bounds */}
       <Heading as="h3">With date bounds</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Restrict selectable dates using{' '}
         <InlineCode>calendarProps.disabled</InlineCode>.
         Here, past dates are disabled for a hotel check-in picker.
@@ -227,7 +227,7 @@ export default async function DatePickerPage() {
 
       {/* Disabled */}
       <Heading as="h3" id="datepicker-disabled">Disabled</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A disabled picker prevents interaction. Use when a prerequisite field
         hasn&apos;t been filled yet.
       </p>
@@ -239,7 +239,7 @@ export default async function DatePickerPage() {
 
       {/* Invalid */}
       <Heading as="h3" id="datepicker-invalid">Invalid</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         The invalid state signals a validation error. Pair with FormItem for
         error messages in forms.
       </p>
@@ -251,7 +251,7 @@ export default async function DatePickerPage() {
 
       {/* Custom format */}
       <Heading as="h3">Custom format</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Override the default{' '}
         <InlineCode>MM/dd/yyyy</InlineCode>{' '}
         display format with a{' '}
@@ -269,7 +269,7 @@ export default async function DatePickerPage() {
 
       {/* Basic range */}
       <Heading as="h3" className="mt-6" id="daterangepicker-basic">Basic</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Select a start and end date for a trip. The popover stays open until
         both dates are picked.
       </p>
@@ -281,7 +281,7 @@ export default async function DatePickerPage() {
 
       {/* Default range */}
       <Heading as="h3">With default range</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pre-populate with an existing date range, useful for report period filters
         or editing existing bookings.
       </p>
@@ -293,7 +293,7 @@ export default async function DatePickerPage() {
 
       {/* Disabled range */}
       <Heading as="h3" id="daterangepicker-disabled">Disabled</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A disabled range picker prevents interaction. Use when availability
         dates aren&apos;t yet known or a prerequisite field hasn&apos;t been filled.
       </p>
@@ -305,7 +305,7 @@ export default async function DatePickerPage() {
 
       {/* Invalid range */}
       <Heading as="h3" id="daterangepicker-invalid">Invalid</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         The invalid state signals a validation error on the range. Pair with
         FormItem for error messages in forms.
       </p>
@@ -317,7 +317,7 @@ export default async function DatePickerPage() {
 
       {/* -- Form Integration ---------------------------------------- */}
       <Heading as="h2">Form Integration</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Use{' '}
         <InlineCode>Form.DatePicker</InlineCode>{' '}
         and{' '}
@@ -342,7 +342,7 @@ export default async function DatePickerPage() {
 
       {/* DatePicker API */}
       <Heading as="h3" className="mt-6" id="datepicker-api">DatePicker</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Single date picker with popover calendar.
       </p>
       <div className="hidden md:block">
@@ -468,7 +468,7 @@ export default async function DatePickerPage() {
 
       {/* DateRangePicker API */}
       <Heading as="h3" id="daterangepicker-api">DateRangePicker</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Date range picker with popover calendar. Closes after both start and end dates are selected.
       </p>
       <div className="hidden md:block">

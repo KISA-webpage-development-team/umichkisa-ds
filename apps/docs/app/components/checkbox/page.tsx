@@ -98,7 +98,7 @@ export default async function CheckboxPage() {
 
       {/* Checked */}
       <Heading as="h3">Checked</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A checkbox with{' '}
         <InlineCode>
           defaultChecked
@@ -111,7 +111,7 @@ export default async function CheckboxPage() {
 
       {/* States */}
       <Heading as="h3">States</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Default, disabled unchecked, disabled checked, and invalid states.
       </p>
       <ComponentPreview code={statesCode} highlightedCode={statesHighlighted}>
@@ -125,7 +125,7 @@ export default async function CheckboxPage() {
 
       {/* With FormItem */}
       <Heading as="h3">With FormItem</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Compose with{' '}
         <InlineCode>
           FormItem
@@ -140,7 +140,7 @@ export default async function CheckboxPage() {
 
       {/* With error message */}
       <Heading as="h3">With error message</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pair{' '}
         <InlineCode>
           invalid
@@ -159,7 +159,7 @@ export default async function CheckboxPage() {
 
       {/* Controlled */}
       <Heading as="h3">Controlled</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pass{' '}
         <InlineCode>
           checked
@@ -176,7 +176,7 @@ export default async function CheckboxPage() {
 
       {/* ── API Reference ────────────────────────────────────── */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Extends all native{' '}
         <InlineCode>
           &lt;input&gt;

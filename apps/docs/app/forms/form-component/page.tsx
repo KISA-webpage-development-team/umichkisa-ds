@@ -162,7 +162,7 @@ export default async function FormComponentPage() {
 
       {/* ── Form Root ─────────────────────────────────────── */}
       <Heading as="h2">{'<Form>'}</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The root component wraps your fields in a{' '}
         <InlineCode>FormProvider</InlineCode> and a native{' '}
         <InlineCode>{'<form>'}</InlineCode> element. Pass the{' '}
@@ -176,7 +176,7 @@ export default async function FormComponentPage() {
 
       {/* ── Form.Input ────────────────────────────────────── */}
       <Heading as="h2">Form.Input</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Wraps{' '}
         <a href="/components/input" className="text-link underline hover:text-brand-primary">Input</a> +{' '}
         <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>{' '}
@@ -191,7 +191,7 @@ export default async function FormComponentPage() {
 
       {/* ── Form.Textarea ─────────────────────────────────── */}
       <Heading as="h2">Form.Textarea</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Wraps{' '}
         <a href="/components/textarea" className="text-link underline hover:text-brand-primary">Textarea</a> +{' '}
         <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>.{' '}
@@ -205,7 +205,7 @@ export default async function FormComponentPage() {
 
       {/* ── Form.Select ───────────────────────────────────── */}
       <Heading as="h2">Form.Select</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Wraps the DS{' '}
         <a href="/components/select" className="text-link underline hover:text-brand-primary">Select</a> +{' '}
         <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>.{' '}
@@ -221,7 +221,7 @@ export default async function FormComponentPage() {
 
       {/* ── Form.Checkbox ─────────────────────────────────── */}
       <Heading as="h2">Form.Checkbox</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Wraps{' '}
         <a href="/components/checkbox" className="text-link underline hover:text-brand-primary">Checkbox</a> +{' '}
         <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>.{' '}
@@ -235,7 +235,7 @@ export default async function FormComponentPage() {
 
       {/* ── Form.Radio ────────────────────────────────────── */}
       <Heading as="h2">Form.Radio</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Wraps{' '}
         <a href="/components/radio" className="text-link underline hover:text-brand-primary">RadioGroup</a> +{' '}
         <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>.{' '}
@@ -249,7 +249,7 @@ export default async function FormComponentPage() {
 
       {/* ── Form.Switch ───────────────────────────────────── */}
       <Heading as="h2">Form.Switch</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Wraps{' '}
         <a href="/components/switch" className="text-link underline hover:text-brand-primary">Switch</a> +{' '}
         <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>.{' '}
@@ -262,7 +262,7 @@ export default async function FormComponentPage() {
 
       {/* ── Form.DatePicker ──────────────────────────────── */}
       <Heading as="h2">Form.DatePicker</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Wraps{' '}
         <a href="/components/datepicker" className="text-link underline hover:text-brand-primary">DatePicker</a> +{' '}
         <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>.{' '}
@@ -277,7 +277,7 @@ export default async function FormComponentPage() {
 
       {/* ── Form.DateRangePicker ─────────────────────────── */}
       <Heading as="h2">Form.DateRangePicker</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Wraps{' '}
         <a href="/components/datepicker" className="text-link underline hover:text-brand-primary">DateRangePicker</a> +{' '}
         <a href="/components/form-item" className="text-link underline hover:text-brand-primary">FormItem</a>.{' '}
@@ -292,7 +292,7 @@ export default async function FormComponentPage() {
 
       {/* ── Form.Button ───────────────────────────────────── */}
       <Heading as="h2">Form.Button</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Wraps{' '}
         <a href="/components/button" className="text-link underline hover:text-brand-primary">Button</a>{' '}
         as a submit button that auto-disables while the form is submitting. Add{' '}
@@ -305,7 +305,7 @@ export default async function FormComponentPage() {
 
       {/* ── Shared Props ──────────────────────────────────── */}
       <Heading as="h2">Shared Field Props</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         All field sub-components (Input, Textarea, Select, Checkbox, Radio,
         Switch, DatePicker, DateRangePicker) share these props:
       </p>
@@ -389,7 +389,7 @@ export default async function FormComponentPage() {
 
       {/* ── Component-Specific Props ────────────────────────── */}
       <Heading as="h2">Component-Specific Props</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         These props are unique to specific sub-components, in addition to the
         shared props above.
       </p>

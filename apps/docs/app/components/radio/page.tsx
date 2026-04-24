@@ -101,7 +101,7 @@ export default async function RadioPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">Radio</h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         Use{' '}
         <InlineCode>
           RadioGroup
@@ -118,7 +118,7 @@ export default async function RadioPage() {
 
       {/* Basic */}
       <Heading as="h3" className="mt-6">Basic</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A vertical radio group with three options.
       </p>
       <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
@@ -131,7 +131,7 @@ export default async function RadioPage() {
 
       {/* Horizontal */}
       <Heading as="h3">Horizontal orientation</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Set{' '}
         <InlineCode>
           orientation=&quot;horizontal&quot;
@@ -148,7 +148,7 @@ export default async function RadioPage() {
 
       {/* Default value */}
       <Heading as="h3">Default value</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Use{' '}
         <InlineCode>
           defaultValue
@@ -165,7 +165,7 @@ export default async function RadioPage() {
 
       {/* Disabled group */}
       <Heading as="h3">Disabled group</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Set{' '}
         <InlineCode>
           disabled
@@ -182,7 +182,7 @@ export default async function RadioPage() {
 
       {/* Disabled individual item */}
       <Heading as="h3">Disabled individual item</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Disable a single item while the rest remain interactive.
       </p>
       <ComponentPreview code={disabledItemCode} highlightedCode={disabledItemHighlighted}>
@@ -195,7 +195,7 @@ export default async function RadioPage() {
 
       {/* Invalid / error state */}
       <Heading as="h3">Invalid / error state</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pair{' '}
         <InlineCode>
           invalid
@@ -219,7 +219,7 @@ export default async function RadioPage() {
 
       {/* Controlled */}
       <Heading as="h3">Controlled</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Use{' '}
         <InlineCode>
           value
@@ -239,7 +239,7 @@ export default async function RadioPage() {
 
       {/* RadioGroup table */}
       <Heading as="h3" className="mt-6">RadioGroup</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The group container. Built on Radix RadioGroup — all props below are supported.
       </p>
       <div className="my-6">
@@ -368,7 +368,7 @@ export default async function RadioPage() {
 
       {/* RadioItem table */}
       <Heading as="h3">RadioItem</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         A single radio option. Must be used inside{' '}
         <InlineCode>
           RadioGroup

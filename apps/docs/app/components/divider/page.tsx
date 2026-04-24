@@ -53,7 +53,7 @@ export default async function DividerPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">Divider</h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         A visual separator that divides content into distinct sections. Renders as
         a semantic{' '}
         <InlineCode>
@@ -71,7 +71,7 @@ export default async function DividerPage() {
 
       {/* Default */}
       <Heading as="h3" className="mt-6">Default</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         No props required. Renders a horizontal line spanning the full width of
         its container.
       </p>
@@ -81,7 +81,7 @@ export default async function DividerPage() {
 
       {/* Vertical */}
       <Heading as="h3" className="mt-6">Vertical</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Set{' '}
         <InlineCode>
           orientation=&quot;vertical&quot;
@@ -99,7 +99,7 @@ export default async function DividerPage() {
 
       {/* Content separator */}
       <Heading as="h3" className="mt-6">Content separator</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A common pattern: stacked items separated by horizontal dividers.
       </p>
       <ComponentPreview code={separatorCode} highlightedCode={separatorHighlighted}>
@@ -114,7 +114,7 @@ export default async function DividerPage() {
 
       {/* ── API Reference ────────────────────────────────────── */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         All props are optional. Any additional props are forwarded to the
         underlying{' '}
         <InlineCode>

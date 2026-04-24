@@ -8,7 +8,7 @@ export default function LayoutUsagePage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Usage</h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         Layout in this design system is component-driven, not utility-driven.
         The default inset, max-width, column gutter, and responsive behavior
         are encoded into a small set of components — reach for them instead
@@ -17,7 +17,7 @@ export default function LayoutUsagePage() {
 
       {/* ── Philosophy ──────────────────────────────────────── */}
       <Heading as="h2">Philosophy</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Every page in the KISA app starts with the same shell:{' '}
         <InlineCode>mx-auto w-full max-w-screen-2xl px-4 md:px-6 lg:px-8</InlineCode>.
         Hand-rolling that string on every page is how design systems drift —
@@ -26,7 +26,7 @@ export default function LayoutUsagePage() {
         <InlineCode>md:</InlineCode>{' '}
         bump, and the inset stops being predictable.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The fix is not discipline. The fix is to never write the string. Reach
         for{' '}
         <a
@@ -41,11 +41,11 @@ export default function LayoutUsagePage() {
 
       {/* ── Decision Tree ───────────────────────────────────── */}
       <Heading as="h2">What to reach for</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Four decisions cover almost every layout need.
       </p>
 
-      <ul className="type-body text-foreground max-w-prose flex flex-col gap-4 mb-4">
+      <ul className="type-body text-foreground flex flex-col gap-4 mb-4">
         <li className="flex gap-2">
           <span className="text-muted-foreground">•</span>
           <span>

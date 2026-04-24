@@ -50,8 +50,8 @@ import { Container } from '@umichkisa-ds/web'
 | Small body text | `type-body-sm text-foreground max-w-prose` |
 | Inline code | `rounded px-1 py-0.5 type-caption font-mono bg-surface-subtle text-foreground` |
 | Blockquote | `border-l-[3px] border-brand-accent bg-surface-subtle pl-4 py-2 my-4 rounded-r` with `italic text-muted-foreground` inner span |
-| Unordered list | `type-body text-foreground max-w-prose flex flex-col gap-2` |
-| Ordered list | `type-body text-foreground max-w-prose flex flex-col gap-2` |
+| Unordered list | `type-body text-foreground flex flex-col gap-2` |
+| Ordered list | `type-body text-foreground flex flex-col gap-2` |
 | List item | Wrap in `<li>` with `flex gap-2`, bullet as `<span className="text-muted-foreground">` |
 | Horizontal rule | `my-8 border-0 border-t border-border` |
 | Link | `text-link underline-offset-2 hover:underline` |

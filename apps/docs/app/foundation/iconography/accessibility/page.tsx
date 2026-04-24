@@ -20,14 +20,14 @@ export default async function IconographyAccessibilityPage() {
 
       {/* ── The Problem Icons Create ────────────────────────── */}
       <Heading as="h2">The Problem Icons Create</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Icons are visually obvious to sighted users but completely ambiguous to screen
         readers — unless the code explicitly describes them. A trash can icon conveys
         {' "'}delete{'"'} to anyone looking at the screen. To a screen reader, it is just an
         SVG element with no label. The user hears nothing, or worse, the raw SVG title
         if one happens to exist.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The KISA icon system makes the right behavior the default. When you omit the{' '}
         <InlineCode>label</InlineCode>{' '}
         prop, the icon is hidden from assistive technology. When you provide
@@ -41,7 +41,7 @@ export default async function IconographyAccessibilityPage() {
 
       {/* ── Decorative Icons ────────────────────────────────── */}
       <Heading as="h2">Decorative Icons</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         When the{' '}
         <InlineCode>label</InlineCode>{' '}
         prop is omitted,{' '}
@@ -53,7 +53,7 @@ export default async function IconographyAccessibilityPage() {
         <InlineCode>aria-label</InlineCode>,
         {' '}the visible text label, or the heading it sits next to.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Use decorative icons whenever visible text already describes the action or content:
       </p>
 
@@ -68,7 +68,7 @@ export default async function IconographyAccessibilityPage() {
 
       {/* ── Semantic Icons ──────────────────────────────────── */}
       <Heading as="h2">Semantic Icons</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         When{' '}
         <InlineCode>label</InlineCode>{' '}
         is provided,{' '}
@@ -79,7 +79,7 @@ export default async function IconographyAccessibilityPage() {
         <InlineCode>aria-label</InlineCode>{' '}
         on the SVG. The icon becomes a labeled image that screen readers will announce.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Use semantic icons when the icon is the only indicator of meaning — no visible
         text label nearby explains what it represents:
       </p>
@@ -87,7 +87,7 @@ export default async function IconographyAccessibilityPage() {
       <CodeBlock code={`// A status dot with no label — the icon must announce its own meaning.
 <Icon name="check-circle" label="Verified" />`} lang="tsx" />
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Do not use{' '}
         <InlineCode>label</InlineCode>{' '}
         when the icon is inside a button that already has{' '}
@@ -100,7 +100,7 @@ export default async function IconographyAccessibilityPage() {
 
       {/* ── Decision Rule ───────────────────────────────────── */}
       <Heading as="h2">Decision Rule</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Three scenarios cover the vast majority of icon usage. When in doubt, ask:{' '}
         <em>is there text nearby that already describes this?</em> If yes, decorative. If no, semantic.
       </p>
@@ -161,14 +161,14 @@ export default async function IconographyAccessibilityPage() {
 
       {/* ── Touch Targets ───────────────────────────────────── */}
       <Heading as="h2">Touch Targets</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The{' '}
         <InlineCode>{'<Icon>'}</InlineCode>{' '}
         component renders an SVG sized via the{' '}
         <InlineCode>size</InlineCode>{' '}
         prop. None of these are large enough to serve as a touch target.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Interactive wrappers around icons must be at least 44×44px. This is the minimum touch target size for mobile use per WCAG 2.5.5. Use{' '}
         <InlineCode>min-w-[44px] min-h-[44px]</InlineCode>{' '}
         with{' '}
@@ -183,12 +183,12 @@ export default async function IconographyAccessibilityPage() {
   <Icon name="x" />
 </button>`} lang="tsx" />
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         This approach works for any icon size — the wrapper always meets 44×44px. Never rely on padding calculated from the icon{"'"}s pixel size, as changing the{' '}
         <InlineCode>size</InlineCode>{' '}
         prop would break the math.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Never reduce the button dimensions below 44×44px to make an icon-only button feel smaller.
       </p>
 
@@ -196,13 +196,13 @@ export default async function IconographyAccessibilityPage() {
 
       {/* ── Icon Color and Contrast ─────────────────────────── */}
       <Heading as="h2">Icon Color and Contrast</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Icons are non-text UI components and must meet the 3:1 contrast ratio threshold (WCAG 1.4.11).
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Two semantic color tokens fail this threshold and must never be used as the sole color of an icon:
       </p>
-      <ul className="type-body text-foreground max-w-prose flex flex-col gap-2 mb-4">
+      <ul className="type-body text-foreground flex flex-col gap-2 mb-4">
         <li className="flex gap-2">
           <span className="text-muted-foreground">&bull;</span>
           <span>
@@ -218,7 +218,7 @@ export default async function IconographyAccessibilityPage() {
           </span>
         </li>
       </ul>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         When using these tokens in a feedback context, always pair the icon with a visible text label using{' '}
         <InlineCode>text-foreground</InlineCode>.
         {' '}The label carries the accessible meaning; the icon adds visual reinforcement.
@@ -233,7 +233,7 @@ export default async function IconographyAccessibilityPage() {
 // ❌ wrong — standalone icon with --color-success, fails 3:1
 <span className="text-success"><Icon name="check-circle" label="Success" /></span>`} lang="tsx" />
 
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         <InlineCode>--color-error</InlineCode>{' '}
         (3.9:1) passes non-text contrast and may be used as a standalone icon color for error state indicators, though pairing with a label is still preferred.
       </p>

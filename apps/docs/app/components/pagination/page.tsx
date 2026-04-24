@@ -96,7 +96,7 @@ export default async function PaginationPage() {
 
       {/* -- Header -------------------------------------------------- */}
       <h1 className="type-h1 mb-4 text-foreground">Pagination</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Navigation control for moving between pages of content. Displays page
         numbers with ellipsis for large ranges and previous/next arrows.
       </p>
@@ -110,7 +110,7 @@ export default async function PaginationPage() {
 
       {/* Basic */}
       <Heading as="h3" className="mt-6">Basic</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A simple paginated list with 10 pages. Click the page numbers or arrows
         to navigate.
       </p>
@@ -120,7 +120,7 @@ export default async function PaginationPage() {
 
       {/* Many pages */}
       <Heading as="h3">Many pages</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         With many pages, ellipsis appears between the first/last page and the
         sibling pages (the page numbers immediately left and right of the current
         page). Navigate to see the window shift.
@@ -131,7 +131,7 @@ export default async function PaginationPage() {
 
       {/* Custom sibling count */}
       <Heading as="h3">Custom sibling count</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Set{' '}
         <InlineCode>siblingCount=&#123;2&#125;</InlineCode>
         {' '}to show more page numbers around the current page. Useful for search
@@ -143,7 +143,7 @@ export default async function PaginationPage() {
 
       {/* Few pages */}
       <Heading as="h3">Few pages</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         When the total number of pages is small, all page numbers display without
         ellipsis. The previous button is disabled on the first page.
       </p>
@@ -155,7 +155,7 @@ export default async function PaginationPage() {
       <Heading as="h2">API Reference</Heading>
 
       <Heading as="h3">Pagination</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Controlled pagination navigation component.
       </p>
       <div className="my-6">
@@ -238,7 +238,7 @@ export default async function PaginationPage() {
 
       {/* -- Accessibility -------------------------------------------- */}
       <Heading as="h2">Accessibility</Heading>
-      <ul className="list-disc pl-6 flex flex-col gap-2 max-w-prose">
+      <ul className="list-disc pl-6 flex flex-col gap-2">
         <li className="type-body text-foreground">
           Wraps all controls in a{' '}
           <InlineCode>{'<nav aria-label="Pagination">'}</InlineCode>{' '}

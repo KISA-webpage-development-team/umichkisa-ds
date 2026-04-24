@@ -80,7 +80,7 @@ export default async function SwitchPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">Switch</h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         A toggle for settings that take effect immediately — e.g., &ldquo;Enable
         notifications&rdquo; or &ldquo;Dark mode&rdquo;. Pass the{' '}
         <InlineCode>
@@ -106,7 +106,7 @@ export default async function SwitchPage() {
 
       {/* Default */}
       <Heading as="h3" className="mt-6">Default</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A switch with inline label text in the off state.
       </p>
       <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
@@ -115,7 +115,7 @@ export default async function SwitchPage() {
 
       {/* Checked */}
       <Heading as="h3">Checked</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A switch with{' '}
         <InlineCode>
           defaultChecked
@@ -128,7 +128,7 @@ export default async function SwitchPage() {
 
       {/* Sizes */}
       <Heading as="h3">Sizes</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Default and small sizes. The{' '}
         <InlineCode>
           sm
@@ -148,7 +148,7 @@ export default async function SwitchPage() {
 
       {/* States */}
       <Heading as="h3">States</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Default, disabled off, disabled on, and invalid states.
       </p>
       <ComponentPreview code={statesCode} highlightedCode={statesHighlighted}>
@@ -162,7 +162,7 @@ export default async function SwitchPage() {
 
       {/* With FormItem */}
       <Heading as="h3">With FormItem</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Compose with{' '}
         <InlineCode>
           FormItem
@@ -181,7 +181,7 @@ export default async function SwitchPage() {
 
       {/* With error message */}
       <Heading as="h3">With error message</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pair{' '}
         <InlineCode>
           invalid
@@ -200,7 +200,7 @@ export default async function SwitchPage() {
 
       {/* Controlled */}
       <Heading as="h3">Controlled</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Switch supports both controlled and uncontrolled usage.
         Below is a controlled example with live state feedback.
       </p>
@@ -210,7 +210,7 @@ export default async function SwitchPage() {
 
       {/* ── API Reference ────────────────────────────────────── */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Switch renders a native{' '}
         <InlineCode>
           &lt;input type=&quot;checkbox&quot; role=&quot;switch&quot;&gt;

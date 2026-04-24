@@ -12,7 +12,7 @@ export default async function LayoutOverviewPage() {
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">Layout</h1>
 
       <Heading as="h2">Overview</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Interfaces break when people make independent spacing decisions.
         One developer reaches for{' '}
         <InlineCode>px-6</InlineCode>,
@@ -21,7 +21,7 @@ export default async function LayoutOverviewPage() {
         a third copies from a nearby component. Each choice is defensible in isolation.
         Together, they create a page that feels assembled, not designed.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The KISA layout system is a small set of rules that removes those
         decisions. Breakpoints, spacing, max-width, and gutters are defined
         once. You apply them.
@@ -31,7 +31,7 @@ export default async function LayoutOverviewPage() {
 
       {/* ── In this section ─────────────────────────────────── */}
       <Heading as="h2">In this section</Heading>
-      <ul className="type-body text-foreground max-w-prose flex flex-col gap-2">
+      <ul className="type-body text-foreground flex flex-col gap-2">
         <li className="flex gap-2">
           <span className="text-muted-foreground">•</span>
           <span>
@@ -59,10 +59,10 @@ export default async function LayoutOverviewPage() {
 
       {/* ── Accessibility ───────────────────────────────────── */}
       <Heading as="h2">Accessibility</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The page shell must use semantic landmark elements so that screen reader users can navigate by region:
       </p>
-      <ul className="type-body text-foreground max-w-prose flex flex-col gap-2">
+      <ul className="type-body text-foreground flex flex-col gap-2">
         <li className="flex gap-2">
           <span className="text-muted-foreground">•</span>
           <span>
@@ -96,7 +96,7 @@ export default async function LayoutOverviewPage() {
           </span>
         </li>
       </ul>
-      <p className="type-body mb-4 text-foreground max-w-prose mt-4">
+      <p className="type-body mb-4 text-foreground mt-4">
         Every page must include a <strong className="font-semibold text-foreground">skip link</strong> — a visually hidden anchor that becomes visible on focus and jumps to{' '}
         <InlineCode>{'<main>'}</InlineCode>.
         This allows keyboard and screen reader users to bypass repeated navigation on every page load.

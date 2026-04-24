@@ -334,7 +334,7 @@ export default async function TablePage() {
 
       {/* -- Header -------------------------------------------------- */}
       <h1 className="type-h1 mb-4 text-foreground">Table</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Displays structured tabular data in rows and columns with optional headers,
         footers, and captions.
       </p>
@@ -347,7 +347,7 @@ export default async function TablePage() {
 
       {/* -- Composition ----------------------------------------------- */}
       <Heading as="h2">Composition</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Table is composed from 10 sub-components that mirror native HTML table
         elements. Here is how they nest together:
       </p>
@@ -371,7 +371,7 @@ TableMobileList           {/* mobile alternative */}
 
       {/* Basic */}
       <Heading as="h3" className="mt-6">Basic</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A member directory. Desktop renders the full Table; mobile swaps to a
         TableMobileList of stacked items.
       </p>
@@ -453,7 +453,7 @@ TableMobileList           {/* mobile alternative */}
 
       {/* Size */}
       <Heading as="h3">Size</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Use{' '}
         <InlineCode>size=&quot;sm&quot;</InlineCode>{' '}
         for tables embedded within body content (reference tables, token lists).
@@ -522,7 +522,7 @@ TableMobileList           {/* mobile alternative */}
 
       {/* Bulletin Board */}
       <Heading as="h3">Bulletin Board</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A KISA-style board layout with Korean text. The announcement row uses{' '}
         <InlineCode>
           bg-surface-subtle
@@ -602,7 +602,7 @@ TableMobileList           {/* mobile alternative */}
 
       {/* Clickable Rows */}
       <Heading as="h3">Clickable rows</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Add{' '}
         <InlineCode>
           cursor-pointer
@@ -621,7 +621,7 @@ TableMobileList           {/* mobile alternative */}
 
       {/* With Footer */}
       <Heading as="h3">With Footer</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         An event budget table with a TableFooter for the total row. The footer
         uses{' '}
         <InlineCode>
@@ -694,7 +694,7 @@ TableMobileList           {/* mobile alternative */}
 
       {/* -- API Reference -------------------------------------------- */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Table is composed from several sub-components you assemble together. All
         sub-components accept{' '}
         <InlineCode>className</InlineCode>{' '}
@@ -707,7 +707,7 @@ TableMobileList           {/* mobile alternative */}
 
       {/* Table props */}
       <Heading as="h3">Table</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Root component. Wraps a native{' '}
         <InlineCode>&lt;table&gt;</InlineCode>{' '}
         inside an overflow scroll container.
@@ -765,7 +765,7 @@ TableMobileList           {/* mobile alternative */}
 
       {/* Sub-components */}
       <Heading as="h3">Sub-components</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Each sub-component wraps a native HTML element. All accept{' '}
         <InlineCode>className</InlineCode>{' '}
         (merged via{' '}

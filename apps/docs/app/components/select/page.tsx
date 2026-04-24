@@ -140,7 +140,7 @@ export default async function SelectPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">Select</h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         Custom dropdown for choosing from predefined options. Built on Radix Select for full styling
         control and accessibility. Instead of a single element, you compose multiple sub-components
         together — each handling one concern (trigger, content, items). For form fields, wrap in{' '}
@@ -155,7 +155,7 @@ export default async function SelectPage() {
 
       {/* Default */}
       <Heading as="h3" className="mt-6">Default</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A basic select with a pre-selected value.
       </p>
       <ComponentPreview code={defaultCode} highlightedCode={defaultHighlighted}>
@@ -173,7 +173,7 @@ export default async function SelectPage() {
 
       {/* With placeholder */}
       <Heading as="h3">With placeholder</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Use the{' '}
         <InlineCode>
           placeholder
@@ -199,7 +199,7 @@ export default async function SelectPage() {
 
       {/* With groups */}
       <Heading as="h3">With groups</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Group related options with{' '}
         <InlineCode>
           SelectGroup
@@ -230,7 +230,7 @@ export default async function SelectPage() {
 
       {/* With FormItem — recommended */}
       <Heading as="h3">With FormItem (recommended)</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Wrap{' '}
         <InlineCode>
           Select
@@ -280,7 +280,7 @@ export default async function SelectPage() {
 
       {/* With Label — lower-level */}
       <Heading as="h3">With Label</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         If you can&apos;t use{' '}
         <InlineCode>
           FormItem
@@ -332,7 +332,7 @@ export default async function SelectPage() {
 
       {/* Invalid */}
       <Heading as="h3">Invalid</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pair{' '}
         <InlineCode>
           invalid
@@ -367,7 +367,7 @@ export default async function SelectPage() {
 
       {/* Disabled */}
       <Heading as="h3">Disabled</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         The disabled state prevents interaction.
       </p>
       <ComponentPreview code={disabledCode} highlightedCode={disabledHighlighted}>
@@ -385,13 +385,13 @@ export default async function SelectPage() {
 
       {/* ── API Reference ────────────────────────────────────── */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Select is a compound component built on Radix Select. Each sub-component accepts the props listed below.
       </p>
 
       {/* Select (Root) */}
       <Heading as="h3">Select</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         The root component that manages state. Wraps all other sub-components.
       </p>
       <div className="my-6">
@@ -704,7 +704,7 @@ export default async function SelectPage() {
 
       {/* SelectSeparator */}
       <Heading as="h3">SelectSeparator</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Visual divider between groups. Takes no props.
       </p>
 

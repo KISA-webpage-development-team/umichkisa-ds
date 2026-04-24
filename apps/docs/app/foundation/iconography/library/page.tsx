@@ -12,11 +12,11 @@ export default async function IconographyLibraryPage() {
 
       {/* ── Why Lucide ──────────────────────────────────────── */}
       <Heading as="h2">Why Lucide</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Lucide is the single icon library for the KISA design system. It is not a
         default we fell into — it is a deliberate choice that every component depends on.
       </p>
-      <ul className="type-body text-foreground max-w-prose flex flex-col gap-2 mb-4">
+      <ul className="type-body text-foreground flex flex-col gap-2 mb-4">
         <li className="flex gap-2">
           <span className="text-muted-foreground">&bull;</span>
           <span><strong className="!font-semibold">Single stroke weight.</strong> Every icon is drawn with a 2px stroke on a 24×24 viewBox. There is no mixing of filled icons with outlined icons, no thick icons next to thin ones. Visual consistency is guaranteed at the source.</span>
@@ -43,7 +43,7 @@ export default async function IconographyLibraryPage() {
 
       {/* ── Browsing Icons ──────────────────────────────────── */}
       <Heading as="h2">Browsing Icons</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The full Lucide catalogue is at{' '}
         <a href="https://lucide.dev" className="text-link underline-offset-2 hover:underline hover:text-brand-primary" target="_blank" rel="noopener noreferrer">lucide.dev</a>.
         {' '}Search by keyword to find what you need. The search understands intent — searching
@@ -52,7 +52,7 @@ export default async function IconographyLibraryPage() {
         <InlineCode>x-circle</InlineCode>,
         {' '}and related icons.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         When evaluating options, prefer the simplest icon that communicates the
         meaning. If two icons could both work, choose the one users are more likely to
         recognize from common applications.
@@ -62,7 +62,7 @@ export default async function IconographyLibraryPage() {
 
       {/* ── Naming Convention ───────────────────────────────── */}
       <Heading as="h2">Naming Convention</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Lucide uses kebab-case names:{' '}
         <InlineCode>arrow-right</InlineCode>,{' '}
         <InlineCode>chevron-down</InlineCode>,{' '}
@@ -113,12 +113,12 @@ export default async function IconographyLibraryPage() {
 
       {/* ── Custom Icons ────────────────────────────────────── */}
       <Heading as="h2">Custom Icons</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Before requesting a custom icon, confirm Lucide truly does not have what you need. The
         Lucide search understands intent and synonyms — try several keywords before concluding the
         icon is missing. Custom icons are exceptions, not alternatives.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         If Lucide genuinely does not cover the icon you need, contact the design system project
         owner. Custom icons are registered centrally in the{' '}
         <InlineCode>{'<Icon>'}</InlineCode>{' '}

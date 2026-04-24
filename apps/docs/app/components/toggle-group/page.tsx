@@ -94,7 +94,7 @@ export default async function ToggleGroupPage() {
 
       {/* -- Header -------------------------------------------------- */}
       <h1 className="type-h1 mb-4 text-foreground">ToggleGroup</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         A group of small buttons for switching between a small set of
         mutually exclusive options. Use ToggleGroup for view switches,
         page size selectors, or any single-choice toggle within a compact
@@ -111,7 +111,7 @@ export default async function ToggleGroupPage() {
 
       {/* Content view switch */}
       <Heading as="h3" className="mt-6">Content view switch</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A typical use case for switching between content sections, such as a
         user profile board with Posts and Comments views. Each item includes
         an icon for quick visual identification.
@@ -122,7 +122,7 @@ export default async function ToggleGroupPage() {
 
       {/* Page size selector */}
       <Heading as="h3">Page size selector</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Text-only items for a compact inline selector, such as rows-per-page
         in a data table.
       </p>
@@ -132,7 +132,7 @@ export default async function ToggleGroupPage() {
 
       {/* Full width */}
       <Heading as="h3">Full width</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Set{' '}
         <InlineCode>fullWidth</InlineCode>{' '}
         to distribute items evenly across the container. Useful when the
@@ -144,7 +144,7 @@ export default async function ToggleGroupPage() {
 
       {/* Multiple selection */}
       <Heading as="h3">Multiple selection</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Set{' '}
         <InlineCode>type=&quot;multiple&quot;</InlineCode>{' '}
         to allow more than one item to be selected at once. The{' '}
@@ -257,7 +257,7 @@ export default async function ToggleGroupPage() {
 
       {/* ToggleGroupItem */}
       <Heading as="h3">ToggleGroupItem</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Shape of each option in the items array.
       </p>
       <div className="my-6">

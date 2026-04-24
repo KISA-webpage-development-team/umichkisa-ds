@@ -104,21 +104,21 @@ export default async function ToastPage() {
 
       {/* -- Header -------------------------------------------------- */}
       <h1 className="type-h1 mb-4 text-foreground">Toast</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Ephemeral notifications that appear temporarily to provide feedback
         about an action or event without interrupting the user's workflow.
       </p>
-      <p className="type-body-sm mb-4 text-muted-foreground max-w-prose">
+      <p className="type-body-sm mb-4 text-muted-foreground">
         Built on <strong>Sonner</strong>.
       </p>
-      <p className="type-body-sm mb-8 text-muted-foreground max-w-prose">
+      <p className="type-body-sm mb-8 text-muted-foreground">
         Use Toast for brief, non-blocking feedback (save confirmations, error
         alerts, async status). For persistent in-page messages, use Alert.
       </p>
 
       {/* -- Setup --------------------------------------------------- */}
       <Heading as="h2">Setup</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Mount the <InlineCode>{'<Toaster />'}</InlineCode> component
         once in your application's root layout. This renders the toast container
         that all <InlineCode>toast()</InlineCode> calls
@@ -133,7 +133,7 @@ export default async function ToastPage() {
 
       {/* -- Basic Usage --------------------------------------------- */}
       <Heading as="h2">Basic Usage</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Call <InlineCode>toast()</InlineCode> from
         anywhere in your app. Pass a string message as the first argument.
       </p>
@@ -143,7 +143,7 @@ export default async function ToastPage() {
 
       {/* -- Variants ------------------------------------------------ */}
       <Heading as="h2">Variants</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Five variants map to feedback states. The default variant uses a neutral
         style. The four feedback variants (<InlineCode>info</InlineCode>,{' '}
         <InlineCode>success</InlineCode>,{' '}
@@ -158,7 +158,7 @@ export default async function ToastPage() {
 
       {/* -- With Description ---------------------------------------- */}
       <Heading as="h2">With Description</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pass a <InlineCode>description</InlineCode> option
         to add secondary text below the title.
       </p>
@@ -168,7 +168,7 @@ export default async function ToastPage() {
 
       {/* -- With Action --------------------------------------------- */}
       <Heading as="h2">With Action</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Add an action button to the toast with the <InlineCode>action</InlineCode> option.
         Provide a <InlineCode>label</InlineCode> and
         an <InlineCode>onClick</InlineCode> handler.
@@ -179,7 +179,7 @@ export default async function ToastPage() {
 
       {/* -- Promise ------------------------------------------------- */}
       <Heading as="h2">Promise</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Use <InlineCode>toast.promise()</InlineCode> to
         show loading, success, and error states for async operations. The toast
         updates automatically as the promise resolves or rejects.
@@ -190,7 +190,7 @@ export default async function ToastPage() {
 
       {/* -- Positioning --------------------------------------------- */}
       <Heading as="h2">Positioning</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         The <InlineCode>position</InlineCode> prop
         on <InlineCode>{'<Toaster />'}</InlineCode> controls
         where toasts appear. Click a position below to try it out.
@@ -201,7 +201,7 @@ export default async function ToastPage() {
 
       {/* -- API Reference ------------------------------------------- */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Reference for the <InlineCode>{'<Toaster />'}</InlineCode> provider,
         the imperative <InlineCode>toast()</InlineCode> API,
         and per-toast options.
@@ -209,7 +209,7 @@ export default async function ToastPage() {
 
       {/* Toaster */}
       <Heading as="h3" className="mt-6">Toaster</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Provider component mounted once at the app root. Renders the toast
         container and applies DS styling.
       </p>
@@ -302,7 +302,7 @@ export default async function ToastPage() {
 
       {/* toast() */}
       <Heading as="h3">toast()</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Imperative function to trigger toasts from anywhere in your app.
         Every <InlineCode>toast()</InlineCode> call
         returns an ID you can pass to <InlineCode>toast.dismiss(id)</InlineCode> to
@@ -385,7 +385,7 @@ export default async function ToastPage() {
 
       {/* toast options */}
       <Heading as="h3">Toast Options</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Options passed as the second argument to any <InlineCode>toast()</InlineCode> call.
       </p>
       <div className="my-6">

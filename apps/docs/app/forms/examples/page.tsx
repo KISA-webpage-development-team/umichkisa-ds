@@ -231,7 +231,7 @@ export default async function ExamplesPage() {
       </h1>
       {/* ── Login Form ────────────────────────────────────── */}
       <Heading as="h2">Login Form</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         A simple login form with email and password validation. Try submitting
         with empty fields or a short password to see validation in action.
       </p>
@@ -241,7 +241,7 @@ export default async function ExamplesPage() {
 
       {/* ── Profile Edit ──────────────────────────────────── */}
       <Heading as="h2">Profile Edit</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         A KISA member profile editor demonstrating text inputs, textarea, number
         validation, radio groups, and a switch toggle.
       </p>
@@ -251,7 +251,7 @@ export default async function ExamplesPage() {
 
       {/* ── Feedback Form ─────────────────────────────────── */}
       <Heading as="h2">Feedback Form</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         A feedback form with a select dropdown, textarea with minimum length,
         and an optional anonymous checkbox.
       </p>
@@ -261,7 +261,7 @@ export default async function ExamplesPage() {
 
       {/* ── Using Hooks ───────────────────────────────────── */}
       <Heading as="h2">Using Hooks</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         The same login form rebuilt using{' '}
         <InlineCode>useFormField</InlineCode> and{' '}
         <InlineCode>useFormStatus</InlineCode> hooks. The result is

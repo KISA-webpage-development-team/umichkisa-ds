@@ -43,7 +43,7 @@ export default function FoundationPage() {
       <h1 className="type-h1 font-sejong-bold tracking-tight mb-4 text-foreground">
         Foundation
       </h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         Design tokens and visual language that underpin every component in the
         KISA Design System.
       </p>

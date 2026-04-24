@@ -102,7 +102,7 @@ export default async function PopoverPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">Popover</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Floating panel anchored to a trigger element for displaying rich content
         like forms, menus, or additional information.
       </p>
@@ -116,7 +116,7 @@ export default async function PopoverPage() {
 
       {/* Basic */}
       <Heading as="h3" className="mt-6">Basic</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A trigger button that opens a popover with simple text content.
       </p>
       <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
@@ -132,7 +132,7 @@ export default async function PopoverPage() {
 
       {/* With form content */}
       <Heading as="h3">With form content</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Popovers can contain rich content such as forms with labels, inputs, and buttons.
       </p>
       <ComponentPreview code={formCode} highlightedCode={formHighlighted}>
@@ -153,7 +153,7 @@ export default async function PopoverPage() {
 
       {/* Placement */}
       <Heading as="h3">Placement</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Use the{' '}
         <InlineCode>
           side
@@ -206,7 +206,7 @@ export default async function PopoverPage() {
 
       {/* Popover (Root) */}
       <Heading as="h3" className="mt-6">Popover</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Root wrapper that manages open state.
       </p>
       <div className="my-6">
@@ -265,7 +265,7 @@ export default async function PopoverPage() {
 
       {/* PopoverTrigger */}
       <Heading as="h3">PopoverTrigger</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         The element that toggles the popover.
       </p>
       <div className="my-6">
@@ -302,7 +302,7 @@ export default async function PopoverPage() {
 
       {/* PopoverContent */}
       <Heading as="h3">PopoverContent</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         The floating panel that appears when the popover is open.
       </p>
       <div className="my-6">

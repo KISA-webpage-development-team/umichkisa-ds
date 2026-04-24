@@ -59,7 +59,7 @@ export default async function SkeletonPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">Skeleton</h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         Visual placeholder for content that is loading. Renders a pulsing block
         that approximates the shape of the real content, reducing perceived wait
         time and helping prevent layout shift when dimensions match the final
@@ -85,7 +85,7 @@ export default async function SkeletonPage() {
 
       {/* Default */}
       <Heading as="h3" className="mt-6">Default</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A heading placeholder with a content block below. Set dimensions with
         Tailwind height and width utilities.
       </p>
@@ -98,7 +98,7 @@ export default async function SkeletonPage() {
 
       {/* Circular */}
       <Heading as="h3">Circular</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Use{' '}
         <InlineCode>
           variant=&quot;circular&quot;
@@ -111,7 +111,7 @@ export default async function SkeletonPage() {
 
       {/* Text block */}
       <Heading as="h3">Text block</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Stack multiple skeletons with varying widths to approximate a paragraph.
       </p>
       <ComponentPreview code={textBlockCode} highlightedCode={textBlockHighlighted}>
@@ -124,7 +124,7 @@ export default async function SkeletonPage() {
 
       {/* Card composition */}
       <Heading as="h3">Card composition</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Combine circular and rectangular skeletons to create a realistic loading
         state for a card with an avatar and text content.
       </p>
@@ -141,7 +141,7 @@ export default async function SkeletonPage() {
 
       {/* ── API Reference ────────────────────────────────────── */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         All props are optional. Extends native{' '}
         <InlineCode>
           &lt;div&gt;

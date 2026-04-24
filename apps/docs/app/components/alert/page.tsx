@@ -127,7 +127,7 @@ export default async function AlertPage() {
 
       {/* -- Header -------------------------------------------------- */}
       <h1 className="type-h1 mb-4 text-foreground">Alert</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Static inline feedback message for communicating status, warnings,
         errors, and informational content to users.
       </p>
@@ -142,7 +142,7 @@ export default async function AlertPage() {
 
       {/* Variants */}
       <Heading as="h3" className="mt-6">Variants</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Four semantic variants communicate different levels of feedback. Each
         variant applies a distinct border color, background, and default icon.
       </p>
@@ -165,7 +165,7 @@ export default async function AlertPage() {
 
       {/* Description only */}
       <Heading as="h3">Description only</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Omit the{' '}
         <InlineCode>title</InlineCode>{' '}
         prop to render a compact alert with only description content.
@@ -180,7 +180,7 @@ export default async function AlertPage() {
 
       {/* Custom icon */}
       <Heading as="h3">Custom icon</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Override the default variant icon by passing a Lucide icon name to the{' '}
         <InlineCode>icon</InlineCode>{' '}
         prop. The icon must be registered in the{' '}
@@ -197,7 +197,7 @@ export default async function AlertPage() {
 
       {/* Without icon */}
       <Heading as="h3">Without icon</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pass{' '}
         <InlineCode>
           icon={'{null}'}
@@ -214,7 +214,7 @@ export default async function AlertPage() {
 
       {/* Form validation error */}
       <Heading as="h3">Form validation error</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A common pattern for displaying validation errors above a form. The
         alert summarizes what needs attention while the form fields below
         highlight individual errors.
@@ -243,7 +243,7 @@ export default async function AlertPage() {
 
       {/* Success confirmation */}
       <Heading as="h3">Success confirmation</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A confirmation banner placed directly above the form the user just edited.
       </p>
       <ComponentPreview code={successConfirmationCode} highlightedCode={successConfirmationHighlighted}>
@@ -270,7 +270,7 @@ export default async function AlertPage() {
 
       {/* Info callout in content */}
       <Heading as="h3">Info callout in content</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         An informational alert used as an aside within body content, drawing
         attention to a prerequisite or important note.
       </p>
@@ -293,7 +293,7 @@ export default async function AlertPage() {
 
       {/* -- API Reference -------------------------------------------- */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         All props are optional. Extends native{' '}
         <InlineCode>
           &lt;div&gt;
@@ -380,7 +380,7 @@ export default async function AlertPage() {
 
       {/* -- Accessibility --------------------------------------------- */}
       <Heading as="h2">Accessibility</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Static alerts present on initial render do not need an explicit ARIA
         role — the visible icon and color convey meaning. For alerts that
         appear dynamically in response to user action (e.g., after form
@@ -390,7 +390,7 @@ export default async function AlertPage() {
         </InlineCode>{' '}
         so screen readers announce the message immediately.
       </p>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Use{' '}
         <InlineCode>
           role=&quot;status&quot;

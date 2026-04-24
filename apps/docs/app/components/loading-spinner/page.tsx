@@ -58,12 +58,12 @@ export default async function LoadingSpinnerPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">LoadingSpinner</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Animated spinner for indicating loading state. Renders an accessible
         spinning indicator that can optionally display a visible label.
       </p>
 
-      <div className="my-4 max-w-prose">
+      <div className="my-4">
         <Alert variant="info">
           The{' '}
           <InlineCode>
@@ -81,7 +81,7 @@ export default async function LoadingSpinnerPage() {
         </Alert>
       </div>
 
-      <div className="my-4 mb-8 max-w-prose">
+      <div className="my-4 mb-8">
         <Alert variant="info">
           Use <strong>LoadingSpinner</strong> for indeterminate waits such as
           data fetching or form submission. Use <strong>Skeleton</strong> for
@@ -95,7 +95,7 @@ export default async function LoadingSpinnerPage() {
 
       {/* Default */}
       <Heading as="h3" className="mt-6">Default</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A spinner centered inside a loading panel. Uses the default{' '}
         <InlineCode>
           md
@@ -114,7 +114,7 @@ export default async function LoadingSpinnerPage() {
 
       {/* Sizes */}
       <Heading as="h3">Sizes</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Three sizes for different contexts: small for inline indicators, medium
         for section loaders, and large for prominent full-page states.
       </p>
@@ -143,7 +143,7 @@ export default async function LoadingSpinnerPage() {
 
       {/* With label */}
       <Heading as="h3">With label</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pass{' '}
         <InlineCode>
           showLabel
@@ -159,7 +159,7 @@ export default async function LoadingSpinnerPage() {
 
       {/* Inline loading */}
       <Heading as="h3">Inline loading</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A small spinner placed inline next to descriptive text. The spinner
         provides an accessible label while the adjacent text gives visual
         context.
@@ -173,7 +173,7 @@ export default async function LoadingSpinnerPage() {
 
       {/* Full-screen overlay pattern */}
       <Heading as="h3">Full-screen overlay pattern</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A consumer-side pattern for blocking the entire viewport during a
         critical loading state such as authentication or initial data fetch.
         The contained preview below simulates the effect.
@@ -191,7 +191,7 @@ export default async function LoadingSpinnerPage() {
 
       {/* ── Usage Guidelines ─────────────────────────────────── */}
       <Heading as="h2">Usage Guidelines</Heading>
-      <ul className="list-disc pl-6 space-y-2 mb-8 max-w-prose">
+      <ul className="list-disc pl-6 space-y-2 mb-8">
         <li className="type-body text-foreground">
           Use <strong>LoadingSpinner</strong> for indeterminate loading — API
           calls, authentication, form submission — where you cannot predict how
@@ -205,7 +205,7 @@ export default async function LoadingSpinnerPage() {
 
       {/* ── API Reference ────────────────────────────────────── */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         All props are optional.
       </p>
       <div className="my-6">

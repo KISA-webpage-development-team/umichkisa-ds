@@ -67,7 +67,7 @@ export default async function IconButtonPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">IconButton</h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         A square, icon-only button for compact actions like toolbar controls,
         close buttons, and menu triggers. Shares{' '}
         <InlineCode>
@@ -85,7 +85,7 @@ export default async function IconButtonPage() {
 
       {/* Default */}
       <Heading as="h3" className="mt-6">Default</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         The simplest usage —{' '}
         <InlineCode>
           icon
@@ -102,7 +102,7 @@ export default async function IconButtonPage() {
 
       {/* Variants */}
       <Heading as="h3">Variants</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Four semantic variants matching{' '}
         <InlineCode>
           Button
@@ -124,7 +124,7 @@ export default async function IconButtonPage() {
 
       {/* Sizes */}
       <Heading as="h3">Sizes</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Three sizes producing square dimensions:{' '}
         <InlineCode>
           sm
@@ -153,7 +153,7 @@ export default async function IconButtonPage() {
 
       {/* Disabled */}
       <Heading as="h3">Disabled</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Pass{' '}
         <InlineCode>
           disabled
@@ -171,7 +171,7 @@ export default async function IconButtonPage() {
 
       {/* With Tooltip */}
       <Heading as="h3">With Tooltip</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Wrap an{' '}
         <InlineCode>
           IconButton
@@ -211,7 +211,7 @@ export default async function IconButtonPage() {
           </li>
         </ul>
       </Alert>
-      <p className="type-body text-foreground max-w-prose">
+      <p className="type-body text-foreground">
         All three sizes meet the WCAG 44×44px touch target. Even when the visible
         button is 32px (
         <InlineCode>size=&quot;sm&quot;</InlineCode>
@@ -223,7 +223,7 @@ export default async function IconButtonPage() {
 
       {/* ── API Reference ────────────────────────────────────── */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         <InlineCode>
           icon
         </InlineCode>{' '}

@@ -138,7 +138,7 @@ export default async function AccordionPage() {
 
       {/* -- Header -------------------------------------------------- */}
       <h1 className="type-h1 mb-4 text-foreground">Accordion</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Vertically stacked set of collapsible sections. Each section has a
         trigger that reveals or hides its associated content panel.
       </p>
@@ -153,7 +153,7 @@ export default async function AccordionPage() {
 
       {/* Basic / FAQ */}
       <Heading as="h3" className="mt-6">FAQ</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Single-mode accordion where one item can be open at a time. Clicking
         the open item collapses it (all items can be closed). Set{' '}
         <InlineCode>defaultValue</InlineCode>{' '}
@@ -192,7 +192,7 @@ export default async function AccordionPage() {
 
       {/* Multiple / Settings */}
       <Heading as="h3">Settings panel</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Multiple-mode accordion where several sections can be open
         simultaneously. Useful for settings or filter panels where users
         configure independent groups.
@@ -227,7 +227,7 @@ export default async function AccordionPage() {
 
       {/* Disabled */}
       <Heading as="h3">Disabled item</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Individual items can be disabled to prevent interaction. The
         trigger text dims and the item is skipped during keyboard
         navigation.
@@ -261,7 +261,7 @@ export default async function AccordionPage() {
 
       {/* No chevron */}
       <Heading as="h3">Without chevron</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Set{' '}
         <InlineCode>
           showChevron={'{false}'}
@@ -302,7 +302,7 @@ export default async function AccordionPage() {
 
       {/* -- API Reference -------------------------------------------- */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Accordion is composed from four sub-components. Assemble them to build collapsible sections.
         Note: the shape of{' '}
         <InlineCode>value</InlineCode>,{' '}
@@ -315,7 +315,7 @@ export default async function AccordionPage() {
 
       {/* Accordion (Root) */}
       <Heading as="h3">Accordion</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Root wrapper that manages expand/collapse state.
       </p>
       <div className="my-6">
@@ -396,7 +396,7 @@ export default async function AccordionPage() {
 
       {/* AccordionItem */}
       <Heading as="h3">AccordionItem</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Wraps a single collapsible section — a trigger and its content panel.
       </p>
       <div className="my-6">
@@ -468,7 +468,7 @@ export default async function AccordionPage() {
 
       {/* AccordionTrigger */}
       <Heading as="h3">AccordionTrigger</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Button that toggles the content panel. Wrapped in a Radix header for accessibility.
       </p>
       <div className="my-6">
@@ -527,7 +527,7 @@ export default async function AccordionPage() {
 
       {/* AccordionContent */}
       <Heading as="h3">AccordionContent</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         The collapsible panel that reveals when its parent item is open. Animates height on expand and collapse.
       </p>
       <div className="my-6">
@@ -575,7 +575,7 @@ export default async function AccordionPage() {
 
       {/* -- Keyboard interactions ----------------------------------- */}
       <Heading as="h2">Keyboard interactions</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Accordion provides built-in keyboard navigation via Radix. Triggers
         are reachable with <InlineCode>Tab</InlineCode>;
         once focused, the keys below operate within the accordion. Disabled

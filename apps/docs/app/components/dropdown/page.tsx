@@ -124,7 +124,7 @@ export default async function DropdownPage() {
 
       {/* -- Header -------------------------------------------------- */}
       <h1 className="type-h1 mb-4 text-foreground">Dropdown</h1>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         Action menu triggered by a button. Built on Radix DropdownMenu for full keyboard navigation
         and accessibility. Compose sub-components together — trigger, content panel, and menu items.
         Use Dropdown for action menus (edit, delete, share). For value selection from a list,
@@ -136,7 +136,7 @@ export default async function DropdownPage() {
 
       {/* Basic */}
       <Heading as="h3" className="mt-6">Basic</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A simple dropdown with three items. Use a{' '}
         <InlineCode>
           Button
@@ -165,7 +165,7 @@ export default async function DropdownPage() {
 
       {/* With groups */}
       <Heading as="h3">With groups</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Use groups when items need a visible heading. Group related items with{' '}
         <InlineCode>
           DropdownGroup
@@ -195,7 +195,7 @@ export default async function DropdownPage() {
 
       {/* With separator */}
       <Heading as="h3">With separator</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Use{' '}
         <InlineCode>
           DropdownSeparator
@@ -218,7 +218,7 @@ export default async function DropdownPage() {
 
       {/* Destructive item */}
       <Heading as="h3">Destructive item</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Apply{' '}
         <InlineCode>
           variant=&quot;destructive&quot;
@@ -239,7 +239,7 @@ export default async function DropdownPage() {
 
       {/* Disabled items */}
       <Heading as="h3">Disabled items</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Use the{' '}
         <InlineCode>
           disabled
@@ -261,7 +261,7 @@ export default async function DropdownPage() {
 
       {/* Positioning */}
       <Heading as="h3">Positioning</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Use{' '}
         <InlineCode>
           align
@@ -295,13 +295,13 @@ export default async function DropdownPage() {
 
       {/* -- API Reference -------------------------------------------- */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Each sub-component accepts the props listed below.
       </p>
 
       {/* Dropdown (Root) */}
       <Heading as="h3">Dropdown</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         The root component that manages open/closed state. Wraps all other sub-components.
       </p>
       <div className="my-6">
@@ -610,7 +610,7 @@ export default async function DropdownPage() {
 
       {/* DropdownSeparator */}
       <Heading as="h3">DropdownSeparator</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A visual divider between items. Accepts no props.
       </p>
 

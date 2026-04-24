@@ -112,7 +112,7 @@ export default async function DialogPage() {
 
       {/* -- Header -------------------------------------------------- */}
       <h1 className="type-h1 mb-4 text-foreground">Dialog</h1>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Modal overlay for confirmations, forms, and focused tasks that require
         user attention before continuing.
       </p>
@@ -125,7 +125,7 @@ export default async function DialogPage() {
 
       {/* Basic */}
       <Heading as="h3" className="mt-6">Basic</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         A dialog with a title, description, and the default close button.
       </p>
       <ComponentPreview code={basicCode} highlightedCode={basicHighlighted}>
@@ -142,7 +142,7 @@ export default async function DialogPage() {
 
       {/* Sizes */}
       <Heading as="h3">Sizes</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         DialogContent supports four sizes:{' '}
         <InlineCode>sm</InlineCode>,{' '}
         <InlineCode>md</InlineCode>{' '}
@@ -193,7 +193,7 @@ export default async function DialogPage() {
 
       {/* With Footer */}
       <Heading as="h3">With footer</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Confirmation pattern with a footer containing Cancel and Confirm buttons.
         Cancel uses{' '}
         <InlineCode>
@@ -223,7 +223,7 @@ export default async function DialogPage() {
 
       {/* Custom Close */}
       <Heading as="h3">Custom close</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Set{' '}
         <InlineCode>
           showCloseButton={'{false}'}
@@ -256,13 +256,13 @@ export default async function DialogPage() {
 
       {/* -- API Reference -------------------------------------------- */}
       <Heading as="h2">API Reference</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Dialog is composed from several sub-components that you assemble together. Each accepts the props listed below.
       </p>
 
       {/* Dialog (Root) */}
       <Heading as="h3">Dialog</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Root wrapper that manages open state.
       </p>
       <div className="my-6">
@@ -321,7 +321,7 @@ export default async function DialogPage() {
 
       {/* DialogTrigger */}
       <Heading as="h3">DialogTrigger</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         The element that opens the dialog.
       </p>
       <div className="my-6">
@@ -369,7 +369,7 @@ export default async function DialogPage() {
 
       {/* DialogContent */}
       <Heading as="h3">DialogContent</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         The modal panel rendered in a portal with an overlay backdrop.
       </p>
       <div className="my-6">
@@ -439,7 +439,7 @@ export default async function DialogPage() {
 
       {/* DialogTitle */}
       <Heading as="h3">DialogTitle</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Accessible heading for the dialog. Rendered as an h2.
       </p>
       <div className="my-6">
@@ -487,7 +487,7 @@ export default async function DialogPage() {
 
       {/* DialogDescription */}
       <Heading as="h3">DialogDescription</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Accessible description for the dialog. Rendered as a paragraph.
       </p>
       <div className="my-6">
@@ -535,7 +535,7 @@ export default async function DialogPage() {
 
       {/* DialogFooter */}
       <Heading as="h3">DialogFooter</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Footer area for action buttons. Renders children in a right-aligned flex row.
       </p>
       <div className="my-6">
@@ -583,7 +583,7 @@ export default async function DialogPage() {
 
       {/* DialogClose */}
       <Heading as="h3">DialogClose</Heading>
-      <p className="type-body mb-2 text-foreground max-w-prose">
+      <p className="type-body mb-2 text-foreground">
         Closes the dialog when activated. Typically used with asChild to wrap a Button in a footer.
       </p>
       <div className="my-6">

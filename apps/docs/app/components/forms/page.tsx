@@ -186,7 +186,7 @@ export default async function FormsPage() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <h1 className="type-h1 mb-4 text-foreground">Forms</h1>
-      <Alert variant="info" className="mb-4 max-w-prose">
+      <Alert variant="info" className="mb-4">
         For form state management, validation, and submission handling, see the{' '}
         <a href="/forms" className="text-link underline hover:text-brand-primary">
           Forms
@@ -195,7 +195,7 @@ export default async function FormsPage() {
         <InlineCode>{'<Form>'}</InlineCode>{' '}
         compound component that wires these primitives to react-hook-form automatically.
       </Alert>
-      <p className="type-body mb-8 text-foreground max-w-prose">
+      <p className="type-body mb-8 text-foreground">
         How to compose form components in the KISA design system.{' '}
         <InlineCode>
           FormItem
@@ -206,7 +206,7 @@ export default async function FormsPage() {
 
       {/* ── Section 1: Composition Patterns ─────────────────── */}
       <Heading as="h2">Composition Patterns</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         Every form field should be wrapped in a{' '}
         <InlineCode>
           FormItem
@@ -216,7 +216,7 @@ export default async function FormsPage() {
 
       {/* Text inputs */}
       <Heading as="h3" className="mt-6">Text inputs</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         <InlineCode>
           FormItem
         </InlineCode>{' '}
@@ -284,7 +284,7 @@ export default async function FormsPage() {
 
       {/* Toggle controls */}
       <Heading as="h3">Toggle controls</Heading>
-      <p className="type-body mb-4 text-foreground max-w-prose">
+      <p className="type-body mb-4 text-foreground">
         <InlineCode>
           Checkbox
         </InlineCode>
@@ -332,7 +332,7 @@ export default async function FormsPage() {
 
       {/* ── Section 2: Complete Form Example ────────────────── */}
       <Heading as="h2" className="mt-12">Complete Form Example</Heading>
-      <p className="type-body mb-6 text-foreground max-w-prose">
+      <p className="type-body mb-6 text-foreground">
         A realistic event registration form composing multiple{' '}
         <InlineCode>
           FormItem
@@ -420,14 +420,14 @@ export default async function FormsPage() {
       <Heading as="h2" className="mt-12">Guidelines</Heading>
 
       <ul className="list-disc pl-6 flex flex-col gap-3">
-        <li className="type-body text-foreground max-w-prose">
+        <li className="type-body text-foreground">
           Always wrap form controls in{' '}
           <InlineCode>
             FormItem
           </InlineCode>{' '}
           for consistent spacing, labels, and helper text.
         </li>
-        <li className="type-body text-foreground max-w-prose">
+        <li className="type-body text-foreground">
           Match the{' '}
           <InlineCode>
             htmlFor
@@ -443,7 +443,7 @@ export default async function FormsPage() {
           on the control for accessibility. This connects the label to the input for
           screen readers and enables click-to-focus.
         </li>
-        <li className="type-body text-foreground max-w-prose">
+        <li className="type-body text-foreground">
           Use the{' '}
           <InlineCode>
             error
@@ -459,7 +459,7 @@ export default async function FormsPage() {
           on the control. The error prop displays the message; the invalid prop styles the
           control border.
         </li>
-        <li className="type-body text-foreground max-w-prose">
+        <li className="type-body text-foreground">
           Prefer vertical form layouts. Stack{' '}
           <InlineCode>
             FormItem
