@@ -79,6 +79,27 @@ Before writing any spacing / color / radius / text / icon-size value, identify i
 - 5-step scale: `xs` / `sm` / `md` / `lg` / `xl`
 - Never override with font-size utilities or arbitrary CSS.
 
+### "What to Use" Rules (Must)
+
+A condensed, write-time view of the Must rules from Part 2. Read Part 2 for full context and source citations.
+
+- Use `Container` for page shells. Never compose `mx-auto max-w-screen-2xl px-4 ...` manually.
+- Use `Form.*` compounds + `useForm` from `@umichkisa-ds/form` for all forms. Never `useState` for form state.
+- Use `<Icon name="..." />` from `@umichkisa-ds/web` for all icons. Never `react-icons`, never direct `lucide-react`, never inline SVGs.
+- Use `cn()` from `@umichkisa-ds/web` for all className merging. Never raw `clsx` or string concatenation.
+- Use `StatusView` (variants + `fullScreen` prop) for full-page status. Never `<div className="h-screen flex items-center">` wrappers.
+- Use semantic Badge / Alert variants for status content (`success`, `warning`, `error`, `info`). Never `outline` for status.
+- Use breakpoints `default` / `md:` / `lg:` only. Never `sm:`, `xl:`, `2xl:`.
+- Use `type-*` classes paired with a color token. Never override with `!font-*`.
+- Cap inner content with `max-h-[…]` if a DS layout component (Dialog, Tabs, Form, Card) doesn't fit. Never apply `flex` / `overflow-*` to the DS component to force fill.
+
+### Visibility & Hierarchy Rules
+
+- **`text-muted-foreground` is NOT default body color.** Reserve for *genuinely secondary* content (captions, helper text, metadata, timestamps). Card values, list labels, body paragraphs, form labels stay `text-foreground`. [source:MEMORY/feedback]
+- **Intro paragraphs are primary content.** A page's lead paragraph or section intro is `text-foreground`, not muted. [source:MEMORY/feedback_intro_foreground]
+- **No left-border accent for selected state.** Use `bg-brand-accent-subtle border-brand-primary` (full border ring), not a `border-l-4` accent stripe. [source:MEMORY/feedback_no_left_border]
+- **No padding override on Card / CardContent / CardFooter.** Respect component defaults. If padding feels wrong, the Card is being misused for a non-card surface — pick a different DS component. [source:MEMORY/feedback_card_no_override]
+
 ---
 
 ## Part 2 — Review-Time Rulebook
