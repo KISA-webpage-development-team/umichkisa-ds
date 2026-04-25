@@ -49,7 +49,7 @@
 - [x] Phase 2.14: PochaMenuItemForm modal shell → DS Dialog (autonomous) — dev b659629 (#113)
 - [x] Phase 2.15: PochaMenuItemForm fields → @umichkisa-ds/form (autonomous) — dev 9129c03 (Mode D direct push)
 - [x] Phase 2.16: PochaMenuItemForm FileUpload integration (interactive) — dev a68a691 (Mode D worktree, smoke deferred)
-- [ ] Phase 2.17: Page shell + legacy ui swap (autonomous)
+- [x] Phase 2.17: Page shell + legacy ui swap (interactive, Mode D direct push) — dev 827eb87 + 55db7c1; DS @ 1.0.17 (StatusView `fullScreen` prop, fixed inset-0)
 - [ ] Phase 2.19: Audit-after redesign pass (interactive)
 - [ ] Phase 2.18: Verify + end-bump (interactive)
 - [ ] Phase 3: pocha-dashboard (subphases added at kickoff)
