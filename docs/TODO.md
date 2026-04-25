@@ -29,7 +29,7 @@
 - [x] Phase 1.9: Legacy ui swap (jobs scope — dev f666745)
 - [x] Phase 1.10: Page shell (error.tsx StatusView swap — dev e9aa87d; composition already correct after 1.7)
 - [x] Phase 1.11: Verify + end-bump (no end-bump needed — all DS fixes mid-phase-shipped; DS @ 1.0.8, client pinned)
-- [x] Phase 2: pocha-manage (kickoff — audit.md written, subphases expanded)
+- [x] Phase 2: pocha-manage — complete (all subphases merged to dev; DS web @ 1.0.17, DS form @ 1.0.1)
 - [x] Phase 2.0: Admin gate restoration (interactive) — dev 8715c1e
 - [x] Phase 2.1: MSW pocha CRUD handlers (TDD, autonomous) — dev ed6e147
 - [x] Phase 2.2: MSW menu CRUD handlers (TDD, autonomous) — dev 7ac2843
@@ -51,7 +51,7 @@
 - [x] Phase 2.16: PochaMenuItemForm FileUpload integration (interactive) — dev a68a691 (Mode D worktree, smoke deferred)
 - [x] Phase 2.17: Page shell + legacy ui swap (interactive, Mode D direct push) — dev 827eb87 + 55db7c1; DS @ 1.0.17 (StatusView `fullScreen` prop, fixed inset-0)
 - [x] Phase 2.19: Audit-after redesign pass (interactive, Mode D direct push) — dev f530fd1; reverted-then-reinstated P4 via DS form 1.0.1 useFormContext re-export; menus-reset fix bundled
-- [ ] Phase 2.18: Verify + end-bump (interactive)
+- [x] Phase 2.18: Verify + end-bump (interactive) — DS build/typecheck green; client build + tests (70 pass / 3 skip) green; no end-bump needed (all DS fixes mid-phase shipped: web 1.0.10–1.0.17, form 1.0.1)
 - [ ] Phase 3: pocha-dashboard (subphases added at kickoff)
 - [ ] Phase 4: pocha-userfacing (subphases added at kickoff)
 - [ ] Phase 5: kisa-web (subphases added at kickoff)

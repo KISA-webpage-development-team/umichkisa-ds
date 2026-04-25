@@ -39,3 +39,17 @@ DS FIX: StatusView only centered within its own box (`w-full h-full`), forcing e
 ## 2026-04-25 — Lane 2.17 DS fix correction: StatusView fullScreen → fixed inset-0
 
 DS FIX (correction): 1.0.16's `fullScreen` used `min-h-screen` which only filled the layout's content area (below the header), so the StatusView visually sat below center. Switched to `fixed inset-0 z-50 bg-background` so StatusView covers the actual viewport regardless of parent layout — occludes any surrounding header/footer. User-caught during manage-page not-authorized smoke (screenshot showed StatusView low). Bumped `@umichkisa-ds/web` 1.0.16 → 1.0.17. Client `package.json` updated to 1.0.17.
+
+## 2026-04-25 — Phase 2 close-out (Lane 2.18)
+
+**Status:** Phase 2 (pocha-manage) complete. All 19 subphases (2.0–2.17, 2.19) merged to `dev`; 2.18 closes the phase.
+
+**Verifications (Mode E):**
+- DS: `pnpm build` + `pnpm typecheck` green (web 1.0.17, form 1.0.1, docs).
+- Client: `npm run build` green; `npm test` 70 pass / 3 skip / 0 fail. (Client has no `typecheck` script; build covers TS.)
+
+**End-bump:** none. All Phase 2 DS fixes were mid-phase patch bumps (web 1.0.10 toaster CSS → 1.0.11 sonner override → 1.0.13 Dialog flex layout → 1.0.14 Dialog gap → 1.0.15 → 1.0.16 StatusView `fullScreen` → 1.0.17 fullScreen `fixed inset-0` correction; form 1.0.1 `useFormContext` re-export). No `ds-fixes-log.md` accumulation in this phase folder, consistent with `feedback_mid_phase_bump_default`.
+
+**Final pinned versions on client (`dev`):** `@umichkisa-ds/web@1.0.17`, `@umichkisa-ds/form@1.0.1`.
+
+**DS surface added in Phase 2:** `FileUpload` (lane 2.4 minor 1.0.9), `StatusView.fullScreen` prop (lane 2.17), `DialogContent` flex+gap layout (lane 2.11b), Toaster sonner CSS injection (lane 2.11), form `useFormContext` re-export (lane 2.19).
