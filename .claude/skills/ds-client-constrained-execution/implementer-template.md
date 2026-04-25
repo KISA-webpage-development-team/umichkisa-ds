@@ -17,6 +17,32 @@ Agent tool (general-purpose):
 
     [PASTE FULL TASK TEXT FROM PLAN HERE — do not make the subagent read the file]
 
+    ## Pre-flight (do this FIRST — before writing any code)
+
+    Read `docs/DS_CLIENT_USAGE.md` Part 1 (Write-Time Decision Tree). Then,
+    for the task you're about to implement, list every styling decision
+    you'll make and its DS tier or token justification:
+
+    1. Spacing values — list every `gap-*`, `space-*`, `p*`, `m*` you'll write,
+       with the role of its container (Element / Component / Section / inline)
+       and the canonical tier value.
+    2. Color values — list every `text-*`, `bg-*`, `border-*` and which DS
+       semantic token applies (`text-foreground` vs `text-muted-foreground`,
+       `bg-surface` vs `bg-brand-accent-subtle`, etc.).
+    3. Radius values — list every `rounded-*` and the DS surface role.
+    4. Type values — list every `type-*` class with its color pairing.
+    5. Icon names + sizes — list every `<Icon name="..." size="...">` you'll
+       write. If a name is missing from the registry, flag it as a DS gap.
+
+    If you cannot tier-justify a value, do NOT write it — flag it as a
+    question in your report and stop. The reviewer will not catch every
+    off-tier value; you must catch them at write time.
+
+    This is the "redesign over preserve" principle: when the original
+    code's value conflicts with the DS tier, ship the DS-canonical value,
+    not a mechanical demotion. Record every such choice as a "Deviation
+    from original" line for the PR body.
+
     ## Your Job
 
     Implement **Step 1 only** — create or modify the files as specified. Do NOT run typecheck
@@ -31,8 +57,12 @@ Agent tool (general-purpose):
 
     ## DS Client Usage Constraints
 
-    Follow every rule below as you write code. A constraint review agent will verify your
-    output — aim for zero violations on the first pass.
+    Follow every rule in `docs/DS_CLIENT_USAGE.md`. A constraint review agent
+    will verify your output — aim for zero violations on the first pass.
+
+    Read the full file before writing. Part 1 (Write-Time Decision Tree)
+    is your primary guide; Part 2 (Review-Time Rulebook) is what the
+    reviewer will check you against.
 
     [PASTE FULL CONTENTS OF docs/DS_CLIENT_USAGE.md HERE]
 
