@@ -1,11 +1,21 @@
-/* ── Third-party CSS dependencies ────────────────────────────────── */
+/* ── Toaster outer-section positioning fix ───────────────────────── */
 /*
- * sonner ships its own structural CSS (position: fixed on the toaster
- * <section>, transition keyframes, etc.) that the DS Toaster wraps. Without
- * this import, [data-sonner-toaster] has no positioning and the container
- * flows in document order, adding a tall empty box at the bottom of the page.
+ * sonner v2.x renders an outer <section aria-label="Notifications ..." ...>
+ * that wraps the toast list <ol data-sonner-toaster>. sonner's stylesheet
+ * (which sonner self-injects at module load via __insertCSS) only positions
+ * the inner <ol>, not the outer <section>. With no active toasts, the
+ * inner <ol> isn't rendered and the empty <section> flows in document
+ * order — visually appearing as a tall empty box wherever <Toaster /> is
+ * mounted. We force the outer wrapper out of normal flow with a unique
+ * ARIA-attribute selector (matches sonner's signature combo without
+ * coupling to internal class names).
  */
-@import "sonner/dist/styles.css";
+section[aria-live="polite"][aria-relevant="additions text"][aria-atomic="false"][tabindex="-1"] {
+  position: fixed;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
 
 /* ── Sejong Hospital font faces ──────────────────────────────────── */
 /*
