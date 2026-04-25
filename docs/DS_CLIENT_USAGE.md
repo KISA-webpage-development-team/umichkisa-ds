@@ -52,6 +52,16 @@ Mapping:
 
 Never: Leave a legacy `@/components/ui/feedback` import in any file being migrated in the current lane — swap it in-lane even if the lane's primary scope is different. The only exception is when the lane's issue explicitly lists the swap as a non-goal (e.g., a page-shell lane defers feedback migration to a later legacy-ui-swap lane). [source:phase-2/lane-2.0 review, 2026-04-23]
 
+#### Status Variant Selection (G2)
+
+Must: When a `Badge`, `Alert`, or other DS feedback component expresses status, use the **semantic** variant — `success`, `warning`, `error`, `info` — not the neutral/outline variant.
+
+Status content includes: "available now" / "즉시 제공" → `success`; "age check required" / "연령 확인" → `warning`; error states → `error`; passive informational → `info`.
+
+`outline` / default neutral is for non-status content (categorical tags, generic labels).
+
+[source:phase-2/lane-2.11b smoke fix, commit 59462d4]
+
 ---
 
 ### Styling
@@ -60,6 +70,9 @@ Never: Leave a legacy `@/components/ui/feedback` import in any file being migrat
 
 Must: Use DS semantic color tokens for all color values — `text-foreground`, `bg-surface`, `border-brand-primary`, etc. Never use raw hex values, raw OKLCH, or Tailwind's default color palette (`text-gray-500`). [source:DS_CONSTRAINTS.md/colors]
 Must: Use `type-*` semantic utility classes for all typography — never compose raw Tailwind utilities (`text-base font-normal leading-relaxed`). [source:DS_CONSTRAINTS.md/typography]
+Never: Override the weight of a `type-*` class with `!font-*` (e.g., `type-body !font-semibold`, `type-h2 !font-bold`). The `type-*` tier already bakes weight, font-family, and line-height. If a different weight is needed, pick a different `type-*` class — do not override. [source:MEMORY/feedback_type_weight_override; phase-2/lane-2.19 commit 09d2cd0 swept these out]
+
+Exception during migration: short-lived `!font-*` overrides may exist when the type-* tier doesn't yet expose the desired weight. Collect these as a DS gap (request a new `type-*` tier or a weight variant via `ds-fix-during-migration`); do not let them ship long-term.
 Must: Pair an explicit color token with every `type-*` class — `type-*` classes do not set color. [source:DS_CONSTRAINTS.md/typography]
 Never: Import font loaders directly from the client (e.g. `@/utils/fonts/textFonts` — `sejongHospitalBold`, `sejongHospitalLight`, `arial`, `heebo`, `montserrat`) and apply `.className` to elements. Font families are owned by the DS: `@font-face` + `--font-sejong-*` / `--font-pretendard` CSS variables are declared in `dist/styles.css`'s `@theme` block and consumed exclusively via `type-*` tokens (`type-h1`/`type-display` → Sejong Bold; `type-h2`/`type-h3`/`type-body*`/`type-label`/`type-caption` → Pretendard). The only legitimate direct use of `next/font/local` is at the app root for preloading/optimization (see "Font Loading (Next.js)" above) — not inline on component elements. During migration, strip any `sejongHospital*.className` / `heebo.className` / `montserrat.className` imports from lane files as you touch them. [source:client#80 Phase 1.2 review, 2026-04-21]
 
@@ -90,7 +103,9 @@ Must: Use `Form.*` compound fields from `@umichkisa-ds/form` for all form contro
 Must: Use `useForm` from `@umichkisa-ds/form` to initialize form state — not `useForm` from `react-hook-form` directly. [source:DS_CODEBASE.md/form-wiring]
 Never: Use native `useState` for form field values or validation state in migrated forms — all form state goes through `useForm`. [source:grill-session/2026-04-12]
 Prefer: `useFormField` escape hatch only for custom controls not covered by `Form.*` compounds. [source:DS_CODEBASE.md/form-wiring]
-Never: Import `react-hook-form` directly — always use `@umichkisa-ds/form` re-exports (`useForm`, `useFormField`, `useFormStatus`, `useFormContext`). [source:grill-session/2026-04-12]
+Never: Import any RHF symbol (`useForm`, `useFormField`, `useFormStatus`, `useFormContext`, `useFormState`, `useWatch`, `Controller`) directly from `react-hook-form`. Always use `@umichkisa-ds/form` re-exports. The DS form package wraps `useForm` with `mode: "onTouched"` and other defaults; bypassing the wrapper produces inconsistent validation timing and breaks the DS form contract.
+
+If a hook you need is not yet re-exported by `@umichkisa-ds/form`, treat it as a DS gap and run `ds-fix-during-migration` to add the re-export — do not import from `react-hook-form` as a workaround. [source:phase-2/lane-2.19 — `useFormContext` was missing from `@umichkisa-ds/form`; required form 1.0.1 re-export commit 086c148]
 
 _Note: Validation strategy (zod + RHF resolver vs. RHF-native rules) is deferred to Phase -1.7. Rules will be added here once resolved._
 
@@ -101,6 +116,14 @@ _Note: Validation strategy (zod + RHF resolver vs. RHF-native rules) is deferred
 Must: Use `Container` from `@umichkisa-ds/web` for the page shell pattern — never manually compose `mx-auto w-full max-w-screen-2xl px-4 md:px-6 lg:px-8`. [source:DS_CONSTRAINTS.md/layout]
 Never: Nest `Container` components — each page region gets one `Container` at most. [source:DS_CONSTRAINTS.md/layout]
 Must: Follow the three-tier vertical spacing system — Element (`gap-2` / 8px), Component (`gap-4` / 16px), Section (`gap-6` / 24px). [source:DS_CONSTRAINTS.md/layout]
+
+**Tier-justify every spacing value before writing.** Spacing inside a single component (image+text inside a row, label+input inside a field, icon+text inside a chip) is **Component or Element tier** (`gap-2` / `gap-3` / `gap-4`), not Section tier. `gap-6`/`gap-8` are reserved for boundaries between major page sections. [source:phase-2/lane-2.11b smoke fix, commit 59462d4 — `gap-6` → `gap-4` correction on row internals]
+
+Write-time check (when picking a `gap-*` / `space-*` value):
+1. What is the role of the container? (page section / component-internal / inline)
+2. Is the chosen value the canonical tier value for that role? (8 / 16 / 24 px = `gap-2` / `gap-4` / `gap-6`)
+3. If you cannot answer (1) and (2) cleanly, do not write the value — ask.
+
 Must: Use only the three layout breakpoint tiers — default (mobile), `md:` (>= 768px), `lg:` (>= 1024px). Never use `sm:`, `xl:`, or `2xl:`. [source:DS_CONSTRAINTS.md/layout]
 
 ---
@@ -132,6 +155,26 @@ Must: Local components follow the same DS token and styling rules as everything 
 Prefer: Only pass layout and positioning classes via `className` on DS components — `mt-4`, `w-full`, `flex-1`, `hidden md:block`, etc. [source:grill-session/2026-04-12]
 Avoid: Overriding DS component internals via `className` (padding, font-size, color, border-radius). Frequent overrides signal that the DS component needs a new variant — collect these for DS fixes. [source:grill-session/2026-04-12]
 Exception: When an app-specific override is genuinely necessary, add a comment explaining why. [source:grill-session/2026-04-12]
+
+---
+
+### DS Component Layout — Do Not Override (G1)
+
+Never: Add flex / overflow / height / max-height utility classes to a DS layout component (`Dialog`, `DialogContent`, `Tabs`, `TabsList`, `TabsContent`, `Form`, `Card`, `CardContent`, `CardFooter`, `Sheet`, `Drawer`) to force size or layout. The DS owns the layout pattern of these components — flex containers, gap spacing, overflow behavior. Adding `flex flex-1 overflow-hidden` to `<Tabs>` or `<Form>` to make them fill height is fighting the DS. [source:phase-2/lane-2.11b smoke fix, commit c4cea05]
+
+If a layout doesn't fit:
+- Cap inner content with `max-h-[60vh]` (or similar) on the inner content child (e.g., `<TabsContent>`), not on the outer DS layout component
+- If the cap doesn't solve it, the DS component is missing a variant — collect via `ds-fix-during-migration`
+
+Allowed (positioning passthrough): `mt-4`, `w-full`, `mx-auto`, `hidden md:block` on DS components — these are layout/positioning, not internal layout overrides.
+
+Disallowed examples (would have been caught here in Phase 2):
+- `<Tabs className="flex flex-1 flex-col overflow-hidden">` — overrides DS Tabs layout
+- `<Form className="flex flex-1 flex-col gap-4 overflow-hidden">` — overrides DS Form layout
+- `<DialogContent className="max-h-[90dvh] flex flex-col">` — DS Dialog now owns this; override is redundant
+
+Allowed:
+- `<TabsContent className="max-h-[60vh] overflow-y-auto">` — height cap on inner content, not on DS layout
 
 ---
 
