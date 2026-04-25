@@ -147,7 +147,6 @@ export const FORMS_CATEGORIES: SidebarCategory[] = [
   {
     label: 'Forms',
     items: [
-      { label: 'Overview',       href: '/forms/overview' },
       { label: 'useForm',        href: '/forms/use-form' },
       { label: 'Form Component', href: '/forms/form-component' },
       { label: 'Validation',     href: '/forms/validation' },
