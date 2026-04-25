@@ -56,7 +56,7 @@ function DialogContent({
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
         <RadixDialog.Content
           className={cn(
-            "relative flex w-full max-h-full flex-col overflow-hidden rounded-lg border border-border bg-surface p-6 shadow-lg",
+            "relative flex w-full max-h-full flex-col gap-4 overflow-hidden rounded-lg border border-border bg-surface p-6 shadow-lg",
             "data-[state=open]:animate-[dialog-content-in_150ms_ease-out]",
             "data-[state=closed]:animate-[dialog-content-out_100ms_ease-in]",
             "focus-visible:outline-none",

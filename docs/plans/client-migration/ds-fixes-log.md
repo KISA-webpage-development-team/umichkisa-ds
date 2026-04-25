@@ -29,6 +29,10 @@ Accumulator for DS fixes made during client migration. Grouped by package, entri
 - **[Phase 2.11.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.10 → 1.0.11` (patch) — ships the corrected outer-section fix — 2026-04-25
 - **[Phase 2 / post-2.11]** Toaster z-index: 1.0.11 set `position: fixed` on the outer `<section>` (creates a new stacking context) but no `z-index`, so sonner's inner `[data-sonner-toaster]{z-index:999999999}` was isolated to the wrapper — outer stacked at `z-auto` against page chrome, letting the docs-app header overlap toasts. Added `z-index: 999999999` to the outer-section override (commit 6b036bc). Caught while testing toasts in the docs app post-2.11. — 2026-04-25
 - **[Phase 2.11.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.11 → 1.0.12` (patch) — ships the Toaster z-index fix — 2026-04-25
+- **[Phase 2.11b]** Dialog scrollable body + sticky footer pattern: DialogContent had no max-height and no flex layout, so tall form dialogs (PochaFormDialog with growing menu list) overflowed viewport and lost the sticky-footer pattern entirely. Added `flex max-h-full flex-col overflow-hidden` to DialogContent root (commit 380115d). `max-h-full` resolves against the outer overlay wrapper's `p-4` to ~`100vh - 2rem` — no arbitrary values. Default short dialogs (sm/md) unaffected — 2026-04-25
+- **[Phase 2.11b.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.12 → 1.0.13` (patch) — ships the Dialog scrollable-body fix — 2026-04-25
+- **[Phase 2.11b]** Dialog gap regression: 1.0.13's `flex flex-col` dropped native block margins from DialogContent children, causing a too-tight visual stack between DialogTitle / body / DialogFooter. Added `gap-4` (Component tier) to DialogContent root. Restores breathing room for ALL dialog consumers — 2026-04-25
+- **[Phase 2.11b.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.13 → 1.0.14` (patch) — ships the Dialog gap-4 fix — 2026-04-25
 
 ## @umichkisa-ds/form
 
