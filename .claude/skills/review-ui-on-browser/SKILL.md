@@ -1,9 +1,12 @@
 ---
 name: review-ui-on-browser
-description: Visual UI/UX review of a running localhost dev server using Playwright CLI. Use when the user wants Claude to look at the actual rendered UI on the browser (not just static code) and produce findings on hierarchy, spacing, primary action visibility, loading/empty/error states, and content readability. Manually invoked — not wired into autonomous routines.
+description: Visual UI/UX review of a running dev server using the playwright-cli skill. Use when the user wants Claude to look at the actual rendered UI on the browser (not just static code) and produce findings on hierarchy, spacing, primary action visibility, loading/empty/error states, and content readability. Manually invoked — not wired into autonomous routines.
+allowed-tools: Bash(playwright-cli:*) Bash(npx:*) Bash(npm:*)
 ---
 
 # Review UI On Browser
+
+> This skill drives the browser through the sibling **`playwright-cli`** skill (Microsoft's `@playwright/cli`, https://github.com/microsoft/playwright-cli). See `.claude/skills/playwright-cli/SKILL.md` for the full command reference. This file describes only the review workflow on top of those commands.
 
 ## When to invoke
 
@@ -15,27 +18,32 @@ NOT invoked from:
 - `ds-client-constrained-execution` skill (intentional — Vercel preview auth + per-branch URL constraints make this impractical for autonomous use)
 - Autonomous nightly routine (same)
 
-## Prerequisites (one-time setup on the user's Mac)
+## Prerequisites (one-time setup)
+
+`playwright-cli` must be installed. Defer to the `playwright-cli` skill's own install section. Quick check:
 
 ```bash
-# In ANY directory — Playwright manages its own browser binaries:
-npx playwright install chromium
+npx --no-install playwright-cli --version              # check CLI
+npm install -g @playwright/cli@latest                  # install CLI if missing
+npx playwright-cli install-browser chrome-for-testing  # install browser binary (~92 MB, one-time)
 ```
 
-This downloads the Chromium browser binary (~150MB, ~2 min). Once installed, subsequent invocations skip this step.
+The CLI install does NOT bring the browser binary. The first `open --browser=chromium` will fail with `Browser "chrome-for-testing" is not installed` until `install-browser` is run.
+
+If either step is missing, fail early with the install instruction — do NOT silently install.
 
 ## Prerequisites (per invocation)
 
 The user must have:
 1. Checked out the branch they want to review
 2. Started the dev server (`cd ../KISA-website/client && npm run dev`)
-3. Confirmed the dev server is reachable at the URL they pass to the skill (default `http://localhost:3000`)
+3. Confirmed the dev server is reachable at the URL they pass to the skill (use the devtunnels URL the user provides — never `localhost`)
 
 The skill does NOT start the dev server. It assumes the running server.
 
 ## Inputs (the user tells the skill these)
 
-- **Base URL** (default `http://localhost:3000`)
+- **Base URL** (devtunnels URL the user provides, e.g., `https://vnw20xbg-3000.asse.devtunnels.ms`)
 - **Routes** to visit (e.g., `["/pocha/manage", "/pocha/manage/?dialog=open"]`)
 - **Key flows** (optional — descriptions like "open the create dialog, fill the info tab, switch to menu tab")
 - **Viewports** (default `[{ width: 1280, height: 800, label: "desktop" }, { width: 375, height: 812, label: "mobile" }]`)
@@ -43,15 +51,34 @@ The skill does NOT start the dev server. It assumes the running server.
 
 ## Process
 
-For each route × viewport combination:
+Use a single named session (`-s=review`) so all commands target the same browser instance. Open once, drive through all routes/viewports, close at the end.
 
-1. Launch a headless browser via `npx playwright`
-2. Navigate to `<baseURL><route>`
-3. Set viewport size
-4. Wait for `networkidle`
-5. Screenshot — save to `/tmp/review-ui-on-browser/<timestamp>/<route-slug>-<viewport-label>.png`
-6. Capture the accessibility tree (Playwright `page.accessibility.snapshot()`)
-7. If a flow is described, walk through it (click selectors, fill inputs) — screenshot at each step
+```bash
+# 1. Open the session (headless by default)
+playwright-cli -s=review open --browser=chromium
+
+# 2. For each route × viewport:
+playwright-cli -s=review goto <baseURL><route>
+playwright-cli -s=review resize 1280 800
+playwright-cli -s=review snapshot --filename=/tmp/review-ui-on-browser/<ts>/<slug>-desktop.yml
+playwright-cli -s=review screenshot --filename=/tmp/review-ui-on-browser/<ts>/<slug>-desktop.png
+playwright-cli -s=review resize 375 812
+playwright-cli -s=review snapshot --filename=/tmp/review-ui-on-browser/<ts>/<slug>-mobile.yml
+playwright-cli -s=review screenshot --filename=/tmp/review-ui-on-browser/<ts>/<slug>-mobile.png
+
+# 3. For each described flow: snapshot to get refs, then drive
+playwright-cli -s=review snapshot                         # read refs (e3, e15, …)
+playwright-cli -s=review click e15
+playwright-cli -s=review fill e7 "사장님"
+playwright-cli -s=review screenshot --filename=...-step-N.png
+
+# 4. Close
+playwright-cli -s=review close
+```
+
+The `playwright-cli snapshot` YAML is the accessibility tree with refs — that's both the a11y capture and the source of element refs for interaction.
+
+`playwright-cli` auto-stabilizes after each command, so explicit `networkidle` waits aren't needed. If a route does need an extra wait (e.g., post-mount async fetch), use `playwright-cli -s=review eval "..."` as the escape hatch.
 
 After captures, review every screenshot against the rubric below and return findings.
 
@@ -127,16 +154,18 @@ Result: PASS — no findings
 
 ## Implementation notes
 
-- Use `npx playwright codegen` patterns mentally; do not actually invoke codegen
-- Run Playwright in headless mode (`--headed` is for the user to debug, not for the skill)
-- Capture each screenshot as PNG
-- The screenshots are the primary artifact — text findings reference them with absolute paths so the user can open them
-- If `npx playwright install chromium` has not been run, fail early with the install instruction — do NOT silently install
-- Do not modify any client files. Do not run dev server. Do not commit anything.
+- Always use a single named session (`-s=review`) so `resize`, `snapshot`, `screenshot`, `click`, `fill` all hit the same browser instance. Close it at the end with `playwright-cli -s=review close`.
+- For element interaction, **always `snapshot` first** to get refs (`e3`, `e15`, …), then `click eN` / `fill eN "..."`. Don't guess refs — they're only valid relative to the most recent snapshot.
+- `playwright-cli` is headless by default — don't pass `--headed` (that's for the user to debug interactively, not for the skill).
+- Capture each screenshot as PNG via `--filename=...png`.
+- The screenshots are the primary artifact — text findings reference them with absolute paths so the user can open them.
+- Do not modify any client files. Do not start the dev server. Do not commit anything.
 
 ## Common pitfalls
 
-- Forgetting to wait for `networkidle` before screenshot → captures loading skeleton instead of loaded UI
-- Mixing up base URL with route — base URL is `http://localhost:3000`, route is `/pocha/manage`
-- Reviewing only desktop — always include mobile (375px) at minimum
-- Reporting findings without absolute screenshot paths — the user must be able to open the image to verify
+- Forgetting `-s=review` on a follow-up command → opens a fresh browser, loses session state.
+- Calling `click eN` without a fresh `snapshot` first → stale or wrong ref → wrong element clicked.
+- Using `localhost` URLs → use the devtunnels URL the user provides (per environment constraints).
+- Mixing up base URL with route — base URL is the devtunnels host, route is `/pocha/manage`.
+- Reviewing only desktop — always include mobile (375px) at minimum.
+- Reporting findings without absolute screenshot paths — the user must be able to open the image to verify.
