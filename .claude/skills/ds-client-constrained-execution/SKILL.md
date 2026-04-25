@@ -20,7 +20,7 @@ Client migration is **redesign + migration**, not mechanical retokenization. Whe
 
 Examples: `md:space-x-8` nav strip → ship Component-tier `space-x-4`; `rounded-lg` button → ship `rounded-md`; `text-gray-600` helper caption → ship `text-muted-foreground`.
 
-**Visibility rule — `text-muted-foreground` is NOT a default body color.** It is reserved for *genuinely secondary* content: captions, helper text, metadata, placeholder hints, timestamps. Anything the user **needs to read** — card values, list item labels, body paragraphs, form labels, descriptions users actually parse — stays `text-foreground`. Ask: "if this text went to 40% opacity, would the screen still be usable?" If no, it is primary content; keep `text-foreground`. Reflexively mapping every gray → `text-muted-foreground` produces unreadable card content. (Precedent: `feedback_intro_foreground.md` — intro paragraphs are primary content, never muted.)
+**Visibility rule — `text-muted-foreground` is NOT a default body color.** Reserve it for genuinely secondary content (captions, helper text, metadata, timestamps). Anything the user needs to read stays `text-foreground`. Test: if this text went to 40% opacity, would the screen still be usable? If no → primary, keep `text-foreground`.
 
 Implementer must record every such choice in the PR body under a `## Deviations from original` bullet list, so the reviewer can verify the DS reasoning (not just the rename).
 
