@@ -14,10 +14,6 @@ Manually, by the user, during:
 - **Mode C (PR review)** — after checking out the branch and starting the dev server, before merge approval, to catch visual issues a human reviewer might miss
 - **Mode D (interactive execution)** — after a UI-touching task completes, before `git commit`, to sanity-check the rendered result
 
-NOT invoked from:
-- `ds-client-constrained-execution` skill (intentional — Vercel preview auth + per-branch URL constraints make this impractical for autonomous use)
-- Autonomous nightly routine (same)
-
 ## Prerequisites (one-time setup)
 
 `playwright-cli` must be installed. Defer to the `playwright-cli` skill's own install section. Quick check:
@@ -41,9 +37,9 @@ The user must have:
 
 The skill does NOT start the dev server. It assumes the running server.
 
-## Inputs (the user tells the skill these)
+## Inputs (the user tells the skill these or the lane explains itself)
 
-- **Base URL** (devtunnels URL the user provides, e.g., `https://vnw20xbg-3000.asse.devtunnels.ms`)
+- **Base URL** (devtunnels URL the user provides, if not, default to `https://vnw20xbg-3000.asse.devtunnels.ms`)
 - **Routes** to visit (e.g., `["/pocha/manage", "/pocha/manage/?dialog=open"]`)
 - **Key flows** (optional — descriptions like "open the create dialog, fill the info tab, switch to menu tab")
 - **Viewports** (default `[{ width: 1280, height: 800, label: "desktop" }, { width: 375, height: 812, label: "mobile" }]`)
