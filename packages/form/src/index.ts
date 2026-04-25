@@ -7,6 +7,14 @@ export type { UseFormFieldReturn } from "./hooks/useFormField";
 export { useFormStatus } from "./hooks/useFormStatus";
 export type { UseFormStatusReturn } from "./hooks/useFormStatus";
 
+// Re-exports from react-hook-form. Consumers must import these from
+// `@umichkisa-ds/form` rather than `react-hook-form` directly so the
+// hook closes over the same RHF module instance the DS `<FormProvider>`
+// writes to. Without this re-export, a consumer that has its own copy of
+// `react-hook-form` in node_modules ends up reading from a different
+// React context and `useFormContext()` returns null.
+export { useFormContext } from "react-hook-form";
+
 export { Form } from "./components/Form";
 export type { FormProps } from "./components/Form";
 

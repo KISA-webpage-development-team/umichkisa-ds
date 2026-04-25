@@ -42,3 +42,6 @@ Accumulator for DS fixes made during client migration. Grouped by package, entri
 
 <!-- Entry format:
 - **[Phase N.M]** Brief description of fix (commit SHA) -->
+
+- **[Phase 2.19]** Re-export `useFormContext` from `@umichkisa-ds/form`. Without this, consumers that need cross-field validation triggers (e.g. PochaInfoFields wanting to call `trigger(["endDate","endTime"])` on start-field changes) had to import `useFormContext` from `react-hook-form` directly — which crashed at runtime because the consumer's RHF module instance is different from the DS form's bundled RHF instance, so `useFormContext()` reads from the wrong React context and returns null. Adding the re-export ensures consumers always close over the same RHF instance the DS `<FormProvider>` writes to. DS_CLIENT_USAGE.md updated to list the new re-export alongside `useForm` / `useFormField` / `useFormStatus`. Surfaced during Lane 2.19 P4 (cohesion-form-structure refactor) — 2026-04-25
+- **[Phase 2.19.bump, mid-phase]** Bump `@umichkisa-ds/form` `1.0.0 → 1.0.1` (patch) — ships the `useFormContext` re-export so Lane 2.19 P4 can be safely reinstated downstream — 2026-04-25

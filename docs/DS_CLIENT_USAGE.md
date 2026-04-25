@@ -80,7 +80,7 @@ Must: Use `Form.*` compound fields from `@umichkisa-ds/form` for all form contro
 Must: Use `useForm` from `@umichkisa-ds/form` to initialize form state — not `useForm` from `react-hook-form` directly. [source:DS_CODEBASE.md/form-wiring]
 Never: Use native `useState` for form field values or validation state in migrated forms — all form state goes through `useForm`. [source:grill-session/2026-04-12]
 Prefer: `useFormField` escape hatch only for custom controls not covered by `Form.*` compounds. [source:DS_CODEBASE.md/form-wiring]
-Never: Import `react-hook-form` directly — always use `@umichkisa-ds/form` re-exports (`useForm`, `useFormField`, `useFormStatus`). [source:grill-session/2026-04-12]
+Never: Import `react-hook-form` directly — always use `@umichkisa-ds/form` re-exports (`useForm`, `useFormField`, `useFormStatus`, `useFormContext`). [source:grill-session/2026-04-12]
 
 _Note: Validation strategy (zod + RHF resolver vs. RHF-native rules) is deferred to Phase -1.7. Rules will be added here once resolved._
 
