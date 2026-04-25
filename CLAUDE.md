@@ -33,10 +33,10 @@ Wait for user confirmation. NEVER execute without explicit go-ahead.
 
 | Mode | Load |
 |---|---|
-| A | `docs/plans/client-migration/HARNESS_DESIGN.md` (Per-Phase Internal Flow); `docs/plans/client-migration/AUTONOMOUS_PROTOCOL.md` §3 (issue template) |
-| B | `AUTONOMOUS_PROTOCOL.md` §3 (issue template), §4 (6-rule autonomous gate) |
-| C1 / C2 | `review-pr-queue` skill (handles its own loads) |
-| D | `ds-client-constrained-execution` skill (handles its own loads) |
+| A | `docs/plans/client-migration/HARNESS_DESIGN.md` (Per-Phase Internal Flow); `AUTONOMOUS_PROTOCOL.md` Part 2 (§5 issue template) |
+| B | `AUTONOMOUS_PROTOCOL.md` Part 2 (§5 issue template + §6 6-rule gate) |
+| C1 / C2 | `review-pr-queue` skill (handles its own loads); `AUTONOMOUS_PROTOCOL.md` §3 only if mode flow needs disambiguation |
+| D | `ds-client-constrained-execution` skill (handles its own loads); `AUTONOMOUS_PROTOCOL.md` §11 lane-state annotation |
 | E | `ds-phase-end-bump` skill; HARNESS_DESIGN.md "Phase close-out" section |
 
 `docs/DS_CODEBASE.md` is loaded only if the current task involves DS surface discovery (typically Mode A grill or Mode D when a new component is needed). Implementers in Mode D execution use `docs/DS_CLIENT_USAGE.md` instead.
