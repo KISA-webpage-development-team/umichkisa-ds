@@ -61,17 +61,16 @@ At every natural breakpoint (spec complete, phase complete, or context >= 70%), 
 
 Wait for the user's choice. Do not proceed automatically.
 
-### Wrapping up a merged PR
+### Wrapping up a merged PR / lane
 
-Invoke the `wrapping-up-pr` skill. It enforces the full atomic close-out sequence: merge → strip PR end-state labels → close linked issue → strip issue eligibility labels → unblock dependents → tick `docs/TODO.md` → post-merge sync. No step optional. Applies to single-PR merges, batch merges, the autonomous revision flow, and Mode D direct-push lanes.
+Invoke `wrapping-up-pr`.
 
 ### Closing a phase (Mode E)
 
-Phase-level close-out is a separate concern from per-PR close-out. Before ticking the parent phase entry in `docs/TODO.md`:
-1. All subphase entries already ticked (handled per-PR by `wrapping-up-pr`)
-2. `pnpm build` + `pnpm typecheck` — both must pass
-3. If `ds-fixes-log.md` has entries for the phase, invoke `ds-phase-end-bump` first
-4. Check off the parent phase entry
+1. All subphase entries already ticked (per-PR `wrapping-up-pr` handles those)
+2. `pnpm build` + `pnpm typecheck` pass
+3. If `ds-fixes-log.md` has phase entries, invoke `ds-phase-end-bump`
+4. Tick the parent phase entry
 
 ---
 

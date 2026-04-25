@@ -108,21 +108,15 @@ User says `#46` or "let's do UserInfo" → match to PR → route:
 
 | Bucket picked | Action |
 |---|---|
-| Skim-and-merge | Offer: "Review on GitHub? Or merge now?" On merge, invoke **`wrapping-up-pr`** skill. |
-| Needs live review | Enter Mode B flow: fetch PR diff, use `grill-me` (for decision PRs) or `ui-ux-pro-max` (for redesigns). Hand the PR number to the review flow. On eventual merge, invoke **`wrapping-up-pr`** skill. |
-| CI failing | Invoke `superpowers:systematic-debugging`; fetch CI logs via `gh run view`. |
-| Needs revision | Unusual to pick this (autonomous handles it). If user picks, offer to refine the revision request comment or flip back to live-edit. |
-| Routine errored | Invoke `superpowers:systematic-debugging`; fetch routine error context from PR body WIP notes. |
+| Skim-and-merge | Confirm intent → invoke `wrapping-up-pr` per PR |
+| Needs live review | Fetch diff; `grill-me` (decision) or `ui-ux-pro-max` (redesign); on eventual merge → `wrapping-up-pr` |
+| CI failing | `superpowers:systematic-debugging` + `gh run view` |
+| Needs revision | Refine revision comment or flip to live-edit (rare for user to pick) |
+| Routine errored | `superpowers:systematic-debugging` + PR body WIP notes |
 
-Always pass `--repo <owner/name>` to `gh pr view`, `gh pr diff`, `gh run view` etc. — the cwd-based default will hit the wrong repo for cross-repo PRs. Use `KISA-webpage-development-team/KISA-website-client` for `client#N` and `KISA-webpage-development-team/umichkisa-ds` for `ds#N`.
+Always pass `--repo <owner/name>` to all `gh` calls (cwd default hits the wrong repo for cross-repo PRs). Use `KISA-webpage-development-team/KISA-website-client` for `client#N`, `KISA-webpage-development-team/umichkisa-ds` for `ds#N`.
 
-**For any merge path** — single PR, batch skim-and-merge, or after live review — invoke the **`wrapping-up-pr`** skill. It enforces the full atomic close-out sequence (merge → strip labels → close issue → strip issue labels → unblock dependents → tick TODO.md → post-merge sync). Do not inline the merge ceremony here.
-
-For batch skim-and-merge:
-1. List the skim-and-merge bucket (both repos)
-2. Confirm once ("Merge 4 PRs: client#43, client#44, client#45, ds#112?")
-3. On yes, invoke `wrapping-up-pr` once per PR (the skill does NOT batch internally — each PR runs through all 7 steps)
-4. After all PRs are wrapped, the skill's post-merge sync (step 8) runs once per affected repo
+For batch skim-and-merge: confirm once ("Merge 4 PRs: ...?"), then invoke `wrapping-up-pr` per PR.
 
 ## Common Patterns
 

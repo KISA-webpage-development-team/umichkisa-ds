@@ -341,16 +341,7 @@ Mirror issue labels at PR open time. Add end-state label (`ready-for-review` / `
 
 Autonomous Claude opens PRs but never merges. You are the sole merge authority.
 
-**Merge + close-out flow:** invoke the **`wrapping-up-pr`** skill. It enforces the full atomic sequence — merge → strip PR end-state labels → close linked issue → strip issue eligibility labels → unblock dependents → tick `docs/TODO.md` → post-merge sync. No step optional.
-
-The skill handles every merge path:
-- Manual single-PR merge in Mode C
-- Mode C batch skim-and-merge
-- Autonomous routine's revision flow (§13) when a `needs-revision` PR re-opens as `ready-for-review`
-- Superseding PRs created after the original was auto-closed (e.g. stacked-branch base deleted); the skill closes the ORIGINAL issue against the superseding PR number
-- **Mode D interactive lanes** (direct push to `dev`, no PR) — same close-out steps, adapted
-
-See `.claude/skills/wrapping-up-pr/SKILL.md` for the full sequence and red flags.
+**Merge close-out:** invoke `wrapping-up-pr` for every merge path (single PR, batch, revision-flow auto-merge, superseding PR, Mode D direct push).
 
 ---
 
