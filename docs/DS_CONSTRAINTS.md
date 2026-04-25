@@ -4,6 +4,8 @@ _Populated during Step -1 (DS Documentation Review)._
 _This file is referenced by `docs/specs/component.md` and read at the start of every component session._
 _Each section is self-contained and designed to be injected as skill context in Step 4 (Component Skill)._
 
+**Scope:** These constraints govern `packages/web/` component code AND `apps/docs/` page/component code. Docs-only is not an excuse for raw utilities or off-grid spacing — apply the same scrutiny everywhere. The only documented exception is `font-mono` in docs-site components (see Typography > Fonts). For docs-page-specific authoring rhythm and content patterns, see `DOCS_APP_STYLE.md`.
+
 ---
 
 ## Colors
@@ -238,6 +240,8 @@ Must: Use `htmlFor` for native form elements (input, textarea). Use `aria-labell
 ## Documentation
 
 ### API Reference Tables
+
+Must: Every API reference table ships BOTH a desktop `<Table>` (`hidden md:block` wrapper) and a mobile `<TableMobileList>` (`block md:hidden` wrapper). Tables that ship desktop-only are incomplete — multi-column tables either overflow horizontally or shrink columns below readability on mobile. Reference: `apps/docs/app/foundation/layout/spacing/page.tsx`. [source:docs-app-review]
 
 Must: Required props (no `?` in TypeScript type, no default value) use an asterisk appended to the prop name — never `(required)` in the Default column. Pattern: `<InlineCode>propName<span aria-label="required">*</span></InlineCode>` (desktop) and `<strong>propName<span aria-label="required">*</span></strong>` (mobile). Default column shows `—` for required props. [source:required-prop-sweep/2026-04-11]
 Must: Tables containing required props must have a `<p className="type-caption mt-2 text-muted-foreground">* Required prop.</p>` caption after both the desktop Table and mobile TableMobileList. Omit when no props are required. [source:required-prop-sweep/2026-04-11]
