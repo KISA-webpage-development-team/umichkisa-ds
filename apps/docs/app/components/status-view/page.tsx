@@ -81,7 +81,8 @@ export default async function StatusViewPage() {
           StatusView fills its parent — the consumer controls the container
           size. For full-page status screens, pass{' '}
           <InlineCode>fullScreen</InlineCode>{' '}
-          to fill the viewport.
+          to cover the viewport (fixed, above any surrounding header/footer)
+          and center.
         </p>
       </Alert>
 
@@ -307,7 +308,7 @@ export default async function StatusViewPage() {
                 <TableCell><InlineCode>fullScreen</InlineCode></TableCell>
                 <TableCell><InlineCode>boolean</InlineCode></TableCell>
                 <TableCell><InlineCode>false</InlineCode></TableCell>
-                <TableCell>Fill the viewport and vertically center — for full-page status screens (error.tsx, auth gates, empty pages).</TableCell>
+                <TableCell>Cover the entire viewport (<InlineCode>fixed inset-0</InlineCode>, above page chrome) and center. Occludes any surrounding header/footer. Use for error.tsx, auth gates, empty pages.</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell><InlineCode>className</InlineCode></TableCell>
@@ -354,7 +355,7 @@ export default async function StatusViewPage() {
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>fullScreen</strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode> · default <InlineCode>false</InlineCode></span>
-              <span className="type-caption text-muted-foreground">Fill the viewport and vertically center — for full-page status screens.</span>
+              <span className="type-caption text-muted-foreground">Cover the entire viewport (<InlineCode>fixed inset-0</InlineCode>) and center. Occludes header/footer.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>

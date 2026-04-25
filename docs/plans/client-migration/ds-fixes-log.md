@@ -35,6 +35,8 @@ Accumulator for DS fixes made during client migration. Grouped by package, entri
 - **[Phase 2.11b.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.13 → 1.0.14` (patch) — ships the Dialog gap-4 fix — 2026-04-25
 - **[Phase 2.17]** StatusView: add `fullScreen` prop. When true, the outer container uses `min-h-screen` + flex-center to fill the viewport — for `error.tsx`, auth gates, and empty pages. Replaces the documented "wrap in `h-screen flex items-center justify-center`" boilerplate that recurs across every error/auth surface in the migration. Docs page updated (Alert, full-screen example, API table). Surfaced during Lane 2.17 live review of `(pocha)/pocha/error.tsx` (commit cd1b3e3) — 2026-04-25
 - **[Phase 2.17.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.15 → 1.0.16` (patch) — ships the StatusView `fullScreen` prop so Lane 2.17 + downstream pocha error/auth surfaces can deploy from registry — 2026-04-25
+- **[Phase 2.17]** StatusView `fullScreen` correction: 1.0.16 used `min-h-screen` which only fills the layout's content area (below the header), pushing the visual center down. Switched to `fixed inset-0 z-50 bg-background` so the StatusView covers the actual viewport regardless of parent layout, occluding header/footer. Caught during Lane 2.17 manage-page smoke (not-authorized state rendered visibly low). Docs page updated. — 2026-04-25
+- **[Phase 2.17.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.16 → 1.0.17` (patch) — ships the corrected `fullScreen` (fixed-inset) — 2026-04-25
 
 ## @umichkisa-ds/form
 

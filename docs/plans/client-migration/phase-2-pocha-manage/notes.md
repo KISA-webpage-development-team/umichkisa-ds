@@ -35,3 +35,7 @@ DS FIX: Tailwind v4 content-scan miss for DS source on client. The `data-[state=
 ## 2026-04-25 — Lane 2.17 DS fix: StatusView fullScreen prop
 
 DS FIX: StatusView only centered within its own box (`w-full h-full`), forcing every consumer to wrap in `<div className="h-screen flex items-center justify-center">` for full-page status screens. Recurs across `error.tsx`, auth gates, and empty pages on every migration phase. Added `fullScreen?: boolean` prop — when true, the outer container uses `min-h-screen` + flex-center directly. Docs page updated (Alert wording, full-screen example, API table entry). Bumped `@umichkisa-ds/web` 1.0.15 → 1.0.16 (commit cd1b3e3 fix; bump commit follows). Client `package.json` updated to 1.0.16. Phase 1 jobs/error.tsx left unchanged (carries the pre-prop pattern; back-fix deferred to a small follow-up).
+
+## 2026-04-25 — Lane 2.17 DS fix correction: StatusView fullScreen → fixed inset-0
+
+DS FIX (correction): 1.0.16's `fullScreen` used `min-h-screen` which only filled the layout's content area (below the header), so the StatusView visually sat below center. Switched to `fixed inset-0 z-50 bg-background` so StatusView covers the actual viewport regardless of parent layout — occludes any surrounding header/footer. User-caught during manage-page not-authorized smoke (screenshot showed StatusView low). Bumped `@umichkisa-ds/web` 1.0.16 → 1.0.17. Client `package.json` updated to 1.0.17.

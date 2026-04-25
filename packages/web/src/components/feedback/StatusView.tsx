@@ -22,7 +22,7 @@ export type StatusViewProps = {
   description?: string;
   /** Optional action area rendered below the description. */
   action?: ReactNode;
-  /** Fill the viewport and vertically center — for full-page status screens (error.tsx, auth gates, empty pages). */
+  /** Cover the entire viewport (fixed, above page chrome) and center — for full-page status screens (error.tsx, auth gates, empty pages). Occludes any surrounding header/footer. */
   fullScreen?: boolean;
   /** Applied to the outer wrapper div. */
   className?: string;
@@ -74,8 +74,10 @@ export function StatusView({
       role="status"
       aria-live="polite"
       className={cn(
-        "flex flex-col items-center justify-center w-full text-center px-4",
-        fullScreen ? "min-h-screen" : "h-full",
+        "flex flex-col items-center justify-center text-center px-4",
+        fullScreen
+          ? "fixed inset-0 z-50 bg-background"
+          : "w-full h-full",
         className
       )}
     >
