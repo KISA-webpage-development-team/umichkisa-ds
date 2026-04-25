@@ -48,14 +48,13 @@ const withActionCode = `import { StatusView, LinkButton, Button } from '@umichki
 
 const fullScreenCode = `import { StatusView, LinkButton } from '@umichkisa-ds/web'
 
-{/* Wrap StatusView in a full-viewport container */}
-<div className="h-screen flex items-center justify-center">
-  <StatusView
-    variant="not-found"
-    code="404"
-    action={<LinkButton href="/">홈페이지로 돌아가기</LinkButton>}
-  />
-</div>`
+{/* Pass fullScreen to fill the viewport — for error.tsx, auth gates, empty pages */}
+<StatusView
+  fullScreen
+  variant="not-found"
+  code="404"
+  action={<LinkButton href="/">홈페이지로 돌아가기</LinkButton>}
+/>`
 
 export default async function StatusViewPage() {
   const [allVariantsHighlighted, withCodeHighlighted, customIconHighlighted, withActionHighlighted, fullScreenHighlighted] = await Promise.all([
@@ -80,12 +79,9 @@ export default async function StatusViewPage() {
       <Alert variant="info" className="mb-8">
         <p className="type-body-sm text-foreground">
           StatusView fills its parent — the consumer controls the container
-          size. For full-page status screens, wrap it in a viewport-height
-          container (e.g.{' '}
-          <InlineCode>
-            h-screen
-          </InlineCode>
-          ).
+          size. For full-page status screens, pass{' '}
+          <InlineCode>fullScreen</InlineCode>{' '}
+          to fill the viewport.
         </p>
       </Alert>
 
@@ -174,11 +170,14 @@ export default async function StatusViewPage() {
       {/* Full-screen pattern */}
       <Heading as="h2">Full-screen pattern</Heading>
       <p className="type-body mb-2 text-foreground">
-        For a full-page status screen, wrap StatusView in a viewport-height
-        container.
+        Pass{' '}
+        <InlineCode>fullScreen</InlineCode>{' '}
+        for a full-page status screen — fills the viewport and vertically
+        centers. Use for{' '}
+        <InlineCode>error.tsx</InlineCode>, auth gates, and empty pages.
       </p>
       <p className="type-caption mb-2 text-muted-foreground">
-        Preview shown at fixed height — in real usage, <InlineCode>h-screen</InlineCode> fills the viewport.
+        Preview shown at fixed height — in real usage, fills the viewport.
       </p>
       <ComponentPreview code={fullScreenCode} highlightedCode={fullScreenHighlighted}>
         <div className="h-80 border border-border rounded-md w-full">
@@ -305,6 +304,12 @@ export default async function StatusViewPage() {
                 <TableCell>Optional action area below the description (button, link, etc.).</TableCell>
               </TableRow>
               <TableRow>
+                <TableCell><InlineCode>fullScreen</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
+                <TableCell>Fill the viewport and vertically center — for full-page status screens (error.tsx, auth gates, empty pages).</TableCell>
+              </TableRow>
+              <TableRow>
                 <TableCell><InlineCode>className</InlineCode></TableCell>
                 <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
@@ -345,6 +350,11 @@ export default async function StatusViewPage() {
               <span className="type-body-sm text-foreground"><strong>action</strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>ReactNode</InlineCode></span>
               <span className="type-caption text-muted-foreground">Optional action area below the description (button, link, etc.).</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>fullScreen</strong></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode> · default <InlineCode>false</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Fill the viewport and vertically center — for full-page status screens.</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>
