@@ -41,6 +41,8 @@ Accumulator for DS fixes made during client migration. Grouped by package, entri
 - **[Post-Phase-2 hotfix.bump]** Bump `@umichkisa-ds/web` `1.0.17 → 1.0.18` (patch) — ships the Input `min-w-0` fix; pocha-manage already in production, immediate bump per `mid-phase bump default` — 2026-04-25
 - **[Post-Phase-2 hotfix]** Input: add `appearance-none` alongside `min-w-0`. iOS WebKit ignores `min-w-0` for native `<input type="time">`/`type="date"` — the picker chrome enforces its own intrinsic min-width regardless of parent constraints. `appearance-none` strips the native widget rendering so the input actually respects `w-full`. Issue surfaced only on deployed Vercel build, not local dev (commit 16651b6) — 2026-04-25
 - **[Post-Phase-2 hotfix.bump]** Bump `@umichkisa-ds/web` `1.0.18 → 1.0.19` (patch) — ships the `appearance-none` follow-up — 2026-04-25
+- **[Post-Phase-2 hotfix]** Container: bake page padding into defaults — `px-4 md:px-6 lg:px-8` → `p-6 lg:p-12`. Container is positioned as the page shell, but consumers (DocsLayout, pocha-manage) were stacking outer padding/margin on top, producing inconsistent edges between root and inner pages. DocsLayout drops its `p-6 lg:p-12` wrapper; pocha-manage drops its `my-4 md:my-6 lg:my-10` Container override (commit 4011d2a) — 2026-04-25
+- **[Post-Phase-2 hotfix.bump]** Bump `@umichkisa-ds/web` `1.0.19 → 1.0.20` (patch) — ships the Container default-padding change — 2026-04-25
 
 ## @umichkisa-ds/form
 
