@@ -33,6 +33,8 @@ Accumulator for DS fixes made during client migration. Grouped by package, entri
 - **[Phase 2.11b.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.12 → 1.0.13` (patch) — ships the Dialog scrollable-body fix — 2026-04-25
 - **[Phase 2.11b]** Dialog gap regression: 1.0.13's `flex flex-col` dropped native block margins from DialogContent children, causing a too-tight visual stack between DialogTitle / body / DialogFooter. Added `gap-4` (Component tier) to DialogContent root. Restores breathing room for ALL dialog consumers — 2026-04-25
 - **[Phase 2.11b.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.13 → 1.0.14` (patch) — ships the Dialog gap-4 fix — 2026-04-25
+- **[Phase 2.17]** StatusView: add `fullScreen` prop. When true, the outer container uses `min-h-screen` + flex-center to fill the viewport — for `error.tsx`, auth gates, and empty pages. Replaces the documented "wrap in `h-screen flex items-center justify-center`" boilerplate that recurs across every error/auth surface in the migration. Docs page updated (Alert, full-screen example, API table). Surfaced during Lane 2.17 live review of `(pocha)/pocha/error.tsx` (commit cd1b3e3) — 2026-04-25
+- **[Phase 2.17.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.15 → 1.0.16` (patch) — ships the StatusView `fullScreen` prop so Lane 2.17 + downstream pocha error/auth surfaces can deploy from registry — 2026-04-25
 
 ## @umichkisa-ds/form
 
