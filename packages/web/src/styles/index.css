@@ -1,3 +1,12 @@
+/* ── Third-party CSS dependencies ────────────────────────────────── */
+/*
+ * sonner ships its own structural CSS (position: fixed on the toaster
+ * <section>, transition keyframes, etc.) that the DS Toaster wraps. Without
+ * this import, [data-sonner-toaster] has no positioning and the container
+ * flows in document order, adding a tall empty box at the bottom of the page.
+ */
+@import "sonner/dist/styles.css";
+
 /* ── Sejong Hospital font faces ──────────────────────────────────── */
 /*
  * Two distinct font-family names, each treated as font-weight:400.
