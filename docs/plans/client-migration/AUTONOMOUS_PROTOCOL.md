@@ -1,6 +1,13 @@
 # Autonomous Execution Protocol
 
-_Authoritative reference for the ds-client-migration autonomous execution harness. Loaded alongside `HARNESS_DESIGN.md`. Read at the start of any client-migration session — particularly Mode C (PR review) and Mode D (interactive execution) — per `CLAUDE.md` session protocol._
+_Authoritative reference for the ds-client-migration autonomous execution harness. Loaded alongside `HARNESS_DESIGN.md`. Read at the start of any client-migration session — particularly Modes C1/C2 (PR review) and Mode D (interactive execution) — per `CLAUDE.md` session protocol._
+
+> **For Claude:** This is operational reference. The cold-session protocol
+> in CLAUDE.md inlines the mode-detection logic from §10 — you do NOT need
+> to read this doc end-to-end on every session. Load specific sections
+> just-in-time per the mode you're in (Mode A → §3 + HARNESS phase flow;
+> Mode B → §3, §4; Mode C → `review-pr-queue` skill + §11; Mode D →
+> `ds-client-constrained-execution` skill; Mode E → §14 + HARNESS close-out).
 
 **Grill session:** 2026-04-17. All decisions locked in conversation; this doc is the artifact.
 
@@ -23,7 +30,7 @@ Guardrails exist to prevent: merging bad work, touching forbidden files, running
 | Actor | Role |
 |---|---|
 | You (Jioh In) | Audit author, plan author, label-gater, PR reviewer, merger, phase close-out |
-| Claude (interactive session) | Grill partner during audit/plan, lane executor in Mode D, PR reviewer in Mode B, debugger in Mode E |
+| Claude (interactive session) | Grill partner during audit/plan, lane executor in Mode D, PR reviewer in Modes C1/C2, debugger in Mode E |
 | Claude (autonomous routine) | Lane executor overnight, PR opener, `notes.md` appender, self-gated bailout |
 | GitHub | Issue queue, PR host, label-based state machine, CI runner, branch protector |
 
@@ -384,7 +391,12 @@ Phase 0.5 runs under this restricted scope. After 3 completed phases without an 
 
 ## 10. Cold-Session Modes (CLAUDE.md Session Protocol)
 
-When you start a Claude Code session and say "pick up the task," the cold-session protocol detects repo state and proposes one of five modes. You confirm; Claude proceeds.
+> **Detection logic now lives in `CLAUDE.md`.** This section remains as
+> the canonical reference for the modes themselves (mode flows, mode triggers).
+> The cold-session preflight in CLAUDE.md inlines the trigger-detection
+> rules so the session can route into a mode without reading this doc first.
+
+When you start a Claude Code session and say "pick up the task," the cold-session protocol detects repo state and proposes one of six modes (A, B, C1, C2, D, E). You confirm; Claude proceeds.
 
 ### Detection
 
@@ -404,9 +416,31 @@ On startup (post-HARNESS check and DS symlink check):
 |---|---|---|
 | **A. Audit writing** | `audit.md` missing | Grill-me session → write `audit.md` → wait for go-ahead |
 | **B. Plan writing + issue generation** | `audit.md` exists, `plan.md` missing | Grill (minor, as needed) → write `plan.md` → generate per-lane GitHub issues per §3 → apply labels → wait for go-ahead to enable routine |
-| **C. PR review** | Sitting PRs exist for phase | Invoke `review-pr-queue` skill (see §11) to group and present PRs; per-PR action per AP-Q3 matrix |
-| **D. Interactive execution** | `plan.md` exists, open `needs-interactive` issues without linked PRs, OR user overrides to execute live | Present wave lane menu (annotated per §12); user picks; worktree + `ds-client-constrained-execution` |
+| **C1. PR review — ready-to-merge** | Sitting PR(s); selected PR has neither `needs-decision` nor `needs-interactive` label, CI green | `review-pr-queue` → user picks → Claude `git fetch origin && git checkout <pr-branch>` in `../KISA-website/client/` (main clone) → Claude says "checked out, review when ready" and waits silently → user does local visual review → on "good" → `wrapping-up-pr`. If user gives feedback, see *Feedback during review* below. |
+| **C2. PR review — interactive/decision** | Sitting PR(s); selected PR has `needs-decision` or `needs-interactive` label | Same checkout flow as C1 → live discussion (grill-me / ui-ux-pro-max / systematic-debugging as needed) to resolve the pending question or judgment call → fix on branch → on "good" → `wrapping-up-pr`. |
+| **D. Interactive execution** | `plan.md` exists, open `needs-interactive` issues without linked PRs, OR user overrides to execute live | Present wave lane menu (annotated per §12); user picks; **create worktree off `dev` at `../KISA-website/client/.worktrees/<lane-id>/`** (nested, gitignored — keeps Mode D isolated from any parallel Mode C in the main clone) → `ds-client-constrained-execution`. |
 | **E. Phase close-out** | All lanes merged, phase marked ready | Check `ds-fixes-log.md` for phase entries; run `ds-phase-end-bump` if any; tick phase in TODO.md |
+
+#### Feedback during review (C1/C2)
+
+When the user gives feedback on a checked-out PR:
+
+- **Default — fix on the same branch.** Bugfixes, copy/styling tweaks, prop renames, single-file scope, anything inside the lane's stated audit scope. Commit and push to the same PR branch.
+- **Defer to a new lane** (propose, wait for confirm) when the fix:
+  - touches files outside the lane's audit scope, OR
+  - requires a DS change (then `ds-fix-during-migration` flow), OR
+  - adds a new feature/component not in the original lane.
+
+  Phrasing: "This feedback is out of scope for [lane-id] (reason: …). Defer to a new lane, or stretch this PR's scope?" Wait for explicit user choice.
+
+#### Parallel-terminal safety
+
+User may run Mode C and Mode D in different terminals at the same time. Isolation rule:
+
+- **Mode C uses the main client clone** (`../KISA-website/client/`) — checks out PR branches there. User reviews one PR at a time, so no internal collision.
+- **Mode D uses worktrees** under `../KISA-website/client/.worktrees/<lane-id>/`, always branched off `origin/dev`.
+
+This way the two modes never touch the same working directory.
 
 ### Protocol
 
@@ -435,14 +469,14 @@ When you start your daily availability window, this skill fetches all open auton
 ```markdown
 ### Today's PR queue (phase-0.5) — 5 open
 
-✅ **Skim-and-merge (3)** — CI green, no decisions pending
+✅ **Ready-to-merge / C1 (3)** — CI green, no decisions pending
 - [MECHANICAL] #43 [0.5.4a] Header cleanup — https://github.com/.../pull/43
 - [POLISH]     #44 [0.5.4f] MobileMenuButton — https://github.com/.../pull/44
 - [POLISH]     #45 [0.5.5]  Footer — https://github.com/.../pull/45
 
-🧐 **Needs live review (2)** — redesign, decision, or your comments
-- [REDESIGN]        #46 [0.5.4e] UserInfo (Avatar-only) — https://github.com/.../pull/46
-- [needs-decision]  #47 [0.5.4b] NavMenu (draft) — https://github.com/.../pull/47
+🧐 **Needs interactive review / C2 (2)** — `needs-decision` / `needs-interactive` label
+- [REDESIGN][needs-interactive]  #46 [0.5.4e] UserInfo (Avatar-only) — https://github.com/.../pull/46
+- [needs-decision]               #47 [0.5.4b] NavMenu (draft) — https://github.com/.../pull/47
     ↳ Question: "Should backdrop-blur be kept at 90% opacity or 80%?"
 
 ⚠️ **CI failing (0):** none
@@ -450,18 +484,19 @@ When you start your daily availability window, this skill fetches all open auton
 📝 **Needs revision (0):** none
 
 ---
-Pick a PR to start with, or say "skim and merge the ready ones" to batch-merge the green PRs.
+Pick a PR number to start with.
 ```
 
 ### Skill responsibilities
 
-1. Run `gh pr list` with phase + migration labels
-2. Classify each PR by labels and review state
-3. For `needs-decision` PRs, pull the question block from the PR body
-4. Present compact menu with URLs
-5. On user pick, hand off to appropriate flow:
-   - Skim-and-merge: open URL in browser (or offer `gh pr merge` command)
-   - Live review: enter Mode B flow (read diff, use grill-me / ui-ux-pro-max / systematic-debugging as needed)
+1. Run `gh pr list` with phase + migration labels.
+2. Classify each PR: `needs-decision` or `needs-interactive` label → C2; else CI-green → C1; CI-failing or `needs-revision` → separate buckets.
+3. For C2 PRs, pull the question block from the PR body.
+4. Present compact menu (numbers + URLs only — no "open in browser" or `gh pr merge` suggestions; user reviews locally).
+5. On user pick:
+   1. `cd ../KISA-website/client/ && git fetch origin && git checkout <pr-branch>` (main clone — Mode C never uses worktrees).
+   2. **C1:** print "Branch checked out at `<branch>` in `../KISA-website/client/`. Review when ready." Then wait silently. On user "good" → `wrapping-up-pr`. On feedback → apply *Feedback during review* rule (§10).
+   3. **C2:** print the same checkout confirmation, then surface the pending question / decision context and enter live discussion (grill-me / ui-ux-pro-max / systematic-debugging as needed).
 
 ### When invoked
 
@@ -633,6 +668,8 @@ Omission recovery: if plan-writing missed the mid-phase bump and the autonomous 
 | `ui-ux-pro-max` | Visual/design critique during live PR review |
 | `systematic-debugging` | Mode B `routine-errored` or complex CI-fail diagnosis |
 | `vercel-react-best-practices` | Final lane pass (per HARNESS) |
+| `toss-fe-review` agent | Per-task code-quality review (readability/predictability/cohesion/coupling), inserted between ds-client-review and typecheck |
+| `review-ui-on-browser` | Manual visual UI review via Playwright CLI on a running dev server. Used in Mode C (PR review) and Mode D (post-task) — never in autonomous routines |
 
 ---
 
