@@ -14,6 +14,15 @@ Drives task-by-task execution of client migration plans. Two modes based on each
 
 The main session only orchestrates, reviews, typechecks, and commits. Implementation and test-writing are dispatched to subagents.
 
+## Execution context
+
+This skill runs in two modes; the **invoker declares** which (no auto-detection):
+
+- **Live (default)** — interactive Mode D session at the keyboard. On unresolved BLOCKs after exhausted rounds, the orchestrator **stops and asks** the user how to proceed (the (a)/(b)/(c)/(d) prompts in each gate's "Hard stop" block).
+- **Autonomous** — nightly routine in a cloud VM (per `AUTONOMOUS_PROTOCOL.md` §6 Bailout). On unresolved BLOCKs, **never block the run.** Instead: convert the PR to draft, add `needs-decision` label, post a structured comment with the unresolved findings, append a one-liner to `notes.md`, and **move on to the next eligible lane.**
+
+The Toss FE Review and Final Review sections below each have an **Autonomous override** subsection. Honor it whenever the invoker has declared autonomous mode. DS-violation hard stop (in ds-client-review) follows the same override: bailout-to-draft instead of stop-and-ask.
+
 ## Redesign over Preserve
 
 Client migration is **redesign + migration**, not mechanical retokenization. When the original UI conflicts with `DS_CLIENT_USAGE.md`, the executor **must pick the DS-canonical choice**, not preserve the original value.
@@ -123,6 +132,8 @@ Output: structured `VIOLATION N / File / Rule / Violation / Fix` blocks ending w
 
 Wait for explicit instruction.
 
+**Autonomous override:** open the PR as **draft**, add label `needs-decision`, post a comment headed `## DS Client Review — unresolved violations after 2 rounds` with each `file:line + quoted rule + fix`, append a one-liner to the phase's `notes.md`, then move on to the next eligible lane. Do not stop the run.
+
 ## Toss FE Review
 
 After ds-client-review passes (no violations), and before typecheck (NO-TDD) or tests-green-verify (TDD), invoke the `toss-fe-review` agent. Pass: each changed `.tsx` file inline, optionally adjacent files for context (parents, hook callers, siblings) when referenced non-trivially, and instruction to return structured findings. The agent reads its own rubric — do not paste rules inline.
@@ -136,11 +147,21 @@ After ds-client-review passes (no violations), and before typecheck (NO-TDD) or 
 
 Wait for explicit instruction.
 
-**SUGGEST / INFO collection:** Append SUGGEST findings to a `## Toss FE notes` section in the PR body under each lane's commit. INFO findings are not surfaced.
+**Autonomous override:** open the PR as **draft**, add label `needs-decision`, post a comment headed `## Toss FE — unresolved BLOCK after 2 rounds` with each remaining BLOCK (file:line + finding + suggested fix), append a one-liner to the phase's `notes.md`, then move on to the next eligible lane. Do not stop the run.
+
+**SUGGEST / INFO collection:** Append SUGGEST findings to a `## Toss FE notes` section in the PR body under each lane's commit. INFO findings are not surfaced. (Autonomous mode unchanged — these never block.)
 
 ## Final Review
 
-After all tasks pass both review gates, invoke the `vercel-react-best-practices` skill for a final code quality pass. Then proceed to the plan's session-end checklist.
+After all tasks pass both review gates, invoke the `vercel-react-best-practices` skill for a final code quality pass.
+
+**Severity contract** (mirrors Toss):
+- BLOCK-equivalent findings → live: stop and ask the user; autonomous: see override below
+- SUGGEST/INFO → append to `## Final review notes` section in the PR body; do NOT re-dispatch
+
+**Autonomous override:** if the final review surfaces BLOCK-equivalent findings, open the PR as **draft**, add label `needs-decision`, post a comment headed `## Final Review (vercel-react-best-practices) — flagged` with each finding (file:line + issue + suggested fix), append a one-liner to the phase's `notes.md`, then move on to the next eligible lane. Do not stop the run.
+
+Then proceed to the plan's session-end checklist.
 
 ## Common Mistakes
 
