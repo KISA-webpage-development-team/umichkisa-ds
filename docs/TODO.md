@@ -46,7 +46,7 @@
 - [x] Phase 2.12: PochaMenuFields redesign (autonomous) — dev 576aefd (#110)
 - [x] Phase 2.13: PochaMenuItemList redesign — delete Dialog (autonomous) — dev 94c9c9a (#111)
 - [x] Phase 2.14: PochaMenuItemForm modal shell → DS Dialog (autonomous) — dev b659629 (#113)
-- [ ] Phase 2.15: PochaMenuItemForm fields → @umichkisa-ds/form (autonomous)
+- [x] Phase 2.15: PochaMenuItemForm fields → @umichkisa-ds/form (autonomous) — dev 9129c03 (Mode D direct push)
 - [ ] Phase 2.16: PochaMenuItemForm FileUpload integration (interactive)
 - [ ] Phase 2.17: Page shell + legacy ui swap (autonomous)
 - [ ] Phase 2.19: Audit-after redesign pass (interactive)
