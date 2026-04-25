@@ -131,14 +131,17 @@ The user prefers to be challenged on assumptions rather than presented with a pr
 
 ---
 
-## Client Gate Tooling (created in Phase -1)
+## Client Gate Tooling
 
 | Artifact | Purpose |
 |---|---|
-| `docs/DS_CLIENT_USAGE.md` | Consumer-side constraint doc (what client code must/must-not do when consuming DS) |
-| `ds-client-review` agent | Reviews client `.tsx` against `DS_CLIENT_USAGE.md`, returns violations |
-| `ds-client-constrained-execution` skill | One skill, two modes (`[TDD]`/`[NO-TDD]`). Dispatches implementer + test-writer subagents, gates with ds-client-review, typechecks, commits. TDD mode modeled after `superpowers/skills/test-driven-development`. |
+| `docs/DS_CLIENT_USAGE.md` | Consumer-side constraint doc. Part 1 = write-time decision tree (implementer-facing); Part 2 = review-time rulebook (reviewer-facing). |
+| `ds-client-review` agent | Reviews client `.tsx` against `DS_CLIENT_USAGE.md`, returns violations. Reads its own ruleset (no caller paste). |
+| `toss-fe-review` agent | Per-task code-quality reviewer (readability / predictability / cohesion / coupling). BLOCK / SUGGEST / INFO severity gate; conservative defaults to avoid over-refactor. |
+| `ds-client-constrained-execution` skill | One skill, two modes (`[TDD]`/`[NO-TDD]`). Dispatches implementer + test-writer subagents, gates with `ds-client-review` then `toss-fe-review`, typechecks, commits. End-of-feature pass: `vercel-react-best-practices`. |
+| `review-ui-on-browser` skill | Manual visual UI/UX review via Playwright CLI on a running dev server. Used in Mode C (PR review) or Mode D (post-task) — never in autonomous routines. |
 | `ds-fix-during-migration` skill | Codifies the mid-phase DS bug-fix flow: pause client → fix DS → verify via symlink → accumulate for phase-end bump |
+| `ds-phase-end-bump` skill | Phase close-out + mid-phase pre-consume bump: bump DS package version, tag, publish, update client pin |
 | `client/scripts/link-ds.sh` | Re-establishes `npm link` for `@umichkisa-ds/web` + `@umichkisa-ds/form` |
 
 ### Why separate from existing DS tooling
