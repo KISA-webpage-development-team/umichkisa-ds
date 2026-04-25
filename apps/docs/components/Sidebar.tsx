@@ -117,9 +117,11 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                   <div className="ml-3 mt-3 flex flex-col gap-5">
                     {SECTIONS[s.key].map((cat, catIdx) => (
                       <div key={`${catIdx}-${cat.label}`}>
-                        <span className="block type-body-lg !font-sejong-bold text-foreground mb-2 px-3">
-                          {cat.label}
-                        </span>
+                        {cat.label !== s.label && (
+                          <span className="block type-body-lg !font-sejong-bold text-foreground mb-2 px-3">
+                            {cat.label}
+                          </span>
+                        )}
                         <div className="ml-2 flex flex-col gap-1">
                           {cat.items.map((item) => {
                             const isActive = pathname === item.href
