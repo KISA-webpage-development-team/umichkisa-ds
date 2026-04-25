@@ -10,6 +10,75 @@ _For author-side rules (building DS components), see `DS_CONSTRAINTS.md`._
 
 _Read this BEFORE writing any line of client code that touches UI. Implementers: this is your write-time cheat sheet. Reviewers: skip to Part 2 — Review-Time Rulebook below._
 
+### Available DS Surface (quick-ref)
+
+For complete details, see `DS_CODEBASE.md`. This subset covers the surface most lanes need.
+
+**Components (`@umichkisa-ds/web`):**
+- Layout: `Container`, `Grid`, `Card` (+ `CardHeader`, `CardContent`, `CardFooter`, `CardTitle`, `CardDescription`)
+- Surfaces / overlays: `Dialog`, `Dropdown`, `Popover`, `Tooltip`
+- Inputs (raw — prefer `Form.*` from form package): `Button`, `IconButton`, `LinkButton`, `Badge`, `Avatar`
+- Feedback: `StatusView` (variants: `not-authorized`, `not-found`, `not-logged-in`, `error`, `loading`; `fullScreen` prop), `Alert` (variants: `success`, `warning`, `error`, `info`), `LoadingSpinner`, `Skeleton`
+- Navigation: `Tabs` (+ `TabsList`, `TabsTrigger`, `TabsContent`), `Accordion`, `Pagination`, `ToggleGroup`
+- Display: `Table` (+ `TableMobileList`), `Divider`
+- Date: `Calendar`, `DatePicker`, `DateRangePicker`
+- Toast: `Toaster` (mount once at root), `toast()` from `@umichkisa-ds/web`
+- Utilities: `cn()`, `Icon`, `OnlyMobileView`
+
+**Form components (`@umichkisa-ds/form`):**
+- Compounds: `Form.Input`, `Form.Textarea`, `Form.Select`, `Form.Checkbox`, `Form.Radio`, `Form.Switch`, `Form.Button`, `Form.DatePicker`, `Form.DateRangePicker`
+- Hooks: `useForm`, `useFormField`, `useFormStatus`, `useFormContext`
+
+**Token classes (Tailwind v4 @theme):**
+- Color: `text-foreground`, `text-muted-foreground`, `text-disabled-foreground`, `text-link`, `bg-surface`, `bg-surface-muted`, `bg-surface-subtle`, `bg-brand-primary`, `bg-brand-accent`, `bg-brand-accent-subtle`, `border-border`, `border-border-strong`, `border-brand-primary`, plus status: `bg-success`, `bg-warning`, `bg-error`, `bg-info` (and `*-subtle` variants)
+- Typography: `type-display`, `type-h1`, `type-h2`, `type-h3`, `type-body`, `type-body-sm`, `type-label`, `type-caption`
+- Spacing tiers: `gap-2` / `gap-4` / `gap-6` (Element / Component / Section)
+- Radius: `rounded-md`, `rounded-lg`, `rounded-full`
+- Breakpoints: default, `md:`, `lg:` only
+
+**Icons:**
+- `<Icon name="..." size="xs|sm|md|lg|xl" />` from `@umichkisa-ds/web`. Registry: `packages/web/src/components/icon/registry.ts`. If a name is missing, use `ds-fix-during-migration`.
+
+### Tier Picker (write-time check)
+
+Before writing any spacing / color / radius / text / icon-size value, identify its tier and pick the canonical token. If you cannot tier-justify a value, do not write it — flag it and ask.
+
+**Spacing (gap, padding, margin):**
+- Element tier (8px) → `gap-2`, `space-x-2`, `p-2` — icon+text, button+icon, tag clusters, inline groups
+- Component tier (16px) → `gap-4`, `space-y-4`, `p-4` — between sibling components inside a feature, list items, stacked form fields, card internals
+- Section tier (24px) → `gap-6`, `space-y-6`, `p-6` — between major page sections, page-level container padding
+- Off-tier (gap-3, gap-5, gap-7) → only inside a single component's internal layout (e.g., `p-3` on a chip is fine; `gap-3` between siblings is wrong)
+
+**Color (text):**
+- Primary content → `text-foreground` (body, labels users read, card values, headers)
+- Genuinely secondary → `text-muted-foreground` (captions, helper text, metadata, timestamps, placeholder hints)
+- Test: "if this text went to 40% opacity, would the screen still be usable?" If no, it's primary; keep `text-foreground`.
+
+**Color (background / border):**
+- Surfaces → `bg-surface` (cards), `bg-surface-subtle` (subtle blocks)
+- Brand → `bg-brand-primary`, `bg-brand-accent`, `bg-brand-accent-subtle`
+- Status (Badge/Alert) → `bg-success`, `bg-warning`, `bg-error`, `bg-info` (or use semantic variants on DS components)
+- Borders → `border-border` (default), `border-border-strong` (emphasized), `border-brand-primary` (brand emphasis)
+
+**Radius:**
+- `rounded-md` → buttons, inputs, cards (default DS)
+- `rounded-lg` → modals, larger surfaces
+- `rounded-full` → avatars, pills
+- `rounded-xl` / `rounded-2xl` → only with explicit DS-surface justification
+
+**Typography:**
+- Display / hero → `type-display`
+- Headings → `type-h1`, `type-h2`, `type-h3`
+- Body → `type-body` (default), `type-body-sm` (compact)
+- Labels → `type-label` (form labels, button labels)
+- Captions → `type-caption` (metadata, timestamps, fine print)
+- Always pair with a color token (`type-*` does not set color).
+- Never override weight with `!font-*` — pick a different `type-*` class.
+
+**Icon size:**
+- 5-step scale: `xs` / `sm` / `md` / `lg` / `xl`
+- Never override with font-size utilities or arbitrary CSS.
+
 ---
 
 ## Part 2 — Review-Time Rulebook
