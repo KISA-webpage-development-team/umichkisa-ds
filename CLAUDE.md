@@ -1,9 +1,5 @@
 # umichkisa-ds — KISA Design System
 
-**NEVER execute without explicit user permission.** "What's next?" is a question, not a go-ahead.
-
----
-
 ## Session Protocol
 
 ### Cold-Session Startup
@@ -15,51 +11,9 @@
 3. **DS symlink check** (Phase 0+): `ls -la ../KISA-website/client/node_modules/@umichkisa-ds/web` — if not `->` symlink, run `bash ../KISA-website/client/scripts/link-ds.sh` (requires DS `dist/`; run `pnpm build` first if missing).
 4. Read `docs/DS_CODEBASE.md` → know what DS components are available
 
-**Branch on TODO entry type:**
+Derive phase folder: `docs/plans/client-migration/phase-<N>-<slug>/`. Subphases share the phase-root `audit.md` / `plan.md` / `notes.md` — no per-subphase subfolders.
 
-#### Phase kickoff entry (e.g., "Phase 1: jobs-curator (subphases added at kickoff)")
-
-A phase kickoff is just Mode A (audit) applied at the phase level — no separate kickoff artifact. Per `HARNESS_DESIGN.md`:
-
-- Derive folder path: `docs/plans/client-migration/phase-<N>-<slug>/`
-- Audit the target app/feature; identify subphases (one per feature/page/lane)
-- Write phase-level `audit.md` with subphase list + scope/TDD marks + phase-wide risks
-- Expand TODO.md — replace the kickoff entry with one `Phase N.M: <title>` entry per subphase
-- Tick the kickoff entry
-
-Next session picks up in Mode B (write `plan.md` with one `## Lane N.M` section per subphase, generate issues).
-
-#### Phase entry or subphase entry (e.g., "Phase 0.5: Shared layout" or "Phase 1.1: jobs list")
-
-Derive the phase folder path (e.g., `docs/plans/client-migration/phase-0.5-layout/` or `docs/plans/client-migration/phase-1-jobs-curator/`). All subphases of a phase share the same `audit.md`/`plan.md`/`notes.md` at the phase root — no per-subphase subfolders.
-
-**Detect mode by repo state:**
-
-- Does `audit.md` exist?
-- Does `plan.md` exist?
-- Any open PRs: `gh pr list --label ds-client-migration --label phase-<N> --state open`
-- Any open issues: `gh issue list --label ds-client-migration --label phase-<N> --state open`
-
-**Propose one of five modes, confirm with user:**
-
-| Mode | Trigger | Flow |
-|---|---|---|
-| **A. Audit writing** | `audit.md` missing | Invoke `grill-me`; walk the decision tree; write `audit.md`; wait for go-ahead |
-| **B. Plan writing + issue generation** | `audit.md` exists, `plan.md` missing | Grill lightly if needed; write `plan.md`; generate per-lane GitHub issues per `AUTONOMOUS_PROTOCOL.md` §3; apply labels per §2; wait for go-ahead |
-| **C. PR review** | Sitting PRs exist for the phase | Invoke `review-pr-queue` skill (see `AUTONOMOUS_PROTOCOL.md` §11); group PRs by review effort; per-PR action per §13 and AP-Q3 matrix |
-| **D. Interactive execution** | `plan.md` exists, open `needs-interactive` issues without linked PRs (or user overrides to execute live) | Present wave lane menu annotated with issue state per `AUTONOMOUS_PROTOCOL.md` §12; user picks; worktree + `ds-client-constrained-execution` |
-| **E. Phase close-out** | All lanes merged, phase ready to close | Check `ds-fixes-log.md`; run `ds-phase-end-bump` if DS fixes accumulated; tick phase in TODO.md |
-
-Claude detects state, proposes the most likely mode, and waits for user confirmation or redirect.
-
-### Natural Breakpoints
-At every natural breakpoint (spec complete, phase complete, or context >= 70%), stop and present:
-> Breakpoint reached. How would you like to proceed?
-> (a) Continue in this session
-> (b) Clear context — start a fresh session with clean slate
-> (c) Save and stop — come back later
-
-Wait for the user's choice. Do not proceed automatically.
+Detect repo state (`audit.md`/`plan.md` presence, open PRs/issues for `phase-<N>`), then propose one of five modes per `AUTONOMOUS_PROTOCOL.md` §10 (A audit / B plan + issues / C PR review / D interactive execute / E close-out). Confirm with user before proceeding.
 
 ### Wrapping up a merged PR / lane
 
