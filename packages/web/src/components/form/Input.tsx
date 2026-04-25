@@ -10,7 +10,7 @@ function Input({ invalid = false, className, type = "text", ...props }: InputPro
       type={type}
       aria-invalid={invalid}
       className={cn(
-        "w-full min-w-0 rounded-md border border-border-strong bg-surface px-3 py-2 type-body-sm text-foreground placeholder:text-muted-foreground transition-colors",
+        "w-full min-w-0 appearance-none rounded-md border border-border-strong bg-surface px-3 py-2 type-body-sm text-foreground placeholder:text-muted-foreground transition-colors",
         "focus-visible:outline-none focus-visible:border-brand-primary",
         "disabled:pointer-events-none disabled:text-disabled-foreground disabled:bg-surface-subtle",
         invalid && "border-error focus-visible:border-error",
