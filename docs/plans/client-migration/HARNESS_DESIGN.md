@@ -2,6 +2,11 @@
 
 Locked decisions from the grill session (2026-04-12). This is the authoritative reference for how the client migration runs. Read at the start of any migration session.
 
+> **For Claude:** This is a decisions reference doc, not a preflight load.
+> Consult on demand when (a) a harness decision is being challenged,
+> (b) a new phase is being planned, or (c) a mode-specific section is
+> referenced by a skill. Do NOT read end-to-end on every cold session.
+
 ---
 
 ## Slicing & Phases
@@ -51,9 +56,10 @@ All apps live under `umichkisa.com` in `../KISA-website/client/`.
 3. **Plan** — `writing-plans` skill produces `plan.md` with checkboxed tasks, each with a `**Files:**` section.
 
 4. **Execute** — `ds-client-constrained-execution` skill. One skill with two modes:
-   - `[NO-TDD]` tasks: implementer → ds-client-review → typecheck → commit
-   - `[TDD]` tasks: test-writer (red) → implementer (green) → ds-client-review → test verification → refactor → typecheck → commit
-   - Final pass: `vercel-react-best-practices` after all tasks complete
+   - `[NO-TDD]` tasks: implementer → ds-client-review → toss-fe-review → typecheck → commit
+   - `[TDD]` tasks: test-writer (red) → implementer (green) → ds-client-review → toss-fe-review → tests-green-verify → refactor → typecheck → commit
+   - Final pass after all tasks: `vercel-react-best-practices`
+   - Manual UI review: invoke `review-ui-on-browser` skill before merge for any UI-touching lane (run `npm run dev` first)
 
 5. **Verify** — manual via Vercel `dev`-branch preview URL (mocks on). Occasional chrome mcp on request.
 
