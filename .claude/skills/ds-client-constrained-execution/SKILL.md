@@ -162,8 +162,9 @@ After Step 1 of any task that touches `.tsx`, invoke the `ds-client-review` agen
 
 **What to pass in the agent prompt:**
 1. The full content of each changed `.tsx` file (paste inline)
-2. The full content of `docs/DS_CLIENT_USAGE.md` (paste inline)
-3. Instruction: return structured violations per the agent's output format
+2. Instruction: return structured violations per the agent's output format
+
+The agent reads `docs/DS_CLIENT_USAGE.md` itself — do not paste it inline.
 
 **Expected output — violations:**
 ```
