@@ -95,10 +95,10 @@ A condensed, write-time view of the Must rules from Part 2. Read Part 2 for full
 
 ### Visibility & Hierarchy Rules
 
-- **`text-muted-foreground` is NOT default body color.** Reserve for *genuinely secondary* content (captions, helper text, metadata, timestamps). Card values, list labels, body paragraphs, form labels stay `text-foreground`. [source:MEMORY/feedback]
-- **Intro paragraphs are primary content.** A page's lead paragraph or section intro is `text-foreground`, not muted. [source:MEMORY/feedback_intro_foreground]
-- **No left-border accent for selected state.** Use `bg-brand-accent-subtle border-brand-primary` (full border ring), not a `border-l-4` accent stripe. [source:MEMORY/feedback_no_left_border]
-- **No padding override on Card / CardContent / CardFooter.** Respect component defaults. If padding feels wrong, the Card is being misused for a non-card surface — pick a different DS component. [source:MEMORY/feedback_card_no_override]
+- **`text-muted-foreground` is NOT default body color.** Reserve for *genuinely secondary* content (captions, helper text, metadata, timestamps). Card values, list labels, body paragraphs, form labels stay `text-foreground`. Test: "if this text went to 40% opacity, would the screen still be usable?" If no, it's primary.
+- **Intro paragraphs are primary content.** A page's lead paragraph or section intro is `text-foreground`, not muted.
+- **No left-border accent for selected state.** Use `bg-brand-accent-subtle border-brand-primary` (full border ring), not a `border-l-4` accent stripe.
+- **No padding override on Card / CardContent / CardFooter.** Respect component defaults. If padding feels wrong, the Card is being misused for a non-card surface — pick a different DS component.
 
 ---
 
