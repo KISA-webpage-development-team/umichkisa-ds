@@ -23,6 +23,8 @@ Accumulator for DS fixes made during client migration. Grouped by package, entri
 - **[Phase 2.4]** Add `upload` icon (lucide `Upload`) to icon registry — needed by FileUpload empty-state trigger (commit 0c12cae) — 2026-04-24
 - **[Phase 2.4.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.8 → 1.0.9` (patch) — ships new FileUpload component + `upload` icon so Lane 2.16 can deploy from registry — 2026-04-24 — per `AUTONOMOUS_PROTOCOL.md` §14c
 - **[Phase 2.14, end-of-phase]** Dialog: add scrollable / bounded-height variant to `DialogContent` (e.g. `scrollable` prop or built-in `max-h` + `overflow-y-auto` for tall form-in-dialog flows). Surfaced during Lane 2.14 (PochaMenuItemForm) — consumer had to add `className="max-h-screen overflow-y-auto"` to keep the form scrollable on small viewports. Trivial; deferred to phase end (not mid-phase). **Follow-up after fix:** strip `max-h-screen overflow-y-auto` from `PochaMenuItemForm.tsx` `DialogContent` className. — 2026-04-25
+- **[Phase 2.11]** Toaster: import `sonner/dist/styles.css` from `packages/web/src/styles/index.css` so `[data-sonner-toaster]` gets `position: fixed`. Without this the toaster `<section>` flowed in document order and added a tall empty box to every page that mounts `<Toaster />` (caught while wiring it into `KISA-website-client/src/app/layout.tsx`) (commit 3fc7284) — 2026-04-25
+- **[Phase 2.11.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.9 → 1.0.10` (patch) — ships the Toaster CSS fix so Lane 2.11 can deploy from registry — 2026-04-25
 
 ## @umichkisa-ds/form
 

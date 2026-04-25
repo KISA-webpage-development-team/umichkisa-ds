@@ -13,3 +13,9 @@ Grill session locked the full redesign spec for `PreviousPochaList` + `PreviosPo
 - **Row interactive treatment**: always `<Card hoverable onClick … role="button" tabIndex={0}>` with keyboard `Enter`/`Space` handler. Selected state = `bg-brand-accent-subtle border-brand-primary` (no left-border accent per `feedback_no_left_border`).
 - **Cross-surface contract**: row component works unchanged on `/pocha/history` (list forwards parent's `onSelectPocha`); Dialog only renders on manage surface (when `!onSelectPocha`).
 - **Execution**: deferred to nightly autonomous routine (kept `autonomous-ready` label on #93 despite REDESIGN scope — spec is fully locked + concrete).
+
+## 2026-04-25 — Lane 2.11 (PochaForm orchestration) — DS fix mid-lane
+
+DS FIX: Toaster missing sonner CSS → flowing `<section>` added a tall gap on every page mounting `<Toaster />`. Imported `sonner/dist/styles.css` from `packages/web/src/styles/index.css`; bumped `@umichkisa-ds/web` 1.0.9 → 1.0.10 (commit 3fc7284). Client `package.json` updated to 1.0.10.
+
+Also reverted `usePocha` SWR conversion in lane 2.11 — single-consumer hook, SWR's cache-sharing benefits don't apply, and the inline arrow fetcher diverged from the codebase's `fetcher`/`fetcherWithToken` pattern. Hook now exposes `refetch()` instead; page wires it as `onSubmitSuccess` for both create + update form instances.
