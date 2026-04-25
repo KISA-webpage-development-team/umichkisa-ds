@@ -108,27 +108,21 @@ User says `#46` or "let's do UserInfo" → match to PR → route:
 
 | Bucket picked | Action |
 |---|---|
-| Skim-and-merge | Offer: "Review on GitHub? Or merge now via `gh pr merge <N> --squash --delete-branch`?" Hand off per user choice. |
-| Needs live review | Enter Mode B flow: fetch PR diff, use `grill-me` (for decision PRs) or `ui-ux-pro-max` (for redesigns). Hand the PR number to the review flow. |
+| Skim-and-merge | Offer: "Review on GitHub? Or merge now?" On merge, invoke **`wrapping-up-pr`** skill. |
+| Needs live review | Enter Mode B flow: fetch PR diff, use `grill-me` (for decision PRs) or `ui-ux-pro-max` (for redesigns). Hand the PR number to the review flow. On eventual merge, invoke **`wrapping-up-pr`** skill. |
 | CI failing | Invoke `superpowers:systematic-debugging`; fetch CI logs via `gh run view`. |
 | Needs revision | Unusual to pick this (autonomous handles it). If user picks, offer to refine the revision request comment or flip back to live-edit. |
 | Routine errored | Invoke `superpowers:systematic-debugging`; fetch routine error context from PR body WIP notes. |
 
-Always pass `--repo <owner/name>` to `gh pr view`, `gh pr merge`, `gh pr diff`, `gh run view` etc. — the cwd-based default will hit the wrong repo for cross-repo PRs. Use `KISA-webpage-development-team/KISA-website-client` for `client#N` and `KISA-webpage-development-team/umichkisa-ds` for `ds#N`.
+Always pass `--repo <owner/name>` to `gh pr view`, `gh pr diff`, `gh run view` etc. — the cwd-based default will hit the wrong repo for cross-repo PRs. Use `KISA-webpage-development-team/KISA-website-client` for `client#N` and `KISA-webpage-development-team/umichkisa-ds` for `ds#N`.
 
-For "skim and merge the ready ones" batch command — or ANY merge path including single-PR merges — follow the full `AUTONOMOUS_PROTOCOL.md` §8 flow, no step optional:
+**For any merge path** — single PR, batch skim-and-merge, or after live review — invoke the **`wrapping-up-pr`** skill. It enforces the full atomic close-out sequence (merge → strip labels → close issue → strip issue labels → unblock dependents → tick TODO.md → post-merge sync). Do not inline the merge ceremony here.
 
+For batch skim-and-merge:
 1. List the skim-and-merge bucket (both repos)
 2. Confirm once ("Merge 4 PRs: client#43, client#44, client#45, ds#112?")
-3. On yes, for each PR:
-   a. `gh pr merge <N> --repo <owner/name> --squash --delete-branch` (add `--admin` if base branch policy blocks; user pre-authorized for migration PRs)
-   b. **Strip end-state labels from the PR:** `ready-for-review`, `needs-revision`, `needs-decision`, `routine-errored` (whichever are present) — `gh pr edit <N> --repo <owner/name> --remove-label <label>`
-   c. **Close the linked issue** (PRs merge to `dev`, so GitHub auto-close does NOT fire — must close explicitly). Parse `Closes #M` / `Fixes #M` from PR body, then `gh issue close <M> --repo <owner/name> --reason completed --comment "Closed via #<N> (merged to dev)."`
-   d. **Strip issue eligibility labels:** `autonomous-ready`, `needs-interactive` (only meaningful for open work)
-4. After all merges, unblock dependents: `gh issue list --repo <same-repo> --label blocked-by:<merged-issue-#>` then remove that label from each dependent
-5. Report: "merged #<N>, closed #<M>, dependents unblocked: [...]" per PR
-
-**CRITICAL:** Steps 3b–3d are mandatory, not optional. Skipping them leaves stale labels and OPEN issues for merged work, breaking the Mode D pickup menu and dependent-unblock queries.
+3. On yes, invoke `wrapping-up-pr` once per PR (the skill does NOT batch internally — each PR runs through all 7 steps)
+4. After all PRs are wrapped, the skill's post-merge sync (step 8) runs once per affected repo
 
 ## Common Patterns
 
@@ -141,5 +135,5 @@ For "skim and merge the ready ones" batch command — or ANY merge path includin
 ## Related
 
 - Full review protocol: `docs/plans/client-migration/AUTONOMOUS_PROTOCOL.md` §11, §13
-- Merge + dependent-unblock: `AUTONOMOUS_PROTOCOL.md` §8
+- Merge close-out: `wrapping-up-pr` skill (delegated; AP §8 also delegates here)
 - PR type → review mode matrix: `AUTONOMOUS_PROTOCOL.md` §13 (AP-Q3)

@@ -61,20 +61,17 @@ At every natural breakpoint (spec complete, phase complete, or context >= 70%), 
 
 Wait for the user's choice. Do not proceed automatically.
 
-### Post-Merge Sync (after every PR merge)
+### Wrapping up a merged PR
 
-Non-optional — dev servers stay open and stale state causes confusing "unstaged changes" on next pull. For every repo with a merged PR in the session:
+Invoke the `wrapping-up-pr` skill. It enforces the full atomic close-out sequence: merge → strip PR end-state labels → close linked issue → strip issue eligibility labels → unblock dependents → tick `docs/TODO.md` → post-merge sync. No step optional. Applies to single-PR merges, batch merges, the autonomous revision flow, and Mode D direct-push lanes.
 
-1. `cd` into the repo (client = `../KISA-website/client/`, DS = this repo); `git checkout <base>` if not already (`dev` for client, `main` for DS).
-2. `git pull --ff-only`. On divergence, stop and show `git status` + `git log --oneline origin/<branch>..HEAD`; ask how to reconcile. Do NOT auto-merge or reset.
-3. Report one line per repo: "✅ `<repo>` `<branch>` up-to-date".
+### Closing a phase (Mode E)
 
-### Closing a task or phase
-
-Before ticking any entry in `docs/TODO.md`:
-1. `pnpm build` + `pnpm typecheck` — both must pass
-2. If closing a Phase 0+ entry with `ds-fixes-log.md` entries, invoke `ds-phase-end-bump` first
-3. Check off the item
+Phase-level close-out is a separate concern from per-PR close-out. Before ticking the parent phase entry in `docs/TODO.md`:
+1. All subphase entries already ticked (handled per-PR by `wrapping-up-pr`)
+2. `pnpm build` + `pnpm typecheck` — both must pass
+3. If `ds-fixes-log.md` has entries for the phase, invoke `ds-phase-end-bump` first
+4. Check off the parent phase entry
 
 ---
 

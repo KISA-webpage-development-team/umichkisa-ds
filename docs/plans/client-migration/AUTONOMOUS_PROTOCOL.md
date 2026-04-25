@@ -341,29 +341,16 @@ Mirror issue labels at PR open time. Add end-state label (`ready-for-review` / `
 
 Autonomous Claude opens PRs but never merges. You are the sole merge authority.
 
-**Merge + dependent unblock** (in Claude session, natural language):
+**Merge + close-out flow:** invoke the **`wrapping-up-pr`** skill. It enforces the full atomic sequence — merge → strip PR end-state labels → close linked issue → strip issue eligibility labels → unblock dependents → tick `docs/TODO.md` → post-merge sync. No step optional.
 
-When you say:
-> "merge PR #42 and unblock dependents"
+The skill handles every merge path:
+- Manual single-PR merge in Mode C
+- Mode C batch skim-and-merge
+- Autonomous routine's revision flow (§13) when a `needs-revision` PR re-opens as `ready-for-review`
+- Superseding PRs created after the original was auto-closed (e.g. stacked-branch base deleted); the skill closes the ORIGINAL issue against the superseding PR number
+- **Mode D interactive lanes** (direct push to `dev`, no PR) — same close-out steps, adapted
 
-Claude:
-1. `gh pr merge <N> --squash --delete-branch`
-2. **Strip end-state labels** from the merged PR — `ready-for-review`, `needs-revision`, `needs-decision`, `routine-errored` (only the ones actually present; safe to call with absent ones). Closed state is the new source of truth.
-3. **Identify the linked issue** via PR body (`Closes #M` / `Fixes #M`). Note: our PRs merge into `dev`, not the repo's default branch, so GitHub's auto-close-on-merge does **not** fire — the issue must be closed explicitly.
-4. **Close the linked issue** with a short comment referencing the merging PR:
-   `gh issue close <M> --comment "Closed via #<N> (merged to dev)."`
-5. **Strip stale eligibility labels** from the now-closed issue — `autonomous-ready`, `needs-interactive` (these only describe pickup eligibility for open work; they're misleading on a closed issue).
-6. `gh issue list --label blocked-by:<M>` — find dependents
-7. For each dependent: `gh issue edit <dep> --remove-label blocked-by:<M>`
-8. Report which dependents are now eligible, and confirm: "issue #<M> closed, labels stripped, dependents unblocked: [...]"
-
-This applies to **every merge path**, not just the natural-language flow above:
-- Manual `gh pr merge` from the terminal
-- Superseding PRs created after the original was auto-closed (e.g. stacked-branch base deleted); close the ORIGINAL issue against the superseding PR number
-- The autonomous routine's revision flow (§13) when a `needs-revision` PR re-opens as `ready-for-review`
-- PR-queue skim-and-merge in Mode C (§11)
-
-In all cases: merge → strip PR end-state labels → **close linked issue + strip issue eligibility labels** → unblock dependents. No step optional.
+See `.claude/skills/wrapping-up-pr/SKILL.md` for the full sequence and red flags.
 
 ---
 
