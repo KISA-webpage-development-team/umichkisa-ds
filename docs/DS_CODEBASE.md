@@ -1,5 +1,12 @@
 # DS_CODEBASE.md — Consumer Quick-Reference
 
+> **Implementers, read `docs/DS_CLIENT_USAGE.md` instead.** This doc is the
+> human-facing DS surface catalog used during planning / grill / discovery —
+> not the write-time enforcement doc. The `ds-client-review` agent and the
+> implementer subagent both read `DS_CLIENT_USAGE.md`, which has a Part 1
+> ("Available DS Surface" + tier picker + write-time rules) curated for
+> implementers and a Part 2 (full constraint rulebook) for the reviewer.
+
 Lookup table for AI agents consuming `@umichkisa-ds` in client apps. For each component: **when** to use it and **where** to read the full API. Read the source file before using any component.
 
 > Author-side DS internals (token tiers, font pipeline, docs infrastructure) → `docs/DS_AUTHORING.md`
