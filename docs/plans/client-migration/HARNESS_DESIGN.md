@@ -2,6 +2,11 @@
 
 Locked decisions from the grill session (2026-04-12). This is the authoritative reference for how the client migration runs. Read at the start of any migration session.
 
+> **For Claude:** This is a decisions reference doc, not a preflight load.
+> Consult on demand when (a) a harness decision is being challenged,
+> (b) a new phase is being planned, or (c) a mode-specific section is
+> referenced by a skill. Do NOT read end-to-end on every cold session.
+
 ---
 
 ## Slicing & Phases
@@ -51,9 +56,10 @@ All apps live under `umichkisa.com` in `../KISA-website/client/`.
 3. **Plan** — `writing-plans` skill produces `plan.md` with checkboxed tasks, each with a `**Files:**` section.
 
 4. **Execute** — `ds-client-constrained-execution` skill. One skill with two modes:
-   - `[NO-TDD]` tasks: implementer → ds-client-review → typecheck → commit
-   - `[TDD]` tasks: test-writer (red) → implementer (green) → ds-client-review → test verification → refactor → typecheck → commit
-   - Final pass: `vercel-react-best-practices` after all tasks complete
+   - `[NO-TDD]` tasks: implementer → ds-client-review → toss-fe-review → typecheck → commit
+   - `[TDD]` tasks: test-writer (red) → implementer (green) → ds-client-review → toss-fe-review → tests-green-verify → refactor → typecheck → commit
+   - Final pass after all tasks: `vercel-react-best-practices`
+   - Manual UI review: invoke `review-ui-on-browser` skill before merge for any UI-touching lane (run `npm run dev` first)
 
 5. **Verify** — manual via Vercel `dev`-branch preview URL (mocks on). Occasional chrome mcp on request.
 
@@ -125,14 +131,17 @@ The user prefers to be challenged on assumptions rather than presented with a pr
 
 ---
 
-## Client Gate Tooling (created in Phase -1)
+## Client Gate Tooling
 
 | Artifact | Purpose |
 |---|---|
-| `docs/DS_CLIENT_USAGE.md` | Consumer-side constraint doc (what client code must/must-not do when consuming DS) |
-| `ds-client-review` agent | Reviews client `.tsx` against `DS_CLIENT_USAGE.md`, returns violations |
-| `ds-client-constrained-execution` skill | One skill, two modes (`[TDD]`/`[NO-TDD]`). Dispatches implementer + test-writer subagents, gates with ds-client-review, typechecks, commits. TDD mode modeled after `superpowers/skills/test-driven-development`. |
+| `docs/DS_CLIENT_USAGE.md` | Consumer-side constraint doc. Part 1 = write-time decision tree (implementer-facing); Part 2 = review-time rulebook (reviewer-facing). |
+| `ds-client-review` agent | Reviews client `.tsx` against `DS_CLIENT_USAGE.md`, returns violations. Reads its own ruleset (no caller paste). |
+| `toss-fe-review` agent | Per-task code-quality reviewer (readability / predictability / cohesion / coupling). BLOCK / SUGGEST / INFO severity gate; conservative defaults to avoid over-refactor. |
+| `ds-client-constrained-execution` skill | One skill, two modes (`[TDD]`/`[NO-TDD]`). Dispatches implementer + test-writer subagents, gates with `ds-client-review` then `toss-fe-review`, typechecks, commits. End-of-feature pass: `vercel-react-best-practices`. |
+| `review-ui-on-browser` skill | Manual visual UI/UX review via Playwright CLI on a running dev server. Used in Mode C (PR review) or Mode D (post-task) — never in autonomous routines. |
 | `ds-fix-during-migration` skill | Codifies the mid-phase DS bug-fix flow: pause client → fix DS → verify via symlink → accumulate for phase-end bump |
+| `ds-phase-end-bump` skill | Phase close-out + mid-phase pre-consume bump: bump DS package version, tag, publish, update client pin |
 | `client/scripts/link-ds.sh` | Re-establishes `npm link` for `@umichkisa-ds/web` + `@umichkisa-ds/form` |
 
 ### Why separate from existing DS tooling

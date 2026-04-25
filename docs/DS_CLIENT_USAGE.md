@@ -6,14 +6,114 @@ _For author-side rules (building DS components), see `DS_CONSTRAINTS.md`._
 
 ---
 
-## Setup
+## Part 1 — Write-Time Decision Tree
 
-### CSS Entry Point
+_Read this BEFORE writing any line of client code that touches UI. Implementers: this is your write-time cheat sheet. Reviewers: skip to Part 2 — Review-Time Rulebook below._
+
+### Available DS Surface (quick-ref)
+
+For complete details, see `DS_CODEBASE.md`. This subset covers the surface most lanes need.
+
+**Components (`@umichkisa-ds/web`):**
+- Layout: `Container`, `Grid`, `Card` (+ `CardHeader`, `CardContent`, `CardFooter`, `CardTitle`, `CardDescription`)
+- Surfaces / overlays: `Dialog`, `Dropdown`, `Popover`, `Tooltip`
+- Inputs (raw — prefer `Form.*` from form package): `Button`, `IconButton`, `LinkButton`, `Badge`, `Avatar`
+- Feedback: `StatusView` (variants: `not-authorized`, `not-found`, `not-logged-in`, `error`, `loading`; `fullScreen` prop), `Alert` (variants: `success`, `warning`, `error`, `info`), `LoadingSpinner`, `Skeleton`
+- Navigation: `Tabs` (+ `TabsList`, `TabsTrigger`, `TabsContent`), `Accordion`, `Pagination`, `ToggleGroup`
+- Display: `Table` (+ `TableMobileList`), `Divider`
+- Date: `Calendar`, `DatePicker`, `DateRangePicker`
+- Toast: `Toaster` (mount once at root), `toast()` from `@umichkisa-ds/web`
+- Utilities: `cn()`, `Icon`, `OnlyMobileView`
+
+**Form components (`@umichkisa-ds/form`):**
+- Compounds: `Form.Input`, `Form.Textarea`, `Form.Select`, `Form.Checkbox`, `Form.Radio`, `Form.Switch`, `Form.Button`, `Form.DatePicker`, `Form.DateRangePicker`
+- Hooks: `useForm`, `useFormField`, `useFormStatus`, `useFormContext`
+
+**Token classes (Tailwind v4 @theme):**
+- Color: `text-foreground`, `text-muted-foreground`, `text-disabled-foreground`, `text-link`, `bg-surface`, `bg-surface-muted`, `bg-surface-subtle`, `bg-brand-primary`, `bg-brand-accent`, `bg-brand-accent-subtle`, `border-border`, `border-border-strong`, `border-brand-primary`, plus status: `bg-success`, `bg-warning`, `bg-error`, `bg-info` (and `*-subtle` variants)
+- Typography: `type-display`, `type-h1`, `type-h2`, `type-h3`, `type-body`, `type-body-sm`, `type-label`, `type-caption`
+- Spacing tiers: `gap-2` / `gap-4` / `gap-6` (Element / Component / Section)
+- Radius: `rounded-md`, `rounded-lg`, `rounded-full`
+- Breakpoints: default, `md:`, `lg:` only
+
+**Icons:**
+- `<Icon name="..." size="xs|sm|md|lg|xl" />` from `@umichkisa-ds/web`. Registry: `packages/web/src/components/icon/registry.ts`. If a name is missing, use `ds-fix-during-migration`.
+
+### Tier Picker (write-time check)
+
+Before writing any spacing / color / radius / text / icon-size value, identify its tier and pick the canonical token. If you cannot tier-justify a value, do not write it — flag it and ask.
+
+**Spacing (gap, padding, margin):**
+- Element tier (8px) → `gap-2`, `space-x-2`, `p-2` — icon+text, button+icon, tag clusters, inline groups
+- Component tier (16px) → `gap-4`, `space-y-4`, `p-4` — between sibling components inside a feature, list items, stacked form fields, card internals
+- Section tier (24px) → `gap-6`, `space-y-6`, `p-6` — between major page sections, page-level container padding
+- Off-tier (gap-3, gap-5, gap-7) → only inside a single component's internal layout (e.g., `p-3` on a chip is fine; `gap-3` between siblings is wrong)
+
+**Color (text):**
+- Primary content → `text-foreground` (body, labels users read, card values, headers)
+- Genuinely secondary → `text-muted-foreground` (captions, helper text, metadata, timestamps, placeholder hints)
+- Test: "if this text went to 40% opacity, would the screen still be usable?" If no, it's primary; keep `text-foreground`.
+
+**Color (background / border):**
+- Surfaces → `bg-surface` (cards), `bg-surface-subtle` (subtle blocks)
+- Brand → `bg-brand-primary`, `bg-brand-accent`, `bg-brand-accent-subtle`
+- Status (Badge/Alert) → `bg-success`, `bg-warning`, `bg-error`, `bg-info` (or use semantic variants on DS components)
+- Borders → `border-border` (default), `border-border-strong` (emphasized), `border-brand-primary` (brand emphasis)
+
+**Radius:**
+- `rounded-md` → buttons, inputs, cards (default DS)
+- `rounded-lg` → modals, larger surfaces
+- `rounded-full` → avatars, pills
+- `rounded-xl` / `rounded-2xl` → only with explicit DS-surface justification
+
+**Typography:**
+- Display / hero → `type-display`
+- Headings → `type-h1`, `type-h2`, `type-h3`
+- Body → `type-body` (default), `type-body-sm` (compact)
+- Labels → `type-label` (form labels, button labels)
+- Captions → `type-caption` (metadata, timestamps, fine print)
+- Always pair with a color token (`type-*` does not set color).
+- Never override weight with `!font-*` — pick a different `type-*` class.
+
+**Icon size:**
+- 5-step scale: `xs` / `sm` / `md` / `lg` / `xl`
+- Never override with font-size utilities or arbitrary CSS.
+
+### "What to Use" Rules (Must)
+
+A condensed, write-time view of the Must rules from Part 2. Read Part 2 for full context and source citations.
+
+- Use `Container` for page shells. Never compose `mx-auto max-w-screen-2xl px-4 ...` manually.
+- Use `Form.*` compounds + `useForm` from `@umichkisa-ds/form` for all forms. Never `useState` for form state.
+- Use `<Icon name="..." />` from `@umichkisa-ds/web` for all icons. Never `react-icons`, never direct `lucide-react`, never inline SVGs.
+- Use `cn()` from `@umichkisa-ds/web` for all className merging. Never raw `clsx` or string concatenation.
+- Use `StatusView` (variants + `fullScreen` prop) for full-page status. Never `<div className="h-screen flex items-center">` wrappers.
+- Use semantic Badge / Alert variants for status content (`success`, `warning`, `error`, `info`). Never `outline` for status.
+- Use breakpoints `default` / `md:` / `lg:` only. Never `sm:`, `xl:`, `2xl:`.
+- Use `type-*` classes paired with a color token. Never override with `!font-*`.
+- Cap inner content with `max-h-[…]` if a DS layout component (Dialog, Tabs, Form, Card) doesn't fit. Never apply `flex` / `overflow-*` to the DS component to force fill.
+
+### Visibility & Hierarchy Rules
+
+- **`text-muted-foreground` is NOT default body color.** Reserve for *genuinely secondary* content (captions, helper text, metadata, timestamps). Card values, list labels, body paragraphs, form labels stay `text-foreground`. Test: "if this text went to 40% opacity, would the screen still be usable?" If no, it's primary.
+- **Intro paragraphs are primary content.** A page's lead paragraph or section intro is `text-foreground`, not muted.
+- **No left-border accent for selected state.** Use `bg-brand-accent-subtle border-brand-primary` (full border ring), not a `border-l-4` accent stripe.
+- **No padding override on Card / CardContent / CardFooter.** Respect component defaults. If padding feels wrong, the Card is being misused for a non-card surface — pick a different DS component.
+
+---
+
+## Part 2 — Review-Time Rulebook
+
+_Full constraint taxonomy. The `ds-client-review` agent scans this end-to-end._
+
+### Setup
+
+#### CSS Entry Point
 
 Must: For Tailwind v4 consumers (the standard case — all current KISA apps), import `@umichkisa-ds/web/theme.css` in the app's Tailwind-processed CSS entry (e.g. `globals.css`). This re-exports the DS source so the consumer's own Tailwind build emits DS tokens + utilities + component classes against actual client usage. [source:phase-0-gap/2026-04-18]
 Never: Import `@umichkisa-ds/web/dist/styles.css` in a Tailwind v4 consumer. The precompiled bundle is tree-shaken against DS source only, so utilities like `bg-brand-primary`, `text-foreground`, `border-border-strong` used in the client's JSX resolve to nothing at runtime — silent visual breakage. Use `dist/styles.css` only from non-Tailwind consumers that can't compile the source. [source:phase-0-gap/2026-04-18]
 
-### Font Loading (Next.js)
+#### Font Loading (Next.js)
 
 Must: Load SejongHospital Bold and Light via `next/font/local`, using the exact CSS variable names `--font-sejong-bold` and `--font-sejong-light`, with `display: 'swap'`. Apply both `.variable` classes to the `<html>` element. This overrides the baseline `@font-face` from `styles.css` with preloaded, optimized fonts. [source:docs-app/foundation/typography/fonts]
 Must: Load Pretendard Variable via CDN — add `<link rel="preconnect" href="https://cdn.jsdelivr.net">` and the stylesheet link to `https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css` in the document `<head>`. [source:docs-app/foundation/typography/fonts]
@@ -22,13 +122,13 @@ Never: Load Geist Mono (`font-geist-mono`) in client apps — it is a documentat
 
 ---
 
-## Component Usage
+### Component Usage
 
 Must: Check `DS_CODEBASE.md` before building any local UI component — if a DS equivalent exists, use it. [source:HARNESS_DESIGN.md/missing-ds-components]
 Must: Use DS components directly by importing from `@umichkisa-ds/web` or `@umichkisa-ds/form`. [source:DS_CODEBASE.md/packages]
 Never: Wrap or re-export a DS component to add default props or rename it (e.g., no `MyButton` that re-exports `Button`). This creates a shadow component layer that drifts from the DS over time. [source:grill-session/2026-04-12]
 
-### Feedback & Status Components
+#### Feedback & Status Components
 
 Must: Replace legacy `@/components/ui/feedback` imports with DS equivalents when touching a file during migration. The legacy module is a shadow of DS feedback primitives and must be emptied over the course of the migration. [source:phase-2/lane-2.0 review, 2026-04-23]
 
@@ -42,29 +142,42 @@ Mapping:
 
 Never: Leave a legacy `@/components/ui/feedback` import in any file being migrated in the current lane — swap it in-lane even if the lane's primary scope is different. The only exception is when the lane's issue explicitly lists the swap as a non-goal (e.g., a page-shell lane defers feedback migration to a later legacy-ui-swap lane). [source:phase-2/lane-2.0 review, 2026-04-23]
 
+#### Status Variant Selection (G2)
+
+Must: When a `Badge`, `Alert`, or other DS feedback component expresses status, use the **semantic** variant — `success`, `warning`, `error`, `info` — not the neutral/outline variant.
+
+Status content includes: "available now" / "즉시 제공" → `success`; "age check required" / "연령 확인" → `warning`; error states → `error`; passive informational → `info`.
+
+`outline` / default neutral is for non-status content (categorical tags, generic labels).
+
+[source:phase-2/lane-2.11b smoke fix, commit 59462d4]
+
 ---
 
-## Styling
+### Styling
 
-### Tokens
+#### Tokens
 
 Must: Use DS semantic color tokens for all color values — `text-foreground`, `bg-surface`, `border-brand-primary`, etc. Never use raw hex values, raw OKLCH, or Tailwind's default color palette (`text-gray-500`). [source:DS_CONSTRAINTS.md/colors]
 Must: Use `type-*` semantic utility classes for all typography — never compose raw Tailwind utilities (`text-base font-normal leading-relaxed`). [source:DS_CONSTRAINTS.md/typography]
+Never: Override the weight of a `type-*` class with `!font-*` (e.g., `type-body !font-semibold`, `type-h2 !font-bold`). The `type-*` tier already bakes weight, font-family, and line-height. If a different weight is needed, pick a different `type-*` class — do not override. [source:MEMORY/feedback_type_weight_override; phase-2/lane-2.19 commit 09d2cd0 swept these out]
+
+Exception during migration: short-lived `!font-*` overrides may exist when the type-* tier doesn't yet expose the desired weight. Collect these as a DS gap (request a new `type-*` tier or a weight variant via `ds-fix-during-migration`); do not let them ship long-term.
 Must: Pair an explicit color token with every `type-*` class — `type-*` classes do not set color. [source:DS_CONSTRAINTS.md/typography]
 Never: Import font loaders directly from the client (e.g. `@/utils/fonts/textFonts` — `sejongHospitalBold`, `sejongHospitalLight`, `arial`, `heebo`, `montserrat`) and apply `.className` to elements. Font families are owned by the DS: `@font-face` + `--font-sejong-*` / `--font-pretendard` CSS variables are declared in `dist/styles.css`'s `@theme` block and consumed exclusively via `type-*` tokens (`type-h1`/`type-display` → Sejong Bold; `type-h2`/`type-h3`/`type-body*`/`type-label`/`type-caption` → Pretendard). The only legitimate direct use of `next/font/local` is at the app root for preloading/optimization (see "Font Loading (Next.js)" above) — not inline on component elements. During migration, strip any `sejongHospital*.className` / `heebo.className` / `montserrat.className` imports from lane files as you touch them. [source:client#80 Phase 1.2 review, 2026-04-21]
 
-### Class Utilities
+#### Class Utilities
 
 Must: Use `cn()` from `@umichkisa-ds/web` for all class merging — not raw `clsx`, `classnames`, or string concatenation. [source:DS_CODEBASE.md/utilities]
 Never: Use arbitrary Tailwind values (`px-[24px]`, `text-[#00274C]`, `mt-[13px]`). All spacing must come from Tailwind's built-in scale; all colors must come from DS semantic tokens. [source:DS_CONSTRAINTS.md/layout]
 
-### CSS Files
+#### CSS Files
 
 Never: Create new CSS modules or `.css` files for migrated components — use Tailwind utility classes with DS tokens. [source:grill-session/2026-04-12]
 
 ---
 
-## Icons
+### Icons
 
 Must: Use `<Icon name="...">` from `@umichkisa-ds/web` for all icons. [source:DS_CONSTRAINTS.md/iconography]
 Never: Import from `react-icons` — fully replaced by the DS icon system. [source:DS_CONSTRAINTS.md/iconography]
@@ -74,30 +187,40 @@ Must: Use the `size` prop from the 5-step scale (`xs`/`sm`/`md`/`lg`/`xl`) — n
 
 ---
 
-## Forms
+### Forms
 
 Must: Use `Form.*` compound fields from `@umichkisa-ds/form` for all form controls (`Form.Input`, `Form.Textarea`, `Form.Select`, `Form.Checkbox`, `Form.Radio`, `Form.Switch`, `Form.Button`). [source:DS_CODEBASE.md/form-wiring]
 Must: Use `useForm` from `@umichkisa-ds/form` to initialize form state — not `useForm` from `react-hook-form` directly. [source:DS_CODEBASE.md/form-wiring]
 Never: Use native `useState` for form field values or validation state in migrated forms — all form state goes through `useForm`. [source:grill-session/2026-04-12]
 Prefer: `useFormField` escape hatch only for custom controls not covered by `Form.*` compounds. [source:DS_CODEBASE.md/form-wiring]
-Never: Import `react-hook-form` directly — always use `@umichkisa-ds/form` re-exports (`useForm`, `useFormField`, `useFormStatus`, `useFormContext`). [source:grill-session/2026-04-12]
+Never: Import any RHF symbol (`useForm`, `useFormField`, `useFormStatus`, `useFormContext`, `useFormState`, `useWatch`, `Controller`) directly from `react-hook-form`. Always use `@umichkisa-ds/form` re-exports. The DS form package wraps `useForm` with `mode: "onTouched"` and other defaults; bypassing the wrapper produces inconsistent validation timing and breaks the DS form contract.
+
+If a hook you need is not yet re-exported by `@umichkisa-ds/form`, treat it as a DS gap and run `ds-fix-during-migration` to add the re-export — do not import from `react-hook-form` as a workaround. [source:phase-2/lane-2.19 — `useFormContext` was missing from `@umichkisa-ds/form`; required form 1.0.1 re-export commit 086c148]
 
 _Note: Validation strategy (zod + RHF resolver vs. RHF-native rules) is deferred to Phase -1.7. Rules will be added here once resolved._
 
 ---
 
-## Layout
+### Layout
 
 Must: Use `Container` from `@umichkisa-ds/web` for the page shell pattern — never manually compose `mx-auto w-full max-w-screen-2xl px-4 md:px-6 lg:px-8`. [source:DS_CONSTRAINTS.md/layout]
 Never: Nest `Container` components — each page region gets one `Container` at most. [source:DS_CONSTRAINTS.md/layout]
 Must: Follow the three-tier vertical spacing system — Element (`gap-2` / 8px), Component (`gap-4` / 16px), Section (`gap-6` / 24px). [source:DS_CONSTRAINTS.md/layout]
+
+**Tier-justify every spacing value before writing.** Spacing inside a single component (image+text inside a row, label+input inside a field, icon+text inside a chip) is **Component or Element tier** (`gap-2` / `gap-3` / `gap-4`), not Section tier. `gap-6`/`gap-8` are reserved for boundaries between major page sections. [source:phase-2/lane-2.11b smoke fix, commit 59462d4 — `gap-6` → `gap-4` correction on row internals]
+
+Write-time check (when picking a `gap-*` / `space-*` value):
+1. What is the role of the container? (page section / component-internal / inline)
+2. Is the chosen value the canonical tier value for that role? (8 / 16 / 24 px = `gap-2` / `gap-4` / `gap-6`)
+3. If you cannot answer (1) and (2) cleanly, do not write the value — ask.
+
 Must: Use only the three layout breakpoint tiers — default (mobile), `md:` (>= 768px), `lg:` (>= 1024px). Never use `sm:`, `xl:`, or `2xl:`. [source:DS_CONSTRAINTS.md/layout]
 
 ---
 
-## Local Components
+### Local Components
 
-### Decision Tree
+#### Decision Tree
 
 A component **stays local** in the client app if ANY of these are true:
 - It contains business logic (API calls, app state, routing)
@@ -111,13 +234,13 @@ A component **should be in DS** if ALL of these are true:
 
 [source:grill-session/2026-04-12, HARNESS_DESIGN.md/missing-ds-components]
 
-### Styling Rules for Local Components
+#### Styling Rules for Local Components
 
 Must: Local components follow the same DS token and styling rules as everything else — semantic colors, `type-*` classes, spacing tiers, `cn()` for class merging. Being local is not an excuse for raw utilities. [source:grill-session/2026-04-12]
 
 ---
 
-## className Passthrough
+### className Passthrough
 
 Prefer: Only pass layout and positioning classes via `className` on DS components — `mt-4`, `w-full`, `flex-1`, `hidden md:block`, etc. [source:grill-session/2026-04-12]
 Avoid: Overriding DS component internals via `className` (padding, font-size, color, border-radius). Frequent overrides signal that the DS component needs a new variant — collect these for DS fixes. [source:grill-session/2026-04-12]
@@ -125,7 +248,27 @@ Exception: When an app-specific override is genuinely necessary, add a comment e
 
 ---
 
-## Third-Party Libraries
+### DS Component Layout — Do Not Override (G1)
+
+Never: Add flex / overflow / height / max-height utility classes to a DS layout component (`Dialog`, `DialogContent`, `Tabs`, `TabsList`, `TabsContent`, `Form`, `Card`, `CardContent`, `CardFooter`, `Sheet`, `Drawer`) to force size or layout. The DS owns the layout pattern of these components — flex containers, gap spacing, overflow behavior. Adding `flex flex-1 overflow-hidden` to `<Tabs>` or `<Form>` to make them fill height is fighting the DS. [source:phase-2/lane-2.11b smoke fix, commit c4cea05]
+
+If a layout doesn't fit:
+- Cap inner content with `max-h-[60vh]` (or similar) on the inner content child (e.g., `<TabsContent>`), not on the outer DS layout component
+- If the cap doesn't solve it, the DS component is missing a variant — collect via `ds-fix-during-migration`
+
+Allowed (positioning passthrough): `mt-4`, `w-full`, `mx-auto`, `hidden md:block` on DS components — these are layout/positioning, not internal layout overrides.
+
+Disallowed examples (would have been caught here in Phase 2):
+- `<Tabs className="flex flex-1 flex-col overflow-hidden">` — overrides DS Tabs layout
+- `<Form className="flex flex-1 flex-col gap-4 overflow-hidden">` — overrides DS Form layout
+- `<DialogContent className="max-h-[90dvh] flex flex-col">` — DS Dialog now owns this; override is redundant
+
+Allowed:
+- `<TabsContent className="max-h-[60vh] overflow-y-auto">` — height cap on inner content, not on DS layout
+
+---
+
+### Third-Party Libraries
 
 Never: Import from `@radix-ui/*` directly for UI that DS already provides (Dialog, Dropdown, Popover, Accordion, etc.) — DS wraps Radix internally. [source:grill-session/2026-04-12]
 Never: Import from NextUI or HeroUI — fully replaced by DS. [source:grill-session/2026-04-12]
@@ -134,7 +277,7 @@ Exception: Domain-specific libraries with no DS equivalent (`@fullcalendar/react
 
 ---
 
-## Migration-Specific
+### Migration-Specific
 
 _Temporary rules for the client migration (Phases 0–5). Remove this section post-migration._
 

@@ -4,16 +4,42 @@
 
 ### Cold-Session Startup
 
-**Preflight** (run every cold session):
+**Preflight** (run every cold session — minimal universal load):
 
 1. Read `docs/TODO.md` → find first unchecked entry under "## Client Migration"
-2. Read `docs/plans/client-migration/HARNESS_DESIGN.md` → full harness context
-3. **DS symlink check** (Phase 0+): `ls -la ../KISA-website/client/node_modules/@umichkisa-ds/web` — if not `->` symlink, run `bash ../KISA-website/client/scripts/link-ds.sh` (requires DS `dist/`; run `pnpm build` first if missing).
-4. Read `docs/DS_CODEBASE.md` → know what DS components are available
+2. **DS symlink check** (Phase 0+): `ls -la ../KISA-website/client/node_modules/@umichkisa-ds/web` — if not `->` symlink, run `bash ../KISA-website/client/scripts/link-ds.sh` (requires DS `dist/`; run `pnpm build` first if missing)
 
-Derive phase folder: `docs/plans/client-migration/phase-<N>-<slug>/`. Subphases share the phase-root `audit.md` / `plan.md` / `notes.md` — no per-subphase subfolders.
+**Mode detection** (inlined from `AUTONOMOUS_PROTOCOL.md` §10 — do this without loading AP):
 
-Detect repo state (`audit.md`/`plan.md` presence, open PRs/issues for `phase-<N>`), then propose one of five modes per `AUTONOMOUS_PROTOCOL.md` §10 (A audit / B plan + issues / C PR review / D interactive execute / E close-out). Confirm with user before proceeding.
+Derive the phase folder: `docs/plans/client-migration/phase-<N>-<slug>/` (where `<N>-<slug>` matches the first unchecked phase in TODO).
+
+Then check repo state:
+
+| Signal | Mode |
+|---|---|
+| `audit.md` missing in phase folder | **Mode A** — Audit writing |
+| `audit.md` exists, `plan.md` missing | **Mode B** — Plan writing + issue generation |
+| Sitting PR(s) for `phase-<N>`; selected PR has neither `needs-decision` nor `needs-interactive` label, CI green | **Mode C1** — PR review (ready-to-merge) |
+| Sitting PR(s) for `phase-<N>`; selected PR has `needs-decision` or `needs-interactive` label | **Mode C2** — PR review (interactive/decision) |
+| `plan.md` exists, open `needs-interactive` issues without linked PRs (or user override to execute live) | **Mode D** — Interactive execution |
+| All lanes merged for the phase | **Mode E** — Phase close-out |
+
+**Propose, don't execute.** Say:
+> "I see [state summary]. Likely mode: **X**. Proceed with Mode X, or pick a different mode?"
+
+Wait for user confirmation. NEVER execute without explicit go-ahead.
+
+**Mode-specific lazy loads** (load only when mode is confirmed):
+
+| Mode | Load |
+|---|---|
+| A | `docs/plans/client-migration/HARNESS_DESIGN.md` (Per-Phase Internal Flow); `AUTONOMOUS_PROTOCOL.md` Part 2 (§5 issue template) |
+| B | `AUTONOMOUS_PROTOCOL.md` Part 2 (§5 issue template + §6 6-rule gate) |
+| C1 / C2 | `review-pr-queue` skill (handles its own loads); `AUTONOMOUS_PROTOCOL.md` §3 only if mode flow needs disambiguation |
+| D | `ds-client-constrained-execution` skill (handles its own loads); `AUTONOMOUS_PROTOCOL.md` §11 lane-state annotation |
+| E | `ds-phase-end-bump` skill; HARNESS_DESIGN.md "Phase close-out" section |
+
+`docs/DS_CODEBASE.md` is loaded only if the current task involves DS surface discovery (typically Mode A grill or Mode D when a new component is needed). Implementers in Mode D execution use `docs/DS_CLIENT_USAGE.md` instead.
 
 ### Wrapping up a merged PR / lane
 
