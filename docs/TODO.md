@@ -43,6 +43,7 @@
 - [x] Phase 2.9: PochaSummary redesign (autonomous) — dev fce777f (#108) + hotfix 986480c
 - [x] Phase 2.10: PochaInfoFields → @umichkisa-ds/form (autonomous) — dev e75366e (#109)
 - [x] Phase 2.11: PochaForm orchestration — toast + cross-field validation + usePocha refetch (interactive) — dev 6c137cd
+- [ ] Phase 2.11b: PochaForm full UX review — manual walkthrough + iterative fixes (interactive)
 - [x] Phase 2.12: PochaMenuFields redesign (autonomous) — dev 576aefd (#110)
 - [x] Phase 2.13: PochaMenuItemList redesign — delete Dialog (autonomous) — dev 94c9c9a (#111)
 - [x] Phase 2.14: PochaMenuItemForm modal shell → DS Dialog (autonomous) — dev b659629 (#113)

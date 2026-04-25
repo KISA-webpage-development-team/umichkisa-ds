@@ -694,6 +694,55 @@ None. Lane 2.5 (SWR migration) already shipped. Lane 2.6 folded in.
 
 ---
 
+## Lane 2.11b — PochaForm full UX review
+
+**Repo:** `KISA-website-client`
+**Mode:** `needs-interactive` (manual UX walkthrough + iterative fixes)
+
+### Context
+
+Lane 2.11 shipped the structural migration (RHF wiring, toast, mutate, cross-field validation) but the user's manual walkthrough of the live `포차 수정하기` (edit-pocha) flow surfaced multiple UX issues that weren't in scope for the structural lane. This lane is the cleanup pass: walk the create + update flows end-to-end, list every UX issue, fix each in-place, ship as one PR / direct push.
+
+### Files (expected — final list set during walkthrough)
+
+- `src/features/pocha/components/manage/PochaForm.tsx`
+- `src/features/pocha/components/manage/PochaInfoFields.tsx`
+- `src/features/pocha/components/manage/PochaMenuFields.tsx` (if menu-section UX issues surface)
+- `src/app/(pocha)/pocha/manage/page.tsx` (if shell-level issues surface)
+- Possibly DS-side fixes via `ds-fix-during-migration` if review uncovers component gaps
+
+### Tasks
+
+- [ ] Walk both flows on the live tunnel (`포차 생성하기` create + `포차 수정하기` edit) at desktop + mobile widths
+- [ ] List every issue found (visual, interaction, validation, copy, layout, focus management, etc.) in `notes.md` under a new dated section
+- [ ] Triage each issue: in-scope client fix / DS fix needed (`ds-fix-during-migration`) / out-of-scope (defer to later lane or post-migration)
+- [ ] Apply fixes one issue at a time with clear commits
+- [ ] `npm run build` + `npm run typecheck` pass
+- [ ] `ds-client-review` passes on every changed `.tsx`
+
+### Acceptance criteria
+
+- [ ] Every issue from the walkthrough either fixed, filed as a DS-fix entry, or deferred with a written reason
+- [ ] Both create + edit flows pass a final user smoke test on the tunnel
+- [ ] No `console.error`/`console.warn` regressions during normal interaction
+
+### Non-goals (do not touch)
+
+- Menu-item form internals (lanes 2.13–2.16 already shipped — only retouch if the issue surfaces from the parent form)
+- API contract changes (`createPocha` / `updatePocha` shape stays as-is)
+- Page shell legacy-UI swap (lane 2.17 territory)
+
+### Execution skill
+
+`ds-client-constrained-execution` — NO-TDD mode (interactive, per-issue iteration)
+
+### Bailout triggers
+
+- More than ~6 issues uncovered → consider splitting into 2.11b (P0 blockers) + 2.11c (polish)
+- DS component gap discovered → invoke `ds-fix-during-migration` mid-lane
+
+---
+
 ## Lane 2.12 — `PochaMenuFields` redesign
 
 **Repo:** `KISA-website-client`
