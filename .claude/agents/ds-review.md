@@ -45,8 +45,6 @@ Check every line of each `.tsx` file against all constraint categories:
 - `<Icon>` with `label` prop when the wrapper button already has `aria-label`
 
 **Accessibility**
-- `outline: none` or `outline: 0` without a custom focus indicator
-- Focus ring missing on interactive elements
 - `--color-success` or `--color-warning` used as standalone icon or text color without a `--color-foreground` label
 
 ## Output format
