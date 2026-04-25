@@ -27,6 +27,8 @@ Accumulator for DS fixes made during client migration. Grouped by package, entri
 - **[Phase 2.11.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.9 → 1.0.10` (patch) — ships the Toaster CSS fix so Lane 2.11 can deploy from registry — 2026-04-25
 - **[Phase 2.11]** Toaster outer-section fix: 1.0.10's `@import "sonner/dist/styles.css"` was redundant (sonner self-injects via `__insertCSS()` at module load). Real cause: sonner's CSS only positions the inner `<ol data-sonner-toaster>`, not the outer `<section aria-label="Notifications ...">`. Empty section flowed in document order on every Toaster-mounted page. Fixed with a CSS override on sonner's ARIA-attribute signature in `packages/web/src/styles/index.css` (commit 27e109c) — 2026-04-25
 - **[Phase 2.11.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.10 → 1.0.11` (patch) — ships the corrected outer-section fix — 2026-04-25
+- **[Phase 2 / post-2.11]** Toaster z-index: 1.0.11 set `position: fixed` on the outer `<section>` (creates a new stacking context) but no `z-index`, so sonner's inner `[data-sonner-toaster]{z-index:999999999}` was isolated to the wrapper — outer stacked at `z-auto` against page chrome, letting the docs-app header overlap toasts. Added `z-index: 999999999` to the outer-section override (commit 6b036bc). Caught while testing toasts in the docs app post-2.11. — 2026-04-25
+- **[Phase 2.11.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.11 → 1.0.12` (patch) — ships the Toaster z-index fix — 2026-04-25
 
 ## @umichkisa-ds/form
 
