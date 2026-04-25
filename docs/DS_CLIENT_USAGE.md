@@ -6,14 +6,24 @@ _For author-side rules (building DS components), see `DS_CONSTRAINTS.md`._
 
 ---
 
-## Setup
+## Part 1 — Write-Time Decision Tree
 
-### CSS Entry Point
+_Read this BEFORE writing any line of client code that touches UI. Implementers: this is your write-time cheat sheet. Reviewers: skip to Part 2 — Review-Time Rulebook below._
+
+---
+
+## Part 2 — Review-Time Rulebook
+
+_Full constraint taxonomy. The `ds-client-review` agent scans this end-to-end._
+
+### Setup
+
+#### CSS Entry Point
 
 Must: For Tailwind v4 consumers (the standard case — all current KISA apps), import `@umichkisa-ds/web/theme.css` in the app's Tailwind-processed CSS entry (e.g. `globals.css`). This re-exports the DS source so the consumer's own Tailwind build emits DS tokens + utilities + component classes against actual client usage. [source:phase-0-gap/2026-04-18]
 Never: Import `@umichkisa-ds/web/dist/styles.css` in a Tailwind v4 consumer. The precompiled bundle is tree-shaken against DS source only, so utilities like `bg-brand-primary`, `text-foreground`, `border-border-strong` used in the client's JSX resolve to nothing at runtime — silent visual breakage. Use `dist/styles.css` only from non-Tailwind consumers that can't compile the source. [source:phase-0-gap/2026-04-18]
 
-### Font Loading (Next.js)
+#### Font Loading (Next.js)
 
 Must: Load SejongHospital Bold and Light via `next/font/local`, using the exact CSS variable names `--font-sejong-bold` and `--font-sejong-light`, with `display: 'swap'`. Apply both `.variable` classes to the `<html>` element. This overrides the baseline `@font-face` from `styles.css` with preloaded, optimized fonts. [source:docs-app/foundation/typography/fonts]
 Must: Load Pretendard Variable via CDN — add `<link rel="preconnect" href="https://cdn.jsdelivr.net">` and the stylesheet link to `https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css` in the document `<head>`. [source:docs-app/foundation/typography/fonts]
@@ -22,13 +32,13 @@ Never: Load Geist Mono (`font-geist-mono`) in client apps — it is a documentat
 
 ---
 
-## Component Usage
+### Component Usage
 
 Must: Check `DS_CODEBASE.md` before building any local UI component — if a DS equivalent exists, use it. [source:HARNESS_DESIGN.md/missing-ds-components]
 Must: Use DS components directly by importing from `@umichkisa-ds/web` or `@umichkisa-ds/form`. [source:DS_CODEBASE.md/packages]
 Never: Wrap or re-export a DS component to add default props or rename it (e.g., no `MyButton` that re-exports `Button`). This creates a shadow component layer that drifts from the DS over time. [source:grill-session/2026-04-12]
 
-### Feedback & Status Components
+#### Feedback & Status Components
 
 Must: Replace legacy `@/components/ui/feedback` imports with DS equivalents when touching a file during migration. The legacy module is a shadow of DS feedback primitives and must be emptied over the course of the migration. [source:phase-2/lane-2.0 review, 2026-04-23]
 
@@ -44,27 +54,27 @@ Never: Leave a legacy `@/components/ui/feedback` import in any file being migrat
 
 ---
 
-## Styling
+### Styling
 
-### Tokens
+#### Tokens
 
 Must: Use DS semantic color tokens for all color values — `text-foreground`, `bg-surface`, `border-brand-primary`, etc. Never use raw hex values, raw OKLCH, or Tailwind's default color palette (`text-gray-500`). [source:DS_CONSTRAINTS.md/colors]
 Must: Use `type-*` semantic utility classes for all typography — never compose raw Tailwind utilities (`text-base font-normal leading-relaxed`). [source:DS_CONSTRAINTS.md/typography]
 Must: Pair an explicit color token with every `type-*` class — `type-*` classes do not set color. [source:DS_CONSTRAINTS.md/typography]
 Never: Import font loaders directly from the client (e.g. `@/utils/fonts/textFonts` — `sejongHospitalBold`, `sejongHospitalLight`, `arial`, `heebo`, `montserrat`) and apply `.className` to elements. Font families are owned by the DS: `@font-face` + `--font-sejong-*` / `--font-pretendard` CSS variables are declared in `dist/styles.css`'s `@theme` block and consumed exclusively via `type-*` tokens (`type-h1`/`type-display` → Sejong Bold; `type-h2`/`type-h3`/`type-body*`/`type-label`/`type-caption` → Pretendard). The only legitimate direct use of `next/font/local` is at the app root for preloading/optimization (see "Font Loading (Next.js)" above) — not inline on component elements. During migration, strip any `sejongHospital*.className` / `heebo.className` / `montserrat.className` imports from lane files as you touch them. [source:client#80 Phase 1.2 review, 2026-04-21]
 
-### Class Utilities
+#### Class Utilities
 
 Must: Use `cn()` from `@umichkisa-ds/web` for all class merging — not raw `clsx`, `classnames`, or string concatenation. [source:DS_CODEBASE.md/utilities]
 Never: Use arbitrary Tailwind values (`px-[24px]`, `text-[#00274C]`, `mt-[13px]`). All spacing must come from Tailwind's built-in scale; all colors must come from DS semantic tokens. [source:DS_CONSTRAINTS.md/layout]
 
-### CSS Files
+#### CSS Files
 
 Never: Create new CSS modules or `.css` files for migrated components — use Tailwind utility classes with DS tokens. [source:grill-session/2026-04-12]
 
 ---
 
-## Icons
+### Icons
 
 Must: Use `<Icon name="...">` from `@umichkisa-ds/web` for all icons. [source:DS_CONSTRAINTS.md/iconography]
 Never: Import from `react-icons` — fully replaced by the DS icon system. [source:DS_CONSTRAINTS.md/iconography]
@@ -74,7 +84,7 @@ Must: Use the `size` prop from the 5-step scale (`xs`/`sm`/`md`/`lg`/`xl`) — n
 
 ---
 
-## Forms
+### Forms
 
 Must: Use `Form.*` compound fields from `@umichkisa-ds/form` for all form controls (`Form.Input`, `Form.Textarea`, `Form.Select`, `Form.Checkbox`, `Form.Radio`, `Form.Switch`, `Form.Button`). [source:DS_CODEBASE.md/form-wiring]
 Must: Use `useForm` from `@umichkisa-ds/form` to initialize form state — not `useForm` from `react-hook-form` directly. [source:DS_CODEBASE.md/form-wiring]
@@ -86,7 +96,7 @@ _Note: Validation strategy (zod + RHF resolver vs. RHF-native rules) is deferred
 
 ---
 
-## Layout
+### Layout
 
 Must: Use `Container` from `@umichkisa-ds/web` for the page shell pattern — never manually compose `mx-auto w-full max-w-screen-2xl px-4 md:px-6 lg:px-8`. [source:DS_CONSTRAINTS.md/layout]
 Never: Nest `Container` components — each page region gets one `Container` at most. [source:DS_CONSTRAINTS.md/layout]
@@ -95,9 +105,9 @@ Must: Use only the three layout breakpoint tiers — default (mobile), `md:` (>=
 
 ---
 
-## Local Components
+### Local Components
 
-### Decision Tree
+#### Decision Tree
 
 A component **stays local** in the client app if ANY of these are true:
 - It contains business logic (API calls, app state, routing)
@@ -111,13 +121,13 @@ A component **should be in DS** if ALL of these are true:
 
 [source:grill-session/2026-04-12, HARNESS_DESIGN.md/missing-ds-components]
 
-### Styling Rules for Local Components
+#### Styling Rules for Local Components
 
 Must: Local components follow the same DS token and styling rules as everything else — semantic colors, `type-*` classes, spacing tiers, `cn()` for class merging. Being local is not an excuse for raw utilities. [source:grill-session/2026-04-12]
 
 ---
 
-## className Passthrough
+### className Passthrough
 
 Prefer: Only pass layout and positioning classes via `className` on DS components — `mt-4`, `w-full`, `flex-1`, `hidden md:block`, etc. [source:grill-session/2026-04-12]
 Avoid: Overriding DS component internals via `className` (padding, font-size, color, border-radius). Frequent overrides signal that the DS component needs a new variant — collect these for DS fixes. [source:grill-session/2026-04-12]
@@ -125,7 +135,7 @@ Exception: When an app-specific override is genuinely necessary, add a comment e
 
 ---
 
-## Third-Party Libraries
+### Third-Party Libraries
 
 Never: Import from `@radix-ui/*` directly for UI that DS already provides (Dialog, Dropdown, Popover, Accordion, etc.) — DS wraps Radix internally. [source:grill-session/2026-04-12]
 Never: Import from NextUI or HeroUI — fully replaced by DS. [source:grill-session/2026-04-12]
@@ -134,7 +144,7 @@ Exception: Domain-specific libraries with no DS equivalent (`@fullcalendar/react
 
 ---
 
-## Migration-Specific
+### Migration-Specific
 
 _Temporary rules for the client migration (Phases 0–5). Remove this section post-migration._
 
