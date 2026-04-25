@@ -37,6 +37,8 @@ Accumulator for DS fixes made during client migration. Grouped by package, entri
 - **[Phase 2.17.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.15 → 1.0.16` (patch) — ships the StatusView `fullScreen` prop so Lane 2.17 + downstream pocha error/auth surfaces can deploy from registry — 2026-04-25
 - **[Phase 2.17]** StatusView `fullScreen` correction: 1.0.16 used `min-h-screen` which only fills the layout's content area (below the header), pushing the visual center down. Switched to `fixed inset-0 z-50 bg-background` so the StatusView covers the actual viewport regardless of parent layout, occluding header/footer. Caught during Lane 2.17 manage-page smoke (not-authorized state rendered visibly low). Docs page updated. — 2026-04-25
 - **[Phase 2.17.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.16 → 1.0.17` (patch) — ships the corrected `fullScreen` (fixed-inset) — 2026-04-25
+- **[Post-Phase-2 hotfix]** Input: add `min-w-0` alongside `w-full` on the base className. Native `<input type="time">` (and `date`/`email`) carry an intrinsic min-width that ignores `w-full` inside flex containers, causing horizontal scroll on mobile — surfaced on PochaFormDialog's start/end time fields. One-class fix, no API change, applies to all Input consumers (commit 8d46035) — 2026-04-25
+- **[Post-Phase-2 hotfix.bump]** Bump `@umichkisa-ds/web` `1.0.17 → 1.0.18` (patch) — ships the Input `min-w-0` fix; pocha-manage already in production, immediate bump per `mid-phase bump default` — 2026-04-25
 
 ## @umichkisa-ds/form
 
