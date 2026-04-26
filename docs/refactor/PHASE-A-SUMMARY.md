@@ -2,7 +2,7 @@
 
 _Phase A of the `ds-client-constrained-execution` 4-layer refactor. Phase A produces specs only; Phase B prototypes; Phase C rolls out. This summary's primary job is to bootstrap Phase B — the prompt block in §5 below is the deliverable. Everything else is supporting context._
 
-Phase A subphases shipped: **A1, A2, A3, A4, A5, A6, A8.** A7 (self-improvement / escalation logging) was consciously deferred — see §4 cluster F.
+Phase A subphases shipped: **A1, A2, A3, A4, A5, A6, A8, A9.** A7 (self-improvement / escalation logging) was consciously deferred — see §4 cluster F.
 
 ---
 
@@ -20,6 +20,8 @@ The DS contract used to be one big `DS_CLIENT_USAGE.md` carrying mixed visual to
 
 **Skill split — setup vs. execution.** Project-level setup rules (CSS entry import, font loading, prerequisite checks) fire **once per project**, not per task. They move into a separate `onboard-ds` skill (verify mode + bootstrap mode) that writes a `.ds-onboarded` marker the per-task skill checks at preflight. Six setup rules absorb out of `USAGE.md`. The `onboard-ds` skill ships in Phase D — when a second consumer arrives or the existing client needs re-checking after a meaningful DS change. Until then, manual one-time setup is fine.
 
+**Skill split — harness vs. execution (A9).** Migration-orchestration concerns A6 stripped out of the execution skill (mode detection, autonomous bailout mechanics, `notes.md` / `needs-decision` labels, "next eligible lane") didn't disappear — they fire daily, but they belong to a per-project harness, not a general execution skill. A9 specs `ds-migration-workflow`: a per-session router that absorbs `CLAUDE.md`'s cold-session preflight + mode detection, proposes a mode and stops, and points at `AUTONOMOUS_PROTOCOL.md` for protocol body. Finite by design — retires when the migration ends. Future KISA projects each get their own per-project harness skill of the same shape. Three-tier skill layout post-rollout: workflow (per-session, finite) → execution (per-task, general) → narrow skills (per-move, general).
+
 ---
 
 ## 2. What changed in artifacts
@@ -35,6 +37,7 @@ The DS contract used to be one big `DS_CLIENT_USAGE.md` carrying mixed visual to
 | `docs/refactor/A5-implementer-agent.md` | `ds-client-implementer` subagent design | A5 | committed; reference for B (agent author) and C (rollout) |
 | `docs/refactor/A6-skill-changes.md` | Draft diff for `SKILL.md` | A6 | committed; reference for C3 (apply diff) |
 | `docs/refactor/A8-onboard-ds.md` | `onboard-ds` skill specification | A8 | committed; reference for D (build skill) |
+| `docs/refactor/A9-migration-workflow.md` | `ds-migration-workflow` skill specification (per-project harness) | A9 | committed; reference for post-C3 build |
 | `docs/refactor/PHASE-A-SUMMARY.md` | This file | now | committed; reference for B (start prompt) |
 
 ### To be created in Phase B as prototype
@@ -64,6 +67,8 @@ The DS contract used to be one big `DS_CLIENT_USAGE.md` carrying mixed visual to
 |---|---|---|
 | `.claude/skills/onboard-ds/SKILL.md` | Verify + bootstrap modes | Second consumer arrives or current client needs re-check |
 | `.ds-onboarded` (in client repo root) | Marker file | First `onboard-ds` run on the existing client |
+| `.claude/skills/ds-migration-workflow/SKILL.md` | Per-session router (mode detection + lazy-load proposal) | Post-C3, when execution skill's final shape is locked |
+| `CLAUDE.md` preflight collapse | Reduce to symlink check + skill-invoke pointer | Same commit as `ds-migration-workflow` build |
 
 ### Will be retired in Phase C
 
@@ -184,8 +189,10 @@ first real use (Pitfall §6.1 below).
 7. `docs/refactor/A6-skill-changes.md` — draft SKILL.md diff (NOT
    applied in B)
 8. `docs/refactor/A8-onboard-ds.md` — setup-skill spec (NOT built in B)
+9. `docs/refactor/A9-migration-workflow.md` — per-project harness skill
+   spec (NOT built in B; build trigger is post-C3)
 
-After reading all eight, print a 4–6 sentence understanding summary
+After reading all nine, print a 4–6 sentence understanding summary
 covering: the 4-layer split, the dispatch fork in A6, the `.tsx`/`.jsx`
 predicate, what stays a template vs becomes an agent, and what Phase B
 ships vs defers. Stop after the summary; wait for human confirmation
@@ -334,6 +341,7 @@ weaknesses — in `B-friction-log.md` for input to Phase C authoring.
 - Retire `DS_CLIENT_USAGE.md`, `DS_CONSTRAINTS.md`, or
   `implementer-template.md` — those are C
 - Build the `onboard-ds` skill — that's D
+- Build the `ds-migration-workflow` skill — that's post-C3 (A9 §Phase timing)
 - Build escalation logging / `.ds/escalations/` directory — deferred
   indefinitely (PHASE-A-SUMMARY §4 cluster F)
 - Rename `ds-fix-during-migration` to `ds-gap-fix` — that's C, and
@@ -413,6 +421,9 @@ Tracked here so they don't get lost between A and B/C/D.
 | 3 | Drop A1's `p2-tk-3` (`!font-*` weight override forbidden) and the `p2-tk-4` migration carve-out | Phase C USAGE.md authoring (A2 §3) |
 | 4 | Decide whether `docs/DS_CONSTRAINTS.md` retires fully or partially in C | Phase C |
 | 5 | A7 revisit: build escalation logging if frequency justifies | Post-migration (deferral trigger documented in §4 F) |
+| 6 | Build `ds-migration-workflow` skill; collapse `CLAUDE.md` preflight | Post-C3 (A9 §Phase timing) |
+| 7 | Fix stale section reference in `CLAUDE.md` preflight: "AP §10" → "AP §3" | C3 ripple update (A9 §Ripple updates) |
+| 8 | Retire `ds-migration-workflow` skill: delete folder + remove `CLAUDE.md` pointer | When all `## Client Migration` entries in `docs/TODO.md` are checked off |
 
 ---
 
@@ -425,6 +436,7 @@ Phase A's job was to produce specs, not artifacts. Read against that bar:
 - Layer 3 has a schema (A3)
 - Layer 4 has an updated skill diff (A6) and a new subagent design (A5)
 - Setup-execution split has its own skill spec (A8)
+- Harness-execution split has its own skill spec (A9)
 - Phase B has a self-contained start prompt (§5)
 
 The artifacts that drive Phase B exist. The artifacts that drive Phase C exist. The artifacts that drive Phase D exist. Phase A is done.
