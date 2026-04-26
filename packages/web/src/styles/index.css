@@ -236,6 +236,13 @@ section[aria-live="polite"][aria-relevant="additions text"][aria-atomic="false"]
 
   /* type-h3 stays at 1.25rem at lg: — no desktop override needed */
 
+  .type-h4 {
+    font-family: var(--font-pretendard);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.375;
+  }
+
   .type-body {
     font-family: var(--font-pretendard);
     font-size: 1rem;
