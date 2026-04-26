@@ -193,22 +193,35 @@ components:
     intent_group: Overlays & dialogs
     source_path: overlay/Dialog.tsx
     intent: Modal that blocks the page (confirm, lightbox form, detail view)
-    compound_parts: null
+    compound_parts:
+      - {name: DialogTrigger,     kind: required_child}
+      - {name: DialogContent,     kind: required_child}
+      - {name: DialogTitle,       kind: required_child, note: a11y — every Dialog needs an accessible title}
+      - {name: DialogDescription, kind: optional_child}
+      - {name: DialogFooter,      kind: optional_child}
+      - {name: DialogClose,       kind: optional_child, note: imperative-close child; X-button is rendered by DialogContent automatically}
   - name: Dropdown
     intent_group: Overlays & dialogs
     source_path: overlay/Dropdown.tsx
     intent: Context menu / action list anchored to a trigger
-    compound_parts: null
+    compound_parts:
+      - {name: DropdownTrigger,   kind: required_child}
+      - {name: DropdownContent,   kind: required_child}
+      - {name: DropdownItem,      kind: required_child, note: one per action}
+      - {name: DropdownGroup,     kind: optional_child, note: optional labelled grouping of DropdownItems}
+      - {name: DropdownSeparator, kind: optional_child}
   - name: Popover
     intent_group: Overlays & dialogs
     source_path: overlay/Popover.tsx
     intent: Non-modal floating content (rich tooltip, mini-form, filter panel)
-    compound_parts: null
+    compound_parts:
+      - {name: PopoverTrigger, kind: required_child}
+      - {name: PopoverContent, kind: required_child}
   - name: Tooltip
     intent_group: Overlays & dialogs
     source_path: overlay/Tooltip.tsx
     intent: Brief helper text on hover/focus
-    compound_parts: null
+    compound_parts: null   # Tooltip wraps trigger as `children` and takes content as a string prop — no exposed compound parts
 
   - name: Tabs
     intent_group: Navigation & wayfinding

@@ -979,7 +979,228 @@ components:
         why: "the consumer has to remember the right color (`bg-border`), the right animation (`ds-pulse`), and the right border-radius — Skeleton encapsulates all three"
         redirect: "use `<Skeleton className=\"w-32 h-4\">` — pass dimensions via className, leave the rest to Skeleton"
 
-# (additional component groups appended below as C2a.8..C2a.11 are authored)
+  # ============================================================
+  # intent_group: Overlays & dialogs
+  # ============================================================
+
+  - name: Dialog
+    intent_group: Overlays & dialogs
+    intent: Modal that blocks the page — confirm prompts, lightbox forms, detail views
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "the user must confirm or complete the action before continuing — block the page until they respond"
+      - "the surface is a confirm prompt, a focused form, or a detail view that benefits from full attention"
+      - "the modal returns to the page after dismissal — flow continues, not navigation"
+    reject_when:
+      - "the surface is non-modal floating content (filter panel, mini-form, popup info — use `Popover`)"
+      - "the surface is a context menu / action list anchored to a trigger (use `Dropdown`)"
+      - "the surface is a brief helper text on hover/focus (use `Tooltip`)"
+      - "the surface is a transient post-action notification (use `Toaster` + `toast()`)"
+      - "the action navigates to a separate page where the modal context wouldn't make sense (use route navigation)"
+
+    notable_props:
+      - name: open / defaultOpen / onOpenChange
+        type: "boolean / boolean / (open: boolean) => void (passthrough to Radix Dialog.Root)"
+        pick_guidance: "controlled (`open` + `onOpenChange`) when state is owned outside (parent triggers programmatically); uncontrolled (`defaultOpen` or no props) when DialogTrigger is the only opener"
+
+    intrinsic_behavior:
+      - "wraps Radix UI Dialog primitive — focus trap, escape-to-close, and aria-modal semantics are inherited from Radix"
+      - "DialogContent owns the overlay scrim (`overlay` token at 40%) and centered modal box (`bg-surface rounded-lg p-6 max-w-md`); consumers do NOT compose the scrim or positioning themselves"
+      - "DialogContent ships an X close button automatically in the top-right (no need to render DialogClose unless an additional dismiss affordance is needed in the body/footer)"
+      - "every Dialog requires a DialogTitle for screen readers — Radix throws a dev-time warning if it's missing. DialogDescription is recommended but optional."
+
+    compound_parts:
+      - name: DialogTrigger
+        kind: required_child
+        invariant: "renders the element that opens the dialog. `asChild` passes the open handler onto a custom child (e.g. wrap a `<Button>` to make it the trigger)."
+      - name: DialogContent
+        kind: required_child
+        owns: "scrim, centered modal positioning, sizing (`max-w-md` default), X close button, escape-key wiring"
+        invariant: "Dialog owns its layout — do NOT add `flex` / `overflow` / `h-*` / `max-h-*` utilities via className to force size. See `ds-layout-no-utility-override`."
+      - name: DialogTitle
+        kind: required_child
+        owns: "modal heading (`type-h3 text-foreground`)"
+        invariant: "every Dialog needs a DialogTitle for accessibility — even if visually hidden via `sr-only` className"
+      - name: DialogDescription
+        kind: optional_child
+        owns: "subtext below the title (`type-body-sm text-muted-foreground`)"
+      - name: DialogFooter
+        kind: optional_child
+        owns: "action button row (`flex justify-end gap-2 mt-4`) — typically a Cancel + Confirm pair"
+      - name: DialogClose
+        kind: optional_child
+        invariant: "use only when an additional dismiss affordance is needed beyond the auto-rendered X (e.g. a body 'Cancel' link). `asChild` passes close-handler onto a custom child."
+
+    anti_patterns:
+      - pattern: "rendering a `<Button>` outside DialogTrigger and managing `open` state to open the dialog imperatively when DialogTrigger could do it declaratively"
+        why: "DialogTrigger handles focus restoration to the trigger element on close; manual open-state management often loses focus restoration, leaving keyboard focus on the body/document instead of returning to the opener"
+        redirect: "wrap the opener in `<DialogTrigger asChild><Button>...</Button></DialogTrigger>` whenever the open is triggered by a single visible element"
+      - pattern: "passing `flex` / `overflow-*` / `h-*` / `max-h-*` via className on DialogContent to force modal size"
+        why: "DialogContent owns its layout shape — these utilities compete with internal positioning and produce clipped overlays, double scrollbars, or modal content that escapes the viewport"
+        redirect: "if Dialog's default sizing doesn't fit, request a Dialog size variant via ds-fix-during-migration. See `ds-layout-no-utility-override`."
+
+    see_also:
+      - ds-layout-no-utility-override
+
+  - name: Dropdown
+    intent_group: Overlays & dialogs
+    intent: Context menu / action list anchored to a trigger — toolbar overflow, table-row actions, user-menu
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "presenting a short list of discrete actions anchored to a trigger element (more-options ⋯, user menu, table row actions)"
+      - "the user clicks/taps to open and selects exactly one action that closes the menu"
+      - "actions are commands or destinations, not data to compare"
+    reject_when:
+      - "the surface presents free-form content — form inputs, rich text, filter panel (use `Popover`)"
+      - "the surface is a modal that requires a response before continuing (use `Dialog`)"
+      - "the surface is one-of-many selection inside a form (use `Select` or `RadioGroup`)"
+      - "the surface is brief helper text on hover (use `Tooltip`)"
+      - "the surface is a paired-views switcher (use `Tabs`)"
+
+    notable_props:
+      - name: open / defaultOpen / onOpenChange
+        type: "boolean / boolean / (open: boolean) => void (passthrough to Radix DropdownMenu.Root)"
+        pick_guidance: "uncontrolled is the default — DropdownTrigger handles open/close; reach for controlled only when external state needs to drive the menu"
+
+    intrinsic_behavior:
+      - "wraps Radix UI DropdownMenu — keyboard navigation (arrow keys, escape, type-ahead), focus management, and aria semantics inherited from Radix"
+      - "DropdownContent renders in a portal with the DS-branded chrome (`bg-surface border border-border rounded-md shadow-md`) and slides in from the trigger side"
+      - "DropdownItem applies the brand-accent-subtle hover background; selected/active state turns brand-primary"
+      - "DropdownSeparator renders a `border-t border-border` between item groups"
+
+    compound_parts:
+      - name: DropdownTrigger
+        kind: required_child
+        invariant: "renders the click-to-open element. `asChild` passes the open handler onto a custom child (e.g. wrap an `<IconButton>` for a more-options affordance)."
+      - name: DropdownContent
+        kind: required_child
+        owns: "portal positioning, DS chrome, slide-in animation"
+      - name: DropdownItem
+        kind: required_child
+        owns: "row layout (`flex items-center gap-2`), hover/focus styling, click handler"
+        invariant: "each item represents one action; use `onSelect` (Radix) for the click handler so the menu closes automatically. Items destined for navigation can wrap an `<a>` via `asChild`."
+      - name: DropdownGroup
+        kind: optional_child
+        owns: "labelled grouping of items (renders an `aria-label`'d group with optional visible label)"
+        invariant: "use to cluster related actions (e.g. \"Account\" group with profile/settings/sign-out items); separate groups with DropdownSeparator"
+      - name: DropdownSeparator
+        kind: optional_child
+        invariant: "horizontal divider between item groups; `border-t border-border`"
+
+    anti_patterns:
+      - pattern: "rendering a `<form>` or rich content inside DropdownContent"
+        why: "Dropdown is for discrete actions — its keyboard model (arrow keys jump between items, type-ahead matches item text) actively fights free-form input. Forms inside Dropdown trap focus oddly and break type-ahead."
+        redirect: "use `Popover` for free-form / form content; reserve Dropdown for action lists"
+      - pattern: "using DropdownItem with raw `<a href>` instead of wrapping via `asChild`"
+        why: "without `asChild`, the click handler closes the menu but the underlying `<a>` may not navigate (or vice versa); composition via `asChild` keeps both behaviors intact"
+        redirect: "for navigation items, render `<DropdownItem asChild><a href=\"...\">…</a></DropdownItem>`"
+
+  - name: Popover
+    intent_group: Overlays & dialogs
+    intent: Non-modal floating content anchored to a trigger — filter panel, mini-form, rich helper, color picker
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "the surface is free-form content (form inputs, filters, rich text, charts) anchored to a trigger element"
+      - "the user can dismiss by clicking outside without confirming an action — non-modal"
+      - "the content is too rich for a Tooltip but doesn't need to block the page like a Dialog"
+    reject_when:
+      - "the surface is a list of discrete actions (use `Dropdown` — its keyboard model fits action lists)"
+      - "the user must respond before continuing (use `Dialog` — Popover is dismissible by clicking outside)"
+      - "the surface is brief on-hover helper text (use `Tooltip`)"
+      - "the content is a Calendar specifically for date input (use `DatePicker` / `DateRangePicker` — they wrap a Popover around a Calendar)"
+
+    notable_props:
+      - name: open / defaultOpen / onOpenChange
+        type: "boolean / boolean / (open: boolean) => void (passthrough to Radix Popover.Root)"
+        pick_guidance: "uncontrolled by default — PopoverTrigger handles open/close. Controlled when external state drives visibility (e.g. open on field focus elsewhere)."
+      - name: align (on PopoverContent)
+        type: "enum: start | center | end"
+        default: center
+        pick_guidance: "controls horizontal alignment of the popover relative to the trigger"
+      - name: sideOffset (on PopoverContent)
+        type: "number"
+        default: 4
+        pick_guidance: "px gap between trigger and popover; leave at default unless the surface needs visual breathing room"
+
+    intrinsic_behavior:
+      - "wraps Radix UI Popover primitive — click-outside dismissal, escape-to-close, focus trap when `modal`, ARIA semantics inherited from Radix"
+      - "PopoverContent renders in a portal with the DS-branded chrome (`bg-surface border border-border rounded-md p-4 shadow-md`)"
+      - "fade + zoom animation on open/close, slide-in animation matching the popover's side relative to the trigger"
+      - "non-modal by default (clicks outside DON'T require explicit dismissal) — reach for `modal` prop on Radix when the popover IS effectively a small dialog"
+
+    compound_parts:
+      - name: PopoverTrigger
+        kind: required_child
+        invariant: "click-to-open element; re-export of `RadixPopover.Trigger`. Use `asChild` to compose with a custom button."
+      - name: PopoverContent
+        kind: required_child
+        owns: "portal positioning, DS chrome (`p-4` padding, surface bg, border, rounded), slide-in/zoom animations"
+
+    anti_patterns:
+      - pattern: "using Popover for a discrete-action list"
+        why: "Popover lacks the keyboard model that Dropdown provides (arrow-key navigation, type-ahead, auto-close on item select); consumers reimplement these by hand and miss accessibility cases"
+        redirect: "use `Dropdown` for action lists; reserve Popover for free-form content"
+      - pattern: "passing `padding-*` via className on PopoverContent"
+        why: "PopoverContent owns its `p-4` padding contract for visual consistency across all popovers in the app; overriding produces popovers that feel stylistically inconsistent"
+        redirect: "if PopoverContent's default padding genuinely doesn't fit (e.g. a popover containing a Calendar that has its own padding), wrap children in a `<div className=\"-m-4\">` to negate, or request a Popover variant via ds-fix-during-migration"
+
+  - name: Tooltip
+    intent_group: Overlays & dialogs
+    intent: Brief on-hover/focus helper text revealing the affordance name or short description
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "wrapping an icon-only interactive (`IconButton`, icon-only `<a>` / `<button>`) so the affordance has a sighted-discoverable name"
+      - "providing a short description for a control whose purpose isn't obvious from its label alone"
+      - "the helper text is 1–6 words"
+    reject_when:
+      - "the helper text is a full sentence or paragraph (use `Popover` with text content, or render the description inline)"
+      - "the helper text describes form field validation (use `FormItem` description / error slots)"
+      - "the trigger has no associated affordance and tooltip is just decorative (drop it — tooltips are interaction hints, not decoration)"
+      - "rendering the tooltip without a focusable trigger (Tooltip needs a focusable child for keyboard access — wrapping a non-interactive `<span>` makes the tooltip invisible to keyboard users)"
+
+    notable_props:
+      - name: content
+        type: "string"
+        required: true
+        pick_guidance: "the tooltip body text (string only — no rich content). When wrapping `<IconButton>`, this MUST equal the IconButton's `aria-label` exactly. See `icon-button-tooltip-aria-label-match`."
+      - name: children
+        type: "ReactNode (the trigger element — must accept ref)"
+        required: true
+        pick_guidance: "the focusable trigger. Radix uses `asChild` internally — pass a single focusable element (Button, IconButton, `<a>`)."
+      - name: side
+        type: "enum: top | right | bottom | left"
+        default: top
+        pick_guidance: "preferred side — Radix flips automatically when the chosen side would clip; default `top` is right for most cases"
+      - name: delayDuration
+        type: "number (ms)"
+        default: 200
+        pick_guidance: "delay before show on hover; leave at default unless a faster/slower delay is product-justified"
+
+    intrinsic_behavior:
+      - "wraps Radix UI Tooltip — Provider, Root, Trigger, Portal, Content all internal; consumers see only the `content` + `children` API"
+      - "tooltip bubble: `bg-brand-primary text-brand-foreground type-caption px-3 py-1.5 rounded-md` — navy bubble with maize text"
+      - "open animation: `tooltip-in` keyframe (150ms ease-out); close: `tooltip-out` (100ms ease-in)"
+      - "`Tooltip.Trigger` uses Radix `asChild` — the trigger element receives the hover/focus handlers without an extra wrapper"
+
+    anti_patterns:
+      - pattern: "wrapping a non-focusable element (e.g. plain `<span>`, `<div>`) as the Tooltip trigger"
+        why: "the tooltip only opens on hover or keyboard focus; a non-focusable element receives no keyboard focus, so keyboard users never see the tooltip"
+        redirect: "wrap a focusable interactive — IconButton, Button, `<a href>`, `<button>` — or add `tabIndex={0}` to the wrapper if it's genuinely a focusable region (rare)"
+      - pattern: "passing rich content (`<div>`, multiple lines, formatted text) instead of a string into `content`"
+        why: "Tooltip's `content` is typed as `string` and rendered as plain text in a small bubble; rich content breaks the contract and the visual contract of the bubble"
+        redirect: "use `Popover` for rich content; reserve Tooltip for short string labels"
+      - pattern: "tooltip content that does not equal the wrapped IconButton's `aria-label`"
+        why: "screen-reader users hear the aria-label; sighted users read the tooltip — divergent text means the two audiences hear/see different affordance names"
+        redirect: "make the tooltip content exactly equal the IconButton's `aria-label`. See `icon-button-tooltip-aria-label-match`."
+
+    see_also:
+      - icon-button-tooltip-aria-label-match
+
+# (additional component groups appended below as C2a.9..C2a.11 are authored)
 
 cross_component_invariants:
   # (seeded incrementally per group; finalized in C2a.final)

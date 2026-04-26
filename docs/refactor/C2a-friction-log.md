@@ -87,3 +87,13 @@ Recorded for completeness: CardTitle (`type-h4 !font-semibold text-foreground �
 - **Awkward**: A1 listed StatusView variants as `[not-authorized, not-found, not-logged-in, error, loading]`. Live source has only 4 — no `loading` variant. (Loading states route through `LoadingSpinner` / `Skeleton` instead, which makes more sense.)
 - **Handled**: Updated A1 inventory to the correct 4-variant list and expanded `notable_props` from `[fullScreen]` to the full set (`[fullScreen, code, icon, title, description, action]`). Authored COMPONENT.md against the live source.
 - **Recommendation**: Same pattern as F7 — A1 baseline drifts; live source wins; A1 gets fixed in the same commit.
+
+---
+
+## C2a.8 — Overlays group (Dialog, Dropdown, Popover, Tooltip)
+
+### F10. A1 missed compound parts on every Radix-backed overlay (Dialog, Dropdown, Popover) — RESOLVED
+
+- **Awkward**: A1 listed `compound_parts: null` for Dialog, Dropdown, and Popover. Live surface exports 6 / 5 / 2 compound parts respectively.
+- **Resolution**: A1 inventory updated for all three with the live compound-part lists. Tooltip kept at `null` — Tooltip.tsx genuinely has no exposed compound parts (uses `content: string` prop + `children` as the trigger; Radix Provider/Root/Trigger/Portal/Content are internal). COMPONENT.md authored against live source.
+- **Carry-over**: Same pattern likely on RadioGroup (C2a.10) and Tabs (C2a.9 — already correct in A1, but verify against source).
