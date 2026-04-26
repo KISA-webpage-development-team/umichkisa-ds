@@ -303,21 +303,19 @@ For human reviewers — scan this list to verify the diff matches intent before 
 
 ---
 
-## Open questions
+## Open questions — resolved during checkpoint review
 
-Items that need a human call before C3 applies the diff. None block A7; all could be resolved at C3 review time.
+1. **`implementer-template.md` removal at C3.** **RESOLVED:** delete the template file in the same commit that applies this diff.
 
-1. **`implementer-template.md` removal at C3.** A5 says the template gets retired once the subagent path is canonical. Confirm at C3: delete the template file in the same commit that applies this diff, or keep as a transition-only artifact for one more cycle?
+2. **`test-writer-template.md` location.** **RESOLVED:** stays at current path post-C3. No rename.
 
-2. **`test-writer-template.md` location.** A5 keeps test-writer as a template; the skill still references it as `test-writer-template.md` in the same directory. Confirm the template stays at its current path post-C3 (no renaming to e.g. `test-writer-dispatch.md`).
+3. **`ds-client-review` agent reference-doc scope.** **RESOLVED:** the reviewer reads **USAGE.md + COMPONENT.md** as primary references; DESIGN.md is optional on-demand reference, not embedded. Reasoning: A2's contract-ownership test moved per-component anti-patterns OUT of USAGE.md INTO COMPONENT.md, so USAGE.md alone is insufficient — the reviewer would miss every component-contract violation (Card padding overrides, Tabs.flex, IconButton/Tooltip aria invariant). DESIGN.md carries token *values*, not *rules*; the reviewer enforces rules. Same on-demand-load pattern as implementer; cuts embedded-doc surface from 3 → 2 for an agent that fires many times per phase. The agent file's own reference instructions get updated at C3.
 
-3. **`ds-client-review` agent's own reference-doc rename.** This A6 diff drops every doc name from SKILL.md, but the `ds-client-review` agent itself reads `docs/DS_CLIENT_USAGE.md` today. When USAGE.md ships in C3, the agent's own internal reference must also rename. Out of A6 scope, but worth flagging on the C3 checklist so it doesn't fall through.
+4. **`final-review` skill name (`vercel-react-best-practices`).** **DEFERRED.** Project-specific in flavor; revisit when a non-React consumer appears.
 
-4. **`final-review` skill name (`vercel-react-best-practices`).** The `## Final Review` section invokes a skill that is itself project-specific in flavor (Vercel + React). For external KISA-DS consumers using a non-React stack (none today, but post-Phase-D possible), this hard-codes a stack assumption. Defer until a non-React consumer actually appears.
+5. **Rename `ds-fix-during-migration` → `ds-gap-fix`.** **TRACKED for Phase A close-out.** The "migration" suffix is migration-coded; the skill's actual job (DS gap remediation during execution) is general. Rename happens after A7 + PHASE-A-SUMMARY land. Affects: skill folder name, the option (d) text in this skill's `## DS Client Review` decision space, any other doc references. Added to PHASE-A-SUMMARY's deferred-actions list.
 
-5. **Decision-space option (d) in `## DS Client Review` references `ds-fix-during-migration`.** That skill name has "migration" in it. If `ds-fix-during-migration` later renames (e.g., to `ds-gap-fix`), update the option text. Tracking item, not a blocker.
-
-6. **Graph node naming.** `BLOCKED (DS)?` vs `BLOCKED (gen)?` carry the dispatch-path qualifier in the diamond label. Functional but a touch ugly. Alternative: rely on graph topology and use a single `BLOCKED?` node that branches based on which dispatch fed it. Punt to a graph-aesthetics review at C3.
+6. **Graph node naming (`BLOCKED (DS)?` vs `BLOCKED (gen)?`).** **OPEN — defer to C3.** Acknowledged as ugly but functional. C3 graph-aesthetics pass to consider single `BLOCKED?` node with topology-based disambiguation.
 
 ---
 
