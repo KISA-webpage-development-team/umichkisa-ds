@@ -1,13 +1,9 @@
-<!--
-  @generated — produced by packages/web/scripts/compile-design.ts.
-  Do NOT edit by hand. Edits are overwritten on the next build's
-  prebuild step. To change content: edit the source CSS in
-  packages/web/src/{styles,tokens}/, or the prose templates in
-  packages/web/scripts/templates/.
-  Spec: docs/refactor/A4-design-compile.md.
--->
-
 ---
+# @generated — produced by packages/web/scripts/compile-design.ts.
+# Do NOT edit by hand. Edits are overwritten on the next prebuild.
+# Source CSS: packages/web/src/{styles,tokens}/.
+# Prose templates: packages/web/scripts/templates/.
+# Spec: docs/refactor/A4-design-compile.md.
 version: alpha
 name: KISA Design System
 description: University of Michigan KISA — navy + maize Michigan brand, Korean-first typography.

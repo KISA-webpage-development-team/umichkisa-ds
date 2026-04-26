@@ -17,6 +17,7 @@
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { spawnSync } from 'node:child_process';
 import postcss, { type Declaration, type AtRule, type Rule } from 'postcss';
 import { converter, parse as parseColor, formatHex } from 'culori';
 
@@ -263,6 +264,13 @@ function emitYaml(
 ): string {
   const lines: string[] = [];
   lines.push('---');
+  // Generated-file warning lives inside the YAML so frontmatter detection
+  // (which requires `---` at line 1) still fires.
+  lines.push('# @generated — produced by packages/web/scripts/compile-design.ts.');
+  lines.push('# Do NOT edit by hand. Edits are overwritten on the next prebuild.');
+  lines.push('# Source CSS: packages/web/src/{styles,tokens}/.');
+  lines.push('# Prose templates: packages/web/scripts/templates/.');
+  lines.push('# Spec: docs/refactor/A4-design-compile.md.');
   lines.push('version: alpha');
   lines.push('name: KISA Design System');
   lines.push('description: University of Michigan KISA — navy + maize Michigan brand, Korean-first typography.');
@@ -323,14 +331,9 @@ function renderBody(kisaVersion: string): string {
   return sections.join('\n\n');
 }
 
-const HEADER = `<!--
-  @generated — produced by packages/web/scripts/compile-design.ts.
-  Do NOT edit by hand. Edits are overwritten on the next build's
-  prebuild step. To change content: edit the source CSS in
-  packages/web/src/{styles,tokens}/, or the prose templates in
-  packages/web/scripts/templates/.
-  Spec: docs/refactor/A4-design-compile.md.
--->`;
+// (Generated-file warning is emitted as YAML comments inside the
+// frontmatter — see emitYaml. Markdown HTML comments before the
+// frontmatter break the lint tool's frontmatter detection.)
 
 // ─── Main ─────────────────────────────────────────────────────────────
 
@@ -371,10 +374,48 @@ function main() {
   // Emit
   const yaml = emitYaml(colors, typography, spacing, ROUNDED_TIERS, kisaVersion);
   const body = renderBody(kisaVersion);
-  const out = `${HEADER}\n\n${yaml}\n${body}\n`;
+  const out = `${yaml}\n${body}\n`;
 
   writeFileSync(OUTPUT, out, 'utf8');
   console.log(`compile-design: wrote ${OUTPUT} (${colors['brand-primary']} brand-primary, KISA v${kisaVersion})`);
+
+  // Lint gate (A4 §Lint rules + C1.4 OQ1: lint-only, no round-trip).
+  runLint(OUTPUT);
+}
+
+function runLint(path: string) {
+  const result = spawnSync('npx', ['--yes', '@google/design.md', 'lint', path], {
+    stdio: ['ignore', 'pipe', 'pipe'],
+    encoding: 'utf8',
+  });
+  const stdout = result.stdout || '';
+  const stderr = result.stderr || '';
+  // The tool outputs JSON to stdout. Parse and gate on `errors > 0`.
+  let report: { findings: { severity: string; message: string }[]; summary: { errors: number; warnings: number; infos: number } } | null = null;
+  try {
+    // Some npx invocations interleave install logs; parse the last JSON object.
+    const match = stdout.match(/\{[\s\S]*\}/);
+    if (match) report = JSON.parse(match[0]);
+  } catch {
+    // fallthrough to error
+  }
+  if (!report) {
+    console.error('compile-design: lint did not return parseable JSON');
+    if (stdout) console.error('--- lint stdout ---\n' + stdout);
+    if (stderr) console.error('--- lint stderr ---\n' + stderr);
+    process.exit(1);
+  }
+  const { errors, warnings, infos } = report.summary;
+  console.log(`compile-design: lint summary — errors=${errors} warnings=${warnings} infos=${infos}`);
+  if (warnings + infos > 0) {
+    for (const f of report.findings) {
+      console.log(`  [${f.severity}] ${f.message}`);
+    }
+  }
+  if (errors > 0) {
+    console.error('compile-design: lint reported errors; failing the build.');
+    process.exit(1);
+  }
 }
 
 main();
