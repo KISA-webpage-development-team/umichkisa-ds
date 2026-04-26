@@ -43,6 +43,7 @@ Accumulator for DS fixes made during client migration. Grouped by package, entri
 - **[Post-Phase-2 hotfix.bump]** Bump `@umichkisa-ds/web` `1.0.18 → 1.0.19` (patch) — ships the `appearance-none` follow-up — 2026-04-25
 - **[Post-Phase-2 hotfix]** Container: bake page padding into defaults — `px-4 md:px-6 lg:px-8` → `p-6 lg:p-12`. Container is positioned as the page shell, but consumers (DocsLayout, pocha-manage) were stacking outer padding/margin on top, producing inconsistent edges between root and inner pages. DocsLayout drops its `p-6 lg:p-12` wrapper; pocha-manage drops its `my-4 md:my-6 lg:my-10` Container override (commit 4011d2a) — 2026-04-25
 - **[Post-Phase-2 hotfix.bump]** Bump `@umichkisa-ds/web` `1.0.19 → 1.0.20` (patch) — ships the Container default-padding change — 2026-04-25
+- **[Refactor/A4]** Ship `type-h4` typography class (`pretendard / 1rem / 600 / line-height 1.375`) in `@layer ds-components`. Slots between `type-body` and `type-h3`. CardTitle has referenced this class without a definition; surfaced as A2 deferred item, fixed during A4 grill (commit edac51e) — 2026-04-26
 
 ## @umichkisa-ds/form
 
