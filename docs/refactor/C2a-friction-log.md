@@ -77,3 +77,13 @@ User: dangling references are fine — every component will land before C2a.fina
 ### F8. CardTitle uses `!font-semibold` — same root cause as F5
 
 Recorded for completeness: CardTitle (`type-h4 !font-semibold text-foreground …`) and Table TableHead (`!font-medium`) both rely on the `!font-*` override pattern. Same resolution as F5 — relax `p2-tk-3` when C2b authors USAGE.md.
+
+---
+
+## C2a.7 — Feedback group (Alert, Toaster, StatusView, LoadingSpinner, Skeleton)
+
+### F9. A1's StatusView variant list included a `loading` variant that doesn't exist in source
+
+- **Awkward**: A1 listed StatusView variants as `[not-authorized, not-found, not-logged-in, error, loading]`. Live source has only 4 — no `loading` variant. (Loading states route through `LoadingSpinner` / `Skeleton` instead, which makes more sense.)
+- **Handled**: Updated A1 inventory to the correct 4-variant list and expanded `notable_props` from `[fullScreen]` to the full set (`[fullScreen, code, icon, title, description, action]`). Authored COMPONENT.md against the live source.
+- **Recommendation**: Same pattern as F7 — A1 baseline drifts; live source wins; A1 gets fixed in the same commit.

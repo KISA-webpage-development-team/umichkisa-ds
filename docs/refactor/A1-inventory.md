@@ -52,8 +52,8 @@ components:
     source_path: feedback/StatusView.tsx
     intent: Full-page state when there is no content (empty / 404 / auth gate / error)
     compound_parts: null
-    variants: [not-authorized, not-found, not-logged-in, error, loading]
-    notable_props: [fullScreen]
+    variants: [not-found, not-authorized, not-logged-in, error]
+    notable_props: [fullScreen, code, icon, title, description, action]
   - name: LoadingSpinner
     intent_group: Showing feedback to the user
     source_path: feedback/LoadingSpinner.tsx

@@ -738,7 +738,248 @@ components:
       - table-mobile-pair
       - ds-layout-no-utility-override
 
-# (additional component groups appended below as C2a.7..C2a.11 are authored)
+  # ============================================================
+  # intent_group: Showing feedback to the user
+  # ============================================================
+
+  - name: Alert
+    intent_group: Showing feedback to the user
+    intent: Inline contextual message — validation summary, feature caveat, important note that lives within the page flow
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "delivering a contextual message that should remain visible (validation summary at the top of a form, important page-level note)"
+      - "the message is tied to the surrounding content's context (an inline warning above a form section)"
+      - "the user benefits from seeing the message until they act on or read past it (it does NOT auto-dismiss)"
+    reject_when:
+      - "the message is a transient post-action notification that should auto-dismiss (use `Toaster` + `toast()`)"
+      - "the message is a short status label or count next to other content (use `Badge`)"
+      - "the message is a full-page state when there's no content (use `StatusView`)"
+      - "the message is a tooltip or popover anchored to a trigger (use `Tooltip` or `Popover`)"
+
+    variants:
+      - name: info
+        pick_when:
+          - "neutral informational message — \"This page uses cookies\", configuration tip, helpful context"
+        reject_when:
+          - "the message communicates success/warning/error — use the matching variant"
+      - name: success
+        pick_when:
+          - "confirming an action completed — \"Settings saved\", \"Payment received\""
+      - name: warning
+        pick_when:
+          - "non-blocking issue or attention-needed — \"Your session expires in 5 minutes\", \"This action will affect 12 users\""
+      - name: error
+        pick_when:
+          - "blocking failure or validation summary — \"Could not save\", \"3 fields have errors\""
+
+    notable_props:
+      - name: variant
+        type: "enum: info | success | warning | error"
+        default: info
+        pick_guidance: "see variants block above; semantic state must match content"
+      - name: title
+        type: "string"
+        pick_guidance: "optional bold-prefix line above the body. Use for short summaries (\"Saved\", \"Validation errors\"). Omit when the body content is the whole message."
+      - name: icon
+        type: "IconName | null"
+        pick_guidance: "by default Alert renders a variant-default icon (info → `info`, success → `circle-check`, warning → `triangle-alert`, error → `circle-x`). Pass an explicit `IconName` to override; pass `null` to suppress the icon entirely."
+
+    intrinsic_behavior:
+      - "renders an inline `flex items-start gap-2` row with a leading icon (color-matched to variant) + a content stack (title + body)"
+      - "background and border use the variant's `-subtle` bg + solid border combo (per the foundational color contract for feedback states)"
+      - "title renders as `<p><strong>{title}</strong></p>` at `type-body-sm`; body renders at `type-body-sm text-foreground` — semantic structure is intentionally simple, no `role=\"alert\"` (Alert is for visible inline content, not assertive announcements; for assertive use `toast.error`)"
+
+    anti_patterns:
+      - pattern: "using `variant=\"info\"` (or any variant) as a styled box wrapper for non-message content"
+        why: "Alert is a feedback affordance — its variants encode semantic state. Using it as a generic colored box dilutes the variant signal and confuses screen-reader users who expect a message"
+        redirect: "for tinted content boxes that aren't messages, use a `<div>` with explicit `bg-info-subtle` / `bg-success-subtle` etc. utilities, OR a Card variant"
+      - pattern: "using a neutral `default` / `outline` styling on Alert for status content"
+        why: "Alert variants ARE the semantic-state signal. There is no neutral Alert variant by design — neutral content doesn't belong in Alert."
+        redirect: "render plain `<p className=\"type-body-sm text-foreground\">…</p>` for neutral text; reserve Alert for the four semantic states"
+
+    see_also:
+      - feedback-status-variant
+
+  - name: Toaster
+    intent_group: Showing feedback to the user
+    intent: Mount-once root for transient post-action notifications fired imperatively via `toast(message, options)`
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "the app needs transient post-action notifications (\"Settings saved\", \"Copied to clipboard\", \"Failed to save — retry\") that auto-dismiss"
+      - "exactly ONE Toaster is mounted at the application root (typically in the root layout / `_app`)"
+      - "messages are fired imperatively in response to user actions, not rendered conditionally based on state"
+    reject_when:
+      - "the message belongs in the page flow as visible context (use `Alert`)"
+      - "the message is a full-page state with no content (use `StatusView`)"
+      - "rendering a second Toaster anywhere else in the tree (Toaster is mount-once — duplicate roots produce duplicate toasts)"
+
+    notable_props:
+      - name: position
+        type: "enum: top-center | top-left | top-right | bottom-center | bottom-left | bottom-right"
+        default: top-center
+        pick_guidance: "leave at default (`top-center`) for app-wide consistency unless a product-design decision overrides"
+      - name: duration
+        type: "number (ms)"
+        default: 4000
+        pick_guidance: "leave at default unless toasts are routinely too short / too long for the audience"
+      - name: expand
+        type: "boolean"
+        pick_guidance: "expand stacks toasts on hover — useful for power users; omit unless requested"
+      - name: visibleToasts
+        type: "number"
+        pick_guidance: "max stack size before older toasts roll off — leave at sonner default unless the surface frequently fires bursts"
+
+    intrinsic_behavior:
+      - "wraps `sonner`'s `<Toaster>` with KISA-branded styling — every variant pairs `border-{state} bg-{state}-subtle` per the foundational color contract"
+      - "co-exported with the imperative `toast(message, options)` trigger function from the same module — `toast.success(...)`, `toast.error(...)`, `toast.warning(...)`, `toast.info(...)` map to the styled variants"
+      - "icons for each variant are pre-wired to the DS Icon registry (`circle-check` / `info` / `triangle-alert` / `circle-x` at size `sm`) — never raw lucide-react"
+      - "close button is hidden by default (`closeButton={false}`); toasts dismiss via duration timeout or imperative `toast.dismiss(id)`"
+      - "always uses `theme=\"light\"` — Toaster does NOT honor a dark theme (consistent with the no-dark-mode contract)"
+
+    anti_patterns:
+      - pattern: "mounting `<Toaster>` more than once in the app tree"
+        why: "each Toaster instance subscribes to the global `toast` queue; multiple mounts produce duplicate visible toasts on every fire"
+        redirect: "mount exactly one `<Toaster>` at the app root (root layout in Next.js, top of the App tree elsewhere). Component code calls `toast(...)` directly — no Toaster mount needed at call sites."
+      - pattern: "rendering `<Toaster>` and never calling `toast(...)` (or vice versa — calling `toast(...)` without Toaster mounted)"
+        why: "Toaster is the renderer; toast is the trigger — without both, notifications silently no-op"
+        redirect: "always pair them: Toaster at the root, `toast(...)` at the action site"
+
+  - name: StatusView
+    intent_group: Showing feedback to the user
+    intent: Full-region (or full-viewport) status state for surfaces with no content — empty / 404 / auth gate / error
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "the surface has no content to show because of an empty/missing/blocked state (`not-found`, `not-authorized`, `not-logged-in`, `error`)"
+      - "the user benefits from a centered status display with an icon, title, and short description"
+      - "this is a page-region or page-level state, not an inline message"
+    reject_when:
+      - "the message belongs inline in the page flow (use `Alert`)"
+      - "the page IS rendering content but with a transient notification (use `Toaster` + `toast()`)"
+      - "the page is loading — there's content coming, just not yet (use `LoadingSpinner` or `Skeleton`)"
+      - "the surface is a single component with no content (use a smaller empty state inline; StatusView is a region/page-level affordance)"
+
+    variants:
+      - name: not-found
+        pick_when:
+          - "the requested resource doesn't exist — 404 routes, deleted records"
+      - name: not-authorized
+        pick_when:
+          - "the user is logged in but lacks permission for the resource"
+      - name: not-logged-in
+        pick_when:
+          - "the resource requires auth and the user is not signed in"
+      - name: error
+        pick_when:
+          - "an unexpected failure occurred — error.tsx boundaries, runtime errors"
+
+    notable_props:
+      - name: variant
+        type: "enum: not-found | not-authorized | not-logged-in | error"
+        required: true
+        pick_guidance: "see variants block; the variant pre-fills icon + title + description in Korean"
+      - name: code
+        type: "string"
+        pick_guidance: "optional large status code rendered above the title (e.g. \"404\", \"500\"). When provided, the variant icon shrinks and renders inline next to the title instead of as the hero glyph."
+      - name: icon
+        type: "IconName"
+        pick_guidance: "override the variant's default icon when the page-specific context calls for a different glyph. Must be in the Icon registry."
+      - name: title
+        type: "string"
+        pick_guidance: "override the variant's default Korean title — pass an English / domain-specific title when needed"
+      - name: description
+        type: "string"
+        pick_guidance: "override the variant's default Korean description"
+      - name: action
+        type: "ReactNode"
+        pick_guidance: "optional action area below the description — typically `<Button>` or `<LinkButton>` (\"Go home\", \"Sign in\", \"Retry\")"
+      - name: fullScreen
+        type: "boolean"
+        default: false
+        pick_guidance: "set true ONLY for app-shell-level states (root error.tsx, full-page auth gate) — `fixed inset-0 z-50` occludes any surrounding header/footer. For page-region empty states (e.g. inside a Card or page section) leave at default `false`."
+
+    intrinsic_behavior:
+      - "centered column layout — icon (xl) OR `code` (display typography) on top, title (`type-h2 text-brand-primary`) + description (`type-body text-muted-foreground`), optional action below"
+      - "renders `role=\"status\" aria-live=\"polite\"` so screen readers announce the state when it appears"
+      - "Korean default copy on each variant — override via `title` / `description` for non-Korean surfaces"
+      - "`fullScreen` toggles between `fixed inset-0 z-50` (full-viewport overlay) and `w-full h-full` (fills its containing region)"
+
+    anti_patterns:
+      - pattern: "passing `fullScreen` on a StatusView rendered inside a card / section / sub-region"
+        why: "`fullScreen` applies `fixed inset-0 z-50` — the StatusView occludes the entire viewport, not just the containing card; consumers see a 'page-takeover' empty state where they expected a region-scoped one"
+        redirect: "leave `fullScreen` at default `false` for region-level states; use `fullScreen` ONLY for app-shell error pages or full-page auth gates"
+
+  - name: LoadingSpinner
+    intent_group: Showing feedback to the user
+    intent: Wait state with no skeletonable layout — initial fetch, button submit, overlay content load
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "the surface is loading and there's no known layout to skeleton — initial page fetch, modal content load, button submit"
+      - "the wait is short enough that a structural skeleton would feel like overkill"
+      - "the spinner's purpose is to signal 'something is happening', not to preserve content shape"
+    reject_when:
+      - "the loading content has a known layout (use `Skeleton` — preserves perceived layout stability)"
+      - "the action is a form submit on a `Form.Button` — Form.Button auto-disables and shows pending state internally; no extra spinner needed"
+      - "the wait is permanent / there is no content (use `StatusView` with `variant=\"error\"` or similar)"
+
+    notable_props:
+      - name: size
+        type: "enum: sm | md | lg"
+        default: md
+        pick_guidance: "`sm` (20px) for inline spinners (button-internal, list-item); `md` (32px) default for modal/region loading; `lg` (48px) for full-page wait states"
+      - name: label
+        type: "string"
+        default: "\"Loading\""
+        pick_guidance: "always applied as `aria-label` for screen readers. Override only when a more specific label fits (\"Loading messages\", \"Saving...\")"
+      - name: showLabel
+        type: "boolean"
+        default: false
+        pick_guidance: "set true to render the label as visible text below the spinner — use on full-page wait surfaces where a visible message helps; leave false for inline / button-internal spinners"
+
+    intrinsic_behavior:
+      - "renders a `.ds-spinner` element (DS-owned CSS class) sized via `.ds-spinner-{sm|md|lg}` — never raw `<svg>` or third-party spinner"
+      - "spinner uses the brand-accent (maize) top border + neutral border for the rotating ring; animation is the `ds-spin` keyframe defined in `theme.css`"
+      - "`role=\"status\"` + `aria-label` on the spinner ring so screen readers announce the wait state"
+      - "visible label (when `showLabel`) renders at `type-body-sm !font-semibold text-brand-primary` — paired typography contract"
+
+    anti_patterns:
+      - pattern: "using LoadingSpinner where Skeleton would preserve layout"
+        why: "spinner shows 'something is loading' without preserving the content shape; for known-layout surfaces (lists, cards, tables) Skeleton produces less perceived layout shift"
+        redirect: "if the loading content has a predictable layout, use `Skeleton` — reach for LoadingSpinner only when there's no skeletonable structure"
+
+  - name: Skeleton
+    intent_group: Showing feedback to the user
+    intent: Loading placeholder that preserves a known layout shape
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "the surface has a predictable layout (text rows, list items, card headers) and benefits from preserved structure during load"
+      - "the wait is long enough that perceived layout stability matters (>~300ms)"
+      - "the consumer can size the skeleton to match the eventual content (`w-32 h-4`, `w-full h-12`)"
+    reject_when:
+      - "the loading state has no predictable layout (use `LoadingSpinner`)"
+      - "the layout already exists and just needs a wait indicator (use `LoadingSpinner` inline)"
+
+    notable_props:
+      - name: variant
+        type: "enum: rectangular | circular"
+        default: rectangular
+        pick_guidance: "`rectangular` (default) for text rows, card placeholders, image stand-ins — `rounded-md w-full`. `circular` for avatar / circular-image placeholders — `rounded-full`."
+
+    intrinsic_behavior:
+      - "renders a `bg-border` element with the `ds-pulse` animation (2s ease-in-out infinite) — the DS-owned pulse keyframe"
+      - "consumer sizes via `className` (`w-32 h-4`, `h-12`, etc.); Skeleton itself does NOT default to a specific size"
+      - "rectangular vs. circular only differ in border-radius (`rounded-md` vs. `rounded-full`); width/height come from consumer className"
+
+    anti_patterns:
+      - pattern: "using a custom `animate-pulse` on a plain `<div className=\"bg-gray-200\">` instead of Skeleton"
+        why: "the consumer has to remember the right color (`bg-border`), the right animation (`ds-pulse`), and the right border-radius — Skeleton encapsulates all three"
+        redirect: "use `<Skeleton className=\"w-32 h-4\">` — pass dimensions via className, leave the rest to Skeleton"
+
+# (additional component groups appended below as C2a.8..C2a.11 are authored)
 
 cross_component_invariants:
   # (seeded incrementally per group; finalized in C2a.final)
