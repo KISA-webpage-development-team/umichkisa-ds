@@ -119,7 +119,96 @@ components:
         why: "Grid is the canonical column-grid primitive in the DS; reaching for raw utilities re-implements its responsive + gap-tier contract by hand and drifts from the rest of the app"
         redirect: "render `<Grid>` and pass the extension via the `className` prop (e.g. `<Grid className=\"grid-cols-[240px_1fr]\">`) — className overrides are the supported escape hatch when `columns` doesn't fit"
 
-# (additional component groups appended below as C2a.3..C2a.11 are authored)
+  # ============================================================
+  # intent_group: Utilities
+  # ============================================================
+
+  - name: Icon
+    intent_group: Utilities
+    intent: Render a Lucide-registry-backed icon by name with size from the 5-step DS scale
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "rendering an icon glyph in any context — UI affordance, decorative accent, status indicator, navigation"
+      - "the icon name maps to a registered Lucide entry (or a registered custom brand icon like `github`, `linkedin`)"
+      - "the icon size needs to come from the DS 5-step scale (`xs`, `sm`, `md`, `lg`, `xl`)"
+    reject_when:
+      - "the glyph is a one-off complex illustration not registered in the Icon registry (use `<img>` or a dedicated illustration component; never inline SVG)"
+      - "the glyph is the only visual on an interactive surface (use `<IconButton>` so the wrapping button + tooltip + 44×44 touch-target contract is satisfied)"
+      - "importing a Lucide icon directly from `lucide-react` (always go through `<Icon>` so the registry tracks usage and color/size discipline applies)"
+
+    notable_props:
+      - name: name
+        type: "IconName (kebab-case Lucide name, exact match from lucide.dev — or registered custom: `github` / `linkedin` / `instagram` / `instagram-brand`)"
+        pick_guidance: "exhaust the Lucide search at lucide.dev before requesting a custom icon; missing icons route through ds-fix-during-migration to the registry"
+      - name: size
+        type: "enum: xs | sm | md | lg | xl"
+        default: md
+        pick_guidance: "match the icon size to its text context — `xs`/`sm` for caption (12–16px), `md` for body and the default UI affordance (20px), `md`–`lg` for subhead, `lg` for heading (24px), `xl` for hero (32px). Resolves to `spacing.icon-{size}` in DESIGN.md."
+      - name: label
+        type: "string"
+        pick_guidance: "set ONLY when this icon is the sole indicator of meaning to a screen reader — i.e. there is no adjacent text label and no aria-label on a wrapping button. Sets `role=\"img\"` + `aria-label`. Decorative icons (icon-with-text, icon inside a labeled button) MUST omit `label` so the icon renders `aria-hidden`."
+      - name: className
+        type: "string"
+        pick_guidance: "layout-only utilities (`block`, `flex-shrink-0`, positioning). Color is inherited from the parent's `text-*` token (`currentColor`); size is set by `size` prop, NEVER by font-size or width/height utilities."
+
+    intrinsic_behavior:
+      - "color inherits from the parent's text color via `currentColor` — control icon color by setting `text-foreground` / `text-muted-foreground` / `text-brand-primary` on the parent, never on `<Icon>` itself"
+      - "size resolves to a numeric pixel value from the DS 5-step scale — bypassing this with `font-size` / `w-*` / `h-*` utilities is a contract break"
+      - "renders `aria-hidden=\"true\"` when `label` is omitted (decorative); renders `role=\"img\" aria-label={label}` when `label` is provided (semantic)"
+      - "the registry surface is closed — only icons added by the DS owner via `ds-fix-during-migration` are available; consumers cannot register new names at call site"
+
+    anti_patterns:
+      - pattern: "passing color or sizing utilities via `className` (e.g. `text-red-500`, `w-6`, `h-6`, `text-2xl`)"
+        why: "Icon takes color from `currentColor` (parent text color) and size from the `size` prop; className overrides break that contract — the icon ends up colored or sized off-tier, and the consumer thinks they're using DS but aren't"
+        redirect: "set color on the parent's `text-*` class; pick size from the 5-step `size` prop. className accepts layout-only utilities (`block`, `flex-shrink-0`)."
+      - pattern: "passing `label` when the wrapping element already has an accessible name (e.g. `<button aria-label=\"Close\"><Icon name=\"x\" label=\"Close\" /></button>`)"
+        why: "screen readers announce both the button's `aria-label` and the icon's `aria-label`, producing duplicate or stuttering announcements (\"Close, Close\")"
+        redirect: "omit `label` whenever the icon is decorative — i.e. when adjacent text or a wrapping button's aria-label already names the action. The icon renders `aria-hidden` and the button speaks alone."
+      - pattern: "importing icons directly from `lucide-react` or `react-icons` and using them inline"
+        why: "bypasses the registry that the DS uses to track icon usage, enforce style consistency (24×24, stroke-width 2, currentColor), and gate brand-icon exceptions"
+        redirect: "use `<Icon name=\"...\">`. If the needed icon is missing from the registry, request it via `ds-fix-during-migration`."
+      - pattern: "attaching `onClick` directly to `<Icon>`"
+        why: "Icon renders an SVG, not an interactive element — keyboard focus, ARIA role, and the 44×44 touch-target floor are missing"
+        redirect: "wrap the icon in `<IconButton>` (icon-only action) or `<button>`/`<a>` (icon + text)"
+
+    see_also:
+      - icon-button-tooltip-aria-label-match
+
+  - name: OnlyMobileView
+    intent_group: Utilities
+    intent: Mobile-only page gate that renders a "use your phone" overlay on `md:`+ viewports
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "the entire page or route is intentionally mobile-only (e.g. event check-in, on-site QR scanner, mobile-first form flow)"
+      - "rendering the desktop version of the page would mislead users — there is no usable desktop layout, only the mobile one"
+    reject_when:
+      - "the page should adapt to desktop with a different layout (use the standard responsive system — `md:` / `lg:` breakpoints — not OnlyMobileView)"
+      - "only some sections of the page are mobile-only (use `md:hidden` / `block md:hidden` utilities scoped to those sections)"
+      - "the goal is to hide a single component on desktop (use Tailwind's `md:hidden` directly; OnlyMobileView is a page-level gate)"
+
+    notable_props:
+      - name: message
+        type: "string"
+        default: "\"Only Mobile View is supported.\""
+        pick_guidance: "override only when the default is wrong for the surface — typically leave at default for app-wide consistency"
+      - name: className
+        type: "string"
+        pick_guidance: "applied to the outer wrapper, not the desktop overlay or mobile children — used for outer layout positioning only"
+
+    intrinsic_behavior:
+      - "renders a fixed full-viewport overlay on `md:` and above with the configured message + a `smartphone` icon"
+      - "renders `children` only on viewports below the `md:` breakpoint (mobile)"
+      - "the overlay uses `bg-surface` + `text-brand-primary` and applies `role=\"status\" aria-live=\"polite\"` so screen readers announce the gate when it appears"
+      - "single-breakpoint contract — `md:` is the desktop/mobile boundary; OnlyMobileView does not honor `lg:`-only or `sm:`-only carve-outs"
+
+    anti_patterns:
+      - pattern: "using OnlyMobileView for a page that has a perfectly usable desktop layout"
+        why: "the gate hides usable content behind a 'use your phone' overlay — frustrating for users who can complete the task on desktop"
+        redirect: "build the desktop layout responsively with `md:` / `lg:` utilities. OnlyMobileView is reserved for genuinely mobile-only contexts (in-person scanning, mobile-only forms)."
+
+# (additional component groups appended below as C2a.4..C2a.11 are authored)
 
 cross_component_invariants:
   # (seeded incrementally per group; finalized in C2a.final)
@@ -128,4 +217,10 @@ cross_component_invariants:
     invariant: "flex / overflow / height / max-height utilities passed via className to force a DS layout component's size are forbidden — the component owns its own layout shape"
     why: "DS layout components encapsulate flex direction, overflow behavior, and intrinsic height; consumer overrides via className compete with internal contracts and produce subtly broken layout (clipped overlays, double scrollbars, collapsed grid rows)"
     detection: static
+
+  - id: icon-button-tooltip-aria-label-match
+    components: [IconButton, Tooltip, Icon]
+    invariant: "an icon-only interactive (`<IconButton>` or `<button>`/`<a>` wrapping `<Icon>`) MUST provide `aria-label` on the wrapper AND wrap in `<Tooltip>` whose content text equals that `aria-label` exactly. The inner `<Icon>` MUST NOT carry its own `label` prop."
+    why: "screen readers announce the wrapper's `aria-label` once; if the icon also carries `label` the announcement duplicates. Tooltip text and aria-label must match so sighted-tooltip-readers and screen-reader users hear the same affordance name."
+    detection: compositional
 ```
