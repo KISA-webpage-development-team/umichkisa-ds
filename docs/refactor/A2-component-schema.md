@@ -55,7 +55,8 @@ components:
     notable_props:                    # OPTIONAL
       - name: <prop_name>
         type: "<short_signature>"     # e.g. "enum: sm | md | lg" or "boolean"
-        default: <value>              # OPTIONAL
+        required: true                # OPTIONAL — mirror the TypeScript type. Omit (or false) when prop is optional.
+        default: <value>              # OPTIONAL — only meaningful when required is false/omitted
         pick_guidance: "<one_line>"   # OPTIONAL — when the agent should pick which value
         note: "<one_line>"            # OPTIONAL — non-obvious behavior
 
@@ -108,7 +109,7 @@ These are conventions, not validators. Reviewers enforce them.
 
 1. **One assertion per `pick_when` / `reject_when` line.** No compound clauses ("X and Y unless Z"). Split into separate lines.
 2. **`reject_when` always names the alternative in parentheses.** "icon alone with no label (use IconButton)" — the parenthetical is mandatory. Turns rejection into routing.
-3. **`notable_props` is for picking-relevant or contract-relevant props only.** Skip `data-*`, ARIA passthroughs, and obvious-from-type props. The full prop API stays in the `.tsx` source.
+3. **`notable_props` is for picking-relevant or contract-relevant props only.** Skip `data-*`, ARIA passthroughs, and obvious-from-type props. The full prop API stays in the `.tsx` source. Mark `required: true` on every prop the TypeScript type marks as required (no `?`) — mirrors the type-level truth so agents see required props at a scan rather than buried in `pick_guidance` prose.
 4. **`anti_patterns` passes the contract-ownership test.** "Would this still be wrong in a brand-new app?" If no, it belongs in Layer 3.
 5. **`compound_parts` does NOT include namespace members.** `Form.Input` is a top-level entry with `requires_context: Form`, not a part of Form's compound.
 

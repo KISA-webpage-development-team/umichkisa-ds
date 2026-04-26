@@ -140,6 +140,7 @@ components:
     notable_props:
       - name: name
         type: "IconName (kebab-case Lucide name, exact match from lucide.dev — or registered custom: `github` / `linkedin` / `instagram` / `instagram-brand`)"
+        required: true
         pick_guidance: "exhaust the Lucide search at lucide.dev before requesting a custom icon; missing icons route through ds-fix-during-migration to the registry"
       - name: size
         type: "enum: xs | sm | md | lg | xl"
@@ -351,9 +352,11 @@ components:
     notable_props:
       - name: icon
         type: "IconName (kebab-case, must exist in the Icon registry)"
+        required: true
         pick_guidance: "pick the same way as `<Icon name>` — exhaust the Lucide search, request additions via ds-fix-during-migration"
       - name: aria-label
-        type: "string (REQUIRED — TypeScript-enforced)"
+        type: "string"
+        required: true
         pick_guidance: "the accessible name for screen readers. Must equal the wrapping `<Tooltip>` content text exactly when wrapped."
       - name: size
         type: "enum: sm | md | lg"

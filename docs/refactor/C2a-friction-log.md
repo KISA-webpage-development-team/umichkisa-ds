@@ -53,8 +53,11 @@ User: dangling references are fine — every component will land before C2a.fina
 - **Handled**: Logged the pre-existing `!font-bold` in Button's `intrinsic_behavior` ("primary / secondary / destructive variants apply `!font-bold` to override the underlying `type-body[-sm]` class weight (intentional contract — Button text is heavier than body text by design)"). Did NOT add an anti-pattern about `!font-*` to USAGE — that's C2b.
 - **Recommendation**: When C2b authors USAGE.md, the `!font-*` override rule must be relaxed (drop p2-tk-3, drop p2-tk-4 carve-out) per A2 decision 3 + A3 input. The DS itself depends on `!font-*` for variant-weight contracts.
 
-### F6. IconButton's TypeScript-enforced `aria-label` — schema captures "required" via prose, not structurally
+### F6. IconButton's TypeScript-enforced `aria-label` — **RESOLVED at C2a.5 checkpoint**
 
-- **Awkward**: IconButton's TS type marks `aria-label: string` as required (`& { "aria-label": string }`). The A2 `notable_props` shape has no `required: true` field; the requirement is captured only in the prose `pick_guidance` ("REQUIRED — TypeScript-enforced"). For most components, requirement is captured at the type level and consumers find out from autocomplete; the schema doesn't structurally surface it.
-- **Handled**: Wrote "REQUIRED — TypeScript-enforced" inline in the type column. Schema fits — but the surface area for adding a `required: bool` is small if future agents miss the prose.
-- **Recommendation**: Optional A2 amendment — add `required: true` to `notable_props.<entry>`. Low priority; the type system is the actual gate, COMPONENT.md is documentation.
+- **Awkward**: IconButton's TS type marks `aria-label: string` as required. A2 `notable_props` had no `required` field; requirement was captured only in prose `pick_guidance`.
+- **Resolution**: User confirmed adding `required: true` to A2 schema. Applied:
+  - `A2-component-schema.md` §Schema — `required: true` added to `notable_props.<entry>` block (OPTIONAL, default false)
+  - `A2-component-schema.md` §Authoring disciplines (item 3) — added the rule "mark `required: true` on every prop the TypeScript type marks as required (no `?`)"
+  - `COMPONENT.md` retrofitted: `Icon.name`, `IconButton.icon`, `IconButton.aria-label` carry `required: true`
+- **Going forward**: Every future C2a entry checks the TS type and emits `required: true` for every non-`?` prop in `notable_props`.
