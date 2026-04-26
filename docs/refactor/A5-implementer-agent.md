@@ -251,3 +251,18 @@ This staged path means the active client migration is never blocked on the refac
 - **Agent description field tuning.** The frontmatter `description:` is what Claude Code uses to decide when to spawn this agent. Current draft says "Receives a task spec and ships working code. Used by the ds-client-constrained-execution skill as the per-task worker." Phase B will reveal whether this matches the orchestrator's selection logic accurately. Tune at first use.
 - **Working-directory hint.** The system prompt hard-codes `/Users/jiohin/Desktop/KISA/DevTeam/dev/KISA-website/client`. Plugin packaging (post-migration) reorganizes this — until then, the hard-coded path is fine.
 - **Phase B prototype dispatch.** Phase B will need a small wrapper (a SKILL.md branch or a manual Task call) that uses the new agent for the Icons cluster while the rest of any concurrent lane work continues on the template. Out of A5 scope; A6 covers the SKILL.md changes.
+
+---
+
+## A6 backfill — dispatch is gated on `.tsx`/`.jsx`
+
+Added after A6 grilling resolved a question A5 had not anticipated: the implementer is not the only worker the orchestrator dispatches. A6 introduces a worker-type fork keyed on the same `.tsx`/`.jsx` predicate that already gates the review chain.
+
+- **`.tsx` or `.jsx` in the task's file list** → dispatch `ds-client-implementer` (this agent). Review chain follows.
+- **Otherwise** → dispatch the built-in `general-purpose` subagent with task text only. Review chain skipped.
+
+Implication for this agent's frontmatter `description:` field (already flagged as a tuning item above): it should make the `.tsx`/`.jsx` scope explicit so Claude Code's selection logic doesn't misroute non-UI tasks here. Suggested phrasing for Phase B authoring:
+
+> "Senior frontend engineer that implements client-app tasks for any `@umichkisa-ds` consumer. Used by the `ds-client-constrained-execution` skill as the per-task worker for tasks that modify `.tsx`/`.jsx` files. Does NOT self-review for DS conformance — that's `ds-client-review`'s job."
+
+Net change to A5: the agent's identity is unchanged; only the orchestrator-side dispatch rule and the frontmatter `description:` tuning recommendation are sharpened. Authoring the agent file in Phase B should adopt the sharpened description.
