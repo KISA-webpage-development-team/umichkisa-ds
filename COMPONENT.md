@@ -208,7 +208,55 @@ components:
         why: "the gate hides usable content behind a 'use your phone' overlay — frustrating for users who can complete the task on desktop"
         redirect: "build the desktop layout responsively with `md:` / `lg:` utilities. OnlyMobileView is reserved for genuinely mobile-only contexts (in-person scanning, mobile-only forms)."
 
-# (additional component groups appended below as C2a.4..C2a.11 are authored)
+  # ============================================================
+  # intent_group: Date selection
+  # ============================================================
+
+  - name: Calendar
+    intent_group: Date selection
+    intent: Standalone always-visible month-grid calendar for picking a date or range without a popover trigger
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "the surface needs a permanently-visible calendar grid (event scheduling page, date-driven dashboard, schedule overview)"
+      - "the user benefits from seeing the month and surrounding days at all times, not on click"
+      - "the date selection is the primary content of the surface, not a form field"
+    reject_when:
+      - "the date is being collected as part of a form (use `Form.DatePicker` / `Form.DateRangePicker` so wiring + validation come for free)"
+      - "the date input is one of many form controls and a popover trigger is more space-efficient (use `DatePicker` or `DateRangePicker` — they wrap Calendar in a popover)"
+      - "the surface needs a date display only, not selection (render a formatted date string with the appropriate `type-*` class)"
+
+    notable_props:
+      - name: mode
+        type: "enum: single | multiple | range (passed through to react-day-picker)"
+        pick_guidance: "`single` for picking one date; `range` for start–end (e.g. event date range); `multiple` for ad-hoc multi-day selection"
+      - name: showOutsideDays
+        type: "boolean"
+        default: true
+        pick_guidance: "leave at default — surrounding-month days at 50% opacity orient the user; turn off only when the surrounding context already provides the orientation"
+      - name: selected
+        type: "Date | Date[] | DateRange (matches `mode`)"
+        pick_guidance: "controlled — pass alongside `onSelect` for state ownership outside Calendar"
+      - name: classNames
+        type: "Partial<DayPicker classNames map>"
+        pick_guidance: "DS pre-styles every slot; pass entries here ONLY to override a specific slot when DS styling genuinely doesn't fit. Avoid blanket overrides — Calendar's interactive states (focus ring, hover, today, selected, range_*) are part of the contract."
+
+    intrinsic_behavior:
+      - "wraps `react-day-picker`'s `<DayPicker>` with KISA-branded slot styling — `today` is `bg-surface-subtle` + bold, `selected` uses `bg-brand-primary` + maize foreground, `range_*` uses `bg-brand-accent-subtle` for the in-range bg"
+      - "every interactive cell (day, prev/next month) implements the dual-ring focus pattern (outline-2 focus-ring + 4px box-shadow brand-primary) AND the 44×44 touch-target floor via the `::after` pseudo-element technique"
+      - "navigation chevrons render through the DS `<Icon>` registry (`chevron-left` / `chevron-right` at size `sm`) — never raw lucide-react"
+      - "extends `DayPickerProps` from react-day-picker — every prop that library accepts is accepted here, including `disabled`, `fromDate` / `toDate`, locale, etc."
+      - "spans full width on mobile and switches to side-by-side months at `md:` (`flex flex-col md:flex-row`) when multiple months are rendered"
+
+    anti_patterns:
+      - pattern: "passing a `classNames` map that wholesale-replaces the day / today / selected / range_* slots"
+        why: "Calendar's slot styling carries the DS focus-ring, touch-target, and brand-color contracts; broad overrides drop those silently and produce a calendar that looks DS but isn't"
+        redirect: "if a specific slot styling needs adjustment, override only that slot key in `classNames` — keep every other DS-styled slot at its default"
+      - pattern: "rendering Calendar inside a Form to collect a date"
+        why: "Form expects fields wired through `Form.DatePicker` / `Form.DateRangePicker` (validation, error display, onSubmit integration); raw Calendar is not field-wired and bypasses the Form contract"
+        redirect: "use `Form.DatePicker` (single) or `Form.DateRangePicker` (range) inside `<Form>`; reach for raw Calendar only on standalone date-display surfaces"
+
+# (additional component groups appended below as C2a.5..C2a.11 are authored)
 
 cross_component_invariants:
   # (seeded incrementally per group; finalized in C2a.final)
