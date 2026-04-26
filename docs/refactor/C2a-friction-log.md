@@ -61,3 +61,17 @@ User: dangling references are fine — every component will land before C2a.fina
   - `A2-component-schema.md` §Authoring disciplines (item 3) — added the rule "mark `required: true` on every prop the TypeScript type marks as required (no `?`)"
   - `COMPONENT.md` retrofitted: `Icon.name`, `IconButton.icon`, `IconButton.aria-label` carry `required: true`
 - **Going forward**: Every future C2a entry checks the TS type and emits `required: true` for every non-`?` prop in `notable_props`.
+
+---
+
+## C2a.6 — Display group (Card, Table, Accordion, Badge, Avatar, Divider)
+
+### F7. A1 inventory missed `TableMobileItem` and Accordion's compound parts
+
+- **Awkward**: A1's Table entry listed only `TableMobileList` under `compound_parts`. The actual surface includes `TableMobileItem` (one per row) too. Same shape with Accordion: A1 listed `compound_parts: null` for Accordion but the surface ships `AccordionItem`, `AccordionTrigger`, `AccordionContent` as required children.
+- **Handled**: Authored COMPONENT.md with the live compound-part set; A1 inventory is treated as a baseline that drifts, not as the contract.
+- **Recommendation**: A1 inventory should be tagged "as of <date> — may drift; live source wins" if it gets cited again post-C2a. No A2 schema change needed.
+
+### F8. CardTitle uses `!font-semibold` — same root cause as F5
+
+Recorded for completeness: CardTitle (`type-h4 !font-semibold text-foreground …`) and Table TableHead (`!font-medium`) both rely on the `!font-*` override pattern. Same resolution as F5 — relax `p2-tk-3` when C2b authors USAGE.md.

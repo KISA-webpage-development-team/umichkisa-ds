@@ -430,7 +430,315 @@ components:
         why: "an `<a>` without `href` is not focusable and is announced as plain text by screen readers"
         redirect: "always provide `href`, OR wrap LinkButton in the framework's `<Link>` so the link target is set by the router"
 
-# (additional component groups appended below as C2a.6..C2a.11 are authored)
+  # ============================================================
+  # intent_group: Organizing & displaying content
+  # ============================================================
+
+  - name: Accordion
+    intent_group: Organizing & displaying content
+    intent: Progressive disclosure for FAQs, advanced settings, and grouped collapsible sections
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "the surface has multiple short sections that benefit from collapsing for scannability (FAQ, advanced settings, grouped help text)"
+      - "users will read 1–2 sections at a time, not all of them"
+      - "the section headings make sense as standalone summaries (the user can decide whether to expand without seeing the body)"
+    reject_when:
+      - "the content is the primary reading flow — collapsing it would hide what the page exists to show (use plain headings + body text)"
+      - "the user needs to compare information across sections (use a Table or tabbed layout)"
+      - "the surface is a single togglable region, not a list (use a `<details>` element or a custom disclosure)"
+      - "the surface is for switching views in the same page context (use `Tabs`)"
+
+    notable_props:
+      - name: type
+        type: "enum: single | multiple"
+        default: single
+        pick_guidance: "`single` is default and `collapsible: true` is implied — only one section open at a time. Use `multiple` ONLY when users genuinely benefit from comparing two open sections side by side (rare in FAQ-style accordions)."
+      - name: value / defaultValue
+        type: "string (single) | string[] (multiple)"
+        pick_guidance: "controlled (`value` + `onValueChange`) for state-driven open/close; uncontrolled (`defaultValue`) for typical FAQ behavior"
+
+    intrinsic_behavior:
+      - "wraps Radix UI Accordion primitive — keyboard navigation, ARIA, and focus management are inherited from Radix"
+      - "items are separated by `divide-y divide-border` — no per-item border config; Accordion owns the separator contract"
+      - "trigger styling: `type-h3` heading text, brand-accent underline-on-hover, brand-primary text when open, chevron icon rotates 180° on open"
+      - "open/close animations use the DS-defined `accordion-down` / `accordion-up` keyframes (200ms)"
+
+    compound_parts:
+      - name: AccordionItem
+        kind: required_child
+        invariant: "every visible section requires an AccordionItem with a unique `value: string`"
+      - name: AccordionTrigger
+        kind: required_child
+        owns: "summary heading + chevron + open/closed visual state"
+        invariant: "renders inside an AccordionItem; carries the section heading. `showChevron={false}` opts out of the chevron when the trigger has its own affordance."
+      - name: AccordionContent
+        kind: required_child
+        owns: "body content + open/close animation"
+        invariant: "rendered only when the parent AccordionItem is open; body wrapper applies `pb-4 type-body text-foreground`"
+
+    anti_patterns:
+      - pattern: "wrapping non-collapsible content in Accordion to add visual borders or section separators"
+        why: "Accordion's `divide-y divide-border` is incidental to the disclosure contract; using it for purely visual separation produces an interactive control consumers don't intend"
+        redirect: "render plain `<div>`s with explicit `divide-y divide-border` (or `<Divider>`) when you want section separators without disclosure behavior"
+
+  - name: Avatar
+    intent_group: Organizing & displaying content
+    intent: User or entity representation with an image, initials fallback, or icon fallback
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "representing a user, member, author, or contact in the UI (header user menu, contributor lists, comment threads)"
+      - "the surface needs a small circular image with a graceful fallback when the image is missing or fails to load"
+    reject_when:
+      - "the image is a content image, not an identity glyph (use plain `<img>`)"
+      - "the surface is a brand mark or logo (use `<Icon>` with the registered brand entry, or an inline `<img>`)"
+
+    notable_props:
+      - name: src
+        type: "string"
+        pick_guidance: "image URL. If omitted or the image fails to load, falls back to initials (if `name` provided) or the user-round icon."
+      - name: name
+        type: "string"
+        pick_guidance: "the entity's display name. Used for `aria-label` on every render path AND for computing initials when `src` is missing/failing."
+      - name: size
+        type: "enum: sm | md | lg"
+        default: md
+        pick_guidance: "`sm` (32px) for inline lists / comment authors; `md` (40px) default for nav and cards; `lg` (56px) for profile headers"
+
+    intrinsic_behavior:
+      - "render path resolves in order: image (if `src` and not errored) → initials (if `name`) → fallback `user-round` Icon"
+      - "fixed `bg-brand-primary text-brand-foreground` for initials/icon fallback — Avatar's brand presence is part of the contract"
+      - "image errors are tracked internally via `useState` — failed images automatically swap to the next fallback path without consumer intervention"
+      - "always renders `role=\"img\" aria-label={name}` (or `\"User avatar\"` if `name` omitted) so screen readers announce the avatar regardless of which fallback is showing"
+
+    anti_patterns:
+      - pattern: "passing a `className` that overrides the avatarVariants `bg-*` / `text-*` / `rounded-full` classes"
+        why: "Avatar's circular shape + brand-primary fallback color are part of its contract; overriding produces an Avatar that looks DS but isn't"
+        redirect: "if a non-circular or non-brand-colored variant is needed, request via ds-fix-during-migration"
+
+  - name: Badge
+    intent_group: Organizing & displaying content
+    intent: Short status label or count — semantic state, category tags, numeric counts
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "rendering a short label that signals status, count, or category (success / warning / error / info / brand emphasis)"
+      - "the label sits inline next to other content (table cell, list item, card header)"
+      - "the text is 1–3 words or a number"
+    reject_when:
+      - "the surface is a full-width contextual message with prose (use `Alert`)"
+      - "the surface is a transient post-action notification (use `Toaster` + `toast()`)"
+      - "the surface is interactive — tag-with-remove or filter pill (compose with a button or use a custom chip; Badge is not interactive by contract)"
+
+    variants:
+      - name: default
+        pick_when:
+          - "neutral category tag with no semantic state (\"Beta\", \"Draft\", a tag chip)"
+        reject_when:
+          - "the label communicates a semantic state — use the matching `success` / `warning` / `error` / `info` variant instead"
+      - name: brand
+        pick_when:
+          - "marking high-emphasis content for the user (\"New\", \"Featured\", \"Recommended\") where brand color is appropriate"
+        reject_when:
+          - "communicating a state — use the semantic variants. Brand is for emphasis, not status."
+      - name: success
+        pick_when:
+          - "indicating a successful state — \"Active\", \"Approved\", \"Paid\""
+      - name: warning
+        pick_when:
+          - "indicating a non-blocking issue or attention-needed state — \"Pending\", \"Action required\""
+      - name: error
+        pick_when:
+          - "indicating a failure / blocking state — \"Failed\", \"Rejected\", \"Overdue\""
+      - name: info
+        pick_when:
+          - "neutral informational state — \"Info\", \"Note\", non-warning system message"
+      - name: outline
+        pick_when:
+          - "low-emphasis neutral chip where the surface needs minimal visual weight"
+        reject_when:
+          - "the chip carries a semantic status — use the matching semantic variant; outline is the wrong signal for state (see cross-invariant `feedback-status-variant`)"
+
+    notable_props:
+      - name: variant
+        type: "enum: default | brand | success | warning | error | info | outline"
+        default: default
+        pick_guidance: "see the variants block above — semantic variants for status, brand for emphasis, default/outline for neutral"
+      - name: size
+        type: "enum: sm | md"
+        default: md
+        pick_guidance: "`md` is default; `sm` for badges inside table cells or other dense surfaces"
+      - name: asChild
+        type: "boolean"
+        default: false
+        pick_guidance: "renders the styling onto a child element via Radix Slot — use when the badge needs to BE a link or button (`<Badge asChild><a href=\"...\">…</a></Badge>`)"
+
+    intrinsic_behavior:
+      - "renders an inline `<span>` (or the child element when `asChild`) with `inline-flex items-center justify-center gap-1` and the variant's bg/border/text tokens"
+      - "fixed `w-fit whitespace-nowrap shrink-0 truncate` — Badge does NOT wrap or expand; long content truncates"
+      - "every variant pairs a colored border with a `-subtle` background and `text-foreground` for readable text-on-tinted-bg (per the foundational color contract)"
+
+    anti_patterns:
+      - pattern: "using `variant=\"outline\"` (or `default`) for status content like \"Active\" / \"Failed\" / \"Pending\""
+        why: "outline / default are neutral chips; status content needs semantic color signaling. See cross-invariant `feedback-status-variant`."
+        redirect: "use `success` / `warning` / `error` / `info` for status; reserve `outline` / `default` for neutral category chips"
+
+    see_also:
+      - feedback-status-variant
+
+  - name: Card
+    intent_group: Organizing & displaying content
+    intent: Bordered container grouping related content (feature summary, list item, dashboard tile)
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "grouping related content into a visually distinct, bordered region"
+      - "list-item or dashboard-tile surfaces"
+      - "compose with CardHeader / CardTitle / CardDescription / CardContent / CardFooter for typical structure"
+    reject_when:
+      - "the surface is the whole page shell (use `Container`)"
+      - "the surface is a popover or modal anchored to a trigger (use `Popover` or `Dialog`)"
+      - "the content has no internal structure and just needs a subtle background (use `bg-surface-subtle` directly on a div)"
+
+    notable_props:
+      - name: hoverable
+        type: "boolean"
+        default: false
+        pick_guidance: "set true ONLY when the entire card is interactive (clickable / navigable); applies brand-accent-subtle hover bg + brand-primary border, and propagates a `group` hover so CardTitle text turns brand-primary"
+
+    intrinsic_behavior:
+      - "owns outer padding (`p-4`) and inter-child vertical gap (`gap-4`) via `flex flex-col`"
+      - "renders `bg-surface border border-border rounded-md` by default — flat, depth-by-border (no shadow)"
+      - "`min-w-0` so it shrinks correctly inside flex/grid parents"
+      - "when `hoverable`, applies a `group` so CardTitle text picks up the brand-primary color on group hover"
+
+    compound_parts:
+      - name: CardHeader
+        kind: optional_child
+        owns: "Element-tier vertical gap (`gap-2`) between CardTitle and CardDescription"
+      - name: CardTitle
+        kind: optional_child
+        owns: "title typography and group-hover text color"
+        invariant: "renders `<h3>` by default; override semantic level via `as` prop, not by wrapping in another heading"
+      - name: CardDescription
+        kind: optional_child
+        owns: "muted body-sm text with `line-clamp-3`"
+      - name: CardContent
+        kind: optional_child
+        owns: "fill remaining vertical space (`flex-1 overflow-hidden break-words`); does NOT own padding"
+        invariant: "Card owns padding via its own `p-4`; CardContent must NOT add padding"
+      - name: CardFooter
+        kind: optional_child
+        owns: "Element-tier horizontal gap (`gap-2`) between footer items"
+
+    anti_patterns:
+      - pattern: "passing padding utilities (`p-*`, `px-*`, `py-*`) via className on Card or CardContent"
+        why: "Card owns padding via its own `p-4`; overriding inflates the card and breaks content-width math, and adding padding on CardContent double-pads inside an already-padded parent"
+        redirect: "if Card's default padding feels wrong, the surface is being misused — pick a different DS component or open a ds-fix-during-migration ticket for a Card variant"
+      - pattern: "passing `bg-*` via className on Card to change background color"
+        why: "Card surface is `bg-surface` by design; tinting changes the depth signal (subtle/muted are reserved for elevated/deprioritized roles per the foundational color contract)"
+        redirect: "if a tinted card is needed, request a Card variant via ds-fix-during-migration; do not override"
+      - pattern: "wrapping Card around a single inline element (text, icon)"
+        why: "Card's `flex-col + p-4 + gap-4` contract is sized for multi-child structure; wrapping a single inline element wastes space and signals 'this is structured content' to readers"
+        redirect: "use a Badge, a tag, or inline styling — Card is not a generic surface wrapper"
+
+    see_also:
+      - ds-layout-no-utility-override
+
+  - name: Divider
+    intent_group: Organizing & displaying content
+    intent: Visual separator (horizontal rule or vertical rule between inline items)
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "separating two adjacent content regions with a thin neutral line (between sections of a card, between toolbar groups)"
+      - "the separation is genuinely visual — there's no semantic structure to encode (in which case use `<section>` boundaries instead)"
+    reject_when:
+      - "the separator is between rows of a list — list items already have layout via `gap-*` or `divide-y` on the parent"
+      - "the surface is a Table — TableBody owns `divide-y divide-border` between rows automatically"
+      - "the visual goal is whitespace separation, not a line (increase `gap-*` instead)"
+
+    notable_props:
+      - name: orientation
+        type: "enum: horizontal | vertical"
+        default: horizontal
+        pick_guidance: "`horizontal` (default) renders `border-t w-full`; `vertical` renders `border-l self-stretch h-auto` and requires the parent to be a flex row with bounded height"
+
+    intrinsic_behavior:
+      - "renders a semantic `<hr>` with `role=\"separator\"` and `aria-orientation` mirroring the prop"
+      - "color is fixed to `border-border` — the depth-carrying neutral line"
+      - "vertical orientation depends on parent flex layout for height — Divider does not set its own intrinsic height"
+
+    anti_patterns:
+      - pattern: "passing color utilities (`border-*`, `text-*`) via className to recolor the divider"
+        why: "the depth-carrying neutral border is part of the foundational color contract — recoloring breaks the consistent feel of separators across the app"
+        redirect: "leave the color at `border-border`; if a stronger separator is needed, request `border-strong` variant via ds-fix-during-migration"
+
+  - name: Table
+    intent_group: Organizing & displaying content
+    intent: Structured tabular data with sortable columns, optional caption, and required mobile-list pair
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "displaying tabular data with multiple columns where row-by-column comparisons matter"
+      - "API reference tables, admin dashboards, structured list data"
+      - "the data has 2+ columns AND each row represents a distinct record"
+    reject_when:
+      - "the data is a single column — use a list (`<ul>` / `<ol>` with `divide-y`)"
+      - "the surface is a card grid where rows are visual tiles, not data rows (use `Grid` with `Card` children)"
+      - "the columns wouldn't fit on mobile and there's no `<TableMobileList>` companion (see cross-invariant `table-mobile-pair` — multi-column tables require BOTH desktop and mobile renderings)"
+
+    notable_props:
+      - name: size
+        type: "enum: sm | md"
+        default: md
+        pick_guidance: "`md` (default) for typical content tables — `type-body` cells, generous padding. `sm` for dense reference tables (API references, admin lists). The size propagates to TableHead / TableCell / TableFooter via React Context."
+
+    intrinsic_behavior:
+      - "wraps `<table>` in a `<div className=\"w-full overflow-x-auto\">` — horizontal overflow scrolls instead of breaking layout"
+      - "`size` is exposed via internal `TableSizeContext` so children (TableHead / TableCell / TableFooter) pick correct padding + typography without prop drilling"
+      - "TableHeader applies `border-b border-brand-primary` (brand emphasis on the header row)"
+      - "TableBody applies `divide-y divide-border` between rows — no per-row border config"
+      - "TableRow inside `<tbody>` applies `hover:bg-brand-accent-subtle` (selector `[tbody_&]` excludes header rows from hover)"
+
+    compound_parts:
+      - name: TableHeader
+        kind: required_child
+        invariant: "wraps `<th>` rows; styled as the brand-bordered header section"
+      - name: TableBody
+        kind: required_child
+        owns: "row dividers (`divide-y divide-border`)"
+      - name: TableRow
+        kind: required_child
+      - name: TableHead
+        kind: required_child
+        owns: "header-cell typography (brand-primary, !font-medium, size-driven padding)"
+      - name: TableCell
+        kind: required_child
+      - name: TableFooter
+        kind: optional_child
+        owns: "footer styling (border-t border-strong, surface-subtle bg, label/caption typography)"
+      - name: TableCaption
+        kind: optional_child
+        invariant: "renders below the table (`mt-4 type-caption text-muted-foreground`); use for the \"* Required prop.\" caption on API ref tables, etc."
+      - name: TableMobileList
+        kind: paired_responsive_sibling
+        invariant: "REQUIRED for any multi-column Table — render `<Table className=\"hidden md:block\">` AND `<TableMobileList className=\"block md:hidden\">` together. See `table-mobile-pair` cross-invariant."
+      - name: TableMobileItem
+        kind: required_child
+        owns: "TableMobileList row — one per data row; renders as `<li className=\"flex flex-col gap-1 …\">` so the row's columns stack vertically"
+
+    anti_patterns:
+      - pattern: "shipping a multi-column Table without a paired `<TableMobileList>`"
+        why: "multi-column tables either overflow horizontally on mobile (the wrapping `overflow-x-auto` becomes a horizontal scrollbar that hides data) or shrink columns below readability"
+        redirect: "ship both: `<Table className=\"hidden md:block\">` for ≥md viewports AND `<TableMobileList className=\"block md:hidden\">` rendering one TableMobileItem per row for mobile. See cross-invariant `table-mobile-pair`."
+
+    see_also:
+      - table-mobile-pair
+      - ds-layout-no-utility-override
+
+# (additional component groups appended below as C2a.7..C2a.11 are authored)
 
 cross_component_invariants:
   # (seeded incrementally per group; finalized in C2a.final)
@@ -445,4 +753,16 @@ cross_component_invariants:
     invariant: "an icon-only interactive (`<IconButton>` or `<button>`/`<a>` wrapping `<Icon>`) MUST provide `aria-label` on the wrapper AND wrap in `<Tooltip>` whose content text equals that `aria-label` exactly. The inner `<Icon>` MUST NOT carry its own `label` prop."
     why: "screen readers announce the wrapper's `aria-label` once; if the icon also carries `label` the announcement duplicates. Tooltip text and aria-label must match so sighted-tooltip-readers and screen-reader users hear the same affordance name."
     detection: compositional
+
+  - id: feedback-status-variant
+    components: [Alert, Badge]
+    invariant: "status content (\"Active\", \"Failed\", \"Pending\", \"Approved\", etc.) MUST use the matching semantic variant — `success` / `warning` / `error` / `info` — on either Alert or Badge. Never use `default` / `outline` / neutral variants for status."
+    why: "neutral chips and outline badges fail to communicate state at a glance; consumers scan for color to decode status. A neutral 'Failed' badge looks like a category tag, not a problem."
+    detection: semantic
+
+  - id: table-mobile-pair
+    components: [Table, TableMobileList]
+    invariant: "any multi-column Table MUST ship a paired `<TableMobileList>` — typically `<Table className=\"hidden md:block\">` AND `<TableMobileList className=\"block md:hidden\">` together — so mobile viewports render the same data as a stacked list rather than a horizontally-overflowing table."
+    why: "multi-column tables on mobile either overflow horizontally (hiding columns behind a scrollbar) or shrink below readability; the paired mobile list preserves the data without breaking layout."
+    detection: static
 ```
