@@ -279,6 +279,13 @@ Applying A2's contract-ownership test ("would this still be wrong in a brand-new
 
 - ~~(carried over from A2) File `ds-fix-during-migration` ticket: ship `type-h4` class.~~ **Done during A4 grill** (commit edac51e, 2026-04-26).
 - ~~(Phase B) Add prerequisite block to the execution skill's system prompt: "Applies to projects on Tailwind v4 + @umichkisa-ds/web ≥ X.X."~~ **Superseded by A8.** Prerequisite enforcement moves from a passive prompt block to an active `.ds-onboarded` marker check, owned by the `onboard-ds` skill. A6 will spec the preflight diff for `SKILL.md`.
+
+- **(C2b) Carry-forward must-rules surfaced during C2a authoring.** When C2b authors `/USAGE.md`, the following rules must land — they came up while authoring Layer 2 contracts and don't fit in COMPONENT.md (consumer-wiring concerns, not single-component contracts). Each is a draft; refine ids/glosses against the final A3 rule-id convention.
+
+  | Source | Draft id | Severity | Detection | Gloss |
+  |---|---|---|---|---|
+  | C2a F5/F8 | `styling-text-weight-override` | (relaxed — drop p2-tk-3) | n/a | `!font-*` overrides on `type-*` classes are allowed when a component contract requires a non-default weight (Button variants, CardTitle, TableHead). REMOVES the old prohibition. |
+  | C2a F12 | `forms-formitem-aria-wiring` | Must | static | When using bare `<FormItem>` (outside `<Form>`) with a non-native trigger (Select / DatePicker / DateRangePicker / RadioGroup), the trigger MUST carry `aria-labelledby={`${htmlFor}-label`}`, `aria-describedby={`${htmlFor}-description`}` (when description present), and `aria-errormessage={`${htmlFor}-error`}` (when error present). FormItem auto-generates these ids but cannot reach into children to attach the attributes. Bare-FormItem composition is a real pattern (header search bars, ad-hoc filter rows); missing wiring leaves screen readers without the field's helper text or validation message. Cross-references Layer 2 invariant `formitem-htmlfor-aria-wiring`. |
 - (Phase B/C, surfaced in A4) **Geist Mono scope reconciliation.** Current Layer 3 input rules are `t-fn-5: Never Geist Mono in client app components (docs-site only)` and `p2-tk-6: Never Import font loaders from client`. A4 grill (Q11) reframes Geist Mono as "available in any consumer for code-display contexts (inline code, code blocks); never for body / UI." When the runtime USAGE.md is authored:
   - Reframe `t-fn-5` from "docs-site only" → "code-display contexts only" (still `never` severity, but on UI/body usage rather than the consumer scope).
   - Leave `p2-tk-6` unchanged — it's about font-loader hygiene, not Geist Mono specifically.
