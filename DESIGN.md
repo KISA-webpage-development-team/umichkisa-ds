@@ -67,65 +67,110 @@ rounded:
 
 ## Overview
 
-KISA is the University of Michigan Korean International Student Association.
-This design system carries the Michigan brand (navy `brand-primary` + maize
-`brand-accent`) and pairs it with Korean-first typography
-(`SejongHospital Bold` for hero/H1, `Pretendard Variable` for everything
-else). The visual language is flat, minimal, and high-contrast — borders
-and tonal layers carry the depth, never shadows.
+KISA is the University of Michigan Korean International Student
+Association. The audience is a Korean-speaking student community
+plus the broader UMich population, and the design system carries
+two non-negotiable identity anchors:
 
-This file is the Layer 1 visual contract. Component composition rules
-live in `COMPONENT.md` (Layer 2); consumer write-time rules live in
-`USAGE.md` (Layer 3).
+- **Michigan brand colors** — navy `brand-primary` and maize
+  `brand-accent`, used sparingly to mark hierarchy and primary action.
+- **Korean-first typography** — `SejongHospital Bold` for hero and
+  page-title copy, `Pretendard Variable` for everything below.
+
+The visual feel is institutional, calm, and high-contrast. The
+language is flat, not skeuomorphic — borders and tonal layers carry
+depth, never shadows. Spacing is generous on the section axis and
+tight on the element axis, so groups read as groups without
+scrolling. Brand color is reserved for sparse placement (navbars,
+hero, primary CTAs); the body of the page is dominated by neutrals
+and the Korean-first type ramp.
+
+This file is the Layer 1 visual contract. Component composition
+rules live in `COMPONENT.md` (Layer 2); consumer write-time rules
+live in `USAGE.md` (Layer 3).
 
 Generated from `@umichkisa-ds/web@1.0.21`.
 
 ## Colors
 
-The palette is anchored by two Michigan brand colors: `brand-primary`
-(Michigan navy `#00274c`) and `brand-accent` (Michigan maize `#ffcb05`).
-All other values are neutrals (gray scale resolved via OKLCH) and a
-small set of feedback states (error, success, warning, info), each
-carrying matched `-subtle` and (where applicable) `-hover` / `-pressed`
-siblings.
+The palette is anchored by the two Michigan brand colors and supported
+by a high-contrast neutral scale plus a small set of semantic feedback
+states. Accent placement is sparse — brand colors mark navbars, hero
+sections, and primary CTAs, never mid-page card or content
+backgrounds.
 
-Usage rules:
+- **Brand Primary (#00274c):** Michigan navy. The dominant interactive
+  and surface accent — primary buttons, top-of-page chrome, focus
+  borders on form controls.
+- **Brand Accent (#ffcb05):** Michigan maize. Reserved for sparse
+  accent placement: focus rings, selected-item indicators, the maize
+  text on navy backgrounds via `brand-foreground`. Never used as a
+  link color (low contrast on white).
+- **Brand Accent Subtle:** A lighter maize wash for hover and focus
+  backgrounds on interactive list items.
+- **Surface / Surface Muted / Surface Subtle:** Page and card
+  backgrounds. Two-level depth: page + cards on `surface`, elevated
+  inner regions on `surface-subtle`, deprioritized regions on
+  `surface-muted`. Cards distinguish via `border`, not shadows.
+- **Border / Border Strong:** The depth-carrying lines.
+  `border-strong` reserved for hover/focus emphasis on neutral
+  interactives.
+- **Foreground / Muted Foreground / Disabled Foreground:** Text
+  hierarchy. `foreground` is the default body color;
+  `muted-foreground` is for genuinely secondary content (not the
+  default — if it went to 40% opacity, the screen would still be
+  usable); `disabled-foreground` is never used for content that needs
+  to be read.
+- **Link:** Mid-tone Michigan blue. The only correct color for
+  hyperlink text. Underline on hover; no visited style.
+- **Error / Success / Warning / Info:** Each ships with a paired
+  `-subtle` background. `info` and `link` resolve to the same blue
+  but are not interchangeable — `info` is for state indicators and
+  alert borders, `link` is for clickable text only.
+- **Overlay (#000000 at 40% opacity):** Scrim for Dialog and Drawer.
+  The alpha channel is dropped from the YAML token (the spec accepts
+  6-digit hex only); 40% opacity is applied at render time.
 
-- Reference semantic tokens (`brand-primary`, `surface`, `foreground`)
-  — never primitive values or raw hex.
-- `-subtle` means container/background; `-muted` means deprioritized
-  text or surface.
-- `info` and `link` resolve to the same blue but are not
-  interchangeable: `info` is for state indicators / borders, `link` is
-  for clickable text only.
-- `overlay` is applied at 40% opacity in scrim contexts (Dialog,
-  Drawer); the alpha channel is dropped from the YAML front matter and
-  documented here in prose.
-
-The full consumer rulebook lives in `USAGE.md`.
+Reference semantic tokens (`brand-primary`, `surface`, `foreground`)
+in component code — never primitive values or raw hex. The full
+consumer rulebook lives in `USAGE.md`.
 
 ## Typography
 
-Two-font system, Korean-first:
+A two-font strategy pairs **SejongHospital Bold** (Korean display
+face) for hero/title hierarchy with **Pretendard Variable** for
+everything below H1. A third family, **Geist Mono**, is reserved
+strictly for code-display contexts.
 
-- **`SejongHospital Bold`** — Korean display face. Reserved for
-  `type-display` (hero) and `type-h1` (page title). Sejong does not
-  appear below H1 — Pretendard takes over.
-- **`Pretendard Variable`** — body and supporting headings (H2–H4),
-  labels, captions. Loaded via CDN.
-
-A third family, **`Geist Mono`**, is available as `typography.code`
-but is reserved for code-display contexts only (inline code, code
-blocks). Never use it for body or UI text.
+- **Display (`type-display`):** SejongHospital Bold at the largest
+  scale. Hero copy only — one per page maximum.
+- **Headline 1 (`type-h1`):** SejongHospital Bold. App page titles.
+  SejongHospital does not appear below H1; if `type-display` is
+  already in use, prefer `type-h2` styling on a semantic `<h1>`.
+- **Headline 2 / 3 / 4 (`type-h2` / `type-h3` / `type-h4`):**
+  Pretendard at semibold (600). Section, subsection, and inline
+  heading hierarchy.
+- **Body / Body Small (`type-body` / `type-body-sm`):** Pretendard
+  at regular (400). `type-body` for primary content;
+  `type-body-sm` for dense or supporting content.
+- **Label (`type-label`):** Pretendard at medium (500). Form labels
+  and call-out captions where slightly heavier weight is appropriate.
+- **Caption (`type-caption`):** Pretendard at regular (400), 12px
+  floor. Helper text, error messages, image captions, and similar
+  metadata.
+- **Code (`typography.code`):** Geist Mono at body-small size.
+  Inline code and code blocks only — never body or UI text.
 
 The `fontSize` value listed in each `typography.*` entry is the
-**`lg:` breakpoint** value (largest variant). Smaller breakpoints
-scale down per `theme.css` — see `.type-display`, `.type-h1`,
-`.type-h2`, `.type-h3` for the responsive ramps. `type-body`,
-`type-body-sm`, `type-label`, `type-caption`, `type-h4`, and
-`typography.code` are single-value, non-responsive.
+**`lg:` breakpoint** (largest variant). `type-display`, `type-h1`,
+`type-h2`, `type-h3` scale down responsively at `default` and `md:`
+breakpoints; `type-h4`, `type-body`, `type-body-sm`, `type-label`,
+`type-caption`, and `typography.code` are single-value.
 
-Always pair a `type-*` class with an explicit color token. Never use
+Always pair a `type-*` class with an explicit color token.
+SejongHospital ships as a single-weight font face — its visual
+boldness is baked into the file, so `fontWeight` on `type-display`
+and `type-h1` is normalized to the CSS default (400). Never use
 `!font-*` to override the weight of a `type-*` class.
 
 ## Layout
@@ -204,22 +249,23 @@ same file.
 A short surfacing list. The comprehensive consumer rulebook is
 `USAGE.md` (Layer 3).
 
-**Do**
-
-- Use semantic color tokens (`brand-primary`, `surface`,
-  `foreground`) for every color decision.
-- Use `type-*` classes for every typographic decision and pair them
-  with an explicit color token.
-- Pick spacing from the three named tiers (`element` / `component` /
-  `section`); pick radius from the three named tiers (`md` / `lg` /
+- Do reference semantic color tokens (`brand-primary`, `surface`,
+  `foreground`) for every color decision; never use primitive values
+  or raw hex.
+- Do use `type-*` classes for every typographic decision and pair
+  them with an explicit color token.
+- Do pick spacing from the three named tiers (`element` / `component`
+  / `section`) and radius from the three named tiers (`md` / `lg` /
   `full`).
-- Go through `<Icon>` for every icon; pick `size` from the 5-step
-  scale (`xs` / `sm` / `md` / `lg` / `xl`).
-
-**Don't**
-
-- Reference `--primitive-*` tokens directly in component code.
-- Compose `mx-auto max-w-screen-2xl px-4` manually — use `Container`.
-- Override `type-*` weight with `!font-*`.
-- Use Geist Mono for body or UI text; it is reserved for code-display.
-- Implement dark mode (no `.dark`, no media queries, no dark layer).
+- Do go through `<Icon name="...">` for every icon and pick `size`
+  from the 5-step scale (`xs` / `sm` / `md` / `lg` / `xl`).
+- Do use `<Container>` for page shells; never compose
+  `mx-auto max-w-screen-2xl px-4 md:px-6 lg:px-8` manually.
+- Don't reference `--primitive-*` tokens directly in component code.
+- Don't override `type-*` weight with `!font-*`.
+- Don't use Geist Mono for body or UI text — it is reserved for
+  code-display contexts (inline code, code blocks).
+- Don't implement dark mode (no `.dark`, no media queries, no dark
+  layer).
+- Don't use `--color-info` and `--color-link` interchangeably; they
+  resolve to the same blue but mark distinct roles.
