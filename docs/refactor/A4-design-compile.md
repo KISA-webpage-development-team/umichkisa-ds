@@ -57,7 +57,7 @@ One row per source-side token group. Status column uses three values:
 
 | Source value | DESIGN.md output | Strategy |
 |---|---|---|
-| `oklch(0% 0 0 / 40%)` (alpha channel) | `#00000066` (8-digit hex) | Spec says "starts with `#` followed by hex code in sRGB." 8-digit hex is conventional for alpha; compiler emits 8-digit. If `npx design.md lint` rejects, fallback: emit base color + prose note about 40% opacity overlay. |
+| `oklch(0% 0 0 / 40%)` (alpha channel) | `#000000` (6-digit, no alpha) | Compiler drops alpha. Opacity documented in prose only ("Applied at 40% opacity in Dialog/Drawer scrims."). |
 | `var(--primitive-michigan-blue)` chain | resolved → OKLCH → hex | Compiler walks one level of indirection; if a chain is >1 deep, throws. |
 | Responsive `.type-*` (mobile + md: + lg: variants) | Largest breakpoint value | Compiler picks the value at the `lg:` breakpoint. Prose section explains. |
 | `--font-geist-mono` | `typography.code.fontFamily` | Surfaced in Typography prose as code-only carve-out. |
@@ -177,7 +177,7 @@ All eight spec sections present. The Components body section is a pointer-only �
    - Walk `@theme` block(s) for `--color-*`, `--icon-*`, `--font-*` declarations.
    - For each value containing `var(--primitive-*)`, resolve through one level of indirection to the primitive.
    - Throw if indirection depth > 1.
-3. For each color value, convert OKLCH → sRGB hex using `culori` (or equivalent OKLCH-aware library — final pick at impl time).
+3. For each color value, convert OKLCH → sRGB hex (6-digit, no alpha) using `culori`. RGBA-source values like `--color-overlay` emit as their base color (`#000000`); the alpha channel is documented in prose only ("Applied at 40% opacity in Dialog/Drawer scrims.").
 4. Walk `@layer ds-components` for `.type-*` rules, including `@media` breakpoint variants. For each class:
    - Pick the largest-breakpoint variant for `fontSize`.
    - Map CSS properties to spec's `Typography` shape (font-family → fontFamily, font-size → fontSize, etc.).
@@ -190,7 +190,7 @@ All eight spec sections present. The Components body section is a pointer-only �
 ### Dependencies (new)
 
 - `postcss` — already in transitive tree via Tailwind; promote to direct dev-dep in `packages/web/package.json`.
-- `culori` (or `colorjs.io`) — OKLCH → sRGB conversion. Decision deferred to impl time; both are mature.
+- `culori` — OKLCH → sRGB conversion. Same library Tailwind v4 uses; small + well-maintained.
 - `@google/design.md` — devDep at repo root for the `lint` gate.
 
 ### Lint rules (extracted from spec)
@@ -200,7 +200,7 @@ The published spec does not enumerate a numbered list of lint rules; the rules a
 | # | Rule | KISA expectation |
 |---|---|---|
 | 1 | YAML front matter delimited by `---` open/close | pass |
-| 2 | `colors.*` values are `#hex` sRGB strings | pass — compiler produces hex; **8-digit hex for `overlay` may need verification** at first lint run |
+| 2 | `colors.*` values are `#hex` sRGB strings | pass — compiler emits 6-digit hex only; alpha channels (e.g. `--color-overlay`) drop to base color + prose note |
 | 3 | `typography.*` fields conform to schema (fontFamily string, fontSize Dimension, fontWeight number, lineHeight Dimension\|number, letterSpacing Dimension) | pass |
 | 4 | Dimension values use `px`/`em`/`rem` only | pass — compiler emits `px` |
 | 5 | `{path.to.token}` token references resolve | N/A in v0 — compiler emits literal values, no references (since `components:` block is skipped, no cross-refs needed) |
@@ -213,10 +213,8 @@ If `npx @google/design.md lint` rejects 8-digit hex on `overlay`, fallback: emit
 
 ## Open questions / deferred items
 
-- **OKLCH conversion library pick** (`culori` vs `colorjs.io`): both work; pick at impl time based on bundle weight (compiler is build-time, so weight isn't a real concern).
-- **8-digit hex acceptance** by `@google/design.md` lint: empirical — verify on first compile; fall back to base color + prose if rejected.
-- **Geist Mono scope reconciliation:** Q11 user note expanded Geist Mono usage from "docs-site only" (per `t-fn-5`/`p2-tk-6`) to "code-display contexts in any consumer." A3 already locked, but this is a **flagged input for A3 revision** — when the Layer 3 USAGE.md is authored in Phase B, those two rules need updating to "code-display contexts only" rather than "docs-site only."
-- **Compiler templates location:** placed at `packages/web/scripts/templates/`; if the prose grows to need shared snippets across templates, refactor to a single `templates/` with an indexed loader. Out of scope for A4.
+- **Geist Mono scope reconciliation:** Q11 user note expanded Geist Mono usage from "docs-site only" (per `t-fn-5`/`p2-tk-6`) to "code-display contexts in any consumer." Logged as A3 deferred item; the runtime USAGE.md authored in Phase B/C must reframe `t-fn-5` accordingly.
+- **Compiler templates location:** `packages/web/scripts/templates/` — one `.md.tpl` per spec body section. Out of scope for A4 to spec individual template contents.
 
 ---
 

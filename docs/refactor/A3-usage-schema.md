@@ -275,5 +275,8 @@ Applying A2's contract-ownership test ("would this still be wrong in a brand-new
 
 ## Deferred action items (outside Phase A)
 
-- (carried over from A2) File `ds-fix-during-migration` ticket: ship `type-h4` class. A3 worked examples assume it exists.
+- ~~(carried over from A2) File `ds-fix-during-migration` ticket: ship `type-h4` class.~~ **Done during A4 grill** (commit edac51e, 2026-04-26).
 - (Phase B) Add prerequisite block to the execution skill's system prompt: "Applies to projects on Tailwind v4 + @umichkisa-ds/web ≥ X.X. For non-Tailwind / pre-v4 setups, the Setup rules and most styling rules don't apply."
+- (Phase B/C, surfaced in A4) **Geist Mono scope reconciliation.** Current Layer 3 input rules are `t-fn-5: Never Geist Mono in client app components (docs-site only)` and `p2-tk-6: Never Import font loaders from client`. A4 grill (Q11) reframes Geist Mono as "available in any consumer for code-display contexts (inline code, code blocks); never for body / UI." When the runtime USAGE.md is authored:
+  - Reframe `t-fn-5` from "docs-site only" → "code-display contexts only" (still `never` severity, but on UI/body usage rather than the consumer scope).
+  - Leave `p2-tk-6` unchanged — it's about font-loader hygiene, not Geist Mono specifically.
