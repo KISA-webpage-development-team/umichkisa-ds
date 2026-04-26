@@ -132,7 +132,7 @@ Must: Section tier (`gap-6`) for gaps between major page sections. Section tier 
 
 ### Page Shell
 
-Must: The page shell must combine all four concerns together: `mx-auto w-full max-w-screen-2xl px-4 md:px-6 lg:px-8`. Never apply only part of this pattern. [source:foundation/layout/spacing]
+Must: The page shell must combine all four concerns together: `mx-auto w-full max-w-screen-2xl p-4 md:p-6 lg:p-8`. Never apply only part of this pattern. Padding is all-sides (vertical + horizontal) and scales responsively at the same breakpoints. [source:foundation/layout/spacing]
 Must: Use the `Container` component to apply the page shell pattern — never manually compose the utility classes. [source:component/container]
 Must: For full-bleed elements (navbar, hero, footer), apply background to a full-width outer wrapper and nest the `Container` inside for content alignment. [source:foundation/layout/spacing]
 Never: Nest `Container` components — each page region gets one Container at most. [source:component/container]

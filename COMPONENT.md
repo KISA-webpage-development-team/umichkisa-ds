@@ -66,8 +66,8 @@ components:
         pick_guidance: "default (max-w-screen-2xl) for the page shell; `prose` for long-form readable text columns; `sm`/`md`/`lg`/`xl` for narrower content surfaces (settings forms, focused tasks)"
 
     intrinsic_behavior:
-      - "applies the page-shell pattern: `mx-auto w-full` + responsive horizontal padding (`p-6 lg:p-12`) + size-driven max-width"
-      - "the only DS-supported way to apply page-shell padding — never compose `mx-auto w-full max-w-screen-2xl px-4 md:px-6 lg:px-8` manually"
+      - "applies the page-shell pattern: `mx-auto w-full` + responsive all-sides padding (`p-4 md:p-6 lg:p-8`) + size-driven max-width"
+      - "the only DS-supported way to apply page-shell padding — never compose `mx-auto w-full max-w-screen-2xl p-4 md:p-6 lg:p-8` manually"
       - "renders as the element specified by `as` (default `div`); otherwise a passthrough wrapper"
       - "singularity invariant: at most ONE Container per page region — the page shell is a single point of horizontal-rhythm authority"
 

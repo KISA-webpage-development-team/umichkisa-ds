@@ -23,6 +23,6 @@ is column reflow, not vertical breathing.
 `lg`/heading, `xl`/hero. Pick via the `size` prop on `<Icon>`; never
 override with `font-size` or arbitrary CSS.
 
-The page shell (`Container`) combines max-width, horizontal padding,
-and centering: `mx-auto w-full max-w-screen-2xl px-4 md:px-6 lg:px-8`.
+The page shell (`Container`) combines max-width, all-sides responsive
+padding, and centering: `mx-auto w-full max-w-screen-2xl p-4 md:p-6 lg:p-8`.
 Never compose this manually.

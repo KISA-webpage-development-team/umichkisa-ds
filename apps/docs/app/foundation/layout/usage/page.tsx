@@ -19,7 +19,7 @@ export default function LayoutUsagePage() {
       <Heading as="h2">Philosophy</Heading>
       <p className="type-body mb-4 text-foreground">
         Every page in the KISA app starts with the same shell:{' '}
-        <InlineCode>mx-auto w-full max-w-screen-2xl px-4 md:px-6 lg:px-8</InlineCode>.
+        <InlineCode>mx-auto w-full max-w-screen-2xl p-4 md:p-6 lg:p-8</InlineCode>.
         Hand-rolling that string on every page is how design systems drift —
         one page uses{' '}
         <InlineCode>px-5</InlineCode>, another forgets the{' '}

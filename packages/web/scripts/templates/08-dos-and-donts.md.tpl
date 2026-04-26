@@ -14,7 +14,7 @@ A short surfacing list. The comprehensive consumer rulebook is
 - Do go through `<Icon name="...">` for every icon and pick `size`
   from the 5-step scale (`xs` / `sm` / `md` / `lg` / `xl`).
 - Do use `<Container>` for page shells; never compose
-  `mx-auto max-w-screen-2xl px-4 md:px-6 lg:px-8` manually.
+  `mx-auto max-w-screen-2xl p-4 md:p-6 lg:p-8` manually.
 - Don't reference `--primitive-*` tokens directly in component code.
 - Don't override `type-*` weight with `!font-*`.
 - Don't use Geist Mono for body or UI text — it is reserved for

@@ -214,8 +214,8 @@ export default async function LayoutSpacingPage() {
           )
         </li>
         <li>
-          Applies the default inset per tier ({' '}
-          <InlineCode>px-4 md:px-6 lg:px-8</InlineCode>
+          Applies the default all-sides padding per tier ({' '}
+          <InlineCode>p-4 md:p-6 lg:p-8</InlineCode>
           )
         </li>
       </ul>

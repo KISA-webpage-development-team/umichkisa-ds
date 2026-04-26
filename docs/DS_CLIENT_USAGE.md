@@ -203,7 +203,7 @@ _Note: Validation strategy (zod + RHF resolver vs. RHF-native rules) is deferred
 
 ### Layout
 
-Must: Use `Container` from `@umichkisa-ds/web` for the page shell pattern — never manually compose `mx-auto w-full max-w-screen-2xl px-4 md:px-6 lg:px-8`. [source:DS_CONSTRAINTS.md/layout]
+Must: Use `Container` from `@umichkisa-ds/web` for the page shell pattern — never manually compose `mx-auto w-full max-w-screen-2xl p-4 md:p-6 lg:p-8`. [source:DS_CONSTRAINTS.md/layout]
 Never: Nest `Container` components — each page region gets one `Container` at most. [source:DS_CONSTRAINTS.md/layout]
 Must: Follow the three-tier vertical spacing system — Element (`gap-2` / 8px), Component (`gap-4` / 16px), Section (`gap-6` / 24px). [source:DS_CONSTRAINTS.md/layout]
 
