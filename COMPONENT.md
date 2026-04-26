@@ -256,7 +256,178 @@ components:
         why: "Form expects fields wired through `Form.DatePicker` / `Form.DateRangePicker` (validation, error display, onSubmit integration); raw Calendar is not field-wired and bypasses the Form contract"
         redirect: "use `Form.DatePicker` (single) or `Form.DateRangePicker` (range) inside `<Form>`; reach for raw Calendar only on standalone date-display surfaces"
 
-# (additional component groups appended below as C2a.5..C2a.11 are authored)
+  # ============================================================
+  # intent_group: Triggering actions
+  # ============================================================
+
+  - name: Button
+    intent_group: Triggering actions
+    intent: Primary in-app action — submit a form, confirm a dialog, start a flow
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "user action triggers behavior in the current page (submit, confirm, open dialog, run an operation)"
+      - "the action carries a visible text label"
+    reject_when:
+      - "the action navigates to a different URL or page route (use `LinkButton`)"
+      - "the action is icon-only with no text label (use `IconButton`)"
+      - "submitting a form wired with `@umichkisa-ds/form` (use `Form.Button` — auto-disables on submit and integrates with form state)"
+
+    variants:
+      - name: primary
+        pick_when:
+          - "the main call-to-action in the visible context (form submit, primary flow, hero CTA)"
+          - "only ONE primary visible at a time per surface"
+        reject_when:
+          - "an alternative or supporting action alongside another primary (use `variant: secondary`)"
+          - "low-emphasis action inside dense UI like a toolbar or table-row action (use `variant: tertiary`)"
+          - "destructive action like delete / remove / clear (use `variant: destructive`)"
+      - name: secondary
+        pick_when:
+          - "alternative or supporting action presented alongside a primary (modal cancel, form cancel)"
+          - "an action that needs visual weight but is not the page's primary intent"
+        reject_when:
+          - "the action IS the page's primary intent (use `variant: primary`)"
+      - name: tertiary
+        pick_when:
+          - "low-emphasis action inside a dense surface — toolbars, table-row actions, inline 'Show more'"
+          - "the visual weight of `secondary` would be too heavy for the surface"
+        reject_when:
+          - "the action is a major flow trigger (use `variant: primary` or `secondary`)"
+      - name: destructive
+        pick_when:
+          - "irreversible or data-deleting action — delete, remove, clear, revoke"
+        reject_when:
+          - "any non-destructive action (use `variant: primary` or `secondary`)"
+
+    notable_props:
+      - name: variant
+        type: "enum: primary | secondary | tertiary | destructive"
+        default: primary
+        pick_guidance: "see the variants block above — pick by the action's role on the surface, not by the visual weight"
+      - name: size
+        type: "enum: sm | md | lg"
+        default: md
+        pick_guidance: "`md` is default; `sm` for dense forms / toolbars; `lg` only for hero CTAs"
+      - name: type
+        type: "enum: button | submit | reset"
+        default: button
+        note: "Button defaults to `type=\"button\"` to avoid accidental form submit. Pass `type=\"submit\"` explicitly when needed; for forms wired with @umichkisa-ds/form, use `Form.Button` instead — it sets the right type AND auto-disables on submit."
+      - name: disabled
+        type: "boolean"
+        note: "non-interactive state; pair with form validation or pending state. For form-submit pending, prefer `Form.Button` (auto-disables via useFormStatus)."
+
+    intrinsic_behavior:
+      - "renders a native `<button>` with `type=\"button\"` by default — no implicit form submit"
+      - "implements the dual-ring focus pattern: `outline-2 focus-ring` + `box-shadow 4px brand-primary` on `:focus-visible`"
+      - "disabled state lowers opacity to 60% and removes pointer events; foreground shifts to `disabled-foreground`"
+      - "primary / secondary / destructive variants apply `!font-bold` to override the underlying `type-body[-sm]` class weight (intentional contract — Button text is heavier than body text by design)"
+
+    anti_patterns:
+      - pattern: "passing a `variant` value not in the four-enum (`primary` / `secondary` / `tertiary` / `destructive`) — e.g. `variant=\"outline\"` or `variant=\"ghost\"`"
+        why: "Button enumerates four variants by design; non-enumerated values fall through cva's default and silently miss the consumer's intent"
+        redirect: "if a needed variant is genuinely missing, request it via `ds-fix-during-migration`. Don't reach for a non-DS button library."
+      - pattern: "wrapping `<Button>` in a custom `<a>` or `<Link>` for navigation"
+        why: "Button renders a `<button>` element; nesting in `<a>` produces invalid HTML (`<a><button>`) and breaks keyboard semantics"
+        redirect: "use `<LinkButton>` — it shares Button's variant styling but renders as `<a>` with the navigation contract"
+      - pattern: "passing only an `<Icon>` as children with no text label"
+        why: "Button is sized and padded for text-bearing actions; an icon-alone Button has no aria-label and no 44×44 touch-target floor"
+        redirect: "use `<IconButton icon=\"...\" aria-label=\"...\">` — it ships the touch-target floor and requires aria-label by type"
+
+  - name: IconButton
+    intent_group: Triggering actions
+    intent: Action represented by an icon alone — toolbars, close affordances, compact row actions
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "the action is represented by an icon glyph alone, with no visible text label (close X, more dots, edit pencil)"
+      - "screen real-estate is genuinely tight (toolbar, table-row action, compact card header)"
+      - "an `aria-label` can describe the action in 1–3 words"
+    reject_when:
+      - "the action has (or could reasonably have) a visible text label (use `Button` — labeled actions are more discoverable)"
+      - "the action navigates to a URL (use a `<a>` or `LinkButton` styled with the icon, OR wrap a navigation icon in `<a aria-label=\"...\">` — IconButton renders `<button>`, not `<a>`)"
+      - "the icon needs no interactive affordance (use bare `<Icon>` instead — IconButton always renders a real button)"
+
+    notable_props:
+      - name: icon
+        type: "IconName (kebab-case, must exist in the Icon registry)"
+        pick_guidance: "pick the same way as `<Icon name>` — exhaust the Lucide search, request additions via ds-fix-during-migration"
+      - name: aria-label
+        type: "string (REQUIRED — TypeScript-enforced)"
+        pick_guidance: "the accessible name for screen readers. Must equal the wrapping `<Tooltip>` content text exactly when wrapped."
+      - name: size
+        type: "enum: sm | md | lg"
+        default: md
+        pick_guidance: "`md` is default and matches Button `md` height; `sm` in dense toolbars; `lg` for hero/floating actions. Inner Icon scales with this."
+      - name: variant
+        type: "enum: primary | secondary | tertiary | destructive (inherited from Button)"
+        default: secondary
+        pick_guidance: "`secondary` (default) for neutral toolbar / row actions; `tertiary` for low-emphasis inline actions; `primary` only for icon-only CTAs (rare); `destructive` for delete / remove icon affordances"
+      - name: disabled
+        type: "boolean"
+
+    intrinsic_behavior:
+      - "renders a `<button>` whose only child is an `<Icon name={icon} size={size}>` — never composed manually"
+      - "applies the 44×44 touch-target floor via the `::after` pseudo-element technique even when the visible button is smaller"
+      - "inherits Button's dual-ring focus, disabled styling, and variant color contracts via composition (it IS a Button under the hood)"
+      - "`aria-label` is required at the type level — TypeScript rejects an IconButton without it"
+
+    anti_patterns:
+      - pattern: "passing `label` on the wrapped `<Icon>` (i.e. through composition or registry) when IconButton already carries `aria-label`"
+        why: "screen readers announce both the button's `aria-label` AND the icon's `aria-label`, producing duplicate or stuttering announcements"
+        redirect: "let IconButton's `aria-label` be the single accessible name. The inner Icon renders `aria-hidden` automatically."
+      - pattern: "shipping IconButton without a wrapping `<Tooltip>` whose text equals the `aria-label`"
+        why: "sighted users have no way to discover what the icon means without hover help; the icon-only affordance is opaque without a tooltip"
+        redirect: "wrap in `<Tooltip>{aria-label text}</Tooltip>` — see the `icon-button-tooltip-aria-label-match` cross-invariant"
+
+    see_also:
+      - icon-button-tooltip-aria-label-match
+
+  - name: LinkButton
+    intent_group: Triggering actions
+    intent: Navigation styled as a button — visually equivalent to Button, but renders an anchor and follows link semantics
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "the action navigates to a URL or page route (anywhere `<a href>` would be the right element)"
+      - "the navigation should look like a button (CTA hero links, primary nav-to-flow, prominent 'Apply Now' / 'Open Docs' affordances)"
+      - "the consumer wants Button's variant + size styling on a navigation surface"
+    reject_when:
+      - "the action triggers behavior in the current page rather than navigation (use `Button`)"
+      - "the navigation should look like a regular text link (use a plain `<a className=\"text-link hover:underline\">`)"
+      - "the navigation needs the framework router's `<Link>` semantics (compose: render `<LinkButton>` as the styling layer with the framework `<Link>` providing the click handler — see `notable_props.note` on `href`)"
+
+    notable_props:
+      - name: href
+        type: "string (optional — typically required, see note)"
+        note: "passes through to the underlying `<a>`. For Next.js / React Router routing, render the framework's `<Link>` as the consumer-side wrapper and pass `href` to it instead — LinkButton itself does not integrate with any router."
+      - name: variant
+        type: "enum: primary | secondary | tertiary | destructive"
+        default: primary
+        pick_guidance: "match Button's variant guidance — `primary` for hero CTAs, `secondary` for supporting nav actions, `tertiary` for low-emphasis nav inside dense surfaces"
+      - name: size
+        type: "enum: sm | md | lg (inherited via buttonVariants)"
+        default: md
+      - name: disabled
+        type: "boolean"
+        default: false
+        note: "renders a non-clickable `<span role=\"link\" aria-disabled>` instead of `<a>`. Use sparingly — disabled links are an anti-pattern in many a11y heuristics; prefer hiding the affordance entirely when navigation is unavailable."
+
+    intrinsic_behavior:
+      - "renders `<a>` (enabled) or `<span role=\"link\" aria-disabled>` (disabled)"
+      - "shares Button's `buttonVariants` cva — variant + size styling is identical to Button"
+      - "adds `hover:underline` on the enabled `<a>` (not present on Button) — link affordance for keyboard users"
+      - "disabled state applies `pointer-events-none text-disabled-foreground opacity-60` AND swaps the element to a span"
+
+    anti_patterns:
+      - pattern: "using LinkButton for an in-page action that doesn't navigate (e.g. `<LinkButton onClick={handler}>Save</LinkButton>`)"
+        why: "LinkButton renders `<a>` with no `href`, which is an inert anchor — keyboard focus, screen-reader semantics, and link semantics all break"
+        redirect: "use `<Button onClick={handler}>` for in-page actions; reserve LinkButton for navigation"
+      - pattern: "rendering LinkButton without `href` or framework router integration"
+        why: "an `<a>` without `href` is not focusable and is announced as plain text by screen readers"
+        redirect: "always provide `href`, OR wrap LinkButton in the framework's `<Link>` so the link target is set by the router"
+
+# (additional component groups appended below as C2a.6..C2a.11 are authored)
 
 cross_component_invariants:
   # (seeded incrementally per group; finalized in C2a.final)
