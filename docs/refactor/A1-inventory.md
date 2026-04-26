@@ -79,7 +79,12 @@ components:
     intent_group: Collecting user input
     source_path: form/Select.tsx
     intent: Pick one from a long list (dropdown)
-    compound_parts: null
+    compound_parts:
+      - {name: SelectTrigger,   kind: required_child, note: the visible trigger button + value display}
+      - {name: SelectContent,   kind: required_child, note: the floating popover that wraps the option list}
+      - {name: SelectItem,      kind: required_child, note: an option inside SelectContent — must carry `value`}
+      - {name: SelectGroup,     kind: optional_child, note: groups items under a label inside SelectContent}
+      - {name: SelectSeparator, kind: optional_child, note: visual divider between SelectGroups}
   - name: Checkbox
     intent_group: Collecting user input
     source_path: form/Checkbox.tsx

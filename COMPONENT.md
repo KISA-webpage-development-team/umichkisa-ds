@@ -1363,7 +1363,551 @@ components:
         why: "ToggleGroup has no internal selection state — without `value` / `onValueChange`, no item ever shows as selected"
         redirect: "always pass `value` + `onValueChange`; manage state in the consumer"
 
-# (additional component groups appended below as C2a.10..C2a.11 are authored)
+  # ============================================================
+  # intent_group: Collecting user input
+  # ============================================================
+
+  - name: Input
+    intent_group: Collecting user input
+    intent: Single-line free-text input — names, emails, search terms, short identifiers
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "the surface needs a one-line text field outside of a `<Form>` (search bar, filter input, ad-hoc query, controlled local state)"
+      - "the value is short and free-form — name, email, URL, query, ID"
+    reject_when:
+      - "the input is a field inside a `<Form>` from `@umichkisa-ds/form` (use `Form.Input` — it wires `name`, validation, error display, and FormItem aria for free)"
+      - "the value spans multiple lines (use `Textarea`)"
+      - "the value is a constrained pick from a list (use `Select`, `RadioGroup`, or `ToggleGroup`)"
+      - "the value is a date (use `DatePicker` / `DateRangePicker`, or `Form.DatePicker` inside a Form)"
+      - "the value is boolean (use `Checkbox` or `Switch`)"
+
+    notable_props:
+      - name: invalid
+        type: "boolean"
+        default: false
+        pick_guidance: "set when the value fails validation — sets `aria-invalid` and applies the `border-error` styling. Outside of `<Form>` the consumer drives this; inside `<Form>` use `Form.Input` and let it derive `invalid` from validation state."
+      - name: type
+        type: "string (HTML input type)"
+        default: '"text"'
+        pick_guidance: "leave at default for free text; set to `email` / `url` / `tel` / `search` / `password` / `number` when the browser's built-in input mode helps. Do NOT use `type=\"date\"` — use `DatePicker` instead so the visual matches DS."
+
+    intrinsic_behavior:
+      - "extends `React.InputHTMLAttributes<HTMLInputElement>` — every native input prop (`name`, `value`, `onChange`, `placeholder`, `disabled`, `required`, `autoComplete`, etc.) flows through"
+      - "wires `aria-invalid={invalid}` and applies `border-error` + `focus-visible:border-error` when `invalid` is true"
+      - "focus state replaces the default browser outline with `border-brand-primary` (no outline ring); disabled state is `bg-surface-subtle text-disabled-foreground` and pointer-events disabled"
+      - "default text class is `type-body-sm` and `placeholder:text-muted-foreground`"
+
+    anti_patterns:
+      - pattern: "rendering bare `<Input>` inside a `<Form>` (from `@umichkisa-ds/form`) and wiring `name` / `value` / `onChange` manually"
+        why: "Form's `Form.Input` wires the field through `react-hook-form` (registers the field, derives `invalid`, surfaces error text via FormItem); bare Input bypasses validation, error rendering, and the FormItem aria contract"
+        redirect: "use `<Form.Input name=\"...\" />` inside `<Form>`; reach for raw `<Input>` only outside Forms"
+      - pattern: "passing layout / sizing utilities (`w-32`, `flex-1`, `h-12`) via `className` to force a non-`w-full` shape"
+        why: "Input is `w-full min-w-0` by design — sizing comes from the parent layout (FormItem, Grid cell, flex parent). Inline width overrides break responsive layouts and FormItem stacking."
+        redirect: "let the parent layout (`FormItem`, `Grid`, flex container) own the width; if a narrower input is genuinely needed, wrap it in a sized parent: `<div className=\"w-32\"><Input /></div>`"
+
+  - name: Textarea
+    intent_group: Collecting user input
+    intent: Multi-line free-text input — descriptions, comments, long-form messages
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "the surface needs a multi-line text field outside of a `<Form>`"
+      - "the value is long-form — comment, message, paragraph-length description, address block"
+    reject_when:
+      - "the field is inside a `<Form>` (use `Form.Textarea`)"
+      - "the value fits on one line (use `Input`)"
+      - "the surface needs a rich-text editor with formatting (out of DS scope — use a third-party editor)"
+
+    notable_props:
+      - name: invalid
+        type: "boolean"
+        default: false
+        pick_guidance: "same contract as `Input.invalid` — drives `aria-invalid` and the error border. Inside `<Form>`, prefer `Form.Textarea` so this is derived."
+      - name: rows
+        type: "number"
+        default: 3
+        pick_guidance: "default 3 rows fits most short comment fields; bump to 5–8 for long-form descriptions. The user can still resize vertically (`resize-y`)."
+
+    intrinsic_behavior:
+      - "extends `React.TextareaHTMLAttributes<HTMLTextAreaElement>` — every native textarea prop flows through"
+      - "user can resize vertically (`resize-y`); horizontal resize is locked to keep layout stable"
+      - "same focus / disabled / invalid styling as `Input` (border-brand-primary on focus, border-error on invalid, surface-subtle on disabled)"
+      - "default text class is `type-body-sm`"
+
+    anti_patterns:
+      - pattern: "rendering bare `<Textarea>` inside a `<Form>` and wiring `name` / `value` / `onChange` manually"
+        why: "same as Input — Form.Textarea wires through `react-hook-form`, derives `invalid`, surfaces FormItem error text"
+        redirect: "use `<Form.Textarea name=\"...\" />` inside `<Form>`"
+      - pattern: "disabling vertical resize via `className=\"resize-none\"` to lock height"
+        why: "Textarea ships `resize-y` so users can expand for long input — locking it forces overflow scroll inside a small box, which hides content the user just typed"
+        redirect: "if the surface really needs a fixed height, bump `rows` so the natural box is tall enough; do not disable resize"
+
+  - name: Select
+    intent_group: Collecting user input
+    intent: Pick exactly one value from a structured option list (5+ options) — country, category, status filter
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "the user picks one value from a list of 5+ options where a dropdown is more compact than visible options"
+      - "the option list is long enough that surfacing every option (RadioGroup) would crowd the layout"
+      - "outside of a `<Form>`, the consumer owns the value state directly"
+    reject_when:
+      - "the field is inside a `<Form>` (use `Form.Select`)"
+      - "the option list is 2–5 short labels and ALL options should be visible (use `RadioGroup` or `ToggleGroup` for selection, `Form.Radio` inside a Form)"
+      - "the value is binary on/off (use `Switch` or `Checkbox`)"
+      - "the user picks multiple values (use a `Form.Checkbox` array, a multi-select pattern outside DS, or `ToggleGroup type=\"multiple\"`)"
+
+    notable_props:
+      - name: value
+        type: "string"
+        pick_guidance: "controlled — pair with `onValueChange`. Pass through to Radix `<Select.Root>`."
+      - name: onValueChange
+        type: "(value: string) => void"
+        pick_guidance: "fires when the user picks an item; consumer updates `value` state"
+      - name: defaultValue
+        type: "string"
+        pick_guidance: "uncontrolled-only initial value; do not combine with `value`"
+
+    requires_context: null
+
+    compound_parts:
+      - name: SelectTrigger
+        kind: required_child
+        purpose: "the visible trigger button — shows current value or placeholder + chevron icon"
+      - name: SelectContent
+        kind: required_child
+        purpose: "the floating popover that wraps the option list (rendered through Radix Portal)"
+      - name: SelectItem
+        kind: required_child
+        purpose: "an option inside SelectContent — must carry a `value` prop matching one of the values used in `Select.value`"
+      - name: SelectGroup
+        kind: optional_child
+        purpose: "groups items under a label inside SelectContent (e.g. categorized options)"
+      - name: SelectSeparator
+        kind: optional_child
+        purpose: "visual divider between SelectGroups"
+
+    intrinsic_behavior:
+      - "wraps Radix `@radix-ui/react-select` — keyboard navigation (arrow keys, Home/End, type-ahead), ARIA roles, focus management come from Radix"
+      - "`SelectTrigger` shows placeholder text in `text-muted-foreground` when no value is selected; chevron rotates / animates on open via Radix data attributes"
+      - "`SelectContent` renders through `Radix.Portal` with `position=\"popper\"` (default) — animates in / out with `data-[state=open]` / `data-[state=closed]` classes; `min-w-32` and matches trigger width on `popper` mode"
+      - "`SelectItem` shows a check icon (`<Icon name=\"check\" />`) in the left gutter when selected; hover / focus tints with `bg-brand-accent-subtle`"
+      - "every interactive surface has the focus-visible border-brand-primary contract; disabled items are `text-disabled-foreground` and pointer-events disabled"
+
+    anti_patterns:
+      - pattern: "rendering bare `<Select>` inside a `<Form>` and wiring `value` / `onValueChange` to `register` manually"
+        why: "Form.Select handles the controller pattern (Radix Select doesn't work with `register` directly because it's not a native input); manual wiring here is the most common form-bug source"
+        redirect: "use `<Form.Select name=\"...\" />` inside `<Form>`"
+      - pattern: "rendering raw `<select>` HTML element instead of the DS Select"
+        why: "native select dropdowns vary visually per OS / browser, ignore DS focus / hover / typography contracts, and break the `border-error` invalid affordance"
+        redirect: "always use the DS `<Select>` family — even for short option lists where a dropdown is appropriate"
+      - pattern: "passing children to `<Select>` directly instead of routing them through `<SelectTrigger>` / `<SelectContent>` / `<SelectItem>`"
+        why: "Radix Select.Root does not render its children inline — they must live inside `<Select.Trigger>` and `<Select.Content>`. Direct children are silently dropped."
+        redirect: "always compose: `<Select><SelectTrigger placeholder=\"...\" /><SelectContent>{items}</SelectContent></Select>`"
+
+  - name: Checkbox
+    intent_group: Collecting user input
+    intent: Boolean toggle or one item in a multi-select — accept terms, opt-in, multi-pick from a short list
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "outside a `<Form>`, the surface needs a boolean toggle or a multi-select item with a single inline label"
+      - "the affordance reads as 'check this' — opt-in, accept terms, include this filter, multi-select row"
+      - "the visual needs to be a square check (settings, terms, granular permissions) — not a switch (background process toggle)"
+    reject_when:
+      - "the field is inside a `<Form>` (use `Form.Checkbox`)"
+      - "the affordance is a binary on/off for a setting that takes effect immediately (use `Switch` — the visual reads as a toggle, not a confirmation)"
+      - "the user picks exactly one from 2–5 options (use `RadioGroup`)"
+      - "the label is more than a short single line, or needs a description (use `FormItem` + the bare control inside)"
+
+    notable_props:
+      - name: invalid
+        type: "boolean"
+        default: false
+      - name: text
+        type: "string"
+        pick_guidance: "inline label text — when present, Checkbox wraps itself in a `<label>` so clicking the text toggles the box. Omit when the field is labeled by an external `<Label>` / `<FormItem>`."
+
+    intrinsic_behavior:
+      - "extends `React.InputHTMLAttributes<HTMLInputElement>` minus `type` — every native checkbox prop (`name`, `checked`, `defaultChecked`, `onChange`, `disabled`, `required`) flows through"
+      - "renders a 20px square box with a custom check (`<svg>` polyline) that fades in via `peer-checked:opacity-100`; the underlying `<input type=\"checkbox\">` is visually hidden but hit-targetable across the whole control"
+      - "when `text` is provided, the entire control + label is wrapped in a `<label>` so the label is part of the click target; when `text` is absent, the consumer provides labeling externally (Label / FormItem / aria-label)"
+      - "checked state uses `bg-brand-primary border-brand-primary`; disabled+checked degrades to `disabled-foreground`; invalid sets `border-error`"
+
+    anti_patterns:
+      - pattern: "using `<Checkbox text=\"...\" />` AND wrapping it in a `<Label>` or `<FormItem>` so it has two label sources"
+        why: "the inline `text` already gets wrapped in a `<label>` element — adding an external Label produces duplicated screen-reader announcements and an ambiguous click target"
+        redirect: "either use the `text` prop OR an external Label / FormItem — never both. For Form-wired fields, always go through `Form.Checkbox` (which uses FormItem)."
+      - pattern: "rendering bare `<Checkbox>` inside a `<Form>` and wiring `checked` / `onChange` manually"
+        why: "Form.Checkbox wires through react-hook-form's controller pattern and integrates with FormItem's error display"
+        redirect: "use `<Form.Checkbox name=\"...\" />` inside `<Form>`"
+
+  - name: RadioGroup
+    intent_group: Collecting user input
+    intent: Pick exactly one from 2–5 visible options — small enumerated choice (priority, plan tier, yes/no/maybe)
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "outside a `<Form>`, the user picks exactly one from a short visible option list (2–5)"
+      - "all options should be visible at once for fast comparison — no benefit to hiding behind a dropdown"
+      - "the labels are short enough to fit in the row (horizontal) or stack readably (vertical)"
+    reject_when:
+      - "the field is inside a `<Form>` (use `Form.Radio`)"
+      - "the option list is 5+ and a dropdown is more compact (use `Select` or `Form.Select`)"
+      - "the surface is a mode-switcher / segmented control (use `ToggleGroup type=\"single\"`)"
+      - "the user picks multiple values (use `Checkbox` per option or `Form.Checkbox`)"
+
+    notable_props:
+      - name: value
+        type: "string"
+        pick_guidance: "controlled — pair with `onValueChange`"
+      - name: onValueChange
+        type: "(value: string) => void"
+      - name: invalid
+        type: "boolean"
+        default: false
+        pick_guidance: "applies `data-invalid` to the group root — RadioItems inside pick up the error border via `group-data-[invalid]:border-error`"
+      - name: orientation
+        type: "enum: vertical | horizontal"
+        default: vertical
+        pick_guidance: "vertical (default) is the safe choice — every label gets full readable width. Horizontal only when labels are very short (1–2 words) and there are 2–3 options."
+
+    requires_context: null
+
+    compound_parts:
+      - name: RadioItem
+        kind: required_child
+        purpose: "an individual option — must carry `value` (matching one of the values used in `RadioGroup.value`) and `text` (inline label). Renders as a 20px circle with a 10px filled center on selection."
+
+    intrinsic_behavior:
+      - "wraps Radix `@radix-ui/react-radio-group` — arrow-key cycling, roving tabindex, ARIA roles come from Radix"
+      - "renders a flex container — `flex-col gap-2` for vertical, `flex-row gap-4` for horizontal"
+      - "selected state uses `bg-brand-primary border-brand-primary`; disabled+checked degrades to `disabled-foreground`; the invalid border is wired through the group's `data-[invalid]` attribute so individual RadioItems pick it up"
+      - "`RadioItem.text` is part of the click target — the entire `<label>` toggles the radio"
+
+    anti_patterns:
+      - pattern: "rendering bare `<RadioGroup>` inside a `<Form>` and wiring `value` / `onValueChange` manually"
+        why: "Form.Radio uses react-hook-form's controller pattern (Radix RadioGroup is not a native input); manual wiring here loses validation + FormItem error integration"
+        redirect: "use `<Form.Radio name=\"...\" items={[{ value, text }, ...]} />` inside `<Form>`"
+      - pattern: "rendering raw `<input type=\"radio\">` elements instead of `RadioGroup` + `RadioItem`"
+        why: "native radios miss DS focus rings, brand colors, the data-invalid wiring, and the keyboard contract Radix provides"
+        redirect: "always compose `<RadioGroup value={...}><RadioItem value=\"a\" text=\"A\" /></RadioGroup>`"
+      - pattern: "horizontal orientation with 4+ items or long labels"
+        why: "labels overflow / wrap unevenly, options become hard to scan, the row breaks on narrow viewports"
+        redirect: "default to `orientation=\"vertical\"`; use horizontal only for 2–3 short labels"
+
+  - name: Switch
+    intent_group: Collecting user input
+    intent: Binary on/off toggle for a setting that takes effect immediately — preference toggle, feature enable, notification on/off
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "outside a `<Form>`, the surface needs a toggle whose state takes effect on flip (no submit step) — settings page, dashboard preference"
+      - "the affordance reads as 'on/off' or 'enable/disable' for a continuous state, not a checkbox-style 'check this'"
+    reject_when:
+      - "the field is inside a `<Form>` (use `Form.Switch`)"
+      - "the affordance reads as 'opt-in' / 'accept' / 'include' (use `Checkbox` — the visual matches the intent)"
+      - "the user picks one of multiple options (use `RadioGroup` or `ToggleGroup`)"
+
+    variants:
+      - name: default
+        pick_when:
+          - "standard settings row — comfortable touch target, used in main content areas"
+        reject_when:
+          - "dense toolbars or list rows where the standard size feels heavy (use `size: sm`)"
+      - name: sm
+        pick_when:
+          - "dense surfaces — table rows, compact toolbars, settings sub-rows where the standard size dominates the row"
+        reject_when:
+          - "primary settings page rows where comfort matters more than density (use `default`)"
+
+    notable_props:
+      - name: invalid
+        type: "boolean"
+        default: false
+      - name: size
+        type: "enum: default | sm"
+        default: default
+        pick_guidance: "default fits most settings rows; `sm` (16×28) for dense toolbars / table cells. The inline label class auto-shrinks (`type-body-sm` → `type-caption`) when `size=\"sm\"`."
+      - name: text
+        type: "string"
+        pick_guidance: "inline label — when present, Switch wraps itself in a `<label>` so clicking the text toggles. Same Label-vs-text contract as Checkbox."
+
+    intrinsic_behavior:
+      - "extends `React.InputHTMLAttributes<HTMLInputElement>` minus `type`/`role`/`size` — native checkbox props flow through; the rendered input is `type=\"checkbox\" role=\"switch\"`"
+      - "track + thumb both styled via `peer-checked:` selectors on the visually-hidden underlying input — the entire control area is hit-targetable"
+      - "checked state: thumb shifts via `peer-checked:left-[calc(...)]` math + thumb color flips from `brand-primary` to `surface` while track flips to `brand-primary`"
+      - "disabled+checked degrades to `disabled-foreground`; invalid sets `border-error` on the track"
+
+    anti_patterns:
+      - pattern: "rendering bare `<Switch>` inside a `<Form>` and wiring `checked` / `onChange` manually"
+        why: "Form.Switch wires through react-hook-form and integrates with FormItem error display"
+        redirect: "use `<Form.Switch name=\"...\" />` inside `<Form>`"
+      - pattern: "using `<Switch text=\"...\" />` AND wrapping in `<Label>` / `<FormItem>` for the same labeling"
+        why: "duplicated screen-reader labels (same as Checkbox)"
+        redirect: "either use `text` OR an external Label / FormItem"
+      - pattern: "using Switch for an opt-in / accept-terms field"
+        why: "Switch reads as 'continuous on/off' — opt-in checkboxes are 'check this once to confirm'; users (and a11y guidance) expect different visuals for these intents"
+        redirect: "use `Checkbox` for opt-in / consent / accept-terms; reserve `Switch` for state that takes effect on flip"
+
+  - name: Label
+    intent_group: Collecting user input
+    intent: Accessible text label for a form control (`<input>`, Textarea, Select trigger, RadioGroup, etc.)
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "outside a `<FormItem>`, the surface needs an accessible label associated with a control via `htmlFor` (custom layout where FormItem doesn't fit)"
+      - "the label is the visible text identifier for a single control"
+    reject_when:
+      - "the surface is a standard label-above-control field (use `<FormItem label=\"...\" htmlFor=\"...\">` — it composes `<Label>` for you)"
+      - "the labeling is non-form (page heading, section title, status text — use `type-h*` / `type-label` directly on a heading element)"
+      - "the control already has its own labeling (e.g. `<Checkbox text=\"...\" />` with inline label, or `<IconButton aria-label=\"...\" />`)"
+
+    notable_props:
+      - name: htmlFor
+        type: "string"
+        required: true
+        pick_guidance: "MUST match the `id` of the labeled control. For native inputs (Input, Textarea), use `htmlFor`. For non-native triggers (Select, DatePicker), pair `id` on this Label with `aria-labelledby` on the trigger — see the cross-component invariant."
+      - name: id
+        type: "string"
+        pick_guidance: "set when a non-native trigger needs `aria-labelledby={id}` to associate. FormItem auto-generates `${htmlFor}-label` and uses this pattern."
+      - name: required
+        type: "boolean"
+        default: false
+        pick_guidance: "renders a red `*` after the label text (`aria-hidden`) — the visual signal of required-ness; the actual `required` attribute belongs on the underlying control"
+
+    intrinsic_behavior:
+      - "renders a native `<label>` element with `type-label text-foreground` — small, slightly-bold form-label typography"
+      - "`required` appends a `<span aria-hidden=\"true\">*</span>` in `text-error` — assistive tech reads required-ness from the control's `required` / `aria-required`, the asterisk is a visual cue only"
+      - "no padding / margin of its own — owned by the parent layout (FormItem stacks Label + control via `gap-2`)"
+
+    anti_patterns:
+      - pattern: "rendering `<Label>` without `htmlFor` (or with `htmlFor` that doesn't match a control's `id`)"
+        why: "the label-control association is the entire point of `<Label>` — without it the label is just styled text and screen readers don't announce the labeling on focus"
+        redirect: "always set `htmlFor` to the `id` of the control; for non-native triggers also pair `id` here with `aria-labelledby` on the trigger"
+      - pattern: "using `<Label>` for non-form text (section heading, status label, table header)"
+        why: "`<label>` HTML element implies an associated form control; using it for headings produces incorrect a11y semantics"
+        redirect: "use `<h2 className=\"type-label\">…` or a span with the appropriate `type-*` class instead"
+
+  - name: FormItem
+    intent_group: Collecting user input
+    intent: Vertical layout wrapper that stacks Label + control + (description | error) for a single form field — the canonical field-row primitive
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "outside a `<Form>`, the surface needs a labeled field-row with Label-above-control + optional description + optional inline error"
+      - "the field is one of many in a vertical form layout — FormItem stacks predictably with `gap-2`"
+    reject_when:
+      - "the field is inside a `<Form>` (Form.X members already render their own FormItem internally — wrapping again duplicates the Label / description / error)"
+      - "the layout needs label inline (left of the control) — FormItem is vertical-only by contract"
+      - "the field has a custom layout that doesn't fit Label-above-control (compose `<Label>` + control directly)"
+      - "the affordance is a non-form labeled grouping like a settings card (use `<Card>` + `type-h*`)"
+
+    notable_props:
+      - name: htmlFor
+        type: "string"
+        required: true
+        pick_guidance: "MUST match the `id` of the inner control. FormItem uses this for the inner `<Label htmlFor>` and to derive `${htmlFor}-description` / `${htmlFor}-error` ids you wire to the control's `aria-describedby` / `aria-errormessage`."
+      - name: label
+        type: "string"
+        required: true
+        pick_guidance: "visible label text — passed to the inner `<Label>`. For required fields, also set `required` so the asterisk renders."
+      - name: required
+        type: "boolean"
+        default: false
+        pick_guidance: "passes through to the inner `<Label required>`. Set the `required` HTML attribute on the inner control separately — FormItem doesn't reach into children."
+      - name: error
+        type: "string"
+        pick_guidance: "when present, renders a `type-caption text-error` line and HIDES the description (mutually exclusive — error wins)"
+      - name: description
+        type: "string"
+        pick_guidance: "rendered as `type-caption text-muted-foreground` below the control. Hidden when `error` is present."
+
+    intrinsic_behavior:
+      - "renders a `flex flex-col gap-2` column — Label, control (children), then either description or error"
+      - "auto-generates the inner Label's `id={htmlFor + '-label'}`; the description / error get ids `${htmlFor}-description` / `${htmlFor}-error` for the consumer to wire into the control's `aria-describedby` / `aria-errormessage`"
+      - "vertical-only by design — there is no `orientation` prop and no horizontal-label variant. Inline-label layouts are out of scope (compose Label + control yourself)"
+      - "error and description are mutually exclusive at render time — when `error` is truthy, only error renders. This mirrors the validation-mode-takes-priority contract Form uses internally."
+
+    anti_patterns:
+      - pattern: "wrapping a `Form.X` field (Form.Input, Form.Select, Form.Switch, etc.) inside a `<FormItem>`"
+        why: "Form.X members already render their own FormItem with label + error from validation state — the outer FormItem duplicates Label, error, and aria wiring"
+        redirect: "inside `<Form>`, pass `label` / `description` / `required` directly to the `Form.X` field; outside `<Form>`, use `FormItem` + the bare web control (Input, Select, etc.)"
+      - pattern: "using FormItem for an inline label-left-of-control layout via `className=\"flex-row\"` override"
+        why: "FormItem is `flex-col gap-2` by contract — flipping to row breaks the label-above-control invariant the whole DS depends on; description / error positioning then sit awkwardly to the side"
+        redirect: "compose your own row layout: `<div className=\"flex items-center gap-3\"><Label htmlFor=\"x\">...</Label><Input id=\"x\" /></div>`"
+      - pattern: "passing both `error` and `description` and expecting both to render"
+        why: "FormItem renders ONLY error when `error` is truthy — description is suppressed (validation error supersedes hint text)"
+        redirect: "treat description as helper text shown in the resting state and error as the validation message; if you need both visible at once, render the helper outside FormItem"
+
+  - name: FileUpload
+    intent_group: Collecting user input
+    intent: Single-image upload with client-side validation, preview, and consumer-owned upload / remove callbacks
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "the surface needs a single-image picker (avatar, profile photo, post thumbnail, document attachment) with preview"
+      - "the consumer can provide async `onUpload` (returns `{ url, publicId }`) and `onRemove` callbacks — DS does not ship a default upload implementation"
+      - "client-side validation against MIME type + size threshold is needed before the file leaves the browser"
+    reject_when:
+      - "the surface needs multi-file batch upload (out of DS scope — consumer composes a custom multi-FileUpload list or uses a third-party uploader)"
+      - "the file type is non-image (PDF, ZIP, arbitrary) — current contract is image-only (`accept` defaults to `image/png | image/jpeg | image/webp`)"
+      - "no real upload backend exists — FileUpload requires `onUpload` + `onRemove`; mocking these for a UI-only stub leaks blob URLs"
+
+    notable_props:
+      - name: value
+        type: "FileUploadValue | null — `{ url: string, publicId: string }`"
+        required: true
+        pick_guidance: "the persisted-file reference; `null` when no image. Consumer owns this state — FileUpload calls `onChange(next)` after a successful upload or remove."
+      - name: onChange
+        type: "(next: FileUploadValue | null) => void"
+        required: true
+        pick_guidance: "fires after a successful upload (with the `{ url, publicId }` returned by `onUpload`) or after a successful remove (with `null`)"
+      - name: onUpload
+        type: "(file: File) => Promise<FileUploadValue>"
+        required: true
+        pick_guidance: "the consumer-owned async uploader — must return `{ url, publicId }` on success or throw on failure. The thrown error's `message` is shown in the inline Alert."
+      - name: onRemove
+        type: "(publicId: string) => Promise<void>"
+        required: true
+        pick_guidance: "the consumer-owned async remover — called with the current `value.publicId`. Throw to surface an error message in the inline Alert."
+      - name: accept
+        type: "readonly AcceptedMimeType[] — subset of `'image/png' | 'image/jpeg' | 'image/webp'`"
+        default: "['image/png', 'image/jpeg', 'image/webp']"
+        pick_guidance: "narrow to a subset when only certain image types are valid (e.g. PNG-only logos). The helper text under the upload zone auto-derives from this list."
+      - name: maxSize
+        type: "number (bytes)"
+        default: "FILE_UPLOAD_MAX_BYTES_DEFAULT (5 * 1024 * 1024 = 5MB)"
+        pick_guidance: "client-side size cap; exceeding it shows an inline error and skips `onUpload` entirely"
+
+    intrinsic_behavior:
+      - "renders a 128×128 dashed-border drop / click zone when no image; flips to a 128×128 image preview with a top-right circular remove button when an image is selected or pending"
+      - "during upload: shows the local blob preview immediately, overlays a `LoadingSpinner` over the image, sets `aria-busy=\"true\"` on the root, and disables the remove button"
+      - "during remove: spinner replaces the X icon inside the remove button"
+      - "client-side validates size + MIME BEFORE calling `onUpload` — failures render the inline `<Alert variant=\"error\">` and skip the upload network call"
+      - "validation / upload / remove errors all route through one inline `<Alert variant=\"error\">` with the root's `aria-describedby` wired to the alert id"
+      - "manages blob URL lifecycle — revokes on upload success/failure and on unmount to prevent memory leaks"
+      - "default messages are English ('Click to upload', 'Upload image', 'Remove image', etc.) — all overridable via the `messages` prop for i18n"
+
+    anti_patterns:
+      - pattern: "passing `onUpload` / `onRemove` that resolve without actually persisting the file (UI stub)"
+        why: "FileUpload swaps the local blob preview for the URL returned by `onUpload` and revokes the blob — a stub that returns a fake URL leaves the user staring at a broken preview after refresh"
+        redirect: "wire `onUpload` to the real upload backend (Cloudinary, S3, etc.) and `onRemove` to the matching deletion endpoint before shipping"
+      - pattern: "rendering FileUpload alongside a separate inline `<Alert>` for the same field's errors"
+        why: "FileUpload already surfaces validation / upload / remove errors via its own internal Alert with proper `aria-describedby` wiring — a parallel external Alert duplicates the message and unties the aria relationship"
+        redirect: "let FileUpload own its own error rendering; surface form-level cross-field errors elsewhere"
+      - pattern: "wrapping FileUpload in a `<FormItem>` to add label + error"
+        why: "FormItem's error rendering and FileUpload's internal Alert collide — two error sources, two aria targets, inconsistent UX"
+        redirect: "render the field's label separately (Label or section heading) and let FileUpload own the error surface; if a form is involved, compose with `<Form>` and a manually-controlled FileUpload via Form.Controller / useFormField"
+
+  - name: DatePicker
+    intent_group: Collecting user input
+    intent: Single-date picker — calendar opens in a popover from a button trigger
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "outside a `<Form>`, the surface collects a single date (start date, deadline, scheduled-on)"
+      - "an inline always-visible Calendar would dominate the layout — popover-from-trigger is more space-efficient"
+    reject_when:
+      - "the field is inside a `<Form>` (use `Form.DatePicker`)"
+      - "the surface needs a permanently-visible calendar grid (use `Calendar`)"
+      - "the surface collects a date range (use `DateRangePicker` or `Form.DateRangePicker`)"
+      - "the value is a free-text date that doesn't need a calendar UI (use `Input type=\"text\"` with custom validation — but this is rare and usually wrong)"
+
+    notable_props:
+      - name: value
+        type: "Date"
+        pick_guidance: "controlled — pair with `onChange`. Pass `undefined` for unselected."
+      - name: onChange
+        type: "(date: Date | undefined) => void"
+        pick_guidance: "fires on selection — popover auto-closes after a pick"
+      - name: formatDate
+        type: "(date: Date) => string"
+        default: "`MM/DD/YYYY` (zero-padded)"
+        pick_guidance: "override for locale-specific formatting (e.g. Korean `YYYY.MM.DD`); applied to the trigger's display only — Calendar internals stay locale-agnostic"
+      - name: placeholder
+        type: "string"
+        default: '"Select a date"'
+      - name: invalid
+        type: "boolean"
+        default: false
+      - name: calendarProps
+        type: "Omit<CalendarProps, \"mode\" | \"selected\" | \"onSelect\">"
+        pick_guidance: "pass-through to the inner `<Calendar>` for `disabled`, `fromDate` / `toDate`, locale, etc. Cannot override `mode` / `selected` / `onSelect` — DatePicker owns those."
+
+    requires_context: null
+
+    intrinsic_behavior:
+      - "internally composes `Popover + PopoverTrigger + PopoverContent + Calendar mode=\"single\"` — consumers don't compose these themselves; DatePicker is the single entry point"
+      - "the trigger is a button styled identically to `Input` (border-border-strong, focus border-brand-primary, invalid border-error) with a chevron-free calendar icon on the right"
+      - "popover auto-closes immediately after a date is picked"
+      - "extends Calendar's contract — same focus rings, brand colors, react-day-picker pass-through via `calendarProps`"
+
+    anti_patterns:
+      - pattern: "rendering bare `<DatePicker>` inside a `<Form>` and wiring `value` / `onChange` manually"
+        why: "Form.DatePicker uses react-hook-form's controller pattern; manual wiring loses validation + FormItem integration"
+        redirect: "use `<Form.DatePicker name=\"...\" />` inside `<Form>`"
+      - pattern: "composing your own `Popover + Calendar` to build a date picker"
+        why: "DatePicker already does this — duplicating the composition means each instance drifts in trigger styling, popover alignment (`align=\"start\"`), and Calendar prop forwarding"
+        redirect: "use `<DatePicker>` for single dates, `<DateRangePicker>` for ranges, `<Calendar>` only for permanently-visible grids"
+      - pattern: "using `<input type=\"date\">` instead of DatePicker"
+        why: "native date inputs vary per browser, miss DS focus / invalid styling, and produce inconsistent locale behavior"
+        redirect: "always use `DatePicker` (or `Form.DatePicker` inside Forms)"
+
+  - name: DateRangePicker
+    intent_group: Collecting user input
+    intent: Date-range picker — calendar opens in a popover and the user picks a start + end date
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "outside a `<Form>`, the surface collects a start–end date pair (event range, report period, vacation block)"
+    reject_when:
+      - "the field is inside a `<Form>` (use `Form.DateRangePicker`)"
+      - "the surface needs only a single date (use `DatePicker`)"
+      - "the surface needs a permanently-visible calendar grid for range selection (use `Calendar mode=\"range\"`)"
+
+    notable_props:
+      - name: value
+        type: "DateRange — `{ from?: Date, to?: Date }` (from react-day-picker)"
+        pick_guidance: "controlled — pair with `onChange`"
+      - name: onChange
+        type: "(range: DateRange | undefined) => void"
+        pick_guidance: "fires on every selection (first click sets `from`, second sets `to`); popover auto-closes only when both `from` and `to` are set"
+      - name: formatDate
+        type: "(date: Date) => string"
+        default: "`MM/DD/YYYY`"
+        pick_guidance: "applied to BOTH from and to for the trigger display (rendered as `from – to`)"
+      - name: placeholder
+        type: "string"
+        default: '"Select a date range"'
+      - name: invalid
+        type: "boolean"
+        default: false
+      - name: calendarProps
+        type: "Omit<CalendarProps, \"mode\" | \"selected\" | \"onSelect\">"
+
+    requires_context: null
+
+    intrinsic_behavior:
+      - "internally composes `Popover + PopoverTrigger + PopoverContent + Calendar mode=\"range\"` — DateRangePicker is the single entry point for popover-style range selection"
+      - "trigger styling matches `DatePicker` and `Input` — border-border-strong, focus border-brand-primary, invalid border-error, calendar icon on the right"
+      - "trigger label format: `formatDate(from) – formatDate(to)` when both set; `formatDate(from)` alone after the first pick; `placeholder` when neither set"
+      - "popover stays open after the first pick (so the user can pick the end) and auto-closes only after `from` AND `to` are both populated"
+      - "extends Calendar's range-mode contract — `range_*` slot styling carries `bg-brand-accent-subtle` for in-range cells"
+
+    anti_patterns:
+      - pattern: "rendering bare `<DateRangePicker>` inside a `<Form>` and wiring manually"
+        why: "same as DatePicker — Form.DateRangePicker handles the controller pattern + FormItem error integration"
+        redirect: "use `<Form.DateRangePicker name=\"...\" />` inside `<Form>`"
+      - pattern: "expecting the popover to close after the first pick (selecting `from` only)"
+        why: "DateRangePicker keeps the popover open until BOTH `from` and `to` are picked — this is intentional so users can complete the range without reopening"
+        redirect: "if the surface needs single-pick semantics, use `<DatePicker>`; do not try to hack `onChange` to force-close"
+      - pattern: "passing two separate DatePickers (one for from, one for to) instead of DateRangePicker"
+        why: "two-DatePicker compositions don't enforce `from <= to`, miss the in-range visual styling that helps users see span at a glance, and double the trigger visual"
+        redirect: "use `<DateRangePicker>` whenever the field is conceptually one range"
+
+# (additional component groups appended below as C2a.11 are authored)
 
 cross_component_invariants:
   # (seeded incrementally per group; finalized in C2a.final)
@@ -1389,5 +1933,23 @@ cross_component_invariants:
     components: [Table, TableMobileList]
     invariant: "any multi-column Table MUST ship a paired `<TableMobileList>` — typically `<Table className=\"hidden md:block\">` AND `<TableMobileList className=\"block md:hidden\">` together — so mobile viewports render the same data as a stacked list rather than a horizontally-overflowing table."
     why: "multi-column tables on mobile either overflow horizontally (hiding columns behind a scrollbar) or shrink below readability; the paired mobile list preserves the data without breaking layout."
+    detection: static
+
+  - id: form-field-pair-discrimination
+    components: [Input, Textarea, Select, Checkbox, RadioGroup, Switch, DatePicker, DateRangePicker]
+    invariant: "inside a `<Form>` (from `@umichkisa-ds/form`), every field MUST use its `Form.X` counterpart — `Form.Input`, `Form.Textarea`, `Form.Select`, `Form.Checkbox`, `Form.Radio`, `Form.Switch`, `Form.DatePicker`, `Form.DateRangePicker` — NEVER the bare web component (`Input`, `Textarea`, `Select`, etc.). Outside of `<Form>`, use the bare web component."
+    why: "Form.X members wire fields through react-hook-form (`register` for native inputs, `Controller` for non-native triggers like Select / DatePicker / RadioGroup), derive `invalid` from validation state, and integrate with the inner FormItem error display. Bare web fields inside Form lose validation, error rendering, and FormItem aria — and the bug is silent (the field renders, just doesn't participate in form submit / validation)."
+    detection: compositional
+
+  - id: formitem-vertical-only
+    components: [FormItem, Form]
+    invariant: "FormItem renders Label-above-control vertically (`flex flex-col gap-2`) by contract — there is no horizontal-label variant. Inline-label-left-of-control layouts MUST be composed manually with `<Label>` + the control inside a custom `flex-row` parent; they MUST NOT be built by overriding FormItem's class to `flex-row`."
+    why: "every Form.X member depends on FormItem's vertical stack for description / error positioning below the control; flipping to row breaks the error / description placement and the visual rhythm consumers rely on across the entire DS forms surface"
+    detection: static
+
+  - id: formitem-htmlfor-aria-wiring
+    components: [FormItem, Label, Input, Textarea, Select, RadioGroup, DatePicker, DateRangePicker]
+    invariant: "FormItem's `htmlFor` MUST match the inner control's `id`. For native inputs (Input, Textarea), this is a standard `label[for] ↔ input[id]` association. For non-native triggers (Select, DatePicker, RadioGroup), the inner control must additionally carry `aria-labelledby={`${htmlFor}-label`}` (the id FormItem auto-assigns to its inner Label) AND `aria-describedby={`${htmlFor}-description`}` / `aria-errormessage={`${htmlFor}-error`}` to wire the description / error nodes."
+    why: "FormItem generates the description / error elements with deterministic ids derived from `htmlFor`, but it cannot reach into children to attach `aria-describedby` / `aria-errormessage` — the consumer (or the Form.X wrapper) must wire those. Missing wiring means screen readers don't announce the field's helper text or validation message even though the visuals look correct."
     detection: static
 ```

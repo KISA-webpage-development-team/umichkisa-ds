@@ -97,3 +97,19 @@ Recorded for completeness: CardTitle (`type-h4 !font-semibold text-foreground �
 - **Awkward**: A1 listed `compound_parts: null` for Dialog, Dropdown, and Popover. Live surface exports 6 / 5 / 2 compound parts respectively.
 - **Resolution**: A1 inventory updated for all three with the live compound-part lists. Tooltip kept at `null` — Tooltip.tsx genuinely has no exposed compound parts (uses `content: string` prop + `children` as the trigger; Radix Provider/Root/Trigger/Portal/Content are internal). COMPONENT.md authored against live source.
 - **Carry-over**: Same pattern likely on RadioGroup (C2a.10) and Tabs (C2a.9 — already correct in A1, but verify against source).
+
+---
+
+## C2a.10 — Web Form components group (Input, Textarea, Select, Checkbox, RadioGroup, Switch, Label, FormItem, FileUpload, DatePicker, DateRangePicker)
+
+### F11. A1 missed Select's full compound-part family — RESOLVED
+
+- **Awkward**: A1 listed `Select` with `compound_parts: null`. Live `form/Select.tsx` exports `SelectTrigger`, `SelectContent`, `SelectItem`, `SelectGroup`, `SelectSeparator` — 5 compound parts (3 required, 2 optional). Same shape as F10 (Radix-backed overlays missed by A1).
+- **Resolution**: A1 inventory updated to enumerate the full Select compound family. COMPONENT.md authored against live source. RadioGroup verified — A1 was correct (only `RadioItem`).
+- **Status**: F7 + F10 + F11 cluster confirms the A1 baseline systematically misses Radix-backed compound parts. Per A2 discipline 6 ("compound_parts mirrors the live source, not A1"), no further action needed beyond the in-place fixes — but recommend C2a.final calls this out as the single largest A1-trust pattern surfaced during C2a.
+
+### F12. FormItem aria wiring is consumer-owned for non-native triggers — invariant captured, no schema change
+
+- **Awkward**: FormItem auto-generates `${htmlFor}-description` / `${htmlFor}-error` ids but cannot reach into children to set `aria-describedby` / `aria-errormessage` / `aria-labelledby` on non-native triggers (Select, DatePicker, RadioGroup). For Form.X members the wiring lives in the wrapper; for bare-FormItem usage the consumer must wire it.
+- **Handled**: Captured as cross-invariant `formitem-htmlfor-aria-wiring` (detection: static). FormItem's `intrinsic_behavior` notes the id-generation contract; the invariant carries the full wiring rule with reasoning. No schema change needed — A2 already supports `cross_component_invariants` with `detection: static`.
+- **Recommendation**: Surface this as a USAGE.md must-rule when C2b authors USAGE — bare-FormItem composition is a real consumer pattern (header search bars, ad-hoc filter rows) and the aria wiring is silently broken when missed.
