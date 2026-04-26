@@ -13,7 +13,9 @@ Layer 3 does **not** carry:
 - Layer 1 token definitions (live in DESIGN.md / theme.css)
 - Lifecycle markers (no `scope` / `expires_at` — temporal rules are deleted manually when no longer applicable)
 
-File shape mirrors DESIGN.md and COMPONENT.md: markdown body organized by domain sections (Tier Pickers, Setup, Component Usage, Styling, Icons, Forms, Layout, Local Components, className Passthrough, Third-Party Libraries), each section opens with a one-paragraph prose intro followed by a YAML block. No top-level preamble — the consumer skill / agent system prompt explains the file's role.
+File shape mirrors DESIGN.md and COMPONENT.md: markdown body organized by domain sections (Tier Pickers, Component Usage, Styling, Icons, Forms, Layout, Local Components, className Passthrough, Third-Party Libraries), each section opens with a one-paragraph prose intro followed by a YAML block. No top-level preamble — the consumer skill / agent system prompt explains the file's role.
+
+**Note (added in A8):** Project-level setup rules (CSS entry point imports, font loading, prerequisite checks) are NOT in USAGE.md. They live in the `onboard-ds` skill (specified in A8), which runs once per project rather than once per task. See `A8-onboard-ds.md` for the absorbed rule list (`p2-cs-1`, `p2-cs-2`, `p2-fn-1` through `p2-fn-4`). USAGE.md's domain sections are write-time constraints only.
 
 ---
 
@@ -276,7 +278,7 @@ Applying A2's contract-ownership test ("would this still be wrong in a brand-new
 ## Deferred action items (outside Phase A)
 
 - ~~(carried over from A2) File `ds-fix-during-migration` ticket: ship `type-h4` class.~~ **Done during A4 grill** (commit edac51e, 2026-04-26).
-- (Phase B) Add prerequisite block to the execution skill's system prompt: "Applies to projects on Tailwind v4 + @umichkisa-ds/web ≥ X.X. For non-Tailwind / pre-v4 setups, the Setup rules and most styling rules don't apply."
+- ~~(Phase B) Add prerequisite block to the execution skill's system prompt: "Applies to projects on Tailwind v4 + @umichkisa-ds/web ≥ X.X."~~ **Superseded by A8.** Prerequisite enforcement moves from a passive prompt block to an active `.ds-onboarded` marker check, owned by the `onboard-ds` skill. A6 will spec the preflight diff for `SKILL.md`.
 - (Phase B/C, surfaced in A4) **Geist Mono scope reconciliation.** Current Layer 3 input rules are `t-fn-5: Never Geist Mono in client app components (docs-site only)` and `p2-tk-6: Never Import font loaders from client`. A4 grill (Q11) reframes Geist Mono as "available in any consumer for code-display contexts (inline code, code blocks); never for body / UI." When the runtime USAGE.md is authored:
   - Reframe `t-fn-5` from "docs-site only" → "code-display contexts only" (still `never` severity, but on UI/body usage rather than the consumer scope).
   - Leave `p2-tk-6` unchanged — it's about font-loader hygiene, not Geist Mono specifically.
