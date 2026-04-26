@@ -1907,7 +1907,474 @@ components:
         why: "two-DatePicker compositions don't enforce `from <= to`, miss the in-range visual styling that helps users see span at a glance, and double the trigger visual"
         redirect: "use `<DateRangePicker>` whenever the field is conceptually one range"
 
-# (additional component groups appended below as C2a.11 are authored)
+  # ============================================================
+  # intent_group: Form wiring (`@umichkisa-ds/form`)
+  # ============================================================
+
+  - name: Form
+    intent_group: Form wiring
+    intent: Form root — provides react-hook-form context to nested `Form.X` fields and wires `onSubmit` through validation
+    package: "@umichkisa-ds/form"
+
+    pick_when:
+      - "the surface collects ≥1 field that needs validation, error display, or coordinated submit (login, signup, profile edit, settings, registration)"
+      - "fields benefit from automatic invalid-state derivation, error rendering, and form-level submit lifecycle (`isSubmitting`, `isValid`)"
+      - "the consumer wants the DS-blessed react-hook-form integration instead of wiring RHF manually"
+    reject_when:
+      - "the surface is a search bar / single ad-hoc input where local state + a button is enough (use bare `<Input>` + local state)"
+      - "the surface is read-only display (no fields)"
+      - "the form is a non-DS legacy surface that already owns its own RHF setup (don't double-wrap)"
+
+    notable_props:
+      - name: form
+        type: "UseFormReturn<T>"
+        required: true
+        pick_guidance: "produced by `useForm()` (the DS re-export of RHF's `useForm`). Hold the return value at the consumer level so submit handlers / status hooks have access."
+      - name: onSubmit
+        type: "SubmitHandler<T>"
+        required: true
+        pick_guidance: "called with validated form values when submit succeeds; never fires when validation fails (RHF's `handleSubmit` short-circuits)"
+      - name: children
+        type: "ReactNode"
+        required: true
+        pick_guidance: "compose `<Form.X>` fields directly as children; field order = visual order"
+
+    requires_context: null
+
+    intrinsic_behavior:
+      - "renders a `<form noValidate>` element wrapping `<FormProvider>` from react-hook-form — `noValidate` disables browser-native validation so RHF's validation owns the UX entirely"
+      - "default class is `flex flex-col gap-4` — fields stack vertically with consistent rhythm; consumer `className` extends but should not override the column / gap contract (see `ds-layout-no-utility-override`)"
+      - "wires `<form onSubmit={form.handleSubmit(onSubmit)}>` — RHF runs validation first, calls `onSubmit` only on success; failures populate `formState.errors` which Form.X fields read via `useController`"
+      - "the FormProvider context is what makes `Form.X` members work — they consume `useFormContext()` internally; rendering `Form.X` outside `<Form>` throws"
+
+    anti_patterns:
+      - pattern: "rendering a bare `<form>` (HTML element) and dropping `Form.X` fields inside without `<FormProvider>` / `<Form>`"
+        why: "`Form.X` members call `useFormContext()` internally — outside a FormProvider this returns `null` and the field crashes (`Cannot destructure property 'control' of 'undefined'`)"
+        redirect: "always wrap field-collecting surfaces in `<Form form={form} onSubmit={onSubmit}>`; never bare `<form>` with `Form.X` children"
+      - pattern: "importing `useForm` / `useFormContext` / `Controller` directly from `react-hook-form` instead of from `@umichkisa-ds/form`"
+        why: "the DS re-exports apply default config (e.g. `mode: 'onTouched'` on `useForm`) and gate the upgrade path — direct RHF imports skip those defaults and create version-pinning drift between consumers and DS"
+        redirect: "always import from `@umichkisa-ds/form`: `import { useForm, useFormContext } from \"@umichkisa-ds/form\"`"
+      - pattern: "passing `flex / overflow / height` utilities via `className` to override Form's `flex flex-col gap-4`"
+        why: "Form's column-stack with consistent gap is the visual contract every Form.X field assumes — overriding produces irregular spacing, broken FormItem stacking, and ambiguous error placement"
+        redirect: "wrap Form in a sized parent if size matters; do not override Form's own layout"
+
+    see_also: [FormItem, Button]
+
+  - name: Form.Input
+    intent_group: Form wiring
+    intent: Single-line text field wired to a `<Form>` — autoregisters with react-hook-form, derives invalid from validation, renders inside FormItem
+    package: "@umichkisa-ds/form"
+
+    pick_when:
+      - "inside a `<Form>`, the field collects single-line text — name, email, URL, ID, free-form value"
+      - "the field needs validation (`rules`), error display, and the standard label-above-control layout"
+    reject_when:
+      - "the surface is OUTSIDE a `<Form>` (use bare `<Input>` with `<FormItem>` if labeled, or `<Input>` alone for ad-hoc usage)"
+      - "the field is multi-line (use `Form.Textarea`)"
+      - "the field is a constrained pick (use `Form.Select`, `Form.Radio`, or `Form.Checkbox`)"
+      - "the field is a date (use `Form.DatePicker` / `Form.DateRangePicker`)"
+
+    notable_props:
+      - name: name
+        type: "string"
+        required: true
+        pick_guidance: "the field key in the form values — also used as the inner `<Input id>` and `<FormItem htmlFor>` so aria wiring matches"
+      - name: label
+        type: "string"
+        required: true
+        pick_guidance: "visible label text passed to the inner FormItem"
+      - name: rules
+        type: "RegisterOptions (from react-hook-form)"
+        pick_guidance: "RHF validation rules — `required`, `minLength`, `maxLength`, `pattern`, custom `validate`. When `rules.required` is truthy the inner Label gets the asterisk automatically."
+      - name: description
+        type: "string"
+        pick_guidance: "helper text below the control (suppressed when an error is present, per FormItem contract)"
+
+    requires_context: Form
+
+    intrinsic_behavior:
+      - "uses `useController({ name, control, rules })` — the DS-standard wiring for RHF text fields; subscribes to validation state and re-renders on error change"
+      - "passes `field.{value, onChange, onBlur, ref}` to the inner `<Input>`; `id={name}`; `invalid={!!error}`"
+      - "wraps in `<FormItem htmlFor={name} label required={!!rules?.required} error={error?.message} description={description}>` — Label, control, and (description | error) all from one prop set"
+      - "`required` on the asterisk derives from `rules?.required` — the consumer never wires it manually"
+      - "extends `InputProps` (minus invalid/name/value/onChange/onBlur — those are owned by the wrapper) — type, placeholder, autoComplete, disabled, etc. all flow through to the inner Input"
+
+    anti_patterns:
+      - pattern: "wrapping `<Form.Input>` inside an outer `<FormItem>` to add label / description / error"
+        why: "Form.Input already renders its own FormItem internally with label + error from validation state; the outer FormItem duplicates Label, error, and aria wiring"
+        redirect: "pass `label` / `description` / `rules` directly to `<Form.Input>` — it owns the FormItem composition"
+      - pattern: "manually setting `id` / `name` / `value` / `onChange` / `invalid` on `<Form.Input>`"
+        why: "those are derived from RHF state — manual wiring conflicts with the controller, breaks validation feedback, and de-syncs `id` from `htmlFor` (breaks FormItem's aria contract)"
+        redirect: "let Form.Input own the wiring; the only required props are `name` + `label`"
+
+    see_also: [Input, FormItem, Form]
+
+  - name: Form.Textarea
+    intent_group: Form wiring
+    intent: Multi-line text field wired to a `<Form>` — same wiring contract as Form.Input, multi-line variant
+    package: "@umichkisa-ds/form"
+
+    pick_when:
+      - "inside a `<Form>`, the field collects long-form text — comment, description, message, address block"
+    reject_when:
+      - "the value fits on one line (use `Form.Input`)"
+      - "the surface is outside a `<Form>` (use bare `<Textarea>` with `<FormItem>`)"
+
+    notable_props:
+      - name: name
+        type: "string"
+        required: true
+      - name: label
+        type: "string"
+        required: true
+      - name: rules
+        type: "RegisterOptions"
+      - name: description
+        type: "string"
+      - name: rows
+        type: "number"
+        default: 3
+        pick_guidance: "default 3 rows fits short comments; bump to 5–8 for long descriptions. Pass-through to inner Textarea."
+
+    requires_context: Form
+
+    intrinsic_behavior:
+      - "identical wiring pattern to Form.Input — `useController` + FormItem + bare Textarea — see Form.Input for the full contract"
+      - "extends `TextareaProps` (minus invalid/name/value/onChange/onBlur) — `rows`, `placeholder`, `autoComplete`, `disabled`, etc. flow through"
+
+    anti_patterns:
+      - pattern: "wrapping `<Form.Textarea>` in an outer `<FormItem>`"
+        why: "same as Form.Input — duplicates Label / error / aria"
+        redirect: "pass `label` / `description` / `rules` directly to `<Form.Textarea>`"
+
+    see_also: [Textarea, FormItem, Form]
+
+  - name: Form.Select
+    intent_group: Form wiring
+    intent: Dropdown picker wired to a `<Form>` — uses RHF's controller pattern (Radix Select is not a native input) and renders inside FormItem
+    package: "@umichkisa-ds/form"
+
+    pick_when:
+      - "inside a `<Form>`, the field picks one value from a structured list (5+ options) where dropdown UX fits"
+    reject_when:
+      - "the option list is 2–5 short labels with selection visible at all times (use `Form.Radio`)"
+      - "the surface is outside a `<Form>` (use bare `<Select>`)"
+      - "the user picks multiple values (use `Form.Checkbox` array)"
+
+    notable_props:
+      - name: name
+        type: "string"
+        required: true
+      - name: label
+        type: "string"
+        required: true
+      - name: rules
+        type: "RegisterOptions"
+      - name: description
+        type: "string"
+      - name: children
+        type: "ReactNode"
+        required: true
+        pick_guidance: "compose `<SelectTrigger />` + `<SelectContent>{<SelectItem value=\"...\" />}</SelectContent>` as children — Form.Select renders the bare `<Select>` and forwards children verbatim"
+
+    requires_context: Form
+
+    intrinsic_behavior:
+      - "uses `useController` — Radix Select is non-native, so RHF's `register` doesn't apply; the controller subscribes to `field.value` and calls `field.onChange(val)` + `field.onBlur()` on selection"
+      - "passes `value={field.value}` and `onValueChange={(val) => { field.onChange(val); field.onBlur(); }}` to inner `<Select>` — onBlur fires on every change because Radix Select's blur semantics aren't reliable for `onTouched` validation"
+      - "renders inside `<FormItem htmlFor={name} ...>` — note the inner `<Select>` does NOT receive `id={name}` (Radix Select has no input element to attach an id to); the FormItem-derived `${name}-label` aria id is also not currently wired into SelectTrigger (consumer-side aria gap to address in Phase D / USAGE)"
+      - "children pass through verbatim into `<Select>{children}</Select>` — consumer composes Trigger / Content / Item exactly as for bare Select"
+
+    anti_patterns:
+      - pattern: "passing `value` / `onValueChange` directly to `<Form.Select>` to override RHF wiring"
+        why: "the controller owns the value lifecycle — manual override de-syncs validation state and the field stops participating in form submit"
+        redirect: "let Form.Select own the wiring; only `name` + `label` + children (Trigger/Content/Items) are required"
+      - pattern: "wrapping in an outer `<FormItem>`"
+        why: "Form.Select renders its own FormItem"
+        redirect: "pass `label` / `description` / `rules` directly to `<Form.Select>`"
+
+    see_also: [Select, FormItem, Form]
+
+  - name: Form.Checkbox
+    intent_group: Form wiring
+    intent: Boolean / multi-select item wired to a `<Form>` — controller-driven checked state, FormItem-wrapped
+    package: "@umichkisa-ds/form"
+
+    pick_when:
+      - "inside a `<Form>`, the field is a boolean (accept terms, opt-in) or one item in a multi-select (where each option is a separate Form.Checkbox)"
+    reject_when:
+      - "the affordance is a binary on/off setting that takes effect on flip (use `Form.Switch`)"
+      - "the user picks one of N (use `Form.Radio`)"
+      - "the surface is outside a `<Form>` (use bare `<Checkbox>`)"
+
+    notable_props:
+      - name: name
+        type: "string"
+        required: true
+      - name: label
+        type: "string"
+        required: true
+      - name: rules
+        type: "RegisterOptions"
+      - name: description
+        type: "string"
+      - name: text
+        type: "string"
+        pick_guidance: "inline label rendered next to the box (passed through to bare `<Checkbox text=\"...\" />`); typical for accept-terms / opt-in. Distinct from FormItem's `label` (the field label above the control)."
+
+    requires_context: Form
+
+    intrinsic_behavior:
+      - "uses `useController` — Checkbox is a native input but the controller pattern keeps wiring consistent across Form.X members"
+      - "passes `id={name}`, `invalid={!!error}`, `checked={!!field.value}`, and a custom `onChange` that calls `field.onChange(e.target.checked)` + `field.onBlur()` (boolean coercion happens at the wrapper boundary so `field.value` is always boolean in form state)"
+      - "extends `CheckboxProps` (minus invalid/name/checked/onChange/onBlur)"
+      - "renders inside FormItem — both the field label (FormItem.label, above) and the inline checkbox text (Checkbox.text, beside the box) can coexist"
+
+    anti_patterns:
+      - pattern: "wiring `checked` / `onChange` manually on `<Form.Checkbox>`"
+        why: "controller owns the value — manual wiring breaks validation"
+        redirect: "let Form.Checkbox own the wiring; only `name` + `label` are required"
+      - pattern: "wrapping in an outer `<FormItem>`"
+        why: "Form.Checkbox renders its own FormItem"
+        redirect: "pass `label` / `description` / `rules` directly"
+
+    see_also: [Checkbox, FormItem, Form]
+
+  - name: Form.Radio
+    intent_group: Form wiring
+    intent: Radio group wired to a `<Form>` — controller-driven (Radix RadioGroup is non-native), FormItem-wrapped, aria-labelledby wired to FormItem's label id
+    package: "@umichkisa-ds/form"
+
+    pick_when:
+      - "inside a `<Form>`, the field picks one from 2–5 visible options"
+    reject_when:
+      - "the option list is 5+ (use `Form.Select`)"
+      - "the surface is outside a `<Form>` (use bare `<RadioGroup>`)"
+      - "the surface is a segmented control (use `<ToggleGroup type=\"single\">` — note: ToggleGroup has no Form wrapper, so wire via Controller manually if needed)"
+
+    notable_props:
+      - name: name
+        type: "string"
+        required: true
+      - name: label
+        type: "string"
+        required: true
+      - name: rules
+        type: "RegisterOptions"
+      - name: description
+        type: "string"
+      - name: children
+        type: "ReactNode"
+        required: true
+        pick_guidance: "compose `<RadioItem value=\"...\" text=\"...\" />` children — Form.Radio forwards them verbatim into the inner `<RadioGroup>`"
+      - name: orientation
+        type: "enum: vertical | horizontal"
+        default: vertical
+        pick_guidance: "pass-through to inner RadioGroup"
+
+    requires_context: Form
+
+    intrinsic_behavior:
+      - "uses `useController` — Radix RadioGroup is non-native"
+      - "passes `value={field.value}`, `onValueChange={(val) => { field.onChange(val); field.onBlur(); }}`, `invalid={!!error}`, AND `aria-labelledby={\\`${name}-label\\`}` to the inner `<RadioGroup>` — this is the ONLY Form.X member that wires the FormItem-Label aria id to its non-native trigger (precedent for the `formitem-htmlfor-aria-wiring` USAGE rule)"
+      - "extends `RadioGroupProps` (minus invalid/name/value/onValueChange) — `orientation` flows through"
+
+    anti_patterns:
+      - pattern: "manual `value` / `onValueChange` on `<Form.Radio>`"
+        why: "controller owns it"
+        redirect: "let Form.Radio own the wiring"
+      - pattern: "wrapping in an outer `<FormItem>`"
+        why: "Form.Radio renders its own"
+        redirect: "pass `label` / `description` / `rules` directly"
+
+    see_also: [RadioGroup, FormItem, Form]
+
+  - name: Form.Switch
+    intent_group: Form wiring
+    intent: On/off toggle wired to a `<Form>` — boolean state via controller, FormItem-wrapped
+    package: "@umichkisa-ds/form"
+
+    pick_when:
+      - "inside a `<Form>`, the field is a binary on/off setting (preference, feature toggle, notification on/off)"
+    reject_when:
+      - "the affordance reads as 'check this' / 'opt in' (use `Form.Checkbox`)"
+      - "the surface is outside a `<Form>` (use bare `<Switch>`)"
+
+    notable_props:
+      - name: name
+        type: "string"
+        required: true
+      - name: label
+        type: "string"
+        required: true
+      - name: rules
+        type: "RegisterOptions"
+      - name: description
+        type: "string"
+      - name: size
+        type: "enum: default | sm"
+        default: default
+        pick_guidance: "pass-through to inner Switch"
+      - name: text
+        type: "string"
+        pick_guidance: "inline label next to the toggle — same shape as Form.Checkbox.text"
+
+    requires_context: Form
+
+    intrinsic_behavior:
+      - "identical wiring shape to Form.Checkbox — `useController` + bool coercion at the boundary (`checked={!!field.value}`, `onChange = e => field.onChange(e.target.checked) + onBlur()`)"
+      - "renders inside FormItem; extends `SwitchProps` (minus invalid/name/checked/onChange/onBlur)"
+
+    anti_patterns:
+      - pattern: "manual `checked` / `onChange` on `<Form.Switch>`"
+        why: "controller owns it"
+        redirect: "let Form.Switch own the wiring"
+      - pattern: "wrapping in an outer `<FormItem>`"
+        why: "Form.Switch renders its own"
+        redirect: "pass `label` / `description` / `rules` directly"
+
+    see_also: [Switch, FormItem, Form]
+
+  - name: Form.DatePicker
+    intent_group: Form wiring
+    intent: Single-date picker wired to a `<Form>` — controller-driven Date value, FormItem-wrapped
+    package: "@umichkisa-ds/form"
+
+    pick_when:
+      - "inside a `<Form>`, the field collects a single date (start date, deadline, scheduled-on)"
+    reject_when:
+      - "the field is a range (use `Form.DateRangePicker`)"
+      - "the surface needs a permanently-visible calendar (use `<Calendar>` — but raw Calendar inside `<Form>` is itself an anti-pattern)"
+      - "the surface is outside a `<Form>` (use bare `<DatePicker>`)"
+
+    notable_props:
+      - name: name
+        type: "string"
+        required: true
+      - name: label
+        type: "string"
+        required: true
+      - name: rules
+        type: "RegisterOptions"
+      - name: description
+        type: "string"
+      - name: placeholder
+        type: "string"
+        pick_guidance: "pass-through to inner DatePicker trigger"
+      - name: formatDate
+        type: "(date: Date) => string"
+        pick_guidance: "pass-through; override for locale-specific display"
+
+    requires_context: Form
+
+    intrinsic_behavior:
+      - "uses `useController` — DatePicker is non-native (button + Popover + Calendar)"
+      - "passes `value={field.value}`, `onChange={(date) => { field.onChange(date); field.onBlur(); }}`, `invalid={!!error}` to inner `<DatePicker>`"
+      - "field value is `Date | undefined` — RHF's `defaultValues` should match (don't initialize as a string)"
+      - "renders inside FormItem"
+
+    anti_patterns:
+      - pattern: "passing `value={someString}` via RHF `defaultValues` and expecting Date semantics"
+        why: "DatePicker expects `Date` — string defaults silently bypass the calendar's date math and break selection state"
+        redirect: "in `useForm({ defaultValues: { ... } })`, initialize the field as `undefined` or `new Date(...)`"
+      - pattern: "wrapping in an outer `<FormItem>`"
+        why: "Form.DatePicker renders its own"
+        redirect: "pass `label` / `description` / `rules` directly"
+
+    see_also: [DatePicker, FormItem, Form]
+
+  - name: Form.DateRangePicker
+    intent_group: Form wiring
+    intent: Date-range picker wired to a `<Form>` — controller-driven `{from, to}` value, FormItem-wrapped
+    package: "@umichkisa-ds/form"
+
+    pick_when:
+      - "inside a `<Form>`, the field collects a start–end date pair"
+    reject_when:
+      - "the field is a single date (use `Form.DatePicker`)"
+      - "the surface is outside a `<Form>` (use bare `<DateRangePicker>`)"
+
+    notable_props:
+      - name: name
+        type: "string"
+        required: true
+      - name: label
+        type: "string"
+        required: true
+      - name: rules
+        type: "RegisterOptions"
+      - name: description
+        type: "string"
+      - name: placeholder
+        type: "string"
+      - name: formatDate
+        type: "(date: Date) => string"
+
+    requires_context: Form
+
+    intrinsic_behavior:
+      - "same wiring pattern as Form.DatePicker — `useController` + `value={field.value}` + `onChange = range => field.onChange(range) + onBlur()` + `invalid={!!error}`"
+      - "field value type is `DateRange | undefined` — `{ from?: Date, to?: Date }` from react-day-picker; defaultValues should match"
+      - "renders inside FormItem"
+
+    anti_patterns:
+      - pattern: "validating `from` and `to` separately via two `Form.DatePicker` fields"
+        why: "splitting loses the range semantics — DateRangePicker enforces `from <= to`, shows in-range styling, and surfaces a single error message; two DatePickers fight for which field owns the range error"
+        redirect: "use one `<Form.DateRangePicker>` for the conceptual range; validate the pair in `rules.validate`"
+      - pattern: "wrapping in an outer `<FormItem>`"
+        why: "Form.DateRangePicker renders its own"
+        redirect: "pass `label` / `description` / `rules` directly"
+
+    see_also: [DateRangePicker, FormItem, Form]
+
+  - name: Form.Button
+    intent_group: Form wiring
+    intent: Submit button wired to a `<Form>` — auto-disables during submission and (optionally) when validation is failing
+    package: "@umichkisa-ds/form"
+
+    pick_when:
+      - "inside a `<Form>`, the surface needs a submit button — login, signup, save, send"
+      - "the consumer wants automatic disable-during-submit so double-submit is impossible without manual wiring"
+    reject_when:
+      - "the surface is outside a `<Form>` (use bare `<Button>`)"
+      - "the button is a non-submit action inside Form (cancel, reset, secondary action) — use bare `<Button type=\"button\" variant=\"secondary\">`"
+      - "the button is the form's reset action (compose `<Button type=\"reset\">` directly; Form.Button is submit-only)"
+
+    notable_props:
+      - name: disableWhenInvalid
+        type: "boolean"
+        default: false
+        pick_guidance: "set true to disable the submit button until `formState.isValid` is true. Default false matches the DS-default `mode: 'onTouched'` UX — users can attempt submit, see all errors at once, then fix. Turn on for surfaces where the submit cost is high (payment, delete-confirmation)."
+      - name: disabled
+        type: "boolean"
+        pick_guidance: "explicit override — when true, button stays disabled even if RHF state would allow submit. Use sparingly (e.g. parent-driven loading state outside the Form's own submission)."
+      - name: variant
+        type: "enum: primary | secondary | tertiary | destructive"
+        default: primary
+        pick_guidance: "extends `ButtonProps` — almost always primary for the form's main submit"
+
+    requires_context: Form
+
+    intrinsic_behavior:
+      - "reads `formState.isSubmitting` and `formState.isValid` via `useFormContext()` (NOT useController — Form.Button is action-shaped, not field-shaped)"
+      - "renders `<Button type=\"submit\" disabled={disabled || isSubmitting || (disableWhenInvalid && !isValid)}>` — `type=\"submit\"` is hard-coded so the button always submits the enclosing `<form>`"
+      - "extends `ButtonProps` — `variant`, `size`, `iconLeft` / `iconRight`, etc. all flow through; `type` is owned by Form.Button and cannot be overridden"
+      - "during submit: `isSubmitting=true` → button is disabled (prevents double-submit) but children stay visible; consumers wanting a spinner can compose `{isSubmitting ? <LoadingSpinner /> : 'Save'}` via `useFormStatus()`"
+
+    anti_patterns:
+      - pattern: "manually wiring `disabled={isSubmitting}` on a bare `<Button type=\"submit\">` inside `<Form>`"
+        why: "duplicates Form.Button's contract; consumer code drifts when the auto-disable rules evolve (e.g. `disableWhenInvalid`); easy to forget on one of N submit buttons across an app"
+        redirect: "use `<Form.Button>` for any submit button inside `<Form>`; reach for bare Button only for non-submit actions"
+      - pattern: "rendering Form.Button OUTSIDE a `<Form>`"
+        why: "useFormContext() returns null and Form.Button crashes destructuring `formState`; same shape as the Form.Input outside-Form failure"
+        redirect: "Form.Button only inside `<Form>`; for standalone submit-style buttons, use bare `<Button>`"
+      - pattern: "passing `type=\"button\"` or `type=\"reset\"` to `<Form.Button>` to repurpose it as a non-submit action"
+        why: "Form.Button hard-codes `type=\"submit\"` — the override is silently ignored; non-submit semantics belong on bare `<Button>`"
+        redirect: "use bare `<Button type=\"button\">` for cancel / secondary actions inside Form; bare `<Button type=\"reset\">` for reset"
+
+    see_also: [Button, Form]
+
+# (END of component groups — C2a.10 + C2a.11 close out the catalog; C2a.final consolidates)
 
 cross_component_invariants:
   # (seeded incrementally per group; finalized in C2a.final)
@@ -1951,5 +2418,23 @@ cross_component_invariants:
     components: [FormItem, Label, Input, Textarea, Select, RadioGroup, DatePicker, DateRangePicker]
     invariant: "FormItem's `htmlFor` MUST match the inner control's `id`. For native inputs (Input, Textarea), this is a standard `label[for] ↔ input[id]` association. For non-native triggers (Select, DatePicker, RadioGroup), the inner control must additionally carry `aria-labelledby={`${htmlFor}-label`}` (the id FormItem auto-assigns to its inner Label) AND `aria-describedby={`${htmlFor}-description`}` / `aria-errormessage={`${htmlFor}-error`}` to wire the description / error nodes."
     why: "FormItem generates the description / error elements with deterministic ids derived from `htmlFor`, but it cannot reach into children to attach `aria-describedby` / `aria-errormessage` — the consumer (or the Form.X wrapper) must wire those. Missing wiring means screen readers don't announce the field's helper text or validation message even though the visuals look correct."
+    detection: static
+
+  - id: form-button-submit-state
+    components: [Form, Form.Button, Button]
+    invariant: "any submit button INSIDE a `<Form>` MUST be `<Form.Button>` — never a bare `<Button type=\"submit\">` even with manually-wired `disabled={isSubmitting}`. Non-submit buttons inside Form (cancel, reset, secondary actions) MUST be bare `<Button type=\"button\">` / `<Button type=\"reset\">`, NOT Form.Button (which hard-codes `type=\"submit\"`)."
+    why: "Form.Button reads `formState.isSubmitting` + `formState.isValid` via context and applies the canonical disable rules (anti-double-submit, optional `disableWhenInvalid`). Manual wiring on a bare submit Button works on day one but drifts as the contract evolves and is silently inconsistent across an app. Conversely, repurposing Form.Button as a non-submit action fails silently because `type=\"submit\"` is hard-coded."
+    detection: compositional
+
+  - id: form-context-required
+    components: [Form, Form.Input, Form.Textarea, Form.Select, Form.Checkbox, Form.Radio, Form.Switch, Form.Button, Form.DatePicker, Form.DateRangePicker]
+    invariant: "every `Form.X` member MUST be rendered as a descendant of `<Form>` (which provides FormProvider context). Rendering outside `<Form>` throws at runtime via `useFormContext()` returning null — there is no graceful fallback by design."
+    why: "Form.X members consume RHF context for validation state, value subscription, and submit lifecycle; without context they cannot wire `field` / `error` / `formState` and the only meaningful failure mode is a crash. Soft-failing would mask the bug and ship broken forms to users."
+    detection: static
+
+  - id: form-rhf-import-source
+    components: [Form]
+    invariant: "all react-hook-form symbols (`useForm`, `useFormContext`, `Controller`, `FormProvider`, types) MUST be imported from `@umichkisa-ds/form` — NEVER from `react-hook-form` directly."
+    why: "`@umichkisa-ds/form` re-exports RHF with DS defaults pre-applied (`useForm` defaults to `mode: 'onTouched'`, future hooks may add more); direct RHF imports skip those defaults and create version-pinning drift between consumers and DS. Also future RHF major-version bumps are absorbed inside `@umichkisa-ds/form` so consumers don't need to coordinate."
     detection: static
 ```
