@@ -92,7 +92,6 @@ components:
       - "the items are visually equal-weight (no master/detail emphasis)"
       - "the gap between items maps cleanly to one of the three DS spacing tiers"
     reject_when:
-      - "the layout has unequal column weights or fixed column widths (use plain CSS grid utilities or a custom layout — Grid is equal-width only)"
       - "the layout is a single column at every breakpoint (use a flex column with the appropriate gap utility)"
       - "the layout is a horizontal row of inline elements rather than a column grid (use `flex items-center gap-*` directly)"
       - "the layout needs more than 6 columns at any breakpoint (Grid caps at 6 — re-examine whether a grid is the right primitive)"
@@ -115,10 +114,10 @@ components:
     anti_patterns:
       - pattern: "passing a `columns` value greater than 6 at any breakpoint"
         why: "Grid maps `columns` 1–6 only; out-of-range values silently fall through to the implicit single-column default, producing wrong layout without errors"
-        redirect: "if more than 6 columns are needed, the grid is too dense for content readability — re-examine the layout, or compose plain CSS grid utilities directly"
-      - pattern: "passing a `className` that overrides `grid-cols-*` or `gap-*` on Grid"
-        why: "Grid encapsulates the column-count and gap contracts via the `columns` and `gap` props; className overrides break the encapsulation and leave a half-Grid that picks props for one axis and utility classes for another"
-        redirect: "if the column or gap shape Grid exposes does not fit the layout, drop Grid and compose `<div className=\"grid grid-cols-* gap-*\">` directly — do not partially override Grid"
+        redirect: "if more than 6 columns are needed, the grid is too dense for content readability — re-examine the layout"
+      - pattern: "dropping Grid and writing raw `<div className=\"grid grid-cols-* gap-*\">` for a layout Grid doesn't model out of the box (e.g. asymmetric column widths)"
+        why: "Grid is the canonical column-grid primitive in the DS; reaching for raw utilities re-implements its responsive + gap-tier contract by hand and drifts from the rest of the app"
+        redirect: "render `<Grid>` and pass the extension via the `className` prop (e.g. `<Grid className=\"grid-cols-[240px_1fr]\">`) — className overrides are the supported escape hatch when `columns` doesn't fit"
 
 # (additional component groups appended below as C2a.3..C2a.11 are authored)
 
@@ -129,7 +128,4 @@ cross_component_invariants:
     invariant: "flex / overflow / height / max-height utilities passed via className to force a DS layout component's size are forbidden — the component owns its own layout shape"
     why: "DS layout components encapsulate flex direction, overflow behavior, and intrinsic height; consumer overrides via className compete with internal contracts and produce subtly broken layout (clipped overlays, double scrollbars, collapsed grid rows)"
     detection: static
-    # Note: this entry currently references components (Tabs, Form, Card, Dialog) whose
-    # full COMPONENT.md entries are authored in later C2a steps. References will resolve
-    # once those groups are complete; this is expected during incremental rollout.
 ```

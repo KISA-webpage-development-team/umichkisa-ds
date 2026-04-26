@@ -162,10 +162,12 @@ export default async function GridPage() {
         attributes.
       </p>
       <Alert variant="info" className="mb-8">
-        Use Grid when you have a list of same-type items that should reflow
-        across breakpoints (card grids, image galleries, feature lists). For
-        asymmetric layouts like sidebar + main content, use Tailwind grid
-        utilities directly.
+        Use Grid for any column-grid layout — card grids, image galleries,
+        feature lists, even asymmetric layouts like sidebar + main content. If
+        Grid&apos;s equal-width <InlineCode>columns</InlineCode> shape
+        doesn&apos;t fit (e.g. you need <InlineCode>grid-cols-[240px_1fr]</InlineCode>),
+        pass the extension via the <InlineCode>className</InlineCode> prop
+        rather than dropping Grid for raw utilities.
       </Alert>
 
       {/* ── Examples ────────────────────────────────────────── */}

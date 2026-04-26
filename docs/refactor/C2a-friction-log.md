@@ -25,20 +25,20 @@ self-contained — what was awkward, how it was handled, recommendation.
   - `COMPONENT.md` Container `intrinsic_behavior` updated to match
 - **Follow-up**: A `@umichkisa-ds/web` patch bump (per MEMORY: all DS bumps are patch) is required to publish this behavior change to consumers. Bump deferred — surface to user after C2a checkpoint.
 
-### F2. `compound_parts` is omitted entirely on simple components
+### F2. ~~`compound_parts` is omitted entirely on simple components~~ — **DROPPED, not friction**
 
-- **Awkward**: A2 §Schema lists `compound_parts` as `OPTIONAL — null/omitted when component has no parts`. For Container and Grid (no parts), the field is omitted. This is fine, but worth recording: roughly half the catalog will omit `compound_parts`, `variants`, and `requires_context`. The schema's "everything optional except identity + picks" shape is correct; just confirming it survives first contact.
-- **Handled**: Omitted the fields. No schema mutation needed.
-- **Recommendation**: None. Schema fits.
+User confirmed: schema is working as designed. The "everything optional except identity + picks" shape is correct and survives first contact. No friction.
 
-### F3. Anti-pattern targeting an alternative DS surface that does not exist
+### F3. Grid anti-pattern was wrong — **RESOLVED at C2a.2 checkpoint**
 
-- **Awkward**: Grid's "passing className that overrides grid-cols-*" anti-pattern's `redirect:` says "compose plain CSS grid utilities directly." But the broader `cross_component_invariants` entry `ds-layout-no-utility-override` forbids forcing layout utilities on DS layout components — Grid IS a DS layout component. There is a tension between the local anti-pattern (Grid says "drop me and use raw utilities") and the cross-invariant ("don't fight DS layout components with raw utilities"). The two are consistent — drop Grid first, THEN use raw utilities — but the redirect prose has to be careful.
-- **Handled**: Wrote the redirect as "drop Grid and compose `<div className=\"grid grid-cols-* gap-*\">` directly" — the keyword is "drop", which makes the consumer aware they are no longer in Grid's contract.
-- **Recommendation**: Establish a convention in A2 authoring guidance: when an anti-pattern's redirect involves dropping the DS component entirely, the redirect prose must say "drop X and ..." (not just "use ..."). Avoids ambiguity with cross-invariants that govern the same surface area.
+- **Awkward** (original framing): Grid's "passing className that overrides grid-cols-*" anti-pattern's `redirect:` told consumers to "drop Grid and use plain CSS grid utilities directly."
+- **Resolution**: User flagged this as a bad rule — the DS preference is "always use Grid; if `columns` doesn't fit, override via `className`, not by dropping Grid for raw utilities." Anti-pattern rewritten:
+  - Removed: "passing className that overrides grid-cols-*" — that's now the supported escape hatch, not an anti-pattern.
+  - Removed: `reject_when` line "the layout has unequal column weights or fixed column widths (use plain CSS grid utilities…)" — same reason.
+  - Added: new anti-pattern flagging the OPPOSITE behavior — "dropping Grid and writing raw `<div className=\"grid grid-cols-…\">` instead of `<Grid className=\"grid-cols-…\">`."
+  - Updated `apps/docs/app/components/grid/page.tsx` Alert (the only docs page mentioning the old "use Tailwind grid utilities directly" advice) to match the new policy.
+- **Recommendation**: Cross-invariant `ds-layout-no-utility-override` may need refinement — the rule there forbids "flex / overflow / height / max-height utilities passed via className to force a DS layout component's size". That's still correct; the Grid `className` escape hatch is for `grid-cols-*` extension specifically, not for forcing height/overflow. No invariant edit needed. Surface for re-review when C2a.6 / .8 / .9 / .11 author the other members of `ds-layout-no-utility-override`.
 
-### F4. `cross_component_invariants` referencing yet-to-be-authored components
+### F4. ~~`cross_component_invariants` referencing yet-to-be-authored components~~ — **DROPPED, not friction**
 
-- **Awkward**: The C2a.2 group seeded `ds-layout-no-utility-override` because Container's `see_also` needed a target. The invariant's `components: [Container, Tabs, Form, Card, Dialog]` list references components authored in C2a.6 (Card, Display group), C2a.8 (Dialog, Overlays group), C2a.9 (Tabs, Navigation), and C2a.11 (Form). Per Pitfall §4.6 dangling refs are expected during incremental rollout, but it means a C2a.2-only checkpoint passes have unresolved cross-references in the file.
-- **Handled**: Added an inline `# Note:` comment under the invariant explaining the dangling state until C2a.6 / .8 / .9 / .11 complete.
-- **Recommendation**: A2 authoring guidance should explicitly bless mid-authoring dangling cross-refs (currently only implied by the incremental rollout language). Phrase it as: "A `cross_component_invariants` entry MAY reference components whose entries are not yet authored. The C2a.final dangling-reference sweep is the gate, not per-step lint."
+User: dangling references are fine — every component will land before C2a.final. Removed the inline `# Note:` comment from the invariant entry.
