@@ -100,6 +100,16 @@ gh issue edit <dep#> --repo <owner/name> --remove-label "blocked-by:<M>"
 
 **Verify, don't assume.** Even when "no dependents likely" — query and confirm.
 
+### Step 5b — Delete the `blocked-by:<M>` label itself
+
+The dependency edge is gone — the label has no more meaning, and stale `blocked-by:#` labels accumulate across phases (38+ stale labels was the trigger for adding this step). Delete it once dependents are unblocked.
+
+```bash
+gh label delete "blocked-by:<M>" --yes --repo <owner/name>
+```
+
+Safe to call even if the label doesn't exist (e.g., issue had no dependents → label was never created); `gh` returns non-zero but no harm done. Tolerate the error.
+
 ### Step 6 — Tick TODO.md
 
 `docs/TODO.md` lives in the **DS repo** (`umichkisa-ds`), not the client repo. The skill itself performs the edit; never leave it as a verbal reminder.
@@ -152,6 +162,7 @@ Report one line per repo:
 | 3 | Close linked issue | — | Open issue for merged work; breaks `gh issue list --state open` queries |
 | 4 | Strip issue eligibility labels | — | Mode D pickup menu shows closed issues as eligible |
 | 5 | Unblock dependents | — | Downstream lanes invisible in Mode D |
+| 5b | Delete `blocked-by:<M>` label | — | Stale labels accumulate across phases |
 | 6 | Tick TODO.md | — | Phase progress lies; cold-session preflight picks the wrong entry |
 | 7 | Per-PR report | — | User can't verify what fired |
 | 8 | Post-merge sync | No repo had a merge this session | Next session: confusing "unstaged changes" surprise |
