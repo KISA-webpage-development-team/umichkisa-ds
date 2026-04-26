@@ -1200,7 +1200,170 @@ components:
     see_also:
       - icon-button-tooltip-aria-label-match
 
-# (additional component groups appended below as C2a.9..C2a.11 are authored)
+  # ============================================================
+  # intent_group: Navigation & wayfinding
+  # ============================================================
+
+  - name: Tabs
+    intent_group: Navigation & wayfinding
+    intent: Switch between sibling views within the same page context — settings sections, dashboard panels, paired-content views
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "the surface presents 2–6 sibling views that share a context (settings sections, profile tabs, dashboard panels)"
+      - "switching between views is read-only — no commits, no data loss"
+      - "all views fit naturally inside the same page boundary; no view requires its own URL"
+    reject_when:
+      - "the views are independent pages with their own URLs (use route navigation, not Tabs)"
+      - "the views are progressive disclosure for the same content (use `Accordion`)"
+      - "the views are a list of discrete actions (use `Dropdown`)"
+      - "switching to another view would discard unsaved form state — Tabs do not warn on switch"
+      - "more than ~6 views — Tabs become hard to scan; consider a sidebar nav or route navigation"
+
+    notable_props:
+      - name: value / defaultValue / onValueChange
+        type: "string / string / (value: string) => void"
+        pick_guidance: "controlled (`value` + `onValueChange`) when state is owned outside (URL sync, persisted preference); uncontrolled (`defaultValue`) for ephemeral in-page tabbing. With neither, Tabs auto-selects the first registered TabsTrigger."
+      - name: variant
+        type: "enum: underline | pill"
+        default: underline
+        pick_guidance: "`underline` (default) for top-of-page primary tabbing — selected tab gets a brand-primary underline. `pill` for compact in-card tabs or filter-pill UIs — selected tab gets a filled pill background."
+      - name: size
+        type: "enum: sm | md"
+        default: md
+        pick_guidance: "`md` is default for top-of-page tabs; `sm` for tabs inside cards / dense surfaces"
+
+    intrinsic_behavior:
+      - "manages selected-value state via internal Context (no Radix); auto-selects the first TabsTrigger that registers if neither `value` nor `defaultValue` is set"
+      - "TabsTrigger registers/unregisters on mount/unmount — enables auto-selection without consumer wiring"
+      - "TabsContent renders only when its `value` matches the active tab — content is unmounted when not active"
+      - "underline variant: selected trigger gets `border-b-2 border-brand-primary text-brand-primary`; pill variant: selected trigger gets `bg-brand-primary text-brand-foreground rounded-md`"
+      - "throws a runtime error if TabsList / TabsTrigger / TabsContent are rendered outside `<Tabs>` (the context guard surfaces missing root cleanly)"
+
+    compound_parts:
+      - name: TabsList
+        kind: required_child
+        owns: "horizontal trigger row, separator line under triggers (`border-b border-border` for underline variant)"
+        invariant: "renders the row of TabsTriggers — exactly one per tab"
+      - name: TabsTrigger
+        kind: required_child
+        owns: "individual tab button — registers `value` with Tabs context, selected-state styling per variant"
+        invariant: "every trigger needs a unique `value: string`; the value pairs with TabsContent's `value` to determine visibility"
+      - name: TabsContent
+        kind: required_child
+        owns: "the tab body — only mounts when its `value` matches the active tab"
+        invariant: "every TabsTrigger needs a paired TabsContent with the same `value`"
+
+    anti_patterns:
+      - pattern: "managing tab state outside Tabs (e.g. parent `useState` + conditional render of children) instead of using `value`/`onValueChange`"
+        why: "duplicates Tabs's internal state machine and fights the auto-select / register behavior; brittle on TabsTrigger / TabsContent re-renders"
+        redirect: "use `<Tabs value={...} onValueChange={...}>` for controlled state, or `defaultValue` for uncontrolled"
+      - pattern: "passing `flex` / `overflow-*` / `h-*` / `max-h-*` via className on Tabs or TabsContent to force layout"
+        why: "Tabs owns its layout shape — column flex with TabsList on top and TabsContent below; forcing utilities competes with the contract and produces broken scrolling / clipped content"
+        redirect: "if Tabs's default layout doesn't fit, wrap the outer Tabs in a sized container, or request a Tabs variant via ds-fix-during-migration. See `ds-layout-no-utility-override`."
+
+    see_also:
+      - ds-layout-no-utility-override
+
+  - name: Pagination
+    intent_group: Navigation & wayfinding
+    intent: Navigate paged data — search results, table rows, bulletins, list views with server-paginated data
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "rendering paged data where the user benefits from page numbers and explicit prev/next controls"
+      - "the data set is large enough that one page doesn't cover it (~10+ pages)"
+      - "the surface is a results list, table, or bulletin board — not infinite scrolling content"
+    reject_when:
+      - "infinite-scroll is the right pattern (feed, social timeline) — drop pagination, use intersection observer"
+      - "the data fits on one screen (don't paginate; just render)"
+      - "there are 2–3 pages only — show all pages without ellipsis or use a simpler prev/next pair"
+
+    notable_props:
+      - name: page
+        type: "number (1-indexed)"
+        required: true
+        pick_guidance: "current page number; consumer manages this state and updates on `onPageChange`"
+      - name: totalPages
+        type: "number"
+        required: true
+        pick_guidance: "total page count from the server / data layer"
+      - name: onPageChange
+        type: "(page: number) => void"
+        required: true
+        pick_guidance: "fires when the user clicks a page number, prev, or next; consumer updates `page` and re-fetches"
+      - name: siblingCount
+        type: "number"
+        default: 1
+        pick_guidance: "number of sibling pages on each side of current. Default 1 produces `1 ... 4 [5] 6 ... 20`. Increase to 2 for more dense surfaces (`1 ... 3 4 [5] 6 7 ... 20`)."
+
+    intrinsic_behavior:
+      - "computes the visible page range internally — first + last + current + siblings + ellipsis as appropriate; consumer never assembles the page list"
+      - "renders prev / next icon buttons (`chevron-left` / `chevron-right` via Icon registry) on either side of the page-number row"
+      - "ellipsis (`...`) is rendered as a non-interactive span — clicks on it do nothing"
+      - "current page button gets `bg-brand-primary text-brand-foreground` styling; siblings hover-tint with `bg-brand-accent-subtle`"
+      - "every interactive element has the dual-ring focus pattern + 36×36 button size (`h-9 w-9`)"
+
+    anti_patterns:
+      - pattern: "computing the page range manually outside Pagination (e.g. `[1, 2, 3, 4, 5]` array) and rendering custom buttons"
+        why: "Pagination already does the range math; reimplementing means the ellipsis logic, edge cases, and styling all drift"
+        redirect: "pass `page` / `totalPages` / `onPageChange` to Pagination and let it own the range"
+      - pattern: "rendering Pagination when `totalPages <= 1`"
+        why: "single-page data doesn't need pagination — Pagination still renders prev/next buttons that go nowhere"
+        redirect: "guard at the consumer: `{totalPages > 1 && <Pagination ... />}`"
+
+  - name: ToggleGroup
+    intent_group: Navigation & wayfinding
+    intent: Segmented control for switching modes or filters — grid/list view, time-range pickers, multi-select filter chips
+    package: "@umichkisa-ds/web"
+
+    pick_when:
+      - "the surface needs a compact mode-switcher — grid vs. list view, day/week/month time range, on/off-style mutually exclusive options"
+      - "the options are 2–5 short labels (with optional icons) that fit in a row"
+      - "selection is immediate — no submit step, no commit"
+    reject_when:
+      - "the options are 6+ — too dense for a segmented control (use `Tabs` or `Select`)"
+      - "selection is part of a form that's submitted as a whole (use `RadioGroup` or `Form.Radio` for single-select; `Form.Checkbox` array for multi)"
+      - "the options need long labels or descriptions (use `RadioGroup` with vertical layout)"
+      - "the surface is a 'switch a single boolean' affordance (use `Switch`)"
+      - "the options trigger discrete actions instead of selecting a state (use a row of `Button`s or `Dropdown`)"
+
+    notable_props:
+      - name: items
+        type: "ToggleGroupItem[] — { value: string, label: string, icon?: ReactNode }"
+        required: true
+        pick_guidance: "the option list; `icon` slot accepts a rendered `<Icon>` element. Order matters — items render left-to-right in the order provided."
+      - name: type
+        type: "enum: single | multiple"
+        default: single
+        pick_guidance: "`single` (default) renders an ARIA radiogroup — one selected at a time, arrow keys cycle. `multiple` renders an ARIA group of toggle buttons — independent on/off per item."
+      - name: value
+        type: "string (single) | string[] (multiple)"
+        required: true
+        pick_guidance: "controlled — pair with `onValueChange`. ToggleGroup has no uncontrolled mode; consumers always own the state."
+      - name: onValueChange
+        type: "(value: string) => void (single) | (value: string[]) => void (multiple)"
+        required: true
+      - name: fullWidth
+        type: "boolean"
+        default: false
+        pick_guidance: "set true to stretch the group + items to fill the parent's width (toolbar pattern); leave false for inline auto-sized usage"
+
+    intrinsic_behavior:
+      - "single mode: roving tabindex (selected item gets `tabIndex=0`, others `-1`); arrow keys cycle and select the next item; Home/End jumps to first/last"
+      - "multiple mode: arrow keys move focus only — selection requires explicit click/space; first selected item (or first item if none) gets `tabIndex=0`"
+      - "ARIA: single uses `role=\"radiogroup\"` with `role=\"radio\"` + `aria-checked` on items; multiple uses `role=\"group\"` with `role=\"button\"` + `aria-pressed` on items"
+      - "selected item: `bg-brand-primary text-brand-foreground !font-semibold`; unselected: `text-muted-foreground hover:bg-brand-accent-subtle hover:text-brand-primary`"
+
+    anti_patterns:
+      - pattern: "using ToggleGroup for a long option list (6+ items)"
+        why: "the segmented-control visual breaks down — labels get tiny, the row overflows; users can't scan options efficiently"
+        redirect: "use `Tabs` for view-switching with longer labels, or `Select` for compact dropdown selection"
+      - pattern: "wiring ToggleGroup as an uncontrolled component (no `value` / `onValueChange`)"
+        why: "ToggleGroup has no internal selection state — without `value` / `onValueChange`, no item ever shows as selected"
+        redirect: "always pass `value` + `onValueChange`; manage state in the consumer"
+
+# (additional component groups appended below as C2a.10..C2a.11 are authored)
 
 cross_component_invariants:
   # (seeded incrementally per group; finalized in C2a.final)
