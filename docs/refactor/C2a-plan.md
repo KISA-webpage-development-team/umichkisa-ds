@@ -172,7 +172,15 @@ agent's read-pattern justifies it.
 
 ---
 
-## 7. Open questions
+## 7. Open questions — RESOLVED at C2a.1 checkpoint
+
+- **OQ1**: confirmed — only `Form.X` entries; bare `FormInput`/etc. NOT separately authored (Form.* is recommended; bare names not).
+- **OQ2 (b)**: `cn` is NOT authored. Drop from C2a entirely.
+- **OQ3**: `design_md_ref` field REMOVED from A2 schema (A2 §Schema + A2 decision 1 updated in same commit). No `design_md_ref` in any C2a entry.
+- **OQ4**: confirmed — `Toaster` is the entry; `toast(message, options)` mentioned in `Toaster.intrinsic_behavior`; no separate entry.
+- **OQ5**: confirmed — `ds-layout-no-utility-override` cross-invariant against {Dialog, Tabs, Form, Card} only.
+
+### Original questions (kept for record)
 
 | # | Question | Severity | Why it needs human input |
 |---|---|---|---|

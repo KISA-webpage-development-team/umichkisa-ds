@@ -13,7 +13,7 @@ Layer 2 carries the **non-visual contract** of every consumer-facing DS componen
 - **Anti-patterns** — what NOT to do with the component, scoped by the **contract-ownership test**: "if this component were used in a brand-new app with no other rules, would this anti-pattern still be wrong?" Yes → Layer 2; No → Layer 3.
 - **Cross-component invariants** — top-level collection (separate from `components`) for contracts spanning two or more components
 
-Layer 2 does **not** carry visual contract — Card.tsx + Layer 1 tokens cover that. An optional `design_md_ref` pointer is allowed if Layer 1 has a matching entry.
+Layer 2 does **not** carry visual contract — Card.tsx + Layer 1 tokens cover that. (Earlier drafts proposed an optional `design_md_ref` pointer; **dropped in C2a.1** because A4 D5/D12 omitted the YAML `components:` block from `/DESIGN.md` and the pointer had no resolvable target. See A2 decision 1, updated.)
 
 Audience: the consumer-side migration implementer (a subagent designed in A5). The skill / agent system prompt explains the file's role; the file itself opens straight at `## Schema`.
 
@@ -82,9 +82,11 @@ components:
         why: "<reason_grounded_in_component_contract>"
         redirect: "<what_to_do_instead>"   # OPTIONAL — what to do if the agent hits this case
 
-    # Pointer into Layer 1. A4 will produce a DESIGN.md with a `components:` block per
-    # the Google Labs DESIGN.md spec, so this field is the canonical link from Layer 2 → Layer 1.
-    design_md_ref: "{components.<kebab-name>}"
+    # (Removed in C2a.1: `design_md_ref`. A4 D5/D12 dropped the YAML `components:` block
+    # from `/DESIGN.md`, so the pointer never resolved. Layer 2 → Layer 1 cross-referencing
+    # happens through prose only — entries may mention DESIGN.md token names like
+    # `spacing.icon-md` or `colors.brand-primary` inline in `intrinsic_behavior` /
+    # `notable_props.note` when a token is genuinely the contract-bearing detail.)
 
     # Pointers to cross_component_invariants entries below. Lets agents reading one component
     # discover relationships without scanning the whole file.
@@ -184,7 +186,7 @@ components:
         why: "Button renders a <button> element; nesting in <a> creates invalid HTML and breaks keyboard focus semantics"
         redirect: "use LinkButton for navigation styled as a button"
 
-    design_md_ref: "{components.button}"   # placeholder — A4 decides if Layer 1 carries components.* entries
+    # design_md_ref removed — see schema note above
 ```
 
 ---
@@ -254,7 +256,7 @@ components:
         why: "Card's flex-column + p-4 + gap-4 contract is sized for multi-child structure; wrapping a single inline element wastes space and signals 'this is structured content' to readers"
         redirect: "use a Badge, a tag, or inline styling — Card is not a generic surface wrapper"
 
-    design_md_ref: "{components.card}"
+    # design_md_ref removed — see schema note above
 
   # CardHeader, CardTitle, CardDescription, CardContent, CardFooter would each get their own
   # full entries OR be referenced inline as compound_parts (above). Decision: full entries
@@ -298,7 +300,7 @@ cross_component_invariants:
 
 ## A2 decisions (resolved during checkpoint review)
 
-1. **`design_md_ref` is canonical.** A4 will produce a DESIGN.md with a `components:` block per the Google Labs spec. Layer 2 → Layer 1 reference uses `{components.<kebab-name>}`.
+1. **`design_md_ref` REMOVED (updated in C2a.1).** Originally specced as the canonical Layer 2 → Layer 1 pointer assuming A4 would emit a `components:` block in `/DESIGN.md`. A4 D5/D12 dropped that block in v0, so the pointer never had a resolvable target. C2a.1 confirmed the omission against the live `/DESIGN.md` and removed the field from the schema. Layer 2 → Layer 1 cross-referencing happens through inline prose mentions (`spacing.icon-md`, `colors.brand-primary`) when a token is genuinely the contract-bearing detail.
 
 2. **`type-h4` is a real DS gap.** `CardTitle.tsx` references `type-h4` which is not defined in `styles/index.css`. Resolution: ship `type-h4` via `ds-fix-during-migration`. Filed as a deferred action item — handled outside Phase A so the refactor doesn't stall on a DS-side fix. Card worked example uses `type-h4` as written in source, with this note.
 
