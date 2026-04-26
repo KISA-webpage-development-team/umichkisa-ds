@@ -66,11 +66,13 @@ User: dangling references are fine — every component will land before C2a.fina
 
 ## C2a.6 — Display group (Card, Table, Accordion, Badge, Avatar, Divider)
 
-### F7. A1 inventory missed `TableMobileItem` and Accordion's compound parts
+### F7. A1 inventory missed `TableMobileItem` and Accordion's compound parts — **RESOLVED at C2a.6 checkpoint**
 
-- **Awkward**: A1's Table entry listed only `TableMobileList` under `compound_parts`. The actual surface includes `TableMobileItem` (one per row) too. Same shape with Accordion: A1 listed `compound_parts: null` for Accordion but the surface ships `AccordionItem`, `AccordionTrigger`, `AccordionContent` as required children.
-- **Handled**: Authored COMPONENT.md with the live compound-part set; A1 inventory is treated as a baseline that drifts, not as the contract.
-- **Recommendation**: A1 inventory should be tagged "as of <date> — may drift; live source wins" if it gets cited again post-C2a. No A2 schema change needed.
+- **Awkward**: A1's Table entry listed only `TableMobileList`; actual surface also exports `TableMobileItem`, plus the full `TableHeader`/`Body`/`Row`/`Head`/`Cell`/`Footer`/`Caption` family. A1 listed Accordion's `compound_parts: null`; actual surface ships `AccordionItem` / `AccordionTrigger` / `AccordionContent` as required children.
+- **Resolution**:
+  - `A1-inventory.md` Table + Accordion entries fixed to enumerate full compound-parts.
+  - `A2-component-schema.md` Authoring disciplines — added item 6: "`compound_parts` mirrors the live source, not A1." Going forward, every entry's compound parts come from the `.tsx` source; A1 disagreements get fixed in the same commit.
+- **Going forward (carry-over to C2a.7+)**: Verify Dialog, Dropdown, Popover, Tooltip (Radix-backed — likely have Trigger/Content/etc. children); RadioGroup, Tabs in their respective groups. A1's `null` for these may also be wrong.
 
 ### F8. CardTitle uses `!font-semibold` — same root cause as F5
 

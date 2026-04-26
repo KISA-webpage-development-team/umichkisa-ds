@@ -154,14 +154,25 @@ components:
     source_path: display/Table.tsx
     intent: Structured tabular data
     compound_parts:
+      - {name: TableHeader,  kind: required_child}
+      - {name: TableBody,    kind: required_child}
+      - {name: TableRow,     kind: required_child}
+      - {name: TableHead,    kind: required_child}
+      - {name: TableCell,    kind: required_child}
+      - {name: TableFooter,  kind: optional_child}
+      - {name: TableCaption, kind: optional_child}
       - name: TableMobileList
         kind: paired_responsive_sibling
         note: required for mobile when desktop ships <Table>
+      - {name: TableMobileItem, kind: required_child, note: child of TableMobileList — one per data row}
   - name: Accordion
     intent_group: Organizing & displaying content
     source_path: display/Accordion.tsx
     intent: Progressive disclosure (FAQ, advanced settings)
-    compound_parts: null
+    compound_parts:
+      - {name: AccordionItem,    kind: required_child}
+      - {name: AccordionTrigger, kind: required_child, note: child of AccordionItem — section heading}
+      - {name: AccordionContent, kind: required_child, note: child of AccordionItem — section body}
   - name: Badge
     intent_group: Organizing & displaying content
     source_path: display/Badge.tsx
