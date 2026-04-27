@@ -5,6 +5,24 @@ during COMPONENT.md authoring. Per Pitfall §4.4: friction goes here, NOT into
 silent schema mutations. Finalized at C2a.final into recommendations for the
 human to decide whether A2 needs amending before future authoring._
 
+---
+
+**C2a.final summary (added 2026-04-27).** All 12 entries closed:
+
+- Resolved in-place: F1, F3, F6, F7, F9, F10, F11 (7)
+- Dropped (not friction): F2, F4 (2)
+- Logged for C2b USAGE.md (carries in `A3-usage-schema.md` §Deferred): F5, F8, F12 (3)
+
+Recommendations rolled up into `docs/refactor/C2a-verification.md` §7.
+Strong recommendations:
+
+1. Extend A2 discipline #6 to also cover `variants` and `notable_props`
+   verification against `.tsx` source (F9 + F11 cluster shows A1 baseline
+   drifts on more than just compound parts).
+2. C2b kickoff must pick up the two draft USAGE rules from A3 §Deferred:
+   `styling-text-weight-override` (relax p2-tk-3) and
+   `forms-formitem-aria-wiring` (Must / static).
+
 Entries are appended in the order they surface. Each entry: short and
 self-contained — what was awkward, how it was handled, recommendation.
 
