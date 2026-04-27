@@ -158,14 +158,7 @@ C2b with concrete drafts.
 
 ### Strong (act on these before C2b authoring starts)
 
-1. **Confirm A2 discipline #6** ("`compound_parts` mirrors the live source, not A1")
-   should also apply to **`variants`** and **`notable_props`** discoverability
-   — F9 (StatusView's nonexistent `loading` variant in A1) shows the same
-   trust pattern bites variants too. Suggest extending discipline #6 in
-   C2b kickoff: "Inventory baseline (A1) is a starting point, not ground
-   truth — every entry's `variants` / `notable_props` / `compound_parts`
-   verifies against `.tsx` source; A1 disagreements get fixed in the
-   same commit."
+1. ~~**Confirm A2 discipline #6** should also apply to `variants` and `notable_props`~~ — **ACTIONED 2026-04-27.** A2 discipline #6 rewritten as "Live source is ground truth — A1 is a starting point" with explicit verification rules for `compound_parts`, `variants`, AND `notable_props` (including the F9 StatusView precedent). Future C2 authoring picks up the broader rule.
 
 2. **Carry F5 / F8 + F12 into C2b USAGE authoring.** Both are already
    captured in `A3-usage-schema.md` §"Deferred action items":

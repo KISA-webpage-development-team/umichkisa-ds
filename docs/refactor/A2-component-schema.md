@@ -113,7 +113,12 @@ These are conventions, not validators. Reviewers enforce them.
 4. **`anti_patterns` passes the contract-ownership test.** "Would this still be wrong in a brand-new app?" If no, it belongs in Layer 3.
 5. **`compound_parts` does NOT include namespace members.** `Form.Input` is a top-level entry with `requires_context: Form`, not a part of Form's compound.
 
-6. **`compound_parts` mirrors the live source, not A1.** A1 inventory is a starting point and may have missed parts (e.g. `TableMobileItem`, `AccordionItem` / `AccordionTrigger` / `AccordionContent` were added or expanded after A1 wrote them up). Before authoring an entry's `compound_parts`, read the component's `.tsx` source and enumerate every exported child the consumer is expected to render. When A1 disagrees with source, source wins — but also fix A1 in the same commit so the inventory stays trustworthy.
+6. **Live source is ground truth — A1 is a starting point.** Before authoring `compound_parts`, `variants`, or `notable_props`, read the component's `.tsx` source and enumerate against the live code:
+   - **`compound_parts`** — every exported child the consumer is expected to render (e.g. A1 missed `TableMobileItem`, `AccordionItem`/`AccordionTrigger`/`AccordionContent`, all Radix-backed overlay parts on Dialog/Dropdown/Popover, `SelectTrigger`/`Content`/`Item`/`Group`/`Separator`).
+   - **`variants`** — every member of the discriminator enum the component actually exposes (e.g. A1 listed a `loading` variant on StatusView that does not exist; live source has 4 variants only).
+   - **`notable_props`** — every TypeScript-required prop (no `?`) gets `required: true`, plus every picking-relevant prop the type exposes (e.g. A1's StatusView entry listed only `[fullScreen]`; live source exposes the full `[fullScreen, code, icon, title, description, action]` set).
+
+   When A1 disagrees with source, source wins — but also fix A1 in the same commit so the inventory stays trustworthy across future authoring passes.
 
 ---
 
