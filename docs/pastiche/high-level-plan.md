@@ -6,13 +6,13 @@ KISA DS is the v1 testbed. The plan walks bottom-up: vertical slice → template
 
 ---
 
-## Phase 1 — Vertical slice
+## Phase 1 — Vertical slice [DONE]
 
 - Pick one component (likely `Button`).
 - Hand-write FACT, KNOWLEDGE, and WISDOM entries for that component end-to-end.
 - Goal: validate the doc shapes against real content before abstracting templates.
 
-## Phase 2 — Templates
+## Phase 2 — Templates 
 
 - Abstract FACT.md / KNOWLEDGE.md / WISDOM.md templates from the slice.
 - Concise, well-structured, optimized per doc's purpose and lifecycle.
