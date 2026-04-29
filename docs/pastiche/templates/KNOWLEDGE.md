@@ -17,6 +17,8 @@ Framing.
 Framing.
 → `Atom`
 
+---
+
 ## Brand Identity
 
 [2–4 paragraphs of prose describing the design system's aesthetic spirit. Topics worth covering: visual personality (e.g. "trustworthy academic", "playful consumer"); color and typography character; density and spacing posture; voice. Prose, not bullets. Read by the implementer on every task — keep concise but informative.]
