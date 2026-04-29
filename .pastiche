@@ -1,0 +1,14 @@
+# Pastiche configuration. Read by the FACT extractor script.
+# Not read by agents at runtime.
+
+packages:
+  "@umichkisa-ds/web":
+    types: packages/web/dist/index.d.ts
+  "@umichkisa-ds/form":
+    types: packages/form/dist/index.d.ts
+
+tokens:
+  source: packages/web/src/styles/index.css
+
+output:
+  fact: docs/pastiche/FACT.md
