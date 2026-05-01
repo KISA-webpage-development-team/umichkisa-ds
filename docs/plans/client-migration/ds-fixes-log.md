@@ -47,6 +47,8 @@ Accumulator for DS fixes made during client migration. Grouped by package, entri
 - **[Refactor/A4.bump]** Bump `@umichkisa-ds/web` `1.0.20 → 1.0.21` (patch) — ships `type-h4` so client can pick it up immediately and CardTitle renders with the actual class instead of `!font-semibold` filling in — 2026-04-26
 - **[Phase 3.4]** Container: add `size="full"` (`max-w-none`) variant. Default size caps at `max-w-screen-2xl` (1536px); pocha dashboard is a full-screen app shell that needs to fill the viewport on >1536px displays. Default padding (`p-4 md:p-6 lg:p-8`) unchanged — padding-as-variant deferred until a second app-shell consumer asks for it. Surfaced during Lane 3.4 (page shell) — 2026-05-01
 - **[Phase 3.4.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.22 → 1.0.23` (patch) — ships the Container `size="full"` variant so Lane 3.4 dashboard can consume from registry — 2026-05-01
+- **[Phase 3.8]** Add `refresh-cw` icon (lucide `RefreshCw`) to icon registry — needed by StockManager toolbar refetch affordance; reusable across History tab refresh and any future dashboard reload buttons — 2026-05-02
+- **[Phase 3.8.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.23 → 1.0.24` (patch) — ships the `refresh-cw` icon so Lane 3.8 can swap the text-button fallback for a proper `IconButton` — 2026-05-02
 
 ## @umichkisa-ds/form
 
