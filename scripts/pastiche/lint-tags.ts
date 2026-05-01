@@ -181,7 +181,7 @@ function main(): void {
   const violations = [...wisdomReport.violations, ...knowledgeReport.violations];
 
   // Always print the summary block first — descriptive even on success.
-  console.log('pastiche:lint — cross-doc tag-sanity (spec §14.2)');
+  console.log('pastiche:lint — cross-doc tag-sanity');
   console.log('');
   console.log(`  FACT.md       ${fact.components.size} components, ${fact.tokens.size} tokens (source of truth)`);
   console.log(
