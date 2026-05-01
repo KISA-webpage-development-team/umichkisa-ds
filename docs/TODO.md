@@ -55,7 +55,7 @@
 - [x] Phase 3: pocha-dashboard — kickoff done (audit.md written 2026-04-26)
 - [ ] Phase 3.1: MSW dashboard handlers (combined: orders/closed/status/stock/simulate-spawn) (TDD, autonomous)
 - [ ] Phase 3.2: Phase 3 pure utils (stats + batch-promote + history analytics) (TDD, autonomous)
-- [ ] Phase 3.3: WS disable in mock + Simulate button in MockAuthToggle (interactive)
+- [x] Phase 3.3: WS disable in mock + Simulate button in MockAuthToggle (interactive)
 - [ ] Phase 3.4: Page shell — DS Tabs + persistent Stats strip (autonomous)
 - [ ] Phase 3.5: OrderItemCard redesign — typography, single-tap promote, drop @nextui Spinner (autonomous)
 - [ ] Phase 3.6: Food/Drink grids redesign — DS Badge for status, drop STATUS_COLORS (autonomous)
