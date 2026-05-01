@@ -229,7 +229,7 @@ git commit -m "polish(pocha-manage): sticky footer + mobile scroll behavior (lan
   - Mobile (375px) walkthrough of all of the above.
   - No `console.error`/`console.warn` regressions.
 
-**Step 4:** Direct push to `dev` (Mode D direct-push per memory). Worktree wrap-up: invoke `wrapping-up-pr` skill (close client#114, strip labels, tick TODO, post-merge sync, remove worktree).
+**Step 4:** Direct push to `dev` (Mode D direct-push per memory). Worktree wrap-up: invoke `wrapping-up-lane` skill (close client#114, strip labels, tick TODO, post-merge sync, remove worktree).
 
 ---
 

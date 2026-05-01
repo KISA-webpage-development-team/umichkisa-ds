@@ -130,7 +130,7 @@ Single-paragraph reminder. Mirrors `feedback_workflow.md` MEMORY entry: "never e
 
 ## Skill location
 
-`.claude/skills/ds-migration-workflow/SKILL.md` — DS repo, alongside existing skills (`ds-client-constrained-execution`, `ds-fix-during-migration` / `ds-gap-fix` post-rename, `review-pr-queue`, `wrapping-up-pr`, `ds-phase-end-bump`). No special structure needed; SKILL.md is the only file.
+`.claude/skills/ds-migration-workflow/SKILL.md` — DS repo, alongside existing skills (`ds-client-constrained-execution`, `ds-fix-during-migration` / `ds-gap-fix` post-rename, `review-pr-queue`, `wrapping-up-lane`, `ds-phase-end-bump`). No special structure needed; SKILL.md is the only file.
 
 ---
 

@@ -1218,11 +1218,11 @@ Wait for user confirmation. NEVER execute without explicit go-ahead.
 
 ### Wrapping up a merged PR / lane
 
-Invoke `wrapping-up-pr`.
+Invoke `wrapping-up-lane`.
 
 ### Closing a phase (Mode E)
 
-1. All subphase entries already ticked (per-PR `wrapping-up-pr` handles those)
+1. All subphase entries already ticked (per-PR `wrapping-up-lane` handles those)
 2. `pnpm build` + `pnpm typecheck` pass
 3. If `ds-fixes-log.md` has phase entries, invoke `ds-phase-end-bump`
 4. Tick the parent phase entry

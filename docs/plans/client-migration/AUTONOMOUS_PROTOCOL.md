@@ -52,8 +52,8 @@ Six modes, detected per the CLAUDE.md preflight table. Cold session: Claude prop
 |---|---|---|
 | **A. Audit** | `audit.md` missing | Grill-me → write `audit.md` → wait. Loads §5. |
 | **B. Plan + issues** | `audit.md` exists, `plan.md` missing | Grill (light) → write `plan.md` → generate per-lane issues per §5 → apply labels per §6 → wait. Loads §5, §6. |
-| **C1. PR review (ready)** | Sitting PR; no `needs-decision` / `needs-interactive` label, CI green | `review-pr-queue` → user picks → Claude `git fetch origin && git checkout <pr-branch>` in `../KISA-website/client/` (main clone) → "checked out, review when ready" → wait silently → on "good" → `wrapping-up-pr`. On feedback: see §3.1. |
-| **C2. PR review (interactive)** | Sitting PR with `needs-decision` or `needs-interactive` label | Same checkout → live discussion (grill-me / ui-ux-pro-max / systematic-debugging) → resolve → fix on branch → `wrapping-up-pr`. |
+| **C1. PR review (ready)** | Sitting PR; no `needs-decision` / `needs-interactive` label, CI green | `review-pr-queue` → user picks → Claude `git fetch origin && git checkout <pr-branch>` in `../KISA-website/client/` (main clone) → "checked out, review when ready" → wait silently → on "good" → `wrapping-up-lane`. On feedback: see §3.1. |
+| **C2. PR review (interactive)** | Sitting PR with `needs-decision` or `needs-interactive` label | Same checkout → live discussion (grill-me / ui-ux-pro-max / systematic-debugging) → resolve → fix on branch → `wrapping-up-lane`. |
 | **D. Interactive execution** | `plan.md` exists; open `needs-interactive` issue without linked PR, OR user override | Wave lane menu (annotated per §11) → user picks → worktree at `../KISA-website/client/.worktrees/<lane-id>/` off `origin/dev` → `pastiche` skill. |
 | **E. Phase close-out** | All lanes merged | Check `ds-fixes-log.md`; run `ds-phase-end-bump` if entries; tick phase in TODO.md. |
 
@@ -115,7 +115,7 @@ After Claude checks out the PR branch and says "checked out, review when ready":
 
    Pick which to suggest based on the diff's character; only suggest both if the diff is genuinely both. User can say skip.
 
-Then proceed with the silent-wait → "good" → `wrapping-up-pr` flow.
+Then proceed with the silent-wait → "good" → `wrapping-up-lane` flow.
 
 ## 4. Skills Index
 
@@ -126,7 +126,7 @@ Then proceed with the silent-wait → "good" → `wrapping-up-pr` flow.
 | `ds-fix-during-migration` | Mid-lane DS fixes |
 | `ds-phase-end-bump` | Mid-phase + phase-end DS version bump + publish |
 | `using-git-worktrees` | Mode D worktree setup |
-| `wrapping-up-pr` | Post-merge close-out (every merge path) |
+| `wrapping-up-lane` | Post-merge close-out (every merge path) |
 | `review-pr-queue` | Mode C1/C2 PR queue dispatcher |
 | `ui-ux-pro-max` | Visual/design critique in C2 |
 | `systematic-debugging` | C2 / `routine-errored` diagnosis |
@@ -307,7 +307,7 @@ You read draft + question → leave decision comment → swap `needs-decision` �
 
 **Labels on PR:** mirror issue labels at open + add end-state label.
 
-**Merge:** human-only, no auto-merge regardless of scope tag or CI. Branch protection on `dev` requires status checks (typecheck, build, ds-client-review), 1 approval, no direct pushes, auto-delete head branches. Autonomous opens PRs, never merges. Every merge path (single, batch, revision auto-merge, superseding, Mode D direct push) closes with `wrapping-up-pr`.
+**Merge:** human-only, no auto-merge regardless of scope tag or CI. Branch protection on `dev` requires status checks (typecheck, build, ds-client-review), 1 approval, no direct pushes, auto-delete head branches. Autonomous opens PRs, never merges. Every merge path (single, batch, revision auto-merge, superseding, Mode D direct push) closes with `wrapping-up-lane`.
 
 ---
 

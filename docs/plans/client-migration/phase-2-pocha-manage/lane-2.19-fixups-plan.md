@@ -1067,7 +1067,7 @@ User walks through `/pocha/manage` at 375px + 1280px:
 - Delete menu — Dialog confirm → row removed (P7 still keys correctly).
 - Open Previous Pocha detail dialog → date blocks + menu groups render (P9 didn't break shapes).
 
-**Step 5: Wrap-up (per `wrapping-up-pr` skill)**
+**Step 5: Wrap-up (per `wrapping-up-lane` skill)**
 
 After user confirms smoke:
 - Close GitHub issue #104 (`gh issue close 104 -R umichkisa/KISA-website` or via web UI; strip `lane:2.19` label).

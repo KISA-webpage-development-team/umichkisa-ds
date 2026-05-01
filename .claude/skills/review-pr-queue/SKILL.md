@@ -108,15 +108,15 @@ User says `#46` or "let's do UserInfo" → match to PR → route:
 
 | Bucket picked | Action |
 |---|---|
-| Skim-and-merge | Confirm intent → invoke `wrapping-up-pr` per PR |
-| Needs live review | Fetch diff; `grill-me` (decision) or `ui-ux-pro-max` (redesign); on eventual merge → `wrapping-up-pr` |
+| Skim-and-merge | Confirm intent → invoke `wrapping-up-lane` per PR |
+| Needs live review | Fetch diff; `grill-me` (decision) or `ui-ux-pro-max` (redesign); on eventual merge → `wrapping-up-lane` |
 | CI failing | `superpowers:systematic-debugging` + `gh run view` |
 | Needs revision | Refine revision comment or flip to live-edit (rare for user to pick) |
 | Routine errored | `superpowers:systematic-debugging` + PR body WIP notes |
 
 Always pass `--repo <owner/name>` to all `gh` calls (cwd default hits the wrong repo for cross-repo PRs). Use `KISA-webpage-development-team/KISA-website-client` for `client#N`, `KISA-webpage-development-team/umichkisa-ds` for `ds#N`.
 
-For batch skim-and-merge: confirm once ("Merge 4 PRs: ...?"), then invoke `wrapping-up-pr` per PR.
+For batch skim-and-merge: confirm once ("Merge 4 PRs: ...?"), then invoke `wrapping-up-lane` per PR.
 
 ## Common Patterns
 
@@ -129,5 +129,5 @@ For batch skim-and-merge: confirm once ("Merge 4 PRs: ...?"), then invoke `wrapp
 ## Related
 
 - Full review protocol: `docs/plans/client-migration/AUTONOMOUS_PROTOCOL.md` §11, §13
-- Merge close-out: `wrapping-up-pr` skill (delegated; AP §8 also delegates here)
+- Merge close-out: `wrapping-up-lane` skill (delegated; AP §8 also delegates here)
 - PR type → review mode matrix: `AUTONOMOUS_PROTOCOL.md` §13 (AP-Q3)
