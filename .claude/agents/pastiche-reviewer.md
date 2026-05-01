@@ -82,5 +82,3 @@ Example doubt list:
   line: 58
   comment: List+Tile for an image-and-title list; Grid+Card is the conventional pattern.
 ~~~
-
-The pass-summary lines are for human debuggability; the `## Doubts` YAML block is the machine contract. Keep the YAML strict — one map per doubt, three keys, parseable by a standard YAML loader.
