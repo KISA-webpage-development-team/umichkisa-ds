@@ -65,13 +65,12 @@ Each doubt is one short, expert-voice sentence — the way a human PR reviewer w
 
 ## Report (your final response)
 
-Your response has five sections in this exact order:
+Your response has four sections in this exact order:
 
 1. `## Files reviewed` — bulleted list of paths you Read.
 2. `## FACT pass` — one-sentence outcome (e.g. "All atoms resolved." or "Flagged 2 hallucinated components.").
 3. `## WISDOM pass` — one-sentence outcome.
-4. `## Speculative doubt pass` — one-sentence summary of the judgment.
-5. `## Doubts` — a fenced ` ```yaml ` block containing the strict-YAML doubt list. Each doubt is one map with exactly three keys: `file`, `line`, `comment`. If you have no doubts, the block contains the literal `[]`.
+4. `## Doubts` — a fenced ` ```yaml ` block containing the strict-YAML doubt list, combining all doubts from all three passes. Each doubt is one map with exactly three keys: `file`, `line`, `comment`. If you have no doubts, the block contains the literal `[]`.
 
 Example doubt list:
 
