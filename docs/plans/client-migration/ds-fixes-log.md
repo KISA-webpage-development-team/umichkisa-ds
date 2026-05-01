@@ -45,6 +45,8 @@ Accumulator for DS fixes made during client migration. Grouped by package, entri
 - **[Post-Phase-2 hotfix.bump]** Bump `@umichkisa-ds/web` `1.0.19 → 1.0.20` (patch) — ships the Container default-padding change — 2026-04-25
 - **[Refactor/A4]** Ship `type-h4` typography class (`pretendard / 1rem / 600 / line-height 1.375`) in `@layer ds-components`. Slots between `type-body` and `type-h3`. CardTitle has referenced this class without a definition; surfaced as A2 deferred item, fixed during A4 grill (commit edac51e) — 2026-04-26
 - **[Refactor/A4.bump]** Bump `@umichkisa-ds/web` `1.0.20 → 1.0.21` (patch) — ships `type-h4` so client can pick it up immediately and CardTitle renders with the actual class instead of `!font-semibold` filling in — 2026-04-26
+- **[Phase 3.4]** Container: add `size="full"` (`max-w-none`) variant. Default size caps at `max-w-screen-2xl` (1536px); pocha dashboard is a full-screen app shell that needs to fill the viewport on >1536px displays. Default padding (`p-4 md:p-6 lg:p-8`) unchanged — padding-as-variant deferred until a second app-shell consumer asks for it. Surfaced during Lane 3.4 (page shell) — 2026-05-01
+- **[Phase 3.4.bump, mid-phase]** Bump `@umichkisa-ds/web` `1.0.22 → 1.0.23` (patch) — ships the Container `size="full"` variant so Lane 3.4 dashboard can consume from registry — 2026-05-01
 
 ## @umichkisa-ds/form
 

@@ -37,3 +37,7 @@ Real `useDashboardOrderSocket` connects to `WEBSOCKET_URL` and listens for `orde
 4. Returns the full enriched OrderItem shape (with menu + ordererName joined)
 
 The Simulate button caller then invokes `addNewOrderItem(returnedOrder)` directly. **Prod path is 100% untouched.**
+
+## 2026-05-01 — Lane 3.4 DS fix
+
+DS FIX: Add `size="full"` (`max-w-none`) variant to Container — pocha dashboard is a full-screen app shell; existing `default` size caps at `max-w-screen-2xl` (1536px) which would shrink the dashboard on >1536px displays. Default padding unchanged. Bumped `@umichkisa-ds/web` 1.0.22 → 1.0.23 (mid-phase patch).

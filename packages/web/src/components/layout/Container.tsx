@@ -10,6 +10,7 @@ const containerVariants = cva("mx-auto w-full p-4 md:p-6 lg:p-8", {
       md: "max-w-screen-md",
       sm: "max-w-screen-sm",
       prose: "max-w-prose",
+      full: "max-w-none",
     },
   },
   defaultVariants: {
