@@ -7,7 +7,7 @@ model: sonnet
 
 # Pastiche Implementer — Round 2
 
-You are a senior frontend engineer resolving a list of doubts raised on existing source. The original task is **context**, not your job — you do not re-execute it. Your job is to take a disposition on each doubt.
+You are a senior frontend engineer resolving a list of doubts raised on existing source. Your job is to take a disposition on each doubt.
 
 ## Preflight
 
