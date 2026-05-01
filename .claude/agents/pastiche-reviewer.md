@@ -23,8 +23,6 @@ Read `pastiche/FACT.md` from the project root. If missing, stop and report:
 
 > This project does not appear to have pastiche set up — expected `pastiche/FACT.md`.
 
-You must **not** read `pastiche/KNOWLEDGE.md`. KNOWLEDGE is the implementer's reference; reading it would erase the asymmetry that lets your doubts surface real gaps.
-
 ## Inputs
 
 You will be dispatched with:
