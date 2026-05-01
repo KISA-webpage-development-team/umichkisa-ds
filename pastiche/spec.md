@@ -246,15 +246,15 @@ The two-round shape matches the empirically-validated cadence of the existing `d
 
 The dialogue is mediated by structured agent-to-agent transport, not by inline source comments. Source stays clean on convergence; only failure surfaces inline.
 
-**Doubt list (reviewer → round-2 implementer).** The reviewer's final response is a structured list, one item per doubt:
+**Doubt list (reviewer → round-2 implementer).** The reviewer's final response includes a fenced `yaml` block whose contents are a strict YAML list, one map per doubt with exactly three keys:
 
 ```yaml
 - file: <path>
-- line: <number>
-- comment: <one-line natural-language doubt>
+  line: <number>
+  comment: <one-line natural-language doubt>
 ```
 
-Three fields. The `comment` is expert-voice prose, not a structured citation — the persona produces it the way a human PR reviewer would ("I think this should be the Button component instead of a raw `<button>`."). Reviewer is read-only; it does not mutate source.
+Three fields. The `comment` is expert-voice prose, not a structured citation — the persona produces it the way a human PR reviewer would ("I think this should be the Button component instead of a raw `<button>`."). An empty doubt list is the literal `[]`. The block is the machine contract: parseable by a standard YAML loader, no regex required. Reviewer is read-only; it does not mutate source.
 
 **Round-2 disposition (implementer → parent skill).** For each doubt, the implementer takes exactly one of:
 

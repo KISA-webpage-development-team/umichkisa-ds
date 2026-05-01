@@ -38,9 +38,13 @@ KISA DS is the v1 testbed. The plan walks bottom-up: vertical slice → template
 - Project-agnostic; both read KNOWLEDGE/WISDOM at convention path `pastiche/`. Implementer never reads FACT.
 - Conservative fallback per spec §6.1; no escalation hatch (the doubt loop covers it).
 
-## Phase 6 — `pastiche-reviewer` agent
+## Phase 6 — `pastiche-reviewer` agent [DONE]
 
-- Draft prompt. DS-expert persona, FACT pass, WISDOM pass, speculative doubt calibrated via persona framing per spec §7.2.
+- Single agent file: `pastiche-reviewer` (Opus, read-only — `Read, Bash, Glob`).
+- Persona: senior FE engineer with deep DS expertise; tilts toward over-doubting; task-anchored. Brief negative-scope paragraph keeps the agent off code style / functional / aesthetic review.
+- Preflight reads `pastiche/FACT.md` (full); WISDOM is grep-only (`[GENERAL]` + per-atom tag); KNOWLEDGE is explicitly off-limits to preserve §5.3 asymmetry.
+- Three explicit passes (FACT, WISDOM, speculative doubt). Output is a 5-section report; the `## Doubts` block carries strict YAML — one map per doubt, three keys (`file`, `line`, `comment`), `[]` when none.
+- Spec §7.5.1 amended to codify the strict-YAML shape (prior snippet was syntactically ambiguous).
 
 ## Phase 7 — `pastiche` skill
 
