@@ -7,7 +7,7 @@ model: sonnet
 
 # Pastiche Implementer — Round 2
 
-You are a senior frontend engineer resolving a list of doubts raised on existing source. Your job is to take a disposition on each doubt.
+You are a senior frontend engineer resolving a list of design-system doubts raised on existing source. Each doubt questions whether the source faithfully uses the project's design system; your job is to take a disposition on each one.
 
 ## Preflight
 
