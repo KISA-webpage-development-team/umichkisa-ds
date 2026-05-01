@@ -173,8 +173,8 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6. Drives `autonomous-ready` vs `needs-in
 - [ ] Any item with `status === 'ready'` → counts as `toClosed`
 - [ ] Items with `status === 'closed'` are ignored (defensive — should not be in selection set)
 - [ ] `requiresDialogGate(selectedOrderItems): boolean` returns `true` iff at least one selected item has `status === 'ready'` (would promote to `closed`)
-- [ ] `formatBreakdown(breakdown): string` returns Korean label `"N개 (X→준비중, Y→완료)"` skipping zero buckets
-- [ ] Examples: `{toPreparing:2, toReady:1, toClosed:0}` → `"3개 (2→준비중, 1→완료)"`; `{toPreparing:0, toReady:0, toClosed:5}` → `"5개 (5→마감)"`
+- [ ] `formatBreakdown(breakdown): string` returns English label `"N items (X → Preparing, Y → Ready)"` skipping zero buckets
+- [ ] Examples: `{toPreparing:2, toReady:1, toClosed:0}` → `"3 items (2 → Preparing, 1 → Ready)"`; `{toPreparing:0, toReady:0, toClosed:5}` → `"5 items (5 → Closed)"`
 
 #### `orderHistoryUtils.ts` — pre-specified test cases (extension)
 
@@ -227,7 +227,7 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6. Drives `autonomous-ready` vs `needs-in
 - [ ] Wire up "Simulate order" button in `MockAuthToggle`:
   - Visible only when `isAuthenticated && isAdmin && pathname === "/pocha/dashboard"` (use `usePathname()` from `next/navigation`)
   - DS `Button` `variant="outline"` `size="sm"`, label `"Simulate order"`, leading DS `Icon` (`Plus` or `Sparkles`)
-  - On click: `fetch("/api/v2/pocha/_mock/spawn-order/" + activePochaID, { method: "POST", headers: { Authorization: "Bearer " + mockToken } })` → on success show DS `Toast` `"주문이 추가되었습니다"`; on error show error Toast
+  - On click: `fetch("/api/v2/pocha/_mock/spawn-order/" + activePochaID, { method: "POST", headers: { Authorization: "Bearer " + mockToken } })` → on success show DS `Toast` `"Order added"`; on error show error Toast
   - Active pochaID source: read from URL search params or call `usePochaID()` (whichever lane 3.1's spawn endpoint expects — pochaID lives in URL `?pochaID=N` or query a fixture-default constant)
 - [ ] Discuss in grill: where should `addNewOrderItem` get the new order? Two options — (a) Simulate button calls handler that returns `OrderItem`, then dispatches a custom DOM event listened by `useDashboardOrders` to push into `ordersMap`; (b) Simulate button just calls the spawn endpoint and the dashboard polls/refetches. **Lock during execution grill.** Default proposal: option (a) with a `window.dispatchEvent(new CustomEvent("mock:new-order", { detail: orderItem }))` listened by `useDashboardOrders` only when `IS_MOCK_MODE`.
 - [ ] `npm run build` + `npm run typecheck` + `npm test` pass
@@ -328,7 +328,7 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6. Drives `autonomous-ready` vs `needs-in
   - Menu name + qty badge: `<span className="type-body !font-medium text-foreground">{nameKor}</span> <Badge variant="neutral" size="sm">×{quantity}</Badge>`
   - Customer chip: `<Badge variant="outline" size="sm">{ordererName}</Badge>` below the menu line
   - Status: removed from card body — column header carries status (lane 3.6)
-- Promote button: single DS `<Button variant="primary" size="sm" loading={loading} onClick={handlePromote}>다음 상태로</Button>` — single tap (no select-first state). Disabled when `loading`.
+- Promote button: single DS `<Button variant="primary" size="sm" loading={loading} onClick={handlePromote}>Promote</Button>` — single tap (no select-first state). Disabled when `loading`.
 - Selection state from lane 3.7's batch-select mode is **prop-driven**: add optional props `isSelectMode?: boolean`, `isSelected?: boolean`, `onToggleSelect?: () => void` — when `isSelectMode` is true, hide the Promote button and render a DS `Checkbox` in the corner; when not in select mode, behave as single-tap card. Default props `false` / `false` / `undefined` preserve current single-tap semantics.
 - Long-press handler: `onPointerDown` + `setTimeout(500)` → if not released, call `onLongPress?.()` prop. Lane 3.7 wires this to enter select mode.
 
@@ -372,12 +372,12 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6. Drives `autonomous-ready` vs `needs-in
 
 - Column shells: `<div className="rounded-lg border border-border bg-surface-muted p-3 md:p-4">` (DS tokens only)
 - Column header: stack of `<Badge variant="<status-variant>" size="sm">{label}</Badge>` + count `<span className="type-caption text-muted-foreground">{N}</span>`
-  - Pending → `Badge variant="warning"` (yellow), label `"대기"`
-  - Preparing → `Badge variant="info"` (blue), label `"준비중"`
-  - Ready → `Badge variant="success"` (green), label `"완료 대기"`
+  - Pending → `Badge variant="warning"` (yellow), label `"Pending"`
+  - Preparing → `Badge variant="info"` (blue), label `"Preparing"`
+  - Ready → `Badge variant="success"` (green), label `"Ready"`
   - (Closed not rendered in dashboard grids — only in History)
 - Inter-card gap: `gap-3`
-- Empty state per column: `<div className="text-muted-foreground type-caption py-6 text-center">없음</div>`
+- Empty state per column: `<div className="text-muted-foreground type-caption py-6 text-center">None</div>`
 - Drop `STATUS_COLORS` import from both files (only `OrderItemCard` consumed it; lane 3.5 removed that)
 
 ### Tasks
@@ -418,22 +418,22 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6. Drives `autonomous-ready` vs `needs-in
 
 ### Locked spec
 
-- Page-level `selectMode: boolean` toggle with a `<Button variant="ghost" size="sm">{selectMode ? "완료" : "선택 모드"}</Button>` in the top-right of the Orders tab content (above grids, right-aligned)
+- Page-level `selectMode: boolean` toggle with a `<Button variant="ghost" size="sm">{selectMode ? "Done" : "Select"}</Button>` in the top-right of the Orders tab content (above grids, right-aligned)
 - Per-grid `selectedIds: Set<number>` (food and drink **independent** — selecting in food grid does not bleed into drink grid)
 - Per-grid sticky bottom action bar (visible iff `selectMode && selectedIds.size > 0`):
   - DS `<Card>` pinned with `sticky bottom-4` + shadow
   - Smart breakdown label via `formatBreakdown(computeBreakdown(selectedItems))` (lane 3.2 utils)
-  - Primary `<Button variant="primary">진행</Button>` triggers promote
-  - Secondary `<Button variant="ghost">취소</Button>` clears selection
+  - Primary `<Button variant="primary">Promote</Button>` triggers promote
+  - Secondary `<Button variant="ghost">Cancel</Button>` clears selection
 - **Dialog gate:** if `requiresDialogGate(selectedItems)` returns true (any selected item is `ready` → would close), open DS `<Dialog>`:
-  - Title: `"주문을 마감하시겠습니까?"`
-  - Body: `formatBreakdown(...)` + line `"마감된 주문은 되돌릴 수 없습니다."`
-  - Confirm `<Button variant="destructive">마감</Button>`, Cancel `<Button variant="ghost">취소</Button>`
+  - Title: `"Close these orders?"`
+  - Body: `formatBreakdown(...)` + line `"Closed orders cannot be reverted."`
+  - Confirm `<Button variant="destructive">Close</Button>`, Cancel `<Button variant="ghost">Cancel</Button>`
 - **Otherwise (no `ready→closed`):** silent fan-out, no Dialog
 - Fan-out: `Promise.all(selectedItems.map(item => changeOrderItemStatus(item.orderItemID)))`
   - Optimistic: pre-update `ordersMap` to next status before await
   - On per-item rejection: revert that item, accumulate failed list
-  - After all settle: Toast `"N개 진행 완료"` (or `"N개 진행 완료, M개 실패"` on partial failure)
+  - After all settle: Toast `"N promoted"` (or `"N promoted, M failed"` on partial failure)
   - Clear `selectedIds` and exit select mode
 - Long-press on any card (when not already in select mode): enter select mode + select that card
 - Right-click on desktop maps to long-press (`onContextMenu` → `e.preventDefault()` + same handler)
@@ -458,7 +458,7 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6. Drives `autonomous-ready` vs `needs-in
 - [ ] Partial failure: failed cards revert column position; success Toast names both counts
 - [ ] Long-press (500ms) on a card enters select mode + selects that card; right-click does the same
 - [ ] Single-tap (outside select mode) still single-tap promotes (3.5 behavior preserved)
-- [ ] Exiting select mode (`완료` button) clears all selections in both grids
+- [ ] Exiting select mode (`Done` button) clears all selections in both grids
 
 ### Non-goals
 
@@ -486,15 +486,15 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6. Drives `autonomous-ready` vs `needs-in
 ### Locked spec
 
 - Drop: `window.location.reload`, every `alert(...)`, native `<input>`, `selectedMenu` / `customStock` state, `bg-blue-500`/`bg-red-500`/`bg-green-500` raw classes, the "Reload Stock" button
-- Layout: DS `<Table>` with columns `[메뉴명, 카테고리, 재고, 액션]`
+- Layout: DS `<Table>` with columns `[Menu, Category, Stock, Action]`
   - Row state: `editingId: number | null`, `editValue: string`
-  - Cell `재고`: when not editing → text `{stock}`; when editing (click to start) → DS `<Input type="number" min="0" />` with `autoFocus`, `onKeyDown` Tab/Enter commits, Escape cancels, blur commits
+  - Cell `Stock`: when not editing → text `{stock}`; when editing (click to start) → DS `<Input type="number" min="0" />` with `autoFocus`, `onKeyDown` Tab/Enter commits, Escape cancels, blur commits
   - Commit: `await changeStock({ menuID, quantity })` with optimistic local update (mutate `menuList` cache or call `mutate(...)` if SWR-backed) + revert + Toast on failure
-  - Action cell: DS `<Button variant="ghost" size="icon">` with DS `<Icon name="XCircle">` (NOT `Trash2`) → on click, open DS `<Dialog>` confirming "재고를 0으로 설정하시겠습니까?"; on confirm, set stock to 0
-- Filter chips: DS `<ToggleGroup type="single" value={filter} onValueChange={setFilter}>` with options `전체` / `재고있음` (>0) / `부족` (1≤stock≤3) / `품절` (=0); each option label includes a count `"전체 (12)"`
+  - Action cell: DS `<Button variant="ghost" size="icon">` with DS `<Icon name="XCircle">` (NOT `Trash2`) → on click, open DS `<Dialog>` confirming "Set stock to 0?"; on confirm, set stock to 0
+- Filter chips: DS `<ToggleGroup type="single" value={filter} onValueChange={setFilter}>` with options `All` / `In stock` (>0) / `Low` (1≤stock≤3) / `Sold out` (=0); each option label includes a count `"All (12)"`
 - Loading: DS `<Skeleton>` rows (5 placeholder rows)
-- Error: DS `<StatusView variant="error" title="재고 정보를 불러오지 못했습니다.">{error.message}</StatusView>`
-- Empty (after filter): `<div className="type-caption text-muted-foreground py-8 text-center">조건에 맞는 메뉴가 없습니다.</div>`
+- Error: DS `<StatusView variant="error" title="Failed to load stock.">{error.message}</StatusView>`
+- Empty (after filter): `<div className="type-caption text-muted-foreground py-8 text-center">No menus match this filter.</div>`
 
 ### Tasks
 
@@ -538,25 +538,25 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6. Drives `autonomous-ready` vs `needs-in
 
 #### `OrderHistoryTable.tsx`
 
-- DS `<Table>` with columns `[#, 메뉴, 카테고리, 수량, 단가, 합계, 주문자 이메일]` (all 7 columns; no truncation on email)
-- Filter chips: DS `<ToggleGroup type="single" value={filter} onValueChange={setFilter}>` with `전체 (N)` / `안주 (N)` / `주류 (N)` (counts memoized on full `orderHistory`)
-- Top-right summary trigger: DS `<Button variant="outline" size="sm" onClick={() => setOpenSummaryModal(true)}>요약 보기</Button>`
+- DS `<Table>` with columns `[#, Menu, Category, Qty, Price, Total, Orderer email]` (all 7 columns; no truncation on email)
+- Filter chips: DS `<ToggleGroup type="single" value={filter} onValueChange={setFilter}>` with `All (N)` / `Food (N)` / `Drinks (N)` (counts memoized on full `orderHistory`)
+- Top-right summary trigger: DS `<Button variant="outline" size="sm" onClick={() => setOpenSummaryModal(true)}>View summary</Button>`
 - Loading: DS `<Skeleton>` rows
-- Error: replace `throw new Error(...)` with `<StatusView variant="error" title="주문 기록을 불러오지 못했습니다." />` — let `error.tsx` (lane 3.10) catch only true crashes
-- Empty (no history): `<StatusView variant="empty" title="주문 기록이 없습니다." />`
+- Error: replace `throw new Error(...)` with `<StatusView variant="error" title="Failed to load order history." />` — let `error.tsx` (lane 3.10) catch only true crashes
+- Empty (no history): `<StatusView variant="empty" title="No order history." />`
 - Empty (after filter): caption row inside the table-shell, not full StatusView
 - **Delete** the `console.log('menuMap', menuMap)` call (currently in body around the `convertOrderHistoryToMenuMap` call site) — verify with grep before commit
 
 #### `OrderSummaryModal.tsx` → DS `Dialog` with B-lite analytics
 
-- Open: triggered by `요약 보기` button
-- Container: DS `<Dialog>` with `size="lg"` (or whatever the largest non-fullscreen size is); title `"주문 요약"`, close via Dialog's built-in X
+- Open: triggered by `View summary` button
+- Container: DS `<Dialog>` with `size="lg"` (or whatever the largest non-fullscreen size is); title `"Order summary"`, close via Dialog's built-in X
 - Body sections (vertical stack with `gap-6`):
-  1. **KPI cards row** (DS `<Card>` × 3): `총 매출` (calculateTotalSales) · `안주 매출` (anjuRevenue) · `주류 매출` (drinkRevenue). Each card: caption label + `type-h3 !font-semibold` value
-  2. **Top 3 안주** — DS `<Card>` containing a 3-row list rendered from `calculateFoodRankings(orderHistory)`. Each row: rank (1/2/3) + nameKor + `${quantity}개` + `$${revenue.toFixed(2)}`
-  3. **Top 3 주류** — same structure, from `calculateDrinkRankings(orderHistory)`
-  4. **소주 분석** — DS `<Card>`: 2-row breakdown (regular vs fruit) with absolute counts and `(percentage%)`
-- Empty-history fallback: single line in body `"이번 포차에 주문 기록이 없습니다."`
+  1. **KPI cards row** (DS `<Card>` × 3): `Total revenue` (calculateTotalSales) · `Food revenue` (anjuRevenue) · `Drinks revenue` (drinkRevenue). Each card: caption label + `type-h3 !font-semibold` value
+  2. **Top 3 food** — DS `<Card>` containing a 3-row list rendered from `calculateFoodRankings(orderHistory)`. Each row: rank (1/2/3) + nameKor + `×${quantity}` + `$${revenue.toFixed(2)}`
+  3. **Top 3 drinks** — same structure, from `calculateDrinkRankings(orderHistory)`
+  4. **Soju breakdown** — DS `<Card>`: 2-row breakdown (regular vs fruit) with absolute counts and `(percentage%)`
+- Empty-history fallback: single line in body `"No order history for this pocha."`
 - **No charts** — pure text rows + DS Card containers (per audit Q5)
 - Replace `PochaCloseIcon` import with DS Dialog's built-in close
 - Drop bespoke fixed-inset overlay; DS `<Dialog>` provides this
@@ -619,9 +619,9 @@ export default function DashboardError({
   return (
     <StatusView
       variant="error"
-      title="대시보드를 불러오지 못했습니다."
-      description={error.message ?? "잠시 후 다시 시도해주세요."}
-      action={<Button onClick={reset}>다시 시도</Button>}
+      title="Failed to load dashboard."
+      description={error.message ?? "Please try again."}
+      action={<Button onClick={reset}>Retry</Button>}
       fullScreen
     />
   );
