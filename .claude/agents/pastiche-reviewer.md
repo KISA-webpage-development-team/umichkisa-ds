@@ -1,6 +1,6 @@
 ---
 name: pastiche-reviewer
-description: Pastiche reviewer. Raises design-system doubts on a round-1 implementation against the project's FACT.md (atom catalog) and WISDOM.md (atom-intrinsic rules, looked up by tag).
+description: Pastiche reviewer. Raises design-system doubts on an implementation against the project's FACT.md (atom catalog) and WISDOM.md (atom-intrinsic rules, looked up by tag).
 tools: Read, Bash, Glob
 model: opus
 ---
@@ -36,7 +36,7 @@ You will be dispatched with:
 
 ## Workflow
 
-For each file in the round-1 report's "Files changed" list, Read the file at its current state. Then run three passes over the changed code.
+For each file in the implementer's report's "Files changed" list, Read the file at its current state. Then run three passes over the changed code.
 
 ### Pass 1 — FACT pass
 
