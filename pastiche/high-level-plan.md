@@ -2,7 +2,7 @@
 
 _Phase breakdown only. Details are deferred to each phase._
 
-KISA DS is the v1 testbed. The plan walks bottom-up: vertical slice → templates → docs → tooling → agents → skill → cutover → aesthetic.
+KISA DS is the v1 testbed. The plan walks bottom-up: vertical slice → templates → docs → tooling → agents → skill → cutover → aesthetic → doc-curation.
 
 ---
 
@@ -63,6 +63,14 @@ KISA DS is the v1 testbed. The plan walks bottom-up: vertical slice → template
 
 - Separate, on-demand skill per spec §15. Outside the gating loop.
 - Brand prose + UI/UX + frontend design knowledge.
+
+## Phase 10 — Doc-curation skills (KNOWLEDGE & WISDOM authoring)
+
+- Closes the spec §10 living-document loop. Pastiche surfaces gaps; without an authoring path, gaps accumulate without absorption.
+- Two trigger surfaces: (a) free-form user input — a designer/engineer wants to add or revise a mapping/rule from a discussion, sketch, or new requirement; (b) structured pastiche output — Follow-ups items tagged `knowledge-gap` or `wisdom-gap`.
+- Likely two skills (one per doc) since KNOWLEDGE (curated mappings + brand prose) and WISDOM (atom-intrinsic rules with strict tag discipline per spec §3.3) have different authoring shapes and grilling needs. Decision deferred to phase grilling.
+- Authoring discipline must hold: WISDOM stays atom-intrinsic and atom-tagged (FACT-verbatim per spec §4); KNOWLEDGE keeps the scenario→atom shape. The lint (Phase 4) is the safety net for tag/reference drift.
+- Project-agnostic, like the rest of v1.
 
 ---
 
