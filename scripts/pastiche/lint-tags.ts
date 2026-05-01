@@ -36,6 +36,12 @@ export interface LintViolation {
   message: string;
 }
 
+export interface LintReport {
+  violations: LintViolation[];
+  // Counts of items inspected (not just violations) — for the summary line.
+  checked: Record<string, number>;
+}
+
 // ---------------------------------------------------------------------------
 // FACT parsing
 // ---------------------------------------------------------------------------
@@ -62,10 +68,12 @@ export function parseFact(text: string): FactAtoms {
 // WISDOM check
 // ---------------------------------------------------------------------------
 
-export function lintWisdom(text: string, fact: FactAtoms, file = 'WISDOM.md'): LintViolation[] {
+export function lintWisdom(text: string, fact: FactAtoms, file = 'WISDOM.md'): LintReport {
   const violations: LintViolation[] = [];
   const valid = new Set([...fact.components, ...fact.tokens]);
   const lines = text.split('\n');
+  let totalTags = 0;
+  let generalTags = 0;
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
     if (line.trim().startsWith('<!--')) continue; // skip preamble comments
@@ -77,7 +85,8 @@ export function lintWisdom(text: string, fact: FactAtoms, file = 'WISDOM.md'): L
     let m: RegExpExecArray | null;
     while ((m = tagRegex.exec(stripped)) !== null) {
       const tag = m[1];
-      if (ALLOW_LISTED_TAGS.has(tag)) continue;
+      totalTags++;
+      if (ALLOW_LISTED_TAGS.has(tag)) { generalTags++; continue; }
       if (!valid.has(tag)) {
         violations.push({
           file,
@@ -87,7 +96,14 @@ export function lintWisdom(text: string, fact: FactAtoms, file = 'WISDOM.md'): L
       }
     }
   }
-  return violations;
+  return {
+    violations,
+    checked: {
+      tags: totalTags,
+      general: generalTags,
+      'fact-bound': totalTags - generalTags,
+    },
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -97,9 +113,12 @@ export function lintWisdom(text: string, fact: FactAtoms, file = 'WISDOM.md'): L
 const COMPONENT_HEAD = /^([A-Z][A-Za-z0-9]*(?:\.[A-Z][A-Za-z0-9]*)?)\b/;
 const TOKEN_SHAPE = /^(--[A-Za-z0-9-]+|\.(?:type|ds)-[A-Za-z0-9-]+)$/;
 
-export function lintKnowledge(text: string, fact: FactAtoms, file = 'KNOWLEDGE.md'): LintViolation[] {
+export function lintKnowledge(text: string, fact: FactAtoms, file = 'KNOWLEDGE.md'): LintReport {
   const violations: LintViolation[] = [];
   const lines = text.split('\n');
+  let totalSpans = 0;
+  let componentRefs = 0;
+  let tokenRefs = 0;
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
     if (line.trim().startsWith('<!--')) continue;
@@ -107,8 +126,10 @@ export function lintKnowledge(text: string, fact: FactAtoms, file = 'KNOWLEDGE.m
     let m: RegExpExecArray | null;
     while ((m = codeSpanRegex.exec(line)) !== null) {
       const span = m[1].trim();
+      totalSpans++;
       // Token shape — must resolve verbatim.
       if (TOKEN_SHAPE.test(span)) {
+        tokenRefs++;
         if (!fact.tokens.has(span)) {
           violations.push({
             file,
@@ -121,6 +142,7 @@ export function lintKnowledge(text: string, fact: FactAtoms, file = 'KNOWLEDGE.m
       // Component shape — first PascalCase head (incl. `Form.Foo`) must resolve.
       const head = span.match(COMPONENT_HEAD);
       if (head) {
+        componentRefs++;
         const name = head[1];
         if (!fact.components.has(name)) {
           violations.push({
@@ -134,7 +156,15 @@ export function lintKnowledge(text: string, fact: FactAtoms, file = 'KNOWLEDGE.m
       // out of scope for v1 — silently ignored.
     }
   }
-  return violations;
+  return {
+    violations,
+    checked: {
+      'code-spans': totalSpans,
+      'component-refs': componentRefs,
+      'token-refs': tokenRefs,
+      ignored: totalSpans - componentRefs - tokenRefs,
+    },
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -146,18 +176,37 @@ function main(): void {
   const wisdom = fs.readFileSync(path.join(DOCS, 'WISDOM.md'), 'utf8');
   const knowledge = fs.readFileSync(path.join(DOCS, 'KNOWLEDGE.md'), 'utf8');
 
-  const violations = [
-    ...lintWisdom(wisdom, fact),
-    ...lintKnowledge(knowledge, fact),
-  ];
+  const wisdomReport = lintWisdom(wisdom, fact);
+  const knowledgeReport = lintKnowledge(knowledge, fact);
+  const violations = [...wisdomReport.violations, ...knowledgeReport.violations];
+
+  // Always print the summary block first — descriptive even on success.
+  console.log('pastiche:lint — cross-doc tag-sanity (spec §14.2)');
+  console.log('');
+  console.log(`  FACT.md       ${fact.components.size} components, ${fact.tokens.size} tokens (source of truth)`);
+  console.log(
+    `  WISDOM.md     ${wisdomReport.checked.tags} tag(s) checked ` +
+      `→ ${wisdomReport.checked['fact-bound']} FACT-bound, ` +
+      `${wisdomReport.checked.general} [GENERAL]; ` +
+      `${wisdomReport.violations.length} violation(s)`,
+  );
+  console.log(
+    `  KNOWLEDGE.md  ${knowledgeReport.checked['code-spans']} code-span(s) scanned ` +
+      `→ ${knowledgeReport.checked['component-refs']} component ref(s), ` +
+      `${knowledgeReport.checked['token-refs']} token ref(s), ` +
+      `${knowledgeReport.checked.ignored} ignored (Tailwind/prop/prose); ` +
+      `${knowledgeReport.violations.length} violation(s)`,
+  );
+  console.log('');
 
   if (violations.length === 0) {
-    console.log(`pastiche:lint OK — FACT atoms: ${fact.components.size} components, ${fact.tokens.size} tokens.`);
+    console.log('pastiche:lint OK — 0 violations.');
     return;
   }
 
+  console.error('Violations:');
   for (const v of violations) {
-    console.error(`${v.file}:${v.line} ${v.message}`);
+    console.error(`  ${v.file}:${v.line} ${v.message}`);
   }
   console.error(`\npastiche:lint FAILED — ${violations.length} violation(s).`);
   process.exit(1);
