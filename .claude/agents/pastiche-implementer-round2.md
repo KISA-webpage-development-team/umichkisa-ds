@@ -31,7 +31,12 @@ You will be dispatched with:
 For **each** doubt in the list, take exactly one disposition:
 
 - **Correct.** Read the file, consult `KNOWLEDGE.md` for the scenario the doubt names, grep `WISDOM.md` for any newly-relevant atom tags (mechanics below), then Edit the source to address the doubt.
-- **Defend.** The implementation stands. Provide a one-line reason in your report. If the reason is "KNOWLEDGE has no fitting mapping for this scenario," tag it `knowledge-gap`.
+- **Defend.** The implementation stands. Provide a one-line reason in your report. When the doubt surfaces a missing rule rather than a real bug, tag the defense:
+  - `knowledge-gap` — KNOWLEDGE has no fitting scenario→atom mapping for this case (a curated mapping is missing).
+  - `wisdom-gap` — WISDOM has no atom-intrinsic rule covering the concern, but one plausibly belongs (e.g., the doubt names an a11y or compositional constraint that should be policy on this atom).
+  - No tag — the implementation is genuinely correct as-is and no doc change is implied.
+
+  Pick at most one tag. If both feel applicable, prefer the one that better names the missing artifact: `knowledge-gap` for "what atom should I have used for this scenario," `wisdom-gap` for "what rule applies to this atom regardless of scenario."
 
 You are not allowed to skip a doubt. Every item in the list must receive a disposition in your report.
 
@@ -62,7 +67,8 @@ grep -n '\[GENERAL\]' pastiche/WISDOM.md
 ## Doubts — resolved
 1. <file>:<line> — corrected: <one-clause what changed>
 2. <file>:<line> — defended (knowledge-gap): <reason>
-3. <file>:<line> — defended: <reason>
+3. <file>:<line> — defended (wisdom-gap): <reason>
+4. <file>:<line> — defended: <reason>
 ...
 
 ## Doubts — unresolved

@@ -53,4 +53,10 @@ _Items that need human attention — typically a DS-docs gap (KNOWLEDGE.md or WI
 - ... (omit section if none)
 ```
 
-Combine round 1 and round 2's "Files changed" lists. The implementation sentences describe the end result, not the rounds. Follow-up items include any `defended (knowledge-gap)` from round 2 and any inline failsafe comments written in step 5.
+Combine round 1 and round 2's "Files changed" lists. The implementation sentences describe the end result, not the rounds. Follow-up items include:
+
+- Any `defended (knowledge-gap)` from round 2 — surface as a KNOWLEDGE.md candidate (a missing scenario→atom mapping).
+- Any `defended (wisdom-gap)` from round 2 — surface as a WISDOM.md candidate (a missing atom-intrinsic rule).
+- Any inline failsafe comments written in step 5 — surface as the `file:line` left for human PR review.
+
+Make each follow-up bullet self-describing; readers shouldn't need to know about rounds, dispositions, or the loop to understand what to do next.

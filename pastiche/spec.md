@@ -259,7 +259,12 @@ Three fields. The `comment` is expert-voice prose, not a structured citation —
 **Round-2 disposition (implementer → parent skill).** For each doubt, the implementer takes exactly one of:
 
 - **`corrected`** — Edit the source to address the doubt; implementation changes.
-- **`defended`** — Implementation stands; provide a one-line reason. If the reason is "KNOWLEDGE has no fitting mapping for this scenario," tag it `knowledge-gap` (greppable for the §10 living-document loop).
+- **`defended`** — Implementation stands; provide a one-line reason. When the doubt surfaces a missing doc artifact rather than a real bug, tag the defense to feed the §10 living-document loop:
+  - `knowledge-gap` — KNOWLEDGE has no fitting scenario→atom mapping for this case.
+  - `wisdom-gap` — WISDOM has no atom-intrinsic rule covering the concern, but one plausibly belongs.
+  - No tag — the implementation is genuinely correct as-is and no doc change is implied.
+
+  Both tags are greppable. The two tags partition the living-document loop by which doc absorbs the gap: `knowledge-gap` items prompt new scenario mappings; `wisdom-gap` items prompt new atom-intrinsic rules.
 
 The disposition list is part of round-2's structured response, not written into source. Strong-no rationales propagate to human PR reviewers via the parent skill's surfacing (PR description, commit footer — orchestrator-defined), not via inline `pastiche-strong-no:` markers. Inline strong-no comments would clutter source for limited durable value: defended doubts represent successful resolution of agent-to-agent dialogue, not enduring code documentation.
 
