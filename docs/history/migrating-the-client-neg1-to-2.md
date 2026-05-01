@@ -1,4 +1,4 @@
-# Migrating the Client to the Design System
+# Migrating the Client to the Design System: Phase -1 ~ 2
 
 A retrospective on phases -1 → 2 of the ds-client-migration project, and on the
 harness rebuild that landed immediately before Phase 3 (PR #12 on
