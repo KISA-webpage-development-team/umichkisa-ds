@@ -8,7 +8,6 @@
 
 1. Read `docs/TODO.md` → find first unchecked entry under "## Client Migration"
 2. **DS symlink check** (Phase 0+): `ls -la ../KISA-website/client/node_modules/@umichkisa-ds/web` — if not `->` symlink, run `bash ../KISA-website/client/scripts/link-ds.sh` (requires DS `dist/`; run `pnpm build` first if missing)
-3. **Pastiche symlink check** (Phase 8+): `ls -la ../KISA-website/client/pastiche` — if missing, run `ln -s ../umichkisa-ds/pastiche ../KISA-website/client/pastiche`. Track in the client repo for worktree inheritance.
 
 **Mode detection** (inlined from `AUTONOMOUS_PROTOCOL.md` §10 — do this without loading AP):
 

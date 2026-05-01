@@ -57,7 +57,7 @@ KISA DS is the v1 testbed. The plan walks bottom-up: vertical slice → template
 ## Phase 8 — Cutover [DONE]
 
 - `CLAUDE.md` Mode D row switches to `pastiche`. Brief post-pastiche checklist added (triage Follow-ups → typecheck → optional code-quality skills → commit), since pastiche is DS-scoped.
-- `CLAUDE.md` preflight gains a pastiche symlink check, parallel to the DS package symlink.
+- Pastiche runs from the DS-repo cwd (where `pastiche/{FACT,KNOWLEDGE,WISDOM}.md` lives); the implementer agents edit files in the client worktree via the paths supplied in the task description. No symlink needed.
 - `AUTONOMOUS_PROTOCOL.md` updated across §3 (Mode D flow), §4 (Skills Index), §5 (Issue template), §7 (Routine Algorithm), §10 (PR-body assembly).
 - `HARNESS_DESIGN.md` Per-Phase Internal Flow + Client Gate Tooling table swapped to `pastiche`.
 - Higher-level docs reference the skill by name only; pastiche internals stay encapsulated.
