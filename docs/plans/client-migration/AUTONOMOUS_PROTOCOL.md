@@ -73,6 +73,33 @@ User runs Mode C and Mode D in different terminals concurrently. Isolation:
 
 The two never touch the same working directory.
 
+### 3.3 Mode D post-pastiche workflow
+
+`pastiche` is DS-scoped — it does not typecheck, run tests, run general code-quality review, or commit. After the skill returns, walk through the following with the user (Mode D is live).
+
+**Triage pastiche output (with the user)**
+
+1. **Inline `// pastiche-unresolved-doubt:` markers — block the commit.** Together with the user, read each marker. Decide: fix the code, or accept the implementation as-is. In either case the marker line is deleted before commit.
+2. **`## Follow-ups` items — do not block the commit.** Each is a `KNOWLEDGE.md` or `WISDOM.md` candidate. With the user, decide: append to the relevant doc in the DS repo and re-run the tag-sanity lint, or skip as noise. May be deferred.
+
+**Verify**
+
+3. Run `pnpm typecheck` from the worktree. Fix anything.
+
+**Code-quality reviews — suggest, do not auto-run (token-heavy)**
+
+4. **If the lane touches UI**, always suggest invoking `vercel-react-best-practices` (final React/Next.js pass). User can say skip.
+5. **Suggest one of:**
+   - `toss-frontend-fundamentals` — when the lane is logic-heavy (state, effects, data flow, hooks, transformations).
+   - `review-ui-on-browser` — when the lane is UI-heavy (visual layout, component composition, interactions).
+
+   Pick which to suggest based on the lane's actual character; only suggest both if the lane is genuinely both. User can say skip.
+
+**Ship**
+
+6. Merge the worktree branch into `dev` and push (Mode D = direct push to `dev`, no PR — see `feedback_interactive_direct_push`). Confirm with the user before merging — see `feedback_no_auto_merge`.
+7. Wrap up the lane (close linked issue, strip labels — see `feedback_merge_closes_issue`, `feedback_check_existing_issue`).
+
 ## 4. Skills Index
 
 | Skill | Purpose |
