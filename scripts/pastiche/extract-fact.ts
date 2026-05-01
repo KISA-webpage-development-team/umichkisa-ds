@@ -1,10 +1,10 @@
 /**
  * Pastiche FACT extractor.
  *
- * Reads .pastiche config, walks the configured package .d.ts files plus the
- * theme CSS, and writes a flat catalog (FACT.md) of every exported component
- * (with its props) and every CSS theme token. Mechanical only — no LLM, no
- * source-tree reads beyond what .pastiche points at.
+ * Reads pastiche/pastiche.config.yaml, walks the configured package .d.ts
+ * files plus the theme CSS, and writes a flat catalog (FACT.md) of every
+ * exported component (with its props) and every CSS theme token. Mechanical
+ * only — no LLM, no source-tree reads beyond what the config points at.
  *
  * Component rendering rule:
  *   - One section per component name, where a "component name" is either:
@@ -35,18 +35,23 @@ const __dirname = path.dirname(__filename);
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
 
 // ---------------------------------------------------------------------------
-// .pastiche config (hand-parsed; tiny known schema)
+// pastiche/pastiche.config.yaml (hand-parsed; tiny known schema)
+//
+// FACT.md is written to the convention path `pastiche/FACT.md` — not
+// configurable.
 // ---------------------------------------------------------------------------
+
+const PASTICHE_DIR = path.join(REPO_ROOT, 'pastiche');
+const FACT_PATH = path.join(PASTICHE_DIR, 'FACT.md');
 
 interface Config {
   packages: Record<string, { types: string }>;
   tokens: { source: string };
-  output: { fact: string };
 }
 
 function readConfig(): Config {
-  const text = fs.readFileSync(path.join(REPO_ROOT, '.pastiche'), 'utf8');
-  const cfg: Config = { packages: {}, tokens: { source: '' }, output: { fact: '' } };
+  const text = fs.readFileSync(path.join(PASTICHE_DIR, 'pastiche.config.yaml'), 'utf8');
+  const cfg: Config = { packages: {}, tokens: { source: '' } };
   let section: string | null = null;
   let pkg: string | null = null;
   for (const raw of text.split('\n')) {
@@ -68,9 +73,6 @@ function readConfig(): Config {
     }
     if (section === 'tokens' && /^\s\ssource:/.test(line)) {
       cfg.tokens.source = line.split(':').slice(1).join(':').trim();
-    }
-    if (section === 'output' && /^\s\sfact:/.test(line)) {
-      cfg.output.fact = line.split(':').slice(1).join(':').trim();
     }
   }
   return cfg;
@@ -516,11 +518,10 @@ function main() {
   const tokens = extractTokens(path.resolve(REPO_ROOT, cfg.tokens.source));
   for (const t of tokens) out.push(`- ${t}`);
 
-  const outPath = path.resolve(REPO_ROOT, cfg.output.fact);
-  fs.mkdirSync(path.dirname(outPath), { recursive: true });
-  fs.writeFileSync(outPath, out.join('\n') + '\n', 'utf8');
+  fs.mkdirSync(path.dirname(FACT_PATH), { recursive: true });
+  fs.writeFileSync(FACT_PATH, out.join('\n') + '\n', 'utf8');
   process.stdout.write(
-    `Wrote ${path.relative(REPO_ROOT, outPath)}: ${componentCount} components, ${tokens.length} tokens.\n`,
+    `Wrote ${path.relative(REPO_ROOT, FACT_PATH)}: ${componentCount} components, ${tokens.length} tokens.\n`,
   );
 }
 

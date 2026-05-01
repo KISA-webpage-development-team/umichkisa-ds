@@ -21,7 +21,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
-const DOCS = path.join(REPO_ROOT, 'docs/pastiche');
+const DOCS = path.join(REPO_ROOT, 'pastiche');
 
 const ALLOW_LISTED_TAGS = new Set(['GENERAL']);
 

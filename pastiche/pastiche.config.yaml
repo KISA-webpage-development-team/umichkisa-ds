@@ -9,6 +9,3 @@ packages:
 
 tokens:
   source: packages/web/src/styles/index.css
-
-output:
-  fact: docs/pastiche/FACT.md

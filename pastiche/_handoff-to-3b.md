@@ -94,7 +94,7 @@ The shape is intentional per spec §3.3: WISDOM holds atom-intrinsic properties 
 
 ### Recommendation on Tailwind-default utility classes
 
-Beyond `type-*`, KNOWLEDGE prose mentions raw Tailwind utilities like `gap-2`, `rounded-md`, `flex items-center` etc. that are **not** KISA-defined — they are framework defaults. We considered a `.pastiche` config flag (`useTailwindV4: true`) that would preload Tailwind's built-in utility list into FACT to make the cross-doc lint complete on KNOWLEDGE prose. **Recommend deferring this to v2.** Reasoning:
+Beyond `type-*`, KNOWLEDGE prose mentions raw Tailwind utilities like `gap-2`, `rounded-md`, `flex items-center` etc. that are **not** KISA-defined — they are framework defaults. We considered a `pastiche.config.yaml` flag (`useTailwindV4: true`) that would preload Tailwind's built-in utility list into FACT to make the cross-doc lint complete on KNOWLEDGE prose. **Recommend deferring this to v2.** Reasoning:
 
 - Implementers do not grep `[gap-2]` to look up rules — there are none. Loading 1000+ default utilities adds context weight without tag-lookup payoff.
 - Spec §11 ("philosophy of lightness") argues against optional layers that don't earn their context cost.
