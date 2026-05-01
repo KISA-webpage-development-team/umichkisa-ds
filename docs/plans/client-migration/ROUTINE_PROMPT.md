@@ -49,7 +49,7 @@ For each eligible issue, until 4h cap or queue empty:
 1. Read the issue's full spec (template fields per §5).
 2. Determine target repo from the issue location.
 3. `git fetch origin dev` and `git checkout -b ds-client-migration/phase-<N>/<lane-id>-<slug> origin/dev` in the target repo.
-4. Invoke the `pastiche` skill with the lane's task description.
+4. Invoke the `pastiche` skill **from the `umichkisa-ds/` repo CWD** (its preflight resolves `pastiche/{FACT,KNOWLEDGE,WISDOM}.md` relative to CWD, and only the DS repo has those docs — invoking from the client repo will fail preflight). When the target repo is the client, include the client checkout's absolute path + branch name in the task description so the skill's edits land in the client checkout while reading DS-repo atom rules. For DS-side lanes, the CWD already matches the target.
 5. Respect `## Files`, `## Non-goals`, `## Bailout triggers` from the issue spec — bailout if any are violated.
 6. Pre-PR gates (in order):
    a. Run `pnpm typecheck` (or the client's equivalent).
