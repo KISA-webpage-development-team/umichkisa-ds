@@ -23,10 +23,13 @@ KISA DS is the v1 testbed. The plan walks bottom-up: vertical slice → template
 - **3b. KNOWLEDGE seeding.** Brand prose grilling with user; scenario→atom mappings seeded from `DS_CLIENT_USAGE.md`.
 - **3c. WISDOM seeding.** Atom-intrinsic rules ported from `DS_CONSTRAINTS.md`. Scenario-conditional rules redirected to KNOWLEDGE per spec §3.3.
 
-## Phase 4 — WISDOM tag lint
+## Phase 4 — Cross-doc tag-sanity lint
 
-- Standalone CI script. Verifies every `[atom]` tag in WISDOM.md exists in FACT.md.
-- Fails closed. Tested in isolation.
+- Standalone CI script. Single source of truth: FACT.md.
+- **WISDOM.md:** every `[atom]` tag must match a FACT entry verbatim — components by exported name, tokens in `--`-prefixed form. `[GENERAL]` is the lone allow-listed non-FACT tag (spec §4).
+- **KNOWLEDGE.md:** every atom reference (component names in `→` recommendation lines, token references in prose) must resolve to a FACT entry. KNOWLEDGE is not tag-grepped, but its named atoms are still part of the §9 invariant — a renamed component must not silently rot a KNOWLEDGE recommendation.
+- Fails closed on any unresolved tag/reference. Clear error message naming the offending document, line number, and atom.
+- Tested in isolation.
 
 ## Phase 5 — `pastiche-implementer` agent
 

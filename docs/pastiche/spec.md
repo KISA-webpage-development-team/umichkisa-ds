@@ -90,6 +90,8 @@ WISDOM.md grows over time. Loading it in full on every task wastes context and e
 
 **Solution:** Each WISDOM entry carries tags naming the atoms (components, tokens) it concerns. Agents retrieve only the WISDOM entries relevant to the atoms involved in the current task, by grepping for those tags.
 
+**Tags must match FACT.md verbatim.** A tag's spelling is whatever shape FACT canonically lists the atom under — exported component names, `--`-prefixed CSS-variable token names, `.`-prefixed CSS-selector form for DS-defined utility classes, and so on. Whatever shape FACT uses, WISDOM and KNOWLEDGE use identically; abbreviated, bare, or alternate-prefix forms are not permitted and the lint (§14.2) rejects them. This identical-spelling rule is what makes grep deterministic across all three documents. Concrete spellings are project-defined and live in each project's FACT.
+
 **Why grep, not RAG:**
 - Deterministic. No retrieval surprises.
 - Forces WISDOM authors to think clearly about *which atoms* a rule binds to.
@@ -97,7 +99,17 @@ WISDOM.md grows over time. Loading it in full on every task wastes context and e
 
 **The tag is the joint** between the three documents. KNOWLEDGE references atoms by name; FACT defines those names canonically; WISDOM indexes itself against them. The atom name is the system's unit of meaning.
 
-**Tags are atom-only.** Domain tags (`#payment`, `#onboarding`) are intentionally not part of the system. Domain context lives in KNOWLEDGE as scenario mappings; WISDOM stays atom-pure. This is enforced by §3.3 discipline and verified by the tag lint (§14.2).
+**Tags are atom-only, with one exception: `[GENERAL]`.** Domain tags (`#payment`, `#onboarding`) are intentionally not part of the system — domain context lives in KNOWLEDGE as scenario mappings, and WISDOM stays atom-pure. This is enforced by §3.3 discipline and verified by the tag lint (§14.2).
+
+The single carve-out is **`[GENERAL]`**, a reserved tag for system-wide invariants that bind to no specific atom — global posture rules a project asserts across every surface (e.g. color-system policy, breakpoint discipline, spacing-scale discipline, accessibility floors, landmark requirements). Such rules are atom-intrinsic in spirit (they hold regardless of scenario) but have no single atom to attach to; fan-out tagging across every component or token in a family would bloat the index and dilute grep precision.
+
+`[GENERAL]` is not a domain tag. It is the no-atom always-load marker, distinguished from domain tags by:
+
+- **Always loaded.** Both implementer and reviewer agents load every `[GENERAL]` entry on every task, regardless of which atoms appear in the code or task description. This is the only WISDOM content that bypasses tag-based lazy loading.
+- **System-scoped, not topic-scoped.** A `[GENERAL]` rule must hold for *every* surface produced in this DS. If a rule applies only "in form contexts" or "in marketing pages," it is a domain tag in disguise and belongs in KNOWLEDGE.
+- **Exempt from the FACT lint.** The Phase 4 tag lint (§14.2) treats `[GENERAL]` as a recognized non-FACT tag — it does not require a corresponding FACT entry, but it is the only tag granted this exemption.
+
+The discipline that keeps `[GENERAL]` from sliding into a dumping ground: a rule earns the tag only if it is *both* atom-intrinsic in spirit *and* has no atom to bind to. Anything that names a real atom must use the atom tag instead, even when the rule feels system-wide. The bar is "no valid atom tag exists," not "this rule is important."
 
 ---
 
@@ -107,7 +119,7 @@ Pastiche is a feedback-loop skill with two subagents. Their asymmetry is the sou
 
 ### 5.1 Implementer — *Constructive, heavy*
 
-**Context:** KNOWLEDGE.md (full) + WISDOM.md (lazy, by tag)
+**Context:** KNOWLEDGE.md (full) + WISDOM.md (`[GENERAL]` entries always; remaining entries lazy by atom tag)
 **Persona:** Senior frontend engineer working inside the design system. Faithful executor; not a designer.
 
 **Workflow:**
@@ -119,7 +131,7 @@ Pastiche is a feedback-loop skill with two subagents. Their asymmetry is the sou
 
 ### 5.2 Reviewer — *Verificational, light*
 
-**Context:** FACT.md (full) + WISDOM.md (lazy, by tag) + the task description
+**Context:** FACT.md (full) + WISDOM.md (`[GENERAL]` entries always; remaining entries lazy by atom tag) + the task description
 **Persona:** A senior frontend engineer with deep design system expertise — strict, but heuristic. Raises doubts, not verdicts. The persona itself is the calibration mechanism (§7.2).
 
 **Workflow:**
@@ -403,15 +415,19 @@ A script reads the project's component library source (TypeScript declarations, 
 
 The extraction strategy is project-specific (TypeScript types, Storybook story metadata, design-token CSS, etc.). v1 ships a TypeScript-types extractor for the KISA validation case. Other projects can swap in their own extractor; the contract is just "produce FACT.md in the documented shape."
 
-### 14.2 WISDOM tag lint
+### 14.2 Cross-doc tag-sanity lint
 
-A CI script greps every `[atom]` tag from WISDOM.md and verifies the atom name appears in FACT.md. Stale tags fail CI with a clear message:
+A CI script verifies that every atom mentioned in WISDOM.md or KNOWLEDGE.md resolves to a FACT.md entry. FACT is the single source of truth; WISDOM and KNOWLEDGE both index against it.
+
+**WISDOM check.** Every `[atom]` tag is grepped and matched against FACT atoms verbatim, in whatever spelling FACT canonically lists (component names, token names, utility-class names, etc. — see §4). Stale tags fail CI:
 
 > `WISDOM.md line 47 tags [Modal] but FACT.md has no Modal — was it renamed or removed?`
 
-This is the only mechanism standing between WISDOM and silent rule loss when the underlying DS evolves. Without it, a component rename leaves orphan WISDOM entries that no atom-name grep will ever surface, and the §9 invariant erodes silently.
+**KNOWLEDGE check.** KNOWLEDGE is prose, not tag-grepped at runtime, but its component recommendations (the right-hand side of `→` lines and any code-spans naming atoms) must still resolve to FACT — otherwise a component rename silently rots a recommendation and the §9 invariant erodes from the KNOWLEDGE side. Unresolved references fail CI with the same shape of error.
 
-The lint is small (~30 lines), runs in seconds, and fails closed. It is not optional.
+**`[GENERAL]` is the lone allow-listed non-FACT tag** (§4). The lint recognizes it explicitly in WISDOM and skips the FACT check for that one tag; every other tag and KNOWLEDGE reference must resolve to a FACT atom. Adding further allow-listed tags requires a spec amendment — not a lint config change — to preserve the §9 invariant.
+
+The lint is small (~50 lines for both passes), runs in seconds, and fails closed. It is not optional.
 
 Future workflow scripts (release tooling, KNOWLEDGE diff reports, etc.) may join the toolchain over time; v1 ships only these two.
 
