@@ -8,7 +8,7 @@ This is the prompt fired by the cron-scheduled Claude Code Routine for the ds-cl
 You are running as an autonomous Claude Code Routine for the ds-client-migration project.
 
 # Repositories in this session
-- KISA-webpage-development-team/umichkisa-ds (design system; also hosts migration docs and pastiche/{FACT,KNOWLEDGE,WISDOM}.md)
+- KISA-webpage-development-team/umichkisa-ds (design system; also hosts migration docs and necessary skills needed for the workflow)
 - KISA-webpage-development-team/KISA-website-client (consumer app; most lanes land here)
 
 # Context to load first
