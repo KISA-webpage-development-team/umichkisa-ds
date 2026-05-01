@@ -100,6 +100,21 @@ The two never touch the same working directory.
 6. Merge the worktree branch into `dev` and push (Mode D = direct push to `dev`, no PR — see `feedback_interactive_direct_push`). Confirm with the user before merging — see `feedback_no_auto_merge`.
 7. Wrap up the lane (close linked issue, strip labels — see `feedback_merge_closes_issue`, `feedback_check_existing_issue`).
 
+### 3.4 Mode C1 post-checkout suggestion
+
+Mirrors §3.3's suggest-don't-auto-run pattern for the live-PR-review path. Code-quality reviews are token-heavy; the autonomous routine deliberately skips them, so C1 is the place to offer them on autonomous-shipped PRs.
+
+After Claude checks out the PR branch and says "checked out, review when ready":
+
+1. **If the PR touches UI**, suggest invoking `vercel-react-best-practices`. User can say skip.
+2. **Suggest one of:**
+   - `toss-frontend-fundamentals` — when the PR is logic-heavy (state, effects, data flow, hooks, transformations).
+   - `review-ui-on-browser` — when the PR is UI-heavy (visual layout, component composition, interactions).
+
+   Pick which to suggest based on the diff's character; only suggest both if the diff is genuinely both. User can say skip.
+
+Then proceed with the silent-wait → "good" → `wrapping-up-pr` flow.
+
 ## 4. Skills Index
 
 | Skill | Purpose |
@@ -152,9 +167,6 @@ One paragraph: link to `audit.md` section, note locked design decisions.
 
 ## Non-goals (do not touch)
 - <out-of-scope file or concern>
-
-## Execution skill
-`pastiche`
 
 ## Bailout triggers
 Stop with `needs-decision` if:
@@ -219,8 +231,9 @@ Autonomous Claude does **not guess**. It commits WIP as a draft PR, documents th
 
 | Trigger | Action | PR label |
 |---|---|---|
-| Clean completion, CI green | Non-draft PR | `ready-for-review` |
-| DS gap discovered | Run `ds-fix-during-migration`; continue | — |
+| Clean completion, CI green, no `// pastiche-unresolved-doubt:` markers | Non-draft PR | `ready-for-review` |
+| `// pastiche-unresolved-doubt:` markers present after pastiche | Commit WIP, draft PR + comment listing each `file:line` + reviewer doubt, stop | `needs-decision` |
+| DS gap suspected (missing/broken atom; pastiche or typecheck signals) | Commit WIP, draft PR + comment naming the suspected gap, stop. Never auto-invoke `ds-fix-during-migration`. | `needs-decision` |
 | Spec ambiguity | Commit WIP, draft PR + question block, stop | `needs-decision` |
 | File scope drift (touched outside `## Files`) | Commit WIP before drift, draft PR, stop | `needs-decision` |
 | Tests fail unexpectedly | Commit WIP + test output, draft PR, stop | `needs-decision` |
