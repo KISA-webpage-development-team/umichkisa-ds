@@ -242,6 +242,37 @@ The strong-no is a contract: the implementer takes ownership of a deliberate cho
 
 The two-round shape matches the empirically-validated cadence of the existing `ds-client-constrained-execution` skill, which has not yet hit a hard stop in real use. If real Pastiche workloads show two rounds insufficient, the bump path is to three rounds with a final-round exit ritual (§19).
 
+### 7.5.1 Comment protocol & doubt-list schema
+
+The dialogue is mediated by structured agent-to-agent transport, not by inline source comments. Source stays clean on convergence; only failure surfaces inline.
+
+**Doubt list (reviewer → round-2 implementer).** The reviewer's final response is a structured list, one item per doubt:
+
+```yaml
+- file: <path>
+- line: <number>
+- comment: <one-line natural-language doubt>
+```
+
+Three fields. The `comment` is expert-voice prose, not a structured citation — the persona produces it the way a human PR reviewer would ("I think this should be the Button component instead of a raw `<button>`."). Reviewer is read-only; it does not mutate source.
+
+**Round-2 disposition (implementer → parent skill).** For each doubt, the implementer takes exactly one of:
+
+- **`corrected`** — Edit the source to address the doubt; implementation changes.
+- **`defended`** — Implementation stands; provide a one-line reason. If the reason is "KNOWLEDGE has no fitting mapping for this scenario," tag it `knowledge-gap` (greppable for the §10 living-document loop).
+
+The disposition list is part of round-2's structured response, not written into source. Strong-no rationales propagate to human PR reviewers via the parent skill's surfacing (PR description, commit footer — orchestrator-defined), not via inline `pastiche-strong-no:` markers. Inline strong-no comments would clutter source for limited durable value: defended doubts represent successful resolution of agent-to-agent dialogue, not enduring code documentation.
+
+**Failsafe — `// pastiche-unresolved-doubt:` (parent skill, post-round-2).** If the round-2 disposition list is missing or skips any doubt from the reviewer's list, the parent skill writes an inline comment at the doubt's `file:line`:
+
+```tsx
+// pastiche-unresolved-doubt: <comment from reviewer>
+```
+
+This is the only inline comment the protocol introduces. It is a failure surface — convergent runs leave none. Surviving comments are visible to human PR reviewers, providing a loud signal that the bounded loop did not close cleanly.
+
+**Round-1 implementer report (→ reviewer).** Files changed, brief implementation summary, optional `knowledge-gap` notes (scenarios where round 1 fell back to raw because no fitting mapping existed). The reviewer consumes this alongside the source.
+
 ### 7.6 Why this is asymmetrically safe
 
 False positives in speculative doubt are cheap: the implementer simply responds with strong-no, costing one extra round. False negatives (a real DS violation missed) are expensive: it ships.

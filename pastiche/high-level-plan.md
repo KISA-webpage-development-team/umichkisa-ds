@@ -31,9 +31,12 @@ KISA DS is the v1 testbed. The plan walks bottom-up: vertical slice → template
 - Fails closed on any unresolved tag/reference. Clear error message naming the offending document, line number, and atom.
 - Tested in isolation.
 
-## Phase 5 — `pastiche-implementer` agent
+## Phase 5 — `pastiche-implementer` agent [DONE]
 
-- Draft prompt. Persona, KNOWLEDGE consumption, tagged WISDOM grep, conservative fallback per spec §6.
+- Two custom agent files: `pastiche-implementer-round1` (Opus, task-driven) and `pastiche-implementer-round2` (Sonnet, doubt-resolution-driven).
+- Doubt-list and report schemas codified in spec §7.5.1.
+- Project-agnostic; both read KNOWLEDGE/WISDOM at convention path `pastiche/`. Implementer never reads FACT.
+- Conservative fallback per spec §6.1; no escalation hatch (the doubt loop covers it).
 
 ## Phase 6 — `pastiche-reviewer` agent
 
