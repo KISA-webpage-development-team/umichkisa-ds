@@ -37,14 +37,43 @@ Wait for user confirmation. NEVER execute without explicit go-ahead.
 | A | `docs/plans/client-migration/HARNESS_DESIGN.md` (Per-Phase Internal Flow); `AUTONOMOUS_PROTOCOL.md` Part 2 (§5 issue template) |
 | B | `AUTONOMOUS_PROTOCOL.md` Part 2 (§5 issue template + §6 6-rule gate) |
 | C1 / C2 | `review-pr-queue` skill (handles its own loads); `AUTONOMOUS_PROTOCOL.md` §3 only if mode flow needs disambiguation |
-| D | If lane is tagged `needs-interactive`: invoke `grill-me` first to align on approach **before** loading pastiche (interactive lanes exist precisely because they need live discussion; skipping the grill defeats the tag). Then: `pastiche` skill (DS-repo only — pastiche docs live at `umichkisa-ds/pastiche/`; do NOT invoke from `KISA-website/client/`); `AUTONOMOUS_PROTOCOL.md` §3.3 (post-pastiche workflow) + §11 (lane-state annotation) |
+| D | See "Mode D workflow" below. |
 | E | `ds-phase-end-bump` skill; HARNESS_DESIGN.md "Phase close-out" section |
 
 `docs/DS_CODEBASE.md` is loaded only if the current task involves DS surface discovery (typically Mode A grill or Mode D when a new component is needed).
 
+### Mode D workflow
+
+Mode D = live interactive execution against a worktree off `dev`, direct-push to `dev`, no PR.
+
+**Setup**
+
+1. If lane is tagged `needs-interactive`: invoke `grill-me` first to align on approach **before** any implementation (interactive tag exists because the lane needs live discussion).
+2. Create worktree: `client/.worktrees/<lane-id>` off `origin/dev`, branch `ds-client-migration/phase-<N>/<lane-id>`.
+3. Invoke `pastiche` skill (DS-repo only — pastiche docs live at `umichkisa-ds/pastiche/`; never invoke from `KISA-website/client/`). Pass the locked decisions from grill as overlay.
+
+**Post-pastiche**
+
+`pastiche` is DS-scoped: it does not typecheck, run tests, run general code-quality review, or commit. After it returns, walk through these with the user:
+
+4. **Triage `// pastiche-unresolved-doubt:` markers** (block commit) — read each with the user; fix or accept; delete the marker line in either case.
+5. **Triage `## Follow-ups`** (do not block) — each is a `KNOWLEDGE.md` / `WISDOM.md` candidate. Append + re-run tag-sanity, or skip as noise. May defer.
+6. **Run `pnpm typecheck`** from the worktree. Fix anything.
+7. **Suggest code-quality reviews — do not auto-run (token-heavy):**
+   - **If the lane touches UI**, always suggest `vercel-react-best-practices` (final React/Next.js pass).
+   - **Suggest one of:**
+     - `toss-frontend-fundamentals` — when lane is logic-heavy (state, effects, data flow, hooks, transformations).
+     - `review-ui-on-browser` — when lane is UI-heavy (visual layout, component composition, interactions).
+   - Pick based on the lane's actual character; only suggest both if it's genuinely both. User can say skip.
+
+**Ship — confirm before merging**
+
+8. Confirm with user before merging (see `feedback_no_auto_merge`). When user says "merge", merge worktree branch into `dev` and push directly (no PR — see `feedback_interactive_direct_push`).
+9. **STOP after push if user said "let me test"** — do NOT auto-wrap (see `feedback_merge_is_not_wrapup`). Only proceed to wrap-up when user explicitly confirms the feature works.
+
 ### Wrapping up a merged PR / lane
 
-Invoke `wrapping-up-pr`.
+Invoke `wrapping-up-pr` — only after user confirms feature works (or for autonomous PRs in Mode C1/C2).
 
 ### Closing a phase (Mode E)
 
