@@ -20,7 +20,8 @@ const defaultCode = `import { Container } from '@umichkisa-ds/web'
   <p>Page content constrained to 1536px with responsive padding.</p>
 </Container>`
 
-const allSizesCode = `<Container size="default">  {/* 1536px — page shell */}
+const allSizesCode = `<Container size="full">     {/* no cap — full-screen app shells */}
+<Container size="default">  {/* 1536px — page shell */}
 <Container size="lg">       {/* 1024px — wide landing/dashboard */}
 <Container size="md">       {/* 768px  — settings, auth */}
 <Container size="sm">       {/* 640px  — login forms */}
@@ -150,6 +151,11 @@ export default async function ContainerPage() {
       </p>
       <ComponentPreview code={allSizesCode} highlightedCode={allSizesHighlighted}>
         <div className="w-full flex flex-col gap-2">
+          {/* full — no max-width, dashed to distinguish from default */}
+          <div className="w-full rounded-md border-2 border-dashed border-brand-primary bg-brand-primary/10 px-3 py-2 flex items-center justify-between">
+            <span className="type-caption text-foreground">full</span>
+            <span className="type-caption text-foreground">no cap — full-screen app shell</span>
+          </div>
           {/* default — full width reference */}
           <div className="w-full rounded-md bg-brand-primary px-3 py-2 flex items-center justify-between">
             <span className="type-caption text-brand-foreground">default</span>
@@ -191,6 +197,11 @@ export default async function ContainerPage() {
             </TableHeader>
             <TableBody>
               <TableRow>
+                <TableCell><InlineCode>full</InlineCode></TableCell>
+                <TableCell>—</TableCell>
+                <TableCell>Full-screen app shells (dashboards, admin tools) that should fill the viewport on any display. No max-width cap.</TableCell>
+              </TableRow>
+              <TableRow>
                 <TableCell><InlineCode>default</InlineCode></TableCell>
                 <TableCell>1536px</TableCell>
                 <TableCell>Standard page layout — most pages use this.</TableCell>
@@ -220,6 +231,11 @@ export default async function ContainerPage() {
         </div>
         <div className="block md:hidden">
           <TableMobileList>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>full</strong></span>
+              <span className="type-caption text-muted-foreground">no cap</span>
+              <span className="type-caption text-muted-foreground">Full-screen app shells (dashboards, admin tools) that should fill the viewport.</span>
+            </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>default</strong></span>
               <span className="type-caption text-muted-foreground">1536px</span>
@@ -434,9 +450,9 @@ export default async function ContainerPage() {
             <TableBody>
               <TableRow>
                 <TableCell><InlineCode>size</InlineCode></TableCell>
-                <TableCell><InlineCode>&quot;default&quot; | &quot;lg&quot; | &quot;md&quot; | &quot;sm&quot; | &quot;prose&quot;</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;full&quot; | &quot;default&quot; | &quot;lg&quot; | &quot;md&quot; | &quot;sm&quot; | &quot;prose&quot;</InlineCode></TableCell>
                 <TableCell><InlineCode>&quot;default&quot;</InlineCode></TableCell>
-                <TableCell>Maximum width constraint. default (1536px), lg (1024px), md (768px), sm (640px), prose (~65ch).</TableCell>
+                <TableCell>Maximum width constraint. full (no cap), default (1536px), lg (1024px), md (768px), sm (640px), prose (~65ch).</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell><InlineCode>as</InlineCode></TableCell>
@@ -463,8 +479,8 @@ export default async function ContainerPage() {
           <TableMobileList>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>size</strong></span>
-              <span className="type-caption text-muted-foreground"><InlineCode>&quot;default&quot; | &quot;lg&quot; | &quot;md&quot; | &quot;sm&quot; | &quot;prose&quot;</InlineCode> · default <InlineCode>&quot;default&quot;</InlineCode></span>
-              <span className="type-caption text-muted-foreground">Maximum width constraint. default (1536px), lg (1024px), md (768px), sm (640px), prose (~65ch).</span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&quot;full&quot; | &quot;default&quot; | &quot;lg&quot; | &quot;md&quot; | &quot;sm&quot; | &quot;prose&quot;</InlineCode> · default <InlineCode>&quot;default&quot;</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Maximum width constraint. full (no cap), default (1536px), lg (1024px), md (768px), sm (640px), prose (~65ch).</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>as</strong></span>

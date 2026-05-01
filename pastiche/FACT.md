@@ -281,7 +281,7 @@ package: @umichkisa-ds/web
 
 Props:
   ...React.HTMLAttributes<HTMLElement>
-  size?: "sm" | "md" | "lg" | "xl" | "default" | "prose"
+  size?: "sm" | "md" | "lg" | "xl" | "default" | "prose" | "full"
   as?:   AllowedElement
 
 ### [Grid]
