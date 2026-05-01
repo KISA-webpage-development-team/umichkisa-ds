@@ -492,46 +492,76 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6. Drives `autonomous-ready` vs `needs-in
 ## Lane 3.8 — Stock tab full redesign
 
 **Repo:** `KISA-website-client`
-**Mode:** `needs-interactive` (REDESIGN — inline-edit race conditions need live verify)
+**Mode:** `autonomous-ready` (decisions locked via grill 2026-05-01)
 
 ### Files
 
 - Modify: `src/features/pocha/components/dashboard/StockManager.tsx` (full rewrite)
+- Modify: `src/features/pocha/hooks/useMenu.tsx` (additive — adds `updateMenuStock` helper)
 
-### Locked spec
+### What to drop
 
-**Drop entirely:** `window.location.reload`, every `alert(...)`, native `<input>`, `selectedMenu` / `customStock` state, the "Reload Stock" button, all raw color classes (`bg-blue-500`, `bg-red-500`, `bg-green-500`, etc.).
+`window.location.reload`, every `alert(...)`, native `<input>`, `selectedMenu` / `customStock` state, the "Reload Stock" button, all raw color classes (`bg-blue-500`, `bg-red-500`, `bg-green-500`, etc.). Replace existing Korean strings in this file (only `메뉴를 가져오는중...` today) — app is shifting English-first.
 
-**Layout:** DS `Table` with columns `[Menu, Category, Stock, Action]`.
+### Behavior spec (atom-agnostic — pastiche maps to DS atoms)
 
-**Inline-edit on the Stock cell**
-- Row state: `editingId: number | null`, `editValue: string`
-- Not editing → display text value of `{stock}`
-- Editing (entered by click) → DS numeric `Input` with `min=0`, `autoFocus`. Key handling:
-  - `Tab` / `Enter` → commit
-  - `Escape` → cancel
-  - `blur` → commit
-- Commit calls `await changeStock({ menuID, quantity })` with optimistic local update (mutate `menuList` cache or call `mutate(...)` if SWR-backed); on failure → revert + DS `Toast`
+**Layout** — tabular at tablet/desktop (canonical surface), responsive list-card form at mobile widths. Columns: `Menu`, `Category`, `Stock`, `Action`. Rows are flat (server `MenuByCategory[]` flattened on client; Category becomes a column value).
 
-**Per-row sold-out action (Action cell)**
-- DS icon `Button` carrying a DS `Icon` (semantically a "zero out" / "cancel" affordance — exact icon name resolved by pastiche; **not** a trash/delete icon, since this is a clear-stock action, not a delete)
-- On click: open DS `Dialog` `"Set stock to 0?"`; on confirm, commit stock = 0 via the same `changeStock` flow
+**Inline-edit on Stock cell**
+- Single tap on the Stock value enters edit mode (gesture identical across breakpoints — same on mobile list-card).
+- Editing UI: numeric input, `min=0`, autofocus, value pre-populated.
+- Commit triggers: `Tab`, `Enter`, `blur`. Cancel: `Escape`.
+- `Tab` / `Shift+Tab` commits **and advances** focus to next/prev row's Stock cell within the *currently filtered+sorted* row list. At list boundary → commit + plain blur (no wrap).
+- **No-op commit** (committed value === current stock, OR empty string committed) → exits edit mode silently, no API call.
+- Commit calls `updateMenuStock(menuID, qty)` (new helper on `useMenu`, see Hook surface). Optimistic update; on failure → revert + error toast.
+- Inline-edit success is **silent** (cell value change is the confirmation).
 
-**Filter chips:** DS `ToggleGroup` (single-select). Options + filter rules:
-- `All` — all rows
+**Per-row sold-out action**
+- Action cell carries an action affordance (icon-button or equivalent — pastiche picks; semantically "zero out / mark sold out", **not** delete).
+- On activate → confirm dialog with title `Set stock to 0?`, body `This item won't be orderable.`, confirm `Set to 0`, cancel `Cancel`.
+- On confirm → same `updateMenuStock(menuID, 0)` flow.
+- Dialog-confirm zero path emits success toast `Marked sold out` (this path only — high-stakes, low-frequency).
+
+**Filter chips** — single-select segmented control. Options + rules:
+- `All` (default on mount) — all rows
 - `In stock` — `stock > 0`
 - `Low` — `1 ≤ stock ≤ 3`
 - `Sold out` — `stock === 0`
-Each option label includes a memoized count, e.g. `"All (12)"`.
 
-**Loading:** DS `Skeleton` rows.
-**Error:** DS `StatusView` (error variant) — title `"Failed to load stock."`, body shows `error.message`.
-**Empty (after filter):** centered muted caption `"No menus match this filter."`.
+Each chip label includes a memoized count, e.g. `All (12)`. Counts derived from `menuList` (not from filtered subset).
+
+**Toolbar** — filter chips + a refresh affordance (icon button) that calls `refetch()` (NOT `window.location.reload`).
+
+**Loading** — skeleton rows (pastiche atom).
+**Error** — error state with title `Couldn't load stock` + body showing `error.message`.
+**Empty (after filter)** — `No items match this filter`.
+
+### Hook surface change (`useMenu.tsx`)
+
+Add a returned helper:
+```ts
+updateMenuStock(menuID: number, quantity: number): Promise<boolean>
+```
+- Internally uses SWR's bound `mutate` to optimistically patch the nested `MenuByCategory[]` cache (find row by `menuID`, replace `stock`).
+- Calls `mutate(updater, { revalidate: false })` — we do not want a refetch round-trip on every keystroke commit.
+- Awaits `changeStock({ menuID, quantity })`.
+- On failure: rolls back via `mutate` + calls `refetch()` to reconcile with server. Returns `false`.
+- On success: returns `true`.
+
+Purely additive — existing five `useMenu` consumers (`pocha/manage/page.tsx`, `DashboardStatsStrip.tsx`, `MenuList.tsx`, `PreviousPochaDetailDialog.tsx`, this file) are unaffected.
+
+### Race-safety
+
+Per-row request-id (last-write-wins) — **no real `AbortController`**, no change to `changeStock` API:
+- Component holds `latestReqId: Map<menuID, number>`.
+- Each commit increments and captures `myId`.
+- After `await updateMenuStock(...)`: if `myId !== latestReqId.get(menuID)` → drop the result silently (no revert, no toast). The latest commit wins; stale failures are invisible to the user.
 
 ### Tasks
 
-- [ ] Rewrite `StockManager.tsx` per spec
-- [ ] Per-row request id tracking: `inFlight: Map<menuID, AbortController>` so concurrent edits don't cross-revert
+- [ ] Add `updateMenuStock` to `useMenu.tsx`
+- [ ] Rewrite `StockManager.tsx` per behavior spec
+- [ ] Per-row request-id tracking (Map) for race safety
 - [ ] Filter counts memoized on `menuList`
 - [ ] Pass `ds-client-review`
 - [ ] `npm run build` + `npm run typecheck` + manual smoke pass (commit cell A, then cell B before A returns; verify only A reverts on A's failure)
@@ -539,21 +569,26 @@ Each option label includes a memoized count, e.g. `"All (12)"`.
 ### Acceptance criteria
 
 - [ ] No `window.location.reload`, no `alert`, no native `<input>` in file
-- [ ] Inline-edit commits via Tab/Enter/blur; Escape cancels
-- [ ] Per-row `✕` opens Dialog → confirm → stock set to 0
-- [ ] Filter chips update counts reactively
-- [ ] Race-test passes: A fails after B succeeds → only A reverts
+- [ ] No Korean strings remain in file
+- [ ] Inline-edit commits via Tab/Enter/blur; Escape cancels; Tab/Shift+Tab advances within filtered list
+- [ ] No-op commits (unchanged value or empty) skip the API call
+- [ ] Per-row sold-out action opens confirm dialog → confirm → stock set to 0 + success toast
+- [ ] Filter chips update counts reactively; default = `All`
+- [ ] Refresh button calls `refetch()`, not full reload
+- [ ] Race-test passes: A fails after B succeeds → only A's stale failure is silently dropped, visible value stays at B
+- [ ] Mobile (375px) renders the responsive list-card form with same single-tap edit gesture
 
 ### Non-goals
 
-- SWR migration of `useMenu` (kept as-is per audit)
+- SWR migration of `useMenu` (kept as-is per audit; only adds helper)
 - Bulk-edit / bulk-zero (out of scope, low frequency)
 - Adding new menu items here (handled by `/pocha/manage`)
+- Flipping `revalidateOnFocus` on `useMenu` (cross-cuts other consumers)
 
 ### Bailout triggers
 
-- DS `Table` API requires a different row/cell model than expected (e.g., row-render-prop only) — adapt; document
-- No DS `Icon` available that semantically reads as "zero out / sold out" — bail to `ds-fix-during-migration` only if no equivalent exists at all
+- DS atom for tabular display + responsive mobile pairing not workable for inline-edit gesture — bail to `needs-decision`
+- No DS atom semantically suitable for "zero out / mark sold out" affordance — try closest equivalent first; bail to `ds-fix-during-migration` only if nothing exists
 
 ---
 
