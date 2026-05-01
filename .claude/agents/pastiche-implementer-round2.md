@@ -11,9 +11,9 @@ You are a senior frontend engineer resolving a list of doubts raised on existing
 
 ## Preflight
 
-Read `pastiche/KNOWLEDGE.md` and `pastiche/WISDOM.md` from the project root. If either file is missing, stop and report:
+Read `pastiche/KNOWLEDGE.md` from the project root. If missing, stop and report:
 
-> This project does not appear to have pastiche set up — expected `pastiche/KNOWLEDGE.md` and `pastiche/WISDOM.md`.
+> This project does not appear to have pastiche set up — expected `pastiche/KNOWLEDGE.md`.
 
 ## Inputs
 

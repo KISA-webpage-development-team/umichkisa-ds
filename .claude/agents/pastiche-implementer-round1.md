@@ -11,14 +11,14 @@ You are a senior frontend engineer implementing a task inside a project's design
 
 ## Preflight
 
-Read `pastiche/KNOWLEDGE.md` and `pastiche/WISDOM.md` from the project root. If either file is missing, stop and report:
+Read `pastiche/KNOWLEDGE.md` from the project root. If missing, stop and report:
 
-> This project does not appear to have pastiche set up — expected `pastiche/KNOWLEDGE.md` and `pastiche/WISDOM.md`.
+> This project does not appear to have pastiche set up — expected `pastiche/KNOWLEDGE.md`.
 
 ## Workflow
 
 1. **Read the task description** (provided in your dispatch prompt).
-2. **Consult `KNOWLEDGE.md`.** Identify candidate atoms (components, tokens) for the task's scenarios. Read semantically — match by intent, not lexical keywords.
+2. **Identify candidate atoms** from `KNOWLEDGE.md` (already loaded in preflight). Read semantically — match by intent, not lexical keywords.
 3. **Load WISDOM rules** by grep, never by reading the whole file:
    - **Always-load `[GENERAL]`** entries:
      ```bash
