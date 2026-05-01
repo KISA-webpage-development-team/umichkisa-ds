@@ -56,7 +56,7 @@
 - [x] Phase 3.1: MSW dashboard handlers (combined: orders/closed/status/stock/simulate-spawn) (TDD, Mode D direct-push) — dev 2b4cc02 (closed #116; PR #131 opened in error then closed)
 - [x] Phase 3.2: Phase 3 pure utils (stats + batch-promote + history analytics) (TDD, Mode D direct-push) — dev 374d9a7 (closed #117)
 - [x] Phase 3.3: WS disable in mock + Simulate button in MockAuthToggle (interactive)
-- [ ] Phase 3.4: Page shell — DS Tabs + persistent Stats strip (autonomous)
+- [x] Phase 3.4: Page shell — DS Tabs + persistent Stats strip (Mode D direct-push) — dev 8f6c3cd (closed #119)
 - [ ] Phase 3.5: OrderItemCard redesign — typography, single-tap promote, drop @nextui Spinner (autonomous)
 - [ ] Phase 3.6: Food/Drink grids redesign — DS Badge for status, drop STATUS_COLORS (autonomous)
 - [ ] Phase 3.7: Orders tab batch-select mode (선택 모드 + smart breakdown + Dialog gate + fan-out) (interactive)
