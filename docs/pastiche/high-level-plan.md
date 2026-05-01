@@ -23,7 +23,7 @@ KISA DS is the v1 testbed. The plan walks bottom-up: vertical slice → template
 - **3b. KNOWLEDGE seeding.** Brand prose grilling with user; scenario→atom mappings seeded from `DS_CLIENT_USAGE.md`.
 - **3c. WISDOM seeding.** Atom-intrinsic rules ported from `DS_CONSTRAINTS.md`. Scenario-conditional rules redirected to KNOWLEDGE per spec §3.3.
 
-## Phase 4 — Cross-doc tag-sanity lint
+## Phase 4 — Cross-doc tag-sanity lint [DONE]
 
 - Standalone CI script. Single source of truth: FACT.md.
 - **WISDOM.md:** every `[atom]` tag must match a FACT entry verbatim — components by exported name, tokens in `--`-prefixed form. `[GENERAL]` is the lone allow-listed non-FACT tag (spec §4).

@@ -6,7 +6,9 @@
     "dev": "turbo dev",
     "typecheck": "turbo typecheck",
     "test": "turbo test",
-    "pastiche:fact": "tsx scripts/pastiche/extract-fact.ts"
+    "pastiche:fact": "tsx scripts/pastiche/extract-fact.ts",
+    "pastiche:lint": "tsx scripts/pastiche/lint-tags.ts",
+    "pastiche:lint:test": "node --import tsx --test scripts/pastiche/lint-tags.test.ts"
   },
   "devDependencies": {
     "@google/design.md": "0.1.1",
