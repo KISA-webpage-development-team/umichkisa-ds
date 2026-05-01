@@ -22,6 +22,7 @@ Then check repo state:
 | Sitting PR(s) for `phase-<N>`; selected PR has neither `needs-decision` nor `needs-interactive` label, CI green | **Mode C1** — PR review (ready-to-merge) |
 | Sitting PR(s) for `phase-<N>`; selected PR has `needs-decision` or `needs-interactive` label | **Mode C2** — PR review (interactive/decision) |
 | `plan.md` exists, open `needs-interactive` issues without linked PRs (or user override to execute live) | **Mode D** — Interactive execution |
+| `plan.md` exists, next-up lane is `autonomous-ready` and you're driving live (this terminal, not the cron routine) | **Mode D** — autonomous-ready label only routes to autonomous flow inside the cron routine; live execution is always Mode D (worktree off dev, direct-push to dev, no PR) |
 | All lanes merged for the phase | **Mode E** — Phase close-out |
 
 **Propose, don't execute.** Say:
