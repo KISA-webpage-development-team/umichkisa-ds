@@ -17,7 +17,7 @@ KISA DS is the v1 testbed. The plan walks bottom-up: vertical slice → template
 - Abstract FACT.md / KNOWLEDGE.md / WISDOM.md templates from the slice.
 - Concise, well-structured, optimized per doc's purpose and lifecycle.
 
-## Phase 3 — Doc generation (parallel sub-phases)
+## Phase 3 — Doc generation (parallel sub-phases) [DONE]
 
 - **3a. FACT script.** Mechanical extractor from KISA codebase (TS types, theme.css, barrel exports).
 - **3b. KNOWLEDGE seeding.** Brand prose grilling with user; scenario→atom mappings seeded from `DS_CLIENT_USAGE.md`.
