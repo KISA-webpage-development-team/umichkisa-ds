@@ -46,9 +46,12 @@ KISA DS is the v1 testbed. The plan walks bottom-up: vertical slice → template
 - Three explicit passes (FACT, WISDOM, speculative doubt). Output is a 5-section report; the `## Doubts` block carries strict YAML — one map per doubt, three keys (`file`, `line`, `comment`), `[]` when none.
 - Spec §7.5.1 amended to codify the strict-YAML shape (prior snippet was syntactically ambiguous).
 
-## Phase 7 — `pastiche` skill
+## Phase 7 — `pastiche` skill [DONE]
 
-- Wire implementer + reviewer into the 2-round loop per spec §7.5.
+- `.claude/skills/pastiche/SKILL.md`. Project-agnostic; description triggers on a frontend task in any project that has set up `pastiche/{FACT,KNOWLEDGE,WISDOM}.md`.
+- Preflight verifies all three docs upfront (cheaper than per-agent failure mid-loop).
+- Workflow: dispatch round-1 → reviewer → branch on doubts → dispatch round-2 → write inline `// pastiche-unresolved-doubt:` failsafe at any `file:line` that round-2's "Doubts — resolved" omitted.
+- Output is a single task report (Summary + optional Follow-ups), framed for the consumer — no rounds/doubts mechanics surfaced.
 - Calibration of agent prompts happens during real client-migration usage, not before.
 
 ## Phase 8 — Cutover
