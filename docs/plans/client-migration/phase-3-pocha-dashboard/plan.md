@@ -1,6 +1,8 @@
 # Phase 3 — pocha-dashboard (Plan)
 
 > Lanes from this plan become GitHub issues executed per `docs/plans/client-migration/AUTONOMOUS_PROTOCOL.md`. All Phase 3 lanes file in the **client repo** (`KISA-webpage-development-team/KISA-website-client`) — no DS-side lane this phase. Labels, bailout triggers, budgets, and non-goals live on the issues — implementation only below. Source of truth: `./audit.md`.
+>
+> **UI fidelity is handled by `pastiche`, not by this plan.** Lane specs describe behavior, contracts, state machines, and acceptance criteria — they intentionally do **not** prescribe exact classes, exact variant names, exact spacing, or exact typography utilities. Pastiche resolves those choices against the DS repo's `pastiche/{FACT,KNOWLEDGE,WISDOM}.md`. Where a lane spec mentions a DS primitive (e.g. `Card`, `Tabs`, `Dialog`, `Table`, `ToggleGroup`, `Badge`, `StatusView`, `Toast`, `Skeleton`, `Icon`), it names the primitive — choosing the right variant/size/density is pastiche's job.
 
 **Scope:** Migrate `pocha-dashboard` (`/pocha/dashboard`) — admin-only Kitchen Display System for live order fulfillment, stock management, and post-event reporting — from pre-DS client code into DS-tokenized, DS-componentized, idiomatic implementation. Full `[REDESIGN]` of all three tabs (Orders / Stock / History): replace bespoke kanban + native `<input>` stock editor + raw `<table>` history + bespoke fixed-inset modal with DS primitives. Preserve: admin gate (already in `page.tsx`), order state machine semantics (food vs drink branching), Korean labels, real-backend API contract.
 
@@ -225,9 +227,9 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6. Drives `autonomous-ready` vs `needs-in
 
 - [ ] In `useDashboardOrderSocket`, early-return `null` (and skip the socket effect entirely) when `process.env.NEXT_PUBLIC_MOCK_API === "1"` (or use the existing `IS_MOCK_MODE` constant if exported from `@/constants/env` or `@/lib/auth/authContext`). **Prod path 100% untouched.**
 - [ ] Wire up "Simulate order" button in `MockAuthToggle`:
-  - Visible only when `isAuthenticated && isAdmin && pathname === "/pocha/dashboard"` (use `usePathname()` from `next/navigation`)
-  - DS `Button` `variant="outline"` `size="sm"`, label `"Simulate order"`, leading DS `Icon` (`Plus` or `Sparkles`)
-  - On click: `fetch("/api/v2/pocha/_mock/spawn-order/" + activePochaID, { method: "POST", headers: { Authorization: "Bearer " + mockToken } })` → on success show DS `Toast` `"Order added"`; on error show error Toast
+  - Visibility: only when `isAuthenticated && isAdmin && pathname === "/pocha/dashboard"` (use `usePathname()` from `next/navigation`)
+  - Affordance: DS `Button` with a leading DS `Icon`, label `"Simulate order"` (variant/size/icon-name resolved by pastiche)
+  - On click: `fetch("/api/v2/pocha/_mock/spawn-order/" + activePochaID, { method: "POST", headers: { Authorization: "Bearer " + mockToken } })` → on success surface a DS `Toast` `"Order added"`; on error surface an error Toast
   - Active pochaID source: read from URL search params or call `usePochaID()` (whichever lane 3.1's spawn endpoint expects — pochaID lives in URL `?pochaID=N` or query a fixture-default constant)
 - [ ] Discuss in grill: where should `addNewOrderItem` get the new order? Two options — (a) Simulate button calls handler that returns `OrderItem`, then dispatches a custom DOM event listened by `useDashboardOrders` to push into `ordersMap`; (b) Simulate button just calls the spawn endpoint and the dashboard polls/refetches. **Lock during execution grill.** Default proposal: option (a) with a `window.dispatchEvent(new CustomEvent("mock:new-order", { detail: orderItem }))` listened by `useDashboardOrders` only when `IS_MOCK_MODE`.
 - [ ] `npm run build` + `npm run typecheck` + `npm test` pass
@@ -270,21 +272,18 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6. Drives `autonomous-ready` vs `needs-in
 - [ ] Restructure `page.tsx`:
   - Keep admin gate + loading guards (untouched)
   - Render `<DashboardStatsStrip pochaID={pochaID} token={token} />` above the tabs
-  - Replace `<DashboardTabs ... /> + <DashboardTabContent ... />` with a single DS `<Tabs value={activeTab} onValueChange={setActiveTab}>` shell containing 3 `<TabsTrigger>` (`Orders`, `Stock`, `History`) and 3 `<TabsContent>` slots wrapping `<OrderDashboard />`, `<StockManager />`, `<OrderHistoryTable />`
-  - Preserve URL sync via `updateURLWithTab` — call from `onValueChange`
+  - Replace `<DashboardTabs ... /> + <DashboardTabContent ... />` with a single DS `Tabs` shell controlling 3 panels (`Orders`, `Stock`, `History`) wrapping `<OrderDashboard />`, `<StockManager />`, `<OrderHistoryTable />` respectively
+  - Preserve URL sync via `updateURLWithTab` — wire to the Tabs value-change handler
   - **Delete** the "To promote Order Item to next status, 1. select the order item, 2. click the Promote button" copy entirely (single-tap promote in 3.5 + batch-select mode in 3.7 makes this irrelevant)
-  - Container: `<section className="full-width-container px-2 py-4 md:py-6">` — keep page padding on the same axis as Phase 2
+  - Page container axis matches Phase 2 (same horizontal padding rhythm)
 
 - [ ] Build `DashboardStatsStrip.tsx`:
   - Consumes `useDashboardOrders(pochaID, token)` → `ordersMap` + `useMenu(pochaID, token)` → `menuList`
   - `useMemo` over `computeStats(Array.from(ordersMap.values()), menuList)`
-  - Layout: 4 stat cards in a row at md+ (`grid-cols-4 gap-3`), 2×2 at sm (`grid-cols-2`), single-column at xs (`grid-cols-1`)
-  - Each card: DS `Card` (no `hoverable`), inside: `type-caption text-muted-foreground` label + `type-h3 !font-semibold text-foreground` value + optional `text-status-warning` / `text-status-error` accent for `lowStock` / `soldOut` when value > 0
-  - Labels: `Active`, `Pending`, `Low stock (≤3)`, `Sold out (=0)`
-  - Loading: 4 `<Card><Skeleton className="h-4 w-1/2" /><Skeleton className="h-7 w-1/3 mt-2" /></Card>`
-  - Error: silently fall back to dashes (`—`) — strip is a signal aid, not blocking content
-
-- [ ] DS `Tabs` styling — match Phase 2 tab patterns; tab triggers use `type-body` weight `semibold` when active; underline indicator is the DS default
+  - Renders 4 stats — `Active`, `Pending`, `Low stock (≤3)`, `Sold out (=0)` — using DS `Card` containers, with the `Low stock` / `Sold out` values visually accented (warning / error tone) when their value > 0
+  - Layout adapts across breakpoints (4 across at desktop, denser at narrow widths) — exact grid resolved during execution
+  - Loading: DS `Skeleton` placeholders inside the same card containers (label + value)
+  - Error: silently fall back to em-dashes — strip is a signal aid, not blocking content
 
 - [ ] Pass `ds-client-review`; `npm run build` + `npm run typecheck` pass
 
@@ -320,17 +319,31 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6. Drives `autonomous-ready` vs `needs-in
 
 ### Locked spec
 
-- Drop: `useState<selected>`, `handleSelectCard`, the `border-blue-500` selected styling, `@nextui-org/react` `Spinner`, ad-hoc `STATUS_COLORS` import, all `text-gray-*` / `bg-white` / `shadow-md` raw classes
-- Replace: card chrome with DS `<Card hoverable>` (use whatever the closest equivalent prop is — see existing Phase 2 `Card` usage in `PreviosPochaSummary`)
-- Replace: `<Spinner />` with DS `<LoadingSpinner size="sm" />`
-- Typography hierarchy:
-  - Order# primary: `<span className="type-h3 !font-semibold text-foreground">#{orderItemID}</span>`
-  - Menu name + qty badge: `<span className="type-body !font-medium text-foreground">{nameKor}</span> <Badge variant="neutral" size="sm">×{quantity}</Badge>`
-  - Customer chip: `<Badge variant="outline" size="sm">{ordererName}</Badge>` below the menu line
-  - Status: removed from card body — column header carries status (lane 3.6)
-- Promote button: single DS `<Button variant="primary" size="sm" loading={loading} onClick={handlePromote}>Promote</Button>` — single tap (no select-first state). Disabled when `loading`.
-- Selection state from lane 3.7's batch-select mode is **prop-driven**: add optional props `isSelectMode?: boolean`, `isSelected?: boolean`, `onToggleSelect?: () => void` — when `isSelectMode` is true, hide the Promote button and render a DS `Checkbox` in the corner; when not in select mode, behave as single-tap card. Default props `false` / `false` / `undefined` preserve current single-tap semantics.
-- Long-press handler: `onPointerDown` + `setTimeout(500)` → if not released, call `onLongPress?.()` prop. Lane 3.7 wires this to enter select mode.
+**Drop entirely:**
+- `useState<selected>` + `handleSelectCard` + the legacy bordered "selected" affordance — selection now lives in batch-select mode (3.7)
+- `@nextui-org/react` `Spinner` import
+- Ad-hoc `STATUS_COLORS` import
+- Any raw color/shadow classes (`text-gray-*`, `bg-white`, `shadow-md`, `border-blue-500`, etc.) — DS-tokenized only
+
+**Card chrome:** DS `Card` (hoverable) — match the Phase 2 `PreviosPochaSummary` Card pattern.
+
+**Loading:** DS `LoadingSpinner`.
+
+**Card content hierarchy** (specifics — variant/size/weight — resolved by pastiche):
+- Primary: order number `#{orderItemID}` — strongest emphasis
+- Menu name + quantity badge (`×{quantity}`) inline
+- Customer chip (orderer name) below the menu line
+- **Status not rendered in the card body** — column header carries status (lane 3.6)
+
+**Promote interaction:**
+- Single DS `Button` labeled `Promote` — single tap (no select-first step), disabled while `loading`
+- Calls `handlePromote` directly; loading state visible during in-flight `changeOrderItemStatus`
+
+**Batch-select integration (prop-driven; consumed by 3.7):**
+- Optional props: `isSelectMode?: boolean`, `isSelected?: boolean`, `onToggleSelect?: () => void`, `onLongPress?: () => void`
+- When `isSelectMode` is true: hide the Promote button, render a DS `Checkbox` (or equivalent selection affordance) in the corner
+- When `isSelectMode` is false / undefined: behave as single-tap card (defaults preserve current semantics)
+- Long-press: `onPointerDown` + 500ms timer → if pointer not released, call `onLongPress?.()`; cancel on `pointerup` / `pointerleave` / `pointermove` past a small threshold
 
 ### Tasks
 
@@ -353,8 +366,8 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6. Drives `autonomous-ready` vs `needs-in
 
 ### Bailout triggers
 
-- DS `Card` does not accept the visual variant we need (e.g., needs a `compact` density not present) — `ds-fix-during-migration` candidate, but try existing variants first
-- DS `Badge` `outline` variant absent — fall back to `neutral` and document in `notes.md`
+- DS `Card` does not offer a density appropriate for a dense kanban card — `ds-fix-during-migration` candidate, but try existing variants first
+- DS `Badge` lacks a variant suited for the customer chip (subtle outline / neutral chip) — fall back to whatever closest exists and document in `notes.md`
 
 ---
 
@@ -370,15 +383,12 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6. Drives `autonomous-ready` vs `needs-in
 
 ### Locked spec
 
-- Column shells: `<div className="rounded-lg border border-border bg-surface-muted p-3 md:p-4">` (DS tokens only)
-- Column header: stack of `<Badge variant="<status-variant>" size="sm">{label}</Badge>` + count `<span className="type-caption text-muted-foreground">{N}</span>`
-  - Pending → `Badge variant="warning"` (yellow), label `"Pending"`
-  - Preparing → `Badge variant="info"` (blue), label `"Preparing"`
-  - Ready → `Badge variant="success"` (green), label `"Ready"`
-  - (Closed not rendered in dashboard grids — only in History)
-- Inter-card gap: `gap-3`
-- Empty state per column: `<div className="text-muted-foreground type-caption py-6 text-center">None</div>`
-- Drop `STATUS_COLORS` import from both files (only `OrderItemCard` consumed it; lane 3.5 removed that)
+- Column shells: DS-tokenized container (border + muted-surface background, rounded). Exact tokens chosen by pastiche.
+- Column header: DS `Badge` carrying the status label + a count caption.
+  - Status → label mapping: `pending → "Pending"`, `preparing → "Preparing"`, `ready → "Ready"`. Closed is **not** rendered in dashboard grids (History only).
+  - Status → Badge variant: warning-toned for `pending`, info-toned for `preparing`, success-toned for `ready`. Exact variant names resolved by pastiche against DS docs.
+- Empty state per column: a centered muted caption reading `"None"`.
+- Drop `STATUS_COLORS` import from both files (only `OrderItemCard` consumed it; lane 3.5 removed that).
 
 ### Tasks
 
@@ -400,7 +410,7 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6. Drives `autonomous-ready` vs `needs-in
 
 ### Bailout triggers
 
-- DS `Badge` lacks `info`/`warning`/`success` variant naming — adapt to closest equivalents (`primary`/`secondary`/`positive`); document in `notes.md`
+- DS `Badge` lacks a variant set that maps cleanly to status semantics (warning / info / success tones) — adapt to closest equivalents and document in `notes.md`
 
 ---
 
@@ -418,27 +428,33 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6. Drives `autonomous-ready` vs `needs-in
 
 ### Locked spec
 
-- Page-level `selectMode: boolean` toggle with a `<Button variant="ghost" size="sm">{selectMode ? "Done" : "Select"}</Button>` in the top-right of the Orders tab content (above grids, right-aligned)
-- Per-grid `selectedIds: Set<number>` (food and drink **independent** — selecting in food grid does not bleed into drink grid)
-- Per-grid sticky bottom action bar (visible iff `selectMode && selectedIds.size > 0`):
-  - DS `<Card>` pinned with `sticky bottom-4` + shadow
-  - Smart breakdown label via `formatBreakdown(computeBreakdown(selectedItems))` (lane 3.2 utils)
-  - Primary `<Button variant="primary">Promote</Button>` triggers promote
-  - Secondary `<Button variant="ghost">Cancel</Button>` clears selection
-- **Dialog gate:** if `requiresDialogGate(selectedItems)` returns true (any selected item is `ready` → would close), open DS `<Dialog>`:
+**Selection state model**
+- Page-level `selectMode: boolean` toggle, surfaced via a DS `Button` in the Orders tab's top-right (label flips between `"Select"` and `"Done"`)
+- Per-grid `selectedIds: Set<number>` — food and drink grids are **independent** (selecting in food grid does not bleed into drink grid, and vice versa)
+
+**Per-grid action bar** (visible iff `selectMode && selectedIds.size > 0`)
+- Sticky to the bottom of the grid, pinned with elevation (DS `Card` container — exact pinning/elevation chosen by pastiche)
+- Smart breakdown label via `formatBreakdown(computeBreakdown(selectedItems))` (lane 3.2 utils)
+- Primary action: `Promote` button — triggers the promote flow below
+- Secondary action: `Cancel` button — clears selection (does not exit select mode)
+
+**Promote flow**
+- **Dialog gate:** if `requiresDialogGate(selectedItems)` is true (any selected item is `ready` → would close), open DS `Dialog`:
   - Title: `"Close these orders?"`
-  - Body: `formatBreakdown(...)` + line `"Closed orders cannot be reverted."`
-  - Confirm `<Button variant="destructive">Close</Button>`, Cancel `<Button variant="ghost">Cancel</Button>`
-- **Otherwise (no `ready→closed`):** silent fan-out, no Dialog
+  - Body: `formatBreakdown(...)` + the line `"Closed orders cannot be reverted."`
+  - Confirm action: destructive-toned `Close` button; cancel action: `Cancel`
+- **Otherwise** (no `ready→closed` in selection): silent fan-out, no Dialog
 - Fan-out: `Promise.all(selectedItems.map(item => changeOrderItemStatus(item.orderItemID)))`
-  - Optimistic: pre-update `ordersMap` to next status before await
+  - Optimistic: pre-update `ordersMap` to next status before `await`
   - On per-item rejection: revert that item, accumulate failed list
-  - After all settle: Toast `"N promoted"` (or `"N promoted, M failed"` on partial failure)
+  - After all settle: surface a DS `Toast` — `"N promoted"` on full success, `"N promoted, M failed"` on partial failure
   - Clear `selectedIds` and exit select mode
-- Long-press on any card (when not already in select mode): enter select mode + select that card
-- Right-click on desktop maps to long-press (`onContextMenu` → `e.preventDefault()` + same handler)
-- Click in select mode: toggle that card's selection (does not call promote)
-- Click outside select mode: single-tap promote (existing 3.5 behavior)
+
+**Gestures**
+- Long-press (500ms) on a card outside select mode: enter select mode + select that card
+- Right-click on desktop maps to long-press: `onContextMenu` → `e.preventDefault()` → same handler
+- Click in select mode: toggle that card's selection (no promote)
+- Click outside select mode: single-tap promote (preserves 3.5 behavior)
 
 ### Tasks
 
@@ -469,7 +485,6 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6. Drives `autonomous-ready` vs `needs-in
 ### Bailout triggers
 
 - `useDashboardOrders` mutating `ordersMap` synchronously breaks React's reconciliation (e.g., shared Map reference) — `needs-decision` (fix: `setOrdersMap(new Map(prev))` clone-on-write)
-- DS `Dialog` does not support `variant="destructive"` on confirm button — substitute `variant="primary"` + warning copy; document
 - Long-press false-positives during scroll on tablet — `needs-decision` (may need `pointermove` cancellation)
 
 ---
@@ -485,16 +500,33 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6. Drives `autonomous-ready` vs `needs-in
 
 ### Locked spec
 
-- Drop: `window.location.reload`, every `alert(...)`, native `<input>`, `selectedMenu` / `customStock` state, `bg-blue-500`/`bg-red-500`/`bg-green-500` raw classes, the "Reload Stock" button
-- Layout: DS `<Table>` with columns `[Menu, Category, Stock, Action]`
-  - Row state: `editingId: number | null`, `editValue: string`
-  - Cell `Stock`: when not editing → text `{stock}`; when editing (click to start) → DS `<Input type="number" min="0" />` with `autoFocus`, `onKeyDown` Tab/Enter commits, Escape cancels, blur commits
-  - Commit: `await changeStock({ menuID, quantity })` with optimistic local update (mutate `menuList` cache or call `mutate(...)` if SWR-backed) + revert + Toast on failure
-  - Action cell: DS `<Button variant="ghost" size="icon">` with DS `<Icon name="XCircle">` (NOT `Trash2`) → on click, open DS `<Dialog>` confirming "Set stock to 0?"; on confirm, set stock to 0
-- Filter chips: DS `<ToggleGroup type="single" value={filter} onValueChange={setFilter}>` with options `All` / `In stock` (>0) / `Low` (1≤stock≤3) / `Sold out` (=0); each option label includes a count `"All (12)"`
-- Loading: DS `<Skeleton>` rows (5 placeholder rows)
-- Error: DS `<StatusView variant="error" title="Failed to load stock.">{error.message}</StatusView>`
-- Empty (after filter): `<div className="type-caption text-muted-foreground py-8 text-center">No menus match this filter.</div>`
+**Drop entirely:** `window.location.reload`, every `alert(...)`, native `<input>`, `selectedMenu` / `customStock` state, the "Reload Stock" button, all raw color classes (`bg-blue-500`, `bg-red-500`, `bg-green-500`, etc.).
+
+**Layout:** DS `Table` with columns `[Menu, Category, Stock, Action]`.
+
+**Inline-edit on the Stock cell**
+- Row state: `editingId: number | null`, `editValue: string`
+- Not editing → display text value of `{stock}`
+- Editing (entered by click) → DS numeric `Input` with `min=0`, `autoFocus`. Key handling:
+  - `Tab` / `Enter` → commit
+  - `Escape` → cancel
+  - `blur` → commit
+- Commit calls `await changeStock({ menuID, quantity })` with optimistic local update (mutate `menuList` cache or call `mutate(...)` if SWR-backed); on failure → revert + DS `Toast`
+
+**Per-row sold-out action (Action cell)**
+- DS icon `Button` carrying a DS `Icon` (semantically a "zero out" / "cancel" affordance — exact icon name resolved by pastiche; **not** a trash/delete icon, since this is a clear-stock action, not a delete)
+- On click: open DS `Dialog` `"Set stock to 0?"`; on confirm, commit stock = 0 via the same `changeStock` flow
+
+**Filter chips:** DS `ToggleGroup` (single-select). Options + filter rules:
+- `All` — all rows
+- `In stock` — `stock > 0`
+- `Low` — `1 ≤ stock ≤ 3`
+- `Sold out` — `stock === 0`
+Each option label includes a memoized count, e.g. `"All (12)"`.
+
+**Loading:** DS `Skeleton` rows.
+**Error:** DS `StatusView` (error variant) — title `"Failed to load stock."`, body shows `error.message`.
+**Empty (after filter):** centered muted caption `"No menus match this filter."`.
 
 ### Tasks
 
@@ -521,7 +553,7 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6. Drives `autonomous-ready` vs `needs-in
 ### Bailout triggers
 
 - DS `Table` API requires a different row/cell model than expected (e.g., row-render-prop only) — adapt; document
-- DS `Icon` `XCircle` absent — try `Ban` or `MinusCircle`; bail to `ds-fix-during-migration` only if no equivalent at all
+- No DS `Icon` available that semantically reads as "zero out / sold out" — bail to `ds-fix-during-migration` only if no equivalent exists at all
 
 ---
 
@@ -538,29 +570,27 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6. Drives `autonomous-ready` vs `needs-in
 
 #### `OrderHistoryTable.tsx`
 
-- DS `<Table>` with columns `[#, Menu, Category, Qty, Price, Total, Orderer email]` (all 7 columns; no truncation on email)
-- Filter chips: DS `<ToggleGroup type="single" value={filter} onValueChange={setFilter}>` with `All (N)` / `Food (N)` / `Drinks (N)` (counts memoized on full `orderHistory`)
-- Top-right summary trigger: DS `<Button variant="outline" size="sm" onClick={() => setOpenSummaryModal(true)}>View summary</Button>`
-- Loading: DS `<Skeleton>` rows
-- Error: replace `throw new Error(...)` with `<StatusView variant="error" title="Failed to load order history." />` — let `error.tsx` (lane 3.10) catch only true crashes
-- Empty (no history): `<StatusView variant="empty" title="No order history." />`
-- Empty (after filter): caption row inside the table-shell, not full StatusView
-- **Delete** the `console.log('menuMap', menuMap)` call (currently in body around the `convertOrderHistoryToMenuMap` call site) — verify with grep before commit
+- DS `Table` with all 7 columns: `[#, Menu, Category, Qty, Price, Total, Orderer email]`. No email truncation.
+- Filter chips: DS `ToggleGroup` (single-select) with `All (N)` / `Food (N)` / `Drinks (N)` (counts memoized on the full `orderHistory`).
+- Summary trigger: DS `Button` in the top-right labeled `"View summary"`, opens the Summary Dialog.
+- Loading: DS `Skeleton` rows.
+- Error: replace the existing `throw new Error(...)` with DS `StatusView` (error variant, title `"Failed to load order history."`) — let `error.tsx` (lane 3.10) catch only true crashes.
+- Empty (no history): DS `StatusView` (empty variant, title `"No order history."`).
+- Empty (after filter): caption row inside the table shell — not a full `StatusView`.
+- **Delete** the `console.log('menuMap', menuMap)` call (currently around the `convertOrderHistoryToMenuMap` call site) — verify with grep before commit.
 
 #### `OrderSummaryModal.tsx` → DS `Dialog` with B-lite analytics
 
-- Open: triggered by `View summary` button
-- Container: DS `<Dialog>` with `size="lg"` (or whatever the largest non-fullscreen size is); title `"Order summary"`, close via Dialog's built-in X
-- Body sections (vertical stack with `gap-6`):
-  1. **KPI cards row** (DS `<Card>` × 3): `Total revenue` (calculateTotalSales) · `Food revenue` (anjuRevenue) · `Drinks revenue` (drinkRevenue). Each card: caption label + `type-h3 !font-semibold` value
-  2. **Top 3 food** — DS `<Card>` containing a 3-row list rendered from `calculateFoodRankings(orderHistory)`. Each row: rank (1/2/3) + nameKor + `×${quantity}` + `$${revenue.toFixed(2)}`
-  3. **Top 3 drinks** — same structure, from `calculateDrinkRankings(orderHistory)`
-  4. **Soju breakdown** — DS `<Card>`: 2-row breakdown (regular vs fruit) with absolute counts and `(percentage%)`
-- Empty-history fallback: single line in body `"No order history for this pocha."`
-- **No charts** — pure text rows + DS Card containers (per audit Q5)
-- Replace `PochaCloseIcon` import with DS Dialog's built-in close
-- Drop bespoke fixed-inset overlay; DS `<Dialog>` provides this
-- Pass `pochaID` + `orderHistory` props from parent
+- Triggered by the `View summary` button. Title `"Order summary"`. Use the DS `Dialog`'s built-in close — drop the existing `PochaCloseIcon` import and the bespoke fixed-inset overlay.
+- Pass `pochaID` + `orderHistory` props from parent.
+- Body is a vertical stack of 4 sections:
+  1. **KPI row** — 3 DS `Card`s: `Total revenue` (`calculateTotalSales`), `Food revenue` (anjuRevenue), `Drinks revenue` (drinkRevenue). Each card: caption-style label + emphasized value.
+  2. **Top 3 food** — DS `Card` with 3 rows from `calculateFoodRankings(orderHistory)`. Each row: rank (1/2/3) + `nameKor` + `×{quantity}` + `${revenue.toFixed(2)}`.
+  3. **Top 3 drinks** — same structure, from `calculateDrinkRankings(orderHistory)`.
+  4. **Soju breakdown** — DS `Card`: 2-row breakdown (regular vs fruit) with absolute counts + `(percentage%)`.
+- Empty-history fallback: a single line in the body — `"No order history for this pocha."`
+- **No charts** — pure text rows + DS `Card` containers (per audit Q5).
+- Dialog size: large enough to fit the analytics body; exact size token chosen by pastiche.
 
 ### Tasks
 
@@ -585,7 +615,7 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6. Drives `autonomous-ready` vs `needs-in
 
 ### Bailout triggers
 
-- DS `Dialog` size `lg` insufficient for the analytics body — try `xl` if exists; else accept overflow scroll
+- DS `Dialog` largest size still insufficient for the analytics body — accept overflow scroll inside the body
 - `analyzeSojuSales` returns unexpected zero counts on real fixtures (token mismatch) — `ds-fix-during-migration` is irrelevant here; fix in lane 3.2 retroactively; for this lane just render whatever it returns
 
 ---
@@ -604,29 +634,10 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6. Drives `autonomous-ready` vs `needs-in
 
 #### `error.tsx`
 
-```tsx
-"use client";
-
-import { StatusView, Button } from "@umichkisa-ds/web";
-
-export default function DashboardError({
-  error,
-  reset,
-}: {
-  error: Error & { digest?: string };
-  reset: () => void;
-}) {
-  return (
-    <StatusView
-      variant="error"
-      title="Failed to load dashboard."
-      description={error.message ?? "Please try again."}
-      action={<Button onClick={reset}>Retry</Button>}
-      fullScreen
-    />
-  );
-}
-```
+- Next.js error boundary (`"use client"`) — receives `{ error: Error & { digest?: string }; reset: () => void }` and renders DS `StatusView` (error variant, full-screen) with:
+  - title `"Failed to load dashboard."`
+  - description from `error.message` (fallback `"Please try again."`)
+  - primary action: DS `Button` labeled `"Retry"` wired to `reset`
 
 #### `page.tsx` import sweep
 
@@ -728,9 +739,7 @@ Carried forward from `audit.md`:
 
 - **3.1**: `simulate-spawn` qty randomization range (currently spec'd as 1–3); confirm at execution
 - **3.2**: `analyzeSojuSales` fruit-token list (audit lists `["과일","딸기","복숭아","포도","자몽","청포도","사과"]`); validate against actual fixture menu names at execution
-- **3.4**: stats strip narrow-width fallback (4-col → 2×2 → 1-col is plan default; confirm in 3.4 grill)
+- **3.4**: stats-strip narrow-width behavior — defer to pastiche/grill
 - **3.7**: long-press threshold (500ms default); right-click → `onContextMenu` mapping; verify cross-browser at execution
-- **3.8**: `XCircle` vs `Ban` for sold-out icon — XCircle preferred, fall back to Ban
-- **3.9**: KPI card colors in summary modal — neutral default; revisit in 3.11
 - **3.11**: review file path created at execution — `review-3.11-findings.md` or per-tab files
 - **Backend follow-up** (post-Phase-3, when deployment access returns): add `createdAt`/`updatedAt` to `orderItem` table; restore urgency timer on `OrderItemCard`

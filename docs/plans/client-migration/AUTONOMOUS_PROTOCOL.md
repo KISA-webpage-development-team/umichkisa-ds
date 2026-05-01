@@ -77,6 +77,8 @@ The two never touch the same working directory.
 
 `pastiche` is DS-scoped — it does not typecheck, run tests, run general code-quality review, or commit. After the skill returns, walk through the following with the user (Mode D is live).
 
+**Where to invoke pastiche:** always from the `umichkisa-ds/` repo CWD. The skill's preflight resolves `pastiche/{FACT,KNOWLEDGE,WISDOM}.md` relative to CWD, and only the DS repo holds those docs — invoking from the client repo (or a client worktree) makes preflight fail. For client lanes, pass the client worktree path + lane spec through the task description so the skill's file edits land in the client checkout while reading DS-repo atom rules.
+
 **Triage pastiche output (with the user)**
 
 1. **Inline `// pastiche-unresolved-doubt:` markers — block the commit.** Together with the user, read each marker. Decide: fix the code, or accept the implementation as-is. In either case the marker line is deleted before commit.
