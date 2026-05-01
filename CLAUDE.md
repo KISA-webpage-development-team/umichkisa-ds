@@ -8,6 +8,7 @@
 
 1. Read `docs/TODO.md` → find first unchecked entry under "## Client Migration"
 2. **DS symlink check** (Phase 0+): `ls -la ../KISA-website/client/node_modules/@umichkisa-ds/web` — if not `->` symlink, run `bash ../KISA-website/client/scripts/link-ds.sh` (requires DS `dist/`; run `pnpm build` first if missing)
+3. **Pastiche symlink check** (Phase 8+): `ls -la ../KISA-website/client/pastiche` — if missing, run `ln -s ../umichkisa-ds/pastiche ../KISA-website/client/pastiche`. Track in the client repo for worktree inheritance.
 
 **Mode detection** (inlined from `AUTONOMOUS_PROTOCOL.md` §10 — do this without loading AP):
 
@@ -36,10 +37,19 @@ Wait for user confirmation. NEVER execute without explicit go-ahead.
 | A | `docs/plans/client-migration/HARNESS_DESIGN.md` (Per-Phase Internal Flow); `AUTONOMOUS_PROTOCOL.md` Part 2 (§5 issue template) |
 | B | `AUTONOMOUS_PROTOCOL.md` Part 2 (§5 issue template + §6 6-rule gate) |
 | C1 / C2 | `review-pr-queue` skill (handles its own loads); `AUTONOMOUS_PROTOCOL.md` §3 only if mode flow needs disambiguation |
-| D | `ds-client-constrained-execution` skill (handles its own loads); `AUTONOMOUS_PROTOCOL.md` §11 lane-state annotation |
+| D | `pastiche` skill (handles its own loads); `AUTONOMOUS_PROTOCOL.md` §11 lane-state annotation |
 | E | `ds-phase-end-bump` skill; HARNESS_DESIGN.md "Phase close-out" section |
 
-`docs/DS_CODEBASE.md` is loaded only if the current task involves DS surface discovery (typically Mode A grill or Mode D when a new component is needed). Implementers in Mode D execution use `docs/DS_CLIENT_USAGE.md` instead.
+`docs/DS_CODEBASE.md` is loaded only if the current task involves DS surface discovery (typically Mode A grill or Mode D when a new component is needed).
+
+### Mode D post-pastiche steps
+
+`pastiche` is DS-scoped — it does not typecheck, run tests, run general code-quality review, or commit. After the skill returns:
+
+1. Triage any items in the skill's `## Follow-ups` section; resolve any `// pastiche-unresolved-doubt:` inline markers before committing.
+2. Run `pnpm typecheck` (or the client's equivalent).
+3. Optionally invoke `toss-fe-review` and `vercel-react-best-practices` for general code quality.
+4. Commit and push (Mode D = direct push to `dev`, no PR — see `feedback_interactive_direct_push`).
 
 ### Wrapping up a merged PR / lane
 

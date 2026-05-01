@@ -55,11 +55,12 @@ All apps live under `umichkisa.com` in `../KISA-website/client/`.
 
 3. **Plan** — `writing-plans` skill produces `plan.md` with checkboxed tasks, each with a `**Files:**` section.
 
-4. **Execute** — `ds-client-constrained-execution` skill. One skill with two modes:
-   - `[NO-TDD]` tasks: implementer → ds-client-review → toss-fe-review → typecheck → commit
-   - `[TDD]` tasks: test-writer (red) → implementer (green) → ds-client-review → toss-fe-review → tests-green-verify → refactor → typecheck → commit
-   - Final pass after all tasks: `vercel-react-best-practices`
-   - Manual UI review: invoke `review-ui-on-browser` skill before merge for any UI-touching lane (run `npm run dev` first)
+4. **Execute** — `pastiche` skill (DS-scoped). Caller responsibilities after the skill returns:
+   - Triage `## Follow-ups` items; resolve any `// pastiche-unresolved-doubt:` inline markers.
+   - `[NO-TDD]` tasks: typecheck → commit.
+   - `[TDD]` tasks: test-writer (red) → `pastiche` (green) → tests-green-verify → refactor → typecheck → commit.
+   - Optional: `toss-frontend-fundamentals` and `vercel-react-best-practices` for general code quality.
+   - Manual UI review: `review-ui-on-browser` before merge for any UI-touching lane.
 
 5. **Verify** — manual via Vercel `dev`-branch preview URL (mocks on). Occasional chrome mcp on request.
 
@@ -135,10 +136,9 @@ The user prefers to be challenged on assumptions rather than presented with a pr
 
 | Artifact | Purpose |
 |---|---|
-| `docs/DS_CLIENT_USAGE.md` | Consumer-side constraint doc. Part 1 = write-time decision tree (implementer-facing); Part 2 = review-time rulebook (reviewer-facing). |
-| `ds-client-review` agent | Reviews client `.tsx` against `DS_CLIENT_USAGE.md`, returns violations. Reads its own ruleset (no caller paste). |
-| `toss-fe-review` agent | Per-task code-quality reviewer (readability / predictability / cohesion / coupling). BLOCK / SUGGEST / INFO severity gate; conservative defaults to avoid over-refactor. |
-| `ds-client-constrained-execution` skill | One skill, two modes (`[TDD]`/`[NO-TDD]`). Dispatches implementer + test-writer subagents, gates with `ds-client-review` then `toss-fe-review`, typechecks, commits. End-of-feature pass: `vercel-react-best-practices`. |
+| `pastiche` skill | Lane execution. DS-scoped — does not typecheck, run tests, run general code quality review, or commit. |
+| `toss-frontend-fundamentals` skill | Optional general code-quality review after pastiche. |
+| `vercel-react-best-practices` skill | Optional final React/Next.js code-quality pass after pastiche. |
 | `review-ui-on-browser` skill | Manual visual UI/UX review via Playwright CLI on a running dev server. Used in Mode C (PR review) or Mode D (post-task) — never in autonomous routines. |
 | `ds-fix-during-migration` skill | Codifies the mid-phase DS bug-fix flow: pause client → fix DS → verify via symlink → accumulate for phase-end bump |
 | `ds-phase-end-bump` skill | Phase close-out + mid-phase pre-consume bump: bump DS package version, tag, publish, update client pin |
@@ -146,7 +146,7 @@ The user prefers to be challenged on assumptions rather than presented with a pr
 
 ### Why separate from existing DS tooling
 
-`DS_CONSTRAINTS.md` and `ds-review` are **author-side** (for building DS components). `DS_CLIENT_USAGE.md` and `ds-client-review` are **consumer-side** (for code that imports DS). Different rules, different agents, no context leakage.
+`DS_CONSTRAINTS.md` and `ds-review` are **author-side** (for building DS components). The `pastiche` skill is **consumer-side** (for code that imports DS). Different rules, different agents, no context leakage.
 
 ---
 
@@ -179,7 +179,7 @@ Cold session lands on a phase-level TODO entry like `Phase 1: jobs-curator (subp
 
 **Subphase execution** (Mode C/D, per `AUTONOMOUS_PROTOCOL.md`)
 - Autonomous lanes → PR via routine
-- Interactive lanes → branch in-place, `ds-client-constrained-execution`
+- Interactive lanes → branch in-place, `pastiche` skill (then user-driven typecheck + commit)
 - Tick subphase entries in TODO.md as lanes merge
 
 **Mode E — Phase close-out**

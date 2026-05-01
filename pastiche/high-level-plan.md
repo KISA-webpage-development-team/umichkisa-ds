@@ -54,10 +54,15 @@ KISA DS is the v1 testbed. The plan walks bottom-up: vertical slice → template
 - Output is a single task report (Summary + optional Follow-ups), framed for the consumer — no rounds/doubts mechanics surfaced.
 - Calibration of agent prompts happens during real client-migration usage, not before.
 
-## Phase 8 — Cutover
+## Phase 8 — Cutover [DONE]
 
-- `CLAUDE.md` Mode D switches from `ds-client-constrained-execution` → `pastiche`.
-- Pastiche becomes the active execution skill for the ongoing KISA client migration.
+- `CLAUDE.md` Mode D row switches to `pastiche`. Brief post-pastiche checklist added (triage Follow-ups → typecheck → optional code-quality skills → commit), since pastiche is DS-scoped.
+- `CLAUDE.md` preflight gains a pastiche symlink check, parallel to the DS package symlink.
+- `AUTONOMOUS_PROTOCOL.md` updated across §3 (Mode D flow), §4 (Skills Index), §5 (Issue template), §7 (Routine Algorithm), §10 (PR-body assembly).
+- `HARNESS_DESIGN.md` Per-Phase Internal Flow + Client Gate Tooling table swapped to `pastiche`.
+- Higher-level docs reference the skill by name only; pastiche internals stay encapsulated.
+- Old skill file (`.claude/skills/ds-client-constrained-execution/SKILL.md`) left in place; cleanup is a separate concern.
+- Historical artifacts (`docs/refactor/`, `docs/history/`, past phase plans, the 2026-04-25 harness plan) deliberately untouched.
 
 ## Phase 9 — Aesthetic review skill
 
