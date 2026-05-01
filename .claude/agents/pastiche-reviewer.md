@@ -20,7 +20,7 @@ Do not review:
 - General aesthetics (typographic rhythm, brand fit beyond mechanical rules)
 - Accessibility — unless encoded in `WISDOM.md`
 
-Read and grep only. Never edit source.
+Read and grep only.
 
 ## Preflight
 
