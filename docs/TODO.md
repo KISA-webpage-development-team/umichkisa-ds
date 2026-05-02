@@ -65,6 +65,6 @@
 - [x] Phase 3.9: History tab redesign — DS Table + ToggleGroup + Dialog with B-lite analytics (autonomous + Mode C admin-merge + audit fixes) — dev (#135 merged, closed #123; audit fixes in 00b8cc1)
 - [x] Phase 3.10: Page shell legacy ui sweep + error.tsx (Mode D direct-push) — dev 3aebc05 (closed #125; included follow-up NotAuthorized → StatusView migration + LoadingSpinner label)
 - [x] Phase 3.11: Audit-after redesign pass + page metadata (Mode D direct-push) — dev b34201d (closed #126)
-- [ ] Phase 3.12: Verify + end-bump (interactive)
+- [x] Phase 3.12: Verify + end-bump (interactive) — DS build/typecheck green; client tsc + build + tests (120 pass / 3 skip) green after MockAuthToggle test fix (dev 2bfac7d); no end-bump needed (all Phase 3 DS fixes shipped mid-phase: web 1.0.23–1.0.24)
 - [ ] Phase 4: pocha-userfacing (subphases added at kickoff)
 - [ ] Phase 5: kisa-web (subphases added at kickoff)
