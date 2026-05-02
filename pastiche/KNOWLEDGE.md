@@ -27,6 +27,14 @@ Close, edit, more-menu, toolbar action where text would be redundant or space-co
 External link, navigation that visually presents as a CTA, link inside a button-shaped slot.
 → `LinkButton`
 
+### Tappable list row / selection trigger
+A full-width row in a list that opens a detail view, sheet, or selects an item — menu list item, picker row, navigable record. Not an action-class CTA.
+→ `Button variant="tertiary"` with `className="w-full justify-start"` (composes the row layout — image, text, price — as children); rely on Button's built-in hover/focus/disabled states rather than hand-rolling them on a raw `<button>`
+
+### Page-bottom CTA dock / sticky bottom action bar
+A persistent action bar pinned to the viewport bottom on mobile flows — checkout "View Cart", "Proceed to payment", mobile primary action. One CTA per dock.
+→ `Button variant="primary"` (full-width, `w-full`) wrapped in a fixed-position container: `<div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-surface px-4 pt-3" style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 0.75rem)" }}>`. The wrapper is the dock; the `Button` is the action.
+
 ## Forms & input collection
 
 ### Single-line text input in a form
