@@ -6,3 +6,5 @@ export { Popover, PopoverTrigger, PopoverContent } from "./Popover";
 export type { PopoverContentProps } from "./Popover";
 export { Tooltip } from "./Tooltip";
 export type { TooltipProps } from "./Tooltip";
+export { Sheet, SheetTrigger, SheetClose, SheetContent, SheetTitle, SheetDescription, SheetFooter } from "./Sheet";
+export type { SheetProps, SheetTriggerProps, SheetCloseProps, SheetContentProps, SheetTitleProps, SheetDescriptionProps, SheetFooterProps } from "./Sheet";

@@ -74,7 +74,7 @@ function DialogContent({
                   "hover:text-foreground",
                   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring",
                   "focus-visible:shadow-[0_0_0_4px_var(--color-brand-primary)]",
-                  "after:absolute after:inset-[-8px] after:content-['']"
+                  "after:absolute after:-inset-2 after:content-['']"
                 )}
                 aria-label="Close"
               >

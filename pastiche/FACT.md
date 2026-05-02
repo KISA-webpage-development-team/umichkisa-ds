@@ -450,6 +450,54 @@ Props:
   side?:          "top" | "right" | "bottom" | "left"
   delayDuration?: number
 
+### [Sheet]
+package: @umichkisa-ds/web
+
+Props:
+  ...React.ComponentPropsWithoutRef<typeof Drawer.Root>
+
+### [SheetTrigger]
+package: @umichkisa-ds/web
+
+Props:
+  ...React.ComponentPropsWithoutRef<typeof Drawer.Trigger>
+
+### [SheetClose]
+package: @umichkisa-ds/web
+
+Props:
+  ...React.ComponentPropsWithoutRef<typeof Drawer.Close>
+
+### [SheetContent]
+package: @umichkisa-ds/web
+
+Props:
+  children:         React.ReactNode   (required)
+  showCloseButton?: boolean
+  showHandle?:      boolean
+  className?:       string
+
+### [SheetTitle]
+package: @umichkisa-ds/web
+
+Props:
+  children:   React.ReactNode   (required)
+  className?: string
+
+### [SheetDescription]
+package: @umichkisa-ds/web
+
+Props:
+  children:   React.ReactNode   (required)
+  className?: string
+
+### [SheetFooter]
+package: @umichkisa-ds/web
+
+Props:
+  children:   React.ReactNode   (required)
+  className?: string
+
 ### [Divider]
 package: @umichkisa-ds/web
 

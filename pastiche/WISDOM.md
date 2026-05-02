@@ -96,3 +96,6 @@
 - [Table][TableHeader][TableBody][TableRow][TableHead][TableCell][TableCaption][TableFooter] Compose with the named subcomponents — never substitute raw `<table>`/`<tr>`/`<td>` markup.
 - [Table][TableMobileList] Every table ships both representations — desktop `Table` (wrapped `hidden md:block`) and mobile `TableMobileList` (wrapped `block md:hidden`); desktop-only tables are incomplete.
 - [TableMobileList][TableMobileItem] TableMobileItem appears only as a child of TableMobileList — never standalone.
+- [Sheet][SheetContent] Sheet is mobile-only. For responsive overlays use Dialog.
+- [Sheet][SheetContent] Drag-to-dismiss is part of the atom — consumers do not implement custom dismissal gestures.
+- [Sheet][SheetContent][SheetTitle] Sheet content must declare a `SheetTitle` (wrap in `VisuallyHidden` if not visually shown).
