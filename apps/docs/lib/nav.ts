@@ -107,6 +107,7 @@ export const COMPONENT_CATEGORIES: SidebarCategory[] = [
       { label: 'Dialog',   href: '/components/dialog' },
       { label: 'Dropdown', href: '/components/dropdown' },
       { label: 'Popover',  href: '/components/popover' },
+      { label: 'Sheet',    href: '/components/sheet' },
       { label: 'Tooltip',  href: '/components/tooltip' },
     ],
   },

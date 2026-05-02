@@ -121,6 +121,10 @@ Larger interactive content surfaced from a trigger — filter panel, mini calend
 Short label clarifying an icon button or truncated text on hover/focus. Not for interactive content.
 → `Tooltip`
 
+### Mobile bottom-sheet overlay
+Mobile detail panel, mobile picker/selector, mobile order/receipt view.
+→ `Sheet` (+ `SheetTrigger`, `SheetContent`, `SheetTitle`, `SheetDescription`, `SheetFooter`, `SheetClose`)
+
 ## Navigation & wayfinding
 
 ### Page-level section switcher

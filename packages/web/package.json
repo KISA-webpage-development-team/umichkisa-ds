@@ -1,6 +1,6 @@
 {
   "name": "@umichkisa-ds/web",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "KISA Design System — tokens and components for umichkisa.com",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -50,7 +50,8 @@
     "lucide-react": "^0.577.0",
     "react-day-picker": "9.14.0",
     "sonner": "2.0.7",
-    "tailwind-merge": "^2.5.4"
+    "tailwind-merge": "^2.5.4",
+    "vaul": "^1.1.2"
   },
   "devDependencies": {
     "@tailwindcss/cli": "4.2.1",
