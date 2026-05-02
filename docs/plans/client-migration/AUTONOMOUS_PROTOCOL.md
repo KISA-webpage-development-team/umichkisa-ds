@@ -170,6 +170,13 @@ One paragraph: link to `audit.md` section, note locked design decisions.
 ## Non-goals (do not touch)
 - <out-of-scope file or concern>
 
+## Execution skill
+One of (pick the one that matches the lane — never write `direct execution`, that is not a skill name):
+- `pastiche` — UI lane with DS atom mapping (always paired with the `pastiche` tag in audit/plan).
+- `/test-driven-development` — logic / utility / infra lane with TDD (write tests first, then implementation).
+- `/executing-plans` — non-TDD execution (small polish, mechanical sweeps, page-shell swaps, semantic surgery, verify + end-bump).
+- Combinations are allowed when a lane mixes modes, e.g. `/test-driven-development` for the util + `/executing-plans` for the small UI swap, or `review-ui-on-browser` + targeted `/executing-plans` fixes, or `/executing-plans` + `ds-phase-end-bump` for verify lanes.
+
 ## Bailout triggers
 Stop with `needs-decision` if:
 - DS token missing for required class swap
