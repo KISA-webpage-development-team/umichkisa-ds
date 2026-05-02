@@ -4,7 +4,7 @@
 >
 > **UI fidelity is handled by `pastiche`, not by this plan.** UI lane specs describe the artifact, the user goal, the states that must exist (loading/empty/error/success), and behavior — they intentionally do **not** prescribe DS atom names, exact variants, exact spacing, or exact typography utilities. Pastiche resolves those choices against the DS repo's `pastiche/{FACT,KNOWLEDGE,WISDOM}.md`. Logic lanes are detailed; UI lanes are descriptive.
 
-**Scope:** Migrate the customer-facing pocha routes — `/pocha` (menu home + orders tab), `/pocha/cart`, `/pocha/pay`, `/pocha/pay-success` — onto `@umichkisa-ds/web` + `@umichkisa-ds/form`. Heavy-redesign posture (parity with Phases 2 and 3). Mobile-only audience; `OnlyMobileView` gate stays. `POCHA_THEME` already flipped `spring → default` on client `dev` (`eac2afb`) before plan-writing.
+**Scope:** Migrate the customer-facing pocha routes — `/pocha` (menu home + orders tab), `/pocha/cart`, `/pocha/pay`, `/pocha/pay-success` — onto `@umichkisa-ds/web` + `@umichkisa-ds/form`. Heavy-redesign posture (parity with Phases 2 and 3). Mobile-only audience; `OnlyMobileView` gate stays.
 
 ---
 
@@ -181,7 +181,7 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6.
   - **Drop the cherry-blossom branch + petals JSX entirely from `page.tsx`** — `POCHA_THEME` is now `default`. The dynamic-import scaffolding for the spring theme can stay in the imports (or be removed cleanly) — pastiche's call.
 - **Menu tab content** — the in-event menu surface:
   - Sectioned by category (existing `useMenu` returns `MenuByCategory[]`).
-  - Each row shows the menu item's photo, Korean name, English name (when present), price, and a low/sold-out signal when stock is constrained. Underage users see alcohol items as visually de-emphasized + non-tappable (the existing `underAge` flag from `useUserAge` still drives this).
+  - Each row shows the menu item's photo, English name (primary), Korean name as secondary line when present, price, and a low/sold-out signal when stock is constrained. Underage users see alcohol items as visually de-emphasized + non-tappable (the existing `underAge` flag from `useUserAge` still drives this).
   - Tapping a row opens a **menu-item detail** view (`MenuItemDetail`) showing the larger image, descriptions, quantity controls, and an `Add to cart` action. Detail view is a route-internal panel today (state-driven, replaces the list); pastiche may promote this to a bottom-sheet Dialog if a clean DS atom exists, or keep it as an in-place panel — both are acceptable.
   - **Sticky `ViewCartButton`** at the bottom of the menu tab (and only the menu tab — orders tab does not show it) — visible iff cart non-empty. Pastiche owns the "sticky bottom action bar" pattern.
 - **No layout/positioning of cart button must rely on `POCHA_THEME === 'spring'`** — that branch is dead.
@@ -189,8 +189,7 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6.
 ### Tasks
 
 - [ ] Rebuild page shell + menu tab end-to-end per the descriptive scope above
-- [ ] All Korean copy preserved verbatim (this surface is Korean-first); add English where it already exists in props
-- [ ] Pass `ds-client-review`
+- [ ] English-first copy (audience is Korean internationals + Korean Americans); preserve existing Korean strings as the secondary line where they already exist in props
 - [ ] `npm run build` + `npm run typecheck` pass
 
 ### Acceptance criteria
@@ -284,8 +283,7 @@ A narrow follow-up for things 4.2a's UI lane should not own:
 
 ### Tasks
 
-- [ ] Rebuild the orders tab end-to-end per scope; preserve all Korean copy
-- [ ] Pass `ds-client-review`
+- [ ] English-first copy on this surface (audience is Korean internationals + Korean Americans); preserve existing Korean strings where they already exist in props
 - [ ] `npm run build` + `npm run typecheck` pass
 
 ### Acceptance criteria
@@ -379,7 +377,7 @@ A narrow follow-up for things 4.2a's UI lane should not own:
 
 - The user's cart for the active pocha. Mobile-only.
 - Page header: a back-affordance and a title (`Cart` / `장바구니`).
-- **Cart list:** scrollable; one row per cart line. Each row shows menu image, name (Korean primary, English secondary if present), per-unit price, line total, and a quantity stepper (`-` / count / `+`).
+- **Cart list:** scrollable; one row per cart line. Each row shows menu image, name (English primary, Korean secondary if present), per-unit price, line total, and a quantity stepper (`-` / count / `+`).
   - Stepper bounds: `quantity ≥ 1` (decrementing below 1 removes the item — confirmed by 4.1's MSW), and `quantity ≤ menu.stock` (the stock cap; the stock check happens server-side via 4.1's POST handler returning `{ isStocked: false }` → surface a toast on rejection and revert the optimistic update).
 - **Sticky bottom summary** when cart non-empty:
   - Total amount, then a primary `Proceed to payment` button routing to `/pocha/pay`.
@@ -391,7 +389,6 @@ A narrow follow-up for things 4.2a's UI lane should not own:
 
 - [ ] Rebuild cart page + components per scope
 - [ ] Drop `PochaBackHeading` / `PochaHorizontalDivider` shared usage in this file (the 4.7 sweep deletes those — but this lane is the consumer, so swap to DS-tokenized header/divider locally)
-- [ ] Pass `ds-client-review`
 - [ ] `npm run build` + `npm run typecheck` pass
 
 ### Acceptance criteria
@@ -481,9 +478,8 @@ A narrow follow-up for things 4.2a's UI lane should not own:
 
 ### Tasks
 
-- [ ] Rebuild pay page + components per scope; preserve all Korean copy
+- [ ] English-first copy on this surface (audience is Korean internationals + Korean Americans); preserve existing Korean strings where they already exist in props
 - [ ] Drop `PochaBackHeading` / `PochaHorizontalDivider` usage (use DS atoms locally)
-- [ ] Pass `ds-client-review`
 - [ ] `npm run build` + `npm run typecheck` pass
 
 ### Acceptance criteria
@@ -594,10 +590,10 @@ A narrow follow-up for things 4.2a's UI lane should not own:
   - The render-time `if (!tipCompleted && (!pochaID || !amount)) { window.location.href = "/pocha"; }` block — replaced with a `useEffect` that calls `router.replace("/pocha")` on this condition. Render-time mutation of `window.location` is a React anti-pattern.
 - **Simplified success view:**
   - Centered success icon (the existing `/images/check_circle.png` is acceptable; pastiche may swap to a DS Icon if a clean equivalent exists).
-  - Heading text: `결제가 완료되었습니다` (preserve verbatim).
-  - Two action buttons stacked, full-width-percentage:
-    - `주문 내역 보기` → `router.push("/pocha?tab=orders")`
-    - `홈으로 돌아가기` → `router.push("/pocha")`
+  - Heading text: English primary (e.g., `Payment complete`); existing Korean string `결제가 완료되었습니다` may be kept as a secondary line — pastiche's call.
+  - Two action buttons stacked, full-width-percentage (English-primary labels; existing Korean labels `주문 내역 보기` / `홈으로 돌아가기` may be kept as secondary lines):
+    - `View orders` → `router.push("/pocha?tab=orders")`
+    - `Back to home` → `router.push("/pocha")`
   - Pastiche owns visual chrome (DS Button atoms).
 - **Popstate guard** preserved: `window.history.pushState({ from: "pay-success" }, ...)` + `popstate` listener that routes to `/pocha`. Single `useEffect`, with cleanup.
 - **No `PochaButton` import** — uses DS Button.
@@ -608,7 +604,6 @@ A narrow follow-up for things 4.2a's UI lane should not own:
 - [ ] Delete `TipModal.tsx` (verify no remaining imports: `grep -rn "TipModal" src/`)
 - [ ] Remove `setup_future_usage: "off_session"` from `<Elements>` options in `pay/page.tsx`
 - [ ] Audit + remove any `localStorage.setItem` writes for `paymentMethodId` / `customerName` / `customerEmail` / `customerID` in `useStripePayment.ts`
-- [ ] Pass `ds-client-review`
 - [ ] `npm run build` + `npm run typecheck` pass
 
 ### Acceptance criteria
@@ -666,7 +661,6 @@ A narrow follow-up for things 4.2a's UI lane should not own:
 - [ ] Delete the four `Pocha*` shared files (verify no callers first)
 - [ ] `grep -rn "@/components/ui/feedback" src/app/\\(pocha\\)/ src/features/pocha/` → expect 0 (or only `NotAuthorized` if DS still missing it — flag in `notes.md` as a follow-up)
 - [ ] `grep -rn "sejongHospital" src/app/\\(pocha\\)/ src/features/pocha/` → expect 0 in non-admin paths
-- [ ] Pass `ds-client-review`
 - [ ] `npm run build` + `npm run typecheck` + `npm test` pass
 
 ### Acceptance criteria
