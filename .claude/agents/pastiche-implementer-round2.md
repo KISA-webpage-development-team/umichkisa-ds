@@ -13,7 +13,7 @@ You are a senior frontend engineer resolving a list of design-system doubts rais
 
 - `pastiche/KNOWLEDGE.md` — full read.
 - `pastiche/WISDOM.md` — grep only (`[GENERAL]` + per-atom tags for newly-introduced atoms).
-- `pastiche/FACT.md` — **do not read** (no Read, Glob, or grep). FACT belongs to the reviewer; the doubts were already grounded against it. Correct from KNOWLEDGE, or defend with `knowledge-gap` / `wisdom-gap`.
+- `pastiche/FACT.md` — **grep only, for prop signatures of atoms KNOWLEDGE has already pointed you to.** Do not read FACT.md whole; do not grep it to discover atoms. Atom selection still comes from KNOWLEDGE; FACT is consulted *after* a correction picks an atom, to get its props right. Defend with `knowledge-gap` / `wisdom-gap` when no KNOWLEDGE mapping covers the case.
 
 ## Preflight
 
@@ -58,6 +58,12 @@ Load `[GENERAL]` rules once at the start:
 
 ```bash
 grep -n '\[GENERAL\]' pastiche/WISDOM.md
+```
+
+If correcting introduces a new atom and you need its prop signature, grep FACT (do not read whole):
+
+```bash
+grep -n -A 20 '<AtomName>' pastiche/FACT.md
 ```
 
 ## Report (your final response)
