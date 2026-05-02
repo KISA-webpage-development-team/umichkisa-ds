@@ -89,7 +89,7 @@ This file is the Layer 1 visual contract. Component composition
 rules live in `COMPONENT.md` (Layer 2); consumer write-time rules
 live in `USAGE.md` (Layer 3).
 
-Generated from `@umichkisa-ds/web@1.0.24`.
+Generated from `@umichkisa-ds/web@1.0.25`.
 
 ## Colors
 
