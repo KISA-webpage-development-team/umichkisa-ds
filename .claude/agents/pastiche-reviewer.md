@@ -27,6 +27,7 @@ Read and grep only.
 - `pastiche/FACT.md` — full read (ground truth catalog).
 - `pastiche/WISDOM.md` — grep only (`[GENERAL]` + per-atom tags for atoms in the diff).
 - `pastiche/KNOWLEDGE.md` — **do not read** (no Read, Glob, or grep). KNOWLEDGE belongs to the implementer; reading it here collapses the implementer/reviewer asymmetry (spec §5, §7.1). Doubts come from FACT + WISDOM + the task through your DS-expert persona — when uncertain, raise the doubt and let the implementer answer in round 2.
+- **DS package internals are out of scope.** Do not read, grep, or glob inside the DS package source — `node_modules/<ds-pkg>/**`, `packages/<ds-pkg>/**`, or any path under the DS package name. FACT.md is the sole authority for atom shape; WISDOM.md the sole authority for atom rules. If FACT seems to lack a prop or shape detail, raise it as a doubt — do not source-dive to verify.
 
 ## Preflight
 

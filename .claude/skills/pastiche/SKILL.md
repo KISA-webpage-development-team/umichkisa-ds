@@ -57,6 +57,7 @@ Combine round 1 and round 2's "Files changed" lists. The implementation sentence
 
 - Any `defended (knowledge-gap)` from round 2 — surface as a KNOWLEDGE.md candidate (a missing scenario→atom mapping).
 - Any `defended (wisdom-gap)` from round 2 — surface as a WISDOM.md candidate (a missing atom-intrinsic rule).
+- Any `defended (fact-gap)` from round 2, or any "FACT gaps encountered" from round 1 — surface as a FACT.md candidate (a missing prop or shape detail on an existing atom).
 - Any inline failsafe comments written in step 5 — surface as the `file:line` left for human PR review.
 
 Make each follow-up bullet self-describing; readers shouldn't need to know about rounds, dispositions, or the loop to understand what to do next.

@@ -13,7 +13,8 @@ You are a senior frontend engineer resolving a list of design-system doubts rais
 
 - `pastiche/KNOWLEDGE.md` — full read.
 - `pastiche/WISDOM.md` — grep only (`[GENERAL]` + per-atom tags for newly-introduced atoms).
-- `pastiche/FACT.md` — **grep only, for prop signatures of atoms KNOWLEDGE has already pointed you to.** Do not read FACT.md whole; do not grep it to discover atoms. Atom selection still comes from KNOWLEDGE; FACT is consulted *after* a correction picks an atom, to get its props right. Defend with `knowledge-gap` / `wisdom-gap` when no KNOWLEDGE mapping covers the case.
+- `pastiche/FACT.md` — **grep only, for prop signatures of atoms KNOWLEDGE has already pointed you to.** Do not read FACT.md whole; do not grep it to discover atoms. Atom selection still comes from KNOWLEDGE; FACT is consulted *after* a correction picks an atom, to get its props right. Defend with `knowledge-gap` / `wisdom-gap` / `fact-gap` when no doc covers the case.
+- **DS package internals are out of scope.** Do not read, grep, or glob inside the DS package source — `node_modules/<ds-pkg>/**`, `packages/<ds-pkg>/**`, or any path under the DS package name. FACT.md is the sole authority for atom shape; WISDOM.md the sole authority for atom rules. If FACT lacks a prop a correction needs, defend with `fact-gap` rather than source-diving.
 
 ## Preflight
 
@@ -40,9 +41,10 @@ For **each** doubt in the list, take exactly one disposition:
 - **Defend.** The implementation stands. Provide a one-line reason in your report. When the doubt surfaces a missing rule rather than a real bug, tag the defense:
   - `knowledge-gap` — KNOWLEDGE has no fitting scenario→atom mapping for this case (a curated mapping is missing).
   - `wisdom-gap` — WISDOM has no atom-intrinsic rule covering the concern, but one plausibly belongs (e.g., the doubt names an a11y or compositional constraint that should be policy on this atom).
+  - `fact-gap` — FACT lacks a prop / shape detail the correction would need; defending instead of source-diving the DS package.
   - No tag — the implementation is genuinely correct as-is and no doc change is implied.
 
-  Pick at most one tag. If both feel applicable, prefer the one that better names the missing artifact: `knowledge-gap` for "what atom should I have used for this scenario," `wisdom-gap` for "what rule applies to this atom regardless of scenario."
+  Pick at most one tag. Prefer the one that best names the missing artifact: `knowledge-gap` ("what atom for this scenario"), `wisdom-gap` ("what rule on this atom"), `fact-gap` ("what prop on this atom").
 
 You are not allowed to skip a doubt. Every item in the list must receive a disposition in your report.
 
@@ -80,7 +82,8 @@ grep -n -A 20 '<AtomName>' pastiche/FACT.md
 1. <file>:<line> — corrected: <one-clause what changed>
 2. <file>:<line> — defended (knowledge-gap): <reason>
 3. <file>:<line> — defended (wisdom-gap): <reason>
-4. <file>:<line> — defended: <reason>
+4. <file>:<line> — defended (fact-gap): <reason>
+5. <file>:<line> — defended: <reason>
 ...
 
 ## Doubts — unresolved
