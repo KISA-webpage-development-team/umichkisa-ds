@@ -58,7 +58,7 @@
 - [x] Phase 3.3: WS disable in mock + Simulate button in MockAuthToggle (interactive)
 - [x] Phase 3.4: Page shell — DS Tabs + persistent Stats strip (Mode D direct-push) — dev 8f6c3cd (closed #119)
 - [x] Phase 3.5: OrderItemCard redesign — typography, single-tap promote, drop @nextui Spinner (autonomous + Mode C revision) — dev (#132 merged, closed #120)
-- [ ] Phase 3.6: Food/Drink grids redesign — DS Badge for status, drop STATUS_COLORS (autonomous)
+- [x] Phase 3.6: Food/Drink grids redesign — DS Badge for status, drop STATUS_COLORS (autonomous + Mode C admin-merge) — dev (#133 merged, closed #121)
 - [ ] Phase 3.7: Orders tab batch-select mode (선택 모드 + smart breakdown + Dialog gate + fan-out) (interactive)
 - [ ] Phase 3.8: Stock tab full redesign — DS Table inline edit + per-row ✕ Dialog + filter chips (interactive)
 - [ ] Phase 3.9: History tab redesign — DS Table + ToggleGroup + Dialog with B-lite analytics (autonomous)
