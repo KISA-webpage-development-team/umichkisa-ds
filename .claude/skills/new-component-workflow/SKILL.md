@@ -71,6 +71,12 @@ Invoke `superpowers:writing-plans`.
 
 Invoke `pastiche` with the plan doc (`docs/plans/<name>.md`) as the task. Pastiche handles component + docs page implementation.
 
+**Required registration touchpoints** — the plan must instruct pastiche to update all three (missing any leaves the docs site inconsistent):
+
+1. `apps/docs/lib/nav.ts` — add the component to the correct category in `COMPONENT_CATEGORIES` (drives the Sidebar)
+2. `apps/docs/app/components/page.tsx` — add a `{ name, href, description }` row to the `components` array (drives the `/components` index page)
+3. Component export from `packages/web/src/components/<category>/index.ts`
+
 > **Checkpoint:** Implementation complete. [1-2 sentence summary.]
 > Ready to proceed to Step 4: Validate. Go ahead?
 

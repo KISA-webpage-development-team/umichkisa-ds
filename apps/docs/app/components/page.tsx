@@ -41,6 +41,7 @@ const components: { name: string; href: string; description: string }[] = [
   { name: 'Popover', href: '/components/popover', description: 'Floating content panel anchored to a trigger element.' },
   { name: 'Radio', href: '/components/radio', description: 'Single-select option group with inline label text.' },
   { name: 'Select', href: '/components/select', description: 'Dropdown menu for choosing from a list of options.' },
+  { name: 'Sheet', href: '/components/sheet', description: 'Mobile bottom-sheet overlay for detail panels, pickers, and order/receipt views with drag-to-dismiss.' },
   { name: 'Skeleton', href: '/components/skeleton', description: 'Loading placeholder with rectangular and circular variants.' },
   { name: 'StatusView', href: '/components/status-view', description: 'Centered status message for error pages, auth gates, and empty states.' },
   { name: 'Switch', href: '/components/switch', description: 'Toggle control for binary on/off settings.' },
