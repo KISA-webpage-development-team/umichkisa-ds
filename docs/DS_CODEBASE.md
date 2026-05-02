@@ -96,6 +96,7 @@ All source paths are relative to `packages/web/src/components/`.
 | Dialog | Modal that demands attention — confirmation prompt, form in a lightbox, detail view that blocks the page | `overlay/Dialog.tsx` |
 | Dropdown | Context menu or action list triggered by a button — row actions, "more" menus, profile menu | `overlay/Dropdown.tsx` |
 | Popover | Non-modal floating content anchored to a trigger — rich tooltip, mini-form, filter panel | `overlay/Popover.tsx` |
+| Sheet | **Mobile-only** bottom-sheet overlay with drag-to-dismiss — detail panels, pickers, order/receipt views (consumer gates breakpoint) | `overlay/Sheet.tsx` |
 | Tooltip | Brief helper text on hover/focus — label for icon buttons, extra context for truncated text | `overlay/Tooltip.tsx` |
 
 ### Navigation & wayfinding
