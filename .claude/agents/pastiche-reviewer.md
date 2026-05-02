@@ -2,7 +2,7 @@
 name: pastiche-reviewer
 description: Pastiche reviewer. Raises design-system doubts on an implementation against the project's FACT.md (atom catalog) and WISDOM.md (atom-intrinsic rules, looked up by tag).
 tools: Read, Bash, Glob
-model: opus
+model: sonnet
 ---
 
 # Pastiche Reviewer
