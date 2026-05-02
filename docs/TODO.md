@@ -66,5 +66,19 @@
 - [x] Phase 3.10: Page shell legacy ui sweep + error.tsx (Mode D direct-push) — dev 3aebc05 (closed #125; included follow-up NotAuthorized → StatusView migration + LoadingSpinner label)
 - [x] Phase 3.11: Audit-after redesign pass + page metadata (Mode D direct-push) — dev b34201d (closed #126)
 - [x] Phase 3.12: Verify + end-bump (interactive) — DS build/typecheck green; client tsc + build + tests (120 pass / 3 skip) green after MockAuthToggle test fix (dev 2bfac7d); no end-bump needed (all Phase 3 DS fixes shipped mid-phase: web 1.0.23–1.0.24)
-- [ ] Phase 4: pocha-userfacing (subphases added at kickoff)
-- [ ] Phase 5: kisa-web (subphases added at kickoff)
+- [x] Phase 4: pocha-userfacing — kickoff done (audit.md written 2026-05-02; POCHA_THEME flipped to default on client dev `eac2afb`)
+- [ ] Phase 4.1: MSW user-facing handlers (cart/user-orders/pay-info/pay-result) [TDD]
+- [ ] Phase 4.2a: Home — menu tab + page shell (UI, pastiche)
+- [ ] Phase 4.2b: Home — menu tab logic
+- [ ] Phase 4.3a: Home — orders tab UI (pastiche)
+- [ ] Phase 4.3b: Home — orders tab logic + WS-mock fallback + Simulate Promote
+- [ ] Phase 4.4a: Cart UI (pastiche)
+- [ ] Phase 4.4b: Cart logic [TDD]
+- [ ] Phase 4.5a: Pay UI (pastiche)
+- [ ] Phase 4.5b: Pay logic + age gate + MockPayButton [TDD]
+- [ ] Phase 4.6: Pay-success rebuild (excise tip flow)
+- [ ] Phase 4.7: Page shell sweep + legacy ui swap + delete `Pocha*` shared
+- [ ] Phase 4.8: Audit-after redesign pass + page metadata
+- [ ] Phase 4.9: Verify + end-bump
+- [ ] Phase 5: admin-pocha consolidation — `/pocha/history` redesign + fold `manage` + `dashboard` into single admin app (subphases added at kickoff)
+- [ ] Phase 6: kisa-web (subphases added at kickoff)
