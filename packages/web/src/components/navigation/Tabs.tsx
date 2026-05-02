@@ -28,7 +28,7 @@ type TabsProps = {
   defaultValue?: string;
   onValueChange?: (value: string) => void;
   variant?: "underline" | "pill";
-  size?: "sm" | "md";
+  size?: "sm" | "md" | "lg";
   className?: string;
   children: React.ReactNode;
 };
@@ -94,7 +94,7 @@ function Tabs({
 // ── TabsList ─────────────────────────────────────────────
 type TabsListProps = {
   variant?: "underline" | "pill";
-  size?: "sm" | "md";
+  size?: "sm" | "md" | "lg";
   fullWidth?: boolean;
   className?: string;
   children: React.ReactNode;

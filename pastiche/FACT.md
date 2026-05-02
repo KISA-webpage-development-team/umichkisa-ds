@@ -152,15 +152,6 @@ Props:
   href?:     string
   disabled?: boolean
 
-### [Icon]
-package: @umichkisa-ds/web
-
-Props:
-  name:       IconName   (required)
-  size?:      IconSize
-  label?:     string
-  className?: string
-
 ### [IconButton]
 package: @umichkisa-ds/web
 
@@ -285,17 +276,6 @@ Props:
 ### [FileUpload]
 package: @umichkisa-ds/web
 
-Props:
-  value:      FileUploadValue   (required)
-  onChange:   (next: FileUploadValue | null) => void   (required)
-  onUpload:   (file: File) => Promise<FileUploadValue>   (required)
-  onRemove:   (publicId: string) => Promise<void>   (required)
-  accept?:    readonly AcceptedMimeType[]
-  maxSize?:   number
-  disabled?:  boolean
-  messages?:  FileUploadMessages
-  className?: string
-
 ### [Container]
 package: @umichkisa-ds/web
 
@@ -311,6 +291,9 @@ Props:
   ...React.HTMLAttributes<HTMLDivElement>
   columns?: GridColumns
   gap?:     "element" | "component" | "section"
+
+### [Icon]
+package: @umichkisa-ds/web
 
 ### [Alert]
 package: @umichkisa-ds/web
@@ -531,7 +514,7 @@ Props:
   defaultValue?:  string
   onValueChange?: (value: string) => void
   variant?:       "underline" | "pill"
-  size?:          "sm" | "md"
+  size?:          "sm" | "md" | "lg"
   className?:     string
   children:       React.ReactNode   (required)
 
@@ -540,7 +523,7 @@ package: @umichkisa-ds/web
 
 Props:
   variant?:   "underline" | "pill"
-  size?:      "sm" | "md"
+  size?:      "sm" | "md" | "lg"
   fullWidth?: boolean
   className?: string
   children:   React.ReactNode   (required)
