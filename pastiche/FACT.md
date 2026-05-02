@@ -152,6 +152,15 @@ Props:
   href?:     string
   disabled?: boolean
 
+### [Icon]
+package: @umichkisa-ds/web
+
+Props:
+  name:       IconName   (required)
+  size?:      IconSize
+  label?:     string
+  className?: string
+
 ### [IconButton]
 package: @umichkisa-ds/web
 
@@ -276,6 +285,17 @@ Props:
 ### [FileUpload]
 package: @umichkisa-ds/web
 
+Props:
+  value:      FileUploadValue   (required)
+  onChange:   (next: FileUploadValue | null) => void   (required)
+  onUpload:   (file: File) => Promise<FileUploadValue>   (required)
+  onRemove:   (publicId: string) => Promise<void>   (required)
+  accept?:    readonly AcceptedMimeType[]
+  maxSize?:   number
+  disabled?:  boolean
+  messages?:  FileUploadMessages
+  className?: string
+
 ### [Container]
 package: @umichkisa-ds/web
 
@@ -291,9 +311,6 @@ Props:
   ...React.HTMLAttributes<HTMLDivElement>
   columns?: GridColumns
   gap?:     "element" | "component" | "section"
-
-### [Icon]
-package: @umichkisa-ds/web
 
 ### [Alert]
 package: @umichkisa-ds/web
@@ -532,7 +549,7 @@ Props:
 package: @umichkisa-ds/web
 
 Props:
-  size?:      "sm" | "md"
+  size?:      "sm" | "md" | "lg"
   variant?:   "underline" | "pill"
   value:      string   (required)
   disabled?:  boolean

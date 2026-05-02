@@ -91,6 +91,24 @@ const sizeCode = `import { Container, Tabs, TabsList, TabsTrigger, TabsContent }
       <p className="type-body-sm text-foreground">Medium size trigger with team members.</p>
     </TabsContent>
   </Tabs>
+
+  {/* Large — for primary mobile tab strips */}
+  <Tabs defaultValue="profile">
+    <TabsList size="lg">
+      <TabsTrigger value="profile">Profile</TabsTrigger>
+      <TabsTrigger value="billing">Billing</TabsTrigger>
+      <TabsTrigger value="team">Team</TabsTrigger>
+    </TabsList>
+    <TabsContent value="profile">
+      <p className="type-body text-foreground">Large size trigger with profile settings.</p>
+    </TabsContent>
+    <TabsContent value="billing">
+      <p className="type-body text-foreground">Large size trigger with billing details.</p>
+    </TabsContent>
+    <TabsContent value="team">
+      <p className="type-body text-foreground">Large size trigger with team members.</p>
+    </TabsContent>
+  </Tabs>
 </Container>`
 
 const fullWidthCode = `import { Container, Tabs, TabsList, TabsTrigger, TabsContent } from '@umichkisa-ds/web'
@@ -261,7 +279,7 @@ export default async function TabsPage() {
       {/* Sizes */}
       <Heading as="h3">Sizes</Heading>
       <p className="type-body mb-2 text-foreground">
-        Available in small and medium (default) sizes via the{' '}
+        Available in small, medium (default), and large sizes via the{' '}
         <InlineCode>
           size
         </InlineCode>{' '}
@@ -305,6 +323,25 @@ export default async function TabsPage() {
                 </TabsContent>
                 <TabsContent value="team">
                   <p className="type-body-sm text-foreground">Medium size trigger with team members.</p>
+                </TabsContent>
+              </Tabs>
+            </div>
+            <div>
+              <p className="type-caption text-muted-foreground mb-2">size=&quot;lg&quot;</p>
+              <Tabs defaultValue="profile">
+                <TabsList size="lg">
+                  <TabsTrigger value="profile">Profile</TabsTrigger>
+                  <TabsTrigger value="billing">Billing</TabsTrigger>
+                  <TabsTrigger value="team">Team</TabsTrigger>
+                </TabsList>
+                <TabsContent value="profile">
+                  <p className="type-body text-foreground">Large size trigger with profile settings.</p>
+                </TabsContent>
+                <TabsContent value="billing">
+                  <p className="type-body text-foreground">Large size trigger with billing details.</p>
+                </TabsContent>
+                <TabsContent value="team">
+                  <p className="type-body text-foreground">Large size trigger with team members.</p>
                 </TabsContent>
               </Tabs>
             </div>
@@ -498,7 +535,7 @@ export default async function TabsPage() {
               </TableRow>
               <TableRow>
                 <TableCell><InlineCode>size</InlineCode></TableCell>
-                <TableCell><InlineCode>&quot;sm&quot; | &quot;md&quot;</InlineCode></TableCell>
+                <TableCell><InlineCode>&quot;sm&quot; | &quot;md&quot; | &quot;lg&quot;</InlineCode></TableCell>
                 <TableCell><InlineCode>&quot;md&quot;</InlineCode></TableCell>
                 <TableCell>Size of the tab triggers.</TableCell>
               </TableRow>
@@ -526,7 +563,7 @@ export default async function TabsPage() {
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>size</strong></span>
-              <span className="type-caption text-muted-foreground"><InlineCode>&quot;sm&quot; | &quot;md&quot;</InlineCode> · default <InlineCode>&quot;md&quot;</InlineCode></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>&quot;sm&quot; | &quot;md&quot; | &quot;lg&quot;</InlineCode> · default <InlineCode>&quot;md&quot;</InlineCode></span>
               <span className="type-caption text-muted-foreground">Size of the tab triggers.</span>
             </TableMobileItem>
             <TableMobileItem>

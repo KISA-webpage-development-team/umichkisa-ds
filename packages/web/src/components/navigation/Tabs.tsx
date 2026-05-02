@@ -7,7 +7,7 @@ type TabsContextValue = {
   value: string;
   onValueChange: (value: string) => void;
   variant: "underline" | "pill";
-  size: "sm" | "md";
+  size: "sm" | "md" | "lg";
   registerTab: (value: string) => void;
   unregisterTab: (value: string) => void;
 };
@@ -155,11 +155,13 @@ const tabsTriggerVariants = cva(
       size: {
         sm: "type-body-sm px-3 py-1.5",
         md: "type-body-sm px-4 py-2",
+        lg: "type-body px-5 py-3",
       },
     },
     compoundVariants: [
       { variant: "pill", size: "sm", className: "px-3 py-1" },
       { variant: "pill", size: "md", className: "px-4 py-1.5" },
+      { variant: "pill", size: "lg", className: "px-5 py-2" },
     ],
     defaultVariants: {
       variant: "underline",
