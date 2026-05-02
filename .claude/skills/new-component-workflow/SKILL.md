@@ -67,40 +67,14 @@ Invoke `superpowers:writing-plans`.
 > **Checkpoint:** Plan written at `docs/plans/<name>.md`. [1-2 sentence summary of phases.]
 > Ready to proceed to Step 3: Implement component. Go ahead?
 
-## Step 3: Implement Component
+## Step 3: Implement
 
-Invoke `ds-constrained-execution` to execute **Phase 1** of the plan.
+Invoke `pastiche` with the plan doc (`docs/plans/<name>.md`) as the task. Pastiche handles component + docs page implementation.
 
-- Implementer subagent handles the code
-- ds-review agent runs automatically on all `.tsx` output
-- Hard stop if violations persist after 2 rounds — escalate to user
+> **Checkpoint:** Implementation complete. [1-2 sentence summary.]
+> Ready to proceed to Step 4: Validate. Go ahead?
 
-Styling rules:
-- **CVA** for components with 2+ variant dimensions (e.g., variant x size)
-- **`cn()` only** for simple components with no variant matrix
-- All output must pass `docs/DS_CONSTRAINTS.md`
-
-> **Checkpoint:** Component [implemented | audited + fixed]. [1-2 sentence summary — files created/modified, key decisions.]
-> Ready to proceed to Step 4: Implement docs page. Go ahead?
-
-## Step 4: Implement Docs Page
-
-Continue `ds-constrained-execution` with **Phase 2** of the plan.
-
-- Create `apps/docs/app/components/<name>/page.tsx`
-- **STRICT RULE:** Before writing the docs page, read `apps/docs/app/components/dialog/page.tsx` and match its layout pattern exactly (heading hierarchy, spacing classes, table structure, ComponentPreview placement). Do not invent a new pattern.
-- Minimum sections:
-  1. **Header** — component name, description, canonical purpose
-  2. **Examples** — wrapped in `ComponentPreview`, showing key use cases
-  3. **API Reference** — HTML table with props, types, defaults, descriptions
-- Plus any additional sections decided in grill-me
-- Add component to `COMPONENT_ITEMS` in `apps/docs/components/Sidebar.tsx`
-- ds-review runs on the docs `.tsx` file
-
-> **Checkpoint:** Docs page created at `apps/docs/app/components/<name>/page.tsx`. Sidebar updated. [1-2 sentence summary.]
-> Ready to proceed to Step 5: Validate. Go ahead?
-
-## Step 5: Validate
+## Step 4: Validate
 
 Run both commands (validation only — do NOT `git add dist/`):
 
@@ -112,9 +86,9 @@ pnpm build
 Both must pass. If either fails, fix the issue before proceeding.
 
 > **Checkpoint:** typecheck and build both pass. No errors.
-> Ready to proceed to Step 6: Junhee review. Go ahead?
+> Ready to proceed to Step 5: Junhee review. Go ahead?
 
-## Step 6: Junhee Review
+## Step 5: Junhee Review
 
 Invoke the `junhee` agent to review the docs page for documentation quality.
 
@@ -123,9 +97,9 @@ Invoke the `junhee` agent to review the docs page for documentation quality.
 - Make agreed-upon fixes to the docs page.
 
 > **Checkpoint:** Junhee review complete. [Summary of changes made, if any.]
-> Ready to proceed to Step 7: Merge. Go ahead?
+> Ready to proceed to Step 6: Merge. Go ahead?
 
-## Step 7: Merge
+## Step 6: Merge
 
 After user confirmation:
 
@@ -137,9 +111,9 @@ After user confirmation:
 6. Delete the `component/<name>` branch
 
 > **Checkpoint:** Merged `component/<name>` into main. Dist built and committed. Branch deleted.
-> Ready to proceed to Step 8: Update tracking. Go ahead?
+> Ready to proceed to Step 7: Update tracking. Go ahead?
 
-## Step 8: Update Tracking
+## Step 7: Update Tracking
 
 On main after merge:
 

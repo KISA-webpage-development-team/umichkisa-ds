@@ -11,11 +11,12 @@
 ## Wave / Dependency Structure
 
 ```
-Wave 0 — infra (single)
+Wave 0 — infra (parallel — MSW + DS atom)
+  4.0  DS Sheet (bottom-sheet variant on Dialog or new Sheet atom)       (interactive, DS-side)
   4.1  MSW user-facing handlers (cart/user-orders/pay-info/pay-result)   (autonomous, TDD)
        │
 Wave 1 — shell (single, carries page shell)
-  4.2a Home — menu tab + page shell (UI, pastiche)                       (interactive)
+  4.2a Home — menu tab + page shell (UI, pastiche)  (blocked-by 4.0)     (interactive)
        │
 Wave 2 — presentation (parallel — fat wave)
   4.2b Home — menu tab logic                       (blocked-by 4.2a)     (autonomous)
@@ -42,10 +43,11 @@ Wave 7 — verify
   4.9  Verify + end-bump                           (blocked-by 4.8)      (interactive)
 ```
 
-**Critical path:** 4.1 → 4.2a → 4.5a → 4.5b → 4.6 → 4.7 → 4.8 → 4.9 ≈ 8 serial lanes. Wave 2 can run 4 concurrent (4 terminals).
+**Critical path:** 4.0 → 4.2a → 4.5a → 4.5b → 4.6 → 4.7 → 4.8 → 4.9 ≈ 8 serial lanes. Wave 2 can run 4 concurrent (4 terminals).
 
 **Dependency edges** (→ means "must merge before"):
 
+- `4.0 → 4.2a, 4.3a` (UI lanes that use bottom-sheet need DS Sheet published; mid-phase patch bump expected)
 - `4.1 → 4.2b, 4.3b, 4.4b, 4.5b` (logic lanes consume MSW; UI lanes can render against existing fixtures+real but the logic siblings need handlers)
 - `4.2a → 4.2b, 4.3a, 4.4a, 4.5a` (page shell carries — every other UI lane needs it)
 - `4.Xa → 4.Xb` (UI lane lands first per audit — pastiche targets stable contracts)
@@ -61,6 +63,7 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6.
 
 | Lane | Tag | Disposition | Rationale |
 |---|---|---|---|
+| 4.0 | [REDESIGN][NO-TDD] | `needs-interactive` | New DS atom — Sheet API + atom-style decisions need live grill; ships as DS patch bump (per `feedback_ds_bump_semver`) |
 | 4.1 | [MECHANICAL][TDD] | `autonomous-ready` | New MSW handler additions; tests pre-specified below; no app code touched |
 | 4.2a | [REDESIGN][NO-TDD] | `needs-interactive` | REDESIGN tag (rule 1 fail); carries page shell — visual decisions on heading/tabs rhythm and sticky `ViewCartButton` placement need live grill |
 | 4.2b | [POLISH][NO-TDD] | `autonomous-ready` | Behavior-preserving wiring polish; spec narrow; may degenerate to no-op |
@@ -75,7 +78,68 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6.
 | 4.8 | n/a | `needs-interactive` | Review pass; full-phase visual/UX walkthrough |
 | 4.9 | n/a | `needs-interactive` | Touches publish (`ds-phase-end-bump` if any DS fixes); final verify |
 
-**Totals:** 4 autonomous-ready, 9 needs-interactive.
+**Totals:** 4 autonomous-ready, 10 needs-interactive (14 lanes total — 4.0 added 2026-05-02 from 4.2a grill).
+
+---
+
+## Lane 4.0 — DS Sheet (bottom-sheet variant)
+
+**Repo:** `umichkisa-ds`
+**Mode:** Mode D (DS-repo new-component flow — worktree, direct-merge to main, patch bump + publish)
+
+### Locked decisions (2026-05-02 grill)
+
+- **API:** Separate `Sheet.tsx` atom mirroring Dialog's structure (`Sheet`, `SheetTrigger`, `SheetContent`, `SheetTitle`, `SheetDescription`, `SheetFooter`, `SheetClose`). Not a `side` prop on Dialog — clean separation, parallels shadcn/ui.
+- **Drag library:** `vaul` (Emil Kowalski) — built on Radix Dialog, ~9KB gzip, drag-to-dismiss + scrim-fade-on-drag out of the box. New dep added to `@umichkisa-ds/web`.
+- **Snap points:** Single — content auto-sizes up to ~90vh, then scrolls internally. No `snapPoints` prop exposed.
+- **Scrim:** Match Dialog `bg-overlay` token. Drag-tied opacity fade (vaul default). Tap-to-dismiss enabled. Body scroll locked while open.
+- **Focus + a11y:** Radix defaults (first focusable on open, focus trap, Escape closes). `SheetTitle` + `SheetDescription` required (consumers can wrap in Radix `VisuallyHidden`). No keyboard drag simulation. Honor `prefers-reduced-motion: reduce` (instant open/close, no slide).
+- **Viewport posture:** Mobile-only. No responsive behavior. Documented in WISDOM as a hard constraint — for responsive overlays, consumers use Dialog.
+- **Animation:** vaul defaults (~500ms spring open; ~300ms slide close; momentum from drag release). Do not override to match Dialog's 150ms.
+
+### Files
+
+- Create: `packages/web/src/components/overlay/Sheet.tsx`
+- Modify: `packages/web/src/components/overlay/index.ts` — export Sheet subcomponents
+- Modify: `packages/web/package.json` — add `vaul` dep
+- Add: docs app page demonstrating Sheet at 375px (and notes it's mobile-only)
+- Pastiche: run `pnpm pastiche:fact` (auto-generates FACT entry); manually add KNOWLEDGE scenarios + 3 WISDOM rules
+
+### Tasks
+
+- [ ] Worktree off `main` in DS repo
+- [ ] Add `vaul` to `packages/web/package.json` deps; `pnpm install`
+- [ ] Implement `Sheet.tsx` per locked decisions (mirror Dialog structure; subcomponents 1:1)
+- [ ] Export from `overlay/index.ts`
+- [ ] Add docs page (Overlays → Sheet) — usage example, mobile-only callout, reduced-motion note
+- [ ] `pnpm build` + `pnpm typecheck` pass
+- [ ] Run `pnpm pastiche:fact` to regenerate FACT.md
+- [ ] Append to `pastiche/KNOWLEDGE.md`: single comma-separated line of Sheet scenarios (mobile detail panel, mobile picker/selector, mobile order/receipt view)
+- [ ] Append to `pastiche/WISDOM.md` under the Sheet tag (whatever FACT emits) — 3 rules:
+  1. "Sheet is mobile-only. For responsive overlays use Dialog."
+  2. "Drag-to-dismiss is part of the atom — consumers do not implement custom dismissal gestures."
+  3. "Sheet content must declare a `SheetTitle` (wrap in `VisuallyHidden` if not visually shown)."
+- [ ] Run pastiche tag-sanity check
+- [ ] Bump `packages/web/package.json` version (patch — per `feedback_ds_bump_semver`)
+- [ ] Merge worktree → main (after user confirms; per `feedback_no_auto_merge`)
+- [ ] `git tag web-vX.X.X && git push --tags` (CI publishes)
+- [ ] Update client `package.json` `@umichkisa-ds/web` version + `npm install`
+- [ ] Append entry to `docs/plans/client-migration/ds-fixes-log.md`
+
+### Acceptance criteria
+
+- [ ] Bottom-sheet renders with vaul-default slide-up + drag-fade scrim
+- [ ] Scrim tap, swipe-down past threshold, close X, and Escape all dismiss
+- [ ] `prefers-reduced-motion: reduce` → instant open/close
+- [ ] Body scroll locked while open
+- [ ] Lane 4.2a's MenuItemDetail and Lane 4.3a's OrderTicketModal can both consume the same atom
+- [ ] DS docs page demonstrates usage at 375px viewport with mobile-only callout
+- [ ] FACT.md regenerated; KNOWLEDGE + WISDOM entries committed; pastiche tag-sanity green
+
+### Bailout triggers
+
+- `vaul` peer-deps conflict with our Radix versions — pin Radix Dialog to the version vaul expects (likely already aligned at `^1.1.x`)
+- vaul SSR / "use client" boundary issues with our tsup bundling — wrap in dynamic import or add `"use client"` directive at module top
 
 ---
 
@@ -177,14 +241,13 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6.
 - **Page shell** for `/pocha` — landing route for end users at the event. Carries:
   - The pocha heading (event name / pocha info), grouped with the tabs strip at the top.
   - A two-tab switcher (`Menu` / `Orders`) that reflects + writes the URL `?tab=` query param (the existing prop-driven `activeTab` pattern stays — wire it to the tabs control).
-  - Existing loading / no-pocha / upcoming guards stay (use DS feedback primitives where pastiche maps cleanly; otherwise leave wired to existing helpers — 4.7 sweeps).
-  - **Drop the cherry-blossom branch + petals JSX entirely from `page.tsx`** — `POCHA_THEME` is now `default`. The dynamic-import scaffolding for the spring theme can stay in the imports (or be removed cleanly) — pastiche's call.
+  - Loading state = **skeleton page shell** (heading + tab strip + 4–5 menu row skeletons), not spinner. No-pocha + upcoming guards stay; both render as `StatusView` (upcoming uses calendar icon + pocha title/date in description).
+  - **Theme code untouched in this lane.** The cherry-blossom branch + petals JSX, dynamic imports, `POCHA_THEME` checks, and `swayTrigger` onClick all stay as-is in `page.tsx`. A future "theme-wiring strategy" lane (TBD lane 4.10 or post-Phase-4 follow-up) reworks how seasonal themes plug into the DS-migrated shell. Rationale: theming is a real product feature for future seasonal pochas; rewiring it deserves its own design pass, not a side-effect of this rebuild.
 - **Menu tab content** — the in-event menu surface:
   - Sectioned by category (existing `useMenu` returns `MenuByCategory[]`).
-  - Each row shows the menu item's photo, English name (primary), Korean name as secondary line when present, price, and a low/sold-out signal when stock is constrained. Underage users see alcohol items as visually de-emphasized + non-tappable (the existing `underAge` flag from `useUserAge` still drives this).
-  - Tapping a row opens a **menu-item detail** view (`MenuItemDetail`) showing the larger image, descriptions, quantity controls, and an `Add to cart` action. Detail view is a route-internal panel today (state-driven, replaces the list); pastiche may promote this to a bottom-sheet Dialog if a clean DS atom exists, or keep it as an in-place panel — both are acceptable.
-  - **Sticky `ViewCartButton`** at the bottom of the menu tab (and only the menu tab — orders tab does not show it) — visible iff cart non-empty. Pastiche owns the "sticky bottom action bar" pattern.
-- **No layout/positioning of cart button must rely on `POCHA_THEME === 'spring'`** — that branch is dead.
+  - Each row shows the menu item's photo, English name (primary), Korean name as secondary line when present, price, and a low/sold-out signal when stock is constrained. **Underage gating** (`ageCheckRequired && useUserAge.underAge`): row dimmed (~50% opacity) with a small `21+` badge near the price, button disabled. No red overlay (legacy treatment dropped).
+  - Tapping a row opens a **menu-item detail** rendered as a **DS bottom-sheet** (Sheet variant — see Lane 4.0 below; this lane is gated on it). Sheet content: larger image, name + description, quantity stepper, `Add to Cart` action. Dismissal: swipe-down + backdrop tap + close X in sheet header. After successful Add to Cart: sheet closes (current behavior).
+  - **Sticky `ViewCartButton`** at the bottom of the menu tab (and only the menu tab — orders tab does not show it) — **always visible on the menu tab** (label "View Cart" only, no count/total — intentional UX to keep users browsing). Full-width edge-to-edge with safe-area-inset-bottom; reevaluate width after first build. Pastiche owns the "sticky bottom action bar" pattern.
 
 ### Tasks
 
@@ -194,11 +257,12 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6.
 
 ### Acceptance criteria
 
-- [ ] `/pocha` renders without spring-theme JSX in the page shell
-- [ ] Tab URL sync works (`?tab=orders` deep-links to the orders tab; back/forward updates the active tab)
-- [ ] Menu list paints categories with the seeded fixture; underage user (toggleable via `MockAuthToggle`) sees alcohol items de-emphasized
-- [ ] Tapping a menu item opens detail; quantity adjust + add to cart still works against existing `useCart` (`changeItemInCart` mutation)
-- [ ] `ViewCartButton` shows iff cart non-empty; tapping routes to `/pocha/cart`
+- [ ] `/pocha` page shell rebuilt with DS atoms (heading + tabs + content area); theme code paths preserved unchanged
+- [ ] Tab state is URL-sourced (`useSearchParams` reads tab; tap calls `router.replace(?tab=...)` — no `useState`); deep-linking and refresh persist the active tab
+- [ ] Menu list paints categories with the seeded fixture; underage user (toggleable via `MockAuthToggle`) sees alcohol items dimmed with a `21+` badge, button disabled
+- [ ] Tapping a menu item opens the DS bottom-sheet; quantity adjust + add to cart still works against existing `useCart` (`changeItemInCart` mutation); sheet closes on success
+- [ ] `ViewCartButton` always rendered on menu tab; tapping routes to `/pocha/cart`
+- [ ] Loading state renders skeleton page shell (heading + tab strip + ~5 menu row skeletons), not a spinner
 - [ ] No `LoadingSpinner` from `@/components/ui/feedback` remains in page.tsx (use DS primitives — sweep happens here, not in 4.7)
 - [ ] No `sejongHospital*` raw font imports remain in any file touched
 
@@ -211,7 +275,7 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6.
 
 ### Bailout triggers
 
-- DS Dialog has no mobile bottom-sheet variant and pastiche judges the in-place panel pattern unacceptable — `ds-fix-during-migration` candidate (mid-phase patch bump)
+- DS Sheet (Lane 4.0) doesn't ship in time or its API doesn't fit menu-detail content cleanly — fall back to current full-screen overlay pattern + flag for follow-up (do **not** introduce in-place panel — confirmed unacceptable in grill 2026-05-02)
 - `useCart`'s `handleQuantityChange` signature can't be cleanly bound from the menu-detail control — `needs-decision` (likely just prop-drill)
 
 ---
@@ -759,13 +823,17 @@ A narrow follow-up for things 4.2a's UI lane should not own:
 Carried forward from `audit.md`:
 
 - ~~**4.1**: confirm `MenuItem.isAlcohol` field name vs real-backend~~ — resolved 2026-05-02: BE field is `ageCheckRequired`; handler + tests use it directly
-- **4.2a**: page shell visual rhythm + sticky `ViewCartButton` placement — deferred to pastiche/grill
-- **4.3a**: order-ticket bottom-sheet vs in-place panel — pastiche call (DS gap candidate flagged in audit)
+- ~~**4.2a**: page shell visual rhythm + sticky `ViewCartButton` placement~~ — resolved 2026-05-02 grill: heading scrolls + tabs sticky; ViewCartButton always visible, label-only, full-width; theme code untouched; bottom-sheet via new Lane 4.0; underage = inline dim + 21+ badge; URL-as-source-of-truth + `router.replace`
+- **4.3a**: order-ticket bottom-sheet vs in-place panel — resolved by Lane 4.0 (use DS Sheet); status-badge tone mapping still pastiche call
 - **4.3b**: polling interval (1.5s default) — tunable at execution if it feels laggy
 - **4.4a**: quantity-stepper composition — DS gap candidate flagged in audit
 - **4.5b**: MockPayButton visual parity with `PayButton` — pastiche call
 - **4.6**: confirm no hidden `localStorage` write sites for tip plumbing outside the audited files
 - **4.8**: review file path created at execution — `review-4.8-findings.md`
+
+### Follow-up lane (post-Phase-4 candidate)
+
+- **Theme-wiring strategy** (TBD lane): rework how `POCHA_THEME` (and future seasonal themes) plug into the DS-migrated pocha shell. Current theme JSX (CherryBlossom branch + petals + swayTrigger handler) is preserved as-is in `page.tsx` through Phase 4. Needs a clean theming primitive — likely DS-side (theme-scoped tokens / wrapper) — before re-flipping to a seasonal theme. Decided 2026-05-02 grill.
 
 ---
 
