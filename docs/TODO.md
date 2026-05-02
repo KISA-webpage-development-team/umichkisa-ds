@@ -60,7 +60,7 @@
 - [x] Phase 3.5: OrderItemCard redesign — typography, single-tap promote, drop @nextui Spinner (autonomous + Mode C revision) — dev (#132 merged, closed #120)
 - [x] Phase 3.6: Food/Drink grids redesign — DS Badge for status, drop STATUS_COLORS (autonomous + Mode C admin-merge) — dev (#133 merged, closed #121)
 - [x] Phase 3.6b: Orders kanban redesign — proper grid layout, status-toned column rings, English titles, plain count, smaller tile menu name (Mode D direct-push) — dev 2ca1cc0
-- [ ] Phase 3.7: Orders tab batch-select mode (선택 모드 + smart breakdown + Dialog gate + fan-out) (interactive)
+- [x] Phase 3.7: Orders tab batch-select mode — Bulk-promote toggle in tabs row + gesture entry + per-grid sticky action bar + Dialog gate + optimistic fan-out (interactive, Mode D direct push) — dev 5e42963 (closed #124)
 - [x] Phase 3.8: Stock tab full redesign — DS Table inline edit + per-row ✕ Dialog + filter chips (autonomous + Mode C admin-merge + audit fixes) — dev (#134 merged, closed #122; audit fixes in 00b8cc1)
 - [x] Phase 3.9: History tab redesign — DS Table + ToggleGroup + Dialog with B-lite analytics (autonomous + Mode C admin-merge + audit fixes) — dev (#135 merged, closed #123; audit fixes in 00b8cc1)
 - [ ] Phase 3.10: Page shell legacy ui sweep + error.tsx (autonomous)
