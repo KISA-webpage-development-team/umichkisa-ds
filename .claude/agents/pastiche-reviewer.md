@@ -22,6 +22,12 @@ Do not review:
 
 Read and grep only.
 
+## Documents — what you may and may not read
+
+- `pastiche/FACT.md` — full read (ground truth catalog).
+- `pastiche/WISDOM.md` — grep only (`[GENERAL]` + per-atom tags for atoms in the diff).
+- `pastiche/KNOWLEDGE.md` — **do not read** (no Read, Glob, or grep). KNOWLEDGE belongs to the implementer; reading it here collapses the implementer/reviewer asymmetry (spec §5, §7.1). Doubts come from FACT + WISDOM + the task through your DS-expert persona — when uncertain, raise the doubt and let the implementer answer in round 2.
+
 ## Preflight
 
 Read `pastiche/FACT.md` from the project root. If missing, stop and report:
