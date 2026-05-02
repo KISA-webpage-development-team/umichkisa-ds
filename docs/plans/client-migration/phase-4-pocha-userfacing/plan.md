@@ -69,7 +69,7 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6.
 | 4.2b | [POLISH][NO-TDD] | `autonomous-ready` | Behavior-preserving wiring polish; spec narrow; may degenerate to no-op |
 | 4.3a | [REDESIGN][NO-TDD] | `needs-interactive` | REDESIGN — order-ticket modal is likely a bottom-sheet (mobile); status-badge tone mapping decision |
 | 4.3b | [POLISH][NO-TDD] | `needs-interactive` | Mock-mode WS disable + Simulate Promote button placement — mirrors Phase 3.3 (also interactive) |
-| 4.4a | [REDESIGN][NO-TDD] | `needs-interactive` | REDESIGN — quantity-stepper UX + sticky checkout bar are live-grill candidates |
+| 4.4a | [REDESIGN][NO-TDD] | `autonomous-ready` | REDESIGN — decisions locked via grill 2026-05-02 (issue #142); pastiche owns visual chrome |
 | 4.4b | [POLISH][TDD] | `autonomous-ready` | TDD-locked; pure logic additions on top of stable hook contract |
 | 4.5a | [REDESIGN][NO-TDD] | `needs-interactive` | REDESIGN — Stripe `<Elements>` shell stays, but pay summary card + button chrome are visual decisions |
 | 4.5b | [POLISH][TDD] | `needs-interactive` | TDD-locked for the util, but MockPayButton swap touches mock-mode branch + redirect contract — live verify |
@@ -78,7 +78,7 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6.
 | 4.8 | n/a | `needs-interactive` | Review pass; full-phase visual/UX walkthrough |
 | 4.9 | n/a | `needs-interactive` | Touches publish (`ds-phase-end-bump` if any DS fixes); final verify |
 
-**Totals:** 4 autonomous-ready, 10 needs-interactive (14 lanes total — 4.0 added 2026-05-02 from 4.2a grill).
+**Totals:** 5 autonomous-ready, 9 needs-interactive (14 lanes total — 4.0 added 2026-05-02 from 4.2a grill; 4.4a flipped to autonomous-ready 2026-05-02 via grill).
 
 ---
 
@@ -426,7 +426,7 @@ A narrow follow-up for things 4.2a's UI lane should not own:
 ## Lane 4.4a — Cart UI
 
 **Repo:** `KISA-website-client`
-**Mode:** `needs-interactive` (REDESIGN — quantity-stepper UX, sticky checkout bar)
+**Mode:** `autonomous-ready` (decisions locked via grill 2026-05-02 — see issue #142 comment for full rationale; visual chrome delegated to pastiche)
 
 ### Files
 
@@ -437,37 +437,71 @@ A narrow follow-up for things 4.2a's UI lane should not own:
 - Modify: `src/features/pocha/components/cart/ProceedToPaymentButton.tsx`
 - Modify: `src/features/pocha/components/cart/EmptyCartAlert.tsx`
 
-### Scope (descriptive)
+### Page context
 
-- The user's cart for the active pocha. Mobile-only.
-- Page header: a back-affordance and a title (`Cart` / `장바구니`).
-- **Cart list:** scrollable; one row per cart line. Each row shows menu image, name (English primary, Korean secondary if present), per-unit price, line total, and a quantity stepper (`-` / count / `+`).
-  - Stepper bounds: `quantity ≥ 1` (decrementing below 1 removes the item — confirmed by 4.1's MSW), and `quantity ≤ menu.stock` (the stock cap; the stock check happens server-side via 4.1's POST handler returning `{ isStocked: false }` → surface a toast on rejection and revert the optimistic update).
-- **Sticky bottom summary** when cart non-empty:
-  - Total amount, then a primary `Proceed to payment` button routing to `/pocha/pay`.
-  - Pastiche owns the sticky-bar pattern.
-- **Empty state** when cart is empty: friendly empty illustration + CTA back to `/pocha` menu.
-- Loading + error states preserved (use DS feedback primitives where pastiche maps cleanly).
+`/pocha/cart` is the user's cart for the active pocha. Mobile-only. Reached from `/pocha` via the Cart icon. Single way out via the back chevron in the header (or via Checkout → `/pocha/pay`). Drinking-event cart — usually small (<10 lines), price-driven, not item-count-driven.
+
+### Locked decisions (UX + behavior — visual chrome → pastiche)
+
+**Page shell**
+- Back chevron (left) + centered title (`Cart`, English only); no divider; scrolls with content
+- ProceedToPayment uses `router.push` (no full reload)
+
+**Cart row**
+- Stepper UX: decrement / count / increment. At `qty=1` decrement becomes a "remove" affordance (icon-swap intent preserved)
+- Single remove path (decrement-to-zero); no separate X button, no swipe-to-delete
+- Row shows per-unit price + line total (compact, e.g. `$4.00 × 3 · $12.00`)
+- Menu name renders `nameKor` then `nameEng` (per app convention)
+- No alcohol/21+ badge (age-gating happens on menu page, not cart)
+- No stock-remaining indicator on rows that aren't capped
+
+**Stock UX — inline red, never toast** (matches `MenuListItem`'s existing vocabulary; toasts collide with sticky bar on mobile)
+- `quantity === menu.stock` → `+` disabled + inline red hint on the row (`Max` / `재고 N개`)
+- Server race-reject (`{ isStocked: false }`) → inline red text on row (`Only N left` / `Out of stock`) for ~3s, then `fetchCart` reverts
+
+**Sticky bottom bar**
+- Total price only (no item count)
+- Hidden when cart empty; always visible otherwise (no hide-on-scroll); respects iOS safe-area inset
+
+**Empty state**
+- Custom illustration (no matching `StatusView` variant; pastiche may keep the PNG or simplify)
+- English-only copy; no CTA — back-chevron in header is the only return path
+
+**Loading / error**
+- Loading: skeleton (header + ~3 rows + sticky bar shape) — not a bare spinner
+- Error: `StatusView` inline + retry button calling `fetchCart()` (replaces current `throw new Error`)
+- `noPocha` short-circuit: keep existing `StatusView` (already DS)
+
+### Pastiche freedom
+- Stepper container shape (pill chip vs segmented vs inline)
+- Skeleton primitive selection
+- Empty-state illustration (keep PNG or replace)
+- Exact spacing, colors, type sizes — within DS tokens
 
 ### Tasks
 
-- [ ] Rebuild cart page + components per scope
-- [ ] Drop `PochaBackHeading` / `PochaHorizontalDivider` shared usage in this file (the 4.7 sweep deletes those — but this lane is the consumer, so swap to DS-tokenized header/divider locally)
+- [ ] Rebuild cart page + components per locked decisions
+- [ ] Drop `PochaBackHeading` / `PochaHorizontalDivider` shared usage in this file (the 4.7 sweep deletes those — but this lane is the consumer, so swap to DS-tokenized header locally)
 - [ ] `npm run build` + `npm run typecheck` pass
 
 ### Acceptance criteria
 
 - [ ] `/pocha/cart` renders the seeded cart in mock mode
 - [ ] Quantity stepper increments + decrements; decrementing to 0 removes the line
-- [ ] Stock-exceed attempt surfaces an error (toast or inline message) and reverts the optimistic update
-- [ ] Sticky bottom summary visible iff cart non-empty
-- [ ] Empty state CTA returns to `/pocha`
+- [ ] At `quantity === stock`, `+` is disabled and an inline red `Max` / `재고 N개` hint shows on the row
+- [ ] Server stock-reject surfaces inline red text on the row (~3s) then reverts via `fetchCart`
+- [ ] Sticky bottom bar shows total price only, visible iff cart non-empty, respects safe-area inset
+- [ ] Empty state renders illustration + English copy, no CTA
+- [ ] Loading state renders skeleton (no bare spinner)
+- [ ] Error state renders inline `StatusView` with retry calling `fetchCart`
+- [ ] Checkout uses `router.push`, not `window.location.href`
 - [ ] No imports from `@/features/pocha/components/shared/Pocha*`
 
 ### Non-goals
 
-- Logic-side polish (lane 4.4b owns stock-cap test additions)
-- Pay route (lane 4.5a)
+- Stock-cap pure helpers (`wouldExceedStock`, `clampDelta`) → lane 4.4b
+- Pay route → lane 4.5a
+- `Pocha*` shared component deletion → lane 4.7
 
 ### Bailout triggers
 
@@ -826,7 +860,7 @@ Carried forward from `audit.md`:
 - ~~**4.2a**: page shell visual rhythm + sticky `ViewCartButton` placement~~ — resolved 2026-05-02 grill: heading scrolls + tabs sticky; ViewCartButton always visible, label-only, full-width; theme code untouched; bottom-sheet via new Lane 4.0; underage = inline dim + 21+ badge; URL-as-source-of-truth + `router.replace`
 - **4.3a**: order-ticket bottom-sheet vs in-place panel — resolved by Lane 4.0 (use DS Sheet); status-badge tone mapping still pastiche call
 - **4.3b**: polling interval (1.5s default) — tunable at execution if it feels laggy
-- **4.4a**: quantity-stepper composition — DS gap candidate flagged in audit
+- ~~**4.4a**: quantity-stepper composition + sticky checkout bar~~ — resolved 2026-05-02 grill (issue #142): stepper visual chrome → pastiche; qty=1 trash-swap intent preserved; stock UX is inline red (never toast) matching `MenuListItem`; sticky bar = total price only + safe-area; empty state = no CTA; loading = skeleton; error = inline `StatusView` + `fetchCart` retry; checkout uses `router.push`. Flipped to `autonomous-ready`.
 - **4.5b**: MockPayButton visual parity with `PayButton` — pastiche call
 - **4.6**: confirm no hidden `localStorage` write sites for tip plumbing outside the audited files
 - **4.8**: review file path created at execution — `review-4.8-findings.md`
