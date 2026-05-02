@@ -67,7 +67,7 @@
 - [x] Phase 3.11: Audit-after redesign pass + page metadata (Mode D direct-push) — dev b34201d (closed #126)
 - [x] Phase 3.12: Verify + end-bump (interactive) — DS build/typecheck green; client tsc + build + tests (120 pass / 3 skip) green after MockAuthToggle test fix (dev 2bfac7d); no end-bump needed (all Phase 3 DS fixes shipped mid-phase: web 1.0.23–1.0.24)
 - [x] Phase 4: pocha-userfacing — kickoff done (audit.md written 2026-05-02; POCHA_THEME flipped to default on client dev `eac2afb`)
-- [ ] Phase 4.1: MSW user-facing handlers (cart/user-orders/pay-info/pay-result) [TDD]
+- [x] Phase 4.1: MSW user-facing handlers (cart/user-orders/pay-info/pay-result) [TDD] — dev b22d2a8 (closed #137)
 - [ ] Phase 4.2a: Home — menu tab + page shell (UI, pastiche)
 - [ ] Phase 4.2b: Home — menu tab logic
 - [ ] Phase 4.3a: Home — orders tab UI (pastiche)

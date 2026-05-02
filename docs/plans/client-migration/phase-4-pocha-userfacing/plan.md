@@ -111,7 +111,7 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6.
 - [ ] `GET /pocha/order/{email}/{pochaID}/closed/` returns `{ closed: OrderItem[] }` filtered to `status='closed'` for that email
 
 **Pay**
-- [ ] `GET /pocha/cart/{email}/{pochaID}/checkout-info/` with `Authorization: Bearer <token>` returns `PayInfo` shape: `{ amount: number, ageCheckRequired: "true" | "false" }`. `amount` = sum of `menu.price * quantity` over the user's cart. `ageCheckRequired = "true"` iff any cart item's `menu.isAlcohol === true`
+- [ ] `GET /pocha/cart/{email}/{pochaID}/checkout-info/` with `Authorization: Bearer <token>` returns `PayInfo` shape: `{ amount: number, ageCheckRequired: "true" | "false" }`. `amount` = sum of `menu.price * quantity` over the user's cart. `ageCheckRequired = "true"` iff any cart item's `menu.ageCheckRequired === true` (matches real BE — `KISA-website-server/server/api/pocha/cart.py:552-581`)
 - [ ] `GET /pocha/cart/{email}/{pochaID}/checkout-info/` without `Authorization` returns 401
 - [ ] `PUT /pocha/payment/{email}/{pochaID}/pay-result/` with body `{ result: "success" }`:
   - Drains the user's cart entries into new `OrderItem`s in `orderItemStore` (one OrderItem per cart line, `status='pending'`, `quantity` carried over, ids from `nextOrderItemID++`)
@@ -152,7 +152,7 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6.
 ### Bailout triggers
 
 - `Cart` / `PayInfo` response shape ambiguous vs handler call sites (`getUserCart`, `getPayInfo`) — `needs-decision`
-- `MenuItem.isAlcohol` field name differs from real-backend (verify type) — `needs-decision`
+- ~~`MenuItem.isAlcohol` field name differs from real-backend~~ — resolved 2026-05-02: real BE returns `ageCheckRequired` (`cart.py:552-581`); no `isAlcohol` field exists. Handler uses `menu.ageCheckRequired`.
 
 ---
 
@@ -764,7 +764,7 @@ A narrow follow-up for things 4.2a's UI lane should not own:
 
 Carried forward from `audit.md`:
 
-- **4.1**: confirm `MenuItem.isAlcohol` field name vs real-backend on first failing test; soju fixtures may need a tweak so `ageCheckRequired=true` paths exercise correctly
+- ~~**4.1**: confirm `MenuItem.isAlcohol` field name vs real-backend~~ — resolved 2026-05-02: BE field is `ageCheckRequired`; handler + tests use it directly
 - **4.2a**: page shell visual rhythm + sticky `ViewCartButton` placement — deferred to pastiche/grill
 - **4.3a**: order-ticket bottom-sheet vs in-place panel — pastiche call (DS gap candidate flagged in audit)
 - **4.3b**: polling interval (1.5s default) — tunable at execution if it feels laggy
