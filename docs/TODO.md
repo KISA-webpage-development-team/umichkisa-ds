@@ -70,7 +70,7 @@
 - [x] Phase 4.0: DS Sheet (mobile bottom-sheet, vaul) — main 0851a3a; @umichkisa-ds/web v1.0.25 published; client dev bumped (e2722cb)
 - [x] Phase 4.1: MSW user-facing handlers (cart/user-orders/pay-info/pay-result) [TDD] — dev b22d2a8 (closed #137)
 - [x] Phase 4.2a: Home — menu tab + page shell (UI, pastiche) — dev 8962eb6 (closed #138; mid-phase DS bump web 1.0.25 → 1.0.27 for Tabs size=lg)
-- [ ] Phase 4.2b: Home — menu tab logic
+- [x] Phase 4.2b: Home — menu tab logic — dev (#150 merged, closed #139; deleted dead `getMenuImagePathWithTransformations`)
 - [ ] Phase 4.3a: Home — orders tab UI (pastiche)
 - [ ] Phase 4.3b: Home — orders tab logic + WS-mock fallback + Simulate Promote
 - [ ] Phase 4.4a: Cart UI (pastiche)
