@@ -49,11 +49,17 @@ For each eligible issue, until 4h cap or queue empty:
 1. Read the issue's full spec (template fields per §5).
 2. Determine target repo from the issue location.
 3. `git fetch origin dev` and `git checkout -b ds-client-migration/phase-<N>/<lane-id>-<slug> origin/dev` in the target repo.
-4. Invoke the `pastiche` skill **from the `umichkisa-ds/` repo CWD** (its preflight resolves `pastiche/{FACT,KNOWLEDGE,WISDOM}.md` relative to CWD, and only the DS repo has those docs — invoking from the client repo will fail preflight). When the target repo is the client, include the client checkout's absolute path + branch name in the task description so the skill's edits land in the client checkout while reading DS-repo atom rules. For DS-side lanes, the CWD already matches the target.
+4. Read the issue's `## Execution skill` field and dispatch accordingly:
+   - `pastiche` — invoke **from the `umichkisa-ds/` repo CWD** (its preflight resolves `pastiche/{FACT,KNOWLEDGE,WISDOM}.md` relative to CWD, and only the DS repo has those docs — invoking from the client repo will fail preflight). When the target repo is the client, include the client checkout's absolute path + branch name in the task description so the skill's edits land in the client checkout while reading DS-repo atom rules. For DS-side lanes, the CWD already matches the target.
+   - `/test-driven-development` — invoke from the target repo CWD. Tests first, then implementation, per the issue's pre-specified test cases.
+   - `/executing-plans` — invoke from the target repo CWD. Mechanical sweeps, semantic surgery, page-shell swaps, verify lanes.
+   - Combinations (e.g., `/test-driven-development` + `/executing-plans`) — run in the order written in the issue.
+   Never substitute one skill for another; the field is authoritative.
 5. Respect `## Files`, `## Non-goals`, `## Bailout triggers` from the issue spec — bailout if any are violated.
 6. Pre-PR gates (in order):
    a. Run `pnpm typecheck` (or the client's equivalent).
-   b. Scan source for `// pastiche-unresolved-doubt:` markers. If any present → bailout-to-draft + `needs-decision` per §8 (the comment lists each `file:line` + reviewer doubt).
+   b. **Pastiche-only:** if the execution skill included `pastiche`, scan source for `// pastiche-unresolved-doubt:` markers. If any present → bailout-to-draft + `needs-decision` per §8 (the comment lists each `file:line` + reviewer doubt). Skip this gate for non-pastiche lanes.
+   c. **TDD-only:** if the execution skill included `/test-driven-development`, run the test suite. Unexpected failures → bailout-to-draft + `needs-decision` per §8.
 7. Commit, push, open PR per §10 (title, body template assembled by you, labels, squash-merge target `dev`). Carry pastiche's `## Follow-ups` items into the PR body's `## Notes` section.
 8. Apply end-state label per §2: `ready-for-review` / `needs-decision` / `routine-errored`.
 9. Append a one-line summary to the phase's `notes.md` (commit on the feature branch, per §13 option C). For bailouts, the one-liner names the cause (e.g., `lane 2.3.1 — bailed: pastiche unresolved-doubt markers, see PR #N`).

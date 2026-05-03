@@ -122,7 +122,9 @@ Then proceed with the silent-wait → "good" → `wrapping-up-lane` flow.
 | Skill | Purpose |
 |---|---|
 | `grill-me` | Audit + plan grill (Modes A, B) |
-| `pastiche` | Lane execution (autonomous + Mode D) |
+| `pastiche` | Lane execution — UI lanes with DS atom mapping (autonomous + Mode D) |
+| `/test-driven-development` | Lane execution — logic/util/infra lanes with pre-specified test cases (autonomous + Mode D) |
+| `/executing-plans` | Lane execution — mechanical sweeps, semantic surgery, page-shell swaps, verify lanes (autonomous + Mode D) |
 | `ds-fix-during-migration` | Mid-lane DS fixes |
 | `ds-phase-end-bump` | Mid-phase + phase-end DS version bump + publish |
 | `using-git-worktrees` | Mode D worktree setup |
@@ -227,7 +229,7 @@ Per run:
 1. `gh issue list --label ds-client-migration --label phase-<N> --label autonomous-ready --state open` in target repo.
 2. Filter out issues with open `blocked-by:<X>` or already-linked open PR (prevents collisions with live Mode D).
 3. Sort oldest-first.
-4. For each, until 4h cap: read spec → `git fetch origin dev` → `git checkout -b ds-client-migration/phase-<N>/<lane-id>-<slug> origin/dev` → execute via `pastiche` → run `pnpm typecheck` → commit → push → `gh pr create` → apply labels → append one line to `notes.md`.
+4. For each, until 4h cap: read spec → `git fetch origin dev` → `git checkout -b ds-client-migration/phase-<N>/<lane-id>-<slug> origin/dev` → execute via the skill named in the issue's `## Execution skill` field (`pastiche` / `/test-driven-development` / `/executing-plans`, or a combination — never substitute) → run `pnpm typecheck` → if pastiche ran, scan for `// pastiche-unresolved-doubt:` markers (bailout if any) → if TDD ran, run tests → commit → push → `gh pr create` → apply labels → append one line to `notes.md`.
 5. Per-lane 90 min hard cap → commit WIP, draft PR with `routine-errored`, next lane.
 
 **Caps:** 90 min/lane, 4h/run, 1 lane in flight at a time (serial).
