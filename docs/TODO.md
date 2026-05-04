@@ -80,7 +80,7 @@
 - [x] Phase 4.5b: Pay logic + age gate + MockPayButton [TDD] — dev 43fe8ea (closed #145; collapsed planned MockPayButton into useStripePayment mock-mode branch — UI surface identical between mock and prod; pure ageGateResolve util TDD'd with fail-closed null/undefined)
 - [x] Phase 4.6: Pay-success rebuild (excise tip flow) — dev f64e748 (closed #146; UI rebuild + post-merge icon size-up to 64px via `!h-16 !w-16` override + tip-logic excision; setup_future_usage removal deferred to separate ticket — needs synced client+server change with real-mode Stripe smoke; KNOWLEDGE/WISDOM updated: StatusView `loading` variant removed, Icon xl ceiling rule added)
 - [x] Phase 4.7: Page shell sweep + legacy ui swap + delete `Pocha*` shared — dev 5515b27 (closed #147; layout swap to DS OnlyMobileView, 3 per-route error.tsx, deleted 4 Pocha* shared; follow-ups: moved statusTone.ts to utils, dropped 3 unused imports + 2 dead files)
-- [ ] Phase 4.8: Audit-after redesign pass + page metadata
+- [x] Phase 4.8: Audit-after redesign pass + page metadata — closed #148 (visual review completed offline by user; no code changes)
 - [ ] Phase 4.9: Verify + end-bump
 - [ ] Phase 5: admin-pocha consolidation — `/pocha/history` redesign + fold `manage` + `dashboard` into single admin app (subphases added at kickoff)
 - [ ] Phase 6: kisa-web (subphases added at kickoff)
