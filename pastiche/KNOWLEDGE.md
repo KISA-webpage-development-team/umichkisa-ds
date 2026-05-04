@@ -217,6 +217,10 @@ Text inside a disabled control or unavailable affordance.
 Inline link inside a paragraph or label.
 → `text-link`
 
+### Error / destructive text
+Inline error messages, validation feedback, destructive-action labels in body content.
+→ `text-error`
+
 ### Default surface (card, panel)
 Bounded surface holding grouped content.
 → `bg-surface`
