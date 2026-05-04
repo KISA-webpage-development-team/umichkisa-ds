@@ -76,7 +76,7 @@
 - [x] Phase 4.3b: Home — orders tab logic + WS-mock fallback + Simulate Promote — dev (commit `0cc3468`, closed #141, mock-mode polling 1500ms + Simulate Promote button)
 - [x] Phase 4.4a: Cart UI (pastiche) — dev (#151 merged, closed #142; cart-aware local cap, empty-cart fix, server-reject deferred to 4.4b)
 - [ ] Phase 4.4b: Cart logic [TDD]
-- [ ] Phase 4.5a: Pay UI (pastiche)
+- [x] Phase 4.5a: Pay UI (pastiche) — dev 6f39d3d (closed #144; reassurance summary + sticky Pay button + form-lock + skeleton + BackHeader extracted; perf: Elements options memoized, PaymentElement options hoisted, PaymentSubmitForm next/dynamic'd; PayButton kept as domain wrapper for 4.5b mock-mode branching; KNOWLEDGE.md gained text-error tone)
 - [ ] Phase 4.5b: Pay logic + age gate + MockPayButton [TDD]
 - [ ] Phase 4.6: Pay-success rebuild (excise tip flow)
 - [ ] Phase 4.7: Page shell sweep + legacy ui swap + delete `Pocha*` shared
