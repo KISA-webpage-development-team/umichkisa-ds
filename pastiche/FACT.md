@@ -80,7 +80,7 @@ package: @umichkisa-ds/web
 
 Props:
   ...React.HTMLAttributes<HTMLHeadingElement>
-  as?: HeadingElement
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 
 ### [CardDescription]
 package: @umichkisa-ds/web
@@ -105,7 +105,7 @@ package: @umichkisa-ds/web
 
 Props:
   ...react.HTMLAttributes<HTMLTableElement>
-  size?: TableSize
+  size?: "sm" | "md"
 
 ### [TableHeader]
 package: @umichkisa-ds/web
@@ -152,12 +152,21 @@ Props:
   href?:     string
   disabled?: boolean
 
+### [Icon]
+package: @umichkisa-ds/web
+
+Props:
+  name:       IconName   (required)
+  size?:      "xs" | "sm" | "md" | "lg" | "xl"
+  label?:     string
+  className?: string
+
 ### [IconButton]
 package: @umichkisa-ds/web
 
 Props:
   icon:       IconName   (required)
-  size?:      IconButtonSize
+  size?:      "sm" | "md" | "lg"
   aria-label: string   (required)
   ...Omit<ButtonProps, "children" | "size">
 
@@ -276,13 +285,24 @@ Props:
 ### [FileUpload]
 package: @umichkisa-ds/web
 
+Props:
+  value:      FileUploadValue   (required)
+  onChange:   (next: FileUploadValue | null) => void   (required)
+  onUpload:   (file: File) => Promise<FileUploadValue>   (required)
+  onRemove:   (publicId: string) => Promise<void>   (required)
+  accept?:    readonly AcceptedMimeType[]
+  maxSize?:   number
+  disabled?:  boolean
+  messages?:  FileUploadMessages
+  className?: string
+
 ### [Container]
 package: @umichkisa-ds/web
 
 Props:
   ...React.HTMLAttributes<HTMLElement>
   size?: "sm" | "md" | "lg" | "xl" | "default" | "prose" | "full"
-  as?:   AllowedElement
+  as?:   "div" | "section" | "main" | "article" | "header" | "footer" | "nav"
 
 ### [Grid]
 package: @umichkisa-ds/web
@@ -291,9 +311,6 @@ Props:
   ...React.HTMLAttributes<HTMLDivElement>
   columns?: GridColumns
   gap?:     "element" | "component" | "section"
-
-### [Icon]
-package: @umichkisa-ds/web
 
 ### [Alert]
 package: @umichkisa-ds/web
@@ -324,7 +341,7 @@ Props:
 package: @umichkisa-ds/web
 
 Props:
-  variant:      StatusViewVariant   (required)
+  variant:      "not-found" | "not-authorized" | "not-logged-in" | "error"   (required)
   code?:        string
   icon?:        IconName
   title?:       string

@@ -26,6 +26,7 @@ import {
   Project,
   Node,
   SyntaxKind,
+  type InterfaceDeclaration,
   type SourceFile,
   type TypeNode,
 } from 'ts-morph';
@@ -204,7 +205,35 @@ function unquoteName(n: string): string {
   return n.replace(/^"(.*)"$/, '$1').replace(/^'(.*)'$/, '$1');
 }
 
-function expandTypeNode(node: TypeNode): RenderedProp[] {
+/**
+ * If `tn` is a TypeReference to a local type alias whose RHS is a single
+ * literal or a union of literals (string/number/boolean/null), return the
+ * alias's RHS text so it can be inlined in place of the opaque name. Returns
+ * null otherwise (including for `keyof typeof X`, object types, etc.).
+ */
+function maybeInlineLiteralUnion(tn: TypeNode, ctx: ResolveCtx): string | null {
+  if (!Node.isTypeReference(tn)) return null;
+  const refName = tn.getTypeName().getText();
+  const alias = ctx.localTypeAliases.get(refName);
+  if (!alias) return null;
+  const isLitNode = (n: TypeNode) => Node.isLiteralTypeNode(n);
+  if (isLitNode(alias)) return cleanTypeText(alias.getText());
+  if (Node.isUnionTypeNode(alias) && alias.getTypeNodes().every(isLitNode)) {
+    return cleanTypeText(alias.getText());
+  }
+  return null;
+}
+
+function propTypeText(tn: TypeNode | undefined, fallback: string, ctx: ResolveCtx): string {
+  if (tn) {
+    const inlined = maybeInlineLiteralUnion(tn, ctx);
+    if (inlined) return inlined;
+    return cleanTypeText(tn.getText());
+  }
+  return cleanTypeText(fallback);
+}
+
+function expandTypeNode(node: TypeNode, ctx: ResolveCtx): RenderedProp[] {
   const out: RenderedProp[] = [];
   if (Node.isTypeLiteral(node)) {
     for (const m of node.getMembers()) {
@@ -212,7 +241,7 @@ function expandTypeNode(node: TypeNode): RenderedProp[] {
       const name = unquoteName(m.getName());
       const optional = m.hasQuestionToken();
       const tn = m.getTypeNode();
-      const typeText = cleanTypeText(tn ? tn.getText() : m.getType().getText(node));
+      const typeText = propTypeText(tn, m.getType().getText(node), ctx);
       out.push({ name, optional, typeText });
     }
     return out;
@@ -227,23 +256,41 @@ function expandTypeNode(node: TypeNode): RenderedProp[] {
     if (decl && Node.isPropertySignature(decl)) {
       optional = optional || decl.hasQuestionToken();
       const tn = decl.getTypeNode();
-      typeText = tn ? tn.getText() : sym.getTypeAtLocation(node).getText(node);
+      typeText = propTypeText(tn, sym.getTypeAtLocation(node).getText(node), ctx);
     } else {
-      typeText = sym.getTypeAtLocation(node).getText(node);
+      typeText = cleanTypeText(sym.getTypeAtLocation(node).getText(node));
     }
     out.push({
       name: unquoteName(sym.getName()),
       optional,
-      typeText: cleanTypeText(typeText),
+      typeText,
     });
   }
   return out;
 }
 
+function expandInterface(decl: InterfaceDeclaration, ctx: ResolveCtx): RenderedSegment[] {
+  const segments: RenderedSegment[] = [];
+  for (const heritage of decl.getExtends()) {
+    segments.push({ kind: 'spread', text: heritage.getText() });
+  }
+  const props: RenderedProp[] = [];
+  for (const m of decl.getMembers()) {
+    if (!Node.isPropertySignature(m)) continue;
+    const name = unquoteName(m.getName());
+    const optional = m.hasQuestionToken();
+    const tn = m.getTypeNode();
+    const typeText = propTypeText(tn, m.getType().getText(decl), ctx);
+    props.push({ name, optional, typeText });
+  }
+  segments.push({ kind: 'expand', props });
+  return segments;
+}
+
 function renderBranch(branch: TypeNode, ctx: ResolveCtx): RenderedSegment[] {
   const cls = classifyBranch(branch, ctx);
   if (cls.kind === 'spread') return [{ kind: 'spread', text: branch.getText() }];
-  if (cls.kind === 'expand') return [{ kind: 'expand', props: expandTypeNode(branch) }];
+  if (cls.kind === 'expand') return [{ kind: 'expand', props: expandTypeNode(branch, ctx) }];
   // recurse: walk the local alias's type node as if it were inlined here.
   const aliasName = (branch as { getTypeName?: () => { getText: () => string } })
     .getTypeName?.()
@@ -311,6 +358,7 @@ interface Component {
   name: string;
   package: string;
   propsTypeNode?: TypeNode;
+  propsInterface?: InterfaceDeclaration;
   position: number;
   ctx: ResolveCtx;
 }
@@ -364,6 +412,9 @@ function discoverComponents(sf: SourceFile, packageName: string): Component[] {
   // and recurse into private helpers like CommonProps.
   const localTypeAliases = new Map<string, { node: TypeNode; pos: number }>();
   const localTypeAliasNodes = new Map<string, TypeNode>();
+  // Same for interface declarations — `interface XxxProps { ... }` is a valid
+  // props source alongside `type XxxProps = ...`.
+  const localInterfaces = new Map<string, { decl: InterfaceDeclaration; pos: number }>();
   // Track first-seen position for any candidate name (Props alias OR value decl).
   const candidatePositions = new Map<string, number>();
   const recordPos = (name: string, pos: number) => {
@@ -383,6 +434,15 @@ function discoverComponents(sf: SourceFile, packageName: string): Component[] {
         localTypeAliasNodes.set(stmt.getName(), tn);
       }
       const name = stmt.getName();
+      if (name.endsWith('Props')) {
+        const base = name.slice(0, -'Props'.length);
+        if (/^[A-Z]/.test(base) && !/^[A-Z][A-Z0-9_]*$/.test(base)) {
+          recordPos(base, stmt.getStart());
+        }
+      }
+    } else if (Node.isInterfaceDeclaration(stmt)) {
+      const name = stmt.getName();
+      localInterfaces.set(name, { decl: stmt, pos: stmt.getStart() });
       if (name.endsWith('Props')) {
         const base = name.slice(0, -'Props'.length);
         if (/^[A-Z]/.test(base) && !/^[A-Z][A-Z0-9_]*$/.test(base)) {
@@ -415,7 +475,8 @@ function discoverComponents(sf: SourceFile, packageName: string): Component[] {
 
   const candidates = new Set<string>();
 
-  // (a) exported XxxProps types
+  // (a) exported XxxProps types (or local-only XxxProps interfaces, since the
+  // discoverer below picks up the value export and we want its props rendered)
   for (const name of exportNames) {
     if (!name.endsWith('Props') || name.length <= 'Props'.length) continue;
     const base = name.slice(0, -'Props'.length);
@@ -444,10 +505,12 @@ function discoverComponents(sf: SourceFile, packageName: string): Component[] {
   };
   for (const name of candidates) {
     const propsAlias = localTypeAliases.get(`${name}Props`);
+    const propsIface = localInterfaces.get(`${name}Props`);
     components.push({
       name,
       package: packageName,
       propsTypeNode: propsAlias?.node,
+      propsInterface: propsIface?.decl,
       position: candidatePositions.get(name) ?? Infinity,
       ctx,
     });
@@ -459,10 +522,12 @@ function discoverComponents(sf: SourceFile, packageName: string): Component[] {
     const rootPos = candidatePositions.get(compound.rootName) ?? Infinity;
     compound.members.forEach((m, i) => {
       const propsAlias = localTypeAliases.get(`${m.innerName}Props`);
+      const propsIface = localInterfaces.get(`${m.innerName}Props`);
       components.push({
         name: `${compound.rootName}.${m.memberName}`,
         package: packageName,
         propsTypeNode: propsAlias?.node,
+        propsInterface: propsIface?.decl,
         position: rootPos + (i + 1) / 1000,
         ctx,
       });
@@ -507,6 +572,10 @@ function main() {
         out.push('');
         out.push('Props:');
         out.push(renderSegments(renderProps(comp.propsTypeNode, comp.ctx)));
+      } else if (comp.propsInterface) {
+        out.push('');
+        out.push('Props:');
+        out.push(renderSegments(expandInterface(comp.propsInterface, comp.ctx)));
       }
       out.push('');
       componentCount++;
