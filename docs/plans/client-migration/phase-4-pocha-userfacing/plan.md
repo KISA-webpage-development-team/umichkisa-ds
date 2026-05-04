@@ -24,6 +24,10 @@ Wave 2 — presentation (parallel — fat wave)
   4.4a Cart UI (pastiche)                          (blocked-by 4.2a)     (interactive)
   4.5a Pay UI (pastiche)                           (blocked-by 4.2a)     (interactive)
 
+Wave 2.5 — Home menu stock-cap UX (added 2026-05-04 from PR #151 review)
+  4.2c Home — menu tab stock cap UX [POLISH][TDD]  (blocked-by 4.4a)     (autonomous)
+       (absorbs useCart SWR migration; was 4.4b non-goal)
+
 Wave 3 — logic (parallel; each pairs with its UI sibling)
   4.3b Home — orders tab logic + WS-mock fallback  (blocked-by 4.3a, 4.1)(interactive)
   4.4b Cart logic [TDD]                            (blocked-by 4.4a, 4.1)(autonomous)
@@ -50,6 +54,7 @@ Wave 7 — verify
 - `4.0 → 4.2a, 4.3a` (UI lanes that use bottom-sheet need DS Sheet published; mid-phase patch bump expected)
 - `4.1 → 4.2b, 4.3b, 4.4b, 4.5b` (logic lanes consume MSW; UI lanes can render against existing fixtures+real but the logic siblings need handlers)
 - `4.2a → 4.2b, 4.3a, 4.4a, 4.5a` (page shell carries — every other UI lane needs it)
+- `4.4a → 4.2c → 4.4b` (added 2026-05-04: 4.2c absorbs `useCart` SWR migration that was 4.4b's non-goal; 4.4b's server-reject signal forwarding now layers on top of SWR'd `useCart`)
 - `4.Xa → 4.Xb` (UI lane lands first per audit — pastiche targets stable contracts)
 - `4.5b → 4.6` (4.6 redirects from pay button; needs MockPayButton in place)
 - `4.2–4.6 → 4.7` (sweep deletes `Pocha*` shared after every caller is migrated)
@@ -67,6 +72,7 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6.
 | 4.1 | [MECHANICAL][TDD] | `autonomous-ready` | New MSW handler additions; tests pre-specified below; no app code touched |
 | 4.2a | [REDESIGN][NO-TDD] | `needs-interactive` | REDESIGN tag (rule 1 fail); carries page shell — visual decisions on heading/tabs rhythm and sticky `ViewCartButton` placement need live grill |
 | 4.2b | [POLISH][NO-TDD] | `autonomous-ready` | Behavior-preserving wiring polish; spec narrow; may degenerate to no-op |
+| 4.2c | [POLISH][TDD] | `autonomous-ready` | Added 2026-05-04 from PR #151 review — Home menu stock-cap UX; decisions locked via grill (issue #152); absorbs `useCart` SWR migration |
 | 4.3a | [REDESIGN][NO-TDD] | `needs-interactive` | REDESIGN — order-ticket modal is likely a bottom-sheet (mobile); status-badge tone mapping decision |
 | 4.3b | [POLISH][NO-TDD] | `needs-interactive` | Mock-mode WS disable + Simulate Promote button placement — mirrors Phase 3.3 (also interactive) |
 | 4.4a | [REDESIGN][NO-TDD] | `autonomous-ready` | REDESIGN — decisions locked via grill 2026-05-02 (issue #142); pastiche owns visual chrome |
@@ -78,7 +84,7 @@ Applied per `AUTONOMOUS_PROTOCOL.md` §6.
 | 4.8 | n/a | `needs-interactive` | Review pass; full-phase visual/UX walkthrough |
 | 4.9 | n/a | `needs-interactive` | Touches publish (`ds-phase-end-bump` if any DS fixes); final verify |
 
-**Totals:** 5 autonomous-ready, 9 needs-interactive (14 lanes total — 4.0 added 2026-05-02 from 4.2a grill; 4.4a flipped to autonomous-ready 2026-05-02 via grill).
+**Totals:** 6 autonomous-ready, 9 needs-interactive (15 lanes total — 4.0 added 2026-05-02 from 4.2a grill; 4.4a flipped to autonomous-ready 2026-05-02 via grill; 4.2c added 2026-05-04 from PR #151 review).
 
 ---
 
@@ -318,6 +324,70 @@ A narrow follow-up for things 4.2a's UI lane should not own:
 ### Bailout triggers
 
 - 4.2a left brittle glue that needs a real refactor (>30 LoC) — `needs-decision` (likely escalate to a follow-up Phase 4 issue rather than balloon this lane)
+
+---
+
+## Lane 4.2c — Home: menu tab stock cap UX
+
+**Repo:** `KISA-website-client`
+**Mode:** `autonomous-ready`
+**Added:** 2026-05-04 (from live review of PR #151 / Lane 4.4a)
+
+### Origin
+
+Discovered while testing 4.4a's cart-side stock cap on localhost: with `떡볶이` stock=1, the cart row correctly disabled `+` and showed `Max · 재고 1개` — but on the Home menu surface, the `MenuListItem` showed no signal, and `MenuItemDetail`'s stepper had no upper bound. User could spam `+` past stock and tap "Add to Cart" — server would silently reject. 4.2a missed this UX path entirely.
+
+### Locked decisions (grill 2026-05-04)
+
+1. **Cart-aware cap, not raw-stock cap.** Stepper caps at `stock - existingCartQty`.
+2. **Menu list row visual contract:**
+   - `stock === 0`: unchanged from 4.2a (line-through, "Out of stock", disabled).
+   - `existingCartQty >= stock > 0`: **no row change** — sheet handles it.
+   - `0 < stock <= 3`: `재고 N개 남음` hint; suppressed when at-cap.
+   - Normal: unchanged.
+3. **Low-stock threshold: `stock <= 3`** (mirrors `dashboardStats.ts:28` and `StockManager.tsx:108`).
+4. **Extract `isLowStock(stock: number): boolean`** helper; refactor existing two call sites + new menu list site.
+5. **Detail sheet at-cap state:** opens normally, `quantity = 1`, `+` disabled, inline red `Max · 재고 N개`, "Add to Cart" disabled with copy swap to `최대 수량 도달 · Stock cap reached`.
+6. **Detail sheet within-budget state:** stepper caps at `stock - existingCartQty`; inline red at cap; "Add to Cart" stays enabled.
+7. **`useCart` migration: SWR + `mutate()` + ref-stable debounce (Pattern A).** Preserves the 1s debounce. Fixes the per-render-debounce bug via `useRef(useMemo(() => debounce(...), []))`.
+8. **`existingCartQty` flow:** parent calls `useCart()` once, derives map, passes `existingCartQty: number` per row. SWR auto-dedupes when `MenuItemDetail` calls `useCart()` independently.
+9. **Server-reject path:** auto-close sheet, `toast.error("재고가 부족합니다 · Insufficient stock")` from inside `useCart`'s SWR settle handler. Coexists with 4.4b's cart-row inline-red.
+
+### Files
+
+**Modified:**
+- `src/features/pocha/hooks/useCart.ts` — SWR migration; toast on reject
+- `src/features/pocha/components/menu/MenuListItem.tsx` — `existingCartQty` prop; low-stock hint
+- `src/features/pocha/components/menu/MenuItemDetail.tsx` — cart-aware stepper cap; inline red; button copy swap
+- `src/features/pocha/components/menu/MenuList.tsx` — pass `existingCartQty` per row
+- `src/app/(pocha)/pocha/page.tsx` — call `useCart`; thread `cart` to `MenuList`
+- `src/features/pocha/utils/dashboardStats.ts` — refactor to `isLowStock`
+- `src/features/pocha/components/dashboard/StockManager.tsx` — refactor to `isLowStock`
+
+**Created:**
+- `src/features/pocha/utils/isLowStock.ts`
+- `src/features/pocha/utils/__tests__/isLowStock.test.ts`
+
+### Acceptance criteria
+
+See issue #152 (single source of truth post-grill).
+
+### Non-goals
+
+- Cart row inline-red on server reject (4.4b)
+- `cartToTotalAmount` / `wouldExceedStock` / `clampDelta` pure utils (4.4b)
+- Pay-flow stock checks (4.5x)
+- Low-stock hint inside detail sheet (only on row + inline red at cap)
+
+### Bailout triggers
+
+- SWR migration breaks 4.4a's cart row optimistic UI in observable ways
+- `useCart` consumers exist outside enumerated `## Files` with non-trivial cart-state usage
+- `selectedMenu.stock` snapshot structurally unreliable (deeper grill on staleness)
+
+### Issue
+
+#152 — `[Lane 4.2c] Home menu tab — stock cap UX`. Issue is the source of truth post-grill (per AP §327).
 
 ---
 
