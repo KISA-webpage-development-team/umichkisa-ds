@@ -74,7 +74,7 @@
 - [ ] Phase 4.2c: Home — menu tab stock cap UX (added 2026-05-04 from PR #151 review; absorbs useCart SWR migration; issue #152)
 - [ ] Phase 4.3a: Home — orders tab UI (pastiche)
 - [ ] Phase 4.3b: Home — orders tab logic + WS-mock fallback + Simulate Promote
-- [ ] Phase 4.4a: Cart UI (pastiche)
+- [x] Phase 4.4a: Cart UI (pastiche) — dev (#151 merged, closed #142; cart-aware local cap, empty-cart fix, server-reject deferred to 4.4b)
 - [ ] Phase 4.4b: Cart logic [TDD]
 - [ ] Phase 4.5a: Pay UI (pastiche)
 - [ ] Phase 4.5b: Pay logic + age gate + MockPayButton [TDD]
