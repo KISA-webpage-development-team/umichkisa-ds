@@ -74,6 +74,7 @@
 - [Icon] Never put complex illustrations through Icon — use `<img>` or a dedicated inline SVG component for those.
 - [Icon] Pass Lucide names in exact kebab-case as shown on lucide.dev — never camelCase or PascalCase.
 - [Icon] Use the `size` prop from the 5-step scale (`xs`/`sm`/`md`/`lg`/`xl`) — never override icon dimensions with font-size or arbitrary CSS.
+- [Icon] The `xl` size (32px) is the hard ceiling — for hero / feature-state marks (success screens, empty-state confirmations), do not bypass with className overrides or wrapper sizing. If a larger iconographic mark is required, raise as a DS gap (dedicated illustration atom or extended scale step) — never wrap and resize.
 - [Icon] `className` is for layout utilities only (`block`, `flex-shrink-0`); never pass color or sizing classes via `className`.
 - [Icon] Color is inherited via `currentColor` from the parent — control icon color through the parent element's text-color token.
 - [Icon] Omit `label` for decorative icons (rendered with `aria-hidden="true"`); provide `label` only when the icon is the sole indicator of meaning.

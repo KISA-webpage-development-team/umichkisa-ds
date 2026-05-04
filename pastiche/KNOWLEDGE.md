@@ -84,8 +84,8 @@ A status banner that lives within page flow — form-level error summary, post-a
 → `Alert variant="success|warning|error|info"`
 
 ### Full-page status surface
-Page-level not-found, not-authorized, not-logged-in, error, or loading state replacing the entire surface.
-→ `StatusView variant="not-found|not-authorized|not-logged-in|error|loading"` (`fullScreen` when it owns the viewport)
+Page-level not-found, not-authorized, not-logged-in, or error state replacing the entire surface.
+→ `StatusView variant="not-found|not-authorized|not-logged-in|error"` (`fullScreen` when it owns the viewport)
 
 ### Transient confirmation of an action
 Brief, dismiss-itself feedback after a user action — "Saved", "Copied", "Deleted".

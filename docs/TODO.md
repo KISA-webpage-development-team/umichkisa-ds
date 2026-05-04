@@ -78,7 +78,7 @@
 - [x] Phase 4.4b: Cart logic [TDD] — dev 5b9f020 (closed #143; surfaced cartToTotalAmount/wouldExceedStock/clampDelta as pure utils, useCart DRY'd)
 - [x] Phase 4.5a: Pay UI (pastiche) — dev 6f39d3d (closed #144; reassurance summary + sticky Pay button + form-lock + skeleton + BackHeader extracted; perf: Elements options memoized, PaymentElement options hoisted, PaymentSubmitForm next/dynamic'd; PayButton kept as domain wrapper for 4.5b mock-mode branching; KNOWLEDGE.md gained text-error tone)
 - [x] Phase 4.5b: Pay logic + age gate + MockPayButton [TDD] — dev 43fe8ea (closed #145; collapsed planned MockPayButton into useStripePayment mock-mode branch — UI surface identical between mock and prod; pure ageGateResolve util TDD'd with fail-closed null/undefined)
-- [ ] Phase 4.6: Pay-success rebuild (excise tip flow)
+- [x] Phase 4.6: Pay-success rebuild (excise tip flow) — dev f64e748 (closed #146; UI rebuild + post-merge icon size-up to 64px via `!h-16 !w-16` override + tip-logic excision; setup_future_usage removal deferred to separate ticket — needs synced client+server change with real-mode Stripe smoke; KNOWLEDGE/WISDOM updated: StatusView `loading` variant removed, Icon xl ceiling rule added)
 - [ ] Phase 4.7: Page shell sweep + legacy ui swap + delete `Pocha*` shared
 - [ ] Phase 4.8: Audit-after redesign pass + page metadata
 - [ ] Phase 4.9: Verify + end-bump
