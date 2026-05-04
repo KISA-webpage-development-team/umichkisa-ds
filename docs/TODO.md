@@ -77,7 +77,7 @@
 - [x] Phase 4.4a: Cart UI (pastiche) — dev (#151 merged, closed #142; cart-aware local cap, empty-cart fix, server-reject deferred to 4.4b)
 - [x] Phase 4.4b: Cart logic [TDD] — dev 5b9f020 (closed #143; surfaced cartToTotalAmount/wouldExceedStock/clampDelta as pure utils, useCart DRY'd)
 - [x] Phase 4.5a: Pay UI (pastiche) — dev 6f39d3d (closed #144; reassurance summary + sticky Pay button + form-lock + skeleton + BackHeader extracted; perf: Elements options memoized, PaymentElement options hoisted, PaymentSubmitForm next/dynamic'd; PayButton kept as domain wrapper for 4.5b mock-mode branching; KNOWLEDGE.md gained text-error tone)
-- [ ] Phase 4.5b: Pay logic + age gate + MockPayButton [TDD]
+- [x] Phase 4.5b: Pay logic + age gate + MockPayButton [TDD] — dev 43fe8ea (closed #145; collapsed planned MockPayButton into useStripePayment mock-mode branch — UI surface identical between mock and prod; pure ageGateResolve util TDD'd with fail-closed null/undefined)
 - [ ] Phase 4.6: Pay-success rebuild (excise tip flow)
 - [ ] Phase 4.7: Page shell sweep + legacy ui swap + delete `Pocha*` shared
 - [ ] Phase 4.8: Audit-after redesign pass + page metadata
