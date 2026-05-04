@@ -1,6 +1,8 @@
 # Phase 5 — admin-pocha consolidation (Audit)
 
 **Type:** Vertical foundation phase (per HARNESS), subphased into lanes for parallel execution.
+**Visual reference:** [`reference-incident-io.png`](./reference-incident-io.png) — incident.io's "Built on rock-solid foundations" section. Phase 5's `/admin` hub borrows this layout: hero text top-left + asymmetric card grid + small inline link ("Discover our AI platform →" → KISA's "둘러보기"). Adapt, don't copy: KISA's hub uses brand-neutral cards (no orange accent card), 5 cards instead of 5+1, and the link triggers a crossfade mode switch instead of routing away.
+
 **Charter:** Stand up the **KISA admin app foundation** under `/admin/*`, with three pocha admin surfaces (`manage`, `dashboard`, `history`) as the first three tenants. Phase 5 is *structural* — it establishes the URL umbrella, hub IA, auth gate consolidation, and a hub-and-spoke navigation pattern that future admin tenants (Website CMS, RSVP CMS, etc.) will plug into without redesign.
 **Scope principle:** Existing pocha admin pages (`manage` from Phase 2, `dashboard` from Phase 3) keep their internal layouts unchanged — Phase 5 wraps them in a route group and a navigation hub, it does not redesign their content. The only un-migrated route, `/pocha/history`, gets a [POLISH] DS migration with current functionality preserved (forward-named "Data analytics" on the hub but content stays the existing PreviousPochaList + OrderHistoryTable split-pane).
 
