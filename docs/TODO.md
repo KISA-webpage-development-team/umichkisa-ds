@@ -72,7 +72,7 @@
 - [x] Phase 4.2a: Home — menu tab + page shell (UI, pastiche) — dev 8962eb6 (closed #138; mid-phase DS bump web 1.0.25 → 1.0.27 for Tabs size=lg)
 - [x] Phase 4.2b: Home — menu tab logic — dev (#150 merged, closed #139; deleted dead `getMenuImagePathWithTransformations`)
 - [ ] Phase 4.2c: Home — menu tab stock cap UX (added 2026-05-04 from PR #151 review; absorbs useCart SWR migration; issue #152)
-- [ ] Phase 4.3a: Home — orders tab UI (pastiche)
+- [x] Phase 4.3a: Home — orders tab UI (pastiche) — dev 2c10d3f + manual visual tweaks (closed #140)
 - [ ] Phase 4.3b: Home — orders tab logic + WS-mock fallback + Simulate Promote
 - [x] Phase 4.4a: Cart UI (pastiche) — dev (#151 merged, closed #142; cart-aware local cap, empty-cart fix, server-reject deferred to 4.4b)
 - [ ] Phase 4.4b: Cart logic [TDD]
