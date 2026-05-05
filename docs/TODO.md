@@ -87,6 +87,6 @@
 - [x] Phase 5.2: Admin hub page — hero + 5 cards + crossfade mode switch to user-facing apps list (Mode D direct-push) — dev 07d0afd..e64de6d (closed #157; pastiche-driven; post-merge polish: hero-in-grid layout, Grid atom, vertical apps list with horizontal cards, line-aligned icons)
 - [x] Phase 5.3: BackToHubFAB component — sessionStorage-gated floating button + edge-tab collapse + per-route default (Mode D direct-push) — dev ea38f48 (closed #158)
 - [x] Phase 5.4: `/admin/pocha/history` DS polish migration (Mode D direct-push) — dev ea38f48 (closed #159; pastiche-driven polish; post-merge tweaks: Container as=section size=xl, alignment spacer mirroring PreviousPochaList heading row, useAuth wiring to match PochaManagePageHeader)
-- [ ] Phase 5.5: Audit-after redesign pass — desktop + tablet walkthrough, FAB state matrix verification
+- [x] Phase 5.5: Audit-after redesign pass — toss-fe-review on phase-5 surface (0 BLOCK, 8 SUGGEST, 3 INFO); cherry-picked S1/S2/S6/S7/S8 (Mode D direct-push) — dev 9db045a..e552a73 (closed #160; deferred S3/S4/S5 as follow-up; findings file in phase folder)
 - [ ] Phase 5.6: Verify + end-bump
 - [ ] Phase 6: kisa-web (subphases added at kickoff)
