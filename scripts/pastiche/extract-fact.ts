@@ -206,20 +206,37 @@ function unquoteName(n: string): string {
 }
 
 /**
- * If `tn` is a TypeReference to a local type alias whose RHS is a single
- * literal or a union of literals (string/number/boolean/null), return the
- * alias's RHS text so it can be inlined in place of the opaque name. Returns
- * null otherwise (including for `keyof typeof X`, object types, etc.).
+ * If `tn` is a TypeReference whose resolved type is a union of literals
+ * (string/number/boolean), return the union text so it can be inlined in
+ * place of the opaque alias name. Handles `keyof typeof X`, `Extract<...>`,
+ * mapped types, string enums, etc. — anything the type checker collapses to
+ * a finite literal union. Falls back to a syntactic check on the alias RHS
+ * for the local-only `type Foo = "a" | "b"` case (cheap and avoids type-
+ * checker work on the hot path).
+ *
+ * Capped at MAX_UNION_INLINE constituents so pathological unions (e.g.
+ * `keyof CSSStyleDeclaration`) don't bloat FACT.md — above the cap the
+ * caller falls back to the alias name.
  */
+const MAX_UNION_INLINE = 100;
 function maybeInlineLiteralUnion(tn: TypeNode, ctx: ResolveCtx): string | null {
   if (!Node.isTypeReference(tn)) return null;
   const refName = tn.getTypeName().getText();
   const alias = ctx.localTypeAliases.get(refName);
-  if (!alias) return null;
-  const isLitNode = (n: TypeNode) => Node.isLiteralTypeNode(n);
-  if (isLitNode(alias)) return cleanTypeText(alias.getText());
-  if (Node.isUnionTypeNode(alias) && alias.getTypeNodes().every(isLitNode)) {
-    return cleanTypeText(alias.getText());
+  if (alias) {
+    const isLitNode = (n: TypeNode) => Node.isLiteralTypeNode(n);
+    if (isLitNode(alias)) return cleanTypeText(alias.getText());
+    if (Node.isUnionTypeNode(alias) && alias.getTypeNodes().every(isLitNode)) {
+      return cleanTypeText(alias.getText());
+    }
+  }
+  // Type-checker fallback: resolve `keyof typeof X`, mapped types, enums, etc.
+  const t = tn.getType();
+  if (t.isUnion()) {
+    const parts = t.getUnionTypes();
+    if (parts.length > 0 && parts.length <= MAX_UNION_INLINE && parts.every(p => p.isLiteral())) {
+      return parts.map(p => p.getText()).join(' | ');
+    }
   }
   return null;
 }

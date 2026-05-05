@@ -156,7 +156,7 @@ Props:
 package: @umichkisa-ds/web
 
 Props:
-  name:       IconName   (required)
+  name:       "menu" | "image" | "info" | "arrow-left" | "arrow-right" | "blocks" | "calendar" | "check" | "chevron-left" | "chevron-right" | "chevron-down" | "circle-check" | "circle-minus" | "circle-plus" | "circle-x" | "clipboard-check" | "clipboard-copy" | "clock-9" | "external-link" | "eye" | "file-x" | "graduation-cap" | "layout-grid" | "list" | "lock" | "log-in" | "mail" | "message-square" | "minus" | "palette" | "pencil" | "plus" | "refresh-cw" | "reply" | "search-x" | "shield-x" | "shopping-cart" | "smartphone" | "thumbs-up" | "text-cursor-input" | "ticket" | "trash-2" | "triangle-alert" | "type" | "upload" | "user-round" | "x" | "github" | "instagram" | "instagram-brand" | "linkedin"   (required)
   size?:      "xs" | "sm" | "md" | "lg" | "xl"
   label?:     string
   className?: string
@@ -165,7 +165,7 @@ Props:
 package: @umichkisa-ds/web
 
 Props:
-  icon:       IconName   (required)
+  icon:       "menu" | "image" | "info" | "arrow-left" | "arrow-right" | "blocks" | "calendar" | "check" | "chevron-left" | "chevron-right" | "chevron-down" | "circle-check" | "circle-minus" | "circle-plus" | "circle-x" | "clipboard-check" | "clipboard-copy" | "clock-9" | "external-link" | "eye" | "file-x" | "graduation-cap" | "layout-grid" | "list" | "lock" | "log-in" | "mail" | "message-square" | "minus" | "palette" | "pencil" | "plus" | "refresh-cw" | "reply" | "search-x" | "shield-x" | "shopping-cart" | "smartphone" | "thumbs-up" | "text-cursor-input" | "ticket" | "trash-2" | "triangle-alert" | "type" | "upload" | "user-round" | "x" | "github" | "instagram" | "instagram-brand" | "linkedin"   (required)
   size?:      "sm" | "md" | "lg"
   aria-label: string   (required)
   ...Omit<ButtonProps, "children" | "size">
@@ -343,7 +343,7 @@ package: @umichkisa-ds/web
 Props:
   variant:      "not-found" | "not-authorized" | "not-logged-in" | "error"   (required)
   code?:        string
-  icon?:        IconName
+  icon?:        "menu" | "image" | "info" | "arrow-left" | "arrow-right" | "blocks" | "calendar" | "check" | "chevron-left" | "chevron-right" | "chevron-down" | "circle-check" | "circle-minus" | "circle-plus" | "circle-x" | "clipboard-check" | "clipboard-copy" | "clock-9" | "external-link" | "eye" | "file-x" | "graduation-cap" | "layout-grid" | "list" | "lock" | "log-in" | "mail" | "message-square" | "minus" | "palette" | "pencil" | "plus" | "refresh-cw" | "reply" | "search-x" | "shield-x" | "shopping-cart" | "smartphone" | "thumbs-up" | "text-cursor-input" | "ticket" | "trash-2" | "triangle-alert" | "type" | "upload" | "user-round" | "x" | "github" | "instagram" | "instagram-brand" | "linkedin"
   title?:       string
   description?: string
   action?:      ReactNode
