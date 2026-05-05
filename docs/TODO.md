@@ -86,7 +86,7 @@
 - [x] Phase 5.1: Admin shell foundation — `/admin/layout.tsx` w/ auth gate (provider stack), route moves, redirects, middleware matcher (Mode D direct push) — dev c1ea0a7 (closed #156); mid-phase DS bump web 1.0.28 (LoadingSpinner.fullScreen)
 - [ ] Phase 5.2: Admin hub page — hero + 5 cards + crossfade mode switch to user-facing apps list
 - [ ] Phase 5.3: BackToHubFAB component — sessionStorage-gated floating button + edge-tab collapse + per-route default
-- [ ] Phase 5.4: `/admin/pocha/history` DS polish migration — POLISH only, current functionality preserved
+- [x] Phase 5.4: `/admin/pocha/history` DS polish migration (Mode D direct-push) — dev ea38f48 (closed #159; pastiche-driven polish; post-merge tweaks: Container as=section size=xl, alignment spacer mirroring PreviousPochaList heading row, useAuth wiring to match PochaManagePageHeader)
 - [ ] Phase 5.5: Audit-after redesign pass — desktop + tablet walkthrough, FAB state matrix verification
 - [ ] Phase 5.6: Verify + end-bump
 - [ ] Phase 6: kisa-web (subphases added at kickoff)
