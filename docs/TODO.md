@@ -83,7 +83,7 @@
 - [x] Phase 4.8: Audit-after redesign pass + page metadata — closed #148 (visual review completed offline by user; no code changes)
 - [x] Phase 4.9: Verify + end-bump — closed #149 (DS+client build/typecheck ✅, 167 tests ✅; no end-bump needed — all Phase 4 DS fixes mid-phase shipped via 1.0.25 → 1.0.27; real-Stripe smoke deferred to pre-`dev → main` ship per audit notes.md)
 - [x] Phase 5: admin-pocha consolidation — kickoff done (charter reframed from "fold pocha admin" to "stand up KISA admin app foundation under `/admin/*`" with pocha admin as first 3 tenants)
-- [ ] Phase 5.1: Admin shell foundation — `/admin/layout.tsx` w/ auth gate, route moves, redirects, gate dedupe, inbound link fixes
+- [x] Phase 5.1: Admin shell foundation — `/admin/layout.tsx` w/ auth gate (provider stack), route moves, redirects, middleware matcher (Mode D direct push) — dev c1ea0a7 (closed #156); mid-phase DS bump web 1.0.28 (LoadingSpinner.fullScreen)
 - [ ] Phase 5.2: Admin hub page — hero + 5 cards + crossfade mode switch to user-facing apps list
 - [ ] Phase 5.3: BackToHubFAB component — sessionStorage-gated floating button + edge-tab collapse + per-route default
 - [ ] Phase 5.4: `/admin/pocha/history` DS polish migration — POLISH only, current functionality preserved
