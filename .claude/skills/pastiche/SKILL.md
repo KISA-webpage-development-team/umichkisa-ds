@@ -16,15 +16,14 @@ Run `ls pastiche/FACT.md pastiche/KNOWLEDGE.md pastiche/WISDOM.md`. If any are m
 ## Workflow
 
 1. Dispatch `pastiche-implementer-round1` with `{task}` → capture `{r1_report}`.
-2. Dispatch `pastiche-reviewer` with `{task, r1_report}` → capture `{review}`.
-3. Parse the YAML inside `{review}`'s `## Doubts` block as `{doubts}`. If malformed (not a list of `{file, line, comment}` maps and not the literal `[]`), stop and report.
-4. If `{doubts}` is `[]`, go to 6.
-5. Dispatch `pastiche-implementer-round2` with `{task, r1_report, doubts}` → capture `{r2_report}`.
-6. **Failsafe.** For each doubt in `{doubts}` whose `file:line` is not present in `{r2_report}`'s `## Doubts — resolved` section: Read the file, then Edit to insert above the targeted `line`, matching surrounding indentation:
+2. Dispatch `pastiche-reviewer` with `{task, r1_report}` → capture `{doubts}` (the agent's reply is YAML only). If malformed (not a list of `{file, line, comment}` maps and not the literal `[]`), stop and report.
+3. If `{doubts}` is `[]`, go to 5.
+4. Dispatch `pastiche-implementer-round2` with `{task, r1_report, doubts}` → capture `{r2_report}`.
+5. **Failsafe.** For each doubt in `{doubts}` whose `file:line` is not present in `{r2_report}`'s `## Doubts — resolved` section: Read the file, then Edit to insert above the targeted `line`, matching surrounding indentation:
    ```
    // pastiche-unresolved-doubt: <comment from reviewer>
    ```
-7. Emit the final response.
+6. Emit the final response.
 
 ## Final response
 
@@ -44,6 +43,6 @@ Combine `{r1_report}` and `{r2_report}` "Files changed" lists. Follow-ups includ
 - `defended (knowledge-gap)` from `{r2_report}` — a missing scenario→atom mapping in KNOWLEDGE.md.
 - `defended (wisdom-gap)` from `{r2_report}` — a missing atom-intrinsic rule in WISDOM.md.
 - `defended (fact-gap)` from `{r2_report}`, or `FACT gaps encountered` in `{r1_report}` — a missing prop on an existing FACT atom.
-- Any failsafe comment written in step 6 — surface as `file:line`.
+- Any failsafe comment written in step 5 — surface as `file:line`.
 
 Each follow-up bullet must be self-describing; readers shouldn't need to know about rounds, dispositions, or the loop.

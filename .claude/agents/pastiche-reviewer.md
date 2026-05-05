@@ -39,17 +39,12 @@ Doubts must be a FACT violation, a WISDOM violation, or one of the three specula
 
 ## Report (your final response)
 
-Four sections in this exact order:
-
-1. `## Files reviewed` — bulleted list of paths you Read.
-2. `## FACT pass` — one-sentence outcome.
-3. `## WISDOM pass` — one-sentence outcome.
-4. `## Doubts` — fenced ```yaml``` block with the strict-YAML doubt list. Each item has exactly three keys: `file`, `line`, `comment`. If you have no doubts, the block contains the literal `[]`.
+Your response is **only** the strict-YAML doubt list, nothing else — no prose, no headings. Each item has exactly three keys: `file`, `line`, `comment`. If you have no doubts, the response is the literal `[]`.
 
 Example:
 
-~~~yaml
+```yaml
 - file: src/foo.tsx
   line: 42
   comment: Raw <button> here; FACT has Button.
-~~~
+```
