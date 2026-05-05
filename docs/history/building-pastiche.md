@@ -356,6 +356,81 @@ the bump path is documented (§19) but not implemented. v1 ships at two.
 | New skills | 1 (`pastiche`) + 1 future (Phase 10 KNOWLEDGE/WISDOM curation) |
 | New agents | 3 (`pastiche-implementer-round1`, `pastiche-reviewer`, `pastiche-implementer-round2`) |
 
+## v1.1 — Tightening Pass (2026-05-05)
+
+A few days into using pastiche as the live execution layer, three pain
+points showed up across real runs:
+
+1. **Round 1 was reading the DS package source.** Despite the spec's
+   "FACT.md is the only source of truth" framing, R1 was occasionally
+   greeping `node_modules/@umichkisa-ds/web/**/index.d.ts` to verify
+   prop shapes. Positive guidance ("FACT is your catalog") wasn't
+   enough — the negative case had to be stated explicitly.
+2. **WISDOM grep duplication.** R1 would run two overlapping multi-tag
+   greps as it discovered atoms incrementally — same WISDOM rules read
+   twice within one round. Cause was a workflow gap: no instruction to
+   sweep KNOWLEDGE first, collect the full atom set, then grep WISDOM
+   once.
+3. **Reports were too descriptive.** R1 emitted an `## Implementation
+   summary` field the orchestrator never used. R2 emitted a per-doubt
+   enumeration where corrected dispositions could be inferred from
+   `## Files changed`. The reviewer emitted four prose sections on top
+   of its YAML doubt list. All three carried structure no consumer
+   actually parsed.
+
+The fixes were small and stayed inside the agent prompts and SKILL.md
+— no spec rewrite, no architectural change.
+
+| Change | Where |
+|---|---|
+| Added `## Hard constraint` section banning `node_modules/<ds-pkg>/**` and `packages/<ds-pkg>/**` reads | all three agents |
+| Reframed reviewer persona from "senior FE engineer with deep DS expertise" to "senior UI/UX designer with deep fluency in this project's design system — fluent enough to read code" | reviewer |
+| Reordered R1 workflow to a single multi-tag WISDOM grep after the full KNOWLEDGE sweep; R2 only re-greps for atoms not already in R1's `## Atoms used` | R1, R2 |
+| Reviewer output stripped to YAML-only (no headings, no prose) | reviewer |
+| R1 report dropped `## Implementation summary`; `## Files changed` is paths only; `## Atoms used` is a list, no descriptors | R1 |
+| R2 report restructured: corrected dispositions implicit in `## Files changed`; only `## Defended` (with optional gap-tag) and `## Unresolved` remain | R2 |
+| SKILL.md workflow rewritten with named-token data flow (`{task}`, `{r1_report}`, `{doubts}`, `{r2_report}`) and step-numbered failsafe pointing at `r2_report`'s `## Unresolved` | skill |
+| Added "Prefer DS atoms over raw HTML" line to R1 step 7 to address Sonnet's conservative-fallback behavior on compound atoms (Form.\*, etc.) | R1 |
+| Added canonical 12-section taxonomy enforcement to KNOWLEDGE.md via `lint-tags.ts` | lint script |
+
+The reviewer-as-designer reframe was the most opinionated change. The
+old persona made reviewer and implementer feel like two senior
+engineers reading the same problem — easy for the asymmetry to
+collapse into "implementation in reverse." Naming the reviewer as a
+designer who reads code cleanly enforces the verification angle: the
+reviewer judges whether the *result* honors DS intent, not whether the
+*construction* would have used the same atoms.
+
+Token budget after the pass, on the same RSVP-form prompt the v1
+build-out used:
+
+| Run | R1 (Opus) | Reviewer (Sonnet) | R2 (Sonnet) | Total |
+|---|---|---|---|---|
+| RSVP form, v1 | 41.7k / 21t / 2m48s | 29.5k / 5t / 37s | 26.9k / 16t / 1m41s | 98.1k |
+| RSVP form, v1.1 | 59.4k / 38t / 4m38s | 30.1k / 7t / 1m | 18.3k / 11t / 1m19s | 107.8k |
+
+R1 went *up* — adding the hard constraint and the multi-tag-grep
+discipline traded model-side speculation for a few more deterministic
+tool calls. R2 came down because corrected dispositions stopped being
+re-narrated. The reviewer was unchanged in cost; persona shift didn't
+affect tool-use shape, which was the prediction. Net total moved
+~10k upward, which the quality tradeoff (no node_modules reads, no
+duplicate WISDOM greps, sharper reports) justifies for now. Next
+calibration round will look at whether R1's Opus is still the right
+choice or if the deterministic workflow makes it Sonnet-eligible.
+
+The output shape on the RSVP form was visibly tighter than v1 — fewer
+hallucinated props, no DS-package source reads, and R2 cleanly closed
+all reviewer doubts in one round. The two-round bound is still
+holding.
+
+The discipline lesson from this pass: positive instructions describe
+the happy path, but agents need explicit negative constraints for the
+cases where the happy path has a tempting shortcut (reading the DS
+package being the canonical example). Spec §13 already carved out
+*what the reviewer doesn't review*; agent prompts now carve out *what
+each agent doesn't read*.
+
 ---
 
 The migration's first execution layer was KISA-shaped and worked
