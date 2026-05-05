@@ -82,11 +82,11 @@
 - [x] Phase 4.7: Page shell sweep + legacy ui swap + delete `Pocha*` shared — dev 5515b27 (closed #147; layout swap to DS OnlyMobileView, 3 per-route error.tsx, deleted 4 Pocha* shared; follow-ups: moved statusTone.ts to utils, dropped 3 unused imports + 2 dead files)
 - [x] Phase 4.8: Audit-after redesign pass + page metadata — closed #148 (visual review completed offline by user; no code changes)
 - [x] Phase 4.9: Verify + end-bump — closed #149 (DS+client build/typecheck ✅, 167 tests ✅; no end-bump needed — all Phase 4 DS fixes mid-phase shipped via 1.0.25 → 1.0.27; real-Stripe smoke deferred to pre-`dev → main` ship per audit notes.md)
-- [x] Phase 5: admin-pocha consolidation — kickoff done (charter reframed from "fold pocha admin" to "stand up KISA admin app foundation under `/admin/*`" with pocha admin as first 3 tenants)
+- [x] Phase 5: admin-pocha consolidation — done (5.1 admin shell, 5.2 admin hub, 5.3 BackToHubFAB, 5.4 history polish, 5.5 audit-after redesign, 5.6 verify; web 1.0.28 mid-phase bump only)
 - [x] Phase 5.1: Admin shell foundation — `/admin/layout.tsx` w/ auth gate (provider stack), route moves, redirects, middleware matcher (Mode D direct push) — dev c1ea0a7 (closed #156); mid-phase DS bump web 1.0.28 (LoadingSpinner.fullScreen)
 - [x] Phase 5.2: Admin hub page — hero + 5 cards + crossfade mode switch to user-facing apps list (Mode D direct-push) — dev 07d0afd..e64de6d (closed #157; pastiche-driven; post-merge polish: hero-in-grid layout, Grid atom, vertical apps list with horizontal cards, line-aligned icons)
 - [x] Phase 5.3: BackToHubFAB component — sessionStorage-gated floating button + edge-tab collapse + per-route default (Mode D direct-push) — dev ea38f48 (closed #158)
 - [x] Phase 5.4: `/admin/pocha/history` DS polish migration (Mode D direct-push) — dev ea38f48 (closed #159; pastiche-driven polish; post-merge tweaks: Container as=section size=xl, alignment spacer mirroring PreviousPochaList heading row, useAuth wiring to match PochaManagePageHeader)
 - [x] Phase 5.5: Audit-after redesign pass — toss-fe-review on phase-5 surface (0 BLOCK, 8 SUGGEST, 3 INFO); cherry-picked S1/S2/S6/S7/S8 (Mode D direct-push) — dev 9db045a..e552a73 (closed #160; deferred S3/S4/S5 as follow-up; findings file in phase folder)
-- [ ] Phase 5.6: Verify + end-bump
+- [x] Phase 5.6: Verify + end-bump — DS + client typecheck green; no end-bump needed (web 1.0.28 mid-phase bump in 5.1 already shipped); closed #161
 - [ ] Phase 6: kisa-web (subphases added at kickoff)
