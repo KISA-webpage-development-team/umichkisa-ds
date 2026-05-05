@@ -238,6 +238,12 @@ function maybeInlineLiteralUnion(tn: TypeNode, ctx: ResolveCtx): string | null {
       return parts.map(p => p.getText()).join(' | ');
     }
   }
+  // Mixed-shape local alias (e.g. `type GridColumns = number | { ... }`) — the
+  // alias name is invisible to the FACT reader, so inline the alias RHS text.
+  // Collapse internal whitespace so multi-line object literals render on one
+  // line and the props table stays column-aligned. One level only; nested
+  // local refs stay as names (rare, accepted).
+  if (alias) return cleanTypeText(alias.getText()).replace(/\s+/g, ' ');
   return null;
 }
 

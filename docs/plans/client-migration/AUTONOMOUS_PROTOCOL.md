@@ -316,7 +316,7 @@ You read draft + question → leave decision comment → swap `needs-decision` �
 
 **Labels on PR:** mirror issue labels at open + add end-state label.
 
-**Merge:** human-only, no auto-merge regardless of scope tag or CI. Branch protection on `dev` requires status checks (typecheck, build, ds-client-review), 1 approval, no direct pushes, auto-delete head branches. Autonomous opens PRs, never merges. Every merge path (single, batch, revision auto-merge, superseding, Mode D direct push) closes with `wrapping-up-lane`.
+**Merge:** human-only, no auto-merge regardless of scope tag or CI. Branch protection on `dev` requires status checks (typecheck, build), 1 approval, no direct pushes, auto-delete head branches. Autonomous opens PRs, never merges. Every merge path (single, batch, revision auto-merge, superseding, Mode D direct push) closes with `wrapping-up-lane`.
 
 ---
 

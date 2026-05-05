@@ -309,7 +309,7 @@ package: @umichkisa-ds/web
 
 Props:
   ...React.HTMLAttributes<HTMLDivElement>
-  columns?: GridColumns
+  columns?: number | { base?: number; md?: number; lg?: number; }
   gap?:     "element" | "component" | "section"
 
 ### [Alert]
