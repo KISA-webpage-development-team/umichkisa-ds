@@ -39,10 +39,8 @@ const inlineCode = `import { LoadingSpinner } from '@umichkisa-ds/web'
 
 const overlayCode = `import { LoadingSpinner } from '@umichkisa-ds/web'
 
-{/* Full-screen overlay — wrap your app or page section */}
-<div className="fixed inset-0 z-50 flex items-center justify-center bg-surface">
-  <LoadingSpinner size="lg" label="Loading..." showLabel />
-</div>`
+{/* Pinned to the viewport — covers the whole screen */}
+<LoadingSpinner fullScreen size="lg" label="Loading..." showLabel />`
 
 export default async function LoadingSpinnerPage() {
   const [defaultHighlighted, sizesHighlighted, withLabelHighlighted, inlineHighlighted, overlayHighlighted] = await Promise.all([
@@ -172,11 +170,16 @@ export default async function LoadingSpinnerPage() {
       </ComponentPreview>
 
       {/* Full-screen overlay pattern */}
-      <Heading as="h3">Full-screen overlay pattern</Heading>
+      <Heading as="h3">Full-screen overlay</Heading>
       <p className="type-body mb-2 text-foreground">
-        A consumer-side pattern for blocking the entire viewport during a
-        critical loading state such as authentication or initial data fetch.
-        The contained preview below simulates the effect.
+        Pass{' '}
+        <InlineCode>
+          fullScreen
+        </InlineCode>{' '}
+        to pin the spinner to the viewport ({' '}
+        <InlineCode>fixed inset-0</InlineCode>{' '}
+        with a background fill). Use for blocking states such as authentication
+        or initial data fetch. The contained preview below simulates the effect.
       </p>
       <ComponentPreview code={overlayCode} highlightedCode={overlayHighlighted}>
         <div className="relative rounded-md border border-border w-full h-48 overflow-hidden bg-surface-subtle">
@@ -239,6 +242,12 @@ export default async function LoadingSpinnerPage() {
                 <TableCell>Render the label text visually below the spinner.</TableCell>
               </TableRow>
               <TableRow>
+                <TableCell><InlineCode>fullScreen</InlineCode></TableCell>
+                <TableCell><InlineCode>boolean</InlineCode></TableCell>
+                <TableCell><InlineCode>false</InlineCode></TableCell>
+                <TableCell>Pin to the viewport as a centered full-screen overlay (<InlineCode>fixed inset-0</InlineCode>).</TableCell>
+              </TableRow>
+              <TableRow>
                 <TableCell><InlineCode>className</InlineCode></TableCell>
                 <TableCell><InlineCode>string</InlineCode></TableCell>
                 <TableCell>—</TableCell>
@@ -263,6 +272,11 @@ export default async function LoadingSpinnerPage() {
               <span className="type-body-sm text-foreground"><strong>showLabel</strong></span>
               <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode> · default <InlineCode>false</InlineCode></span>
               <span className="type-caption text-muted-foreground">Render the label text visually below the spinner.</span>
+            </TableMobileItem>
+            <TableMobileItem>
+              <span className="type-body-sm text-foreground"><strong>fullScreen</strong></span>
+              <span className="type-caption text-muted-foreground"><InlineCode>boolean</InlineCode> · default <InlineCode>false</InlineCode></span>
+              <span className="type-caption text-muted-foreground">Pin to the viewport as a centered full-screen overlay (<InlineCode>fixed inset-0</InlineCode>).</span>
             </TableMobileItem>
             <TableMobileItem>
               <span className="type-body-sm text-foreground"><strong>className</strong></span>

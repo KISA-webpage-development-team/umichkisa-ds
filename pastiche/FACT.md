@@ -325,10 +325,11 @@ Props:
 package: @umichkisa-ds/web
 
 Props:
-  size?:      "sm" | "md" | "lg"
-  label?:     string
-  showLabel?: boolean
-  className?: string
+  size?:       "sm" | "md" | "lg"
+  label?:      string
+  showLabel?:  boolean
+  fullScreen?: boolean
+  className?:  string
 
 ### [Skeleton]
 package: @umichkisa-ds/web

@@ -7,6 +7,8 @@ export type LoadingSpinnerProps = {
   label?: string;
   /** Render the label visually below the spinner. */
   showLabel?: boolean;
+  /** Pin to the viewport as a centered full-screen overlay (fixed inset-0). */
+  fullScreen?: boolean;
   /** Applied to the outer wrapper div. */
   className?: string;
 };
@@ -21,12 +23,16 @@ export function LoadingSpinner({
   size = "md",
   label = "Loading",
   showLabel = false,
+  fullScreen = false,
   className,
 }: LoadingSpinnerProps) {
   return (
     <div
       className={cn(
-        "inline-flex flex-col items-center justify-center gap-2",
+        "flex flex-col items-center justify-center gap-2",
+        fullScreen
+          ? "fixed inset-0 z-50 bg-background"
+          : "inline-flex",
         className
       )}
     >
