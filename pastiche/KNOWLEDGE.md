@@ -1,6 +1,23 @@
 <!-- Scenario → atom mappings. Hand-curated by designers + frontend engineers. -->
 <!-- Discipline: only scenario-conditional knowledge here. Atom-intrinsic rules belong in WISDOM. -->
 
+## Index
+
+The 12 canonical sections — required by every KNOWLEDGE.md (may be empty stubs). Implementer reads this index first, then loads only the sections relevant to the task. Order is by frequency of consultation, not priority.
+
+- **Action buttons** — primary, secondary, low-emphasis, destructive, icon-only, anchor-styled, list-row, sticky dock.
+- **Forms & input collection** — text inputs, choices, multi-select, toggles, dates inside a form, submit/cancel, validation patterns.
+- **Feedback & status** — inline messages, alerts, toasts, full-page status, loading indicators, content placeholders.
+- **Overlays** — modals, drawers, popovers, tooltips, confirmations, mobile sheets, contextual menus.
+- **Navigation & wayfinding** — section switchers, tabs, filters, breadcrumbs, pagination, progressive disclosure.
+- **Content display** — cards, lists, grids, tables, badges, labels.
+- **Layout & page structure** — containers, section grouping, dividers, page shell.
+- **Date & time selection** — pickers, ranges, time-of-day, calendar surfaces.
+- **Iconography** — icon usage, sizing, decorative vs informative.
+- **Visual hierarchy** — heading ramps, type pairings, content density, emphasis.
+- **Domain-specific patterns** — KISA app surfaces unique to this codebase (e.g., pocha, banquet RSVP). Project-extension lives here.
+- **Brand Identity** — prose. Always-loaded by implementer regardless of task.
+
 ## Action buttons
 
 ### Primary action / main CTA
@@ -282,6 +299,12 @@ Avatars, pills, fully-rounded chips.
 ### Any icon in the UI
 Any iconographic mark — leading/trailing in a label, inline with text, decorative accent, status indicator.
 → `Icon name="..."` from `@umichkisa-ds/web`, size from the 5-step scale (`xs`/`sm`/`md`/`lg`/`xl`)
+
+---
+
+## Domain-specific patterns
+
+App-unique scenarios that don't fit the general taxonomy. Empty until KISA codifies a pattern that's specific enough to deserve its own scenario→atom mapping (e.g., pocha menu management, banquet RSVP). Implementer falls back to raw HTML/Tailwind for novel domain surfaces until a mapping is added here.
 
 ---
 

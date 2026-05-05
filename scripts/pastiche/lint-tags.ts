@@ -25,6 +25,27 @@ const DOCS = path.join(REPO_ROOT, 'pastiche');
 
 const ALLOW_LISTED_TAGS = new Set(['GENERAL']);
 
+/**
+ * Canonical KNOWLEDGE.md sections (spec §3.2 + Idea-4 redesign).
+ * Every KNOWLEDGE.md must declare these as H2 sections (may be empty stubs).
+ * Projects may add further H2 sections beyond the canonical 12.
+ */
+const CANONICAL_KNOWLEDGE_SECTIONS = [
+  'Index',
+  'Action buttons',
+  'Forms & input collection',
+  'Feedback & status',
+  'Overlays',
+  'Navigation & wayfinding',
+  'Content display',
+  'Layout & page structure',
+  'Date & time selection',
+  'Iconography',
+  'Visual hierarchy',
+  'Domain-specific patterns',
+  'Brand Identity',
+];
+
 export interface FactAtoms {
   components: Set<string>;
   tokens: Set<string>;
@@ -168,6 +189,45 @@ export function lintKnowledge(text: string, fact: FactAtoms, file = 'KNOWLEDGE.m
 }
 
 // ---------------------------------------------------------------------------
+// KNOWLEDGE canonical-sections check
+// ---------------------------------------------------------------------------
+
+/**
+ * Verify every canonical section name appears as an H2 (`## <name>`) in
+ * KNOWLEDGE.md. Section bodies may be empty stubs; presence is what matters.
+ * Extra sections beyond the canonical 12 are allowed and not flagged.
+ */
+export function lintKnowledgeSections(
+  text: string,
+  file = 'KNOWLEDGE.md',
+): LintReport {
+  const violations: LintViolation[] = [];
+  const lines = text.split('\n');
+  const present = new Map<string, number>();
+  for (let i = 0; i < lines.length; i++) {
+    const m = lines[i].match(/^## (.+?)\s*$/);
+    if (m) present.set(m[1].trim(), i + 1);
+  }
+  for (const required of CANONICAL_KNOWLEDGE_SECTIONS) {
+    if (!present.has(required)) {
+      violations.push({
+        file,
+        line: 1,
+        message: `missing canonical section: "## ${required}" (may be an empty stub)`,
+      });
+    }
+  }
+  return {
+    violations,
+    checked: {
+      'canonical-required': CANONICAL_KNOWLEDGE_SECTIONS.length,
+      'canonical-found': CANONICAL_KNOWLEDGE_SECTIONS.length - violations.length,
+      'h2-total': present.size,
+    },
+  };
+}
+
+// ---------------------------------------------------------------------------
 // CLI entry
 // ---------------------------------------------------------------------------
 
@@ -178,7 +238,12 @@ function main(): void {
 
   const wisdomReport = lintWisdom(wisdom, fact);
   const knowledgeReport = lintKnowledge(knowledge, fact);
-  const violations = [...wisdomReport.violations, ...knowledgeReport.violations];
+  const sectionsReport = lintKnowledgeSections(knowledge);
+  const violations = [
+    ...wisdomReport.violations,
+    ...knowledgeReport.violations,
+    ...sectionsReport.violations,
+  ];
 
   // Always print the summary block first — descriptive even on success.
   console.log('pastiche:lint — cross-doc tag-sanity');
@@ -196,6 +261,11 @@ function main(): void {
       `${knowledgeReport.checked['token-refs']} token ref(s), ` +
       `${knowledgeReport.checked.ignored} ignored (Tailwind/prop/prose); ` +
       `${knowledgeReport.violations.length} violation(s)`,
+  );
+  console.log(
+    `  KNOWLEDGE.md  ${sectionsReport.checked['canonical-found']}/${sectionsReport.checked['canonical-required']} canonical section(s) present ` +
+      `(${sectionsReport.checked['h2-total']} H2(s) total); ` +
+      `${sectionsReport.violations.length} violation(s)`,
   );
   console.log('');
 

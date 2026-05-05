@@ -55,9 +55,27 @@ Pastiche replaces DESIGN.md with **three documents** that form an *epistemologic
 - Hand-curated by designers and frontend engineers together.
 - Plays the role of an absent designer for a team that has only the component library.
 - Includes a dedicated prose section on **brand identity** — the descriptive aesthetic spirit that cannot be reduced to a lookup table.
+- **Organized into a fixed canonical taxonomy** of H2 sections, with a `## Index` header at the top listing them. Implementer reads the index first, then loads only the relevant sections (lazy-by-section). Brand Identity is always-loaded.
 - Lifecycle: grows as new scenarios are encountered and codified.
 
-**Purpose:** The implementer's primary reference. Given a task, the implementer reads KNOWLEDGE first to determine which atoms compose the answer.
+**Canonical 12 sections** (every KNOWLEDGE.md must declare these as H2s — may be empty stubs; projects may add further H2 sections):
+
+1. Action buttons
+2. Forms & input collection
+3. Feedback & status
+4. Overlays
+5. Navigation & wayfinding
+6. Content display
+7. Layout & page structure
+8. Date & time selection
+9. Iconography
+10. Visual hierarchy
+11. Domain-specific patterns
+12. Brand Identity (prose, always-loaded)
+
+The lint (§14.2) enforces presence of these sections. The fixed taxonomy serves three purposes: (1) lazy loading by the implementer, (2) shared vocabulary across projects, and (3) a setup template for new pastiche adopters — the canonical 12 are the scaffolding to fill in.
+
+**Purpose:** The implementer's primary reference. Given a task, the implementer reads KNOWLEDGE's index first to determine which sections to load, then which atoms compose the answer.
 
 ### 3.3 WISDOM.md — *What must be said in words*
 
@@ -119,20 +137,24 @@ Pastiche is a feedback-loop skill with two subagents. Their asymmetry is the sou
 
 ### 5.1 Implementer — *Constructive, heavy*
 
-**Context:** KNOWLEDGE.md (full) + WISDOM.md (`[GENERAL]` entries always; remaining entries lazy by atom tag)
+**Context:** KNOWLEDGE.md (lazy by canonical section, plus always-load Brand Identity) + WISDOM.md (`[GENERAL]` entries always; remaining entries lazy by atom tag) + FACT.md (grep-only, after KNOWLEDGE has selected an atom).
 **Persona:** Senior frontend engineer working inside the design system. Faithful executor; not a designer.
 
 **Workflow:**
 1. Read the task.
-2. Consult KNOWLEDGE.md to identify which atoms (components, tokens) apply to the task's scenario. Semantic matching is fine — the implementer reads the map and finds fitting scenarios; no lexical-match ceremony.
-3. With the candidate atoms in hand, grep WISDOM.md by atom name to surface relevant rules.
-4. Implement, applying both KNOWLEDGE mappings and WISDOM rules.
-5. Where KNOWLEDGE provides no clear mapping, fall back per §6.
+2. Read KNOWLEDGE.md's `## Index` and the Brand Identity section. Identify which canonical sections the task touches; load only those by H2 boundary (see §3.2 for the canonical 12).
+3. Consult the loaded sections to identify which atoms (components, tokens) apply to the task's scenario. Semantic matching is fine — the implementer reads the map and finds fitting scenarios; no lexical-match ceremony.
+4. With the complete candidate-atom set in hand, grep WISDOM.md once for `[GENERAL] | atom-A | atom-B | …` to surface all relevant rules in a single call. Re-grep only if implementation introduces a *new* atom not in the first set.
+5. Grep FACT.md for prop signatures of chosen atoms only — never read FACT whole, never grep FACT to discover atoms.
+6. Implement, applying both KNOWLEDGE mappings and WISDOM rules.
+7. Where KNOWLEDGE provides no clear mapping, fall back per §6.
+
+**Round 2 carries forward round 1's work** (§7.5). The architectural intent is for round 2 to resume the round-1 agent so KNOWLEDGE/WISDOM/FACT context already loaded is reused. In environments where agent resumption is not exposed as a tool, round 2 is dispatched as a fresh agent but primed with round 1's full report (chosen atoms, gaps encountered) so it does not re-do atom discovery — it only re-greps WISDOM/FACT when a correction introduces a *new* atom. Either way, round 2 is tilted toward correction over defense to offset the bias of acting on round 1's own code.
 
 ### 5.2 Reviewer — *Verificational, light*
 
 **Context:** FACT.md (full) + WISDOM.md (`[GENERAL]` entries always; remaining entries lazy by atom tag) + the task description
-**Persona:** A senior frontend engineer with deep design system expertise — strict, but heuristic. Raises doubts, not verdicts. The persona itself is the calibration mechanism (§7.2).
+**Persona:** A senior UI/UX designer fluent in the project's design system, fluent enough to read code — strict, but heuristic. Raises doubts, not verdicts. The persona itself is the calibration mechanism (§7.2). The implementer-vs-reviewer asymmetry is reinforced at the persona layer: implementer reasons as an engineer (code-first, constructive), reviewer reasons as a designer (scenario-first, verificational). KNOWLEDGE.md plays "the absent designer" for the implementer (§3.2); the reviewer animates the present designer.
 
 **Workflow:**
 1. **FACT pass:** Every component, token, and prop appearing in the generated code must exist in FACT.md. If not — hallucination. Flag.
@@ -232,11 +254,11 @@ Pastiche v1 runs a **two-round loop**: two implementer rounds with one reviewer 
 
 **Reviewer pass:** Runs FACT, WISDOM, and speculative-doubt passes. Raises doubts on the diff.
 
-**Round 2 (implementer):** For each doubt, responds:
-- *"You're right, I missed that"* — revisits KNOWLEDGE, switches to the proper atom.
-- *"This is intentional"* — leaves a **strong-no** sub-comment defending the choice.
+**Round 2 (implementer):** Receives the doubt list along with round 1's full report (chosen atoms, gaps). It does not re-discover atoms; it only re-greps WISDOM/FACT for atoms newly introduced by corrections. In runtimes that expose agent resumption, round 2 is the same agent instance and reuses round 1's loaded context wholesale; in runtimes that don't, round 2 is a fresh dispatch with priming context. For each doubt:
+- *"You're right, I missed that"* — corrects (default disposition).
+- *"This is intentional"* — defends, with an optional gap-tag (`knowledge-gap` / `wisdom-gap` / `fact-gap`) routing the case to the §10 living-doc loop.
 
-Output ships at the end of Round 2.
+Output ships at the end of Round 2. The round-2 prompt explicitly tilts the implementer toward correction over defense, mirroring §7.6's existing tilt-toward-doubt on the reviewer side: false positives in correction are cheap (one fewer atom-of-doc-debt accumulates), false negatives ship.
 
 The strong-no is a contract: the implementer takes ownership of a deliberate choice, and the reviewer respects it. This prevents infinite loops where doubt and counter-doubt circle forever.
 
@@ -463,7 +485,9 @@ A CI script verifies that every atom mentioned in WISDOM.md or KNOWLEDGE.md reso
 
 **`[GENERAL]` is the lone allow-listed non-FACT tag** (§4). The lint recognizes it explicitly in WISDOM and skips the FACT check for that one tag; every other tag and KNOWLEDGE reference must resolve to a FACT atom. Adding further allow-listed tags requires a spec amendment — not a lint config change — to preserve the §9 invariant.
 
-The lint is small (~50 lines for both passes), runs in seconds, and fails closed. It is not optional.
+**Canonical-section check.** The lint also verifies that KNOWLEDGE.md declares every canonical section from §3.2 as an H2 (`## <name>`). Stubs are allowed; missing sections fail CI. Extra H2 sections beyond the canonical list are permitted (project extension). This makes the taxonomy normative without forbidding growth.
+
+The lint is small, runs in seconds, and fails closed. It is not optional.
 
 Future workflow scripts (release tooling, KNOWLEDGE diff reports, etc.) may join the toolchain over time; v1 ships only these two.
 
