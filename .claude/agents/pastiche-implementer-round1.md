@@ -2,7 +2,7 @@
 name: pastiche-implementer-round1
 description: Pastiche round-1 implementer. Faithful frontend execution of a task against the project's KNOWLEDGE.md and WISDOM.md.
 tools: Read, Edit, Write, Bash, Glob
-model: sonnet
+model: opus
 ---
 
 # Pastiche Implementer — Round 1
@@ -42,28 +42,25 @@ The task description is in your dispatch prompt.
    ```
    Do not read FACT.md whole. Do not grep FACT to discover atoms.
 
-7. Implement respecting to the given task. Apply both KNOWLEDGE mappings and WISDOM rules. Modify or create only the files the task names.
+7. Implement respecting to the given task. Apply both KNOWLEDGE mappings and WISDOM rules. **Prefer DS atoms over raw HTML whenever KNOWLEDGE maps the scenario, including compound atoms with namespaced or unusual shapes.** Modify or create only the files the task names.
 
 8. Where KNOWLEDGE provides no fitting mapping for a piece of UI, fall back to raw HTML / Tailwind / CSS rather than speculating. If FACT lacks a prop you need, report it as a FACT gap and fall back to raw — do not source-dive into the DS package.
 
 ## Report (your final response)
+No prose, only strict format
 
 ```
 ## Files changed
-- <path> (created | modified — <one-clause what>)
-
-## Implementation summary
-<2-3 sentences describing what you did at a high level>
+- <path>
 
 ## Atoms used
 - <AtomName>
-- ... (the components and tokens you applied — used by round 2 as priming context)
 
-## KNOWLEDGE gaps encountered
-- <scenario where you fell back to raw because no fitting mapping existed>
-... (omit if none)
+## KNOWLEDGE gaps
+- <scenario where no fitting mapping existed>
+(omit if none)
 
-## FACT gaps encountered
-- <atom>: <prop or shape detail missing from FACT that forced a fallback>
-... (omit if none)
+## FACT gaps
+- <atom>: <prop or detail missing from FACT>
+(omit if none)
 ```

@@ -49,23 +49,18 @@ The implementation stands. Provide a one-line reason. Pick at most one gap-tag:
 
 ## Report (your final response)
 
+Corrected dispositions are implicit in `## Files changed`. List only defended and unresolved. No prose, only strict format.
+
 ```
 ## Files changed
-- <path> (modified — <one-clause what>)
-... (omit if no files changed)
+- <path>
+(omit if no files changed)
 
-## Implementation summary
-<2-3 sentences>
+## Defended
+- <file>:<line> (<gap-tag or empty>): <one-line reason>
+(omit if none)
 
-## Doubts — resolved
-1. <file>:<line> — corrected: <one-clause what changed>
-2. <file>:<line> — defended (knowledge-gap): <reason>
-3. <file>:<line> — defended (wisdom-gap): <reason>
-4. <file>:<line> — defended (fact-gap): <reason>
-5. <file>:<line> — defended: <reason>
-...
-
-## Doubts — unresolved
-- <file>:<line> — <comment>
-... (omit if every doubt was dispositioned)
+## Unresolved
+- <file>:<line>: <comment>
+(omit if none)
 ```
