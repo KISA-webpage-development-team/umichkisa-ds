@@ -93,3 +93,4 @@
 - [x] Phase 6.5a: MSW boards/everykisa handlers + fixtures (autonomous, TDD) — dev 929a4e5 (closed #167, #194)
 - [x] Phase 6.5b: MSW posts CRUD handlers + fixtures (autonomous, TDD) — dev 9bf636a (closed #168, #195)
 - [x] Phase 6.5c: MSW comments CRUD handlers + fixtures (autonomous, TDD) — dev (closed #169, #196)
+- [x] Phase 6.5d: MSW likes handlers + fixtures (autonomous, TDD; live-fixed GET contract `{liked: bool}`) — dev (closed #170, #197)
