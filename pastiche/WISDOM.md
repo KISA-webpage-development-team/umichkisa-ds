@@ -27,6 +27,7 @@
 - [--color-brand-accent] Never use as link or clickable-text color — contrast fails on white surfaces and the color does not read as interactive.
 - [--color-brand-primary][--color-brand-accent] Avoid as mid-page card or content backgrounds — disrupts reading flow and feels heavy.
 - [--color-info][--color-link] Resolve to the same primitive value but serve distinct semantic roles — never use interchangeably.
+- [--color-link][text-link] `text-link` is a color-only utility — it provides no underline and no hover state. Inline body hyperlinks must add `underline`; standalone helper links must add at minimum `hover:underline`. Color alone is insufficient to mark interactivity (a11y).
 - [--color-success] Never use as standalone text or icon color — fails AA at 2.2:1; pair with a `--color-foreground` label.
 - [--color-warning] Sits at the 3.0:1 floor exactly — pair with a `--color-foreground` label, never use alone for readable content.
 - [--color-error] Avoid for small body text — passes large text only at 3.9:1.
