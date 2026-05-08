@@ -90,6 +90,7 @@
 - [x] Phase 5.5: Audit-after redesign pass — toss-fe-review on phase-5 surface (0 BLOCK, 8 SUGGEST, 3 INFO); cherry-picked S1/S2/S6/S7/S8 (Mode D direct-push) — dev 9db045a..e552a73 (closed #160; deferred S3/S4/S5 as follow-up; findings file in phase folder)
 - [x] Phase 5.6: Verify + end-bump — DS + client typecheck green; no end-bump needed (web 1.0.28 mid-phase bump in 5.1 already shipped); closed #161
 - [ ] Phase 6: kisa-web (subphases added at kickoff)
+- [x] Phase 6.3: About — members + credits redesign (Mode C autonomous; live polish: subtle-maize lead pill on role pills, hoverable cards, per-icon hover color on credits, layout padding centralized in `(main)/layout.tsx` Container) — dev 12c78a8 (closed #165, #199)
 - [x] Phase 6.5a: MSW boards/everykisa handlers + fixtures (autonomous, TDD) — dev 929a4e5 (closed #167, #194)
 - [x] Phase 6.5b: MSW posts CRUD handlers + fixtures (autonomous, TDD) — dev 9bf636a (closed #168, #195)
 - [x] Phase 6.5c: MSW comments CRUD handlers + fixtures (autonomous, TDD) — dev (closed #169, #196)
