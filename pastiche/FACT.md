@@ -168,7 +168,8 @@ Props:
   icon:       "menu" | "image" | "info" | "arrow-left" | "arrow-right" | "blocks" | "calendar" | "check" | "chevron-left" | "chevron-right" | "chevron-down" | "circle-check" | "circle-minus" | "circle-plus" | "circle-x" | "clipboard-check" | "clipboard-copy" | "clock-9" | "external-link" | "eye" | "file-x" | "graduation-cap" | "layout-grid" | "list" | "lock" | "log-in" | "mail" | "message-square" | "minus" | "palette" | "pencil" | "plus" | "refresh-cw" | "reply" | "search-x" | "shield-x" | "shopping-cart" | "smartphone" | "thumbs-up" | "text-cursor-input" | "ticket" | "trash-2" | "triangle-alert" | "type" | "upload" | "user-round" | "x" | "github" | "instagram" | "instagram-brand" | "linkedin"   (required)
   size?:      "sm" | "md" | "lg"
   aria-label: string   (required)
-  ...Omit<ButtonProps, "children" | "size">
+  ...Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children" | "size">
+  variant?:   "primary" | "secondary" | "tertiary" | "destructive"
 
 ### [Input]
 package: @umichkisa-ds/web
@@ -649,7 +650,7 @@ Props:
 package: @umichkisa-ds/form
 
 Props:
-  ...Omit<InputProps, "invalid" | "name" | "value" | "onChange" | "onBlur">
+  ...Omit<React.InputHTMLAttributes<HTMLInputElement>, "invalid" | "name" | "value" | "onChange" | "onBlur">
   name:         string   (required)
   label:        string   (required)
   rules?:       RegisterOptions
@@ -659,7 +660,7 @@ Props:
 package: @umichkisa-ds/form
 
 Props:
-  ...Omit<TextareaProps, "invalid" | "name" | "value" | "onChange" | "onBlur">
+  ...Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "invalid" | "name" | "value" | "onChange" | "onBlur">
   name:         string   (required)
   label:        string   (required)
   rules?:       RegisterOptions
@@ -680,7 +681,8 @@ Props:
 package: @umichkisa-ds/form
 
 Props:
-  ...Omit<CheckboxProps, "invalid" | "name" | "checked" | "onChange" | "onBlur">
+  ...Omit<React.InputHTMLAttributes<HTMLInputElement>, "type" | "invalid" | "name" | "checked" | "onChange" | "onBlur">
+  text?:        string
   name:         string   (required)
   label:        string   (required)
   rules?:       RegisterOptions
@@ -690,7 +692,8 @@ Props:
 package: @umichkisa-ds/form
 
 Props:
-  ...Omit<RadioGroupProps, "invalid" | "name" | "value" | "onValueChange">
+  ...Omit<React.ComponentPropsWithoutRef<typeof RadixRadioGroup.Root>, "invalid" | "name" | "value" | "onValueChange">
+  className?:   string
   name:         string   (required)
   label:        string   (required)
   rules?:       RegisterOptions
@@ -701,7 +704,9 @@ Props:
 package: @umichkisa-ds/form
 
 Props:
-  ...Omit<SwitchProps, "invalid" | "name" | "checked" | "onChange" | "onBlur">
+  ...Omit<React.InputHTMLAttributes<HTMLInputElement>, "type" | "role" | "size" | "invalid" | "name" | "checked" | "onChange" | "onBlur">
+  size?:        "default" | "sm"
+  text?:        string
   name:         string   (required)
   label:        string   (required)
   rules?:       RegisterOptions

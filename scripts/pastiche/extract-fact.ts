@@ -149,16 +149,97 @@ interface ResolveCtx {
 type Classification =
   | { kind: 'spread' }
   | { kind: 'expand' }
-  | { kind: 'recurse'; node: TypeNode };
+  | { kind: 'recurse'; node: TypeNode; aliasName?: string }
+  | {
+      kind: 'recurse-omit';
+      target: { node: TypeNode } | { iface: InterfaceDeclaration };
+      omit: Set<string>;
+      aliasName: string;
+    };
+
+/**
+ * If `node` is a literal-union of strings (or a single string literal),
+ * return the set of literal values. Anything else returns null — caller
+ * falls back to spread rendering.
+ */
+function extractStringLiteralKeys(node: TypeNode): Set<string> | null {
+  if (Node.isLiteralTypeNode(node)) {
+    const lit = node.getLiteral();
+    if (Node.isStringLiteral(lit)) return new Set([lit.getLiteralValue()]);
+    return null;
+  }
+  if (Node.isUnionTypeNode(node)) {
+    const out = new Set<string>();
+    for (const m of node.getTypeNodes()) {
+      if (!Node.isLiteralTypeNode(m)) return null;
+      const lit = m.getLiteral();
+      if (!Node.isStringLiteral(lit)) return null;
+      out.add(lit.getLiteralValue());
+    }
+    return out;
+  }
+  return null;
+}
+
+/**
+ * Resolve a TypeReference to a project-local declaration we can recurse
+ * into (a TypeAlias's RHS or an Interface). Same-file local aliases win;
+ * otherwise fall back to the type checker (cross-file, e.g. form package
+ * referencing CheckboxProps from the web package's d.ts). Returns null
+ * for `node_modules`-defined types or anything unresolved — the caller
+ * keeps the spread fallback.
+ */
+function resolveLocalProjectType(
+  ref: TypeNode,
+  ctx: ResolveCtx,
+): ({ target: { node: TypeNode }; aliasName: string }
+  | { target: { iface: InterfaceDeclaration }; aliasName: string }
+  | null) {
+  if (!Node.isTypeReference(ref)) return null;
+  const aliasName = ref.getTypeName().getText();
+  if (ctx.visiting.has(aliasName)) return null;
+  const localAlias = ctx.localTypeAliases.get(aliasName);
+  if (localAlias) return { target: { node: localAlias }, aliasName };
+  const t = ref.getType();
+  const sym = t.getAliasSymbol() ?? t.getSymbol();
+  const decls = sym?.getDeclarations() ?? [];
+  for (const d of decls) {
+    if (d.getSourceFile().getFilePath().includes('/node_modules/')) continue;
+    if (Node.isTypeAliasDeclaration(d)) {
+      const tn = d.getTypeNode();
+      if (tn) return { target: { node: tn }, aliasName };
+    }
+    if (Node.isInterfaceDeclaration(d)) {
+      return { target: { iface: d }, aliasName };
+    }
+  }
+  return null;
+}
 
 function classifyBranch(node: TypeNode, ctx: ResolveCtx): Classification {
   if (Node.isTypeLiteral(node)) return { kind: 'expand' };
   if (Node.isTypeReference(node)) {
     const nameText = node.getTypeName().getText();
-    if (nameText === 'Omit' || nameText === 'Pick') {
+    if (nameText === 'Omit') {
+      // Flatten `Omit<X, K>` when X is a project-local type — recurse into
+      // X's segments and drop the omitted props (and merge keys into any
+      // inner spread's own Omit). Keeps wrappers like FormCheckboxProps
+      // readable end-to-end without forcing the reader to chase atom names.
       const args = node.getTypeArguments();
-      // For Omit/Pick the rendering is always spread (preserve user-written
-      // syntax); we only consult the inner arg to confirm spread-eligibility.
+      if (args.length === 2) {
+        const keys = extractStringLiteralKeys(args[1]);
+        if (keys) {
+          const resolved = resolveLocalProjectType(args[0], ctx);
+          if (resolved) {
+            return { kind: 'recurse-omit', target: resolved.target, omit: keys, aliasName: resolved.aliasName };
+          }
+        }
+      }
+      return { kind: 'spread' };
+    }
+    if (nameText === 'Pick') {
+      // Pick recursion has different semantics (keep-list, plus inversion
+      // for inner spreads); not worth the complexity yet — keep as spread.
       return { kind: 'spread' };
     }
     if (nameText === 'VariantProps' || nameText.endsWith('.VariantProps')) {
@@ -168,7 +249,7 @@ function classifyBranch(node: TypeNode, ctx: ResolveCtx): Classification {
     // reader sees the underlying shape rather than an opaque name.
     const localAlias = ctx.localTypeAliases.get(nameText);
     if (localAlias && !ctx.exportNames.has(nameText) && !ctx.visiting.has(nameText)) {
-      return { kind: 'recurse', node: localAlias };
+      return { kind: 'recurse', node: localAlias, aliasName: nameText };
     }
     const t = node.getType();
     const sym = t.getAliasSymbol() ?? t.getSymbol();
@@ -310,19 +391,51 @@ function expandInterface(decl: InterfaceDeclaration, ctx: ResolveCtx): RenderedS
   return segments;
 }
 
+function applyOmit(segments: RenderedSegment[], omit: Set<string>): RenderedSegment[] {
+  if (omit.size === 0) return segments;
+  const out: RenderedSegment[] = [];
+  for (const seg of segments) {
+    if (seg.kind === 'expand') {
+      out.push({ kind: 'expand', props: seg.props.filter(p => !omit.has(p.name)) });
+      continue;
+    }
+    out.push({ kind: 'spread', text: mergeOmitIntoSpread(seg.text, omit) });
+  }
+  return out;
+}
+
+function mergeOmitIntoSpread(text: string, omit: Set<string>): string {
+  const t = text.trim();
+  if (t === '(or)') return text;
+  const keysUnion = [...omit].map(k => `"${k}"`).join(' | ');
+  // Already `Omit<X, K1>` — extend its key list rather than nest.
+  const m = t.match(/^Omit<(.+),\s*(.+)>$/s);
+  if (m) return `Omit<${m[1].trim()}, ${m[2].trim()} | ${keysUnion}>`;
+  return `Omit<${t}, ${keysUnion}>`;
+}
+
 function renderBranch(branch: TypeNode, ctx: ResolveCtx): RenderedSegment[] {
   const cls = classifyBranch(branch, ctx);
   if (cls.kind === 'spread') return [{ kind: 'spread', text: branch.getText() }];
   if (cls.kind === 'expand') return [{ kind: 'expand', props: expandTypeNode(branch, ctx) }];
-  // recurse: walk the local alias's type node as if it were inlined here.
-  const aliasName = (branch as { getTypeName?: () => { getText: () => string } })
-    .getTypeName?.()
-    .getText();
-  if (aliasName) ctx.visiting.add(aliasName);
+  if (cls.kind === 'recurse') {
+    if (cls.aliasName) ctx.visiting.add(cls.aliasName);
+    try {
+      return renderProps(cls.node, ctx);
+    } finally {
+      if (cls.aliasName) ctx.visiting.delete(cls.aliasName);
+    }
+  }
+  // recurse-omit: walk the inner project-local type, then drop omitted keys.
+  ctx.visiting.add(cls.aliasName);
   try {
-    return renderProps(cls.node, ctx);
+    const inner =
+      'iface' in cls.target
+        ? expandInterface(cls.target.iface, ctx)
+        : renderProps(cls.target.node, ctx);
+    return applyOmit(inner, cls.omit);
   } finally {
-    if (aliasName) ctx.visiting.delete(aliasName);
+    ctx.visiting.delete(cls.aliasName);
   }
 }
 
