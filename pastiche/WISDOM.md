@@ -94,6 +94,7 @@
 - [Dropdown][DropdownTrigger][DropdownContent][DropdownItem][DropdownGroup][DropdownSeparator] Compose strictly with the named subcomponents — never wrap raw buttons or list items inside `DropdownContent`.
 - [Popover][PopoverTrigger][PopoverContent] Compose strictly as `Popover > PopoverTrigger + PopoverContent`; the trigger and content components are paired and not used independently.
 - [Select][SelectTrigger][SelectContent][SelectItem][SelectGroup][SelectSeparator] Compose strictly with the named subcomponents — never substitute raw `<select>`/`<option>` markup.
+- [Form.Select] Renders only the Select root — unlike Form.Input/Textarea/Checkbox/Radio/Switch/DatePicker, it does **not** encapsulate the trigger and content. Consumer must pass `<SelectTrigger placeholder=… />` and `<SelectContent>{<SelectItem>…}</SelectContent>` as children. Passing bare `<SelectItem>` children throws "SelectItem must be used within SelectContent" at runtime.
 - [RadioGroup][RadioItem] RadioItem appears only as a child of RadioGroup — never standalone.
 - [Card][CardHeader][CardTitle][CardDescription][CardContent][CardFooter] Compose with the named subcomponents — Card distinction comes from its border, not from a tinted background.
 - [Table][TableHeader][TableBody][TableRow][TableHead][TableCell][TableCaption][TableFooter] Compose with the named subcomponents — never substitute raw `<table>`/`<tr>`/`<td>` markup.
