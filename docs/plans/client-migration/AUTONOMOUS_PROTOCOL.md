@@ -142,7 +142,7 @@ Then proceed with the silent-wait → "good" → `wrapping-up-lane` flow.
 
 ## 5. Issue Template
 
-Every lane = one issue, generated at plan-writing from `plan.md`. Issues are the sole input to autonomous execution.
+Every lane = one issue, generated at plan-writing from `plan.md`. The issue body + comments are the per-lane source of truth for autonomous execution; `plan.md` is **not** auto-loaded by the routine and must not be relied on as a fallback. The only sanctioned exception is the `## Shared contract` field below, which lets a fan-out lane explicitly link to a contract section in `plan.md`.
 
 ```markdown
 # [Lane <lane-id>] <short title>
@@ -158,6 +158,13 @@ Every lane = one issue, generated at plan-writing from `plan.md`. Issues are the
 ## Depends on
 - Lane <lane-id> (issue #<N>) — must be merged first
 - (or: no dependencies)
+
+## Shared contract
+(Optional — include only if this lane consumes a contract authored in a sibling lane: shared template, data schema, fixture convention, etc.)
+- `docs/plans/client-migration/phase-<N>-<slug>/plan.md` — section heading or line range that defines the shared contract
+- (or: omit this field entirely if the lane is self-contained)
+
+This is the **only** sanctioned reason for the autonomous routine to read `plan.md`. If the contract is small, inline it here verbatim instead of linking, to avoid drift. If the contract is large (e.g., a TS schema), link to the plan.md location and accept that the consuming lane is pinned to plan.md's state at the time the issue was written — re-grill the parent contract lane if it changes.
 
 ## Context
 One paragraph: link to `audit.md` section, note locked design decisions.

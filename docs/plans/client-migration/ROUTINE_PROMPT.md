@@ -16,7 +16,9 @@ Read these from the `umichkisa-ds` repo, in order:
 1. `docs/plans/client-migration/AUTONOMOUS_PROTOCOL.md` — authoritative protocol (read fully)
 2. `docs/plans/client-migration/HARNESS_DESIGN.md` — harness context
 3. `docs/TODO.md` — identify the current phase
-4. `docs/plans/client-migration/phase-<N>-<slug>/audit.md` AND `plan.md` for the current phase
+4. `docs/plans/client-migration/phase-<N>-<slug>/audit.md` for the current phase
+
+Do NOT auto-load `plan.md`. The issue is the per-lane source of truth (see per-lane step 1).
 
 # Your task
 Execute the nightly routine per AUTONOMOUS_PROTOCOL.md §7 (Routine Algorithm) for the current phase.
@@ -46,7 +48,7 @@ Sort oldest-first.
 # Per-lane execution
 For each eligible issue, until 4h cap or queue empty:
 
-1. Read the issue's full spec (template fields per §5).
+1. Read the issue's full spec (template fields per §5) **including all comments**. The issue body + comments are the per-lane source of truth — locked decisions from grill-me sessions live in comments and override anything in plan.md. Do not load plan.md unless the issue's `## Shared contract` field explicitly links to a plan.md section (carve-out for fan-out lanes that consume a contract authored in a sibling lane). On any conflict between issue and plan.md, the issue wins.
 2. Determine target repo from the issue location.
 3. `git fetch origin dev` and `git checkout -b ds-client-migration/phase-<N>/<lane-id>-<slug> origin/dev` in the target repo.
 4. Read the issue's `## Execution skill` field and dispatch accordingly:
