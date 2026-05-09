@@ -11,6 +11,7 @@
 - [GENERAL] All spacing values come from Tailwind's built-in 4px scale — never arbitrary values like `px-[24px]` or `mt-[13px]`.
 - [GENERAL] Use `type-*` semantic utility classes for typography — never compose raw Tailwind text utilities for fonts.
 - [.type-display][.type-h1] Paired with `tracking-tight`; every other `type-*` role uses `tracking-normal` (the default).
+- [.type-display][.type-h1] Default to `type-h1` for page titles; reserve `type-display` for explicit marketing/hero spec call-outs — `type-display` is rare and overpowers most app surfaces.
 - [.type-caption] The typography floor for readable body content (12px) — never use custom sizes smaller than this.
 - [GENERAL] Vertical spacing tiers (`gap-2` element / `gap-4` component / `gap-6` section) do not scale across breakpoints — layout responsiveness is column reflow, not gap scaling.
 - [GENERAL] Never apply weight utilities (`font-semibold`, `font-bold`) to whole text containers for emphasis — use `<strong>` for inline emphasis or a higher `type-*` class for block-level weight.
