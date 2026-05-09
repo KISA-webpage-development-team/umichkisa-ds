@@ -96,3 +96,4 @@
 - [x] Phase 6.5c: MSW comments CRUD handlers + fixtures (autonomous, TDD) — dev (closed #169, #196)
 - [x] Phase 6.5d: MSW likes handlers + fixtures (autonomous, TDD; live-fixed GET contract `{liked: bool}`) — dev (closed #170, #197)
 - [x] Phase 6.10: Signin redesign (interactive, live iteration; campus photo + Korean microcopy) — dev 1fb9ec2 (closed #171, #200)
+- [x] Phase 6.2: About — kisa + events (Mode D interactive; editorial hero + 인사말 sidebar with stats, 4-up pillars Card grid, plain stacked events list with square images; live polish: removed global `section` reset that overrode utility gaps) — dev ad34b17 (closed #164)
