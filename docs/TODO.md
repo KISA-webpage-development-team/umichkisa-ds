@@ -97,3 +97,4 @@
 - [x] Phase 6.5d: MSW likes handlers + fixtures (autonomous, TDD; live-fixed GET contract `{liked: bool}`) — dev (closed #170, #197)
 - [x] Phase 6.10: Signin redesign (interactive, live iteration; campus photo + Korean microcopy) — dev 1fb9ec2 (closed #171, #200)
 - [x] Phase 6.2: About — kisa + events (Mode D interactive; editorial hero + 인사말 sidebar with stats, 4-up pillars Card grid, plain stacked events list with square images; live polish: removed global `section` reset that overrode utility gaps) — dev ad34b17 (closed #164)
+- [x] Phase 6.14: Info template + /info/campus reference (Mode D interactive; locks public API for 6.15 fan-out — InfoOverviewTemplate + InfoDetailTemplate, image-fill tile cards with centered scrim caption, image-left/content-right detail records with type-h2 titles) — dev 7211f01 (closed #175)
