@@ -266,6 +266,10 @@ Border that should read more present — focused state, important separation.
 Page hero, marketing display lines.
 → `type-display`
 
+### Dual-line page hero (EN title + KR subtitle)
+Standard kisa-web page hero pattern — English display title with a Korean subtitle line beneath. Both lines render at full foreground intensity (the KR line is a co-equal brand label, not de-emphasized metadata).
+→ `<header className="flex flex-col gap-2">` containing `<h1 className="type-h1">{en}</h1>` + `<p className="type-body text-foreground">{kr}</p>`. Reference: `InfoOverviewTemplate`, `/info/checklist`.
+
 ### Headings
 Section headings in descending hierarchy.
 → `type-h1` / `type-h2` / `type-h3`
