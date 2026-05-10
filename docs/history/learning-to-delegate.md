@@ -213,6 +213,79 @@ committing." Reuses an existing agent, costs nothing to add, fixes the
 volume scales — say I migrate a second client with weaker DS
 conformance — promote it to a skill then. Not now.
 
+## What I optimized for, and what I should have
+
+Two honest critiques of how I actually executed this project. Both
+about me, not about the tools.
+
+**Plan-review laziness.** I wrote detailed plans. I did not review
+them carefully before dispatching the implementer. Phase 6 alone
+produced 17 lane issues; the migration's cumulative issue count
+crossed a hundred. The volume was real — too many to read with full
+attention if I also wanted to ship. But that framing is also a
+defense, and I should be honest about which side of the tension
+actually dominated.
+
+I came up in a "ship fast, fix later" culture. Tesla's frontend team
+ran that way and I took the philosophy with me. Combined with AI
+making shipping cheap, the equilibrium I drifted to was: write the
+plan, dispatch, fix what comes back on the next pass. That works
+when the implementer is forgiving (4.6 era). It works less well
+when the implementer is literal (4.7 era), because the plan gaps
+that used to be filled in silently now ship as defects.
+
+I don't think "ship fast, fix later" is wrong as a philosophy. I
+think its calibration has to change when implementation cost
+approaches zero. When AI is honest about what it was given, the
+tax moves from typing code to writing specs, and the quality of
+the specs becomes the quality of the output. I under-invested
+there. The output was good enough that the under-investment was
+usually invisible — but "usually invisible" is exactly how a bad
+habit survives.
+
+**The frontend knowledge I didn't close the gap on.** Pastiche's
+reviewer, `vercel-react-best-practices`, and `toss-fe-review`
+together flagged hundreds of small engineering observations across
+P4–P6 — bundle implications of a particular import, rendering-
+strategy choices that affected hydration cost, hooks-discipline
+rules I hadn't internalized, build-graph patterns I couldn't
+independently evaluate the tradeoff of. The honest read: I had a
+once-in-a-career window to learn from those reviews, lane by lane,
+by reading the suggestions slowly and internalizing the *why*. I
+scanned them, accepted what felt correct, deferred what felt
+expensive, and kept shipping.
+
+The domain — frontend at the depth where build graph, render
+strategy, and runtime cost meet — is exactly the domain I most
+need to expand into. I was looking at it daily. I did not look
+hard. To brief pastiche better in the future, and to evaluate its
+output more rigorously, I need engineering knowledge I don't yet
+have. I knew this and I had the material to fix it. I didn't.
+
+The military framing makes this worse, not better. I have unusual
+amounts of time at the unit. The reason to ship anything at all
+in this period is to use the time to **expand the domain**, not
+to maximize artifact count. Treating shipping volume as the metric
+inverts the actual purpose. I drifted toward the wrong metric and
+I should not pretend otherwise.
+
+Both critiques are forms of the same mistake: optimizing for
+output when the real value of this period was supposed to be
+*intake* — absorbing what the system was telling me about specs,
+about frontend craft, about my own gaps. AI took implementation
+off my plate. The right response was to use the recovered time to
+get better at the surrounding work. I used some of it that way.
+Too much of it I used producing more output, because output is
+what I trained myself to feel productive about.
+
+I'm naming this here because without it the rest of the essay
+reads as an arrival narrative — "I learned the new roles, I
+executed them, the project worked." A truer version is that I
+learned the shape of the new roles and executed them at maybe 60%
+of what I could have. The missing 40% is the part where I should
+have slowed down and learned from what the tools were trying to
+teach me.
+
 ## What's left for me
 
 If implementation is increasingly not my job, and harness design is,
