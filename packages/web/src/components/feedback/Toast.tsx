@@ -39,8 +39,13 @@ function Toaster({
       toastOptions={{
         unstyled: true,
         classNames: {
+          // pointer-events-auto: with `unstyled: true`, sonner doesn't apply
+          // its default pointer-events on individual toasts, so the toaster
+          // region's `pointer-events: none` (intentional — lets clicks pass
+          // through empty regions) leaks into each toast and makes the action
+          // button non-clickable. Re-enable explicitly on the toast itself.
           toast:
-            "w-full flex items-center gap-2 rounded-md border border-border bg-surface px-3 py-3 shadow-lg",
+            "pointer-events-auto w-full flex items-center gap-2 rounded-md border border-border bg-surface px-3 py-3 shadow-lg",
           title: "type-label text-foreground",
           description: "type-body-sm text-muted-foreground",
           actionButton:
